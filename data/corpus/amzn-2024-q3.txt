@@ -1,0 +1,11 @@
+Amazon | AMZN | Q3 2024 earnings release | Published 2024-10-31
+Source: https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon-com-Announces-Third-Quarter-Results/
+Curated factual extract, not a complete document. Table labels are normalized; numeric values retain source precision.
+Original location: Consolidated Statements of Operations (unaudited).
+Basis: GAAP; Q3 2024, three months ended 2024-09-30; USD millions except diluted EPS in USD/share.
+Net sales: 158,877; operating income: 17,411; net income: 15,328; diluted EPS: 1.43.
+Original location: Segment Information (unaudited), same quarter, USD millions.
+AWS: net sales 27,452; operating income 10,447.
+Original location: Financial Guidance / Fourth Quarter 2024 Guidance; expectations as of 2024-10-31, not actual results.
+Q4 2024 net-sales forecast: USD 181.5–188.5 billion; year-over-year growth forecast 7–11%; assumed FX headwind approximately 10 basis points.
+Q4 2024 operating-income forecast: USD 16.0–20.0 billion.

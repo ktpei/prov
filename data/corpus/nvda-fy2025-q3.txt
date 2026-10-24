@@ -1,0 +1,12 @@
+NVIDIA | NVDA | FY2025 Q3 earnings release | Published 2024-11-20
+Source: https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2025/default.aspx
+Curated factual extract, not a complete document. Table labels are normalized; numeric values retain source precision.
+Original location: Q3 Fiscal 2025 Summary.
+Period: FY2025 Q3, quarter ended 2024-10-27; USD millions except margins in percent and diluted EPS in USD/share.
+GAAP: revenue 35,082; operating income 21,869; net income 19,309; gross margin 74.6%; diluted EPS 0.78.
+Non-GAAP: revenue 35,082; operating income 23,276; net income 20,010; gross margin 75.0%; diluted EPS 0.81.
+EPS figures reflect the 10-for-1 split effective 2024-06-07.
+Original location: Outlook; management expectations for FY2025 Q4 as of 2024-11-20, not actual results.
+Revenue forecast: USD 37.5 billion, with a relative range of plus/minus 2%.
+Gross-margin forecast: GAAP 73.0%; non-GAAP 73.5%; each with plus/minus 50 basis points.
+Operating-expense forecast: approximately USD 4.8 billion GAAP and USD 3.4 billion non-GAAP.

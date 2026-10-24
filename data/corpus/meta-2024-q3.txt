@@ -1,0 +1,12 @@
+Meta | META | Q3 2024 earnings release | Published 2024-10-30
+Source: https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Third-Quarter-2024-Results/default.aspx
+Curated factual extract, not a complete document. Table labels are normalized; numeric values retain source precision.
+Original location: Third Quarter 2024 Financial Highlights.
+Basis: GAAP; Q3 2024, three months ended 2024-09-30; USD millions except margin in percent and diluted EPS in USD/share.
+Revenue: 40,589; operating income: 17,350; net income: 15,688; reported operating margin: 43%; diluted EPS: 6.03.
+Original location: Third Quarter 2024 Operational and Other Financial Highlights.
+Family daily active people (DAP): September 2024 average 3.29 billion; year-over-year growth 5%.
+Original location: CFO Outlook Commentary; expectations as of 2024-10-30, not actual results.
+Q4 2024 revenue forecast: USD 45–48 billion; assumed currency effect on year-over-year revenue growth approximately neutral.
+FY2024 expense forecast: USD 96–98 billion, previously USD 96–99 billion.
+FY2024 capital-expenditure forecast: USD 38–40 billion, previously USD 37–40 billion.

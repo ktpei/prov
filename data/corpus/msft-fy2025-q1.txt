@@ -1,0 +1,12 @@
+Microsoft | MSFT | FY2025 Q1 earnings release | Published 2024-10-30
+Source: https://www.microsoft.com/en-us/investor/earnings/fy-2025-q1/press-release-webcast
+Curated factual extract, not a complete document. Table labels are normalized; numeric values retain source precision.
+Original location: INCOME STATEMENTS (Unaudited).
+Basis: GAAP; FY2025 Q1, three months ended 2024-09-30; USD millions except diluted EPS in USD/share.
+Revenue: 65,585; operating income: 30,552; net income: 24,667; diluted EPS: 3.30.
+Original location: SEGMENT REVENUE AND OPERATING INCOME (Unaudited), same quarter, USD millions.
+Productivity and Business Processes: revenue 28,317; operating income 16,516.
+Intelligent Cloud: revenue 24,092; operating income 10,503.
+More Personal Computing: revenue 13,176; operating income 3,533.
+Original location: Business Highlights, Intelligent Cloud paragraph.
+Azure and other cloud services: year-over-year revenue growth 33% reported; 34% at constant currency, FY2025 Q1.

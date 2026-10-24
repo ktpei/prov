@@ -1,0 +1,796 @@
+{
+  "version": "1",
+  "as_of": "2024-11-20",
+  "tasks": [
+    {
+      "id": "dev-01",
+      "split": "dev",
+      "category": "extraction",
+      "question": "What was Apple's GAAP total revenue (total net sales) in FY2024, the twelve months ended September 28, 2024? Report USD millions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "aapl-fy2024"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "aapl_revenue",
+            "value": 391035,
+            "unit": "USD million",
+            "period": "FY2024",
+            "tolerance": 0,
+            "source_id": "aapl-fy2024",
+            "locator": "L4-L6",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Return the annual total, not the 94,930 quarterly figure or FY2023 comparative; cite column definition and value."
+    },
+    {
+      "id": "dev-02",
+      "split": "dev",
+      "category": "extraction",
+      "question": "What were Microsoft's GAAP revenue and net income in FY2025 Q1, the three months ended September 30, 2024? Report USD millions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "msft-fy2025-q1"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "msft_revenue",
+            "value": 65585,
+            "unit": "USD million",
+            "period": "FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L4-L6",
+            "derivation": null
+          },
+          {
+            "key": "msft_net_income",
+            "value": 24667,
+            "unit": "USD million",
+            "period": "FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L4-L6",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Both values require the GAAP quarterly basis and exact table precision."
+    },
+    {
+      "id": "dev-03",
+      "split": "dev",
+      "category": "extraction",
+      "question": "What were NVIDIA's GAAP and non-GAAP diluted EPS for FY2025 Q3, ended October 27, 2024, on the split-adjusted basis in the release? Report USD per share. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "nvda-fy2025-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "nvda_gaap_eps",
+            "value": 0.78,
+            "unit": "USD/share",
+            "period": "FY2025 Q3",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L5-L8",
+            "derivation": null
+          },
+          {
+            "key": "nvda_non_gaap_eps",
+            "value": 0.81,
+            "unit": "USD/share",
+            "period": "FY2025 Q3",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L5-L8",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Keep GAAP and non-GAAP separate and use the release split-adjusted values."
+    },
+    {
+      "id": "dev-04",
+      "split": "dev",
+      "category": "extraction",
+      "question": "What were Amazon AWS segment net sales and operating income for Q3 2024, ended September 30, 2024? Report USD millions from Segment Information. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "amzn-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "aws_sales",
+            "value": 27452,
+            "unit": "USD million",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L5-L8",
+            "derivation": null
+          },
+          {
+            "key": "aws_operating_income",
+            "value": 10447,
+            "unit": "USD million",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L5-L8",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Use AWS segment figures, not consolidated Amazon figures or rounded headline billions."
+    },
+    {
+      "id": "dev-05",
+      "split": "dev",
+      "category": "extraction",
+      "question": "For Meta Q3 2024, ended September 30, 2024, give GAAP revenue in USD millions and the reported whole-percent operating margin from Financial Highlights. Do not recalculate the margin. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "meta_revenue",
+            "value": 40589,
+            "unit": "USD million",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L4-L6",
+            "derivation": null
+          },
+          {
+            "key": "meta_reported_operating_margin",
+            "value": 43,
+            "unit": "percent",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L4-L6",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Require the reported 43% margin, distinct from the margin calculated using unrounded table amounts."
+    },
+    {
+      "id": "dev-06",
+      "split": "dev",
+      "category": "guidance",
+      "question": "Based on NVIDIA's November 20, 2024 outlook, what are the lower and upper revenue bounds for FY2025 Q4 implied by USD 37.5 billion plus or minus 2%? Report USD billions and show the arithmetic. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "nvda-fy2025-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "nvda_revenue_guidance_low",
+            "value": 36.75,
+            "unit": "USD billion",
+            "period": "FY2025 Q4",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L9-L10",
+            "derivation": "37.5 * (1 - 0.02)"
+          },
+          {
+            "key": "nvda_revenue_guidance_high",
+            "value": 38.25,
+            "unit": "USD billion",
+            "period": "FY2025 Q4",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L9-L10",
+            "derivation": "37.5 * (1 + 0.02)"
+          }
+        ]
+      },
+      "rubric": "Identify guidance as a forecast; interpret 2% relatively, not as USD 2 billion; cite midpoint and range assumption."
+    },
+    {
+      "id": "dev-07",
+      "split": "dev",
+      "category": "guidance",
+      "question": "What lower and upper net-sales guidance did Amazon give for Q4 2024 as of October 31, 2024? Report USD billions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "amzn-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "amzn_sales_guidance_low",
+            "value": 181.5,
+            "unit": "USD billion",
+            "period": "Q4 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L9-L10",
+            "derivation": null
+          },
+          {
+            "key": "amzn_sales_guidance_high",
+            "value": 188.5,
+            "unit": "USD billion",
+            "period": "Q4 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L9-L10",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Return both forecast endpoints, not actual Q3 sales or the year-over-year percentage range."
+    },
+    {
+      "id": "dev-08",
+      "split": "dev",
+      "category": "comparison",
+      "question": "Compare GAAP revenue for Apple FY2024 Q4 (ended September 28, 2024) and Microsoft FY2025 Q1 (ended September 30, 2024). Calculate Apple minus Microsoft in USD millions using exact table amounts; retain each company's period label. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "aapl-fy2024",
+        "msft-fy2025-q1"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "aapl_minus_msft_revenue",
+            "value": 29345,
+            "unit": "USD million",
+            "period": "Apple FY2024 Q4 / Microsoft FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "aapl-fy2024",
+            "locator": "L4-L6",
+            "derivation": "94930 - 65585",
+            "supporting_sources": [
+              {
+                "source_id": "msft-fy2025-q1",
+                "locator": "L4-L6"
+              }
+            ]
+          }
+        ]
+      },
+      "rubric": "Cite both inputs and show subtraction. These nearby quarter ends are not identical fiscal periods; do not compare Apple annual sales."
+    },
+    {
+      "id": "dev-09",
+      "split": "dev",
+      "category": "comparison",
+      "question": "For the three months ended September 30, 2024, calculate Microsoft FY2025 Q1 GAAP operating income minus Meta Q3 2024 GAAP operating income in USD millions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "msft-fy2025-q1",
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "msft_minus_meta_operating_income",
+            "value": 13202,
+            "unit": "USD million",
+            "period": "Microsoft FY2025 Q1 / Meta Q3 2024",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L4-L6",
+            "derivation": "30552 - 17350",
+            "supporting_sources": [
+              {
+                "source_id": "meta-2024-q3",
+                "locator": "L4-L6"
+              }
+            ]
+          }
+        ]
+      },
+      "rubric": "Use operating income rather than net income; retain both fiscal labels and cite both amounts."
+    },
+    {
+      "id": "dev-10",
+      "split": "dev",
+      "category": "unanswerable",
+      "question": "What exact revenue guidance did Apple give for FY2025 Q1 in the supplied FY2024 Q4 financial-statement excerpt? Do not use earnings calls or other documents. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "aapl-fy2024"
+      ],
+      "expected": {
+        "answerable": false,
+        "claims": []
+      },
+      "rubric": "Abstain: this fixed excerpt contains historical financial statements, not an FY2025 Q1 revenue forecast. Do not claim Apple never issued guidance elsewhere."
+    },
+    {
+      "id": "heldout-01",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "What were Apple's FY2024 and FY2023 annual Services net sales, each in USD millions, in the supplied financial statements? Use the twelve-month columns, not Q4. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "aapl-fy2024"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "aapl_services_fy2024",
+            "value": 96169,
+            "unit": "USD million",
+            "period": "FY2024",
+            "tolerance": 0,
+            "source_id": "aapl-fy2024",
+            "locator": "L5-L7",
+            "derivation": null
+          },
+          {
+            "key": "aapl_services_fy2023",
+            "value": 85200,
+            "unit": "USD million",
+            "period": "FY2023",
+            "tolerance": 0,
+            "source_id": "aapl-fy2024",
+            "locator": "L5-L7",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Match each annual value to its fiscal year; do not use quarterly Services sales."
+    },
+    {
+      "id": "heldout-02",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "What were Apple's iPhone net sales for FY2024 Q4, the three months ended September 28, 2024? Report USD millions from the category breakdown. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "aapl-fy2024"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "aapl_iphone_sales",
+            "value": 46222,
+            "unit": "USD million",
+            "period": "FY2024 Q4",
+            "tolerance": 0,
+            "source_id": "aapl-fy2024",
+            "locator": "L11-L12",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Require the quarter-specific iPhone category, not annual iPhone sales or total product sales."
+    },
+    {
+      "id": "heldout-03",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "For Microsoft FY2025 Q1, ended September 30, 2024, what were the reported and constant-currency year-over-year revenue growth rates for Azure and other cloud services? Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "msft-fy2025-q1"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "azure_reported_growth",
+            "value": 33,
+            "unit": "percent",
+            "period": "FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L11-L12",
+            "derivation": null
+          },
+          {
+            "key": "azure_constant_currency_growth",
+            "value": 34,
+            "unit": "percent",
+            "period": "FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L11-L12",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Keep the growth bases distinct; these are rates, not absolute Azure revenue."
+    },
+    {
+      "id": "heldout-04",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "What were Microsoft Intelligent Cloud segment revenue and operating income in FY2025 Q1, ended September 30, 2024? Report USD millions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "msft-fy2025-q1"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "intelligent_cloud_revenue",
+            "value": 24092,
+            "unit": "USD million",
+            "period": "FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L5-L9",
+            "derivation": null
+          },
+          {
+            "key": "intelligent_cloud_operating_income",
+            "value": 10503,
+            "unit": "USD million",
+            "period": "FY2025 Q1",
+            "tolerance": 0,
+            "source_id": "msft-fy2025-q1",
+            "locator": "L5-L9",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Do not substitute Microsoft Cloud or Azure for the Intelligent Cloud segment."
+    },
+    {
+      "id": "heldout-05",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "What were NVIDIA's GAAP and non-GAAP net income for FY2025 Q3, ended October 27, 2024? Report USD millions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "nvda-fy2025-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "nvda_gaap_net_income",
+            "value": 19309,
+            "unit": "USD million",
+            "period": "FY2025 Q3",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L4-L7",
+            "derivation": null
+          },
+          {
+            "key": "nvda_non_gaap_net_income",
+            "value": 20010,
+            "unit": "USD million",
+            "period": "FY2025 Q3",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L4-L7",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Return both net-income bases, not operating income or a prior quarter."
+    },
+    {
+      "id": "heldout-06",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "What were NVIDIA's actual GAAP and non-GAAP gross margins for FY2025 Q3, ended October 27, 2024? Report percentages, not the Q4 outlook. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "nvda-fy2025-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "nvda_gaap_gross_margin",
+            "value": 74.6,
+            "unit": "percent",
+            "period": "FY2025 Q3",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L4-L7",
+            "derivation": null
+          },
+          {
+            "key": "nvda_non_gaap_gross_margin",
+            "value": 75,
+            "unit": "percent",
+            "period": "FY2025 Q3",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L4-L7",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Separate the two accounting bases and distinguish actual Q3 margins from future guidance."
+    },
+    {
+      "id": "heldout-07",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "What were Amazon's consolidated GAAP net sales and net income for Q3 2024, the three months ended September 30, 2024? Use exact USD millions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "amzn-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "amzn_sales",
+            "value": 158877,
+            "unit": "USD million",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L4-L6",
+            "derivation": null
+          },
+          {
+            "key": "amzn_net_income",
+            "value": 15328,
+            "unit": "USD million",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L4-L6",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Use consolidated quarterly figures and table precision, not AWS values or rounded headline figures."
+    },
+    {
+      "id": "heldout-08",
+      "split": "heldout",
+      "category": "extraction",
+      "question": "Give Meta's Q3 2024 GAAP diluted EPS in USD per share and its average Family daily active people for September 2024 in billions of people. Preserve the distinct measurement periods. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "meta_eps",
+            "value": 6.03,
+            "unit": "USD/share",
+            "period": "Q3 2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L4-L6",
+            "derivation": null
+          },
+          {
+            "key": "meta_dap",
+            "value": 3.29,
+            "unit": "billion people",
+            "period": "September 2024 average",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L7-L8",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "DAP is a September average for the Family, not a quarter-end count or Instagram-only measure."
+    },
+    {
+      "id": "heldout-09",
+      "split": "heldout",
+      "category": "guidance",
+      "question": "What lower and upper revenue guidance did Meta give for Q4 2024 as of October 30, 2024? Report USD billions. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "meta_revenue_guidance_low",
+            "value": 45,
+            "unit": "USD billion",
+            "period": "Q4 2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L9-L10",
+            "derivation": null
+          },
+          {
+            "key": "meta_revenue_guidance_high",
+            "value": 48,
+            "unit": "USD billion",
+            "period": "Q4 2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L9-L10",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Both endpoints are forecasts for Q4, not actual Q3 revenue."
+    },
+    {
+      "id": "heldout-10",
+      "split": "heldout",
+      "category": "guidance",
+      "question": "What was Meta's updated full-year FY2024 capital-expenditure guidance range as of October 30, 2024? Report its lower and upper endpoints in USD billions, excluding the superseded range. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "meta_capex_guidance_low",
+            "value": 38,
+            "unit": "USD billion",
+            "period": "FY2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L9-L12",
+            "derivation": null
+          },
+          {
+            "key": "meta_capex_guidance_high",
+            "value": 40,
+            "unit": "USD billion",
+            "period": "FY2024",
+            "tolerance": 0,
+            "source_id": "meta-2024-q3",
+            "locator": "L9-L12",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "Use updated 38\u201340, not prior 37\u201340; preserve annual period and capital-expenditure metric."
+    },
+    {
+      "id": "heldout-11",
+      "split": "heldout",
+      "category": "guidance",
+      "question": "Based on NVIDIA's November 20, 2024 outlook for FY2025 Q4, state its GAAP and non-GAAP gross-margin forecast midpoints in percent and the stated common tolerance in basis points. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "nvda-fy2025-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "nvda_gaap_margin_guidance",
+            "value": 73,
+            "unit": "percent",
+            "period": "FY2025 Q4",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L9-L11",
+            "derivation": null
+          },
+          {
+            "key": "nvda_non_gaap_margin_guidance",
+            "value": 73.5,
+            "unit": "percent",
+            "period": "FY2025 Q4",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L9-L11",
+            "derivation": null
+          },
+          {
+            "key": "nvda_margin_guidance_tolerance",
+            "value": 50,
+            "unit": "basis points",
+            "period": "FY2025 Q4",
+            "tolerance": 0,
+            "source_id": "nvda-fy2025-q3",
+            "locator": "L9-L11",
+            "derivation": null
+          }
+        ]
+      },
+      "rubric": "State that the 50 basis points is plus/minus for each forecast; do not confuse it with 50 percent or with actual margins."
+    },
+    {
+      "id": "heldout-12",
+      "split": "heldout",
+      "category": "comparison",
+      "question": "For Q3 2024 ended September 30, 2024, calculate Meta's GAAP operating margin minus Amazon's GAAP operating margin in percentage points. Compute each margin as exact table operating income divided by revenue times 100, then round only the final difference to two decimals; do not use reported rounded margins. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "meta-2024-q3",
+        "amzn-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "meta_minus_amzn_operating_margin",
+            "value": 31.79,
+            "unit": "percentage points",
+            "period": "Q3 2024",
+            "tolerance": 0.005,
+            "source_id": "meta-2024-q3",
+            "locator": "L4-L6",
+            "derivation": "round(100 * (17350 / 40589 - 17411 / 158877), 2)",
+            "supporting_sources": [
+              {
+                "source_id": "amzn-2024-q3",
+                "locator": "L4-L6"
+              }
+            ]
+          }
+        ]
+      },
+      "rubric": "Show both ratios and cite both exact inputs. Difference uses percentage points, not percent growth. Do not subtract rounded headline margins."
+    },
+    {
+      "id": "heldout-13",
+      "split": "heldout",
+      "category": "comparison",
+      "question": "Using Amazon's October 31, 2024 and Meta's October 30, 2024 Q4 2024 revenue forecasts, calculate Amazon's guidance midpoint minus Meta's guidance midpoint in USD billions. Use the arithmetic mean of each pair of endpoints. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "amzn-2024-q3",
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": true,
+        "claims": [
+          {
+            "key": "amzn_minus_meta_guidance_midpoint",
+            "value": 138.5,
+            "unit": "USD billion",
+            "period": "Q4 2024",
+            "tolerance": 0,
+            "source_id": "amzn-2024-q3",
+            "locator": "L9-L10",
+            "derivation": "(181.5 + 188.5) / 2 - (45 + 48) / 2",
+            "supporting_sources": [
+              {
+                "source_id": "meta-2024-q3",
+                "locator": "L9-L10"
+              }
+            ]
+          }
+        ]
+      },
+      "rubric": "Identify both figures as forecasts with different announcement dates; show midpoint arithmetic and cite both ranges."
+    },
+    {
+      "id": "heldout-14",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How much absolute revenue in USD millions did Azure alone earn in Microsoft FY2025 Q1, ended September 30, 2024? Use the supplied Microsoft excerpt; do not infer an amount from segment totals or growth rates. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "msft-fy2025-q1"
+      ],
+      "expected": {
+        "answerable": false,
+        "claims": []
+      },
+      "rubric": "Abstain: the supplied excerpt has Intelligent Cloud segment revenue and Azure-and-other-cloud growth rates, but no Azure-alone revenue level. Absence is limited to this excerpt."
+    },
+    {
+      "id": "heldout-15",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "What was Instagram-only revenue in Q3 2024, ended September 30, 2024, according to the supplied Meta excerpt? Do not allocate consolidated revenue using estimates or outside sources. Use only the supplied fixed source excerpts.",
+      "source_ids": [
+        "meta-2024-q3"
+      ],
+      "expected": {
+        "answerable": false,
+        "claims": []
+      },
+      "rubric": "Abstain: the excerpt reports consolidated Meta revenue, not Instagram-only revenue. Do not claim the value is unavailable in every possible source."
+    }
+  ]
+}
