@@ -1,0 +1,18 @@
+{
+  "description": "Hand-authored test double. Proves control flow, retrieval, citations and logging; does not measure model quality.",
+  "question": "What was Apple's GAAP total revenue (total net sales) in FY2024, the twelve months ended September 28, 2024? Report USD millions. Use only the supplied fixed source excerpts.",
+  "responses": [
+    {
+      "status": "completed",
+      "output": [{"type": "function_call", "call_id": "demo-search", "name": "search", "arguments": "{\"query\":\"Apple FY2024 total net sales\"}"}]
+    },
+    {
+      "status": "completed",
+      "output": [{"type": "function_call", "call_id": "demo-read", "name": "read_source", "arguments": "{\"source_id\":\"aapl-fy2024\",\"start_line\":4,\"end_line\":6}"}]
+    },
+    {
+      "status": "completed",
+      "output": [{"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "{\"answerable\":true,\"answer\":\"Apple reported FY2024 GAAP total net sales of USD 391,035 million.\",\"claims\":[{\"key\":\"aapl_revenue\",\"value\":391035,\"unit\":\"USD million\",\"period\":\"FY2024\",\"citations\":[{\"source_id\":\"aapl-fy2024\",\"locator\":\"L4-L6\",\"quote\":\"Total net sales: 94,930 | 391,035 | 383,285.\"}]}]}"}]}]
+    }
+  ]
+}
