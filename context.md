@@ -1,4 +1,4 @@
-# Working context — 2026-10-24
+# Working context — 2026-11-03
 
 ## User request and constraints
 
@@ -6,6 +6,20 @@ Implement roadmap steps 1–2 of the first ProvenanceXL project brief. Ask when 
 decision needs input. User chose: **OpenAI first; configure live calls later**.
 No paid API calls should be made during this task. Work is an informal unpaid
 side project; keep implementation narrow.
+
+## Confirmed project context
+
+On 2026-11-03 the user confirmed that the first brief in the
+[Provenance × Tech@NYU artifact](https://claude.ai/artifact/3cSNqEgPBvGGNVjAj2vjcH)
+is our project. The artifact was read directly in Chrome. `project.md` now
+records the selected finance harness brief, the separate deal-agent brief,
+alternative project ideas, shared ground rules, and semester deliverables.
+
+Keep the distinction between the full sponsor ask (5–7 tools and a measured
+25-task evaluation) and currently authorized steps 1–2 (two read-only tools and
+no live model evaluation yet). Briefs 2–3 supply context, not authorization to
+build a specialist-agent team or expand scope. Preserve the existing OpenAI-first,
+live-calls-deferred decision.
 
 ## Current state
 

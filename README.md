@@ -5,6 +5,13 @@ The model chooses between `search` and `read_source`; deterministic code control
 tool access, call counts, time, and spending reservations. No workflow router,
 spreadsheet writer, Python-execution tool, or multi-agent runtime is included.
 
+This implements the initial foundation of **brief 1**, the finance agent
+harness, from the [Provenance × Tech@NYU brief](https://claude.ai/artifact/3cSNqEgPBvGGNVjAj2vjcH).
+The full sponsor ask includes 5–7 tools and measured evaluation results; these
+remain broader than the current two-tool implementation. [project.md](project.md)
+also records the deal-agent and alternative briefs for context, shared ground
+rules, and semester deliverables.
+
 ## Try it without credentials
 
 Requires Python 3.11+ on macOS or Linux. Run from this repository:
