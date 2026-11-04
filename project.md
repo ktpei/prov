@@ -2,7 +2,9 @@
 
 Informal, unpaid, part-time proof of concept for ProvenanceXL. The selected brief
 is a single model-directed finance agent with a small tool set and an honest
-evaluation. Current authorization covers roadmap steps 1 and 2 only.
+evaluation. Implemented scope covers the original steps 1 and 2. The 2026-11-04 request
+authorizes a product specification and module roadmap for the wider brief.
+Implementation of later modules and live model calls remain deferred.
 
 ## Sponsor brief and selected direction
 
@@ -117,4 +119,16 @@ deployment, a production UI, and a production financial research service.
   explicitly enables deterministic diagnostic logging.
 - One model loop at runtime. Development research/review delegation is separate
   from the product architecture.
-- No remote repository was configured in this initially empty workspace.
+- Remote `origin` is configured as `https://github.com/ktpei/prov`.
+- First product workflow is research answers from company data.
+- Two-person ownership is chatbot versus tooling and evaluation, with names pending.
+- MVP interface is a browser web app with `.xlsx` upload/download.
+- Full live Excel integration follows the web MVP.
+- Company packets and workbook support/recalculation remain open decisions.
+
+## Planning documents
+
+[spec.md](spec.md) defines the draft product requirements and evidence model.
+[roadmap.md](roadmap.md) maps loose modules and proposed acceptance checks.
+The web MVP and later live Excel sequence are selected product decisions.
+Company packets remain proposed. Interface and workbook features are planned.

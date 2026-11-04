@@ -12,6 +12,19 @@ remain broader than the current two-tool implementation. [project.md](project.md
 also records the deal-agent and alternative briefs for context, shared ground
 rules, and semester deliverables.
 
+## Planning documents
+
+- [Product specification](spec.md) covers the research workflow, company-data
+  proposal, module contracts, evaluation, web MVP, and later live Excel integration.
+- [Module roadmap](roadmap.md) maps chatbot versus tooling/evaluation ownership,
+  dependencies, current status, and milestone checks.
+- [Project scope](project.md) records the sponsor brief and implementation boundary.
+- [Working context](context.md) records verified status and decisions still pending.
+
+The selected product MVP is a browser chatbot with `.xlsx` upload/download,
+followed by full live Excel integration. The proposed stack is React + TypeScript
++ Vite, Tailwind CSS, and Python + FastAPI. These features remain planned.
+
 ## Try it without credentials
 
 Requires Python 3.11+ on macOS or Linux. Run from this repository:
