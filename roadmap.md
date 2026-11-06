@@ -49,24 +49,27 @@ Open decisions have owners and the first research questions are written down.
 **Exit check** — Another person can find each expected fact in the original
 source, identify its period and units, and reproduce derived answers.
 
-## M2 — Research chatbot and runtime
+## M2 — Browser chatbot and backend API
 
 **Owner** — Person A.
 
-**State** — Single-question CLI, bounded loop, OpenAI adapter, and replay exist.
+**State** — The Python agent loop, OpenAI adapter, and offline replay exist.
+The browser interface and API are unimplemented. This module delivers the web app.
 
 - Select and configure an exact model and budget when live calls are resumed.
 - Run one development question and inspect tools, evidence, output, and charges.
 - Build React + TypeScript + Vite chat with Tailwind CSS and a FastAPI backend.
 - Show citations, source passages, tool progress, and run status in the browser.
 - Define sessions, follow-up context, cancellation, and per-run state isolation.
-- Adapt signal-based CLI deadlines for server execution.
+- Adapt existing main-thread signal deadlines for API/server execution.
 - Support the agreed research context and human-readable answer presentation.
 - Add follow-up conversation only after defining carried evidence and cutoff.
-- Preserve CLI evaluation alongside the browser UI.
+- Keep automated evaluation callable directly against the Python backend.
 
-**Exit check** — A real dev answer is reviewable end to end, and errors and limit
-stops produce usable reports. Offline fixtures continue working.
+**Exit check** — A user can ask a real development question in the browser,
+see tool progress, inspect a cited answer and its supporting passage, and ask a
+follow-up. API errors and limit stops appear in the UI and run report. Deadline,
+cancellation, and session-isolation checks pass. Offline fixtures continue working.
 
 ## M3 — Financial source tools and evidence
 

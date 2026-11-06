@@ -84,7 +84,8 @@ state, full-document ingestion, and workbook operations remain unimplemented.
 
 Start with in-memory conversations and explicit session/run identities. Persistent
 chat storage and hosting remain later decisions. Keep credentials on the backend
-and expose progress over HTTP. Preserve CLI evaluation alongside the web UI.
+and expose progress over HTTP. Automated evaluation calls the Python backend
+independently of the browser interface.
 Adapt current main-thread POSIX signal deadlines for server execution before
 claiming equivalent timeouts and cancellation. Isolate per-run evidence, workbook
 context, and budget state for concurrent requests.
@@ -166,8 +167,8 @@ structure for qualitative claims.
 ### Chatbot and agent runtime
 
 Accept the question and explicit research context, execute the model loop, and
-present the answer with inspectable evidence. Preserve a reproducible CLI entry
-point for automated evaluation even if another interface is added.
+present the answer with inspectable evidence in the browser chatbot. Expose a
+reproducible backend entry point for automated evaluation alongside the web API.
 
 Continue using the existing loop and provider adapter initially. Conversation
 support should make company, cutoff, and carried evidence explicit. Keep gold
@@ -287,8 +288,9 @@ and approved insertion before broad edits across model sheets.
 
 ## Acceptance and verification
 
-The first research milestone requires a real development run with read evidence,
-a structured answer, trace, cost/latency accounting, and human-reviewed citations.
+The first research milestone requires asking a development question in the
+browser and inspecting its cited answer, source passages, and tool progress.
+Record the structured answer, trace, cost/latency, and human citation review.
 The evaluation pipeline should consume that output and expose its failure modes.
 A development result is insufficient evidence for the final sponsor acceptance.
 
