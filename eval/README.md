@@ -34,3 +34,73 @@ Report numeric/period correctness, citation validity, citation entailment, abste
 The expected factual values were checked against the five official documents; derived values use explicit arithmetic. Static checks verify 25 unique task IDs, the 10/15 split, five referenced companies, three abstentions, hashes, line ranges, direct numeric presence in cited spans, and independently recomputed derived values. This records corpus QA only. It does not claim a live agent run, heldout score, or human-reviewed model performance.
 
 The corpus is tiny, manually curated, concentrated in large US technology companies, English-only, and mostly simple earnings tables. Excerpts are short and selected around answer-bearing facts, so retrieval is easier than searching full filings. It omits OCR, long-document navigation, table extraction noise, source conflict resolution, restatements, external browsing, private data, and realistic financial due diligence. Model pretraining may already contain these public facts. A high result here would justify broader evaluation, not deployment or financial reliance.
+
+## Full-document company packet benchmark
+
+`company_tasks.json` is a separate, entirely development-only benchmark over the
+full Cloudflare packet in `../data/cloudflare-2024-q3`. It preserves the original
+25-task excerpt benchmark and its holdout boundary. Its nine tasks cover direct
+numerical extraction, GAAP/non-GAAP distinctions, guidance across two documents,
+qualitative explanations, filing/call synthesis, free-cash-flow definitions,
+packet-scoped abstention, and the date boundary between a May investor deck and
+November earnings results. All four extracted-source hashes are pinned. Changing
+extraction requires reviewing the anchors and versioning the benchmark.
+
+Run the fixed-query diagnostic from the repository root:
+
+```sh
+uv run python -m provenance.evaluation \
+  --corpus data/cloudflare-2024-q3 \
+  --benchmark eval/company_tasks.json \
+  --output eval/reports/retrieval-baseline.json
+```
+
+For each task, fixed queries use concepts from the question; they never include
+expected numerical answers or dates that the question asks the system to find.
+Only those queries reach search. Reference claims, evidence anchors, and rubrics
+stay in the evaluator. Up to five search hits per query receive bounded reads of
+up to 40 lines. The report records source hashes, settings, actual evidence
+windows, returned characters, and latency. It separately checks whether expected
+lexical anchors survived extraction and whether they occur in retrieved evidence.
+Anchor coverage across windows does not guarantee correct reading order, table
+columns, chart interpretation, or semantic entailment.
+
+The initial construction used some expected numeric values and answer-specific
+terms in probes. Review removed them and reran the diagnostic under
+`cloudflare-full-docs-v2`. This correction and earlier inspection mean it remains
+a development benchmark. It has no heldout or independent model-quality status.
+Live acceptance receives only each `question`, never the fixed probes or keys.
+
+The committed v2 baseline finds all required anchors in extraction for **8/8**
+answer-bearing tasks, and in bounded retrieved evidence for **5/8**. It misses
+the price-increase-anniversary clause in the two net-retention explanation tasks,
+and the cover date in the deck/date task. These are actionable context-selection
+misses despite the required text existing in the corpus. The ninth task's absent
+future result has no positive evidence anchors and is excluded from both ratios;
+no retrieval-only abstention success is claimed. No model or paid API was called.
+Timing varies by machine and is not a model-latency result.
+
+To pre-grade an actual model report separately:
+
+```sh
+uv run python -m provenance.evaluation \
+  --corpus data/cloudflare-2024-q3 \
+  --benchmark eval/company_tasks.json \
+  --result /path/to/result.json --task packet-01
+```
+
+This replays local search/read events against the selected frozen corpus, checks
+trace consistency and exact quoted evidence, checks answerability and required
+numerical value/unit/period triples, and reports whether cited spans contain the
+expected anchors. It deliberately does not assign semantic quality from lexical
+matches or score qualitative claims using exact answer strings. A human must
+review the task rubric, metric identity, source support, causal attribution,
+missing claims, unsupported additions, and abstention rationale. A mechanical
+pass alone is never an overall task-success score. The existing v1 `grade`
+function also accepts an explicit `directory` for replaying a different corpus.
+
+Known coverage gaps remain: native extraction's chart series and table-header
+alignment are not verified by anchor presence; there is no measured OCR
+comparison, broad domain holdout, or automatic qualitative entailment judge.
+Actual live acceptance and spending, when run, are recorded separately from this
+offline retrieval diagnostic.
