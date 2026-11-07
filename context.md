@@ -130,5 +130,8 @@ and parser/OCR comparison before expanding to workbook operations.
 Implementation was imported from the cloud bundle and pushed from this Mac on
 `feat/company-research-end-to-end` at `d9057ed`. The earlier cloud push failure
 was resolved by local import and authenticated push. Evaluation work uses
-`codex/evaluation-baseline`. Local GitHub authentication works for publishing.
+`codex/evaluation-baseline`, now pushed with measured results. Draft
+[PR #1](https://github.com/ktpei/prov/pull/1) targets `main` and includes the
+company-research implementation plus evaluation baseline; it is not merged.
+Local GitHub authentication works for publishing.
 The API key was used for approved requests, never written into repository files.
