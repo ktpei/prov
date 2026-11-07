@@ -20,6 +20,8 @@ from provenance.model import INSTRUCTIONS, validate_answer
 from provenance.sources import TOOL_SCHEMAS
 from provenance.transport import ProviderError
 
+RUNTIME_POLICY = "research-v2-finalization"
+
 
 class ResearchState(TypedDict):
     run_id: str
@@ -71,6 +73,7 @@ def run_graph(
     sources.budget = budget
     documents = {key: value for key, value in sources.documents.items() if "text_file" in value}
     identity = {
+        "runtime_policy": RUNTIME_POLICY,
         "question": question,
         "model": model.name,
         "mode": model.mode,
@@ -143,12 +146,40 @@ def run_graph(
     def model_node(state):
         if state["model_calls"] >= limits.max_model_calls:
             raise LimitReached("model_call_limit")
+        final_step = getattr(model, "final_step", None)
+        final_only = callable(final_step) and (
+            state["model_calls"] == limits.max_model_calls - 1
+            or state["tool_calls"] >= limits.max_tool_calls
+        )
+        if final_only:
+            boundary = (
+                "tool_call_limit"
+                if state["tool_calls"] >= limits.max_tool_calls
+                else ("last_model_turn")
+            )
+            trace.emit("final_synthesis_required", reason=boundary)
+            state["messages"] = state["messages"] + [
+                {
+                    "role": "user",
+                    "content": (
+                        "The execution boundary has been reached. Tool use is disabled for this "
+                        "model turn. Return the final required JSON answer now, using only evidence "
+                        "already returned by read_source and exact supported citations. If the read "
+                        "evidence is insufficient, return an explicit abstention instead. "
+                        "Do not request any further tools."
+                    ),
+                }
+            ]
         attempt(state, "model")
         state["model_calls"] += 1
-        trace.emit("model_request", number=state["model_calls"], input=state["messages"].copy())
-        response = model.step(
-            state["messages"], min(remaining(), limits.request_timeout_seconds), budget
+        trace.emit(
+            "model_request",
+            number=state["model_calls"],
+            input=state["messages"].copy(),
+            final_only=final_only,
         )
+        step = final_step if final_only else model.step
+        response = step(state["messages"], min(remaining(), limits.request_timeout_seconds), budget)
         trace.emit(
             "model_response",
             number=state["model_calls"],
@@ -164,6 +195,8 @@ def run_graph(
         if not isinstance(response.get("output"), list):
             raise ProviderError("Model output must be a list")
         state["messages"] = state["messages"] + response["output"]
+        if final_only and any(item.get("type") == "function_call" for item in response["output"]):
+            raise ProviderError("Provider returned tool calls during final synthesis")
         state["phase"] = "model_returned"
 
     def tool_node(state):
@@ -175,7 +208,22 @@ def run_graph(
             if call.get("type") != "function_call":
                 continue
             if state["tool_calls"] >= limits.max_tool_calls:
-                raise LimitReached("tool_call_limit")
+                if not callable(getattr(model, "final_step", None)):
+                    raise LimitReached("tool_call_limit")
+                if not isinstance(call.get("call_id"), str):
+                    raise ProviderError("Tool call missing call_id")
+                result = {
+                    "error": "tool_call_limit: call was not executed; synthesize final answer"
+                }
+                trace.emit("tool_call_skipped", call=call, reason="tool_call_limit", result=result)
+                messages.append(
+                    {
+                        "type": "function_call_output",
+                        "call_id": call["call_id"],
+                        "output": json.dumps(result),
+                    }
+                )
+                continue
             if not isinstance(call.get("call_id"), str):
                 raise ProviderError("Tool call missing call_id")
             state["tool_calls"] += 1
@@ -345,6 +393,7 @@ def run_graph(
                 tools=TOOL_SCHEMAS,
                 corpus=identity["corpus"],
                 runtime="langgraph",
+                runtime_policy=RUNTIME_POLICY,
                 retrieval_version=getattr(sources, "retrieval_version", "passage-v1"),
                 pricing={
                     "input_usd_per_million": getattr(model, "input_rate", None),
@@ -406,6 +455,7 @@ def run_graph(
         "stop_reason": current["reason"],
         "answer": current["answer"],
         "runtime": "langgraph",
+        "runtime_policy": RUNTIME_POLICY,
         "thread_id": thread_id,
         "metrics": {
             "model_calls": current["model_calls"],

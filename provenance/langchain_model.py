@@ -100,6 +100,13 @@ class OpenRouterModel:
         self.chat = client.bind_tools(tools, parallel_tool_calls=False)
 
     def step(self, messages, timeout, budget):
+        return self._step(messages, timeout, budget, final_only=False)
+
+    def final_step(self, messages, timeout, budget):
+        """Use a remaining allowed model turn for synthesis with tools disabled."""
+        return self._step(messages, timeout, budget, final_only=True)
+
+    def _step(self, messages, timeout, budget, *, final_only):
         before = tool_result_chars(messages)
         messages = project_messages(messages)
         projection = {
@@ -118,7 +125,10 @@ class OpenRouterModel:
         )
         settled = False
         try:
-            response = self.chat.bind(timeout=timeout).invoke(chat_messages(messages))
+            options = {"timeout": timeout}
+            if final_only:
+                options["tool_choice"] = "none"
+            response = self.chat.bind(**options).invoke(chat_messages(messages))
             usage = response.usage_metadata or {}
             counts = [usage.get("input_tokens"), usage.get("output_tokens")]
             if not all(type(value) is int and value >= 0 for value in counts):
@@ -139,6 +149,8 @@ class OpenRouterModel:
                     }
                     for call in response.tool_calls
                 ]
+            if calls and final_only:
+                raise ProviderError("Provider returned tool calls during final synthesis")
             if calls:
                 output = [
                     {

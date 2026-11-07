@@ -182,6 +182,81 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(result["metrics"]["answer_retries"], 1)
         self.assertEqual(result["metrics"]["tool_calls"], 1)
 
+    def test_last_model_turn_is_reserved_for_supported_final_synthesis(self):
+        class FinalModel(ReplayModel):
+            def final_step(self, messages, timeout, budget):
+                self.final_messages = messages
+                return answer()
+
+        model = FinalModel([read()])
+        result = run_graph("Revenue?", model, self.sources(), Limits(max_model_calls=2))
+        self.assertEqual(result["status"], "completed")
+        self.assertEqual(result["metrics"]["model_calls"], 2)
+        self.assertIn("Tool use is disabled", model.final_messages[-1]["content"])
+        boundary = next(
+            event for event in result["events"] if event["event"] == "final_synthesis_required"
+        )
+        self.assertEqual(boundary["reason"], "last_model_turn")
+
+    def test_tool_cap_switches_to_final_synthesis_without_extra_tool_calls(self):
+        class FinalModel(ReplayModel):
+            def final_step(self, messages, timeout, budget):
+                return answer()
+
+        result = run_graph(
+            "Revenue?",
+            FinalModel([read()]),
+            self.sources(),
+            Limits(max_model_calls=8, max_tool_calls=1),
+        )
+        self.assertEqual(result["status"], "completed")
+        self.assertEqual(result["metrics"]["model_calls"], 2)
+        self.assertEqual(result["metrics"]["tool_calls"], 1)
+        boundary = next(
+            event for event in result["events"] if event["event"] == "final_synthesis_required"
+        )
+        self.assertEqual(boundary["reason"], "tool_call_limit")
+
+    def test_extra_parallel_calls_are_paired_but_not_executed_at_tool_cap(self):
+        class FinalModel(ReplayModel):
+            def final_step(self, messages, timeout, budget):
+                self.final_messages = messages
+                return answer()
+
+        parallel = read()
+        parallel["output"].append({**parallel["output"][0], "call_id": "r2"})
+        model = FinalModel([parallel])
+        result = run_graph(
+            "Revenue?", model, self.sources(), Limits(max_model_calls=4, max_tool_calls=1)
+        )
+        self.assertEqual(result["status"], "completed")
+        self.assertEqual(result["metrics"]["model_calls"], 2)
+        self.assertEqual(result["metrics"]["tool_calls"], 1)
+        tool_results = [
+            message
+            for message in model.final_messages
+            if message.get("type") == "function_call_output"
+        ]
+        self.assertEqual([message["call_id"] for message in tool_results], ["r1", "r2"])
+        self.assertIn("not executed", tool_results[1]["output"])
+        self.assertEqual(sum(event["event"] == "tool_request" for event in result["events"]), 1)
+        self.assertEqual(
+            sum(event["event"] == "tool_call_skipped" for event in result["events"]), 1
+        )
+
+    def test_provider_cannot_execute_tools_after_forced_final_boundary(self):
+        class DisobedientModel(ReplayModel):
+            def final_step(self, messages, timeout, budget):
+                return read()
+
+        result = run_graph(
+            "Revenue?", DisobedientModel([]), self.sources(), Limits(max_model_calls=1)
+        )
+        self.assertEqual(result["status"], "failed")
+        self.assertIn("during final synthesis", result["stop_reason"])
+        self.assertEqual(result["metrics"]["model_calls"], 1)
+        self.assertEqual(result["metrics"]["tool_calls"], 0)
+
     def test_graph_enforces_model_and_tool_limits(self):
         result = run_graph(
             "Revenue?", ReplayModel([read(), read()]), self.sources(), Limits(max_model_calls=1)
@@ -302,6 +377,21 @@ class OpenRouterTests(unittest.TestCase):
         self.assertEqual(result["usage"]["input_tokens"], 100)
         self.assertAlmostEqual(budget.charged, 0.00014)
         bound.bind.assert_called_once_with(timeout=2)
+
+    def test_final_step_disables_provider_tools_and_preserves_usage_accounting(self):
+        chat = Mock()
+        bound = chat.bind_tools.return_value
+        bound.bind.return_value.invoke.return_value = AIMessage(
+            content='{"answerable":false,"answer":"Missing evidence","claims":[]}',
+            usage_metadata={"input_tokens": 100, "output_tokens": 20, "total_tokens": 120},
+            response_metadata={"finish_reason": "stop"},
+        )
+        model = OpenRouterModel("secret", "test", 1, 2, chat=chat)
+        budget = Budget(1)
+        result = model.final_step([{"role": "user", "content": "Revenue?"}], 2, budget)
+        bound.bind.assert_called_once_with(timeout=2, tool_choice="none")
+        self.assertEqual(result["usage"]["input_tokens"], 100)
+        self.assertAlmostEqual(budget.charged, 0.00014)
 
     def test_budget_stops_before_provider_request(self):
         chat = Mock()
