@@ -1,5 +1,17 @@
 # Working context — 2026-11-07
 
+## Evaluation milestone — in progress
+
+The user selected evaluation as the next goal. Runtime baseline `d9057ed` is
+frozen: no research prompt/tool/runtime changes during scoring. Six fresh public
+development questions are being authored before inference; the existing 25-task
+holdout remains untouched. The preregistered protocol and cost preflight are in
+`eval/reports/frozen-evaluation-2026-11-07/`. Existing fixed-query retrieval
+reproduces 6/8 positive evidence tasks, and all 28 historical mechanical flags
+reproduce in offline regrading. Fresh model results are not yet available.
+Use at most $0.15 additional estimated spending under the original $0.50 total
+authorization; no response to a budget question authorizes an increase.
+
 ## Local handoff verification — 2026-11-07
 
 Imported the verified Git bundle at `3643af7` into the local
@@ -99,9 +111,8 @@ and parser/OCR comparison before expanding to workbook operations.
 
 ## Delivery and access
 
-Implementation is committed on `feat/company-research-end-to-end`. GitHub push
-failed with missing HTTPS credentials; neither GH_TOKEN nor GITHUB_TOKEN is
-configured. The remote has not been updated. A full Git bundle is prepared for
-local import. No new user decision is needed for offline use; GitHub authentication
-is needed only to publish this branch directly from the execution environment.
+Implementation was imported from the cloud bundle and pushed from this Mac on
+`feat/company-research-end-to-end` at `d9057ed`. The earlier cloud push failure
+was resolved by local import and authenticated push. Evaluation work uses
+`codex/evaluation-baseline`. Local GitHub authentication works for publishing.
 The API key was used for approved requests, never written into repository files.
