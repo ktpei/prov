@@ -1,0 +1,1205 @@
+{
+  "mode": "offline_regrade_of_historical_development_runs",
+  "iterations": [
+    {
+      "iteration": "bm25",
+      "accounted_cost_usd": 0.08137049999999998,
+      "tasks": 9,
+      "completed": 5,
+      "mechanical_passes": 3,
+      "attempts": [
+        {
+          "task_id": "packet-01",
+          "result_file": "eval/reports/live/bm25/packet-01.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-01",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue",
+                "passed": false
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 430.1 USD million, Q3 2024 actual revenue. Cite the release with period context; do not use guidance or thousands from the detailed table.",
+            "runtime_metrics": {
+              "model_calls": 3,
+              "answer_retries": 0,
+              "tool_calls": 3,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 7689,
+              "output_tokens": 655,
+              "latency_seconds": 10.496791846000178,
+              "accounted_cost_usd": 0.0030927000000000003,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-02",
+          "result_file": "eval/reports/live/bm25/packet-02.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-02",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "gaap_gross_margin",
+                "passed": true
+              },
+              {
+                "key": "non_gaap_gross_margin",
+                "passed": true
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return GAAP 77.7 and non-GAAP 78.8 percent for Q3 2024, not 2023 comparison or future targets. Each label and number must be grounded.",
+            "runtime_metrics": {
+              "model_calls": 4,
+              "answer_retries": 0,
+              "tool_calls": 5,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 16842,
+              "output_tokens": 1158,
+              "latency_seconds": 8.277788320000127,
+              "accounted_cost_usd": 0.006442199999999997,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-03",
+          "result_file": "eval/reports/live/bm25/packet-03.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-03",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue_guidance_low",
+                "passed": true
+              },
+              {
+                "key": "revenue_guidance_high",
+                "passed": true
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 451 and 452 USD million for Q4 2024 guidance, supported by both release and transcript. Do not treat as reported actual results.",
+            "runtime_metrics": {
+              "model_calls": 3,
+              "answer_retries": 0,
+              "tool_calls": 4,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 7672,
+              "output_tokens": 723,
+              "latency_seconds": 4.835047444999873,
+              "accounted_cost_usd": 0.0031691999999999988,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-04",
+          "result_file": "eval/reports/live/bm25/packet-04.json",
+          "status": "stopped",
+          "stop_reason": "tool_call_limit",
+          "regraded": {
+            "task_id": "packet-04",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Attribute management's explanation: slower expansion in larger customers, pool-of-funds recognition effects, anniversarying PRO/business PAYGO price increases. Churn remained low. Avoid asserting causal proof or inventing drivers.",
+            "runtime_metrics": {
+              "model_calls": 7,
+              "answer_retries": 0,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 37231,
+              "output_tokens": 899,
+              "latency_seconds": 9.235409530999732,
+              "accounted_cost_usd": 0.012248100000000001,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-05",
+          "result_file": "eval/reports/live/bm25/packet-05.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-05",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-filing",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Definition compares same paying customer cohort across four quarters, includes expansion net of contraction/attrition, excludes new customers and free-to-paid upgrades. Combine definition with attributed call explanation, not two unrelated citations.",
+            "runtime_metrics": {
+              "model_calls": 5,
+              "answer_retries": 0,
+              "tool_calls": 7,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 23880,
+              "output_tokens": 1854,
+              "latency_seconds": 13.341796017999968,
+              "accounted_cost_usd": 0.0093888,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-06",
+          "result_file": "eval/reports/live/bm25/packet-06.json",
+          "status": "stopped",
+          "stop_reason": "model_call_limit",
+          "regraded": {
+            "task_id": "packet-06",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Explain no contradiction: call defaults to adjusted non-GAAP except revenue, while release separates 77.7 GAAP from 78.8 non-GAAP. Cite actual accounting disclosure and release; do not imply the release is wrong.",
+            "runtime_metrics": {
+              "model_calls": 10,
+              "answer_retries": 0,
+              "tool_calls": 11,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 46535,
+              "output_tokens": 913,
+              "latency_seconds": 8.167880162000074,
+              "accounted_cost_usd": 0.015056099999999994,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-07",
+          "result_file": "eval/reports/live/bm25/packet-07.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-07",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Use operating cash flow less property/equipment purchases and capitalized internal-use software; limitation includes future contractual commitments not reflected, or not equal to total cash balance change. Do not equate FCF with GAAP net income.",
+            "runtime_metrics": {
+              "model_calls": 4,
+              "answer_retries": 1,
+              "tool_calls": 4,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 20397,
+              "output_tokens": 2182,
+              "latency_seconds": 12.6903353470002,
+              "accounted_cost_usd": 0.008737499999999999,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-08",
+          "result_file": "eval/reports/live/bm25/packet-08.json",
+          "status": "stopped",
+          "stop_reason": "tool_call_limit",
+          "regraded": {
+            "task_id": "packet-08",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Abstain explicitly with no answer claims: packet ends November 2024 and cannot establish actual full-year 2025 results. Scope absence to packet; do not claim Cloudflare never reported this information.",
+            "runtime_metrics": {
+              "model_calls": 6,
+              "answer_retries": 0,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 19296,
+              "output_tokens": 963,
+              "latency_seconds": 7.431173091999881,
+              "accounted_cost_usd": 0.0069444,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-09",
+          "result_file": "eval/reports/live/bm25/packet-09.json",
+          "status": "stopped",
+          "stop_reason": "tool_call_limit",
+          "regraded": {
+            "task_id": "packet-09",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-investor-day-2024",
+                "passed": false
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Identify May 30, 2024 cover date. Deck predates end of Q3 and November 7 release, so cannot itself establish actual Q3 results. Date/forecast distinction must be explicit. This tests text/date retrieval, not chart interpretation.",
+            "runtime_metrics": {
+              "model_calls": 8,
+              "answer_retries": 0,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 49013,
+              "output_tokens": 1323,
+              "latency_seconds": 12.898099196000203,
+              "accounted_cost_usd": 0.0162915,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        }
+      ]
+    },
+    {
+      "iteration": "context-and-repair",
+      "accounted_cost_usd": 0.05536649999999999,
+      "tasks": 5,
+      "completed": 3,
+      "mechanical_passes": 3,
+      "attempts": [
+        {
+          "task_id": "packet-01",
+          "result_file": "eval/reports/live/context-and-repair/packet-01.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-01",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue",
+                "passed": true
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 430.1 USD million, Q3 2024 actual revenue. Cite the release with period context; do not use guidance or thousands from the detailed table.",
+            "runtime_metrics": {
+              "model_calls": 3,
+              "answer_retries": 0,
+              "tool_calls": 3,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 7310,
+              "output_tokens": 372,
+              "latency_seconds": 8.240486738000072,
+              "accounted_cost_usd": 0.0026394,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-04",
+          "result_file": "eval/reports/live/context-and-repair/packet-04.json",
+          "status": "stopped",
+          "stop_reason": "tool_call_limit",
+          "regraded": {
+            "task_id": "packet-04",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Attribute management's explanation: slower expansion in larger customers, pool-of-funds recognition effects, anniversarying PRO/business PAYGO price increases. Churn remained low. Avoid asserting causal proof or inventing drivers.",
+            "runtime_metrics": {
+              "model_calls": 7,
+              "answer_retries": 0,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 18785,
+              "output_tokens": 676,
+              "latency_seconds": 7.197241578000103,
+              "accounted_cost_usd": 0.006446700000000001,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-08",
+          "result_file": "eval/reports/live/context-and-repair/packet-08.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-08",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Abstain explicitly with no answer claims: packet ends November 2024 and cannot establish actual full-year 2025 results. Scope absence to packet; do not claim Cloudflare never reported this information.",
+            "runtime_metrics": {
+              "model_calls": 9,
+              "answer_retries": 1,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 32329,
+              "output_tokens": 1927,
+              "latency_seconds": 9.347687811000014,
+              "accounted_cost_usd": 0.012011099999999997,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-03",
+          "result_file": "eval/reports/live/context-and-repair/packet-03.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-03",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue_guidance_low",
+                "passed": true
+              },
+              {
+                "key": "revenue_guidance_high",
+                "passed": true
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 451 and 452 USD million for Q4 2024 guidance, supported by both release and transcript. Do not treat as reported actual results.",
+            "runtime_metrics": {
+              "model_calls": 8,
+              "answer_retries": 0,
+              "tool_calls": 11,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 38429,
+              "output_tokens": 1392,
+              "latency_seconds": 8.082972030999827,
+              "accounted_cost_usd": 0.013199099999999997,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-06",
+          "result_file": "eval/reports/live/context-and-repair/packet-06.json",
+          "status": "stopped",
+          "stop_reason": "model_call_limit",
+          "regraded": {
+            "task_id": "packet-06",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Explain no contradiction: call defaults to adjusted non-GAAP except revenue, while release separates 77.7 GAAP from 78.8 non-GAAP. Cite actual accounting disclosure and release; do not imply the release is wrong.",
+            "runtime_metrics": {
+              "model_calls": 10,
+              "answer_retries": 0,
+              "tool_calls": 10,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 66330,
+              "output_tokens": 976,
+              "latency_seconds": 7.966418845000135,
+              "accounted_cost_usd": 0.021070200000000004,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        }
+      ]
+    },
+    {
+      "iteration": "finalization",
+      "accounted_cost_usd": 0.050812199999999995,
+      "tasks": 4,
+      "completed": 4,
+      "mechanical_passes": 3,
+      "attempts": [
+        {
+          "task_id": "packet-04",
+          "result_file": "eval/reports/live/finalization/packet-04.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-04",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Attribute management's explanation: slower expansion in larger customers, pool-of-funds recognition effects, anniversarying PRO/business PAYGO price increases. Churn remained low. Avoid asserting causal proof or inventing drivers.",
+            "runtime_metrics": {
+              "model_calls": 10,
+              "answer_retries": 0,
+              "tool_calls": 9,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 54728,
+              "output_tokens": 2528,
+              "latency_seconds": 22.342115086000376,
+              "accounted_cost_usd": 0.019452,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-06",
+          "result_file": "eval/reports/live/finalization/packet-06.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-06",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Explain no contradiction: call defaults to adjusted non-GAAP except revenue, while release separates 77.7 GAAP from 78.8 non-GAAP. Cite actual accounting disclosure and release; do not imply the release is wrong.",
+            "runtime_metrics": {
+              "model_calls": 10,
+              "answer_retries": 0,
+              "tool_calls": 9,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 60057,
+              "output_tokens": 3045,
+              "latency_seconds": 13.945098929999858,
+              "accounted_cost_usd": 0.021671100000000002,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-08",
+          "result_file": "eval/reports/live/finalization/packet-08.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-08",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Abstain explicitly with no answer claims: packet ends November 2024 and cannot establish actual full-year 2025 results. Scope absence to packet; do not claim Cloudflare never reported this information.",
+            "runtime_metrics": {
+              "model_calls": 3,
+              "answer_retries": 0,
+              "tool_calls": 4,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 7233,
+              "output_tokens": 630,
+              "latency_seconds": 4.859861677000026,
+              "accounted_cost_usd": 0.0029258999999999986,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-09",
+          "result_file": "eval/reports/live/finalization/packet-09.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-09",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-investor-day-2024",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Identify May 30, 2024 cover date. Deck predates end of Q3 and November 7 release, so cannot itself establish actual Q3 results. Date/forecast distinction must be explicit. This tests text/date retrieval, not chart interpretation.",
+            "runtime_metrics": {
+              "model_calls": 6,
+              "answer_retries": 0,
+              "tool_calls": 9,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 16980,
+              "output_tokens": 1391,
+              "latency_seconds": 9.821953542000301,
+              "accounted_cost_usd": 0.006763200000000002,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        }
+      ]
+    },
+    {
+      "iteration": "initial",
+      "accounted_cost_usd": 0.0981087,
+      "tasks": 5,
+      "completed": 2,
+      "mechanical_passes": 0,
+      "attempts": [
+        {
+          "task_id": "packet-01",
+          "result_file": "eval/reports/live/initial/packet-01.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-01",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue",
+                "passed": false
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 430.1 USD million, Q3 2024 actual revenue. Cite the release with period context; do not use guidance or thousands from the detailed table.",
+            "runtime_metrics": {
+              "model_calls": 6,
+              "tool_calls": 10,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 64177,
+              "output_tokens": 1290,
+              "latency_seconds": 18.322316514999784,
+              "accounted_cost_usd": 0.020801099999999993,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-04",
+          "result_file": "eval/reports/live/initial/packet-04.json",
+          "status": "stopped",
+          "stop_reason": "spend_limit",
+          "regraded": {
+            "task_id": "packet-04",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Attribute management's explanation: slower expansion in larger customers, pool-of-funds recognition effects, anniversarying PRO/business PAYGO price increases. Churn remained low. Avoid asserting causal proof or inventing drivers.",
+            "runtime_metrics": {
+              "model_calls": 8,
+              "tool_calls": 11,
+              "tool_errors": 2,
+              "tool_error_rate": 0.18181818181818182,
+              "input_tokens": 62181,
+              "output_tokens": 870,
+              "latency_seconds": 7.970497592999891,
+              "accounted_cost_usd": 0.019698299999999995,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-08",
+          "result_file": "eval/reports/live/initial/packet-08.json",
+          "status": "stopped",
+          "stop_reason": "tool_call_limit",
+          "regraded": {
+            "task_id": "packet-08",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Abstain explicitly with no answer claims: packet ends November 2024 and cannot establish actual full-year 2025 results. Scope absence to packet; do not claim Cloudflare never reported this information.",
+            "runtime_metrics": {
+              "model_calls": 7,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 70711,
+              "output_tokens": 1328,
+              "latency_seconds": 6.784863056000177,
+              "accounted_cost_usd": 0.022806899999999998,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-03",
+          "result_file": "eval/reports/live/initial/packet-03.json",
+          "status": "failed",
+          "stop_reason": "Citation quote is absent from cited lines",
+          "regraded": {
+            "task_id": "packet-03",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue_guidance_low",
+                "passed": false
+              },
+              {
+                "key": "revenue_guidance_high",
+                "passed": false
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              },
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 451 and 452 USD million for Q4 2024 guidance, supported by both release and transcript. Do not treat as reported actual results.",
+            "runtime_metrics": {
+              "model_calls": 4,
+              "tool_calls": 6,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 33808,
+              "output_tokens": 1216,
+              "latency_seconds": 7.788539730000139,
+              "accounted_cost_usd": 0.0116016,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-06",
+          "result_file": "eval/reports/live/initial/packet-06.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-06",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Explain no contradiction: call defaults to adjusted non-GAAP except revenue, while release separates 77.7 GAAP from 78.8 non-GAAP. Cite actual accounting disclosure and release; do not imply the release is wrong.",
+            "runtime_metrics": {
+              "model_calls": 6,
+              "tool_calls": 10,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 68004,
+              "output_tokens": 2333,
+              "latency_seconds": 14.39962942000011,
+              "accounted_cost_usd": 0.0232008,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        }
+      ]
+    },
+    {
+      "iteration": "instructions",
+      "accounted_cost_usd": 0.06423479999999998,
+      "tasks": 5,
+      "completed": 2,
+      "mechanical_passes": 2,
+      "attempts": [
+        {
+          "task_id": "packet-01",
+          "result_file": "eval/reports/live/instructions/packet-01.json",
+          "status": "failed",
+          "stop_reason": "Citation refers to unread source lines",
+          "regraded": {
+            "task_id": "packet-01",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue",
+                "passed": false
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 430.1 USD million, Q3 2024 actual revenue. Cite the release with period context; do not use guidance or thousands from the detailed table.",
+            "runtime_metrics": {
+              "model_calls": 3,
+              "tool_calls": 3,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 11771,
+              "output_tokens": 439,
+              "latency_seconds": 9.474524170000223,
+              "accounted_cost_usd": 0.0040581,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-04",
+          "result_file": "eval/reports/live/instructions/packet-04.json",
+          "status": "stopped",
+          "stop_reason": "input_size_limit",
+          "regraded": {
+            "task_id": "packet-04",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Attribute management's explanation: slower expansion in larger customers, pool-of-funds recognition effects, anniversarying PRO/business PAYGO price increases. Churn remained low. Avoid asserting causal proof or inventing drivers.",
+            "runtime_metrics": {
+              "model_calls": 8,
+              "tool_calls": 12,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 76298,
+              "output_tokens": 768,
+              "latency_seconds": 9.47926286799975,
+              "accounted_cost_usd": 0.023811000000000002,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-08",
+          "result_file": "eval/reports/live/instructions/packet-08.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-08",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Abstain explicitly with no answer claims: packet ends November 2024 and cannot establish actual full-year 2025 results. Scope absence to packet; do not claim Cloudflare never reported this information.",
+            "runtime_metrics": {
+              "model_calls": 4,
+              "tool_calls": 5,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 26692,
+              "output_tokens": 636,
+              "latency_seconds": 3.6591622619998816,
+              "accounted_cost_usd": 0.008770799999999995,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-03",
+          "result_file": "eval/reports/live/instructions/packet-03.json",
+          "status": "completed",
+          "stop_reason": null,
+          "regraded": {
+            "task_id": "packet-03",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": true,
+            "trace_failures": [],
+            "answerability_passed": true,
+            "numeric_claim_checks": [
+              {
+                "key": "revenue_guidance_low",
+                "passed": true
+              },
+              {
+                "key": "revenue_guidance_high",
+                "passed": true
+              }
+            ],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": true
+              },
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": true
+              }
+            ],
+            "mechanical_checks_passed": true,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Return 451 and 452 USD million for Q4 2024 guidance, supported by both release and transcript. Do not treat as reported actual results.",
+            "runtime_metrics": {
+              "model_calls": 4,
+              "tool_calls": 5,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 20528,
+              "output_tokens": 838,
+              "latency_seconds": 5.681430989000091,
+              "accounted_cost_usd": 0.007163999999999997,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        },
+        {
+          "task_id": "packet-06",
+          "result_file": "eval/reports/live/instructions/packet-06.json",
+          "status": "failed",
+          "stop_reason": "Citation refers to unread source lines",
+          "regraded": {
+            "task_id": "packet-06",
+            "mode": "live_openrouter_langchain",
+            "trace_and_quote_checks_passed": false,
+            "trace_failures": [
+              "Grading requires a completed frozen-corpus run",
+              "Run did not complete"
+            ],
+            "answerability_passed": false,
+            "numeric_claim_checks": [],
+            "citation_anchor_coverage": [
+              {
+                "source_id": "cloudflare-q3-2024-transcript",
+                "passed": false
+              },
+              {
+                "source_id": "cloudflare-q3-2024-release",
+                "passed": false
+              }
+            ],
+            "mechanical_checks_passed": false,
+            "semantic_answer_quality": "requires_human_review",
+            "rubric": "Explain no contradiction: call defaults to adjusted non-GAAP except revenue, while release separates 77.7 GAAP from 78.8 non-GAAP. Cite actual accounting disclosure and release; do not imply the release is wrong.",
+            "runtime_metrics": {
+              "model_calls": 7,
+              "tool_calls": 7,
+              "tool_errors": 0,
+              "tool_error_rate": 0.0,
+              "input_tokens": 59639,
+              "output_tokens": 2116,
+              "latency_seconds": 14.455599032999999,
+              "accounted_cost_usd": 0.020430899999999995,
+              "cost_uncertain": false
+            },
+            "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+          },
+          "matches_archived_mechanical_pass": true
+        }
+      ]
+    }
+  ],
+  "run_count": 28,
+  "estimated_prior_cost_usd": 0.34989269999999995,
+  "all_archived_pass_flags_reproduced": true,
+  "new_model_calls": 0,
+  "limitation": "Historical, tuned, overlapping development trials. Never aggregate into a final accuracy percentage."
+}

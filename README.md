@@ -1,9 +1,10 @@
-# Provenance finance agent — steps 1–2
+# Provenance company research harness
 
-A small, read-only finance research harness and a 25-task public-data evaluation.
-The model chooses between `search` and `read_source`; deterministic code controls
-tool access, call counts, time, and spending reservations. No workflow router,
-spreadsheet writer, Python-execution tool, or multi-agent runtime is included.
+A read-only company research agent with LangChain + LangGraph, OpenRouter,
+structured document ingestion, passage search/read, and independent evaluation.
+The model chooses its research steps; deterministic code enforces budgets, call
+counts, deadlines, and citation validity. The original custom loop and 25-task
+public-data evaluation remain regression baselines.
 
 This implements the initial foundation of **brief 1**, the finance agent
 harness, from the [Provenance × Tech@NYU brief](https://claude.ai/artifact/3cSNqEgPBvGGNVjAj2vjcH).
@@ -21,16 +22,17 @@ rules, and semester deliverables.
 - [Project scope](project.md) records the sponsor brief and implementation boundary.
 - [Working context](context.md) records verified status and decisions still pending.
 
-The selected product MVP is a browser chatbot with `.xlsx` upload/download,
-followed by full live Excel integration. The proposed stack is React + TypeScript
-+ Vite, Tailwind CSS, and Python + FastAPI. These features remain planned.
+The active milestone is company-context tooling and evaluation. Workbook-aware
+research is next; the eventual product interface is an Excel add-in. Browser UI,
+workbook operations, and approved exports are deferred.
 
 ## Try it without credentials
 
-Requires Python 3.11+ on macOS or Linux. Run from this repository:
+Requires Python 3.11+ and uv on macOS or Linux. Run from this repository:
 
 ```sh
-python3 -m provenance demo
+uv sync --locked
+uv run python -m provenance demo
 ```
 
 This is a **scripted offline replay**, not live inference or an accuracy result.
@@ -41,7 +43,7 @@ The JSON output includes the answer, metrics, and complete event trace.
 To explicitly authorize saving logs:
 
 ```sh
-python3 -m provenance demo --log-dir runs
+uv run python -m provenance demo --log-dir runs
 ```
 
 Each run gets a unique directory containing incremental `trace.jsonl` and a
@@ -51,8 +53,19 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
+Latest frozen evaluation (2026-11-07): six new public development questions,
+**5/6 completed**, **2/6 unchanged mechanical passes**, and **4/6 evidence-supported
+task passes under coding-agent review**. Two numerical answers are substantively
+correct but fail exact period formatting; a search-only abstention lacks a source
+read, and one task stops during citation repair for spending-reservation headroom.
+A supported extra figure in one otherwise passing answer lacks a structured claim.
+These are small, single-company development results, not general accuracy or human
+financial validation. See the [full report](eval/reports/frozen-evaluation-2026-11-07/report.md)
+for preregistration, all failures, complete traces, and offline reproduction.
+Fresh estimated cost: $0.0863112; combined with cloud development: $0.4362039.
+
 ```sh
-python3 -m provenance validate
+uv run python -m provenance validate
 ```
 
 The dataset has 10 development and 15 heldout tasks across Apple, Microsoft,
@@ -73,7 +86,7 @@ Heldout tasks are excluded from the run command and have not been evaluated.
 Mechanically check a saved development run, substituting its actual run ID:
 
 ```sh
-python3 -m provenance grade --task dev-01 --result runs/RUN_ID/result.json
+uv run python -m provenance grade --task dev-01 --result runs/RUN_ID/result.json
 ```
 
 This replays the recorded local read-only tools to check evidence/trace
@@ -84,27 +97,68 @@ extra claims, and abstention reasoning. A replay passing these checks is only a
 test of the plumbing. It is not a model pass rate. Claim keys are descriptive;
 the pre-grader matches on values/units/periods/evidence, not exact key spelling.
 
-## Live OpenAI mode — configuration deferred
+## Full company documents
 
-The user selected OpenAI first and explicitly deferred live calls. The adapter
-is implemented and tested with fake HTTP responses; no live provider acceptance
-test or paid model evaluation has been run.
-
-When ready, export the settings shown in [.env.example](.env.example):
-`OPENAI_API_KEY`, `OPENAI_MODEL`, `OPENAI_INPUT_USD_PER_MILLION`, and
-`OPENAI_OUTPUT_USD_PER_MILLION`. Use verified current prices for the selected
-model. The CLI does not load `.env` automatically and has no default paid model.
-The existing environment key alone never triggers a call.
+[Cloudflare source packet](source-packet.md) includes the release, 10-Q, 18-page
+call transcript, and 116-page investor deck. Originals and extracted content are
+hash-pinned. Native parsing preserves page/section references and table-cell
+separators; it does not verify chart semantics, OCR, or complete table geometry.
 
 ```sh
-python3 -m provenance run --live --task dev-01 --budget-usd 0.50 --log-dir runs
+uv run python -m provenance.evaluation --corpus data/cloudflare-2024-q3 \
+  --benchmark eval/company_tasks.json
 ```
+
+This separate nine-task development suite reports extraction anchors and bounded
+retrieval coverage. It is not a model-accuracy score. See [evaluation notes](eval/README.md).
+
+## Checkpointed research
+
+SQLite persists research state at node boundaries. To demonstrate without a key:
+
+```sh
+uv run python -m provenance demo --checkpoint /tmp/prov-demo.sqlite \
+  --thread-id first --pause-after-tools
+uv run python -m provenance demo --checkpoint /tmp/prov-demo.sqlite \
+  --thread-id first --resume
+```
+
+Only explicit tool-boundary pauses resume automatically. A durable pre-request
+marker detects a process death during a provider attempt and blocks duplicate
+execution pending billing review. Completed threads return their cached result.
+Resume checks question, model, pricing, limits, and corpus identity. SQLite is a
+local development backend; server concurrency and production storage are later.
+
+## Live OpenRouter research
+
+Install the locked environment first:
+
+```sh
+uv sync --locked
+```
+
+Export settings from [.env.example](.env.example), including an OpenRouter key,
+model ID, and verified input/output rates. The CLI does not load `.env` files.
+The configured model is `deepseek/deepseek-v4.1-flash-1017`. Published prices vary
+by schedule; the example uses the maximum published input/output rates checked
+on 2026-11-07. Existing environment credentials never trigger calls automatically.
+
+Live calls require `--live` and an explicit budget. LangGraph is the default
+runtime; the custom loop and direct OpenAI adapter remain comparison options.
+
+```sh
+uv run python -m provenance run --live --task dev-01 --budget-usd 0.05 --log-dir runs
+```
+
+The approved development experiment has a **$0.50 aggregate cap**, within the
+user-configured $1 daily account limit. A per-run flag alone does not impose a
+cross-run daily budget: retain a shared experiment ledger when running a batch.
 
 For exploratory public-web research, additionally export `EXA_API_KEY` and
 `EXA_MAX_REQUEST_USD` (a conservative per-request charge under your plan), then:
 
 ```sh
-python3 -m provenance run --live --web --budget-usd 0.50 \
+uv run python -m provenance run --live --web --budget-usd 0.50 \
   --question "What revenue did Microsoft report for FY2025 Q1?" --log-dir runs
 ```
 
@@ -114,9 +168,10 @@ run. Live pages are not historical snapshots. Exa integration is contract-tested
 only, and an Exa key is not currently configured.
 
 Default limits are 8 model calls, 10 tool calls, 90 seconds total, 30 seconds per
-HTTP socket timeout, and 1,600 maximum output tokens per model call. CLI options can
-change call counts and total time. API redirects and automatic retries are
-disabled. Deadline enforcement uses POSIX signals in the CLI's main thread.
+request timeout, and 4,000 maximum output tokens per model call in the CLI.
+CLI options can change call counts, total time, and output tokens. SDK automatic
+retries are disabled; the legacy HTTP adapter also disables redirects. Deadline
+enforcement uses POSIX signals in the CLI's main thread.
 
 Spending is **an application-side estimate, not a guaranteed provider billing
 cap**. Before each model call the harness reserves a conservative input estimate
@@ -127,22 +182,66 @@ configured per-request maximum. Missing billing data, failed calls, and timeouts
 retain the full reservation and flag uncertainty. An actual charge above a
 reservation stops the run. Configure account-side controls separately if needed.
 
+## Measured development status
+
+[Implementation and live report](eval/reports/live-acceptance.md) records all
+28 paid development runs, earlier failures, source versions, limitations, and
+**$0.3498927** total conservative token-rate accounting under the $0.50 approval.
+All **79 tests** pass. Nine-task BM25 execution completed five answers; a subsequent
+four-case final-synthesis check completed all four previously stopped cases.
+These separate tuned iterations do not form an independent nine-task pass rate.
+
+Model context retains at most 32K serialized tool-result characters, with whole
+older results omitted rather than rewritten. Complete evidence remains in traces
+and citation state. LangGraph offers one bounded citation-repair attempt and
+reserves the last permitted model turn for a tool-disabled final answer or
+abstention. This improves completion without increasing execution limits.
+
+Literal quote checks still do not enforce semantic support, source-specific
+instructions, or financial-number coverage in answer prose. Native chart/table
+interpretation and OCR comparisons remain unverified. See the report before
+interpreting mechanical grades as research accuracy.
+
+An explicitly paid company question uses the selected packet:
+
+```sh
+uv run python -m provenance run --live --corpus data/cloudflare-2024-q3 \
+  --question "What did Cloudflare guide for Q4 2024 revenue?" \
+  --budget-usd 0.05 --log-dir runs
+```
+
+For a reproducible paid development batch, export credentials and verified rates,
+then use a **new** output directory:
+
+```sh
+uv run python -m provenance.experiment --live --corpus data/cloudflare-2024-q3 \
+  --benchmark eval/company_tasks.json --tasks packet-01 packet-04 packet-08 \
+  --budget-usd 0.10 --per-task-usd 0.03 --output runs/my-development-experiment
+```
+
+That ledger caps one experiment. Deduct earlier experiments from any shared
+approval/account budget before invoking another. Full public run reports are
+versioned under `eval/reports/live`; default diagnostic `runs/` remain ignored.
+
 ## Development checks
 
-Runtime uses only Python's standard library. `uv` installs pinned Ruff for lint;
-Yarn commands follow this repository's working conventions:
+`uv sync --locked` installs SDKs, the PDF parser, SQLite checkpoint support, and
+pinned Ruff. Yarn commands follow this repository's working conventions:
 
 ```sh
 yarn lint
 yarn test
 ```
 
-Python-only test equivalent: `python3 -m unittest discover -s tests -v`.
+Python-only test equivalent: `uv run python -m unittest discover -s tests -v`.
 Tests cover control flow, limits, citation checks, malformed calls, provider
 failures, cost accounting, frozen-source integrity, and a network-disabled demo.
 
 ## Design references
 
+- [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
+- [LangChain agents](https://docs.langchain.com/oss/python/langchain/agents)
+- [OpenRouter models](https://openrouter.ai/api/v1/models)
 - [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling#handling-function-calls)
 - [Exa search](https://exa.ai/docs/reference/search) and [contents](https://exa.ai/docs/reference/get-contents)
 - [Project brief](https://claude.ai/artifact/3cSNqEgPBvGGNVjAj2vjcH)

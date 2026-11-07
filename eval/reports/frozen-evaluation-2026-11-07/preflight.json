@@ -1,0 +1,612 @@
+{
+  "checked_at_utc": "2026-11-07T10:45:13.418473+00:00",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "source_url": "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints",
+  "endpoint_count": 50,
+  "max_input_usd_per_million": 0.6,
+  "max_output_usd_per_million": 2.4,
+  "prior_estimated_development_spend_usd": 0.3498927,
+  "previous_aggregate_authorization_usd": 0.5,
+  "new_experiment_budget_usd": 0.15,
+  "combined_max_accounted_usd": 0.4998927,
+  "pricing_boundary": "Maximum advertised endpoint token rates at this check; caching ignored, not provider invoices or a binding price ceiling.",
+  "endpoints": [
+    {
+      "provider_name": "Relace",
+      "name": "Relace | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000006",
+        "completion": "0.0000005",
+        "input_cache_read": "0.000000005",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "OpenInference",
+      "name": "OpenInference | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000000175",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000004",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Morph",
+      "name": "Morph | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000022",
+        "completion": "0.0000004",
+        "input_cache_read": "0.000000004",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Particle AI",
+      "name": "Particle AI | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000025",
+        "completion": "0.00000025",
+        "input_cache_read": "0.0000000015",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Wafer",
+      "name": "Wafer | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000038",
+        "completion": "0.0000005",
+        "input_cache_read": "0.00000001",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Particle AI",
+      "name": "Particle AI | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000005",
+        "completion": "0.0000005",
+        "input_cache_read": "0.000000003",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Wafer",
+      "name": "Wafer | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000066",
+        "completion": "0.0000005",
+        "input_cache_read": "0.0000000065",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "DeepInfra",
+      "name": "DeepInfra | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000000784",
+        "completion": "0.0000002352",
+        "input_cache_read": "0.000000002352",
+        "discount": 0.51
+      }
+    },
+    {
+      "provider_name": "InferenceNet",
+      "name": "InferenceNet | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000008",
+        "completion": "0.00000055",
+        "input_cache_read": "0.000000008",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "InferenceNet",
+      "name": "InferenceNet | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000008",
+        "completion": "0.00000055",
+        "input_cache_read": "0.000000008",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Baidu",
+      "name": "Baidu | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000009772",
+        "completion": "0.00000039437",
+        "input_cache_read": "0.000000002094",
+        "discount": 0.651
+      }
+    },
+    {
+      "provider_name": "DeepInfra",
+      "name": "DeepInfra | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000098",
+        "completion": "0.000000294",
+        "input_cache_read": "0.00000000294",
+        "discount": 0.51
+      }
+    },
+    {
+      "provider_name": "Cloudflare",
+      "name": "Cloudflare | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000003",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Sail Research",
+      "name": "Sail Research | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000101",
+        "completion": "0.00000015",
+        "input_cache_read": "0.000000006735",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "PrimeIntellect",
+      "name": "PrimeIntellect | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000001092",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "StreamLake",
+      "name": "StreamLake | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000111",
+        "completion": "0.000000444",
+        "input_cache_read": "0.00000000222",
+        "discount": 0.63
+      }
+    },
+    {
+      "provider_name": "Decart",
+      "name": "Decart | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000123",
+        "completion": "0.000000492",
+        "input_cache_read": "0.00000000246",
+        "discount": 0.18
+      }
+    },
+    {
+      "provider_name": "StepFun",
+      "name": "StepFun | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000135",
+        "completion": "0.00000054",
+        "input_cache_read": "0.0000000027",
+        "discount": 0.55
+      }
+    },
+    {
+      "provider_name": "DeepInfra",
+      "name": "DeepInfra | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000147",
+        "completion": "0.000000441",
+        "input_cache_read": "0.00000000441",
+        "discount": 0.51
+      }
+    },
+    {
+      "provider_name": "Alibaba",
+      "name": "Alibaba | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000015",
+        "discount": 0,
+        "overrides": [
+          {
+            "utc_start": 0,
+            "utc_end": 1400,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000015"
+          },
+          {
+            "utc_start": 1400,
+            "utc_end": 0,
+            "prompt": "0.000000075",
+            "completion": "0.0000003",
+            "input_cache_read": "0.0000000075"
+          }
+        ]
+      }
+    },
+    {
+      "provider_name": "DeepSeek",
+      "name": "DeepSeek | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000003",
+        "discount": 0,
+        "overrides": [
+          {
+            "utc_days": [
+              "saturday",
+              "sunday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_start": 0,
+            "utc_end": 100,
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_start": 100,
+            "utc_end": 400,
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_start": 400,
+            "utc_end": 600,
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_start": 600,
+            "utc_end": 1000,
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_start": 1000,
+            "utc_end": 0,
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          }
+        ]
+      }
+    },
+    {
+      "provider_name": "Makora",
+      "name": "Makora | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000015",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Sail Research",
+      "name": "Sail Research | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000001515",
+        "completion": "0.000000225",
+        "input_cache_read": "0.0000000101025",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Reka",
+      "name": "Reka | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000016",
+        "completion": "0.0000011",
+        "input_cache_read": "0.000000008",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Ionstream",
+      "name": "Ionstream | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000165",
+        "completion": "0.000000495",
+        "input_cache_read": "0.0000000105",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Novita",
+      "name": "Novita | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000165",
+        "completion": "0.00000066",
+        "input_cache_read": "0.0000000033",
+        "discount": 0.45
+      }
+    },
+    {
+      "provider_name": "ModelRun",
+      "name": "ModelRun | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000017",
+        "completion": "0.00000067",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "DekaLLM",
+      "name": "DekaLLM | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000018",
+        "completion": "0.00000068",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "DigitalOcean",
+      "name": "DigitalOcean | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000018",
+        "completion": "0.00000072",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "GMICloud",
+      "name": "GMICloud | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000018",
+        "completion": "0.00000072",
+        "input_cache_read": "0.0000000036",
+        "discount": 0.4
+      }
+    },
+    {
+      "provider_name": "Cohere",
+      "name": "Cohere | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000195",
+        "completion": "0.00000066",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "AtlasCloud",
+      "name": "AtlasCloud | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.000000195",
+        "completion": "0.00000078",
+        "input_cache_read": "0.0000000039",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Phala",
+      "name": "Phala | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Fireworks",
+      "name": "Fireworks | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000021",
+        "completion": "0.00000084",
+        "input_cache_read": "0.0000000042",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "PrimaLabs",
+      "name": "PrimaLabs | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000024",
+        "completion": "0.00000096",
+        "input_cache_read": "0.0000000048",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Modal",
+      "name": "Modal | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000025",
+        "completion": "0.000001",
+        "input_cache_read": "0.000000005",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Crusoe",
+      "name": "Crusoe | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000029",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000007",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "SiliconFlow",
+      "name": "SiliconFlow | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.00000055",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Relace",
+      "name": "Relace | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000009",
+        "input_cache_read": "0.000000008",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "CoreWeave",
+      "name": "CoreWeave | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Near AI",
+      "name": "Near AI | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Venice",
+      "name": "Venice | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.0000000075",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Mistral",
+      "name": "Mistral | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000007",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Nebius",
+      "name": "Nebius | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Together",
+      "name": "Together | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Fireworks",
+      "name": "Fireworks | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "BaseTen",
+      "name": "BaseTen | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000007",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Parasail",
+      "name": "Parasail | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "Fireworks",
+      "name": "Fireworks | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.00000045",
+        "completion": "0.0000018",
+        "input_cache_read": "0.000000009",
+        "discount": 0
+      }
+    },
+    {
+      "provider_name": "BaseTen",
+      "name": "BaseTen | deepseek/deepseek-v4.1-flash-20261017",
+      "pricing": {
+        "prompt": "0.0000006",
+        "completion": "0.0000024",
+        "input_cache_read": "0.000000014",
+        "discount": 0
+      }
+    }
+  ]
+}
