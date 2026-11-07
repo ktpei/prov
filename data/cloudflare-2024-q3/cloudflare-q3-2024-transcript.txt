@@ -1,0 +1,758 @@
+                                                                               Corrected Transcript
+07-Nov-2024
+Cloudflare, Inc. (NET)
+Q3 2024 Earnings Call
+                                                                                  Total Pages: 18
+1-877-FACTSET   www.callstreet.com                         Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                        Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                          07-Nov-2024
+CORPORATE PARTICIPANTS
+Philip Winslow                                                                        Thomas Josef Seifert
+Vice President-Strategic Finance, Treasury & Investor Relations,                      Chief Financial Officer, Cloudflare, Inc.
+Cloudflare, Inc.
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.
+ ......................................................................................................................................................................................................................................................
+OTHER PARTICIPANTS
+Matthew Hedberg                                                                       Shaul Eyal
+Analyst, RBC Capital Markets LLC                                                      Analyst, TD Cowen
+Andrew Nowinski                                                                       Timothy Horan
+Analyst, Wells Fargo Securities LLC                                                   Analyst, Oppenheimer & Co., Inc.
+Mark R. Murphy                                                                        Joel P. Fishbein, Jr.
+Analyst, JPMorgan Securities LLC                                                      Analyst, Truist Securities, Inc.
+Brent Thill                                                                           Jonathan Ho
+Analyst, Jefferies LLC                                                                Analyst, William Blair & Co. LLC
+  ......................................................................................................................................................................................................................................................
+MANAGEMENT DISCUSSION SECTION
+Operator: Good afternoon, ladies and gentlemen, and welcome to Cloudflare Q3 2024 Earnings Call. All lines
+have been placed on mute to prevent any background noise. After the speakers' remarks, there will be a
+question-and-answer session. [Operator Instructions] Thank you.
+I would now like to turn the call over to our first speaker, Philip Winslow. Please go ahead.
+ ......................................................................................................................................................................................................................................................
+Philip Winslow
+Vice President-Strategic Finance, Treasury & Investor Relations, Cloudflare, Inc.
+Thank you for joining us today to discuss Cloudflare's financial results for the third quarter of 2024. With me on
+the call, we have Matthew Prince, Co-Founder and CEO; Michelle Zatlyn, Co-Founder, President and COO; and
+Thomas Seifert, CFO. By now, everyone should have access to our earnings announcement. This
+announcement, as well as our supplemental financial information, may be found on our Investor Relations
+website.
+As a reminder, we'll be making forward-looking statements during today's discussion, including, but not limited to,
+our customers, vendors and partners, operations and future financial performance, our anticipated product
+launches and the timing and market potential of those products, our anticipated future financial and operating
+performance, and our expectations regarding future macroeconomic conditions. These statements and other
+comments are not guarantees of future performance and are subject to risks and uncertainty, much of which is
+beyond our control. Our actual results may differ significantly from those projected or suggested in any of our
+                                                                                                                                                               2
+1-877-FACTSET   www.callstreet.com                                                            Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                          Corrected Transcript
+Q3 2024 Earnings Call                                                                                                          07-Nov-2024
+forward-looking statements. These forward-looking statements apply as of today, and you should not rely on them
+as representing our views in the future. We undertake no obligation to update these statements after this call. For
+a more complete discussion of the risks and uncertainties that could impact our future operating results and
+financial condition, please see our filings with the SEC, as well as in today's earnings press release.
+Unless otherwise noted, all numbers we talk about today, other than revenue, will be on an adjusted non-GAAP
+basis. You may find a reconciliation of GAAP to non              -GAAP financial measures that are included in our earnings
+release on our Investor Relations website. For historical periods, a GAAP to                    non-GAAP reconciliation can be
+found in the supplemental financial information referenced a few moments ago.
+We would also like to inform you that we will be participating in the RBC Capital Markets Global TIMT Conference
+on November 20 and the Wells Fargo 8th Annual TMT Summit on December 4.
+Now, I'd like to turn the call over to Matt.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.
+Thank you, Phil. We are pleased with our results for the third quarter, exceeding expectations for revenue,
+operating margin and free cash flow, while also reaping what I believe is a critical inflection point in our rebuild of
+our go-to-market organization.
+During the third quarter, we achieved revenue of $430.1 million, up 28% year-over-year. We added a record 219
+new large customers, those that pay us more than $100,000 per year, and now have 3,265 large customers, up
+28% year-over-year. We also achieved a new milestone, accounting 35% of the Fortune 500 as paying Cloudflare
+customers. Revenue contribution from large customers during the quarter remained consistent at 67%, up from
+65% in the third quarter last year. Our dollar based net retention was 110%, down 2 percentage points quarter-
+over-quarter. While customer churn remained consistently low, our shift to more pool of funds deals with our
+largest customers, which represented nearly 10% of new ACV booked in the quarter, up from 1% a year ago, has
+put downward pressure on dollar-based net retention and changed the shape of revenue recognition in the short
+term. Over the long term however, we believe pool of fund deals are very positive for the business, as they
+represent our largest customers, making a broad commitment to Cloudflare's overall platform.
+Our gross margin was 78.8%, remaining above our long-term target range of 75% to 77%, and up a tad from
+78.7% in the same quarter last year. We delivered an operating profit of $63.5 million, representing an operating
+margin of 14.8%. Our continued strength in operating margin underscores our commitment to operational
+efficiency and productivity.
+Free cash flow came in at $45.3 million, ahead of expectations, even as we are investing in our network and
+enhanced capabilities like faster, more capable GPUs around the world. In Q3, the IT spending environment
+remained consistent with prior quarters, with customers closely scrutinizing every deal, emphasizing cost
+efficiency and seeking meaningful ROI. This cautious approach isn't new. It's something we understand, and as a
+must have, not a nice to have, benefit from relative to some of our peers.
+Moreover, our broad platform has allowed us to solve multiple problems for customers from a single vendor,
+giving us an advantage over many of our point solution competitors. However, some larger deals slipped out of
+the quarter in the US, in particular, during what was a transitional period under new sales leadership in that
+region. These deals are still active and in our pipeline, with many having already closed this quarter.
+                                                                                                                                             3
+1-877-FACTSET   www.callstreet.com                                                 Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                         Corrected Transcript
+Q3 2024 Earnings Call                                                                                                         07-Nov-2024
+Although changes in our sales force may have impacted the short-term cadence of some larger deal cycles, what
+stood out to me is that the third quarter felt like we hit the inflection point in the rebuild of our go               -to-market team.
+Mark Anderson has lived up to being a world-class sales leader, [indiscernible] (00:05:53) stage appropriate talent
+across our go-to-market organization and fair but relentless with performance management and brought discipline
+and focus to our team. That's showing in the numbers. Our sales productivity has continued to improve and is
+now back around the best levels we saw in 2022. Mark believes there's still significant headroom above where we
+are as we focus not on batting average, but on slugging percentage, shifting more of our account executives to
+enterprise sales with higher quotas and the ability to sell bigger deals.
+As we've work through performance management and upleveling the team, our ramped rep capacity has been
+essentially flat for the last four quarters. When I said we've hit an inflection point, this is the biggest thing that I'm
+watching. Starting in 2025, we expect the number of ramped reps will begin to increase meaningfully again, but
+with a shift towards more real sluggers who can bring in more enterprise deals.
+To make it tangible, nearly 70% of new sales hires this year are in the enterprise segment, compared with 40% on
+average over the prior two years. As you may recall from Mark's presentation at Investor Day earlier this year,
+momentum in ACV growth is a product of sales capacity times productivity. We've made solid improvements in
+productivity. Now, we're about to start to see the capacity of our sales force reaccelerate. I'm excited to be coming
+out the other side of our go-to-market transformation, and we expect these initiatives will deliver improving ACV
+momentum in the coming quarters.
+As I've shared with some of you, if I think about the last 15 years at Cloudflare, there's always something that I'm
+worried about, something that's broken, or as Michelle would say, an opportunity to improve. It's always tended to
+be one of three things: scale, stability or shipping. I picture it sort of like a hockey puck gliding around points in a
+triangle etched in the ice. You get good at selling your product, the more demanding customers buy it. That
+causes whatever level of service that was acceptable before can no longer be acceptable, so you focus on
+improving stability. And as you have demanding customers and have put in place better systems and processes
+to ensure stability, it starts to hamstring your ability to ship new products.
+At some level, my job is to live in the future. So, I started to worry about go-to-market two years ago. About a year
+ago, it became clear that we were going to be able to bring on Mark Anderson and meaningfully uplevel that
+team. Right on cue, as I stopped worrying about go-to-market, we've suffered the stability [indiscernible]
+(00:08:27) last year. We focused on things and we fixed them, and today, our stability, even with our broad
+product and more demanding customers, is world-class.
+So I was gearing up to start worrying about shipping, when ahead of schedule, I got introduced to CJ Desai, one
+of the most proven product and engineering leaders, who is now our Chief Product and Engineering Officer. He
+knows how to ship. So now, I find myself in the strange position of having to look for new things to worry about in
+the medium term.
+Undoubtedly, given our ambition, [ph] we'll face (00:08:59) new challenges. But I'm heartened that incredible
+leaders like Mark Anderson, CJ Desai, Stephanie Cohen, all of whom had incredible offers to be CEOs at other
+organizations, believed in Cloudflare's mission and the opportunity we have to build the next iconic technology
+company to turn down those other offers and join our team over the last year.
+With that, let me turn to some customer wins in the quarter. A rapidly growing AI company expanded their
+relationship with Cloudflare, signing a one-year, $7 million pool of funds contract for Workers AI. This company
+signed a $500,000 contract in Q2 for Cloudflare to be their "platform for AI for inference, storage, image
+                                                                                                                                            4
+1-877-FACTSET   www.callstreet.com                                                 Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                          Corrected Transcript
+Q3 2024 Earnings Call                                                                                                         07-Nov-2024
+optimization and application security". They quickly recognized the value of our platform and are now moving all
+of their workloads over to make Cloudflare their single inference cloud platform. With Workers AI, this customer is
+able to improve cost efficiency with our [ph] pay-per-inference (00:09:59) model and also eliminate the need for a
+dedicated team to run and manage their infrastructure. Realizi               ng a nearly 2x performance improvement over
+traditional public clouds with Workers AI was just the cherry on top. This win is just the beginning for Workers AI.
+A rapidly growing technology company signed a 3.5-year, $2.4 million contract for our R2, Work                         ers and
+Application Security (sic) [Services] (00:10:26). Key concerns for this customer were high egress fees,
+unpredictable cost spikes and vendor lock-in with a hyperscale public cloud provider. And they viewed R2 as the
+strategic tool to allow them to unlock paths to realize the full benefits of the cloud. With Cloudflare Workers, R2
+and Application Services all on one platform, this customer was able to increase their global application
+performance by 3.5x and drive down their TCO. This customer is also working closely with our product team on
+some exciting new developments around Workers AI.
+A rapidly growing operator of a large satellite Internet constellation signed a three                 -year, $4 million pool of funds
+contract for our full suite of FedRAMP product. Given the importance of security, performance and data
+sovereignty in this industry, this customer quickly look to Cloudflare to become a strategic partner that can help
+them build and operationalize their design and network long term.
+A Fortune 100 technology company signed a two-year, $4.2 million contract. This customer sought resiliency on
+their most critical dynamic traffic, which was previously only routed through a centralized hyperscaler. With
+Cloudflare, they were not only able to gain greater resiliency, but also realized better performance and more
+robust security capabilities. We continue to see resiliency emerge as a key theme, enabling Cloudflare to
+establish a beachhead inside large enterprise accounts alongside incumbent providers.
+A Global 2000 manufacturing company expanded their relationship with Cloudflare, signing a three                           -year $2.4
+million contract for 45,000 Zero Trust [indiscernible] (00:12:09) along with Magic WAN and Magic Firewall to
+provide secure access to more than 600 offices. Their multi-vendor incumbent architecture was a first generation
+Zero-Trust competitor and other on-premise vendors led to gaps in security and a lack of visibility.
+After evaluating several vendors, Cloudflare demonstrated a superior technical solutio                     n in their 200 use cases, in
+addition to increasing their security posture and consolidating multiple point solutions onto a unified SASE
+platform. In the words of a customer, "Cloudflare is our Swiss Army Knife. We can do so many things."
+A large technology company in Europe expanded their relationship with Cloudflare, signing a one                          -year, $5.3
+million contract for more than 40,000 seats of Access, Gateway, Data Loss Prevention along with Remote
+Browser Isolation, Workers and Application Security. With the company looking to not only enhance its security
+posture but also consolidate onto one platform, our innovative Zero Trust road map was a key differentiator. In the
+words of a customer, "We are an engineering-driven company. We build most of our tech, so we want something
+modern, effective and secure."
+Finally, I wanted to congratulate President Trump on his election victory, and I'll also recognize Vice President
+Harris for a hard-fought campaign. Both candidates were Cloudflare customers. Both were targeted by
+cyberattacks. And I'm proud that we were able to defend them both without incident. I'm even more proud of
+something else. More than half of US states and most of the so                 -called battleground states rely on Cloudflare's
+Athenian Project where we provide free service to any official administering election whether they're in red, blue
+or purple states. We couldn't have built Cloudflare without a stable, functioning political system and key to that is
+making sure that you can trust the democratic process.
+                                                                                                                                            5
+1-877-FACTSET   www.callstreet.com                                                 Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                            Corrected Transcript
+Q3 2024 Earnings Call                                                                                                            07-Nov-2024
+I wanted to thank our team who have been on-call for the last several months and especially over the last few
+weeks to come to the aid of election officials and campaigns whenever they've had a need. There will be lots of
+stories from the 2024 presidential election but cyberattacks won't be a meaningful part of any of them. And I'm
+proud that Cloudflare is part of the reason why.
+With that, I'll turn it over to Thomas. Thomas, take it away.
+ ......................................................................................................................................................................................................................................................
+Thomas Josef Seifert
+Chief Financial Officer, Cloudflare, Inc.
+Thank you, Matthew, and thank you to everyone for joining us. We are pleased with our execution during the third
+quarter as we've made further progress in our go-to-market transformation, delivering another double-digit year-
+over-year improvement in sales productivity. However, sales cycles lengthened during the quarter and some
+larger deals slipped out of the quarter in the US in particular. Importantly, these are still active deals. As Matthew
+mentioned earlier, the third quarter marked a key inflection point in our go-to-market transformation with net sales
+capacity having bottomed. Similar to last quarter, we continue to increase hiring in our sales organization with a
+particular focus on onboarding enterprise account executives with proven track record. We expect the number of
+enterprise account executives to accelerate exiting 2024 and throughout 2025 and this is particularly the case in
+the US.
+Turning to revenue. Total revenue for the third quarter increased 28% year-over-year to $430.1 million. The third
+quarter was highlighted by ongoing strength and pool of fund contract, momentum with Workers AI and continued
+high prioritization of security by our customers.
+From a geographic perspective, the US represented 50% of revenue and increased 22% year-over-year. In the
+year, represented 28% of revenue and increased 31% year-over-year. APAC represented 14% of revenue, an
+increase of 38% year-over-year. We were, again, pleased to see a notable uptick in both sequential and year                                -
+over-year growth in APAC.
+Turning to our customer metrics. In the third quarter, we had about 221,500 paying customers, an increase of
+22% year-over-year. We ended the quarter with 3,265 large customers, representing an increase of 28% year                                   -
+over-year and a record addition of 219 large customers in the quarter.
+Our dollar-based net retention was 110% during the third quarter, representing a decrease of 2 percentage points
+sequentially. The decline in DNR was driven by slower net expansion in our larger customer cohort, increased
+platform deals in the form of pool of funds contract which, as a reminder, reduce friction to adoption across our
+product portfolio but can impact the shape of revenue recognition as well as deferred revenue [indiscernible]
+(00:17:14) and cash flow, and anniversarying the price increase to our PRO and business PAYGO plans last
+year. As we mentioned last quarter, we expect new customers to contribute a higher percentage of our overall
+year-over-year revenue growth for the next several quarters.
+Moving to gross margin. Third quarter gross margin was 78.8%, representing a decrease of 20 basis points
+sequentially and an increase of 10 basis points year-over-year. Network CapEx represented 10% of revenue in
+the third quarter. During the quarter, we saw a notable shift in customer conversations and buying behavior from
+AI trading to AI inference, including our first multimillion dollar Workers AI contract. This gives us confidence to
+continue to increase our investment in higher end GPU as well as the breadth of our GPU rollout as we provision
+greater capacity to support demand in 2025. As a result, we continue to expect network CapEx to increase again
+in the fourth quarter to reach 10% to 12% of revenue for the full year 2024.
+                                                                                                                                                6
+1-877-FACTSET   www.callstreet.com                                                   Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                         Corrected Transcript
+Q3 2024 Earnings Call                                                                                                        07-Nov-2024
+Turning to operating expenses. Third quarter operating expenses as a percentage of revenue decreased by 2%
+year-over-year to 64% as we remain committed to driving higher productivity and greater efficiency across our
+operations. Our total number of employees increased 18% year-over-year, bringing our total head count to about
+4,200 at the end of the quarter.
+Sales and marketing expenses were $160.2 million for the quarter. Sales and marketing as a percentage of
+revenue decreased to 37% from 38% in the same quarter last year. Resear                      ch and development expenses were
+$70.5 million in the quarter. R&D as a percentage of revenue remained consistent at 16% compared to the same
+quarter last year.
+General and administrative expenses were $45 million for the quarter. G&A as a percentage of r                         evenue
+decreased to 10% from 11% in the same quarter last year. Operating income was $63.5 million, an increase of
+nearly 50% year-over-year compared to $42.5 million in the same period last year. Third quarter operating margin
+was 14.8%, an increase of 210 basis points year-over-year. These results highlight our continued focus on
+becoming more efficient and more productive given that operational excellence is a long                      -term, competitive
+advantage.
+Turning to net income and the balance sheet. Our net income in the quarter was $72.6 million or diluted net
+income per share of $0.20. Maintaining our strong commitment to being fiscally responsible and acting as good
+stewards of investors' capital, we ended the third quarter with $1.8 billion in cash, cash equival                   ents and available
+for sale securities.
+Free cash flow was $45.3 million in the quarter or 11% of revenue compared to $34.9 million or 10% of revenue in
+the same period last year. Remaining performance obligations or RPO came in at $1.503 billion, represe                           nting an
+increase of 6% sequentially and 39% year-over-year. Current RPO was 70% of total RPO.
+Moving to guidance for the fourth quarter and full year 2024. We are pleased with our execution during the third
+quarter and we remain prudent in our outlook for 2024 as we reach a key inflection point in our go-to-market
+transformation. For the fourth quarter, we expect revenue in the range of $451 million to $452 million,
+representing an increase of 25% year-over-year at the midpoint. We expect operating income in the range of $57
+million to $58 million, and we expect an effective tax rate of 16%. We expect diluted net income per share of
+$0.18, assuming approximately 360 million shares outstanding. For the full year 2024, we expect revenue in the
+range of $1.661 billion to $1.662 billion, representing an increase of 28% year-over-year. We expect operating
+income for the full year in the range of $220 million to $221 million. And we expect an effective tax rate of 13% for
+2024. We expect diluted net income per share over that period to be $0.74, assuming approximately 357 million
+shares outstanding.
+As mentioned last quarter, we continue to analyze our ability to implement certain tax planning strategies in order
+to manage current and future cash tax liabilities. We will provide an update once this tax planning review is
+completed if the outcome were to impact our expectation for Cloudflare's non-GAAP effective tax rate for the
+fourth quarter. Regardless of the outcome, we expect our non-GAAP effective tax rate of 19% to 22% beginning
+in 2025. However, I would remind everyone that we still have significant net operating loss carryforwards and tax
+credit attributes available to offset cash taxes in the future. We expect free cash flow to be consistent with our
+prior guidance of approximately $160 million to $164 million for the full year 2024.
+                                                                                                                                           7
+1-877-FACTSET   www.callstreet.com                                                Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                       Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                        07-Nov-2024
+In closing, our teams remain committed to driving operational excellence, ensuring long                                   -term growth and
+delivering significant shareholder value. I'd like to thank our employe                        es for their dedication to our mission, as well
+as our customers for trusting us to help them modernize, transform and secure their businesses.
+And with that, I'd like to open it up for questions. Operator, please poll for questions.
+  ......................................................................................................................................................................................................................................................
+QUESTION AND ANSWER SECTION
+Operator: Thank you. We will now begin the question-and-answer session. [Operator Instructions] And your first
+question comes from the line of Matthew Hedberg with RBC Capital Markets. Matthew, please go ahead.
+ ......................................................................................................................................................................................................................................................
+Matthew Hedberg
+Analyst, RBC Capital Markets LLC                                                                                                                        Q
+Great. Thanks for taking my questions, guys. Congrats on the results. Matthew, maybe I'll start with you. In the
+past, you've talked about sort of the crystal ball nature of Cloudflare. And I guess I'm wondering, when you look
+into that crystal ball now, what is it telling you about the external of business environment? And then perhaps
+could you give a bit more color on the – maybe even the quantity of the US-based [indiscernible] (00:24:30)?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                         A
+Yeah. Matt, first of all, thank you for the question. I am not shy about talking about what we see or talking about
+macro concerns that are out there. I don't think that we see any anything that is worse. And in fact, I think, we see
+an environment that maybe is ever so slightly improved. We saw real strength actually in Europe. I know another
+number of other companies haven't seen the same, but we executed well there and continue to see strength
+there. Asia has performed very well and, actually, from everything we've seen in the crystal ball, North America
+has leveled off to slightly improved. I think where we have room to improve ourselves and where I am optimistic
+looking forward is around our own internal execution. It has nothing to do with the macro. And the good news is
+that with our team in Europe, which has seen the most consistent sales productivity over the last eight quarters,
+and it has had sales productivity increased by 22% year-over-year in Q3, they are running the playbook that we're
+running now in North America. It's a smaller team, so it's faster for us to be able to make those changes. But
+that's worked. The same thing in Asia where they saw actually a sales productivity bump of 40% over the past
+three quarters and they've had the highest productivity of any region this year.
+So I think the macro – I don't think there's anything about the macro that gives us more pause today than before.
+If anything, I think it's improving. And what I am very optimistic about is that the places where we've already
+gotten through our improvement of our go-to-market team, we're seeing the benefits of that. And now, we're
+rolling that out to our largest market. And we see that in Q1, you see a dramatic increase starting in the number of
+reps and that gives me a lot of confidence and the consistency of the macro also allows us to invest with
+confidence.
+ ......................................................................................................................................................................................................................................................
+Matthew Hedberg
+Analyst, RBC Capital Markets LLC                                                                                                                        Q
+Got it. Thanks. Maybe just a quick follow-up for Thomas. The pool of fund deals seems like it's pressuring NRR
+maybe even [indiscernible] (00:26:59) revenue. Is there a way or, I guess, how would you have us think through
+the impact of that, especially, as we kind of think towards 2025? I know it's a short-term thing and it certainly
+benefits the long-term model. But any sort of guidepost that you can give us on the relative impact?
+                                                                                                                                                             8
+1-877-FACTSET   www.callstreet.com                                                          Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                            Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                              07-Nov-2024
+Thomas Josef Seifert
+Chief Financial Officer, Cloudflare, Inc.                                                                                                                       A
+Yeah. We gave a couple of stats on the call. So the share of pool of f                              unds deals in the quarter now creeped up to
+10%, which is a good result. It would pressure, as you rightfully said, DNR in the short term. But I think it will take
+friction throughout the process for our customers consuming our product and services moving                                              forward. So we
+think that this is going to be with us for the next two to three quarters but provides all the upside from an
+expansion of the degrees of freedom we have and our customers have to expand moving forward.
+ ......................................................................................................................................................................................................................................................
+Matthew Hedberg
+Analyst, RBC Capital Markets LLC                                                                                                                               Q
+Thanks a lot.
+ ......................................................................................................................................................................................................................................................
+Operator: Your next question comes from the line of Andrew Nowinski with Wells Fargo. Andrew, please go
+ahead.
+ ......................................................................................................................................................................................................................................................
+Andrew Nowinski
+Analyst, Wells Fargo Securities LLC                                                                                                                            Q
+Okay. Good afternoon and congrats on a nice quarter. I want to start with a question on your AI. So you
+mentioned that a number of conversations with customers began to shift this quarter from AI training to AI
+inference. I think you signed a large Workers AI deal. Just give any more color on the AI landscape and some of
+the feedback you're hearing on Workers AI?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                A
+Yeah. Andy, thanks for the question. I mean, I am really amazed at how quickly the AI platform that we launched
+is taking off and how many people are getting real value from it. And so as we mentioned, one of the leading AI
+companies signed a $7 million one-year contract with us to move their inference to our platform. What they saw
+was that they were able to get significantly better performance while also being able to run at a much higher ROI
+on the investment that they made over what they were seeing, trying to manage it themselves through hyperscale
+public cloud. That's a story that is playing out over and over again. I think it's a story that is accelerating. And in
+order to support that, we have made the investments to increase, not only just the number, but also the power of
+the GPUs that we're deploying around the world.
+But I think what's unique about Cloudflare is two things. One, we are actually able to deliver inference incredibly
+close to where anyone is on earth because we've deployed the inference capabilities across at this point nearly all
+of our network. But in addition to that, we've actually done the work to get higher utilization out of those same
+GPU resources where what we see when we survey customers that are trying to manage this themselves through
+hyperscale public cloud is that they're getting utilization rates that are sort of in the 5% to 10% range of the
+resources that they're buying. We're able to deliver much higher utilization. And in the process of that, that means
+that we can actually pass on the effective savings to our customers. So they're not only saving, not having to
+maintain their own team to manage these virtual machines and containers. But they also save because we can
+just do more with the same GPU resources that are being deployed. So I'm incredibly excited that this is
+something which we have sort of – we're starting to shift to people who have built their models and now they
+actually want to deploy them in customer-facing ways. And when they do that, I think Workers AI is the most
+powerful platform to be able to deliver inference tasks at a global level.
+ ......................................................................................................................................................................................................................................................
+                                                                                                                                                                   9
+1-877-FACTSET   www.callstreet.com                                                              Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                            Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                              07-Nov-2024
+Andrew Nowinski
+Analyst, Wells Fargo Securities LLC                                                                                                                            Q
+Thank you. That was really helpful. And I guess, as my follow-up, I want to ask about just the team you've built. I
+think you've done a really nice job building out one of the best management teams in the industry and including
+the recent hire of CJ. And you seem to find a new way to use your network with a new product every quarter. But
+I'm wondering if you can give us any color in terms of the direction that CJ wants to take Cloudflare's product
+development?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                A
+Yeah. I'm just really honored by the caliber of people who have chosen to take the next stage of their career and
+bet on Michelle and my vision for the future of what Cloudflare is. And so Mark Anderson, seated aside,
+Stephanie Cohen, and it goes down the list of top both managers but then also top individual contributors. The
+caliber of talent that we get is remarkable. We're on pace to probably have over 1.5 million applicants that apply to
+work at Cloudflare in 2024. And we're just getting the cream of the crop of people. Those are obviously names
+that you all recognize. But across our entire team, I did an orientation session today and it was just remarkable to
+see all of the people who are betting on Cloudflare's vision and that gives me an enormous amount of hope that
+we will continue to be able to drive incredible innovation over the long term.
+I think CJ really brings a number of different things. One of them that I really love is his understanding and focus
+on the enterprise. And so, we are building out a go-to-market team that is now able to sell very large deals to very
+important customers. What I reference in my prepared remarks was that that would then put pressure on ou                                                     r
+product and engineering team to make sure that they can deliver those enterprise-class features to satisfy what
+our sales team delivered. And see, there's no one in the world who is better at that than CJ. And so, we're
+honored to have him on board. The team is incredibly excited to be working with him. And I think just watch this
+space because there's going to be a lot of exciting development to come.
+ ......................................................................................................................................................................................................................................................
+Andrew Nowinski
+Analyst, Wells Fargo Securities LLC                                                                                                                            Q
+Sounds good. Thank you.
+ ......................................................................................................................................................................................................................................................
+Operator: Our next question come from the line of Mark Murphy with JPMorgan. Mark, please go ahead.
+ ......................................................................................................................................................................................................................................................
+Mark R. Murphy
+Analyst, JPMorgan Securities LLC                                                                                                                               Q
+Thank you so much. I'll add my congrats and I agree with Andy that I think CJ is just an incredible hire. Matthew, it
+seems like you're capable of adding about 100,000 new developers per month, I believe, onto the platform. I think
+you crossed 2 or 3 million developers. And now, you have Vectorize, you have Hyperdrive. There are so many
+new products. The stats out there, there are 30 million to 100 million developers, depending on how you define it.
+How many of those do you think are viable candidates for Cloudflare? And what do you think is attainable over
+time? And then I have a quick follow-up.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                A
+Yeah. I mean, I think all of them are viable candidates for Cloudflare, and we want to make the platform support
+any of their needs. That doesn't mean that every application is going to make sense to run on Cloudflare. If you
+                                                                                                                                                                 10
+1-877-FACTSET   www.callstreet.com                                                               Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                        Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                          07-Nov-2024
+have a legacy application, if you're trying to run, SAP HANA, we're not the right place to do that. But if you're the
+company that's building the thing that's going to disrupt SAP HANA, then we're absolutely the place to do that.
+And so, if you look across the AI ecosystem, if you look across the sort of blockchain and cryptocurrency
+ecosystem, if you look across anywhere where someone is able to start with a blank slate, we're seeing adoption
+rate in the top startups, top companies in the spaces that are well north of 50% and, in some cases, well north of
+75% of the industry.
+So what we think the excitement around the platform is palpable and it has, again, taken off much faster, I think
+our secret is that customer zero for everything that we do at Cloudflare is Cloudflare ourselves and that's been a
+great formula. We've built things that our own developers want. It turns out a lot of other developers want to
+develop the same way that Cloudflare does and that's driving, I think, a lot of excitement and a lot of interest in the
+platform.
+ ......................................................................................................................................................................................................................................................
+Mark R. Murphy
+Analyst, JPMorgan Securities LLC                                                                                                                           Q
+Thank you. And then, I appreciate that. As a follow up, there have been a couple of comments now that the AI
+models are advancing so fast that they're actually doubling every six months which is hard to believe. They're
+advancing so fast. And now, I think, we're looking at the reasoning and the long duration inference. We're starting
+to hear the inferencing is going to have to be multi-nodal and using InfiniBand. It's a pretty big step-up. And so,
+I'm just curious maybe how you see that developing and how might that play into your architecture as these
+models just become so much more demanding.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                            A
+I think, that we're really good at figuring out how to make very complicated, hard tasks distributed across our
+network. And so far, what we're seeing is that even in cases where there are models that maybe need more than
+one machine to run, we've been able to very efficiently do the hard engineering work to split that apart in ways
+that often might be different than how some others are approaching it but get a much higher level of utilization.
+And at the core of Cloudflare, the first thing that we really did was we built a network where we could move data
+faster, more reliably, more efficiently, meaning cheaper and more securely than anyone else. And that then
+means that we can oftentimes take an inference task, maybe the big inference task is going to take some time. It
+might be that we don't answer it as close to the user as possible. It might be that we spread that out across
+multiple different machines and then pull the answer back. And those might be on the other side of the earth in
+some cases.
+And so, that network and that ability for us to utilize the entire network we have and effectively squeeze as much
+efficiency out and squeeze as much utilization out as possible, that's been key to what we've done across the
+board with CPUs, with memory, with storage, with networking, and now we're running the same play with GPUs.
+And so, so far, there haven't been – we have not hit the limits that our engineering team hasn't found ways
+around. And I think that  we feel pretty optimistic that even as AI continues to accelerate, the place that you're
+going to want to do inference is on Cloudflare's network.
+ ......................................................................................................................................................................................................................................................
+Mark R. Murphy
+Analyst, JPMorgan Securities LLC                                                                                                                           Q
+Thank you.
+ ......................................................................................................................................................................................................................................................
+Operator: Your next question come from the line of Brent Thill with Jefferies. Brent, please go ahead.
+                                                                                                                                                             11
+1-877-FACTSET   www.callstreet.com                                                            Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                     Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                       07-Nov-2024
+Brent Thill
+Analyst, Jefferies LLC                                                                                                                                 Q
+Thanks. Good afternoon. Matthew, just on the go-to-market changes, there have been questions just in terms of
+when you talk about the pushouts, we always see this and you've seen this in past quarters. Was this quarter
+more pronounced on the pushouts or is this just something you're commenting? Hey, we made some sales
+changes. This is the natural side effect. I think I was kind of curious about the magnitude of that push. Was that
+greater or kind of equal to what you've seen historically in past quarters?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                        A
+I think that it was – I think that what we saw this quarter that was a little bit different is we started to see the
+capacity held it back at some level. And that we had had to, especially in North America, cut deeper than I think
+we initially expected. And Mark, I think, did a great job of performance management of coming in and continue to
+do the hard work, find the really great people on our team and make sure that they were taken care of but also
+find people that weren't going to be up to snuff and move them off the team.
+What I think the big change though, is I think we see that the inflection point for that and we've crossed it where
+really starting in Q1, the capacity and we know that that's going to tick up because those are people who are
+already on the team. They're just ramping, right? And we and we know what the ramp rates are, we know we
+know how [ph] that builds (00:40:57). The capacity starts to really tick up in Q1 and assuming we'll continue to be
+able to hire to plan which we expect we'll be able to given the caliber and quality of the candidates that we get,
+that continues to tick up over the course of 2025.
+So I don't think there is something that is dramatically different. I do think that we have made the productivity
+gains. We've seen the success in other regions. And now, we're bringing that to what is our largest market which
+is North America. And we see again that inflection point in the not too distant future.
+ ......................................................................................................................................................................................................................................................
+Brent Thill
+Analyst, Jefferies LLC                                                                                                                                 Q
+Okay. And you called out workers and you've been talking about this for a while but, I guess, how important is this
+now in the overall platform shift in adoption? How are you seeing this as customers are coming to you for multiple
+things? Are you seeing this as a big add-on, big driver? How would you characterize where we're at in the
+adoption of Workers?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                        A
+Yeah. I think that I have – we – at Cloudflare, we always think that we're stacking different S-curves one behind
+another. So, we have older products that are in more mature markets that then are sort of at the tail end of their
+S-curve. And those are great products and we win a lot of deals from those. And those customers, because we're
+best-of-breed in that, often then adopt other parts of that. I think our – that – where we're right in a sort of hockey
+stick growth and we're seeing a lot of success is with our Zero Trust products, which are taking off.
+With Workers, I think that we are – I keep thinking we're kind of in the beginning of the S-curve of growth, but
+before the S-curve, even in the beginning, is steeper than I imagined, and there's a lot that's there. But we are
+not, I would say, optimizing this as much for how do we extract the most revenue. I think we're still optimizing very
+much for adoption. And what I like is that oftentimes, Workers becomes the conversation around how we actually
+adopt the entire platform because people want to – they want to sign a pool of funds deal because their
+                                                                                                                                                         12
+1-877-FACTSET   www.callstreet.com                                                         Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                                                Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                                                     07-Nov-2024
+developers are excited about what Workers delivers. They don't know exactly how much of it that they're going to
+use. They know that they're going to use the overall platform. But Workers is then oftentimes a place where
+people say, listen, I want to put this in place, I want to make sure Workers is part of that. And then, oftentimes,
+we're finding that customers will use up their entire pool of funds well before the contract duration. And oftentimes,
+what's driving that is just the excitement of their teams around building new tools on Workers.
+ ......................................................................................................................................................................................................................................................
+Brent Thill
+Analyst, Jefferies LLC                                                                                                                                                                 Q
+Thank you.
+[Technical Difficulty] (00:43:58-00:44:35)
+ ......................................................................................................................................................................................................................................................
+Philip Winslow
+Vice President-Strategic Finance, Treasury & Investor Relations, Cloudflare, Inc.                                                                                                       A
+Hold on just one moment. We're having connection problems with the operator.
+[Technical Difficulty] (00:44:42-00:45:34)
+ ......................................................................................................................................................................................................................................................
+Philip Winslow
+Vice President-Strategic Finance, Treasury & Investor Relations, Cloudflare, Inc.                                                                                                       A
+Yeah. The operator is reconnecting. It'll just be a few moments.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                                        A
+I don't think we have the technical ability to call on people. Otherwise, we would.
+[Technical Difficulty] (00:45:49-00:46:47)
+ ......................................................................................................................................................................................................................................................
+Operator: Sorry, everyone, for the – this confusion and delay. Okay. For the next question, we have Shaul Eyal
+with TD Cowen. Please go ahead.
+ ......................................................................................................................................................................................................................................................
+Shaul Eyal
+Analyst, TD Cowen                                                                                                                                                                      Q
+Thank you. Hi. Good afternoon, everybody. Congrats on a very solid performance. For Thomas or Matthew,
+there's no question the number of seven-digit and probably eight-digit transactions are on the rise. We've seen
+some companies, some security-related companies assisting larger customers with financing-related [ph]
+activities (00:47:26). What's the current thinking along these lines? Is it something that your customers are
+beginning to talk to you about? What would be the approach here? Thank you.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                                        A
+I guess I can take a stab at it, and then Thomas might have more. And Shaul, you're saying like financing so that
+they can spread payments out over a longer period of time, or can you say more about what your – what exactly
+are you thinking about – saying about?
+ ......................................................................................................................................................................................................................................................
+                                                                                                                                                                                          13
+1-877-FACTSET   www.callstreet.com                                                                             Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                                 Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                                    07-Nov-2024
+Shaul Eyal
+Analyst, TD Cowen                                                                                                                                                    Q
+Actually, as they grow with you and want to consume more of your services, at times and as they get addicted to
+some of your services, they would ask – they would probably ask for flexibility assistance in terms of payments or
+maybe kind of asking you to utilize some of your balance sheet in their favor.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                      A
+Yeah. We don't – I mean, Thomas can add more, but we don't do any customer financing today. I think we have
+generally been the highest ROI provider. And because we're a SaaS service, you pay for it as you consume. I
+think that's often been different with hardware companies that might have a different model. But that isn't
+something that I'm aware of that there's a lot of demand for on our side.
+And Thomas, I don't know if there's anything you'd add.
+ ......................................................................................................................................................................................................................................................
+Thomas Josef Seifert
+Chief Financial Officer, Cloudflare, Inc.                                                                                                                             A
+To the finance customers doing business with us, this has not been a topic so far.
+ ......................................................................................................................................................................................................................................................
+Operator: Our next question comes from the line of Tim Horan with Oppenheimer. Tim, please go ahead.
+ ......................................................................................................................................................................................................................................................
+Timothy Horan
+Analyst, Oppenheimer & Co., Inc.                                                                                                                                     Q
+Hi, guys. There's a lot of moving parts, obviously, with the sales productivity and [indiscernible] (00:49:28)
+capacity there and the pooling. Can you maybe talk about the timing of when revenue growth can accelerate
+again? Do you think the fourth quarter, around 25% guide, is that the bottom or do you think it's a still few more
+quarters out? And related to this, can you update us on what you think the timing is for the $5 billion revenue
+target that you have? And I had a quick product follow-up. Thank you.
+ ......................................................................................................................................................................................................................................................
+Thomas Josef Seifert
+Chief Financial Officer, Cloudflare, Inc.                                                                                                                             A
+Yeah. Thank you for the question. As I said before, for us and in our subscription business model, revenues are
+very much a lagging metric. Sales capacity is a product of the amount of head count we have and the productivity
+progress they're making. This translates into pipeline and sales prospect, turns into ACV, and then ACV is
+recognized ratably over the lifetime of the contract as revenue. So, it's very much a lagging indicator. And as we
+said before, models like this, they are slow on their way down, but they are also slow on their way up. But the
+important part is, as you heard in Matthew's prepared remark, that we think we have reached this key inflection
+point with net sales capacity now, which is the leading growth indicator [ph] as important (00:50:50). So from there
+on, we expect sales activity translate in ACV moving forward and going up. And you see this already in those
+parts of the world where this conversion and transition has happened successfully. Revenue was up 38% already
+in APAC and it was up 31% in Europe, which is our highest productivity region, and has been over the last several
+quarters. So, we think we have bottomed out from a net sales capacity perspective and move forward from there.
+ ......................................................................................................................................................................................................................................................
+Timothy Horan
+Analyst, Oppenheimer & Co., Inc.                                                                                                                                     Q
+                                                                                                                                                                       14
+1-877-FACTSET   www.callstreet.com                                                                  Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                                       Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                                           07-Nov-2024
+[ph] I know (00:51:28) the $5 billion target may be what year in? And then, just on the product side, have you
+improved the process on going general availability with products? I know in the past, it took a little longer than
+expected. And I guess related to this, when do you think containers can hit GA? Thanks.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                              A
+Yeah. I...
+ ......................................................................................................................................................................................................................................................
+Thomas Josef Seifert
+Chief Financial Officer, Cloudflare, Inc.                                                                                                                                     A
+We will not – sorry.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                              A
+Yeah, I would say I don't think that we – I wouldn't say things have taken longer than expected. I think that our
+strategy has always been to get products into the market as quickly as possible, let people play with them and
+test them and use them. I understand that there will be early products. And that's part of the power of having the
+millions of customers, tens of millions of customers that we do, is that we can do that and get immediate product
+feedback, and then iterate quickly and then use the GA process as a time to signal when it's the right time for
+products to be put in production, use by our largest customers and have the confidence around that. I don't think
+that that has slowed down or accelerated. I think it's kind of always been the process that we've gone through.
+Some products take longer, some products, they take less time.
+Containers are already in market. We have a number of large customers that use them to do interesting things.
+How broadly we make that available is something that we are very much testing. What I think doesn't make sense
+is to just release a product that doesn't have any differentiation, doesn't have any advantage over existing
+container solutions. And so, that's I think what we are talking to customers about. I think we're using our usual
+process. But technically, there's nothing that keeps us from launching that tomorrow. I think what we want to do is
+make sure that when we do, that it has such a compelling value proposition that that it just becomes a no-brainer
+for people to use.
+ ......................................................................................................................................................................................................................................................
+Timothy Horan
+Analyst, Oppenheimer & Co., Inc.                                                                                                                                             Q
+Well, the strategy is working. Thank you.
+ ......................................................................................................................................................................................................................................................
+Operator: Our next question come from the line of Joel Fishbein with Truist Securities. Joel, please go ahead.
+ ......................................................................................................................................................................................................................................................
+Joel P. Fishbein, Jr.
+Analyst, Truist Securities, Inc.                                                                                                                                             Q
+Thank you. Thanks for the question. Matthew, love to get an update from you on the public sector. Obviously,
+you've got FedRAMP certification. We have seen some very good customers there. Just love to hear what's
+happening there? And then also, as it relates to that, where they are – do you think they are in their adoption of
+inference? That'd be really helpful. Thanks.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                              A
+                                                                                                                                                                               15
+1-877-FACTSET   www.callstreet.com                                                                       Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                                  Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                                     07-Nov-2024
+Yeah. I think that the public sector has been – was really an area of strength for us in 2023. We have not – it has
+not – it continues to perform but it hasn't, I would say, been one of our standout stars. I think that that is because
+we've been nurturing relationships. And I think that you'll see it reemerge as a                                       real driver of growth for us going
+forward. But I think it is – has not been as much of a standout as it was last year.
+I also – what is – I am constantly reminded of is how the – people who work in government are almost, by
+definition, mission-driven, and they really appreciate the work that we do. And so the number of notes that I've
+gotten from very senior people across the US government thanking us for what we did around the election,
+making sure that any time there was a problem, they knew that they c                                      ould call on our team, that we had people
+available 24 hours a day to help with any county official in any state, anywhere in the country that were seeing
+some type of an attack, and I'm proud of what we've done with that. That is the most effective market                                                     ing that we
+can do for our public sector business. And what we find time and time again is that as we do those good works, it
+turns into significant deals for us going forward. And so I think that it will be a very big                                       – it will continue to be a big
+and growing part of our business. And we have the pieces in place now that there are really no roadblocks from
+us winning more federal business.
+ ......................................................................................................................................................................................................................................................
+Joel P. Fishbein, Jr.
+Analyst, Truist Securities, Inc.                                                                                                                                       Q
+And do you feel like you have the sales capacity necessary there to hit that market?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                        A
+I think we're building that sales capacity out. I think we've got some really amazing leaders there. And I think that
+what Mark Anderson, the percentage value in North America for us [indiscernible] (00:56:27), has got an
+enormous sort of pedigree of selling into federal markets. And we have reps that we've hired to cover that space
+and they're ramping. And I think that you'll see them be able to, again, deliver very large deals. I don't think that
+we are right now capacity constrained in the federal space.
+ ......................................................................................................................................................................................................................................................
+Joel P. Fishbein, Jr.
+Analyst, Truist Securities, Inc.                                                                                                                                       Q
+Great. Thank you so much.
+ ......................................................................................................................................................................................................................................................
+Operator: Our next question comes from the line of Jonathan Ho with William Blair. Jonathan, please go ahead.
+ ......................................................................................................................................................................................................................................................
+Jonathan Ho
+Analyst, William Blair & Co. LLC                                                                                                                                       Q
+Hi. Good evening. Just wanted to get a little bit more color from some of the product side of things, and
+particularly, those around sort of the data orientation. Can you maybe give us a sense of how R2 and D1 are
+faring within your customer base and whether these products are helping drive some of the growth around AI and
+sort of the inference modeling as well? Thank you.
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.                                                                                                        A
+Yeah. I think that R2 definitely is – R2, the magic continues to be that if you have a large data set and you need to
+move it to wherever there is excess GPU capacity, that R2 is a ability do that. And so, I think that especially in
+                                                                                                                                                                         16
+1-877-FACTSET   www.callstreet.com                                                                   Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                             Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                               07-Nov-2024
+training workloads, we're seeing R2 be something that is often the gateway into using the rest of Cloudflare, and
+then, that is helping us win more and more of the AI workloads, especially on the inference side.
+D1, there's less that's driving in the AI space directly. It is a more of a traditional SQL database. But I think these
+components together have come together where now people are building full applications on top of Cloudflare
+Workers. So you need a database, you need an object store, you need all of these primitives, and these primitives
+together are allowing us to win much more complicated applications, much more complicated workloads, and
+that's important. And we continue to innovate in that space. I think what we did with Hyperdrive, as some of the
+announcements that we had around Birthday Week with Durable Objects and Durable Databases are really very
+unique primitives that you can only get on Cloudflare. And I think you're going to start to see applications that just
+would have been prohibitively difficult to build in the past, especially around synchronization worldwide. A lot of
+gaming companies are trying to use some of these primitives to be able to think their players states and things
+that were in the past extremely difficult to build. That is something that – I think you're going to see more and
+more applications that just couldn't be built anywhere other than Cloudflare. And that's – I think that's incredibly
+exciting for the space.
+ ......................................................................................................................................................................................................................................................
+Jonathan Ho
+Analyst, William Blair & Co. LLC                                                                                                                                Q
+Excellent. Thank you.
+ ......................................................................................................................................................................................................................................................
+Operator: There's no further question at this time. I will now turn the call back over to Matthew Prince for closing
+remarks. Matthew?
+ ......................................................................................................................................................................................................................................................
+Matthew Prince
+Chairman, Co-Founder & Chief Executive Officer, Cloudflare, Inc.
+Thank you. We had a number of technical difficulties. I'm not going to try and take it personally that the afterhours
+stock went up the most when we were on mute for a period of time. But I do appreciate all the work that goes into
+not just these calls, but really, pulling together these quarters. We've got an incredible team that just continues to
+execute. That team is building and ramping now. And I just wanted to say thank you to everyone for all the hard
+work over the course of the last quarter, especially over the course of this week, where we've been all hands on
+deck to make sure the US election went off without cyberattacks being a big part of it. Thank you so much and
+we'll see you back here again next quarter.
+ ......................................................................................................................................................................................................................................................
+Operator: This concludes today's call. Thank you all for joining. You may now disconnect.
+                                                                                                                                                                  17
+1-877-FACTSET   www.callstreet.com                                                               Copyright © 2001-2024 FactSet CallStreet, LLC
+Cloudflare, Inc. (NET)                                                                                                                                                            Corrected Transcript
+Q3 2024 Earnings Call                                                                                                                                                                                     07-Nov-2024
+  Disclaimer
+  The information herein is based on sources we believe to be reliable but is not guaranteed by us and does not purport to be a complete or error-free statement or summary of the available data.
+  As such, we do not warrant, endorse or guarantee the completeness, accuracy, integrity, or timeliness of the information. You must evaluate, and bear all risks associated with, the use of any
+  information provided hereunder, including any reliance on the accuracy, completeness, safety or usefulness of such information. This information is not intended to be used as the primary basis
+  of investment decisions. It should not be construed as advice designed to meet the particular investment needs of any investor. This report is published solely for information purposes, and is
+  not  to  be  construed  as  financial  or  other  advice  or  as  an  offer  to  sell  or  the  solicitation of  an  offer  to  buy  any  security  in  any  state  where  such an  offer or  solicitation  would  be  illegal.  Any
+  information  expressed  herein  on  this  date  is  subject  to  change  without  notice.  Any  opinions  or  assertions  contained  in  this  information  do  not  represent  the  opinions  or  beliefs  of  FactSet
+  CallStreet, LLC. FactSet CallStreet, LLC, or one or more of its employees, including the writer of this report, may have a position in any of the securities discussed herein.
+  THE  INFORMATION  PROVIDED  TO  YOU  HEREUNDER  IS  PROVIDED  "AS  IS,"  AND  TO  THE  MAXIMUM  EXTENT  PERMITTED  B                            Y  APPLICABLE  LAW,  FactSet  CallStreet,  LLC  AND  ITS  LICENSORS,
+  BUSINESS  ASSOCIATES  AND  SUPPLIERS  DISCLAIM  ALL  WARRANTIES  WITH  RESPECT  TO  THE  SAME,  EXPRESS,  IMPLIED  AND  STATUTORY,  INCLUDING                                        WITHOUT  LIMITATION  ANY  IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, COMPLETENESS, AND NON-INFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE
+  LAW, NEITHER FACTSET CALLSTREET, LLC NOR ITS OFFICERS, MEMBERS, DIRECTORS, PARTNERS, AFFILIATES, BUSINESS ASSOCIATES, LICENSO                                              RS OR SUPPLIERS WILL BE LIABLE FOR ANY
+  INDIRECT,  INCIDENTAL,  SPECIAL,  CONSEQUENTIAL  OR  PUNITIVE  DAMAGES,  INCLUDING  WITHOUT  LIMITATION  DAMAGES  FOR  LOST  PROFITS  OR  RE                                   VENUES,  GOODWILL,  WORK  STOPPAGE,
+  SECURITY BREACHES, VIRUSES, COMPUTER FAILURE OR MALFUNCTION, USE, DATA OR OTHER INTANGIBLE LOSSES OR COMMERCIAL DAMAGES, EVEN IF ANY OF SUCH PARTIES IS ADVISED
+  OF THE POSSIBILITY OF SUCH LOSSES, ARISING UNDER OR IN CONNECTION WITH THE INFORMATION PROVIDED HEREIN OR ANY OTHER SUBJECT MATTER HEREOF.
+  The contents and appearance of this report are Copyrighted FactSet CallStreet, LLC 2024 CallStreet and FactSet CallStreet, LLC are trademarks and service marks of FactSet CallStreet, LLC. All
+  other trademarks mentioned are trademarks of their respective companies. All rights reserved.
+                                                                                                                                                                                                                             18
+1-877-FACTSET   www.callstreet.com                                                                                                  Copyright © 2001-2024 FactSet CallStreet, LLC
