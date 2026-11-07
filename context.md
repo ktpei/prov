@@ -39,6 +39,14 @@ do not establish that connection cleanup is complete. No new paid calls were mad
 
 ## Active authorization
 
+After the frozen batch finished, the user answered the pending budget question
+with “Authorize $0.50 additional.” Total authorized estimated development/evaluation
+spending is now $1.00, with $0.4362039 accounted and $0.5637961 remaining. This
+does not retroactively change the frozen batch's $0.15 cap, original protocol,
+results, or rate assumptions. No additional paid calls accompanied this approval.
+Continue to respect the reported account-side $1/day limit and verify actual
+account usage before a future paid batch; application estimates are not invoices.
+
 Build company-context research tooling and evaluation first. The user selected
 LangChain + LangGraph with OpenRouter. Workbook capabilities, browser UI, ownership
 questions, and export are deferred; workbook-aware research is the next milestone,
