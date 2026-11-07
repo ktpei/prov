@@ -4,7 +4,9 @@ Informal, unpaid, part-time proof of concept for ProvenanceXL. The selected brie
 is a single model-directed finance agent with a small tool set and an honest
 evaluation. Implemented scope covers the original steps 1 and 2. The 2026-11-04 request
 authorizes a product specification and module roadmap for the wider brief.
-Implementation of later modules and live model calls remain deferred.
+The 2026-11-07 approval authorizes company-context tooling, LangChain + LangGraph,
+OpenRouter integration, and reproducible evaluation. Workbook and UI implementation
+remain deferred.
 
 ## Sponsor brief and selected direction
 
@@ -105,30 +107,34 @@ retrievability, not that the evidence logically supports a claim.
 
 ## Explicitly later
 
-Full filing/XBRL extraction, financial-calculation tools, market data, workbook
+XBRL normalization, financial-calculation tools, market data, workbook
 reading/writing and approval UI, full benchmark execution, model/prompt tuning,
 deployment, a production UI, and a production financial research service.
 
-## Decisions
+## Decisions — current as of 2026-11-07
 
-- Python 3.11+ standard-library CLI; no framework required for two tools.
-- OpenAI Responses API for future inference; no paid model chosen implicitly.
-- Frozen-corpus retrieval works without Exa. Optional Exa search/contents is
-  implemented but not live-verified.
-- Runtime has no model-controlled file writes. Human-supplied `--log-dir`
-  explicitly enables deterministic diagnostic logging.
-- One model loop at runtime. Development research/review delegation is separate
-  from the product architecture.
-- Remote `origin` is configured as `https://github.com/ktpei/prov`.
-- First product workflow is research answers from company data.
-- Two-person ownership is chatbot versus tooling and evaluation, with names pending.
-- MVP interface is a browser web app with `.xlsx` upload/download.
-- Full live Excel integration follows the web MVP.
-- Company packets and workbook support/recalculation remain open decisions.
+- Python 3.11+ backend; LangChain model adapter and LangGraph runtime.
+- OpenRouter model `deepseek/deepseek-v4.1-flash-1017`; $0.50 aggregate live
+  acceptance budget within a $1 daily account limit. Credentials stay out of Git.
+- Company-context tooling first: full Cloudflare 2024 sources, passage search,
+  bounded evidence reads, numerical and qualitative claims, independent evaluation.
+- Original documents/version hashes are authoritative. Extracted blocks preserve
+  page/section identity. Stored evidence, workflow state, and model context differ.
+- Native extraction is the baseline. Docling and Unlimited-OCR are replaceable
+  candidates; adoption requires verified accuracy and feasible execution.
+- One research agent. Development subagents are explicitly authorized for this run
+  and do not change the product into a specialist-agent architecture.
+- Keep old custom loop and 25-task corpus as regression baselines; heldout tasks
+  remain separate from development and are not run without authorization.
+- Browser chatbot, workbook reading/writing/export, and ownership allocation deferred.
+  Workbook-aware research is next; eventual interface is an Office.js Excel add-in.
+- Frozen local packets require no Exa key. Live web discovery is optional/later.
+- Backend file writes are deterministic diagnostics/ingestion, authorized by the
+  developer action; model tools remain read-only.
 
 ## Planning documents
 
 [spec.md](spec.md) defines the draft product requirements and evidence model.
 [roadmap.md](roadmap.md) maps loose modules and proposed acceptance checks.
-The web MVP and later live Excel sequence are selected product decisions.
-Company packets remain proposed. Interface and workbook features are planned.
+The active milestone is company-context tooling and evaluation. Interface and
+workbook features remain a later backlog.

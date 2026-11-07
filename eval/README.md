@@ -104,3 +104,12 @@ alignment are not verified by anchor presence; there is no measured OCR
 comparison, broad domain holdout, or automatic qualitative entailment judge.
 Actual live acceptance and spending, when run, are recorded separately from this
 offline retrieval diagnostic.
+
+## Recorded live development
+
+[Live acceptance report](reports/live-acceptance.md) records all five development
+iterations, 28 paid runs, conservative cost accounting, and initial/final coding-agent
+reviews. Source hashes and full public event traces are included. Final synthesis
+was checked on four previously stopped tasks after the nine-task BM25 batch;
+these are tuned development results, not a combined final nine-task pass rate.
+No heldout model evaluation or independent human financial review is claimed.

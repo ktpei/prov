@@ -1,29 +1,30 @@
 # Finance agent roadmap
 
-Draft modules · 2026-11-04
+Module roadmap · updated 2026-11-07
 
-The first workflow is company research in a browser web app with workbook
-upload/download. Full live Excel integration follows the web MVP. This is a loose module
-map for the full selected brief. Module order expresses dependencies. It does
-not establish delivery dates or authorize implementation of every module.
-Read [spec.md](spec.md) for requirements and [context.md](context.md) for current
-verification. Live model calls remain deferred.
+The immediate workflow is company research through search/read tooling and an
+independent evaluation runner. Workbook-aware research and Excel integration follow.
+Read [spec.md](spec.md) for requirements and [context.md](context.md) for verification.
 
-## Ownership
+## Current milestone — company-context tooling and evaluation
 
-| Workstream | Primary owner | Responsibility |
-| --- | --- | --- |
-| Chatbot | Person A, name pending | Agent loop, provider integration, research interface, answer and trace presentation |
-| Tooling and evaluation | Person B, name pending | Source integrations, provenance outputs, workbook tools, source/task QA, scorer, experiment runner, human review, metrics and report |
-| Shared | Both | Task selection, contract changes, failure review, final demo |
+Selected on 2026-11-07: LangChain + LangGraph, OpenRouter, and Cloudflare 2024
+company documents. Deliver full-document ingestion, bounded passage search/read,
+original evidence locations, checkpointed research execution, and separate
+extraction/retrieval/answer evaluation. Native PDF/HTML extraction is the baseline;
+Docling and Unlimited-OCR remain unselected challengers pending executable comparison.
 
-The main implementation handoff is the tool contract between the chatbot and
-source/workbook integrations. Both owners review evidence quality and failures.
-Revisit workload as full-document ingestion and the interface scope become clear.
+Browser UI, workbook reading/writing/export, ownership allocation, and delivery
+calendar questions are deferred. The eventual interface remains an Excel add-in.
+The modules below retain the longer-term backlog; browser upload/download is no
+longer the acceptance boundary of the current milestone.
+
+Live acceptance uses the requested DeepSeek model with a $0.50 aggregate cap,
+within the user-configured $1 daily limit. Keep heldout questions untouched.
 
 ## M0 — Scope and shared contracts
 
-**State** — In discussion. Existing brief and runtime contracts are documented.
+**State** — Current company-context scope and stack selected; broader product contracts remain a backlog.
 
 Agree the first company packet, representative questions, workbook support,
 weekly capacity, model/spending constraints, and names for the two owners.
@@ -37,7 +38,7 @@ Open decisions have owners and the first research questions are written down.
 
 **Owner** — Person B, with Person A reviewing ingestion needs.
 
-**State** — Five source extracts and 25 tasks exist. Full packets remain proposed.
+**State** — Five source extracts and 25 tasks preserved; full four-document Cloudflare packet and nine development probes added.
 
 - Validate the existing corpus and preserve the dev/heldout split.
 - Select 2–3 companies and a historical reporting window.
@@ -53,8 +54,8 @@ source, identify its period and units, and reproduce derived answers.
 
 **Owner** — Person A.
 
-**State** — The Python agent loop, OpenAI adapter, and offline replay exist.
-The browser interface and API are unimplemented. This module delivers the web app.
+**State** — LangChain/OpenRouter, LangGraph, checkpoints, and offline replay exist.
+The browser interface and API are deferred. This module is a later interface backlog.
 
 - Select and configure an exact model and budget when live calls are resumed.
 - Run one development question and inspect tools, evidence, output, and charges.
@@ -75,7 +76,8 @@ cancellation, and session-isolation checks pass. Offline fixtures continue worki
 
 **Owner** — Person B. Person A integrates the tool schemas and results into the chatbot.
 
-**State** — Local search/read and contract-tested Exa adapters exist.
+**State** — Full native HTML/PDF ingestion, page/section passages, bounded search/read,
+and contract-tested Exa adapters exist. Native table/chart accuracy remains limited.
 
 - Ingest the selected full documents and preserve page/table/section context.
 - Verify live search separately from frozen-corpus evaluation.
@@ -95,7 +97,9 @@ sponsor's 5–7-tool target. Exact tool grouping remains a design decision.
 
 **Owner** — Person B.
 
-**State** — Single-result mechanical pre-grading exists. Batch/reporting is pending.
+**State** — Frozen full-document retrieval diagnostics, per-answer pre-grading,
+and explicit paid development batch execution exist. Semantic review and broader
+independent evaluation remain necessary.
 
 - Consume existing result/trace artifacts before requesting runtime changes.
 - Add repeatable dev runs and aggregate results with explicit denominators.
@@ -115,7 +119,7 @@ labeled as plumbing checks. They cannot establish model quality.
 
 **Owner** — Person A owns UI/API. Person B owns workbook tools and artifact checks.
 
-**State** — Selected MVP path, unimplemented.
+**State** — Deferred workbook-exchange option, unimplemented; not required for the active milestone.
 
 ### M5a — Upload and context
 
@@ -164,7 +168,7 @@ and distinguish verified behavior from future work.
 **Owner** — Person A owns sidebar UI. Person B owns Office.js workbook tools and
 host checks. Both agree the backend handoff.
 
-**State** — Later phase after the web MVP.
+**State** — Eventual product interface after research tooling and workbook-context validation.
 
 Choose the primary host/API requirements. Add a manifest, HTTPS development setup,
 and sideloading instructions. Reuse the research backend and suitable React UI.
@@ -175,12 +179,11 @@ writes, and recalculation in the real Excel host before broader model editing.
 **Exit check** — Ask about a live range, inspect evidence, and approve a correct
 edit. Changed target cells invalidate old approvals and recovery checks pass.
 
-## First joint milestone
+## Current acceptance checks
 
-One question entered in the browser goes through retrieval, evidence reading,
-answer generation, mechanical grading, and human review. Record citations,
-trace, cost, latency, and review outcome.
-
-The tooling/evaluation owner can prepare fixtures while the chatbot owner builds
-the web shell. Real-model runs await model/budget selection. Source packets,
-workbook support, thresholds, and dates remain open.
+- A complete public company packet is reproducibly searchable with bounded evidence reads.
+- One model chooses search/read, returns citations, and records cost/latency and limits.
+- Checkpoint/resume preserves evidence and accounting without replaying completed work.
+- Report extraction, retrieval, answer validity, and semantic-review limits separately.
+- Existing 25-task dataset and offline checks remain valid; no heldout model tuning.
+- Save exact setup, verified results, failures, and remaining work in the repository.

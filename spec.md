@@ -1,19 +1,21 @@
 # Finance research agent specification
 
-Draft for discussion · 2026-11-04
+Product specification · updated 2026-11-07
 
 ## Purpose and status
 
 Build a finance research assistant that answers questions about companies using
 retrieved evidence, explains calculations, and preserves the sources behind its
 numbers. The first user-facing workflow is research answers from company data.
-The MVP is a standalone browser web app with workbook upload/download. Full
-live Excel integration follows the web MVP.
+The current milestone is company-context tooling and evaluation. Workbook-aware
+research follows later; the eventual product is an Excel add-in. Browser UI and
+workbook upload/export are deferred rather than acceptance criteria for this milestone.
 
 This document describes the intended product and proposed implementation
 boundaries. Existing code implements only the foundation described below.
-Writing this specification authorizes planning. Later modules require an
-implementation task, and live model calls remain deferred.
+Implementation of company ingestion, search/read, LangChain + LangGraph, and
+evaluation is authorized. Live OpenRouter acceptance is authorized with a $0.50
+total experiment cap within the user's $1 daily account limit.
 
 ## Project context
 
@@ -38,18 +40,18 @@ single-agent proof of concept.
 | --- | --- |
 | First workflow | Research answers from company data |
 | Product modules | Chatbot, tooling, evaluation |
-| Two-person split | One owner for chatbot, one for tooling and evaluation |
+| Ownership | Ownership/capacity questions deferred; tooling and evaluation take priority |
 | Runtime | One model-directed loop |
-| Existing stack | Python 3.11+, standard-library runtime, CLI, OpenAI Responses adapter |
-| Provider | OpenAI first, exact model and live configuration deferred |
+| Selected runtime | Python 3.11+, LangChain model integration + LangGraph orchestration |
+| Provider | OpenRouter; requested model `deepseek/deepseek-v4.1-flash-1017` |
 | Evidence | Public data under the sponsor's ground rules |
-| MVP interface | Browser chatbot with `.xlsx` upload/download |
+| Current interface | Developer runner; browser UI and workbook capabilities deferred |
 | Proposed web stack | React + TypeScript + Vite, Tailwind CSS, Python + FastAPI |
 | Later Excel integration | Office.js sidebar with live workbook access and approved edits |
-| Source packet and companies | Proposed below, awaiting selection |
-| Dates and spending | No agreed delivery dates or live-call budget |
+| Source packet and companies | Cloudflare 2024 release, filing, call transcript, investor slides |
+| Spending | $0.50 total for approved acceptance run; $1 daily account limit |
 
-## MVP workflow and demo
+## Later interface workflow and demo
 
 1. Open the web app in a browser, initially running locally.
 2. Select company evidence and a reporting period or information cutoff.
@@ -69,21 +71,23 @@ evidence, and a question about an uploaded range. Once export works, also show
 approval, download, and reopening in Excel. Include actual cost, latency, and
 reviewed evaluation outcomes. Label scripted/replay material explicitly.
 
-Only single-question CLI execution exists today. The browser UI/API, conversation
-state, full-document ingestion, and workbook operations remain unimplemented.
+The developer runner now supports single-question LangGraph research, local SQLite
+checkpoints, full-document ingestion, and independent evaluation. Browser UI/API,
+product conversations, and workbook operations remain unimplemented. The CLI is
+a developer/evaluation interface, not the intended product interface.
 
-## Planned web architecture
+## Later web architecture
 
 | Layer | Technology | Responsibility |
 | --- | --- | --- |
 | Frontend | React + TypeScript + Vite | Chat, evidence viewer, activity, workbook preview, approval, download |
 | Styling | Tailwind CSS | Interface styling |
 | Backend | Python + FastAPI | Sessions, runs, uploads, progress, source access, artifacts |
-| Agent/tools | Existing Python harness and OpenAI adapter | Bounded model-directed research and structured evidence |
+| Agent/tools | LangChain + LangGraph, OpenRouter | Bounded research, evidence state, persistent checkpoints |
 | Initial storage | Source files and JSON run artifacts | Versioned inputs, citations, traces, output copies |
 
-Start with in-memory conversations and explicit session/run identities. Persistent
-chat storage and hosting remain later decisions. Keep credentials on the backend
+Use explicit session/run identities. Local SQLite checkpoints persist research
+state; product chat storage and hosting remain later decisions. Keep credentials on the backend
 and expose progress over HTTP. Automated evaluation calls the Python backend
 independently of the browser interface.
 Adapt current main-thread POSIX signal deadlines for server execution before
@@ -99,7 +103,7 @@ and edit-proposal contracts together.
 A useful initial evidence packet is a dated collection for one reporting event.
 It combines reported financial results with management commentary. The initial
 scope should support a few companies and comparable periods before expanding
-retrieval breadth. The following is a proposal, not an acquired dataset.
+retrieval breadth. The Cloudflare packet implements this baseline; broader company coverage remains planned.
 
 | Material | Questions it supports | Evidence to retain |
 | --- | --- | --- |

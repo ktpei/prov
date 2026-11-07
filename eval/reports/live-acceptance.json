@@ -1,0 +1,84 @@
+{
+  "date": "2026-11-07",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "approved_total_usd": 0.5,
+  "total_accounted_cost_usd": 0.34989269999999995,
+  "accounting": "Conservative configured token rates (0.30 input / 1.20 output USD per million); not a provider invoice. No Exa/OCR calls.",
+  "development_runs": 28,
+  "iterations": [
+    {
+      "directory": "initial",
+      "label": "Initial runtime",
+      "runs": 5,
+      "completed": 2,
+      "mechanical_passes": 0,
+      "accounted_cost_usd": 0.0981087,
+      "input_tokens": 298881,
+      "output_tokens": 7037,
+      "cost_uncertain": false
+    },
+    {
+      "directory": "instructions",
+      "label": "Efficient research instructions",
+      "runs": 5,
+      "completed": 2,
+      "mechanical_passes": 2,
+      "accounted_cost_usd": 0.06423479999999998,
+      "input_tokens": 194928,
+      "output_tokens": 4797,
+      "cost_uncertain": false
+    },
+    {
+      "directory": "context-and-repair",
+      "label": "Bounded context + one citation repair",
+      "runs": 5,
+      "completed": 3,
+      "mechanical_passes": 3,
+      "accounted_cost_usd": 0.05536649999999999,
+      "input_tokens": 163183,
+      "output_tokens": 5343,
+      "cost_uncertain": false
+    },
+    {
+      "directory": "bm25",
+      "label": "BM25 + focused snippets (nine-task batch)",
+      "runs": 9,
+      "completed": 5,
+      "mechanical_passes": 3,
+      "accounted_cost_usd": 0.08137049999999998,
+      "input_tokens": 228555,
+      "output_tokens": 10670,
+      "cost_uncertain": false
+    },
+    {
+      "directory": "finalization",
+      "label": "Final synthesis boundary (four targeted reruns)",
+      "runs": 4,
+      "completed": 4,
+      "mechanical_passes": 3,
+      "accounted_cost_usd": 0.050812199999999995,
+      "input_tokens": 138998,
+      "output_tokens": 7594,
+      "cost_uncertain": false
+    }
+  ],
+  "checks": {
+    "tests": 79,
+    "tests_passed": 79,
+    "lint": "passed",
+    "original_dataset": "25 tasks validated; heldout inference not run"
+  },
+  "source_hashes": {
+    "cloudflare-q3-2024-release": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+    "cloudflare-q3-2024-filing": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+    "cloudflare-q3-2024-transcript": "61482e592081541f96ebfb5d569fece6af6b05a3be5a2f9e208c1590fbe0aabb",
+    "cloudflare-investor-day-2024": "b2d384ae06344bf6c82ef4ebd0e9ba720f6e645a4bdaab78382c201b784c381b"
+  },
+  "limitations": [
+    "All live tasks are development cases; iterations are tuned and not independent heldout validation.",
+    "Final synthesis targeted four previously stopped tasks; it is not a fresh nine-task final run.",
+    "Literal quote/read checks do not enforce financial-number coverage in prose or semantic citation completeness.",
+    "Native extraction has unverified chart/table geometry; Docling and Unlimited-OCR comparisons not measured.",
+    "Production concurrency, durable billing reconciliation, browser UI, and workbook features deferred."
+  ]
+}
