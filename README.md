@@ -53,6 +53,17 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
+Latest frozen evaluation (2026-11-07): six new public development questions,
+**5/6 completed**, **2/6 unchanged mechanical passes**, and **4/6 evidence-supported
+task passes under coding-agent review**. Two numerical answers are substantively
+correct but fail exact period formatting; a search-only abstention lacks a source
+read, and one task stops during citation repair for spending-reservation headroom.
+A supported extra figure in one otherwise passing answer lacks a structured claim.
+These are small, single-company development results, not general accuracy or human
+financial validation. See the [full report](eval/reports/frozen-evaluation-2026-11-07/report.md)
+for preregistration, all failures, complete traces, and offline reproduction.
+Fresh estimated cost: $0.0863112; combined with cloud development: $0.4362039.
+
 ```sh
 uv run python -m provenance validate
 ```

@@ -1,16 +1,32 @@
 # Working context — 2026-11-07
 
-## Evaluation milestone — in progress
+## Evaluation milestone — measured development baseline
 
-The user selected evaluation as the next goal. Runtime baseline `d9057ed` is
-frozen: no research prompt/tool/runtime changes during scoring. Six fresh public
-development questions are being authored before inference; the existing 25-task
-holdout remains untouched. The preregistered protocol and cost preflight are in
-`eval/reports/frozen-evaluation-2026-11-07/`. Existing fixed-query retrieval
-reproduces 6/8 positive evidence tasks, and all 28 historical mechanical flags
-reproduce in offline regrading. Fresh model results are not yet available.
-Use at most $0.15 additional estimated spending under the original $0.50 total
-authorization; no response to a budget question authorizes an increase.
+The user selected evaluation as the next goal. Runtime baseline `d9057ed` remained
+frozen. Six fresh public development questions and the protocol were committed
+before inference at `ce1a2f2`; all six ran once with no tuning or reruns. Results:
+5/6 final answers, 2/6 unchanged mechanical passes, and 4/6 evidence-supported task
+passes under separate coding-agent review plus lead verification. This is not
+general accuracy or human financial validation. Two numerical answers fail only
+exact period strings; one otherwise passing answer adds a supported 2023 figure
+outside structured claims. One task stops after a rejected table quote and a
+reservation-blocked repair; one correct abstention never reads a source.
+
+The report, protocol, raw traces, and per-task review are under
+`eval/reports/frozen-evaluation-2026-11-07/`. Fresh extraction anchors pass 5/5;
+fixed-query retrieval passes 4/5 positive tasks. Existing retrieval reproduces
+6/8 and all 28 historical mechanical flags reproduce offline. Original heldout
+inference remains unrun. No runtime, dependency, corpus, or original benchmark
+changes were mixed into this evaluation.
+
+Fresh estimated cost is $0.0863112, combined total $0.4362039 under the original
+$0.50 authorization. Conservative current endpoint maxima $0.60/$2.40 per million
+input/output tokens were used; prior cloud estimates used $0.30/$1.20. No uncertain
+cost flags. Estimates are not provider invoices. No further paid trials were run.
+Next work: synthesis/repair budget headroom, read-evidence discipline for abstention,
+versioned period grading, narrative/claim completeness, then new multi-company
+cross-source questions and human review. Do not tune and rescore this inspected
+six-task batch as if it were still fresh.
 
 ## Local handoff verification — 2026-11-07
 

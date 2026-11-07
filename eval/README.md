@@ -113,3 +113,28 @@ reviews. Source hashes and full public event traces are included. Final synthesi
 was checked on four previously stopped tasks after the nine-task BM25 batch;
 these are tuned development results, not a combined final nine-task pass rate.
 No heldout model evaluation or independent human financial review is claimed.
+
+## Frozen post-development evaluation — 2026-11-07
+
+`company_fresh_tasks.json` contains six additional public development questions
+authored and independently checked before live inference, then committed with the
+protocol at `ce1a2f2`. They cover three numerical questions with table context,
+two single-source qualitative questions, and packet-scoped missing evidence.
+The runtime was frozen at `d9057ed`. The original benchmarks and holdout remain
+unchanged. Task-author independence is not human finance validation or a secret
+holdout; the source company was already inspected during development.
+
+All six ran once: **5 completed**, **2 unchanged mechanical passes**, **4/6
+evidence-supported task passes under coding-agent review**. The saved mechanical
+failures remain unchanged: two numerical responses are correct but differ from
+the expected period string; one correct abstention never reads evidence; one
+rejected-quote repair stops for spending-reservation headroom. A supported extra
+2023 comparison in fresh-03 violates structured-number output instructions and is
+reported separately from the preregistered unsupported-claim criterion.
+
+The [full report](reports/frozen-evaluation-2026-11-07/report.md) links the frozen
+protocol, task/source hashes, 6 complete traces, unchanged per-task grades, semantic
+reviews, and offline reproduction. Fresh estimates total $0.0863112 at conservative
+$0.60/$2.40 input/output per million; combined with prior cloud estimates,
+$0.4362039. Neither token estimates nor six single-company tasks establish invoice
+charges or production accuracy. No runtime fixes were mixed into the scored batch.

@@ -8,6 +8,18 @@ The 2026-11-07 approval authorizes company-context tooling, LangChain + LangGrap
 OpenRouter integration, and reproducible evaluation. Workbook and UI implementation
 remain deferred.
 
+## Evaluation update — 2026-11-07
+
+A preregistered frozen-runtime batch of six fresh public company-research tasks
+returned 5 final answers, 2 unchanged mechanical passes, and 4 evidence-supported
+task passes under coding-agent review. All six were attempted once; no tuning or
+selective reruns. Original heldout inference remains unrun. Fresh estimated cost
+was $0.0863112; combined development estimates total $0.4362039. This small
+single-company batch is not a general accuracy or human-validation result.
+See the [evaluation report](eval/reports/frozen-evaluation-2026-11-07/report.md)
+for formatting false negatives, genuine failures, output-contract defects, and
+the next broader evaluation boundary. Runtime behavior was not changed here.
+
 ## Sponsor brief and selected direction
 
 Source: [Provenance × Tech@NYU, Fall 2026](https://claude.ai/artifact/3cSNqEgPBvGGNVjAj2vjcH),

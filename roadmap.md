@@ -150,7 +150,12 @@ reopening the edited workbook in Excel.
 
 **Owner** — Person B leads evaluation. Both own delivery.
 
-**State** — Pending research implementation and an agreed evaluation plan.
+**State** — First frozen development evaluation complete; broader final assessment
+and human review remain pending. Six fresh public tasks were registered before
+inference: 5/6 completed, 2/6 mechanical passes, 4/6 evidence-supported task passes
+under coding-agent review. No runtime tuning or task reruns. See the
+[report](eval/reports/frozen-evaluation-2026-11-07/report.md). Original holdout is
+still unrun; single-company development results do not establish general accuracy.
 
 Freeze tasks, source snapshots, prompts, tools, model configuration, and scoring.
 Agree success thresholds and human review before final runs. Run heldout tasks
