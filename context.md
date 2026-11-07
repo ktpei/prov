@@ -1,5 +1,14 @@
 # Working context — 2026-11-07
 
+## Local handoff verification — 2026-11-07
+
+Imported the verified Git bundle at `3643af7` into the local
+`feat/company-research-end-to-end` branch. The earlier local implementation remains
+on `feat/evaluation-agent-foundation` at `f37c4ba`; it was not overwritten or merged.
+Local `yarn lint` and `yarn test` pass, with all 79 tests running. Python 3.13
+reports unclosed SQLite connection ResourceWarnings during tests; passing checks
+do not establish that connection cleanup is complete. No new paid calls were made.
+
 ## Active authorization
 
 Build company-context research tooling and evaluation first. The user selected
