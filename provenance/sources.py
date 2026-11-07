@@ -97,14 +97,35 @@ class Sources:
         terms = set(re.findall(r"\w+", query.lower()))
         ranked = []
         for source in self.documents.values():
-            haystack = " ".join(
-                str(source.get(k, "")) for k in ("title", "company", "ticker", "text")
+            if not source.get("text"):
+                continue
+            metadata_terms = set(
+                re.findall(
+                    r"\w+",
+                    " ".join(
+                        str(source.get(k, "")) for k in ("title", "company", "ticker")
+                    ).lower(),
+                )
             )
-            score = len(terms & set(re.findall(r"\w+", haystack.lower())))
+            lines = source["text"].splitlines()
+            passages = []
+            for offset in range(0, len(lines), 20):
+                passage = "\n".join(lines[offset : offset + 20])
+                score = len(terms & set(re.findall(r"\w+", passage.lower())))
+                passages.append((score, offset, passage))
+            score, offset, passage = max(passages, default=(0, 0, ""), key=lambda row: row[0])
+            score += len(terms & metadata_terms)
             if score:
-                ranked.append((score, source))
+                ranked.append((score, source, offset, passage))
         ranked.sort(key=lambda item: (-item[0], item[1]["id"]))
-        hits = [self.metadata(source) for _, source in ranked[:5]]
+        hits = [
+            {
+                **self.metadata(source),
+                "match_locator": f"L{offset + 1}-L{min(offset + 20, len(source['text'].splitlines()))}",
+                "snippet": passage[:400],
+            }
+            for _, source, offset, passage in ranked[:5]
+        ]
         if self.exa_key:
             result = self._exa("search", {"query": query, "type": "auto", "numResults": 5}, timeout)
             for item in result.get("results", [])[:5]:
@@ -170,8 +191,15 @@ class Sources:
             raise ValueError("Source line exceeds result size limit")
         actual_end = selected[-1]["line"]
         self.seen.setdefault(source_id, set()).update(range(start, actual_end + 1))
+        original_pages = [
+            page["page"]
+            for page in source.get("pages", [])
+            if page["start_line"] <= actual_end and page["end_line"] >= start
+        ]
         return {
             **self.metadata(source),
+            "original_pages": original_pages,
+            "next_start_line": actual_end + 1 if actual_end < len(lines) else None,
             "lines": selected,
             "total_lines": len(lines),
             "locator": f"L{start}-L{actual_end}",

@@ -4,7 +4,48 @@ Informal, unpaid, part-time proof of concept for ProvenanceXL. The selected brie
 is a single model-directed finance agent with a small tool set and an honest
 evaluation. Implemented scope covers the original steps 1 and 2. The 2026-11-04 request
 authorizes a product specification and module roadmap for the wider brief.
-Implementation of later modules and live model calls remain deferred.
+Current authorized direction is tooling and evaluation first; see the update below.
+Exact live model and spending configuration remain unresolved.
+
+## Implementation update — 2026-11-07
+
+First migration increment: LangChain/OpenRouter adapter and LangGraph execution
+with model, tool, and finalize nodes, sharing existing evidence/trace/limit checks.
+New page-text JSON ingestion builds immutable extracted-text packets with hashes
+and line-to-page maps. Search ranks passages; reads expose page references and
+continuation positions. See [ingestion.md](ingestion.md) for the actual contract.
+
+Verified: all 44 tests pass in the project virtual environment, including actual
+LangGraph replay and call-limit integration tests. Research dependencies are now
+installed and recorded in pyproject.toml/uv.lock. Earlier package-installation
+blockers below are historical. OpenRouter is configured locally with the selected
+baseline model deepseek/deepseek-v4.1-flash-1017. Accounting currently uses provisional
+$0.40/$1.60 per million input/output tokens, retained as estimates rather than
+asserted DeepSeek provider prices; verify the selected route before live acceptance. Credentials remain in ignored local configuration, never in
+tracked documentation. The user reports a $1/day limit configured in OpenRouter
+(not independently verified). Keep development runs at $0.10 maximum each and
+track costs; the application currently enforces per-run estimates, not a shared
+daily ledger. No live request has run.
+
+Raw PDF extraction, checkpoint resumption, server-safe deadlines, parser comparison,
+original-file retention, qualitative claim schemas, and expanded evaluation remain
+pending. No actual company PDF extraction or model-quality evaluation is claimed.
+
+## Current direction — 2026-11-07
+
+Polish company-context `search` and `read_source`, full-document retrieval, and
+evaluation first. Include supported qualitative research. Workbook-aware research
+and workbook operations move to the next milestone. Final interface: Excel add-in.
+The earlier standalone upload/download MVP requirement is superseded. Chatbot UI,
+owner assignment, and scheduling questions are not current blockers. The sponsor's
+full 5–7-tool ask remains broader than this milestone.
+
+OpenRouter is the intended provider access layer. An API key is expected from the
+user; exact model/budget remain pending. LangChain + LangGraph are selected
+for the target runtime; migration is unimplemented. Current code has no agent
+SDK and still calls OpenAI directly. Cloudflare 2024 is a researched candidate
+packet, not an ingested or frozen evaluation dataset. Historical decisions below
+record earlier work and do not override this update.
 
 ## Sponsor brief and selected direction
 

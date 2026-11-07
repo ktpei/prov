@@ -1,4 +1,49 @@
-# Working context — 2026-11-04
+# Working context — 2026-11-07
+
+## Implementation update — 2026-11-07
+
+First migration increment: LangChain/OpenRouter adapter and LangGraph execution
+with model, tool, and finalize nodes, sharing existing evidence/trace/limit checks.
+New page-text JSON ingestion builds immutable extracted-text packets with hashes
+and line-to-page maps. Search ranks passages; reads expose page references and
+continuation positions. See [ingestion.md](ingestion.md) for the actual contract.
+
+Verified: all 44 tests pass in the project virtual environment, including actual
+LangGraph replay and call-limit integration tests. Research dependencies are now
+installed and recorded in pyproject.toml/uv.lock. Earlier package-installation
+blockers below are historical. OpenRouter is configured locally with the selected
+baseline model deepseek/deepseek-v4.1-flash-1017. Accounting currently uses provisional
+$0.40/$1.60 per million input/output tokens, retained as estimates rather than
+asserted DeepSeek provider prices; verify the selected route before live acceptance. Credentials remain in ignored local configuration, never in
+tracked documentation. The user reports a $1/day limit configured in OpenRouter
+(not independently verified). Keep development runs at $0.10 maximum each and
+track costs; the application currently enforces per-run estimates, not a shared
+daily ledger. No live request has run.
+
+Raw PDF extraction, checkpoint resumption, server-safe deadlines, parser comparison,
+original-file retention, qualitative claim schemas, and expanded evaluation remain
+pending. No actual company PDF extraction or model-quality evaluation is claimed.
+
+## Latest decisions — 2026-11-07
+
+Tooling and evaluation first: company-context research across complete public
+filings, releases, investor presentations, and call materials. Only polish search
+and read for now. Supported qualitative answer scope is left to implementation
+judgment. Workbook-aware research and workbook capabilities are deferred to the
+next milestone, with the Excel add-in as the final interface. Standalone workbook
+upload/download is no longer a required delivery gate. Chatbot implementation,
+named ownership, and scheduling are not current blockers.
+
+The user plans to provide OpenRouter access. LangChain + LangGraph are now
+selected for the target architecture. Exact model and live-call budget/rates
+remain pending; no new live call was made. Repository code
+still uses the custom loop and direct OpenAI adapter, without any agent SDK.
+Migration should preserve limits, trace/evaluation contracts, and citation checks.
+Keep extraction providers replaceable; Unlimited-OCR and Docling remain candidates
+requiring a finance-document extraction comparison. Neither is adopted. See source-packet.md
+for verified public links and unverified ingestion/reuse boundaries. The original
+25-task split remains untouched. Earlier sections below are historical and are
+superseded by these decisions when they conflict.
 
 ## User request and constraints
 

@@ -51,7 +51,9 @@ class Trace:
             path.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
 
 
-def run(question, model, sources, limits=None, trace=None):
+def run(question, model, sources, limits=None, trace=None, *, runtime="custom"):
+    if runtime not in {"custom", "langgraph"}:
+        raise ValueError("Unknown runtime")
     limits, trace = limits or Limits(), trace or Trace()
     budget = Budget(limits.budget_usd)
     sources.budget = budget
@@ -67,6 +69,7 @@ def run(question, model, sources, limits=None, trace=None):
     trace.emit(
         "run_started",
         question=question,
+        runtime=runtime,
         mode=model.mode,
         model=model.name,
         limits=asdict(limits),
@@ -80,74 +83,93 @@ def run(question, model, sources, limits=None, trace=None):
             "exa_max_request_usd": sources.exa_cap,
         },
     )
+
+    def model_step(messages):
+        nonlocal model_calls
+        if model_calls >= limits.max_model_calls:
+            raise LimitReached("model_call_limit")
+        model_calls += 1
+        trace.emit("model_request", number=model_calls, input=messages.copy())
+        response = model.step(messages, min(remaining(), limits.request_timeout_seconds), budget)
+        trace.emit(
+            "model_response",
+            number=model_calls,
+            response=response,
+            accounted_cost_usd=budget.charged,
+        )
+        if response.get("status") != "completed":
+            raise ProviderError("Model response did not complete")
+        if not isinstance(response.get("output"), list):
+            raise ProviderError("Model output must be a list")
+        return response
+
+    def tool_step(messages, output):
+        nonlocal tool_calls, tool_errors
+        messages = messages.copy()
+        for call in output:
+            if call.get("type") != "function_call":
+                continue
+            if tool_calls >= limits.max_tool_calls:
+                raise LimitReached("tool_call_limit")
+            if not isinstance(call.get("call_id"), str):
+                raise ProviderError("Tool call missing call_id")
+            tool_calls += 1
+            trace.emit("tool_request", call=call)
+            tool_start = time.monotonic()
+            try:
+                args = json.loads(call.get("arguments", ""))
+            except (json.JSONDecodeError, TypeError):
+                result = {"error": "Tool arguments must be valid JSON"}
+            else:
+                result = sources.call(
+                    call.get("name"), args, min(remaining(), limits.request_timeout_seconds)
+                )
+            tool_errors += int("error" in result)
+            trace.emit(
+                "tool_result",
+                call_id=call["call_id"],
+                result=result,
+                latency_seconds=time.monotonic() - tool_start,
+                accounted_cost_usd=budget.charged,
+            )
+            messages.append(
+                {
+                    "type": "function_call_output",
+                    "call_id": call["call_id"],
+                    "output": json.dumps(result),
+                }
+            )
+        return messages
+
+    def finish_step(output):
+        text = "".join(
+            content.get("text", "")
+            for item in output
+            if item.get("type") == "message"
+            for content in item.get("content", [])
+            if content.get("type") == "output_text"
+        )
+        return validate_answer(json.loads(text), sources)
+
     try:
         with deadline(limits.timeout_seconds) as remaining:
-            while model_calls < limits.max_model_calls:
-                model_calls += 1
-                trace.emit("model_request", number=model_calls, input=messages.copy())
-                response = model.step(
-                    messages, min(remaining(), limits.request_timeout_seconds), budget
+            if runtime == "langgraph":
+                from provenance.graph import execute_graph
+
+                answer = execute_graph(
+                    messages, model_step, tool_step, finish_step, limits.max_model_calls
                 )
-                trace.emit(
-                    "model_response",
-                    number=model_calls,
-                    response=response,
-                    accounted_cost_usd=budget.charged,
-                )
-                if response.get("status") != "completed":
-                    raise ProviderError("Model response did not complete")
-                output = response.get("output")
-                if not isinstance(output, list):
-                    raise ProviderError("Model output must be a list")
-                calls = [item for item in output if item.get("type") == "function_call"]
-                messages.extend(output)
-                if calls:
-                    for call in calls:
-                        if tool_calls >= limits.max_tool_calls:
-                            raise LimitReached("tool_call_limit")
-                        if not isinstance(call.get("call_id"), str):
-                            raise ProviderError("Tool call missing call_id")
-                        tool_calls += 1
-                        trace.emit("tool_request", call=call)
-                        tool_start = time.monotonic()
-                        try:
-                            args = json.loads(call.get("arguments", ""))
-                        except (json.JSONDecodeError, TypeError):
-                            result = {"error": "Tool arguments must be valid JSON"}
-                        else:
-                            result = sources.call(
-                                call.get("name"),
-                                args,
-                                min(remaining(), limits.request_timeout_seconds),
-                            )
-                        tool_errors += int("error" in result)
-                        trace.emit(
-                            "tool_result",
-                            call_id=call["call_id"],
-                            result=result,
-                            latency_seconds=time.monotonic() - tool_start,
-                            accounted_cost_usd=budget.charged,
-                        )
-                        messages.append(
-                            {
-                                "type": "function_call_output",
-                                "call_id": call["call_id"],
-                                "output": json.dumps(result),
-                            }
-                        )
-                    continue
-                text = "".join(
-                    content.get("text", "")
-                    for item in output
-                    if item.get("type") == "message"
-                    for content in item.get("content", [])
-                    if content.get("type") == "output_text"
-                )
-                answer = validate_answer(json.loads(text), sources)
-                status = "completed"
-                break
             else:
-                raise LimitReached("model_call_limit")
+                while True:
+                    response = model_step(messages)
+                    output = response["output"]
+                    messages.extend(output)
+                    if any(item.get("type") == "function_call" for item in output):
+                        messages = tool_step(messages, output)
+                    else:
+                        answer = finish_step(output)
+                        break
+            status = "completed"
     except LimitReached as exc:
         status, reason = "stopped", str(exc)
     except (ValueError, TypeError, KeyError, AttributeError, ProviderError) as exc:
@@ -169,6 +191,7 @@ def run(question, model, sources, limits=None, trace=None):
     )
     report = {
         "run_id": trace.id,
+        "runtime": runtime,
         "mode": model.mode,
         "question": question,
         "status": status,

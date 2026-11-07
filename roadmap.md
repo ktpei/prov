@@ -2,12 +2,62 @@
 
 Draft modules · 2026-11-04
 
-The first workflow is company research in a browser web app with workbook
-upload/download. Full live Excel integration follows the web MVP. This is a loose module
-map for the full selected brief. Module order expresses dependencies. It does
-not establish delivery dates or authorize implementation of every module.
-Read [spec.md](spec.md) for requirements and [context.md](context.md) for current
-verification. Live model calls remain deferred.
+The current milestone is company-context research using polished `search` and
+`read_source` tools, with evaluation. Workbook operations and workbook-aware
+research move to the next milestone. The final product remains an Excel add-in;
+standalone workbook export is not a required gate. Chatbot/UI and named-owner
+planning are deferred. The modules below retain later architecture reference;
+the sequence here supersedes their original ordering.
+
+## Implementation update — 2026-11-07
+
+First migration increment: LangChain/OpenRouter adapter and LangGraph execution
+with model, tool, and finalize nodes, sharing existing evidence/trace/limit checks.
+New page-text JSON ingestion builds immutable extracted-text packets with hashes
+and line-to-page maps. Search ranks passages; reads expose page references and
+continuation positions. See [ingestion.md](ingestion.md) for the actual contract.
+
+Verified: all 44 tests pass in the project virtual environment, including actual
+LangGraph replay and call-limit integration tests. Research dependencies are now
+installed and recorded in pyproject.toml/uv.lock. Earlier package-installation
+blockers below are historical. OpenRouter is configured locally with the selected
+baseline model deepseek/deepseek-v4.1-flash-1017. Accounting currently uses provisional
+$0.40/$1.60 per million input/output tokens, retained as estimates rather than
+asserted DeepSeek provider prices; verify the selected route before live acceptance. Credentials remain in ignored local configuration, never in
+tracked documentation. The user reports a $1/day limit configured in OpenRouter
+(not independently verified). Keep development runs at $0.10 maximum each and
+track costs; the application currently enforces per-run estimates, not a shared
+daily ledger. No live request has run.
+
+Raw PDF extraction, checkpoint resumption, server-safe deadlines, parser comparison,
+original-file retention, qualitative claim schemas, and expanded evaluation remain
+pending. No actual company PDF extraction or model-quality evaluation is claimed.
+
+## Active sequence — 2026-11-07
+
+1. Establish a complete mixed-format company packet and source manifest. Candidate:
+   [Cloudflare 2024](source-packet.md). Verify extraction, dates, original locators,
+   completeness, and permitted reuse before freezing benchmark material.
+2. Polish search/read: passage-level results, bounded reads, table/header context,
+   navigation through full documents, stable citations, explicit truncation and
+   extraction failures. Compare retrieval against human-located evidence.
+3. Add the intended OpenRouter access layer after model/rate/budget configuration.
+   Migrate to the selected LangChain + LangGraph stack from the existing custom
+   loop, starting with one agent and search/read. Preserve independent evidence
+   and evaluation contracts. Recheck
+   deadlines, accounting, traces, and provider compatibility if migrating.
+4. Extend evaluation for full-document numerical and qualitative research, source
+   disagreement, and missing evidence. Preserve the existing 10/15 split; new
+   tasks need their own version and split. Report retrieval and answer failures
+   separately with cost, latency, and human citation-support review.
+5. Next milestone: workbook-aware research and selected workbook capabilities.
+   Later: user-facing integration through the intended Excel add-in.
+
+Exit check: real research questions over complete company documents produce
+inspectable supported answers or appropriate abstentions, with reproducible
+traces and reviewed evaluation outcomes. No browser UI or workbook export is
+required for this milestone. This remains a narrower milestone than the sponsor's
+full 5–7-tool brief.
 
 ## Ownership
 

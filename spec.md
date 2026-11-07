@@ -2,18 +2,56 @@
 
 Draft for discussion · 2026-11-04
 
-## Purpose and status
+## Implementation update — 2026-11-07
 
-Build a finance research assistant that answers questions about companies using
-retrieved evidence, explains calculations, and preserves the sources behind its
-numbers. The first user-facing workflow is research answers from company data.
-The MVP is a standalone browser web app with workbook upload/download. Full
-live Excel integration follows the web MVP.
+First migration increment: LangChain/OpenRouter adapter and LangGraph execution
+with model, tool, and finalize nodes, sharing existing evidence/trace/limit checks.
+New page-text JSON ingestion builds immutable extracted-text packets with hashes
+and line-to-page maps. Search ranks passages; reads expose page references and
+continuation positions. See [ingestion.md](ingestion.md) for the actual contract.
 
-This document describes the intended product and proposed implementation
-boundaries. Existing code implements only the foundation described below.
-Writing this specification authorizes planning. Later modules require an
-implementation task, and live model calls remain deferred.
+Verified: all 44 tests pass in the project virtual environment, including actual
+LangGraph replay and call-limit integration tests. Research dependencies are now
+installed and recorded in pyproject.toml/uv.lock. Earlier package-installation
+blockers below are historical. OpenRouter is configured locally with the selected
+baseline model deepseek/deepseek-v4.1-flash-1017. Accounting currently uses provisional
+$0.40/$1.60 per million input/output tokens, retained as estimates rather than
+asserted DeepSeek provider prices; verify the selected route before live acceptance. Credentials remain in ignored local configuration, never in
+tracked documentation. The user reports a $1/day limit configured in OpenRouter
+(not independently verified). Keep development runs at $0.10 maximum each and
+track costs; the application currently enforces per-run estimates, not a shared
+daily ledger. No live request has run.
+
+Raw PDF extraction, checkpoint resumption, server-safe deadlines, parser comparison,
+original-file retention, qualitative claim schemas, and expanded evaluation remain
+pending. No actual company PDF extraction or model-quality evaluation is claimed.
+
+## Current milestone — 2026-11-07
+
+Company-context research tooling and evaluation come first. Polish only `search`
+and `read_source` against complete public source packets: releases, filings,
+investor presentations, and call materials. Research includes supported numerical
+and qualitative answers, cross-document comparisons, and explicit missing evidence.
+
+Workbook-aware research is a later milestone alongside workbook capabilities.
+Do not implement workbook upload, range inspection, editing, export, or Excel
+integration now. The intended final product is an Excel add-in; a standalone
+upload/download product is no longer a required delivery gate. Browser chatbot
+work is lower priority than retrieval and evaluation. Named owners and scheduling
+are not blockers for this milestone.
+
+The user plans to supply an OpenRouter API key. OpenRouter replaces direct
+OpenAI as the intended access layer; exact model, spending limit,
+and live acceptance remain unresolved. Possession of a key does not settle those
+settings. Current code still uses a custom Python loop and direct OpenAI adapter.
+LangChain + LangGraph are selected for the target architecture: LangChain owns
+the standard model-directed research loop; LangGraph provides workflow state,
+checkpointing, and later approval/resumption boundaries. No SDK migration has
+been implemented. Keep evidence storage and evaluation independent of the runtime.
+
+Existing offline foundation remains valid. The later web/workbook architecture
+and delivery sections below are retained as design reference, superseded by this
+milestone wherever they require Excel or a web interface before research tooling.
 
 ## Project context
 
@@ -41,12 +79,12 @@ single-agent proof of concept.
 | Two-person split | One owner for chatbot, one for tooling and evaluation |
 | Runtime | One model-directed loop |
 | Existing stack | Python 3.11+, standard-library runtime, CLI, OpenAI Responses adapter |
-| Provider | OpenAI first, exact model and live configuration deferred |
+| Provider | OpenRouter intended; exact model and live configuration pending |
 | Evidence | Public data under the sponsor's ground rules |
-| MVP interface | Browser chatbot with `.xlsx` upload/download |
+| Current interface priority | Tooling and evaluation first; chatbot deferred |
 | Proposed web stack | React + TypeScript + Vite, Tailwind CSS, Python + FastAPI |
 | Later Excel integration | Office.js sidebar with live workbook access and approved edits |
-| Source packet and companies | Proposed below, awaiting selection |
+| Source packet and companies | Cloudflare 2024 candidate; see source-packet.md |
 | Dates and spending | No agreed delivery dates or live-call budget |
 
 ## MVP workflow and demo

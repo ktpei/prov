@@ -3,7 +3,11 @@ name = "provenance-finance-agent"
 version = "0.1.0"
 description = "An evaluation-first, read-only finance agent prototype"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "langchain>=1.4.9",
+    "langchain-openai>=1.7.4",
+    "langgraph>=1.2.20",
+]
 
 [dependency-groups]
 dev = ["ruff==0.14.14"]

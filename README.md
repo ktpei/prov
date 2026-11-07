@@ -21,9 +21,40 @@ rules, and semester deliverables.
 - [Project scope](project.md) records the sponsor brief and implementation boundary.
 - [Working context](context.md) records verified status and decisions still pending.
 
-The selected product MVP is a browser chatbot with `.xlsx` upload/download,
-followed by full live Excel integration. The proposed stack is React + TypeScript
-+ Vite, Tailwind CSS, and Python + FastAPI. These features remain planned.
+Current priority (2026-11-07): company-context research and evaluation. Workbook
+capabilities and UI remain later work; the eventual interface is an Excel add-in.
+LangChain/OpenRouter adapter and LangGraph model/tool/finalize execution are now
+implemented; offline graph integration passes, while live provider acceptance
+remains unverified. The legacy offline path remains
+runnable without those dependencies. Page-text ingestion and passage search have
+offline tests; raw PDF/OCR extraction is not implemented. See
+[ingestion.md](ingestion.md) and [source-packet.md](source-packet.md).
+
+## Research runtime migration
+
+Research dependencies are installed and locked in `pyproject.toml`/`uv.lock`.
+Use the project virtual environment so graph integration tests actually run:
+
+```sh
+uv sync
+uv run python -m unittest discover -s tests -v
+uv run python -m provenance demo --runtime langgraph
+```
+
+All 44 tests pass, including graph replay and limit checks. The graph demo remains
+a scripted replay, not model-quality evidence. OpenRouter model/rates are locally
+configured; the CLI still requires exported variables and does not load `.env`
+automatically. The selected development model is `deepseek/deepseek-v4.1-flash-1017`.
+Accounting retains provisional estimates of $0.40 input / $1.60 output per million
+tokens; actual OpenRouter prices vary by provider and need route verification. The user reports
+a $1/day OpenRouter limit; this has not been independently verified. Use
+`--budget-usd 0.10` for initial development runs. Application budgets are per-run
+estimates, not a cross-run daily cap. Live provider acceptance remains pending.
+
+Graph state has explicit messages, response, and answer boundaries. Durable
+checkpoints/resumption remain disabled until budget reservations and evidence-read
+permissions can be persisted together. Deadlines still use the main-thread POSIX
+implementation; server execution is not supported yet.
 
 ## Try it without credentials
 
@@ -84,27 +115,28 @@ extra claims, and abstention reasoning. A replay passing these checks is only a
 test of the plumbing. It is not a model pass rate. Claim keys are descriptive;
 the pre-grader matches on values/units/periods/evidence, not exact key spelling.
 
-## Live OpenAI mode — configuration deferred
+## Live model mode — configuration deferred
 
-The user selected OpenAI first and explicitly deferred live calls. The adapter
-is implemented and tested with fake HTTP responses; no live provider acceptance
-test or paid model evaluation has been run.
+The intended live path defaults to OpenRouter through LangChain and LangGraph.
+Exact model and rates remain explicit configuration. No live provider acceptance
+test or paid model evaluation has been run. Legacy direct OpenAI remains available
+with `--provider openai --runtime custom`.
 
 When ready, export the settings shown in [.env.example](.env.example):
-`OPENAI_API_KEY`, `OPENAI_MODEL`, `OPENAI_INPUT_USD_PER_MILLION`, and
-`OPENAI_OUTPUT_USD_PER_MILLION`. Use verified current prices for the selected
+`OPENROUTER_API_KEY`, `OPENROUTER_MODEL`, `OPENROUTER_INPUT_USD_PER_MILLION`, and
+`OPENROUTER_OUTPUT_USD_PER_MILLION`. Use verified current prices for the selected
 model. The CLI does not load `.env` automatically and has no default paid model.
 The existing environment key alone never triggers a call.
 
 ```sh
-python3 -m provenance run --live --task dev-01 --budget-usd 0.50 --log-dir runs
+uv run --no-sync python -m provenance run --live --task dev-01 --budget-usd 0.50 --log-dir runs
 ```
 
 For exploratory public-web research, additionally export `EXA_API_KEY` and
 `EXA_MAX_REQUEST_USD` (a conservative per-request charge under your plan), then:
 
 ```sh
-python3 -m provenance run --live --web --budget-usd 0.50 \
+uv run --no-sync python -m provenance run --live --web --budget-usd 0.50 \
   --question "What revenue did Microsoft report for FY2025 Q1?" --log-dir runs
 ```
 
@@ -129,7 +161,8 @@ reservation stops the run. Configure account-side controls separately if needed.
 
 ## Development checks
 
-Runtime uses only Python's standard library. `uv` installs pinned Ruff for lint;
+The legacy offline runtime uses only Python's standard library. Research SDKs
+are installed through the locked project environment. `uv` installs pinned Ruff for lint;
 Yarn commands follow this repository's working conventions:
 
 ```sh
