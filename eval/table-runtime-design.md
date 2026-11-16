@@ -159,7 +159,8 @@ historical timing without the external committed gate chain. Replay establishes
 reproducible behavior, not cryptographic proof that a historical run occurred.
 Neither proves that annotators listed every necessary qualification. These
 limitations must accompany new assessment results. Current verification uses
-invented HTML only; the six proposed filings remain unacquired and ungraded.
+invented HTML only; two of six issuer copies passed acquisition and extraction,
+but the cohort remains incomplete and ungraded.
 
 
 ## Temporal control protocol
@@ -169,3 +170,29 @@ source-availability bounds. Annotation schema v2 keeps availability controls
 separate from positive financial evidence. The [availability policy](source-availability-policy.md)
 defines schema, uncertainty, trace requirements, metadata provenance and SEC
 calendar-day conventions. No real temporal assessment has run yet.
+
+
+## Explicit sidecar version protocol
+
+`table-assessment-run-protocol-v4` retains v3's temporal questions and annotation
+schema v2 and requires `sidecar_version`, exactly `native-html-tables-v2` or
+`native-html-tables-v3`. It records that value in the run report. The tool snapshot,
+replay verifier and annotation geometry extractor all use the declared version;
+report or annotation version/hash mismatches reject grading. The receipt and
+frozen protocol hashes bind the selected geometry. Versions v1–v3 continue to
+imply sidecar v2 and reject an explicit override; their report shapes stay unchanged.
+
+`TableSources(..., sidecar_version="native-html-tables-v3")` enables template
+isolation for standalone tools. Its default remains v2 for exact replay. Table and
+cell IDs belong to one sidecar version: removing an inert template table can
+renumber later visible tables, so annotations must be rebuilt and committed for
+the chosen geometry rather than relabeled.
+
+Synthetic integration covers a template decoy followed by a visible table,
+receipt-bound grading, mismatched report/annotation identities, invalid/missing
+versions, historical override rejection and blocked controls without retrieval
+construction. Thirty-six historical search/read responses replay exactly across
+all three search versions. [Evidence](reports/table-template-2026-11-16/runtime-compatibility.json).
+No new real financial assessment or promotion has occurred. Any use in the
+six-filing assessment requires a separately committed runtime/protocol amendment;
+existing gates remain unchanged and cannot validate the newly changed code.

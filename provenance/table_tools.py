@@ -86,7 +86,15 @@ class TableSources:
     first-five/predecessor heuristic does not claim to find every header.
     """
 
-    def __init__(self, directory, *, search_version="source-scoped-visible-row-bm25-v2"):
+    def __init__(
+        self,
+        directory,
+        *,
+        search_version="source-scoped-visible-row-bm25-v2",
+        sidecar_version=SIDECAR_VERSION,
+    ):
+        if sidecar_version not in {"native-html-tables-v2", "native-html-tables-v3"}:
+            raise ValueError("Unknown table sidecar version")
         if search_version not in {
             "source-scoped-visible-row-bm25-v1",
             "source-scoped-visible-row-bm25-v2",
@@ -109,8 +117,8 @@ class TableSources:
             if not original_file or Path(original_file).suffix.lower() not in {".html", ".htm"}:
                 continue
             original = (self.directory / original_file).resolve()
-            sidecar = extract_html_tables(original)
-            if sidecar["version"] != SIDECAR_VERSION:
+            sidecar = extract_html_tables(original, version=sidecar_version)
+            if sidecar["version"] != sidecar_version:
                 raise ValueError(f"Unexpected table sidecar version: {source_id}")
             if sidecar["original_sha256"] != source["original_sha256"]:
                 raise ValueError(

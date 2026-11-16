@@ -36,9 +36,14 @@ compares four default-v2 sidecars against committed baseline `72d1fba`: both exi
 Cloudflare HTML sources and both acquired Old Dominion copies replay exactly.
 No financial questions, model calls or new retrieval evaluations were run.
 
-This is a standalone extraction repair. Default extraction, `TableSources`, the
-locked runner and grading still use v2. The repaired version is not promoted into
-the frozen assessment. A future runtime must carry an explicit sidecar version
-through tools, protocol and grading and receive a new freeze. Existing gates and
-receipts are historical snapshots and remain unchanged; current code has a new
-runtime digest, so it cannot run under the earlier frozen protocol.
+The initial repair was standalone. A subsequent integration adds explicit sidecar
+selection to `TableSources` and assessment run-protocol v4, including exact replay
+and annotation-geometry checks in the grader. Earlier protocols and default tools
+still use v2. Five integration tests pass, bringing the full suite to 259; lint
+passes. [Runtime compatibility](runtime-compatibility.json) replays all 36 recorded
+search/read responses across the three prior search policies exactly.
+
+No new real assessment or default promotion has occurred. Using v3 for the
+six-filing assessment requires a new committed runtime/protocol amendment and
+version-matching annotations. Existing gates and receipts remain historical
+snapshots; current code cannot run under the earlier frozen runtime digest.

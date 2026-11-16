@@ -70,7 +70,8 @@ FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. Ne
 `--html-text-version native-html-text-v2` to suppress explicit hidden content and
 preserve text boundaries; legacy extraction remains the default for replay.
 A standalone opt-in [table sidecar v3](eval/reports/table-template-2026-11-16/report.md)
-also isolates inert templates; existing table tools remain on v2 pending a new freeze.
+also isolates inert templates. Tools and assessment protocol v4 support explicit
+sidecar selection; defaults retain v2, and a real assessment requires a new freeze.
 [Extraction findings](eval/reports/source-ingestion-2026-11-16/report.md) and
 [connected table-evidence protocol](eval/table-evidence-protocol.md) distinguish
 structure, retrieval, and financial meaning. The [raw table tool probe](eval/reports/table-runtime-2026-11-16/report.md)

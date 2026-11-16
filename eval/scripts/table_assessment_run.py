@@ -108,10 +108,22 @@ def _validate_sha256(value, label):
         raise ValueError(f"{label} must be a lowercase SHA-256 digest")
 
 
+def _is_temporal(protocol):
+    return protocol["version"] in {
+        "table-assessment-run-protocol-v3",
+        "table-assessment-run-protocol-v4",
+    }
+
+
+def _sidecar_version(protocol):
+    return protocol.get("sidecar_version", "native-html-tables-v2")
+
+
 def _validate_protocol(protocol):
     committed = protocol.get("version") in (
         "table-assessment-run-protocol-v2",
         "table-assessment-run-protocol-v3",
+        "table-assessment-run-protocol-v4",
     )
     _require_exact_keys(
         protocol,
@@ -122,13 +134,20 @@ def _validate_protocol(protocol):
             "search_version",
             "runtime_sha256",
         }
-        | ({"assessment_receipt_sha256"} if committed else set()),
+        | ({"assessment_receipt_sha256"} if committed else set())
+        | (
+            {"sidecar_version"}
+            if protocol.get("version") == "table-assessment-run-protocol-v4"
+            else set()
+        ),
         "Protocol",
     )
     if protocol["version"] != PROTOCOL_VERSION and not committed:
         raise ValueError(f"Protocol version must be {PROTOCOL_VERSION}")
     if committed:
         _validate_sha256(protocol["assessment_receipt_sha256"], "Assessment receipt")
+    if _sidecar_version(protocol) not in ("native-html-tables-v2", "native-html-tables-v3"):
+        raise ValueError("Unknown protocol sidecar version")
     for field in ("questions_sha256", "corpus_manifest_sha256", "runtime_sha256"):
         _validate_sha256(protocol[field], f"Protocol {field}")
     if (
@@ -278,7 +297,7 @@ def run(protocol_path, questions_path, corpus, output):
     if current_runtime_sha256 != protocol["runtime_sha256"]:
         raise ValueError("Runtime SHA-256 does not match protocol")
     cases = _validate_questions(questions, _native_html_source_ids(manifest))
-    temporal = protocol["version"] == "table-assessment-run-protocol-v3"
+    temporal = _is_temporal(protocol)
     if temporal != (questions["version"] == "table-assessment-questions-v2"):
         raise ValueError("Question and run-protocol temporal versions must agree")
     source_metadata = {source["id"]: source for source in manifest["sources"]}
@@ -321,12 +340,18 @@ def run(protocol_path, questions_path, corpus, output):
             case["availability"] = decision
     if "assessment_receipt_sha256" in protocol:
         report["assessment_receipt_sha256"] = protocol["assessment_receipt_sha256"]
+    if "sidecar_version" in protocol:
+        report["sidecar_version"] = protocol["sidecar_version"]
     output.mkdir(parents=True, exist_ok=False)
     _persist(report, output)
 
     try:
         tables = (
-            TableSources(corpus, search_version=protocol["search_version"])
+            TableSources(
+                corpus,
+                search_version=protocol["search_version"],
+                sidecar_version=_sidecar_version(protocol),
+            )
             if not temporal or any(d["allowed"] for d in decisions)
             else None
         )

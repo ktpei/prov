@@ -8,9 +8,11 @@ from pathlib import Path
 from eval.scripts.table_assessment_run import (
     _canonical,
     _digest,
+    _is_temporal,
     _load_object,
     _native_html_source_ids,
     _require_exact_keys,
+    _sidecar_version,
     _status_counts,
     _validate_protocol,
     _validate_questions,
@@ -55,12 +57,20 @@ def _verify_execution(run_protocol, questions, report, corpus):
         raise ValueError("Only completed integrity-verified runs can be graded")
     for key in ("questions_sha256", "corpus_manifest_sha256", "runtime_sha256", "search_version"):
         _same(report.get(key), run_protocol[key], f"Run identity mismatch: {key}")
+    if "sidecar_version" in run_protocol:
+        _same(
+            report.get("sidecar_version"),
+            run_protocol["sidecar_version"],
+            "Run sidecar version mismatch",
+        )
+    elif "sidecar_version" in report:
+        raise ValueError("Historical run report cannot override sidecar version")
     _same(report.get("model_calls"), 0, "Unexpected model calls")
     _same(report.get("task_denominator"), len(questions), "Run denominator mismatch")
     cases = report.get("cases")
     if not isinstance(cases, list) or len(cases) != len(questions):
         raise ValueError("Run cases missing or duplicated")
-    temporal = run_protocol["version"] == "table-assessment-run-protocol-v3"
+    temporal = _is_temporal(run_protocol)
     metadata = {
         source["id"]: source
         for source in _load_object((corpus / "sources.json").read_bytes(), "Corpus manifest")[
@@ -71,7 +81,11 @@ def _verify_execution(run_protocol, questions, report, corpus):
         [availability(metadata[q["source_id"]], q["as_of"]) for q in questions] if temporal else []
     )
     tables = (
-        TableSources(corpus, search_version=run_protocol["search_version"])
+        TableSources(
+            corpus,
+            search_version=run_protocol["search_version"],
+            sidecar_version=_sidecar_version(run_protocol),
+        )
         if not temporal or any(d["allowed"] for d in decisions)
         else None
     )
@@ -135,7 +149,7 @@ def _validate_annotations(annotations, questions, sources, corpus, run_protocol)
         {"version", "questions_sha256", "corpus_manifest_sha256", "sources", "cases"},
         "Annotations",
     )
-    temporal = run_protocol["version"] == "table-assessment-run-protocol-v3"
+    temporal = _is_temporal(run_protocol)
     expected_version = (
         "table-assessment-annotations-v2" if temporal else "table-assessment-annotations-v1"
     )
@@ -150,7 +164,9 @@ def _validate_annotations(annotations, questions, sources, corpus, run_protocol)
     cells = {}
     for source_id in sorted(source_ids):
         source = sources.documents[source_id]
-        sidecar = extract_html_tables(corpus / source["original_file"])
+        sidecar = extract_html_tables(
+            corpus / source["original_file"], version=_sidecar_version(run_protocol)
+        )
         _same(
             bindings[source_id],
             {
@@ -293,6 +309,7 @@ def grade(
     if run_protocol["version"] not in (
         "table-assessment-run-protocol-v2",
         "table-assessment-run-protocol-v3",
+        "table-assessment-run-protocol-v4",
     ):
         raise ValueError("Grading requires a precommitted assessment receipt")
     if run_protocol["assessment_receipt_sha256"] != protocol["receipt_sha256"]:
@@ -328,7 +345,7 @@ def grade(
     questions = _validate_questions(
         _load_object(raw["questions"], "Questions"), _native_html_source_ids(json.loads(manifest))
     )
-    temporal = run_protocol["version"] == "table-assessment-run-protocol-v3"
+    temporal = _is_temporal(run_protocol)
     if temporal != ("as_of" in questions[0]):
         raise ValueError("Question and run-protocol temporal versions must agree")
     report = _load_object(raw["report"], "Report")
