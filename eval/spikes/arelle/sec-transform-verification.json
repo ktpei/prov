@@ -1,0 +1,21 @@
+{
+  "result_sha256": "6e68cad69b919b0f700f27d8f6fc7a2a416018ef900e55c0f0b01a7747ab2230",
+  "independent_reproduction_sha256": "6e68cad69b919b0f700f27d8f6fc7a2a416018ef900e55c0f0b01a7747ab2230",
+  "review": "Independent read-only same-model-family coding-agent verification, not human financial validation",
+  "source_expectations": "Derived from original HTML and pinned official functions before reviewer inspected runtime outputs",
+  "optional_tests": 7,
+  "core_tests": 412,
+  "lint": "passed",
+  "test_source_sha256": "d3878343c53890b1cc05d7e3198958bee94264dd8061f6b9641a5e12a16e69ee",
+  "python": "3.13.2",
+  "matched_distributions": 22,
+  "source_occurrence_canonical_xml_matches": 504,
+  "loaded_document_hashes_verified": 25,
+  "unchanged_occurrence_records": 492,
+  "transformed_expectations_verified": 12,
+  "preserved_duplicate_groups": 78,
+  "added_complete_consistent_groups": 2,
+  "within_run_diagnostics": "stable at all three checkpoints",
+  "historical_exploratory_warning_count_discrepancy": "unexplained; not attributed to lazy value access",
+  "disposition": "Targeted transforms verified; general source-evidence acceptance remains unverified"
+}

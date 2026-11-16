@@ -91,8 +91,11 @@ facts. Seven optional tests pass. Integration with the guarded adapter remains p
 A [real-filing dependency experiment](eval/reports/xbrl-dependencies-2026-11-16/report.md)
 acquired 24 schema/linkbase documents and replayed 2,417 reference edges offline.
 The existing ODFL June filing loads all 25 declared documents from a local package,
-but remains rejected: 12 of 504 facts require absent SEC transforms. Thirteen new
-core tests cover reference semantics and durable bounded-acquisition failures.
+initially rejected 12 of 504 facts for absent SEC transforms. A subsequent
+[pinned transform comparison](eval/spikes/arelle/sec-transforms-report.md) resolves
+all twelve against independent source expectations, preserves the other 492 records,
+and validates all 504 occurrences. General evidence acceptance remains unverified.
+Thirteen core tests cover reference semantics and bounded-acquisition failures.
 
 
 ## Context-priority challenger — 2026-11-16

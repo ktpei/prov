@@ -150,9 +150,11 @@ pass. A separate [14-case applicability matrix](eval/spikes/arelle/applicability
 now distinguishes usable defaults, domain membership and closed-cube container scope;
 seven additional tests pass. Integration into a general adapter remains pending.
 A [real-filing offline load](eval/reports/xbrl-dependencies-2026-11-16/report.md) now
-uses 24 acquired dependencies for the existing ODFL June filing. It remains rejected
-because 12 of 504 facts need missing SEC transformations; no financial sidecar is
-accepted. The dependency inventory/acquisition path adds 13 core regression tests.
+uses 24 acquired dependencies for the existing ODFL June filing. The subsequent
+[pinned SEC transform comparison](eval/spikes/arelle/sec-transforms-report.md) resolves
+its twelve transformation failures while preserving the other 492 records. All 504
+facts pass schema validation; general financial evidence acceptance remains unverified.
+The dependency inventory/acquisition path adds 13 core regression tests.
 
 
 Source ingestion now includes an independent native HTML geometry sidecar,

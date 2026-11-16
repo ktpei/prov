@@ -1,0 +1,41 @@
+{
+  "commit": "4891c4c9889c77af247428ceff4fa7cc52d534ea",
+  "release": "26.3",
+  "redirects": "disabled",
+  "retries": 0,
+  "files": [
+    {
+      "requested_url": "https://raw.githubusercontent.com/Arelle/EDGAR/4891c4c9889c77af247428ceff4fa7cc52d534ea/transform/__init__.py",
+      "local_file": "sec_transform/__init__.py",
+      "expected_sha256": "2296586f945ffd95ab37d3d4147c4e45f42ce4e5f397f61143e053208adefbf1",
+      "requested_at": "2026-11-16T19:41:32.706946+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/Arelle/EDGAR/4891c4c9889c77af247428ceff4fa7cc52d534ea/transform/__init__.py",
+      "bytes": 41912,
+      "sha256": "2296586f945ffd95ab37d3d4147c4e45f42ce4e5f397f61143e053208adefbf1",
+      "status": "hash_verified"
+    },
+    {
+      "requested_url": "https://raw.githubusercontent.com/Arelle/EDGAR/4891c4c9889c77af247428ceff4fa7cc52d534ea/transform/text2num.py",
+      "local_file": "sec_transform/text2num.py",
+      "expected_sha256": "6c9b26354320a2fb34fe380cdc71ff7f8d1cc712811e6b10c661e512f0383409",
+      "requested_at": "2026-11-16T19:41:32.961671+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/Arelle/EDGAR/4891c4c9889c77af247428ceff4fa7cc52d534ea/transform/text2num.py",
+      "bytes": 3660,
+      "sha256": "6c9b26354320a2fb34fe380cdc71ff7f8d1cc712811e6b10c661e512f0383409",
+      "status": "hash_verified"
+    },
+    {
+      "requested_url": "https://raw.githubusercontent.com/Arelle/EDGAR/4891c4c9889c77af247428ceff4fa7cc52d534ea/LICENSE",
+      "local_file": "LICENSE",
+      "expected_sha256": "5537d4d10b76b81b6e8dfd8b644480a4b1efa332fbb0cdb61126c5be781ef7b4",
+      "requested_at": "2026-11-16T19:41:33.232318+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/Arelle/EDGAR/4891c4c9889c77af247428ceff4fa7cc52d534ea/LICENSE",
+      "bytes": 6554,
+      "sha256": "5537d4d10b76b81b6e8dfd8b644480a4b1efa332fbb0cdb61126c5be781ef7b4",
+      "status": "hash_verified"
+    }
+  ]
+}

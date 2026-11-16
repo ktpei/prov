@@ -120,9 +120,11 @@ remain separate from the guarded extraction path.
 
 The [dependency acquisition experiment](../../reports/xbrl-dependencies-2026-11-16/report.md)
 now loads the existing ODFL June original and 24 declared dependencies under OS
-network denial. The run is rejected for 12 missing SEC transforms among 504 facts.
-This is exploratory loading, not the completed guarded extractor or accepted
-source-cell evidence. Targeted transform verification is the next concrete step.
+network denial. The initial run rejects 12 missing SEC transforms among 504 facts.
+The [subsequent pinned-plugin comparison](sec-transforms-report.md) resolves those
+twelve values against independent expectations and preserves the other 492 records.
+All 504 facts pass schema validation; full occurrence/source-cell evidence acceptance
+remains the next integration step.
 
 ## Remaining acceptance work
 
@@ -135,8 +137,8 @@ source-cell evidence. Targeted transform verification is the next concrete step.
    or unresolved references instead of silently accepting partial models.
 4. Round-trip accepted source locators and verify visible-cell associations with
    local rendering. Hidden/detached/ambiguous facts get explicit dispositions.
-5. Complete the separately staged ODFL package smoke with an explicitly pinned
-   SEC transform plugin, preserving the initial rejected run. Acquisition stays
+5. Integrate the verified ODFL package/plugin smoke into a full occurrence sidecar,
+   preserving the initial rejected run and paired comparison. Acquisition stays
    separate from denied-network loading. The other two tagged filings remain
    unbundled; preserve them and the untagged release disposition. This remains
    development smoke testing, not prospective benchmark improvement.
