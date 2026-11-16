@@ -180,6 +180,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--budget-usd", type=float, required=True)
     parser.add_argument("--per-task-usd", type=float, default=0.03)
+    parser.add_argument("--per-turn-usd", type=float, default=0.02)
     parser.add_argument("--timeout", type=float, default=60)
     args = parser.parse_args()
     bundle = load_bundle(args.prepared)
@@ -196,13 +197,21 @@ def main():
         instructions=INSTRUCTIONS,
         tool_schemas=[],
     )
-    ledger = run_prepared(
+    runner = run_prepared
+    extra = {}
+    if bundle["manifest"]["source"]["dataset"] == "convfinqa":
+        from provenance.conversation_run import run_conversations
+
+        runner = run_conversations
+        extra["per_turn_usd"] = args.per_turn_usd
+    ledger = runner(
         bundle,
         model,
         args.output,
         budget_usd=args.budget_usd,
         per_task_usd=args.per_task_usd,
         timeout=args.timeout,
+        **extra,
     )
     print(
         json.dumps(
