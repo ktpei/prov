@@ -83,6 +83,10 @@ finds that the current policy loses those complete packets after five reads
 (2/3 before projection, 0/3 retained). This is not measured answer accuracy; agent
 defaults are unchanged.
 
+A [same-budget retention challenger](eval/reports/context-priority-2026-11-16/report.md)
+recovers the two inspected losses by prioritizing earlier optional reads. It remains
+experimental: these exposed cases do not justify changing the default policy.
+
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
 All 419 native-text pages replay unchanged with structured page diagnostics.

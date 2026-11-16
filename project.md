@@ -1,5 +1,14 @@
 # Project scope
 
+## Context-priority challenger — 2026-11-16
+
+[Earlier optional-read preference](eval/reports/context-priority-2026-11-16/report.md)
+recovers complete packets for 2/3 cases at five reads, versus 0/3 for the exact
+baseline, under the same 32K character limit. NIKE and Ulta improve; Walmart still
+fails retrieval. Two wins, zero losses, one tie on exposed development cases; no
+default promotion. Fresh validation is required before adoption. All 310 tests
+and lint pass, with no paid calls or holdout changes.
+
 ## Context-retention result — 2026-11-16
 
 [The original-question context diagnostic](eval/reports/context-retention-2026-11-16/report.md)
