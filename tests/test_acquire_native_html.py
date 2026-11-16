@@ -105,6 +105,97 @@ class AcquisitionTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             acquire(self.selection, self.sha, output)
 
+    def test_alternate_routes_keep_all_sources_and_reject_mismatched_delivery(self):
+        prior = self.root / "prior.json"
+        prior.write_text(json.dumps({"selection_sha256": self.sha}))
+        policy = {
+            "version": "issuer-html-delivery-policy-v1",
+            "selection_sha256": self.sha,
+            "previous_receipt_sha256": hashlib.sha256(prior.read_bytes()).hexdigest(),
+            "permitted_hosts": ["issuer.example"],
+            "routes": [
+                {
+                    "source_id": d["source_id"],
+                    "url": f"https://issuer.example/content/{d['accession']}/filing.htm"
+                    if i >= 4
+                    else None,
+                    "metadata_url": "https://issuer.example/filings" if i >= 4 else None,
+                    "link_kind": "accession_filename_path" if i >= 4 else None,
+                }
+                for i, d in enumerate(self.documents)
+            ],
+        }
+        path = self.root / "delivery.json"
+        path.write_text(json.dumps(policy))
+        opener = mock.Mock()
+        opener.open.side_effect = lambda request, timeout: Response(
+            content(next(d for d in self.documents if d["accession"] in request.full_url)),
+            request.full_url,
+        )
+        with (
+            mock.patch("urllib.request.build_opener", return_value=opener),
+            mock.patch("time.sleep"),
+        ):
+            report = acquire(
+                self.selection,
+                self.sha,
+                self.root / "alternate",
+                delivery_policy=path,
+                delivery_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                previous_receipt=prior,
+            )
+        self.assertEqual(opener.open.call_count, 2)
+        self.assertEqual(report["document_denominator"], 6)
+        self.assertEqual(report["identity_verified_count"], 2)
+        self.assertEqual(report["artifact_class"], "issuer_copy_not_sec_byte_equivalent")
+        self.assertEqual([d["status"] for d in report["documents"]][:4], ["no_verified_route"] * 4)
+        for bad_url in (
+            "https://issuer.example.evil/content/x/filing.htm",
+            "https://issuer.example:443/content/x/filing.htm",
+            "https://issuer.example/content/wrong/filing.htm",
+            f"https://issuer.example/content/{self.documents[4]['accession']}/filing.htm;different-resource",
+        ):
+            policy["routes"][4]["url"] = bad_url
+            path.write_text(json.dumps(policy))
+            with self.subTest(url=bad_url), mock.patch("urllib.request.build_opener") as construct:
+                with self.assertRaises(ValueError):
+                    acquire(
+                        self.selection,
+                        self.sha,
+                        self.root / "invalid",
+                        delivery_policy=path,
+                        delivery_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                        previous_receipt=prior,
+                    )
+                construct.assert_not_called()
+        policy["permitted_hosts"] = ["www.sec.gov."]
+        policy["routes"][4]["url"] = (
+            f"https://www.sec.gov./content/{self.documents[4]['accession']}/filing.htm"
+        )
+        path.write_text(json.dumps(policy))
+        with self.assertRaisesRegex(ValueError, "non-SEC"):
+            acquire(
+                self.selection,
+                self.sha,
+                self.root / "dot-host",
+                delivery_policy=path,
+                delivery_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                previous_receipt=prior,
+            )
+        policy["permitted_hosts"] = ["issuer.example"]
+        policy["routes"][4].update(
+            url="https://issuer.example/node/123/html", link_kind="official_opaque_html_link"
+        )
+        path.write_text(json.dumps(policy))
+        from eval.scripts.acquire_native_html import delivery_routes
+
+        self.assertEqual(
+            delivery_routes(
+                path, hashlib.sha256(path.read_bytes()).hexdigest(), prior, self.sha, self.documents
+            )["routes"][4]["link_kind"],
+            "official_opaque_html_link",
+        )
+
     def test_interrupted_request_keeps_pending_sources_and_byte_limit_fails(self):
         opener = mock.Mock()
         opener.open.side_effect = KeyboardInterrupt()

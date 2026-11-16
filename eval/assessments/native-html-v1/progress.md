@@ -36,3 +36,28 @@ Casey's exact filing-detail pages were located, but later metadata views returne
 403. Ameren's dynamic official list did not yet yield verified exact document
 links. No PDF replacement, repeated SEC request, or alternate acquisition occurred.
 The related source-ingestion chat is researching those remaining metadata routes.
+
+## Alternate-delivery policy prepared before acquisition
+
+The source-ingestion chat verified issuer-published native-HTML links for all six
+selected filing identities from official listing/detail metadata, without opening
+filing bodies. Casey's uses opaque node links; Ameren links to a CDN with opaque
+HTML filenames; Old Dominion embeds the accession and primary filename in its
+paths. The [delivery policy](issuer-delivery-policy-v1.json) records every exact
+URL, metadata source and explicit link-identity convention. This is metadata
+provenance, not proof of SEC-original byte equivalence.
+
+The separate acquisition policy binds the unchanged selection and prior failed
+receipt. It permits only the listed HTTPS delivery hosts/URLs, rejects credentials,
+ports, path parameters, redirects and automatic fallbacks, and retains all six
+source dispositions. Missing routes would issue no request. Existing HTTP/body
+and DEI identity checks remain in force. The acquisition-only implementation
+change requires an explicit amended runtime freeze; earlier gates remain intact.
+
+If acquired, these files are **issuer-published delivery artifacts**, not verified
+SEC-original bytes. Neither SEC `not_before` nor SEC `observed_by` automatically
+transfers to them. Original SEC acceptance metadata stays separate. No existing
+availability controls, original-source equivalence, corpus eligibility or financial
+accuracy will be declared from matching CIK/form/period alone. The original
+six-document assessment scope is preserved; alternate-artifact diagnostics are a
+separate condition until their evidence and applicability are reviewed.
