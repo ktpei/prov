@@ -7,18 +7,72 @@ not address more than 10,000 logical columns. Nested tables are separate tables.
 import argparse
 import hashlib
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 
 MAX_SPAN = 1_000
 MAX_COLUMNS = 10_000
 SUPPRESSED_TAGS = {"head", "script", "style", "noscript", "ix:header"}
+VOID_TAGS = {
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+}
+BLOCK_TAGS = {
+    "p",
+    "div",
+    "li",
+    "section",
+    "article",
+    "header",
+    "footer",
+    "main",
+    "nav",
+    "aside",
+    "blockquote",
+    "pre",
+    "address",
+    "dl",
+    "dt",
+    "dd",
+    "ul",
+    "ol",
+    "figure",
+    "figcaption",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "hr",
+    "fieldset",
+    "legend",
+    "summary",
+    "details",
+}
 LIMITATIONS = [
     "Cell text is decoded, whitespace-normalized extracted content, not an original HTML byte quote.",
     "Nested tables are extracted independently and their text and cells are excluded from parent cells.",
     "Tables may be layout or decorative; extraction does not establish header associations or entailment.",
     "No value, sign, unit, period, header, metric identity, or financial meaning is inferred.",
+    "Only explicit HTML hidden attributes and simple inline display or visibility styles are recorded; external CSS visibility is unresolved.",
+    "HTML scope, headers, and id attributes are recorded without resolving header associations.",
     f"Row and column spans are limited to {MAX_SPAN}; logical columns are limited to {MAX_COLUMNS}.",
+    "HTML rowspan=0 is valid HTML but intentionally unsupported and rejected.",
+    "Hidden cell self-closing slashes are ignored until an explicit or implicit cell end; other hidden non-void self-closing elements are rejected.",
     "Only unambiguous optional td, th, and tr end tags are handled; unfinished structures are rejected.",
 ]
 
@@ -36,9 +90,32 @@ def _positive_span(attrs, name):
         value = int(raw)
     except (TypeError, ValueError) as exc:
         raise ValueError(f"Invalid {name}: {raw!r}") from exc
+    if name == "rowspan" and value == 0:
+        raise ValueError("Unsupported rowspan=0")
     if not 1 <= value <= MAX_SPAN:
         raise ValueError(f"Invalid {name}: {raw!r}")
     return value
+
+
+def _is_explicitly_hidden(attrs):
+    """Recognize only hiding that is explicit in the element's HTML."""
+    for key, value in attrs:
+        if key.lower() == "hidden":
+            return True
+        if key.lower() != "style" or value is None:
+            continue
+        for declaration in value.split(";"):
+            if ":" not in declaration:
+                continue
+            property_name, property_value = declaration.split(":", 1)
+            property_name = "".join(property_name.lower().split())
+            property_value = " ".join(property_value.lower().split())
+            property_value = re.sub(r"!\s*important$", "", property_value).rstrip()
+            if property_name == "display" and property_value == "none":
+                return True
+            if property_name == "visibility" and property_value in {"hidden", "collapse"}:
+                return True
+    return False
 
 
 class _TableParser(HTMLParser):
@@ -46,7 +123,7 @@ class _TableParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.tables = []
         self.stack = []
-        self.suppressed = []
+        self.blocked = []
 
     def _current(self):
         return self.stack[-1] if self.stack else None
@@ -71,7 +148,7 @@ class _TableParser(HTMLParser):
         table["record"]["rows"].append(row)
         table["row"] = row
 
-    def _start_cell(self, table, tag, attrs):
+    def _start_cell(self, table, tag, attrs, explicitly_hidden):
         if table["row"] is None:
             raise ValueError("Cell outside an active row")
         self._close_cell(table)
@@ -96,25 +173,41 @@ class _TableParser(HTMLParser):
             "column_span": column_span,
             "tag": tag,
             "text": "",
+            "visibility": "explicitly_hidden" if explicitly_hidden else "not_explicitly_hidden",
             "original_location": _location(self.getpos()),
         }
         if "id" in attributes:
             record["html_id"] = attributes["id"]
+        if "scope" in attributes:
+            record["scope"] = attributes["scope"]
+        if "headers" in attributes:
+            record["headers"] = (attributes["headers"] or "").split()
         table["row"]["cells"].append(record)
         for col in range(column, column + column_span):
             table["occupied"][col] = row_index + row_span
         table["cell"] = {"record": record, "parts": []}
 
-    def handle_starttag(self, tag, attrs):
+    def _start_block(self, tag, cell=False, row=False, table=False, self_closing=False):
+        if not self_closing and tag not in VOID_TAGS:
+            self.blocked.append({"tag": tag, "cell": cell, "row": row, "table": table})
+
+    def _starttag(self, tag, attrs, self_closing=False):
         tag = tag.lower()
-        if self.suppressed:
-            if tag in SUPPRESSED_TAGS:
-                self.suppressed.append(tag)
-            return
+        if self.blocked and self.blocked[-1]["cell"] and tag in {"td", "th", "tr"}:
+            self._close_cell(self._current())
+            self.blocked.pop()  # An incoming cell/row implicitly ends the preceding cell.
+        is_hidden = _is_explicitly_hidden(attrs)
+        is_blocked = bool(self.blocked)
+        is_blocked_table = any(block["table"] for block in self.blocked)
         if tag in SUPPRESSED_TAGS:
-            self.suppressed.append(tag)
+            self._start_block(tag, self_closing=self_closing)
             return
-        if tag == "table":
+        if tag == "table" and not (is_blocked or is_hidden):
+            parent = self._current()
+            if parent is not None:
+                target = parent.get("caption") or parent["cell"]
+                if target is not None:
+                    target["parts"].append(" ")
             number = len(self.tables) + 1
             record = {
                 "id": f"table-{number}",
@@ -125,26 +218,73 @@ class _TableParser(HTMLParser):
             if "id" in attributes:
                 record["html_id"] = attributes["id"]
             self.tables.append(record)
-            self.stack.append({"record": record, "row": None, "cell": None, "occupied": {}})
+            self.stack.append(
+                {"record": record, "row": None, "cell": None, "occupied": {}, "caption": None}
+            )
             return
         table = self._current()
+        if tag == "table":
+            self._start_block(tag, table=True, self_closing=self_closing)
+            return
         if table is None:
+            if is_blocked or is_hidden:
+                self._start_block(tag, self_closing=self_closing)
+            return
+        if is_blocked_table:
+            self._start_block(tag, self_closing=self_closing)
             return
         if tag == "tr":
             self._start_row(table)
+            if is_blocked or is_hidden:
+                self._start_block(tag, row=True, self_closing=self_closing)
+            elif self_closing:
+                self._close_row(table)
         elif tag in {"td", "th"}:
-            self._start_cell(table, tag, attrs)
-        elif tag == "br" and table["cell"] is not None:
-            table["cell"]["parts"].append(" ")
+            self._start_cell(table, tag, attrs, explicitly_hidden=is_blocked or is_hidden)
+            if is_blocked or is_hidden:
+                self._start_block(tag, cell=True, self_closing=self_closing)
+            elif self_closing:
+                self._close_cell(table)
+        elif tag == "caption" and not (is_blocked or is_hidden):
+            table["caption"] = {"parts": [], "original_location": _location(self.getpos())}
+        elif (tag == "br" or tag in BLOCK_TAGS) and not (is_blocked or is_hidden):
+            target = table.get("caption") or table["cell"]
+            if target is not None:
+                target["parts"].append(" ")
+        elif is_blocked or is_hidden:
+            self._start_block(tag, self_closing=self_closing)
+
+    def handle_starttag(self, tag, attrs):
+        self._starttag(tag, attrs)
 
     def handle_startendtag(self, tag, attrs):
-        self.handle_starttag(tag, attrs)
+        if tag.lower() in {"td", "th"} and _is_explicitly_hidden(attrs):
+            self._starttag(tag, attrs)  # HTML ignores the slash on non-void cells.
+            return
+        if tag.lower() not in VOID_TAGS and (
+            _is_explicitly_hidden(attrs)
+            or tag.lower() in SUPPRESSED_TAGS
+            or (self.blocked and ":" not in tag and tag.lower() not in {"td", "th"})
+        ):
+            raise ValueError("Unsupported self-closing non-void HTML element with hidden content")
+        self._starttag(tag, attrs, self_closing=True)
 
     def handle_endtag(self, tag):
         tag = tag.lower()
-        if self.suppressed:
-            if tag == self.suppressed[-1]:
-                self.suppressed.pop()
+        if self.blocked and self.blocked[-1]["cell"] and tag in {"tr", "table"}:
+            self._close_cell(self._current())
+            self.blocked.pop()
+        if self.blocked:
+            block = self.blocked[-1]
+            if tag != block["tag"]:
+                raise ValueError(
+                    f"Ambiguous malformed hidden structure: expected </{block['tag']}>"
+                )
+            if block["cell"]:
+                self._close_cell(self._current())
+            if block["row"]:
+                self._close_row(self._current())
+            self.blocked.pop()
             return
         table = self._current()
         if table is None:
@@ -153,20 +293,40 @@ class _TableParser(HTMLParser):
             self._close_cell(table)
         elif tag == "tr":
             self._close_row(table)
+        elif tag == "caption" and table.get("caption") is not None:
+            caption = table.pop("caption")
+            table["record"]["caption"] = {
+                "text": " ".join("".join(caption["parts"]).split()),
+                "original_location": caption["original_location"],
+            }
         elif tag == "table":
             self._close_row(table)
             self.stack.pop()
+            parent = self._current()
+            if parent is not None:
+                target = parent.get("caption") or parent["cell"]
+                if target is not None:
+                    target["parts"].append(" ")
+        elif tag in BLOCK_TAGS:
+            target = table.get("caption") or table["cell"]
+            if target is not None:
+                target["parts"].append(" ")
 
     def handle_data(self, data):
-        if self.suppressed or not self.stack:
+        if self.blocked or not self.stack:
             return
         table = self._current()
-        if table["cell"] is not None:
+        if table.get("caption") is not None:
+            table["caption"]["parts"].append(data)
+        elif (
+            table["cell"] is not None
+            and table["cell"]["record"]["visibility"] != "explicitly_hidden"
+        ):
             table["cell"]["parts"].append(data)
 
     def finish(self):
-        if self.suppressed:
-            raise ValueError(f"Unfinished suppressed element: {self.suppressed[-1]}")
+        if self.blocked:
+            raise ValueError(f"Unfinished hidden or suppressed element: {self.blocked[-1]['tag']}")
         if self.stack:
             table = self._current()
             active = "cell" if table["cell"] is not None else "row" if table["row"] else "table"
@@ -181,7 +341,7 @@ def extract_html_tables(path):
     parser.close()
     parser.finish()
     return {
-        "version": "native-html-tables-v1",
+        "version": "native-html-tables-v2",
         "original_sha256": hashlib.sha256(raw).hexdigest(),
         "tables": parser.tables,
         "limitations": LIMITATIONS.copy(),

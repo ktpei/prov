@@ -21,13 +21,60 @@ class TableStructureTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.tmp_path = Path(temporary.name)
 
+    def test_block_boundaries_and_caption_break_do_not_merge_values(self):
+        result = extract(
+            self.tmp_path,
+            "<table><caption>USD<br>thousands</caption><tr><td><div>42</div><div>99</div></td></tr></table>",
+        )
+        self.assertEqual(result["tables"][0]["caption"]["text"], "USD thousands")
+        self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42 99")
+        result = extract(
+            self.tmp_path,
+            "<table><tr><td><section>42</section><section>99</section></td></tr></table>",
+        )
+        self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42 99")
+
+    def test_nested_table_boundaries_do_not_merge_parent_numbers(self):
+        result = extract(
+            self.tmp_path,
+            "<table><tr><td>42<table><tr><td>child</td></tr></table>99</td></tr></table>",
+        )
+        self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42 99")
+
+    def test_hidden_nonvoid_self_closing_rejected_and_important_whitespace_supported(self):
+        for html in [
+            "<table><tr hidden/><td>999</td></tr></table>",
+            "<div hidden/><table><tr><td>999</td></tr></table></div>",
+            "<table><tr><td hidden/><table/><tr><td>999</td></tr></table><td>42</td></tr></table>",
+        ]:
+            with (
+                self.subTest(html=html),
+                self.assertRaisesRegex(ValueError, "self-closing non-void"),
+            ):
+                extract(self.tmp_path, html)
+        result = extract(
+            self.tmp_path,
+            "<table><tr><td>42<span style='display:none ! important'>999</span></td></tr></table>",
+        )
+        self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42")
+
+    def test_hidden_self_closing_cells_stay_hidden_until_next_cell(self):
+        for middle in ["99", "<table><tr><td>999</td></tr></table>"]:
+            result = extract(
+                self.tmp_path, f"<table><tr><td hidden/>{middle}<td>42</td></tr></table>"
+            )
+            self.assertEqual(len(result["tables"]), 1)
+            self.assertEqual(
+                [c["text"] for c in result["tables"][0]["rows"][0]["cells"]], ["", "42"]
+            )
+
     def test_headers_data_text_locations_and_stability(self):
         html = '<table id="facts">\n<tr><th>Name<br>label</th><th>Value</th></tr>\n<tr><td>A &amp; B</td><td>3</td></tr></table>'
         first = extract(self.tmp_path, html)
         second = extract(self.tmp_path, html)
 
         assert first == second
-        assert first["version"] == "native-html-tables-v1"
+        assert first["version"] == "native-html-tables-v2"
         assert first["original_sha256"] == hashlib.sha256(html.encode()).hexdigest()
         table = first["tables"][0]
         assert table["id"] == "table-1"
@@ -75,6 +122,55 @@ class TableStructureTests(unittest.TestCase):
         assert len(result["tables"]) == 1
         assert result["tables"][0]["rows"][0]["cells"][0]["text"] == "AB"
 
+    def test_explicitly_hidden_content_and_cells(self):
+        result = extract(
+            self.tmp_path,
+            "<table><caption>Visible <span hidden>caption</span></caption>"
+            "<tr><td>42<span hidden>99</span><span style=' DISPLAY : none !IMPORTANT '>x</span>"
+            "<span style='visibility: Collapse'>y</span> tail<span hidden></span> after<input hidden/> end</td>"
+            "<td hidden colspan=2>hidden cell</td><th style='display:none'>hidden header</th></tr>"
+            "<tr hidden><td>hidden row cell</td></tr></table>",
+        )
+        table = result["tables"][0]
+        assert table["caption"]["text"] == "Visible"
+        assert [cell["text"] for row in table["rows"] for cell in row["cells"]] == [
+            "42 tail after end",
+            "",
+            "",
+            "",
+        ]
+        assert [cell["visibility"] for row in table["rows"] for cell in row["cells"]] == [
+            "not_explicitly_hidden",
+            "explicitly_hidden",
+            "explicitly_hidden",
+            "explicitly_hidden",
+        ]
+        assert [cell["column_start"] for cell in table["rows"][0]["cells"]] == [0, 1, 3]
+
+    def test_hidden_tables_and_nested_wrappers_do_not_leak(self):
+        result = extract(
+            self.tmp_path,
+            "<table><tr><td>parent <div hidden><table><caption>hidden</caption>"
+            "<tr><td>child</td></tr></table></div> tail</td></tr></table>"
+            "<table style='display: none'><tr><td>removed</td></tr></table>",
+        )
+        assert len(result["tables"]) == 1
+        assert result["tables"][0]["rows"][0]["cells"][0]["text"] == "parent tail"
+
+    def test_html_header_metadata_is_preserved_without_resolution(self):
+        table = extract(
+            self.tmp_path,
+            '<table><caption>  Quarterly   facts </caption><tr><th id="h" scope="col">Name</th>'
+            '<td id="v" headers="h group  ">42</td></tr></table>',
+        )["tables"][0]
+        assert table["caption"] == {
+            "text": "Quarterly facts",
+            "original_location": {"line": 1, "column": 7},
+        }
+        assert table["rows"][0]["cells"][0]["scope"] == "col"
+        assert table["rows"][0]["cells"][1]["headers"] == ["h", "group"]
+        assert table["rows"][0]["cells"][1]["html_id"] == "v"
+
     def test_nested_tables_are_independent(self):
         result = extract(
             self.tmp_path,
@@ -94,9 +190,13 @@ class TableStructureTests(unittest.TestCase):
         ]:
             with (
                 self.subTest(attribute=attribute),
-                self.assertRaisesRegex(ValueError, "Invalid|Duplicate"),
+                self.assertRaisesRegex(ValueError, "Invalid|Duplicate|Unsupported"),
             ):
                 extract(self.tmp_path, f"<table><tr><td {attribute}>x</td></tr></table>")
+
+    def test_rowspan_zero_is_explicitly_unsupported(self):
+        with self.assertRaisesRegex(ValueError, "Unsupported rowspan=0"):
+            extract(self.tmp_path, "<table><tr><td rowspan=0>x</td></tr></table>")
 
     def test_overlap_and_unfinished_structures_rejected(self):
         with self.assertRaisesRegex(ValueError, "overlaps"):

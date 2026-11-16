@@ -12,7 +12,7 @@
       "id": "fresh-03",
       "source_id": "cloudflare-q3-2024-release",
       "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
-      "sidecar_version": "native-html-tables-v1",
+      "sidecar_version": "native-html-tables-v2",
       "table_id": "table-8",
       "required_components": {
         "table_title_scale": [
@@ -131,7 +131,7 @@
       "id": "fresh-01",
       "source_id": "cloudflare-q3-2024-release",
       "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
-      "sidecar_version": "native-html-tables-v1",
+      "sidecar_version": "native-html-tables-v2",
       "table_id": "table-9",
       "required_components": {
         "table_title_scale": [
@@ -250,7 +250,7 @@
       "id": "fresh-02",
       "source_id": "cloudflare-q3-2024-release",
       "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
-      "sidecar_version": "native-html-tables-v1",
+      "sidecar_version": "native-html-tables-v2",
       "table_id": "table-7",
       "required_components": {
         "table_title_scale": [
@@ -356,7 +356,7 @@
       "id": "per-share-scale",
       "source_id": "cloudflare-q3-2024-release",
       "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
-      "sidecar_version": "native-html-tables-v1",
+      "sidecar_version": "native-html-tables-v2",
       "table_id": "table-10",
       "required_components": {
         "table_title_scale": [
