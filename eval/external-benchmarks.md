@@ -59,7 +59,7 @@ public-data development partition, not a secret holdout. Legacy v1 manifests gro
 groups for released page-path filenames. The development-exposure registry keeps
 previously reviewed reports in development, including overlapping ConvFinQA contexts. CFA shared
 scenarios and cross-suite FinQA/ConvFinQA overlap require additional auditing.
-The six content-bound unresolved issues in `eval/reference-issues.json` are applied
+The content-bound unresolved issues in `eval/reference-issues.json` are applied
 to new preparations only. Source/task hash mismatches fail; gold is never rewritten
 or excluded. Review-required tasks stay in the denominator with null accuracy and
 are skipped before any paid request. Existing frozen manifests are unchanged.

@@ -15,6 +15,9 @@ rules, and semester deliverables.
 
 ## Planning documents
 
+- [Harness improvement specification](harness-improvement-spec.md) defines the
+  next implementation contracts, acceptance gates, and benchmark-driven improvement
+  cycle. It is a proposed target; runtime defaults remain unchanged.
 - [Product specification](spec.md) covers the research workflow, company-data
   proposal, module contracts, evaluation, web MVP, and later live Excel integration.
 - [Module roadmap](roadmap.md) maps chatbot versus tooling/evaluation ownership,

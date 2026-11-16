@@ -7,6 +7,13 @@ independent evaluation runner. Finance accuracy benchmarks are the next planning
 priority; workbook-aware research and Excel integration remain later work.
 Read [spec.md](spec.md) for requirements and [context.md](context.md) for verification.
 
+The active next-round sequence is defined in
+[the harness improvement specification](harness-improvement-spec.md): H1 model-input
+receipts, H2 evidence-linked arithmetic, H3 versioned answers and typed tools,
+H4 retention/workflow challengers, then H5 prospective full-agent comparison.
+These are planned increments, not implemented guarantees. The earlier M0–M7
+modules below preserve the broader product roadmap.
+
 ## Current milestone — company-context tooling and evaluation
 
 Selected on 2026-11-07: LangChain + LangGraph, OpenRouter, and Cloudflare 2024
@@ -20,8 +27,10 @@ calendar questions are deferred. The eventual interface remains an Excel add-in.
 The modules below retain the longer-term backlog; browser upload/download is no
 longer the acceptance boundary of the current milestone.
 
-Live acceptance uses the requested DeepSeek model with a $0.50 aggregate cap,
-within the user-configured $1 daily limit. Keep heldout questions untouched.
+Live acceptance retains the requested DeepSeek model and requires reconciliation
+of the latest aggregate spending ledger and account usage. The original $0.50 cap
+predates an additional authorization; consult the improvement spec before paid
+work. Keep heldout questions untouched.
 
 ## M0 — Scope and shared contracts
 
@@ -106,8 +115,8 @@ Selected on 2026-11-16: follow the [finance accuracy benchmark plan](eval/benchm
 Implement FinEval, FinQA, FinanceBench, and custom prov tasks first; add TAT-QA and
 ConvFinQA next. Finance Agent Benchmark is a later challenge. Excel benchmarking
 is excluded from this milestone. Core adapters, pinned acquisition, offline scoring, and tool-free execution are
-implemented. A ten-task development pilot is measured; full coverage and the
-table/conversation suite remain pending. See [the current workflow](eval/external-benchmarks.md).
+implemented. Core and table/conversation development pilots are measured; broader
+coverage and full-agent evaluation remain pending. See [the current workflow](eval/external-benchmarks.md).
 
 1. Pin dataset versions/licenses and split manifests; verify gold-data isolation.
 2. Implement portable scorers and validate against correct/incorrect fixtures.

@@ -1,10 +1,31 @@
 # Finance harness improvement loop
 
-Active development objective, 2026-11-16: integrate the selected finance evaluation
-suite, improve its trustworthiness, and research/test the source-knowledge pipeline.
-The user authorized autonomous work and subagent/chat coordination. This is a
-persistent goal in the current chat, not a scheduled unattended job or an unbounded
-paid inference authorization. Existing spend limits and the original holdout remain.
+Active objective, 2026-11-16, in **Research finance agent harnesses**: continuously
+improve the research harness through reproducible benchmark-driven cycles under
+the [implementation specification](../harness-improvement-spec.md). The earlier
+**Improve finance evaluation harness** chat remains paused; its draft XBRL assessment
+work is preserved. The user authorized this new goal and subagent/context use.
+This is not a scheduled unattended job or unbounded paid inference authorization.
+Existing spending limits, source reservations and original holdout rules remain.
+
+## H0 — specification and continuity
+
+- Wrote versioned receipt, evidence, calculation, answer and checkpoint contracts.
+- Inspected relevant evaluation, OCR and UI handoff chats; retained ownership and
+  compatibility boundaries rather than resuming another chat's paused drafts.
+- Independent Astra architecture and evaluation reviews supplied acceptance and
+  promotion requirements. Financial semantics remain distinct from delivery.
+- No runtime defaults, frozen scores, reserved selections or paid inference changed.
+- Review corrections define H1 legacy evidence references, explicit checkpoint
+  migration, calculator formulas/bounds, final-attempt visibility, all-required
+  strict success and a failure-inclusive adjudicable denominator.
+- Verification: `yarn lint` and 453 tests passed in the current shared checkout,
+  including the pre-existing untracked assessment tests; SQLite ResourceWarnings
+  remain. Local spec links, code fences and whitespace checks passed. This is
+  documentation verification, not clean-commit experiment acceptance.
+- Next cycle: H1 model-input receipts and checkpoint policy identities. Freeze
+  its bounded implementation/verification plan before changes; use synthetic and
+  saved legacy artifacts without opening heldout content.
 
 ## Repeatable cycle
 
@@ -40,17 +61,19 @@ paid inference authorization. Existing spend limits and the original holdout rem
 
 ## Next work queue
 
-1. Harden exact source-set validation and declared task selection before paid runs.
-2. Add tool-free execution for FinEval/FinQA using the existing provider with durable
-   spending reservations; distinguish supplied-context performance from full agent.
-3. Compare source-scoped retrieval and complete table context on the documented
-   cash-flow miss. Preserve native text and old retrieval versions for replay.
-4. Add a typed table-evidence fixture and a structurally scored ingestion experiment.
-   Compare native parsing, Docling without OCR, and selective OCR on the same sources.
-5. Integrate TAT-QA/ConvFinQA using pinned official metrics, shared-document partitions,
-   reference-history versus actual-history conditions, and per-conversation denominators.
-6. Expand custom cases beyond one company; calibrate semantic judgments with blinded
-   finance-literate review before treating strict supported success as established.
+1. H1: record exact projected model inputs and effective policy identities.
+2. H2: implement bounded evidence-linked arithmetic with independent replay.
+3. H3: integrate versioned answers and typed discovery/read/claim contracts.
+4. H4: compare requirement-aware context retention and narrow workflow instructions.
+5. H5: run source-accepted, preregistered full-agent development comparisons within
+   reconciled authorization; calibrate semantic review and retain all failures.
+6. H6: select the next measured bottleneck, with fresh confirmation before promotion.
+
+The prior queue's benchmark adapters and tool-free pilots are implemented. Later
+reports in `context.md` also record negative ranking/retention comparisons, compact
+PDF metadata savings without coverage improvement, and exact-ID XBRL delivery.
+None establishes a broad end-to-end accuracy gain. Keep the dated cycles below
+as history rather than rewriting their then-current results.
 
 Perfection is not a measurable stopping criterion. A promotion needs evidence on
 predeclared cases, a clear failure taxonomy, and no regression in critical support,

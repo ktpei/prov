@@ -1,5 +1,20 @@
 # Working context — 2026-11-16
 
+## Active harness improvement goal
+
+The user requested a thorough implementation spec and a continuous benchmark-driven
+improvement goal in **Research finance agent harnesses**. The goal is active here;
+the earlier **Improve finance evaluation harness** chat remains paused. Its five
+untracked XBRL assessment files are preserved and are not owned by this new cycle.
+The [specification](harness-improvement-spec.md) defines H0–H6, contracts, migration,
+evaluation gates, and budget/holdout boundaries. Two independent Astra reviews
+informed it; no runtime change or new inference accompanies this planning cycle.
+
+Latest recorded aggregate spending is $0.4814193 against $1.00 historical
+authorization ($0.5185807 nominal remainder). This is not a verified current
+account balance. Reconcile all ledgers and account usage before paid execution;
+the older authorization paragraph below records a prior balance.
+
 [Recent finance harness research](eval/finance-harness-research-2026-11-16.md)
 maps external designs to proposed evidence-linked arithmetic, model-input
 receipts, typed-evidence integration, and prospective full-agent evaluation.
@@ -346,7 +361,7 @@ Local `yarn lint` and `yarn test` pass, with all 79 tests running. Python 3.13
 reports unclosed SQLite connection ResourceWarnings during tests; passing checks
 do not establish that connection cleanup is complete. No new paid calls were made.
 
-## Active authorization
+## Historical authorization after the frozen November 7 batch
 
 After the frozen batch finished, the user answered the pending budget question
 with “Authorize $0.50 additional.” Total authorized estimated development/evaluation

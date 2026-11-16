@@ -4,6 +4,12 @@ Product specification · updated 2026-11-16
 
 ## Purpose and status
 
+The [harness improvement specification](harness-improvement-spec.md) is the current
+implementation plan for research contracts, evidence-linked computation, context
+receipts, typed-tool integration, and benchmark-driven iteration. It supersedes
+older next-step descriptions here where they conflict; historical results remain
+unchanged. UI/API work keeps the existing v1 contracts until an explicit migration.
+
 Build a finance research assistant that answers questions about companies using
 retrieved evidence, explains calculations, and preserves the sources behind its
 numbers. The first user-facing workflow is research answers from company data.
@@ -14,8 +20,10 @@ workbook upload/export are deferred rather than acceptance criteria for this mil
 This document describes the intended product and proposed implementation
 boundaries. Existing code implements only the foundation described below.
 Implementation of company ingestion, search/read, LangChain + LangGraph, and
-evaluation is authorized. Live OpenRouter acceptance is authorized with a $0.50
-total experiment cap within the user's $1 daily account limit.
+evaluation is authorized. The original $0.50 acceptance cap is historical;
+current paid work must reconcile the later aggregate authorization and recorded
+spending described in [the improvement spec](harness-improvement-spec.md#resource-and-stopping-rules).
+The standing goal is not additional spending authorization.
 
 ## Project context
 
@@ -49,7 +57,7 @@ single-agent proof of concept.
 | Proposed web stack | React + TypeScript + Vite, Tailwind CSS, Python + FastAPI |
 | Later Excel integration | Office.js sidebar with live workbook access and approved edits |
 | Source packet and companies | Cloudflare 2024 release, filing, call transcript, investor slides |
-| Spending | $0.50 total for approved acceptance run; $1 daily account limit |
+| Spending | Historical $1.00 aggregate authorization after an additional approval; reconcile ledgers/account before paid batches; reported $1/day account limit |
 
 ## Later interface workflow and demo
 
@@ -192,8 +200,8 @@ Search metadata leads to evidence reads. It is insufficient evidence by itself.
 | Tool capability | Existing state | Proposed next work |
 | --- | --- | --- |
 | Search | Frozen corpus and optional Exa adapter | Verify live retrieval and date/source metadata |
-| Read source | Numbered local text and Exa content | Ingest full documents and preserve page/table context |
-| Filing/XBRL access | Absent | Retrieve facts with filing, concept, unit, and period |
+| Read source | Full-document native ingestion and bounded line reads; Exa contract-tested | Integrate typed evidence and complete financial context |
+| Filing/XBRL access | Experimental typed export and exact-ID reader; not a default tool | Question-driven discovery, evidence/claim contracts, and replay integration |
 | Market data | Absent | Add dated snapshots when valuation tasks require them |
 | Workbook read/write | Absent | MVP upload/read and approved export, then live Excel adapter |
 | Python execution | Absent | Define isolation, allowed inputs, limits, and artifact approval first |
