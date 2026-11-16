@@ -4,7 +4,8 @@ The [four frozen development fixtures](table-evidence-fixtures.json) bind exact
 cells to source hashes and a sidecar version. Two coding agents inspected the
 original HTML and structure; these are not human-adjudicated financial labels.
 They remain evaluator-only and must not enter extraction, search queries, or model
-instructions. No table-aware runtime read is claimed yet.
+instructions. The standalone runtime now has a separate raw-read assessment below; these
+fixtures alone do not establish runtime success.
 
 A candidate must return one connected packet, at most 12,000 serialized characters,
 containing the required metric labels, period hierarchy, scale, values, and split

@@ -58,3 +58,27 @@ Compare native PDF text with layout analysis before enabling OCR on scans or mix
 For extraction, score the complete typed-cell association per expected cell. For retrieval, report complete evidence recall per answerable task at a fixed budget. Count failures where the correct number appears under the wrong row, period, unit, or source. Include all attempted inputs and record unresolved cases, latency, and payload size. Promote a challenger only after it passes required regressions and improves the target slice on reviewed documents at an acceptable resource cost. Keep these scores separate from later model answer accuracy. [Frozen Cloudflare tasks](company_fresh_tasks.json) · [PDF spot checks](../source-packet.md) · [OmniDocBench annotation and evaluation methodology](https://openaccess.thecvf.com/content/CVPR2025/html/Ouyang_OmniDocBench_Benchmarking_Diverse_PDF_Document_Parsing_with_Comprehensive_Annotations_CVPR_2025_paper.html)
 
 **Experiment status.** The frozen retrieval baseline, release-scoped diagnostic, original HTML table structure, and three filing tags above were verified offline. The table sidecar, SEC adapter comparison, Docling runs, selective OCR comparison, and full-evidence ablation are proposed experiments. These probes used no model calls.
+
+## Native-text visibility gap — 2026-11-16
+
+Independent synthetic review of `DocumentHTML` found that the legacy text path
+is not equivalent to native table sidecar v2. It ignores `hidden` and inline
+hiding styles: `42<span hidden>999</span>` can become `42999`. A hidden heading
+can also alter subsequent section metadata. Counter-based suppression can end on
+an unrelated closing tag, and visible block-separated numbers within a cell can
+merge. These are source-quality defects even when original/text hashes validate;
+a hash establishes identity, not correct extraction.
+
+Preserve existing frozen corpus bytes and legacy replay. Before new HTML corpus
+acceptance, implement and explicitly select a versioned text path, or declare
+legacy text ineligible and restrict the assessment to independently verified
+original-HTML sidecars. Reuse the bounded visibility predicate rather than the
+entire table geometry parser; narrative text, block boundaries, optional cell
+closures and malformed suppression require their own tests. External CSS and
+rendered visibility remain unresolved. No repaired text parser or new-corpus
+acceptance is claimed in this finding.
+
+The [new assessment plan](assessments/native-html-v1/plan.md) also separates a
+search-only runtime from later annotation grading. Its proposed six filing
+identities were selected from metadata; acquisition, question authoring and source
+annotation are still pending implementation and provenance gates.

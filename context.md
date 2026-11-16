@@ -1,5 +1,17 @@
 # Working context — 2026-11-16
 
+## Broader assessment preparation — 2026-11-16
+
+The [locked native-HTML assessment plan](eval/assessments/native-html-v1/plan.md)
+records a metadata-verified six-filing proposal across three new issuers, with 21
+positive question slots and three publication-availability controls. Documents
+are not yet acquired and questions are not authored. A separate search-only runner
+is being verified; annotation grading and cutoff enforcement remain prerequisites.
+Synthetic review found hidden-text and block-boundary defects in legacy HTML text
+extraction; sidecar v2 guarantees do not apply to that path. Frozen corpora remain
+unchanged. This is preparation, not a new accuracy result.
+
+
 ## Raw table runtime — 2026-11-16
 
 [Fixed offline probe](eval/reports/table-runtime-2026-11-16/report.md): standalone
