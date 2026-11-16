@@ -129,6 +129,7 @@ export function Conversation(props: Props) {
           ) : (
             <AnswerCard
               turn={turn}
+              proposals={session.proposals}
               titles={props.titles}
               selection={props.selection}
               onCite={props.onCite}

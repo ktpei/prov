@@ -1,9 +1,10 @@
-import type { Citation, Selection, TurnView } from "../types";
+import type { Citation, Proposal, Selection, TurnView } from "../types";
 import { explainReason, formatUnit, formatValue, humanizeKey, money } from "../format";
 import { CitationChip } from "./CitationChip";
 
 type Props = {
   turn: TurnView;
+  proposals: Proposal[];
   titles: Record<string, string>;
   selection: Selection | null;
   onCite: (citation: Citation) => void;
@@ -35,7 +36,10 @@ function Metrics({ turn }: { turn: TurnView }) {
   );
 }
 
-export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, onShowChanges }: Props) {
+export function AnswerCard({ turn, proposals, titles, selection, onCite, onShowActivity, onShowChanges }: Props) {
+  const mine = proposals.filter((p) => turn.proposal_ids.includes(p.id));
+  const pending = mine.filter((p) => p.status === "pending").length;
+  const exported = mine.filter((p) => p.status === "exported").length;
   const replay = turn.mode === "offline_replay";
   const answer = turn.answer;
   const active = (c: Citation) =>
@@ -105,7 +109,7 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
                   </td>
                   <td className="tabular py-1.5 pr-3 text-right font-medium whitespace-nowrap">
                     {formatValue(claim.value, claim.unit)}
-                    {formatUnit(claim.unit) && (
+                    {typeof claim.value === "number" && formatUnit(claim.unit) && (
                       <span className="ml-1 font-normal text-ink-faint">{formatUnit(claim.unit)}</span>
                     )}
                   </td>
@@ -130,16 +134,25 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
         </ul>
       )}
 
-      {turn.proposal_ids.length > 0 && (
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-md border border-highlight bg-highlight-soft px-3 py-2 text-sm">
+      {mine.length > 0 && (
+        <div
+          className={`mt-3 flex flex-wrap items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm ${
+            pending ? "border-highlight bg-highlight-soft" : "border-rule bg-chrome"
+          }`}
+        >
           <span>
-            {turn.proposal_ids.length === 1
-              ? "1 proposed workbook change is waiting for your approval."
-              : `${turn.proposal_ids.length} proposed workbook changes are waiting for your approval.`}{" "}
-            Nothing has been written.
+            {pending
+              ? `${pending === 1 ? "1 proposed workbook change is" : `${pending} proposed workbook changes are`} waiting for your approval. Nothing has been written.`
+              : exported
+                ? `${exported === 1 ? "The proposed change was" : `${exported} proposed changes were`} approved into an edited copy.`
+                : "These proposals were replaced by newer ones or refer to a replaced workbook."}
           </span>
-          <button type="button" onClick={onShowChanges} className="rounded-md bg-ink px-2.5 py-1 text-white">
-            Review changes
+          <button
+            type="button"
+            onClick={onShowChanges}
+            className={`rounded-md px-2.5 py-1 ${pending ? "bg-ink text-white" : "border border-rule text-ink"}`}
+          >
+            {pending ? "Review changes" : "Open changes"}
           </button>
         </div>
       )}
