@@ -102,6 +102,11 @@ and failed cases will not be replaced with easier ones.
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
 All 419 native-text pages replay unchanged with structured page diagnostics.
 
+An opt-in [PDF read-metadata projection](eval/read-extraction-design.md) retains
+only returned-page diagnostic entries while preserving global warnings and the
+full diagnostics hash/reference. Synthetic checks and independent review pass;
+cohort assessment is pending and full metadata remains the default.
+
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
 `--html-text-version native-html-text-v2` to suppress explicit hidden content and

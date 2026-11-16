@@ -101,3 +101,16 @@ heading line breaks losing currency context. Eight focused tests cover those
 cases plus inherited hiding, nested tables, malformed suppression and legacy
 replay. Real-source diagnostics are separate from these synthetic checks.
 Existing corpus files are never rewritten by selecting this new path.
+
+## Read-response diagnostic scope — 2026-11-16
+
+The [six-source comparison](assessments/financebench-context-v1/comparison-report.md)
+found five blocked five-read projections under both retention policies. Arithmetic
+on the saved responses attributes 79.53% of read output characters to repeated
+extraction metadata; this is not an evidence-text limit failure. The
+[opt-in returned-page projection](read-extraction-design.md) preserves all global
+warning/uncertainty fields and a hash/reference to full diagnostics, changing only
+which full-page records accompany an excerpt. Full metadata stays in the corpus
+and remains the default response mode. Independent review and synthetic checks
+pass; no compact-mode cohort outcome is measured yet. Historical protocols and
+reference answers remain unchanged.

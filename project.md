@@ -17,9 +17,13 @@ both policies, with 4/6, 5/6 and 5/6 blocked projections. No challenger promotio
 Five other pages lack native text and remain visually unverified. The independently reviewed
 [comparison runner](eval/assessments/financebench-context-v1/compare.py) passes
 nine synthetic failure/replay tests; six original searches/thirty reads and an exact
-replay are complete. Repeated document-wide extraction metadata is the next size
-investigation, alongside incomplete retrieval.
-All 329 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+replay are complete. [Saved-response diagnosis](eval/assessments/financebench-context-v1/response-size-report.md)
+attributes 79.53% of read output characters to extraction metadata. The new opt-in
+[returned-page projection](eval/read-extraction-design.md) preserves global warnings
+and full-diagnostics provenance while narrowing only response page records.
+Independent review and synthetic checks pass; compact-mode cohort assessment is
+next. Full metadata remains the default.
+All 334 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16
