@@ -1,8 +1,10 @@
 # Finance accuracy benchmark implementation plan
 
-Selected by the user on 2026-11-16. Status: planning only; no external benchmark
-adapters, dataset downloads, new inference, or benchmark scores are delivered by
-this decision. Preserve existing evaluation artifacts and historical results.
+Selected by the user on 2026-11-16. The original planning decision is now partially
+implemented: [core acquisition, adapters and runner](external-benchmarks.md), plus
+a [ten-task development pilot](reports/external-pilot-2026-11-16/report.md).
+Remaining stages below are targets, not completed coverage. Preserve existing
+evaluation artifacts and historical results.
 
 ## Scope and priorities
 

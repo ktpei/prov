@@ -1,5 +1,20 @@
 # Working context — 2026-11-16
 
+## External pilot measured — 2026-11-16
+
+[Ten-task development pilot](eval/reports/external-pilot-2026-11-16/report.md):
+CFA-Easy 3/3 and CFA-Challenge 2/2 adapted choice passes; FinQA 2/3 adapted scalar
+passes with one output-limit failure; FinanceBench two completed oracle responses,
+automatic semantic accuracy unset. Independent coding-agent review found an
+underspecified FinQA question and FinanceBench denominator/percentage ambiguities.
+These are tiny public development diagnostics, not official or human-validated scores.
+
+Pilot conservative cost $0.0161622; cumulative recorded estimate $0.4523661,
+remaining existing authorization $0.5476339. No uncertain billing flags or original
+holdout calls. Implementation and protocol are published in draft
+[PR #2](https://github.com/ktpei/prov/pull/2), not merged. Lint and 112 tests passed.
+Earlier no-live-run statements below describe pre-pilot stages.
+
 ## Active benchmark loop — 2026-11-16
 
 The user authorized continuous benchmark integration, extensive ingestion research,

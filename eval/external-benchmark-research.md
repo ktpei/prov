@@ -14,10 +14,10 @@ the proposed integrations are complete.
   and 100 FinanceBench evidence-supplied tasks are prepared under
   `runs/benchmark-prepared/`. All selected IDs belong to development partitions.
   These are prepared inputs, not executed model runs or benchmark scores.
-- **Implementation pending lead review:** core adapters and portable scoring are
-  being developed separately. This document does not certify their behavior,
-  tests, integration, or acceptance. Consult implementation and current test
-  results before treating a researched capability as delivered.
+- **Implementation update:** the core adapters, acquisition, preparation/scoring,
+  and tool-free runner passed lead review and repository checks. See
+  [the workflow](external-benchmarks.md) and [pilot report](reports/external-pilot-2026-11-16/report.md)
+  for measured status; research findings alone do not establish model accuracy.
 - **Future work:** TAT-QA and ConvFinQA integration, program scoring, calibrated
   semantic review, and paid model assessment remain separate work.
 

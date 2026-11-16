@@ -135,6 +135,11 @@ Prepared local selections: 100 FinQA, 100 FinanceBench evidence-supplied,
 not attempts or financial accuracy. Selection manifests are local evaluator
 artifacts. No third-party question text is redistributed in synthetic unit tests.
 
+The [ten-task live development pilot](reports/external-pilot-2026-11-16/report.md)
+now measures a small subset: five choice passes, two of three FinQA scalar passes,
+and two FinanceBench responses awaiting semantic adjudication. Its conservative
+cost was $0.0161622. Preserve its original failures and reference-issue findings.
+
 Next iterations: measured tool-free pilots; source-aware
 research corpus assembly; independent reviewer calibration; TAT-QA official metric
 integration and ConvFinQA conversation/history separation; company/report-aware

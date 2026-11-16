@@ -212,7 +212,9 @@ The 2026-11-16 benchmark selection is specified in the
 FinQA, FinanceBench, TAT-QA, ConvFinQA, and custom prov tasks. Financial knowledge
 and research accuracy take priority; Excel/workbook benchmarking is deferred.
 Use separate model-only, evidence-supplied, and full-agent conditions as appropriate.
-External benchmark integration remains planned, not verified implementation.
+Core benchmark acquisition, adapters, tool-free execution, and a small development
+pilot are implemented; broader coverage, full-agent FinanceBench, and calibrated
+semantic evaluation remain pending. See [the workflow](eval/external-benchmarks.md).
 
 The evaluation owner maintains tasks, gold evidence, scoring, human review, and
 results. This role includes implementation of the runner and reporting, plus

@@ -105,8 +105,9 @@ independent evaluation remain necessary.
 Selected on 2026-11-16: follow the [finance accuracy benchmark plan](eval/benchmark-plan.md).
 Implement FinEval, FinQA, FinanceBench, and custom prov tasks first; add TAT-QA and
 ConvFinQA next. Finance Agent Benchmark is a later challenge. Excel benchmarking
-is excluded from this milestone. This selection is planning, not completed adapters
-or new benchmark results.
+is excluded from this milestone. Core adapters, pinned acquisition, offline scoring, and tool-free execution are
+implemented. A ten-task development pilot is measured; full coverage and the
+table/conversation suite remain pending. See [the current workflow](eval/external-benchmarks.md).
 
 1. Pin dataset versions/licenses and split manifests; verify gold-data isolation.
 2. Implement portable scorers and validate against correct/incorrect fixtures.

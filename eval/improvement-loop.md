@@ -77,3 +77,13 @@ unit/period, leakage, or abstention checks. Unrun comparisons remain proposed.
   includes the full selection, benchmark hash, and skipped/pending/completed status.
   Historical task files are unchanged; a new explicitly labeled development manifest
   is required when an older file lacks split labels.
+
+## Cycle 2 measured pilot
+
+Ten tasks ran once under a committed protocol and clean frozen runtime. Five
+FinEval choice passes, FinQA 2/3 adapted scalar passes, and two FinanceBench oracle
+responses with automatic accuracy unset. Cost $0.0161622; remaining authorization
+$0.5476339. See the [report](reports/external-pilot-2026-11-16/report.md).
+Independent review found upstream question and convention ambiguity; original
+scores remain unchanged. Next: content-bound reference issue registry and broader
+source/document partitions before more inference.
