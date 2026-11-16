@@ -80,6 +80,13 @@ class HTMLTextTests(unittest.TestCase):
             ["Before", "42", "After"],
         )
 
+    def test_empty_block_cells_do_not_create_separator_only_lines(self):
+        result = parse(
+            "<table><tr><td><div></div></td><td><div> </div></td></tr>"
+            "<tr><td><div>Metric</div></td><td><div>0</div></td></tr></table>"
+        )
+        self.assertEqual(result.lines, ["Metric | 0"])
+
     def test_versions_are_explicit_and_legacy_output_unchanged(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

@@ -85,7 +85,7 @@ class DocumentHTMLV2(HTMLParser):
             elif tag in {"tr", "table"}:
                 self.flush()
             elif tag in {"td", "th"}:
-                if self.parts:
+                if "".join(self.parts).strip():
                     self.parts.append(" | ")
             elif tag in BLOCK_TAGS or tag == "br":
                 if self.heading or self._in_row():
