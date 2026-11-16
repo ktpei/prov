@@ -52,3 +52,9 @@ months where applicable; correct cells with a wrong typed period fail. The per-s
 fixture also requires its adjacent dollar-symbol cell. USD remains the development
 task currency convention: a dollar symbol alone does not independently establish
 which dollar currency applies. Do not claim explicit ISO-currency provenance.
+
+A distinct `grade_table_read` now checks actual raw tool responses for identity,
+manifest/sidecar hashes, exact cells/captions, size, and required-cell presence.
+Semantic associations, typed answers, and agent selection remain explicitly
+unmeasured. The [standalone runtime design and probe](table-runtime-design.md)
+keep that raw-context assessment separate from the supplied-packet grader.

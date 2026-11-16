@@ -58,5 +58,6 @@
         28
       ]
     }
-  ]
+  ],
+  "response_serialization": "Compact canonical JSON: ensure_ascii=False, allow_nan=False, sort_keys=True, separators=(comma, colon); measure Unicode characters, report UTF-8 bytes separately."
 }

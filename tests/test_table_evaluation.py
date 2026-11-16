@@ -1,11 +1,12 @@
 """Frozen development packet positives and meaningful wrong-association negatives."""
 
 import copy
+import hashlib
 import json
 import unittest
 from pathlib import Path
 
-from provenance.table_evaluation import grade_table_packet
+from provenance.table_evaluation import grade_table_packet, grade_table_read
 from provenance.table_structure import extract_html_tables
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -128,6 +129,62 @@ class TableEvaluationTests(unittest.TestCase):
         self.assertTrue(result["cell_provenance_valid"])
         self.assertFalse(result["within_size_limit"])
         self.assertFalse(result["complete_packet_passed"])
+
+    def raw_read(self, fixture):
+        response = self.packet(fixture)
+        response.pop("components")
+        response.pop("typed_values")
+        response["sidecar_sha256"] = hashlib.sha256(
+            json.dumps(
+                self.sidecar,
+                ensure_ascii=False,
+                allow_nan=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            ).encode()
+        ).hexdigest()
+        response["corpus_manifest_sha256"] = "a" * 64
+        return response
+
+    def grade_raw(self, fixture, response):
+        return grade_table_read(fixture, self.sidecar, response, manifest_sha256="a" * 64)
+
+    def test_raw_read_checks_presence_without_assigning_roles_or_answers(self):
+        fixture = self.fixtures[0]
+        response = self.raw_read(fixture)
+        result = self.grade_raw(fixture, response)
+        self.assertTrue(result["required_context_present"])
+        self.assertEqual(result["typed_answer_correctness"], "not_measured")
+        self.assertEqual(result["association_correctness"], "not_measured")
+        self.assertNotIn("complete_packet_passed", result)
+        response["cells"] = [cell for cell in response["cells"] if cell["id"] != "table-8-r4-c2"]
+        self.assertFalse(self.grade_raw(fixture, response)["required_context_present"])
+
+    def test_raw_read_rejects_forged_geometry_wrong_identity_and_errors(self):
+        fixture = self.fixtures[0]
+        response = self.raw_read(fixture)
+        response["cells"][0]["row_span"] = True
+        self.assertFalse(self.grade_raw(fixture, response)["required_context_present"])
+        response = self.raw_read(fixture)
+        response["sidecar_sha256"] = "0" * 64
+        self.assertFalse(self.grade_raw(fixture, response)["identity_valid"])
+        response = self.raw_read(fixture)
+        response["source_id"] = "wrong"
+        self.assertFalse(self.grade_raw(fixture, response)["required_context_present"])
+        self.assertFalse(
+            self.grade_raw(fixture, {"error": "too large"})["required_context_present"]
+        )
+
+    def test_raw_read_rejects_caption_manifest_and_error_metadata_forgery(self):
+        fixture = self.fixtures[0]
+        for key, value in [
+            ("caption", {"text": "USD billions"}),
+            ("corpus_manifest_sha256", "0" * 64),
+            ("error", "tool failed"),
+        ]:
+            response = self.raw_read(fixture)
+            response[key] = value
+            self.assertFalse(self.grade_raw(fixture, response)["required_context_present"])
 
     def test_sidecar_or_fixture_drift_is_not_silently_scored(self):
         fixture = copy.deepcopy(self.fixtures[0])
