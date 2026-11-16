@@ -129,3 +129,22 @@ See the [schema and commands](../../table-runtime-design.md). No real assessment
 has been executed. Metadata proposals were already inspected before the eventual
 implementation freeze; that exposure must be retained, not described as blinded
 issuer selection. Financial tables and question/answer evidence remain uninspected.
+
+## Acquisition implementation before freeze
+
+`eval.scripts.acquire_native_html` downloads only the hash-bound selected SEC
+primary URLs. Its identity gate collects the filing type, period and registrant
+CIK from DEI metadata, not financial answer cells. Combined filings may identify
+multiple registrants; the selected CIK must occur. ISO dates and English displayed
+month/day/year dates are supported; other identity formats fail explicitly.
+
+The acquisition policy is one sequential attempt per source, a one-second gap,
+20-second socket-operation timeout (not a total request deadline), no redirects/retries, identity content encoding and a 10 MiB
+streamed byte limit. HTTP 200, exact URL, HTML content type, declared-length
+consistency and matching identity metadata are required. A mismatch with the
+filing-index size is retained as a diagnostic rather than a replacement trigger.
+Receipts preserve every selected source, request timestamp, HTTP metadata, body
+hash/size, identity result and failure; partial/error bodies never become accepted
+originals. Interruption retains pending cases. Output directories cannot be reused.
+Runtime/script hashes and Python version identify execution. Text extraction and
+sidecar eligibility remain later, separately reported stages.
