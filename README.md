@@ -115,7 +115,10 @@ respected by grading, and must match on checkpoint resume.
 A [page-context ranking prototype](eval/retrieval-research-2026-11-16.md) passes
 synthetic checks while preserving default search responses. Its [assessment runner](eval/assessments/financebench-page-ranking-v1/progress.md)
 verifies whole-run replay before labels. The [frozen comparison](eval/assessments/financebench-page-ranking-v1/report.md)
-regressed from 1/6 to 0/6 at five reads, so the challenger is not promoted. A [metadata-only validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
+regressed from 1/6 to 0/6 at five reads, so the challenger is not promoted.
+A [saved-pool diagnosis](eval/assessments/financebench-page-ranking-v1/pool-diagnosis.md)
+separates two cases with short label-assisted window witnesses from four whose
+pools lack frozen locations; it is an evaluator diagnostic, not a retrieval policy. A [metadata-only validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
 keeps six slots closed; Amazon and Microsoft have prior issuer exposure and remain
 explicitly flagged without replacement. The separate [annotation-validity research](eval/incomplete-judgments-research-2026-11-16.md)
 proposes blinded alternative-evidence review without rewriting frozen scores.

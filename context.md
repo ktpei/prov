@@ -34,11 +34,14 @@ exposed paper-example groups are registered for development. A matched page-cont
 ranking prototype and [assessment runner](eval/assessments/financebench-page-ranking-v1/progress.md)
 are independently reviewed. The [frozen comparison](eval/assessments/financebench-page-ranking-v1/report.md)
 regressed from 1/6 to 0/6 at five reads under both priorities; pool-25 opportunity
-is only 2/6. Exact replay passes; no promotion or validation-content access. A [validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
+is only 2/6. A [saved-pool oracle diagnosis](eval/assessments/financebench-page-ranking-v1/pool-diagnosis.md)
+finds one-window Costco and two-window American Water Works witnesses; four pools
+lack required frozen locations. Witnesses remain evaluator-only. Exact replay
+passes; no promotion or validation-content access. A [validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
 is complete. Its post-selection audit found two prior-issuer overlaps (Amazon and
 Microsoft), retained without replacement; all six selected documents remain closed. The [annotation-validity review](eval/incomplete-judgments-research-2026-11-16.md)
 proposes a separate blinded audit without changing historical scores.
-All 369 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+All 373 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16

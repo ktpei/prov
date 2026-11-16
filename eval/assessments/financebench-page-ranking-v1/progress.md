@@ -24,3 +24,8 @@ All separately reserved validation documents/questions remain closed.
 Independent [saved-artifact audit](audit.json) verifies all 35 bindings, original
 receipt/journals, historical control compatibility, shared response identity and
 reported counts/character arithmetic. It did not rerun the recorded replay.
+
+A [post-hoc saved-pool diagnosis](pool-diagnosis.md) finds exact parent-window
+witnesses of one window for Costco and two for American Water Works. The other
+four pools lack required frozen locations; none merely requires more than five
+windows. These label-assisted witnesses are evaluator-only and do not change scores.
