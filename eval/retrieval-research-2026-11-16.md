@@ -130,7 +130,8 @@ A frozen six-response pre-refactor fixture is now checked by the test suite.
 Full lint and all 358 tests pass. The [metadata-only reservation](assessments/financebench-page-validation-v1/progress.md)
 is complete, with two prior-issuer overlaps explicitly retained and all selected
 documents closed. A hash-bound assessment protocol is still required before any
-development comparison.
+development comparison. The [draft wrapper design](page-ranking-assessment-design.md)
+specifies shared ranking, separate branch reads and whole-run replay before labels.
 The runner must fix Python hash seed before process startup because baseline query
 terms retain set iteration and floating-point summation order; this prototype does
 not change that historical behavior. Physical-page identity is trusted from the
