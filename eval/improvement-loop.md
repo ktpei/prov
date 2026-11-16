@@ -182,7 +182,18 @@ graph/citation changes. The distinct raw-read grader rejects forged captions,
 manifest identities, and error-bearing responses; semantic/typed correctness stays
 unmeasured. Lint and 204 tests passed.
 
-Fixed clean-code probe: explicit-window controls4/4 complete component coverage;
-question-search plus one read1/4, despite correct table3/4 at rank1 and4/4 by rank3.
+Fixed clean-code probe: explicit-window controls 4/4 complete component coverage;
+question-search plus one read 1/4, despite correct table 3/4 at rank 1 and 4/4 by rank 3.
 Wrong-table duplicate values and missing GAAP/asset rows remain actual failures.
 See [report](reports/table-runtime-2026-11-16/report.md). No paid calls occurred.
+
+## Cycle 10 — nonredundant table row candidates
+
+A separately committed challenger excludes prefix rows already returned by every
+read from value-row candidates. Table scores/order and all other fixed conditions
+are unchanged. Complete raw-context coverage improves 1/4 → 2/4; window controls
+remain 4/4. R&D is fixed, while wrong-table cash flow and missing current assets
+remain failures. Every baseline tool-response hash replays exactly under v1.
+Lint and 206 tests passed. Remaining model-spend authorization is $0.5185807;
+this and all ingestion cycles made zero paid calls. Next: table-type and multi-metric
+selection, broader development fixtures, and explicit graph/citation profiling.

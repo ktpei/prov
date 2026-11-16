@@ -69,7 +69,9 @@ Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics.
 [Extraction findings](eval/reports/source-ingestion-2026-11-16/report.md) and
 [connected table-evidence protocol](eval/table-evidence-protocol.md) distinguish
-structure, retrieval, and financial meaning. Full-agent FinanceBench inference
+structure, retrieval, and financial meaning. The [raw table tool probe](eval/reports/table-runtime-2026-11-16/report.md)
+measures 4/4 explicit-window controls and 2/4 question-search context coverage,
+without claiming semantic answer success. Full-agent FinanceBench inference
 remains disabled pending source-quality acceptance.
 
 Latest frozen company-research evaluation (2026-11-07): six new public development questions,

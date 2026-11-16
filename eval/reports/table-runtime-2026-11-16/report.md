@@ -33,7 +33,22 @@ answer correctness, and agent selection remain explicitly **not measured**.
 These are four inspected development fixtures, not general finance accuracy or a
 heldout result. Default graph tools and line-citation behavior are unchanged.
 
-Next controlled change: exclude prefix/header rows already guaranteed by the read
-policy from ranked value-row candidates, without altering table ranking. Preserve
-this baseline and measure the revised selection separately. Wrong-table and
-missing-asset failures remain visible until a separately reviewed change fixes them.
+## Controlled row-candidate iteration
+
+The [challenger protocol](prefix-candidates-protocol.json) was committed before
+execution under clean `288b722`. Search v2 excludes the first five physical rows
+from read candidates because the unchanged read policy already includes them.
+Table scores/order, original queries, the first-three rule, read windows, response
+cap, and fixtures are unchanged. V1 remains selectable for exact baseline replay.
+
+Required raw context improves **1/4 → 2/4**: GAAP and non-GAAP R&D now arrive
+together. Explicit-window controls remain4/4. The cash-flow statement still loses
+to its reconciliation distractor, and the balance-sheet read still omits current
+assets. No semantic or financial accuracy is inferred. Table scores and order
+matched exactly for all four cases; every baseline tool-response hash reproduced.
+[Challenger hashes and outcomes](prefix-candidates-summary.json).
+
+This is a measured development improvement on inspected fixtures, not an unseen
+quality estimate. Further work should separately address table-type disambiguation
+and multi-metric row selection, then assess broader, uninspected development cases.
+Do not hide these remaining failures by inserting fixture-selected rows.
