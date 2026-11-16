@@ -1,0 +1,41 @@
+{
+  "version": "dpo-retrieval-development-protocol-v1",
+  "implementation_revision": "a55ff940a85272a2a75d920565a6d66a1b0b1f09",
+  "runtime_sha256": "4d766d9ca3aef8a3c29864835bd2247ff722a523deac8f23a418ed7c8fe8b435",
+  "files": {
+    "runs/benchmark-prepared/financebench-full-docs-v1/manifest.json": "c36fee4071eca7bb2d1db3e3484afea49e3343c155694748daaf8431dfcbe800",
+    "runs/benchmark-prepared/financebench-full-docs-v1/tasks.json": "b3dfdb462914f18656742e2e0183d225102cdabe47e1661982b623950b6086a5",
+    "runs/benchmark-prepared/financebench-full-docs-v1/inputs.json": "7b8b322a2f0ea04d8bf64e680b1c14e856c607445217047700cb629eee156eca",
+    "runs/financebench-full-docs-v2/sources.json": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+    "runs/financebench-full-docs-v2/benchmark_binding.json": "52a01ef7f469f4113f6701c2967c90e91ecad91dc78ff44d6ccd99bab90c0905",
+    "eval/reports/dpo-retrieval-2026-11-16/plan.md": "74d71739b718ed66870e710106f3176b99e3f78fb55e2e2ca402f8ba4a961579"
+  },
+  "source_scope": "declared_document",
+  "baseline_policy": "original-question-v1",
+  "challenger_policy": "dpo-component-round-robin-v1",
+  "baseline_query_count": 3,
+  "challenger_query_count": 7,
+  "max_results_per_query": 5,
+  "final_result_limit": 5,
+  "task_denominator": 3,
+  "expected_page_denominator": 4,
+  "model_calls": 0,
+  "automatic_retries": false,
+  "default_promotion": false,
+  "planned_queries": {
+    "financebench_id_06247": [
+      "What is FY2018 days payable outstanding (DPO) for Walmart? DPO is defined as: 365 * (average accounts payable between FY2017 and FY2018) / (FY2018 COGS + change in inventory between FY2017 and FY2018). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the statement of financial position and the P&L statement.",
+      "accounts payable trade payables 2018 2017",
+      "purchases credit purchases 2018 2017",
+      "cost of sales cost of goods sold 2018 2017",
+      "inventory inventories 2018 2017"
+    ],
+    "financebench_id_01163": [
+      "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?"
+    ],
+    "financebench_id_00601": [
+      "What drove the reduction in SG&A expense as a percent of net sales in FY2023?"
+    ]
+  },
+  "exposure": "All three tasks and source pages previously inspected development. This is a targeted exploratory ablation, not an unseen test."
+}
