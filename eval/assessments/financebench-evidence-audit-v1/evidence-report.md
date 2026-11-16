@@ -57,6 +57,12 @@ against one another. The original page-ranking regression remains unchanged and
 the challenger remains unpromoted. No original packet, reference answer or score
 has been edited. Currency defaults and other proposed revisions are not applied.
 
+The [independent attribution audit](attribution-audit.json) verified all 21 input
+bindings and reproduced identical output bytes. A separate nonempty-snippet
+locator calculation matched retained evidence in all 72 conditions. All 384
+interpretation/measure rows and 120 complete-set checks, including missing lines,
+matched. This validates attribution mechanics, not financial judgments.
+
 Result SHA-256:
 `411c22b976635d90a5dab00165627850f767f5e25391a468723767a4745ec7c9`.
 
@@ -71,9 +77,10 @@ questions may be recognizable; no model-training non-exposure claim is made.
 The [financial-convention research](../../financial-conventions-research-2026-11-16.md)
 proposes prospective evidence boundaries and versioned accounting conventions.
 This can distinguish strict textual support from analyst usefulness without
-silently fitting a rubric to observed results. Separate role-comparison review
-must distinguish location additions from role/metric/assumption revisions before
-any future annotation update. Reserved validation documents remain closed.
+silently fitting a rubric to observed results. The separate outcome-blind [role comparison](rubric-comparison.md) found stricter
+obligations or changed interpretations in the new rubric and certified no new
+independently complete same-rubric location alternative. Empty proposed-revision
+arrays do not establish equivalence to the original roles. Reserved validation documents remain closed.
 
 All 399 tests and lint pass. The original 25 tasks and 15-task holdout remain
 unchanged; schema validation is not a held-out model evaluation.

@@ -42,3 +42,8 @@ under either context policy. Only two cases have adjudicated complete sets, so t
 is not six retrieval failures or an answer-accuracy score. Independent byte-identical
 reproduction verifies 21 bindings, 72 conditions and 384 interpretation/measure rows.
 Historical scores, reserved validation and default retrieval remain unchanged.
+
+[Outcome-blind rubric comparison](rubric-comparison.md) distinguishes stricter
+requirements from changed metrics and location candidates. It certifies no new
+complete same-rubric alternative. Generic primary-source convention research
+proposes prospective rules without changing frozen judgments.
