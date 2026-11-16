@@ -63,6 +63,16 @@
       "sha256": "9665dd60f106e5cd41d37537edac97bbd26eb7629ad63ca2390b19d4619ba51b",
       "license": "MIT repository; underlying reports retain their rights",
       "filename": "convfinqa-dev.json"
+    },
+    "financebench-documents": {
+      "dataset": "financebench_documents",
+      "subset": "metadata",
+      "source_split": "public",
+      "revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+      "url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/data/financebench_document_information.jsonl",
+      "sha256": "1c69127783879de8cdadb159d2181f39bc3123b8e0ebf74031c3969d69189575",
+      "license": "FinanceBench research metadata; source filings retain their rights",
+      "filename": "financebench-documents.jsonl"
     }
   }
 }

@@ -120,7 +120,7 @@ blended accuracy is produced.
   Missing turns stay in the turn denominator. A failed outer conversation cannot
   pass as completed even when recorded turn answers are correct; turn credit is
   retained separately. Future questions/programs/answers remain evaluator-owned.
-  Program accuracy is not implemented. Conversation execution is the next step.
+  Program accuracy is not implemented. The bounded runner supports both history conditions.
 - **FinanceBench:** completed answers require semantic/evidence review; accuracy
   remains null, even when every run is missing. A returned passage and correct
   number alone do not establish supported-task success.
@@ -137,7 +137,7 @@ uv run python -m provenance.benchmark_run --live \
   --budget-usd 0.05 --per-task-usd 0.02
 ```
 
-This makes at most one request per selected task, with no research tools or gold
+For single-turn datasets this makes at most one request per selected task, with no research tools or gold
 references in model messages. It supports model-only, supplied-context, and
 FinanceBench evidence-supplied conditions. Full-agent mode is rejected until a
 verified document-corpus execution path is implemented. Each run records model,
@@ -168,7 +168,38 @@ references; this is compatibility QA, not model accuracy. All 421 conversations
 overlap FinQA dev by source page. New preparations contain 100 TAT-QA questions
 and 30 conversations with shared report grouping/exposure rules.
 
-Next iterations: conversation execution and expanded pilots; source-aware
-research corpus assembly; independent reviewer calibration; TAT-QA official metric
-integration and ConvFinQA conversation/history separation; company/report-aware
-partitions; source ingestion comparisons. See [loop protocol](improvement-loop.md).
+Next iterations: expanded preregistered pilots, full-document execution with exact
+corpus binding, independent reviewer calibration, and source ingestion comparisons. See [loop protocol](improvement-loop.md).
+
+## Conversation execution and document assembly
+
+The same runner dispatches ConvFinQA preparations to a per-turn executor.
+`--per-task-usd` caps an entire conversation; `--per-turn-usd` caps one request.
+Every selected turn is recorded before inference. Invalid actual answers stop
+agent-history conversations; reference-history can proceed with earlier gold,
+explicitly labeled. Future questions and current/future gold never enter inputs.
+Uncertain billing stops the batch; crashes retain pending reservations.
+
+FinanceBench full-document acquisition is separate from execution:
+
+```sh
+uv run python -m provenance.financebench_corpus \
+  --prepared runs/benchmark-prepared/financebench-full-docs-v1 \
+  --metadata runs/benchmark-data/financebench-documents/financebench-documents.jsonl \
+  --metadata-source runs/benchmark-data/financebench-documents/source.json \
+  --output runs/financebench-full-docs-v2
+```
+
+Only selected whole PDFs and metadata enter ingestion; evaluator gold does not.
+The pinned mirror revision and original/text hashes bind the corpus. Conflicting
+metadata for a selected document rejects assembly; unrelated conflicts do not
+block it. The upstream metadata contains conflicting 2022/2023 periods for
+`FOOTLOCKER_2023_annualreport`; neither is silently chosen. The three-document
+native-extraction probe completed, but pypdf reported missing fontTools for some
+CFF fonts. This is an extraction-quality limitation, not a verified evidence corpus.
+Full-agent paid execution remains disabled pending binding enforcement and QA.
+
+The independent `provenance.table_structure` command produces native HTML table
+sidecars with cell positions, spans, original locations, and source hashes.
+It preserves empty/split-sign cells without changing legacy corpus text. It does
+not infer header associations, periods, units, or financial meaning.

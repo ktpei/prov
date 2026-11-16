@@ -124,3 +124,20 @@ source/document partitions before more inference.
 - Lint and **141 tests passed**; all four original pilot scores reproduced exactly.
   The official scorer matched all TAT-QA references against themselves (compatibility
   check only). No additional paid model calls or original holdout evaluation.
+
+## Cycle 5 — bounded conversations and source structure
+
+- Integrated single-attempt conversation execution with global/conversation/turn
+  budgets, durable reservations, complete denominators and actual/reference-history
+  separation. Independent review caught oversized numeric strings entering history;
+  scorer-aligned validation now stops them before later requests.
+- Added separately versioned native HTML cell geometry. The pinned Cloudflare release
+  yields 16 tables, 253 rows, 2,682 cells; split parentheses and empty cells survive.
+  These are extraction counts, not financial semantic accuracy.
+- Added metadata-hash-bound FinanceBench whole-PDF assembly, excluding evaluator gold.
+  Three originals downloaded/extracted: NIKE_2023_10K, ULTABEAUTY_2023Q4_EARNINGS,
+  WALMART_2018_10K. Missing fontTools warnings require extraction QA before use.
+  Selected metadata conflicts reject assembly; the upstream Foot Locker year conflict
+  is recorded without guessing a resolution. Full-agent execution remains disabled.
+- Lint and 161 tests passed. No additional paid calls; remaining authorization is
+  $0.5476339. Native table review is coordinated with the ingestion research chat.
