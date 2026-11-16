@@ -70,6 +70,9 @@ is not an accuracy result or a model recommendation. The
 [first live pilot](eval/assessments/model-effort-v1/pilot-report.md) stopped on its
 first transport failure with unknown billing; no successful outputs or model
 ranking resulted.
+Comparison failures now retain only recognized transport messages/HTTP statuses
+for diagnosis. Arbitrary exception text remains stripped, and unknown billing
+still stops all remaining calls without retrying.
 
 H2's [calculation infrastructure](eval/assessments/evidence-calculations-v1/report.md)
 provides bounded Decimal arithmetic, trusted-evidence references, financial

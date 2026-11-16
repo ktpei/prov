@@ -3,6 +3,7 @@
 import json
 import tempfile
 import unittest
+import urllib.error
 from pathlib import Path
 from unittest.mock import Mock, patch
 
@@ -13,6 +14,7 @@ from test_table_conversation_adapters import tatqa_group
 from provenance.benchmarks import prepare
 from provenance.model_comparison import run_comparison
 from provenance.table_conversation_adapters import adapt_tatqa
+from provenance.transport import post_json
 
 
 def arms():
@@ -125,6 +127,27 @@ class ModelComparisonTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             self.run_case(request)
         self.assertEqual(request.call_count, 1)
+
+    def test_real_transport_status_is_durable_without_secrets_or_retry(self):
+        for code in (400, 401, 429, 500):
+            with self.subTest(code=code):
+                self.output = Path(self.tmp.name) / str(code)
+                error = urllib.error.HTTPError(
+                    "https://SECRET.invalid", code, "SECRET", {"SECRET": "SECRET"}, None
+                )
+                with patch("provenance.transport.urllib.request.build_opener") as factory:
+                    factory.return_value.open.side_effect = error
+                    result = self.run_case(post_json)
+                factory.return_value.open.assert_called_once()
+                saved = json.loads((self.output / "comparison.json").read_text())
+                self.assertEqual(saved, result)
+                self.assertEqual(saved["status"], "stopped_for_billing_review")
+                first = saved["predictions"][0]
+                self.assertIn(f"API HTTP {code}; no automatic retry", first["failure"])
+                self.assertTrue(first["cost_uncertain"])
+                self.assertGreater(first["accounted_cost_usd"], 0)
+                self.assertEqual(sum(r["status"] == "skipped" for r in saved["predictions"]), 5)
+                self.assertNotIn("SECRET", json.dumps(saved))
 
     def test_invalid_inputs_and_arm_config_reject_before_output(self):
         request = Mock(return_value=reply())

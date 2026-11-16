@@ -7,6 +7,8 @@ selected case remains excluded for reference ambiguity. This does not replace
 full-agent retrieval evaluation or authorize model promotion. The
 [first live attempt](eval/assessments/model-effort-v1/pilot-report.md) stopped
 after one transport failure, retaining the uncertain reservation and all rows.
+An offline repair preserves safe transport diagnostics in future comparison
+records; it does not recover the old failure cause or change billing/retry rules.
 
 H2's internal arithmetic and trusted-snapshot calculation ledger are implemented
 without a new service or dependency. H3 must supply actual source admission and

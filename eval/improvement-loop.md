@@ -79,6 +79,32 @@ read-only reviews pass; shared-checkout lint and 496 tests pass. Clean commit
 and the synthetic trusted-admission boundary. H3 still owns real reader admission,
 claim visibility and model-tool budget integration. No paid calls or accuracy gain.
 
+## M1 — model/effort comparison and transport diagnostics
+
+Comparison infrastructure `01983f4` passed 500 clean-checkout tests and lint.
+Protocol `1422bad` froze four selected exposed development cases, with 3M excluded
+without replacement after independent pre-output reference review. Three eligible
+cases were assigned to DeepSeek Flash and GPT-6 Luna at explicit low/high effort.
+The supplied-evidence condition measures interpretation, not retrieval.
+
+The first live request failed before any usage/output returned; all subsequent
+rows stopped. See the [negative result](assessments/model-effort-v1/pilot-report.md)
+and committed accounting `cb8a0ae`. Preserve $0.0132189 uncertain reservation;
+combined conservative authorization accounting is $0.4946382. Unchanged aggregate
+key usage is not proof of zero request cost. No model winner or quality gain.
+
+The next offline repair preserves only the existing transport's exact fixed
+messages and ASCII HTTP status vocabulary through comparison sanitization.
+Arbitrary messages, near matches, headers and URLs remain discarded. Shared
+transport behavior, no-retry policy and uncertain accounting are unchanged.
+Independent Astra review passed all 19 adapter/runner tests, including real
+transport-to-ledger HTTP 400/401/429/500 failures and secret-bearing negative
+fixtures. Full shared-checkout `yarn lint` and 515 tests pass (including the 13
+untracked tests owned by the paused assessment chat). This diagnostic repair
+cannot recover the original failure cause.
+No additional paid call was made. A revised live protocol and explicit treatment
+of the retained uncertain reservation are required before another trial.
+
 ## Repeatable cycle
 
 1. Select one failure class from source QA, scorer adversarial tests, or a declared

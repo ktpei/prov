@@ -2,6 +2,7 @@
 
 import json
 import math
+import re
 from decimal import Decimal
 
 from provenance.controls import LimitReached, positive
@@ -180,8 +181,19 @@ class ComparisonClient:
                     ENDPOINT, receipt["request"], {"Authorization": "Bearer " + self._key}, timeout
                 )
             except Exception as exc:
+                # Only the fixed transport vocabulary may cross this boundary.
+                # Never persist arbitrary exception text, URLs, headers or bodies.
+                detail = str(exc) if type(exc) is ProviderError else ""
+                safe = detail in {
+                    "API redirects are disabled",
+                    "API response exceeds 2 MB limit",
+                    "API response must be an object",
+                    "API network, timeout, or JSON error; no automatic retry",
+                } or re.fullmatch(r"API HTTP [1-5][0-9]{2}; no automatic retry", detail)
                 raise ProviderError(
-                    "Comparison transport failed (" + type(exc).__name__ + ")"
+                    "Comparison transport failed: " + detail
+                    if safe
+                    else "Comparison transport failed (" + type(exc).__name__ + ")"
                 ) from None
             if not isinstance(response, dict):
                 raise ComparisonIntegrityError("Malformed provider response")

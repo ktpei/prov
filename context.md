@@ -14,6 +14,9 @@ The [first live attempt](eval/assessments/model-effort-v1/pilot-report.md) stopp
 after one transport failure with unknown billing; zero successful outputs.
 The $0.0132189 reservation remains accounted, bringing conservative combined
 spend to $0.4946382. No retry, model winner or accuracy gain is established.
+The subsequent offline diagnostic repair retains allowlisted transport HTTP
+statuses/fixed messages in comparison failures, while stripping arbitrary text.
+Independent review and 19 focused tests pass; the original failed pilot is unchanged.
 
 H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
 The ledger binds trusted admitted evidence, financial compatibility, calculation

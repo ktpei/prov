@@ -177,6 +177,41 @@ class ComparisonModelTests(unittest.TestCase):
             self.assertFalse(budget.uncertain)
         request.assert_not_called()
 
+    def test_only_fixed_transport_diagnostics_survive_sanitization(self):
+        safe = [
+            "API redirects are disabled",
+            "API response exceeds 2 MB limit",
+            "API response must be an object",
+            "API network, timeout, or JSON error; no automatic retry",
+            *[f"API HTTP {code}; no automatic retry" for code in (400, 401, 429, 500)],
+        ]
+        unsafe = [
+            "SECRET API HTTP 401; no automatic retry",
+            "API HTTP 401; no automatic retry SECRET",
+            "API HTTP 401; no automatic retry\n",
+            "API HTTP ４０１; no automatic retry",
+            "API HTTP 600; no automatic retry",
+            "API HTTP 401; no automatic retry\nAuthorization: SECRET",
+        ]
+        for detail in safe + unsafe:
+            with self.subTest(detail=detail):
+                model, request = client()
+                request.side_effect = ProviderError(detail)
+                budget = Budget(1)
+                with self.assertRaises(ProviderError) as caught:
+                    model.execute(model.prepare("Q"), 10, budget)
+                expected = (
+                    "Comparison transport failed: " + detail
+                    if detail in safe
+                    else "Comparison transport failed (ProviderError)"
+                )
+                self.assertEqual(str(caught.exception), expected)
+                self.assertTrue(model.last_dispatched)
+                self.assertIsNone(model.last_response)
+                self.assertTrue(budget.uncertain)
+                self.assertGreater(budget.charged, 0)
+                self.assertEqual(request.call_count, 1)
+
     def test_schedule_and_cache_reservations_and_overrun(self):
         pricing = copy.deepcopy(capability()["pricing"])
         pricing["overrides"] = [
