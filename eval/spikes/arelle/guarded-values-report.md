@@ -80,3 +80,10 @@ A [current-release review](release-review-2026-11-16.md) identifies 2.47.5 as th
 next candidate but finds the same affected helper in its published wheel and
 tagged source. This is static evidence, not a runtime regression result; an
 upgrade alone cannot be claimed as the fix.
+
+Implementation and scenario definitions were committed at `30aa9e8` before the
+retained [ten-scenario result](guarded-matrix-result.json). Root reproduced the
+complete matrix byte-for-byte in fresh denied-network child processes.
+[Verification](guarded-matrix-verification.json) separates independent adapter/test
+review from root matrix reproduction. Result SHA-256:
+`e0eccacbf50de378434840f0c3ef744945097273de747cd7b7ef5a72af1a9e2a`. These counts describe synthetic acceptance cases, not accuracy.
