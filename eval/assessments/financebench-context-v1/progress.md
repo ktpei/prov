@@ -12,8 +12,9 @@ Costco, Johnson & Johnson, 3M and American Water Works.
 | Distinct known companies | 6 |
 | Pinned mirror tree entries | 6 |
 | Downloaded/verified PDF bodies | 6 |
-| Extracted documents | 0 |
-| Inspected questions/evidence | 0 |
+| Extracted documents | 6 |
+| Prepared task/reference records | 6 |
+| Annotation-reviewed questions/evidence | 0 |
 | Executed retrieval/context cases | 0 |
 
 ## Source-inventory research
@@ -55,15 +56,18 @@ selection. No final-partition group was recruited and no download-based replacem
 is allowed. Selection parses full JSON rows but projects only metadata; question,
 answer and evidence fields were not inspected or used.
 
-The [frozen acquisition](acquisition-report.md) now verifies all six repository
-bodies (10,443,871 bytes) with no failures or retries. Before task/PDF content inspection, freeze
-preparation/extraction/annotation rules and record development reservations. Later
-comparison must keep the context baseline/challenger and budget fixed; it cannot
-retune from the newly selected cases. This preparation is not a benchmark result.
+The [frozen acquisition](acquisition-report.md) verifies all six repository bodies
+(10,443,871 bytes) with no failures or retries. The subsequent
+[preparation/extraction](preparation-report.md) is complete under a frozen rubric
+and development reservations: 981 pages, 34,904 emitted lines, five empty-native-text
+pages and zero warnings. Outcome-blind annotation and independent page review are
+next. Comparison remains unexecuted and must keep policies/budget fixed; it cannot
+retune from these cases. This preparation is not a benchmark score.
 
-All 315 tests and lint pass. Six PDF bodies were acquired and byte-verified in
-the subsequent acquisition stage; there have been no paid calls, holdout runs or
-financial-content inspections. Spending remains $0.4814193.
+All 320 tests and lint pass. Six bodies have been byte-verified and natively
+extracted; selected task/reference records were prepared by code. No annotation
+review, retrieval/context run, paid call or holdout run has occurred. Spending
+remains $0.4814193.
 
 Independent metadata-only review verified the 394-path non-truncated tree, all six
 ordered blob entries, exact sizes, source links and response/selection hashes.

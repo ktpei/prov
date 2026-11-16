@@ -1,0 +1,105 @@
+{
+  "version": "financebench-context-preparation-result-v1",
+  "protocol_sha256": "42fb579d12ff39ce60bf9a528cb7e89001aa23645cd3c4064f1f9113300347da",
+  "status": "complete",
+  "selected_denominator": 6,
+  "prepared_ids": [
+    "financebench_id_04209",
+    "financebench_id_04254",
+    "financebench_id_00215",
+    "financebench_id_03473",
+    "financebench_id_01865",
+    "financebench_id_00711"
+  ],
+  "prepared_files_sha256": {
+    "manifest.json": "2fb590523ea885600d6835cc1639cb6b8856e725070b5d619d3f671baa490a05",
+    "tasks.json": "2b05a8d6bbeeaaa807e8ea1437d81b84ca70bb94d84ac563b73c9c9b8ff52a09",
+    "inputs.json": "72b290d243e917b232e91114217f3997cf444a4e000c57f9b433f1d28072556f"
+  },
+  "documents": [
+    {
+      "id": "VERIZON_2022_10K",
+      "status": "extracted",
+      "original_sha256": "403d7346e8a059472863d1789527f16e5127a61c2f6c4429012e6227f27576d7",
+      "text_sha256": "4353c2de4f08e362f256df5b37cbd98c39ded394eb2b41d485cc5ed09cd311f9",
+      "source_manifest_sha256": "c61fd944f846d7fd20d35704d250a876a5b861f0a404b6a75443c02fb1ab1beb",
+      "page_count": 124,
+      "line_count": 5171,
+      "empty_native_text_pages": [],
+      "warning_count": 0,
+      "text_completeness": "not_verified"
+    },
+    {
+      "id": "COCACOLA_2017_10K",
+      "status": "extracted",
+      "original_sha256": "b57c75cf20916904f31c6aa7644d6c110f019adf7c76782c7d0ede7b95c65ac1",
+      "text_sha256": "78bd6ffb9cd043b54d25bf5dd8062c7614d1bc4bb0a13a10a638c67b64b183d5",
+      "source_manifest_sha256": "a6fc63e1fad6f93e7b554d1d64650822c8c514e31bc602848ae9642ce8cb6c37",
+      "page_count": 197,
+      "line_count": 7092,
+      "empty_native_text_pages": [],
+      "warning_count": 0,
+      "text_completeness": "not_verified"
+    },
+    {
+      "id": "COSTCO_2021_10K",
+      "status": "extracted",
+      "original_sha256": "29e05b3862cf6ffa6cfda34ac82a9fa0fe76b67338c5924da3325c2ee3b08748",
+      "text_sha256": "85aab77c4243b28c7bb709ea3929fe5836e8969807ea8a6df49bf620153da2f2",
+      "source_manifest_sha256": "1360394bfa416b24b7732be3a8ef6b516a878b78ee592555e662aefd911a89ef",
+      "page_count": 76,
+      "line_count": 2500,
+      "empty_native_text_pages": [
+        1
+      ],
+      "warning_count": 0,
+      "text_completeness": "not_verified"
+    },
+    {
+      "id": "JOHNSON_JOHNSON_2022_10K",
+      "status": "extracted",
+      "original_sha256": "dba7d6cc97734abd6dcbc1a6a34f82b5d228e60d0a1a32425a90404fd4d3e290",
+      "text_sha256": "78f1f5a613bd576d84b468593efc6d7df8bd16cd64103bcc85bad4b058673e76",
+      "source_manifest_sha256": "8df0e6ff38da1b6af91d1c4c3a1354887dbf006a1d9969882963df324ed53d85",
+      "page_count": 151,
+      "line_count": 5627,
+      "empty_native_text_pages": [],
+      "warning_count": 0,
+      "text_completeness": "not_verified"
+    },
+    {
+      "id": "3M_2022_10K",
+      "status": "extracted",
+      "original_sha256": "d5cf549543a24b04228fd2af979ff2ca94cf64fb008a789340cb9117fbcfde5d",
+      "text_sha256": "1bf21b6df7f23f2031f41fdfd4349c1f22c0811585e5eafb72530d03f720c7c6",
+      "source_manifest_sha256": "b71d445785c1ae41762fde88355714358cec6dcb38c28c68a3d1ab230a814ede",
+      "page_count": 252,
+      "line_count": 8854,
+      "empty_native_text_pages": [],
+      "warning_count": 0,
+      "text_completeness": "not_verified"
+    },
+    {
+      "id": "AMERICANWATERWORKS_2021_10K",
+      "status": "extracted",
+      "original_sha256": "701528ae6d14a77229468a829ee18f01ed439d5be012d0a915d2683335051029",
+      "text_sha256": "06e954d0e43fb906579d5f1bbdba25e09e7d435e75aa9f08f9e24c8f7cb66629",
+      "source_manifest_sha256": "8b32d88d641990a34efa4e8e5b1d0ebbaddb3dd668765eac9a1ebb2d5ddf203e",
+      "page_count": 181,
+      "line_count": 5660,
+      "empty_native_text_pages": [
+        151,
+        153,
+        155,
+        157
+      ],
+      "warning_count": 0,
+      "text_completeness": "not_verified"
+    }
+  ],
+  "retrieval_executed": false,
+  "annotations_authored": false,
+  "corpus_manifest_sha256": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4",
+  "corpus_binding_sha256": "a2bedcdcc91728ae23626aa5dc25c5e5d9521172bb1253e956c90965594b1286",
+  "extracted_count": 6
+}

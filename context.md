@@ -7,7 +7,9 @@ are frozen before content inspection: Verizon, Coca-Cola, Costco, Johnson & John
 3M and American Water Works. Independent metadata review confirms existing seed-17
 development membership, six distinct companies and no known exposed-company overlap.
 All six pinned PDF bodies are acquired and byte-verified with zero failures or
-retries; extraction, content inspection and evaluation remain pending. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+retries. Frozen preparation/native extraction is complete (981 pages, 34,904 lines);
+annotation review and evaluation remain pending. Five pages lack native text and
+quality remains unverified. All 320 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16
