@@ -59,6 +59,12 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
     manifest = bundle["manifest"]
     identity = canonical_hash(manifest)
     score_run(bundle, {"prepared_sha256": identity, "predictions": []})
+    if manifest["source"]["dataset"] == "tatqa":
+        from provenance.official_metrics import load_tatqa_metric
+
+        load_tatqa_metric()
+    if manifest["source"]["dataset"] == "convfinqa":
+        raise ValueError("Conversation execution requires the conversation runner")
     if manifest["condition"] == "full_agent":
         raise ValueError("Full-agent execution requires a separately verified document corpus")
     if (

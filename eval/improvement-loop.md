@@ -105,3 +105,22 @@ source/document partitions before more inference.
   FinQA manifest was prepared offline with the reference registry and report groups.
 - TAT-QA/ConvFinQA files acquired with pinned archive/member hashes; adapter and
   official-metric integration is in progress. No additional inference spending.
+
+## Cycle 4 — table and conversation integration
+
+- Added pure TAT-QA/ConvFinQA adapters and history projections. Imported all 1,668
+  table questions and 421 conversations/1,490 turns from pinned development files.
+- Vendored the official TAT-QA scorer with MIT license and byte-hash tests; only
+  its package-relative import changes. Optional locked metric dependencies are
+  installed by `yarn test`. Wrapper-v2 protects zero/scientific numeric values and
+  rejects blank outputs; official EM/F1 and scale accuracy remain separate.
+- Added complete turn/conversation denominators and preserved outer completion
+  status. Conversation execution is not yet wired; scalar program accuracy is
+  deliberately not called official execution/program accuracy.
+- Independent review found and fixed a missing CLI exposure-override argument and
+  upstream scientific-notation false passes. An actual preparation CLI regression
+  now proves exposed reports stay in development. Superseding local manifests:
+  `finqa-reviewed-v3`, `tatqa-reviewed-v2`, `convfinqa-reviewed-v2`.
+- Lint and **141 tests passed**; all four original pilot scores reproduced exactly.
+  The official scorer matched all TAT-QA references against themselves (compatibility
+  check only). No additional paid model calls or original holdout evaluation.

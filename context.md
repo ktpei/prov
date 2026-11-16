@@ -1,5 +1,14 @@
 # Working context — 2026-11-16
 
+## Table/conversation expansion — 2026-11-16
+
+All five selected public dataset families now have adapters. TAT-QA uses a pinned
+MIT-licensed official metric with explicit numeric-output safeguards; ConvFinQA
+has history-isolated projections and per-turn/whole-conversation scoring, with
+conversation execution still pending. New report-level partitions share FinQA/
+ConvFinQA exposure rules. Full imports and 141 tests passed; no new model-quality
+claim or spending accompanies this expansion. [Details](eval/external-benchmarks.md).
+
 ## External pilot measured — 2026-11-16
 
 [Ten-task development pilot](eval/reports/external-pilot-2026-11-16/report.md):

@@ -1,7 +1,7 @@
 # External finance benchmark workflow
 
 Implemented development foundation, 2026-11-16. This adds pinned acquisition,
-three dataset adapters, development selection, input/reference separation, and
+five dataset adapters, development selection, input/reference separation, and
 offline scoring. A separate explicit tool-free runner supports OpenRouter;
 its implementation tests do not establish financial model accuracy. Existing benchmarks, heldout tasks, and
 historical grades are unchanged.
@@ -28,7 +28,9 @@ uv run python -m provenance.benchmarks prepare \
 Acquisition verifies the exact downloaded bytes before creating the output.
 Both commands require new output directories and never replace an earlier run.
 The catalog also provides `fineval-cfa-easy`, `fineval-cfa-challenge`, and
-`financebench-public`. CFA files are Parquet: use `uv run --with pyarrow python`
+`financebench-public`, `tatqa-dev`, and `convfinqa-dev`. ConvFinQA acquisition
+verifies both archive and selected JSON member hashes without extracting arbitrary
+ZIP members. CFA files are Parquet: use `uv run --with pyarrow python`
 for their preparation (optional import dependency, not required for the harness).
 
 Supported conditions:
@@ -37,6 +39,8 @@ Supported conditions:
 | --- | --- | --- |
 | FinEval | `model_only` | Query, including its options |
 | FinQA | `supplied_context` | Question, pre/post text, table |
+| TAT-QA | `supplied_context` | Question, whole table and paragraphs, no relevance labels |
+| ConvFinQA | `reference_history`, `agent_history` | Current turn and permitted prior answers only; conversation execution pending |
 | FinanceBench | `evidence_supplied` | Question and gold evidence passages, explicitly diagnostic |
 | FinanceBench | `full_agent` | Question and document name; document acquisition/runtime integration still required |
 
@@ -105,6 +109,18 @@ blended accuracy is produced.
   documents that convention, but answer-only ambiguity remains a limitation.
   Booleans, nonfinite values, units in numeric strings, and extra output fields
   fail. Twelve pinned dev records have empty display answers but valid targets.
+- **TAT-QA:** pinned official EM/F1 and separate scale accuracy. Install with
+  `uv run --extra benchmark-metrics python ...` for scoring/execution. The wrapper
+  converts finite JSON numbers to plain decimals, preventing the upstream parser
+  from reading only the mantissa of `1e20`; scientific-notation strings and all-blank
+  answer lists are invalid. Zero is preserved. Upstream magnitude equivalence,
+  rounding, span normalization, and separate scale-label behavior remain; these
+  metrics do not establish strict financial semantic support.
+- **ConvFinQA:** adapted scalar accuracy per turn and whole-conversation success.
+  Missing turns stay in the turn denominator. A failed outer conversation cannot
+  pass as completed even when recorded turn answers are correct; turn credit is
+  retained separately. Future questions/programs/answers remain evaluator-owned.
+  Program accuracy is not implemented. Conversation execution is the next step.
 - **FinanceBench:** completed answers require semantic/evidence review; accuracy
   remains null, even when every run is missing. A returned passage and correct
   number alone do not establish supported-task success.
@@ -146,7 +162,13 @@ now measures a small subset: five choice passes, two of three FinQA scalar passe
 and two FinanceBench responses awaiting semantic adjudication. Its conservative
 cost was $0.0161622. Preserve its original failures and reference-issue findings.
 
-Next iterations: measured tool-free pilots; source-aware
+Expansion verification: all 1,668 TAT-QA questions and 421 ConvFinQA conversations
+(1,490 turns) imported. Official TAT-QA reference self-scoring matched all 1,668
+references; this is compatibility QA, not model accuracy. All 421 conversations
+overlap FinQA dev by source page. New preparations contain 100 TAT-QA questions
+and 30 conversations with shared report grouping/exposure rules.
+
+Next iterations: conversation execution and expanded pilots; source-aware
 research corpus assembly; independent reviewer calibration; TAT-QA official metric
 integration and ConvFinQA conversation/history separation; company/report-aware
 partitions; source ingestion comparisons. See [loop protocol](improvement-loop.md).

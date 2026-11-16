@@ -1,7 +1,12 @@
 """Adversarial projection, sampling, scoring, and denominator checks."""
 
 import copy
+import hashlib
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from provenance.benchmarks import (
     PARTITION_V1,
@@ -174,6 +179,54 @@ class BenchmarkTests(unittest.TestCase):
         )
         self.assertEqual(exposed["manifest"]["partitions"][record["id"]], "dev")
         self.assertEqual(score_run(exposed, [])["selected_count"], 1)
+
+    def test_prepare_cli_applies_development_exposure_registry(self):
+        from provenance.benchmarks import main
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            record = {
+                "id": "synthetic-not-an-upstream-id",
+                "filename": "MRO/2007/page_999.pdf",
+                "pre_text": [],
+                "post_text": [],
+                "table": [["Value", "1"]],
+                "qa": {"question": "Synthetic value?", "exe_ans": 1, "answer": "1", "program": "1"},
+            }
+            raw = json.dumps([record]).encode()
+            (root / "data.json").write_bytes(raw)
+            source = {
+                **bundle()["manifest"]["source"],
+                "dataset": "finqa",
+                "subset": "default",
+                "sha256": hashlib.sha256(raw).hexdigest(),
+            }
+            (root / "source.json").write_text(json.dumps(source))
+            with (
+                patch(
+                    "sys.argv",
+                    [
+                        "benchmarks",
+                        "prepare",
+                        "--source-manifest",
+                        str(root / "source.json"),
+                        "--input",
+                        str(root / "data.json"),
+                        "--condition",
+                        "supplied_context",
+                        "--count",
+                        "1",
+                        "--output",
+                        str(root / "prepared"),
+                    ],
+                ),
+                patch("builtins.print"),
+            ):
+                main()
+            manifest = json.loads((root / "prepared/manifest.json").read_text())
+            self.assertIn("MRO/2007", manifest["development_groups"])
+            self.assertEqual(manifest["partitions"][record["id"]], "dev")
+            self.assertIn("development_exposures_sha256", manifest)
 
     def test_choice_rejects_explanations_and_multiple_answers(self):
         self.assertTrue(score_answer(task(), {"answer": "B"})["passed"])

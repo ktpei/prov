@@ -14,12 +14,15 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 VERSION = "external-finance-v1"
-SCORER_VERSION = "external-answer-only-v1"
+LEGACY_SCORER_VERSION = "external-answer-only-v1"
+SCORER_VERSION = "external-answer-only-v2"
 PARTITION_V1 = "sha256(seed,document_or_id)-mod5-v1"
 PARTITION_V2 = "sha256(seed,report_or_id)-mod5-v2"
 CONDITIONS = {
     "fineval": {"model_only"},
     "finqa": {"supplied_context"},
+    "tatqa": {"supplied_context"},
+    "convfinqa": {"reference_history", "agent_history"},
     "financebench": {"evidence_supplied", "full_agent"},
 }
 
@@ -48,6 +51,28 @@ def model_input(task, condition):
             "FinQA execution-result convention (percentage calculations may produce ratios); "
             "no unit suffix or explanatory text in answer. This is an answer-only adaptation."
         )
+    elif dataset == "tatqa":
+        payload["context"] = {
+            "table": task["context"]["table"],
+            "paragraphs": [
+                {key: paragraph[key] for key in ("uid", "order", "text")}
+                for paragraph in task["context"]["paragraphs"]
+            ],
+        }
+        payload["output_contract"] = (
+            'Return only JSON {"answer": string_or_number_or_string_list, '
+            '"scale": ""}. Scale must be "", "thousand", "million", "billion", or "percent".'
+        )
+    elif dataset == "convfinqa":
+        from provenance.table_conversation_adapters import conversation_input
+
+        payload = conversation_input(
+            task, 0, condition=condition, history=[] if condition == "agent_history" else None
+        )
+        payload["output_contract"] = (
+            'Return only JSON {"answer": number_or_yes_no} in execution-result scale.'
+        )
+        payload["conversation_turn_count"] = len(task["reference"]["turns"])
     else:
         payload["context"] = {}
         if condition == "evidence_supplied":
@@ -68,7 +93,7 @@ def partition_group(task, method=PARTITION_V2):
     """Keep a document together; related suites still require a cross-suite overlap audit."""
     metadata = task["metadata"]
     document = metadata.get("filename") or metadata.get("doc_name")
-    if document and task["dataset"] == "finqa" and method == PARTITION_V2:
+    if document and task["dataset"] in {"finqa", "convfinqa"} and method == PARTITION_V2:
         # Released FinQA filenames identify pages, not entire company reports.
         document = re.sub(r"/page_[0-9]+\.pdf$", "", str(document))
     return str(document) if document else task["id"]
@@ -126,6 +151,7 @@ def prepare(
         "seed": seed,
         "condition": condition,
         "partition_method": partition_method,
+        "scorer_version": SCORER_VERSION,
         "partitions": assignments,
         "selected_ids": [task["id"] for task in selected],
         "inputs_sha256": canonical_hash(inputs),
@@ -158,12 +184,12 @@ def decimal_answer(value):
     return number
 
 
-def score_answer(task, prediction):
+def score_answer(task, prediction, *, scorer_version=SCORER_VERSION):
     """Conservative adaptation, never official program accuracy or semantic grading."""
     dataset = task["dataset"]
     result = {
         "id": task["id"],
-        "scorer_version": SCORER_VERSION,
+        "scorer_version": scorer_version,
         "metric": task["reference"]["metric"],
         "passed": False,
         "status": "invalid_output",
@@ -171,6 +197,15 @@ def score_answer(task, prediction):
     if task["reference"].get("requires_review"):
         result.update(passed=None, status="reference_conflict_requires_review")
         return result
+    if dataset == "tatqa":
+        from provenance.official_metrics import score_tatqa
+
+        official = score_tatqa(task["reference"], prediction)
+        return {**result, **official, "passed": official["exact_match"] == 1.0}
+    if dataset == "convfinqa":
+        from provenance.conversation_eval import score_conversation
+
+        return {**result, **score_conversation(task, prediction)}
     if dataset == "financebench":
         if (
             not isinstance(prediction, dict)
@@ -213,6 +248,9 @@ def score_answer(task, prediction):
 def score_run(bundle, submission):
     """Keep every selected task in denominator; reject foreign/duplicate result IDs."""
     manifest, tasks = bundle["manifest"], bundle["tasks"]
+    scorer_version = manifest.get("scorer_version", LEGACY_SCORER_VERSION)
+    if scorer_version not in {LEGACY_SCORER_VERSION, SCORER_VERSION}:
+        raise ValueError("Unsupported scorer version")
     if manifest.get("version") != VERSION:
         raise ValueError("Unsupported prepared manifest version")
     checked = prepare(
@@ -251,16 +289,25 @@ def score_run(bundle, submission):
     rows = []
     for task in tasks:
         prediction = by_id.get(task["id"])
-        if task["reference"].get("requires_review"):
-            rows.append(score_answer(task, None))
+        if task["reference"].get("requires_review") and scorer_version != LEGACY_SCORER_VERSION:
+            rows.append(score_answer(task, None, scorer_version=scorer_version))
+        elif task["dataset"] == "convfinqa" and prediction is not None:
+            graded = score_answer(task, prediction.get("output"), scorer_version=scorer_version)
+            graded["answer_sequence_passed"] = graded["passed"]
+            graded["completion_status"] = prediction.get("status")
+            if prediction.get("status") != "completed":
+                graded["passed"] = False
+                if graded["answer_sequence_passed"]:
+                    graded["status"] = "conversation_status_inconsistent"
+            rows.append(graded)
         elif prediction is None or prediction.get("status") != "completed":
             rows.append({"id": task["id"], "passed": False, "status": "missing_or_incomplete"})
         else:
-            rows.append(score_answer(task, prediction.get("output")))
+            rows.append(score_answer(task, prediction.get("output"), scorer_version=scorer_version))
     pending = sum(row["passed"] is None for row in rows)
-    return {
+    report = {
         "version": VERSION,
-        "scorer_version": SCORER_VERSION,
+        "scorer_version": scorer_version,
         "dataset": manifest["source"]["dataset"],
         "condition": manifest["condition"],
         "prepared_sha256": canonical_hash(manifest),
@@ -281,6 +328,26 @@ def score_run(bundle, submission):
         "tasks": rows,
         "limitations": manifest["limitations"],
     }
+
+    if manifest["source"]["dataset"] == "tatqa":
+        report["official_metrics"] = {
+            key: None if pending else sum(row.get(key, 0.0) for row in rows) / len(tasks)
+            for key in ("exact_match", "f1", "scale_accuracy")
+        }
+    elif manifest["source"]["dataset"] == "convfinqa":
+        turn_count = sum(len(task["reference"]["turns"]) for task in tasks)
+        turn_passed = sum(row.get("turn_passed_count", 0) for row in rows)
+        report["conversation_metrics"] = {
+            "conversation_count": len(tasks),
+            "completed_conversation_count": sum(
+                row.get("completion_status") == "completed" for row in rows
+            ),
+            "whole_conversation_accuracy": report["accuracy"],
+            "turn_count": turn_count,
+            "turn_passed_count": turn_passed,
+            "turn_accuracy": turn_passed / turn_count,
+        }
+    return report
 
 
 def load_bundle(directory):
@@ -328,8 +395,14 @@ def main():
         if exposures.get("version") != "finance-development-exposures-v1":
             raise ValueError("Unknown development exposure registry")
         bundle = prepare(
-            tasks, source=source, count=args.count, seed=args.seed, condition=args.condition
+            tasks,
+            source=source,
+            count=args.count,
+            seed=args.seed,
+            condition=args.condition,
+            development_groups=[entry["group"] for entry in exposures["groups"]],
         )
+        bundle["manifest"]["development_exposures_sha256"] = canonical_hash(exposures)
         bundle["manifest"]["reference_registry_sha256"] = canonical_hash(registry)
         bundle["manifest"]["applied_reference_issues"] = sorted(
             {

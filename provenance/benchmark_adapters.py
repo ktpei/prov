@@ -12,6 +12,8 @@ _SUPPORTED_SUBSETS = {
     "fineval": {"CFA-Easy", "CFA-Challenge"},
     "finqa": {"default"},
     "financebench": {"open_source"},
+    "tatqa": {"default"},
+    "convfinqa": {"default"},
 }
 
 
@@ -170,6 +172,11 @@ def adapt_records(dataset, records: Iterable[dict], *, subset, source_split) -> 
         )
     if not isinstance(source_split, str) or not source_split:
         raise ValueError("source_split must be a non-empty string")
+    if dataset in {"tatqa", "convfinqa"}:
+        from provenance.table_conversation_adapters import adapt_convfinqa, adapt_tatqa
+
+        adapter = adapt_tatqa if dataset == "tatqa" else adapt_convfinqa
+        return adapter(records, source_split=source_split)
     if isinstance(records, (str, bytes, dict)):
         raise ValueError("records must be a non-empty iterable of JSON objects")
     try:
