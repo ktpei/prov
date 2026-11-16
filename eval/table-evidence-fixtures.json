@@ -1,0 +1,458 @@
+{
+  "version": "table-evidence-fixtures-v1",
+  "review_status": "Two coding-agent inspections; human adjudication pending. Development regression fixtures only.",
+  "limitations": [
+    "Evaluator-only component associations; never add these labels to extraction or retrieval.",
+    "No runtime table-aware read implemented; fixtures do not establish agent success.",
+    "Cell identities are scoped to original hash and sidecar version.",
+    "Normalized cell text differs from original byte quotation."
+  ],
+  "fixtures": [
+    {
+      "id": "fresh-03",
+      "source_id": "cloudflare-q3-2024-release",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "sidecar_version": "native-html-tables-v1",
+      "table_id": "table-8",
+      "required_components": {
+        "table_title_scale": [
+          "table-8-r1-c0"
+        ],
+        "period_duration": [
+          "table-8-r3-c1"
+        ],
+        "period_year": [
+          "table-8-r4-c2"
+        ],
+        "section": [
+          "table-8-r30-c0"
+        ],
+        "metric": [
+          "table-8-r31-c0"
+        ],
+        "value_sign": [
+          "table-8-r31-c2",
+          "table-8-r31-c3"
+        ]
+      },
+      "expected_cells": {
+        "table-8-r1-c0": {
+          "text": "CLOUDFLARE, INC. CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (in thousands) (unaudited)",
+          "row_start": 1,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 8,
+          "original_location": {
+            "line": 5854,
+            "column": 44
+          }
+        },
+        "table-8-r3-c1": {
+          "text": "Nine Months Ended September 30,",
+          "row_start": 3,
+          "column_start": 1,
+          "row_span": 1,
+          "column_span": 7,
+          "original_location": {
+            "line": 5894,
+            "column": 44
+          }
+        },
+        "table-8-r4-c2": {
+          "text": "2024",
+          "row_start": 4,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 5917,
+            "column": 44
+          }
+        },
+        "table-8-r30-c0": {
+          "text": "Cash Flows from Investing Activities",
+          "row_start": 30,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 7183,
+            "column": 44
+          }
+        },
+        "table-8-r31-c0": {
+          "text": "Purchases of property and equipment",
+          "row_start": 31,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 7211,
+            "column": 44
+          }
+        },
+        "table-8-r31-c2": {
+          "text": "(111,884",
+          "row_start": 31,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 7223,
+            "column": 44
+          }
+        },
+        "table-8-r31-c3": {
+          "text": ")",
+          "row_start": 31,
+          "column_start": 3,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 7230,
+            "column": 44
+          }
+        }
+      },
+      "expected_typed_values": {
+        "statement_value": "-111884",
+        "statement_unit": "USD_thousand",
+        "requested_value": "111.884",
+        "requested_unit": "USD_million_magnitude"
+      },
+      "known_wrong_cells": [
+        "table-12-r7-c10",
+        "table-8-r31-c6",
+        "table-8-r32-c2"
+      ],
+      "max_packet_characters": 12000
+    },
+    {
+      "id": "fresh-01",
+      "source_id": "cloudflare-q3-2024-release",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "sidecar_version": "native-html-tables-v1",
+      "table_id": "table-9",
+      "required_components": {
+        "table_title_scale": [
+          "table-9-r1-c0"
+        ],
+        "period_duration": [
+          "table-9-r3-c2"
+        ],
+        "period_year": [
+          "table-9-r4-c3"
+        ],
+        "gaap_metric": [
+          "table-9-r23-c0"
+        ],
+        "gaap_value": [
+          "table-9-r23-c3"
+        ],
+        "non_gaap_metric": [
+          "table-9-r25-c0"
+        ],
+        "non_gaap_value": [
+          "table-9-r25-c3"
+        ]
+      },
+      "expected_cells": {
+        "table-9-r1-c0": {
+          "text": "CLOUDFLARE, INC. RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES (in thousands, except per share amounts) (unaudited)",
+          "row_start": 1,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 17,
+          "original_location": {
+            "line": 8342,
+            "column": 44
+          }
+        },
+        "table-9-r3-c2": {
+          "text": "Three Months Ended September 30,",
+          "row_start": 3,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 7,
+          "original_location": {
+            "line": 8393,
+            "column": 44
+          }
+        },
+        "table-9-r4-c3": {
+          "text": "2024",
+          "row_start": 4,
+          "column_start": 3,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 8441,
+            "column": 44
+          }
+        },
+        "table-9-r23-c0": {
+          "text": "GAAP research and development",
+          "row_start": 23,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 10273,
+            "column": 44
+          }
+        },
+        "table-9-r23-c3": {
+          "text": "110,911",
+          "row_start": 23,
+          "column_start": 3,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 10292,
+            "column": 44
+          }
+        },
+        "table-9-r25-c0": {
+          "text": "Non-GAAP research and development",
+          "row_start": 25,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 10487,
+            "column": 44
+          }
+        },
+        "table-9-r25-c3": {
+          "text": "70,452",
+          "row_start": 25,
+          "column_start": 3,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 10506,
+            "column": 44
+          }
+        }
+      },
+      "expected_typed_values": {
+        "gaap_value": "110.911",
+        "non_gaap_value": "70.452",
+        "unit": "USD_million"
+      },
+      "known_wrong_cells": [
+        "table-9-r23-c11",
+        "table-9-r23-c7"
+      ],
+      "max_packet_characters": 12000
+    },
+    {
+      "id": "fresh-02",
+      "source_id": "cloudflare-q3-2024-release",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "sidecar_version": "native-html-tables-v1",
+      "table_id": "table-7",
+      "required_components": {
+        "table_title_scale": [
+          "table-7-r1-c0"
+        ],
+        "period_instant": [
+          "table-7-r3-c1"
+        ],
+        "assets_metric": [
+          "table-7-r12-c0"
+        ],
+        "assets_value": [
+          "table-7-r12-c2"
+        ],
+        "liabilities_metric": [
+          "table-7-r28-c0"
+        ],
+        "liabilities_value": [
+          "table-7-r28-c2"
+        ]
+      },
+      "expected_cells": {
+        "table-7-r1-c0": {
+          "text": "CLOUDFLARE, INC. CONDENSED CONSOLIDATED BALANCE SHEETS (in thousands, except par value) (unaudited)",
+          "row_start": 1,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 8,
+          "original_location": {
+            "line": 3942,
+            "column": 44
+          }
+        },
+        "table-7-r3-c1": {
+          "text": "September 30, 2024",
+          "row_start": 3,
+          "column_start": 1,
+          "row_span": 1,
+          "column_span": 3,
+          "original_location": {
+            "line": 3986,
+            "column": 44
+          }
+        },
+        "table-7-r12-c0": {
+          "text": "Total current assets",
+          "row_start": 12,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 4377,
+            "column": 44
+          }
+        },
+        "table-7-r12-c2": {
+          "text": "2,163,878",
+          "row_start": 12,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 4389,
+            "column": 44
+          }
+        },
+        "table-7-r28-c0": {
+          "text": "Total current liabilities",
+          "row_start": 28,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 5139,
+            "column": 44
+          }
+        },
+        "table-7-r28-c2": {
+          "text": "641,615",
+          "row_start": 28,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 5151,
+            "column": 44
+          }
+        }
+      },
+      "expected_typed_values": {
+        "assets": "2163.878",
+        "liabilities": "641.615",
+        "difference": "1522.263",
+        "unit": "USD_million"
+      },
+      "known_wrong_cells": [
+        "table-7-r12-c6",
+        "table-7-r28-c6"
+      ],
+      "max_packet_characters": 12000
+    },
+    {
+      "id": "per-share-scale",
+      "source_id": "cloudflare-q3-2024-release",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "sidecar_version": "native-html-tables-v1",
+      "table_id": "table-10",
+      "required_components": {
+        "table_title_scale": [
+          "table-10-r1-c0"
+        ],
+        "period_duration": [
+          "table-10-r3-c2"
+        ],
+        "period_year": [
+          "table-10-r4-c3"
+        ],
+        "metric": [
+          "table-10-r28-c0"
+        ],
+        "value_sign": [
+          "table-10-r28-c3",
+          "table-10-r28-c4"
+        ]
+      },
+      "expected_cells": {
+        "table-10-r1-c0": {
+          "text": "CLOUDFLARE, INC. RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES (in thousands, except per share amounts) (unaudited)",
+          "row_start": 1,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 17,
+          "original_location": {
+            "line": 11950,
+            "column": 44
+          }
+        },
+        "table-10-r3-c2": {
+          "text": "Three Months Ended September 30,",
+          "row_start": 3,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 7,
+          "original_location": {
+            "line": 12001,
+            "column": 44
+          }
+        },
+        "table-10-r4-c3": {
+          "text": "2024",
+          "row_start": 4,
+          "column_start": 3,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 12049,
+            "column": 44
+          }
+        },
+        "table-10-r28-c0": {
+          "text": "GAAP net loss per share, basic",
+          "row_start": 28,
+          "column_start": 0,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 14280,
+            "column": 44
+          }
+        },
+        "table-10-r28-c3": {
+          "text": "(0.04",
+          "row_start": 28,
+          "column_start": 3,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 14299,
+            "column": 44
+          }
+        },
+        "table-10-r28-c4": {
+          "text": ")",
+          "row_start": 28,
+          "column_start": 4,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 14306,
+            "column": 44
+          }
+        }
+      },
+      "expected_typed_values": {
+        "value": "-0.04",
+        "unit": "USD_per_share"
+      },
+      "known_wrong_cells": [
+        "table-10-r28-c11",
+        "table-10-r28-c7"
+      ],
+      "max_packet_characters": 12000
+    }
+  ]
+}

@@ -40,7 +40,7 @@ Supported conditions:
 | FinEval | `model_only` | Query, including its options |
 | FinQA | `supplied_context` | Question, pre/post text, table |
 | TAT-QA | `supplied_context` | Question, whole table and paragraphs, no relevance labels |
-| ConvFinQA | `reference_history`, `agent_history` | Current turn and permitted prior answers only; conversation execution pending |
+| ConvFinQA | `reference_history`, `agent_history` | Current turn and permitted prior answers only; bounded per-turn execution |
 | FinanceBench | `evidence_supplied` | Question and gold evidence passages, explicitly diagnostic |
 | FinanceBench | `full_agent` | Question and document name; document acquisition/runtime integration still required |
 
@@ -203,3 +203,9 @@ The independent `provenance.table_structure` command produces native HTML table
 sidecars with cell positions, spans, original locations, and source hashes.
 It preserves empty/split-sign cells without changing legacy corpus text. It does
 not infer header associations, periods, units, or financial meaning.
+
+The [paired table/conversation pilot](reports/expansion-pilot-2026-11-16/report.md)
+completed 22 requests for $0.0290532. Eight content-bound reference issues now
+include a TAT-QA metric-label concern and one ConvFinQA amortization ambiguity.
+These annotations affect future preparations only; original scores stay frozen.
+Inspected contexts are recorded in the development exposure registry.

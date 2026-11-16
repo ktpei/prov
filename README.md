@@ -26,7 +26,9 @@ rules, and semester deliverables.
 
 The active milestone is company-context tooling and evaluation. Finance accuracy
 benchmarking is active: [external benchmark preparation and scoring](eval/external-benchmarks.md)
-now support three core datasets. External live runs remain pending. The eventual product interface is an Excel add-in. Browser UI,
+now support FinEval, FinQA, FinanceBench, TAT-QA, and ConvFinQA. Two small
+preregistered public development pilots are complete; annotation concerns remain
+separate from automatic scores. The eventual product interface is an Excel add-in. Browser UI,
 workbook operations, and approved exports are deferred.
 
 ## Try it without credentials
@@ -56,7 +58,21 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
-Latest frozen evaluation (2026-11-07): six new public development questions,
+External benchmark pilots (2026-11-16): [core pilot](eval/reports/external-pilot-2026-11-16/report.md)
+and [table/conversation pilot](eval/reports/expansion-pilot-2026-11-16/report.md).
+The latter records TAT-QA 4/4 official matches and ConvFinQA 6/9 turns, 0/2 whole
+conversations in both history conditions. Small-sample, public-data and annotation
+limitations prevent broad accuracy claims. Total recorded conservative spending
+across development is $0.4814193. The original holdout remains unrun.
+
+Source ingestion now includes an independent native HTML geometry sidecar,
+FinanceBench whole-document assembly, and bounded page-level PDF diagnostics.
+[Extraction findings](eval/reports/source-ingestion-2026-11-16/report.md) and
+[connected table-evidence protocol](eval/table-evidence-protocol.md) distinguish
+structure, retrieval, and financial meaning. Full-agent FinanceBench inference
+remains disabled pending source-quality acceptance.
+
+Latest frozen company-research evaluation (2026-11-07): six new public development questions,
 **5/6 completed**, **2/6 unchanged mechanical passes**, and **4/6 evidence-supported
 task passes under coding-agent review**. Two numerical answers are substantively
 correct but fail exact period formatting; a search-only abstention lacks a source

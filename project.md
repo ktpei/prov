@@ -8,7 +8,6 @@ conversations. All 22 requests completed; $0.0290532 conservative cost. Remainin
 authorization $0.5185807. Source-level review flags annotation/scale ambiguities;
 these small public development results are not human-validated financial accuracy.
 
-
 ## Table/conversation expansion — 2026-11-16
 
 All five selected public dataset families now have adapters. TAT-QA uses a pinned
@@ -27,8 +26,8 @@ automatic semantic accuracy unset. Independent coding-agent review found an
 underspecified FinQA question and FinanceBench denominator/percentage ambiguities.
 These are tiny public development diagnostics, not official or human-validated scores.
 
-Pilot conservative cost $0.0161622; cumulative recorded estimate $0.4523661,
-remaining existing authorization $0.5476339. No uncertain billing flags or original
+At that pilot boundary, conservative cost was $0.0161622 and cumulative recorded
+estimate $0.4523661. The later expansion pilot above supersedes its remaining budget. No uncertain billing flags or original
 holdout calls. Implementation and protocol are published in draft
 [PR #2](https://github.com/ktpei/prov/pull/2), not merged. Lint and 112 tests passed.
 Earlier no-live-run statements below describe pre-pilot stages.
@@ -38,12 +37,11 @@ Earlier no-live-run statements below describe pre-pilot stages.
 The user authorized continuous benchmark integration, extensive ingestion research,
 and coordinated subagent work. [Workflow](eval/external-benchmarks.md),
 [research](eval/external-benchmark-research.md), and [cycle ledger](eval/improvement-loop.md)
-record current work. Three core adapters and hash-pinned acquisition/preparation
-are implemented with offline scoring and an explicitly invoked tool-free runner.
-Runner tests preserve spending reservations and complete denominators; live pilot
-results remain pending. Full-file QA found three conflicting CFA
-labels; they remain review-required. No external live accuracy, human review, or
-new paid spend is claimed. Earlier planning-only statements below are historical.
+record current work. Five dataset families have adapters, hash-pinned preparation,
+and bounded execution for tool-free conditions. Two preregistered pilots are
+complete. Unresolved annotations are content-bound and retained in the denominator
+for later preparations; old scores remain frozen. Source-quality diagnostics and
+connected table-evidence acceptance are in progress. No human validation is claimed.
 
 
 Informal, unpaid, part-time proof of concept for ProvenanceXL. The selected brief
@@ -61,8 +59,8 @@ report interpretation, supported research, and conversations. Use Salesforce
 FinEval, FinQA, FinanceBench, TAT-QA, ConvFinQA, and custom prov tasks as specified
 in the [benchmark implementation plan](eval/benchmark-plan.md). Core implementation
 starts with FinEval, FinQA, FinanceBench, and custom tasks; Finance Agent Benchmark
-is a later challenge. Excel/workbook benchmarking is deferred. Dataset adapters,
-external benchmark runs, and new scores are not yet implemented by this decision.
+is a later challenge. Excel/workbook benchmarking is deferred. The initial planning decision has since been implemented through the five adapters
+and two development pilots described above.
 The plan records proposed counts, scoring, split discipline, and exit checks.
 
 ## Evaluation update — 2026-11-07
