@@ -15,6 +15,15 @@ type Props = {
 function Metrics({ turn }: { turn: TurnView }) {
   const m = turn.metrics;
   if (!m) return null;
+  if (turn.mode === "offline_replay") {
+    return (
+      <p className="mt-3 border-t border-rule pt-2 text-xs text-ink-faint">
+        <span className="tabular text-ink-soft">{m.model_calls}</span> recorded model steps and{" "}
+        <span className="tabular text-ink-soft">{m.tool_calls}</span> tool calls replayed against the real
+        evidence; no model call, no cost.
+      </p>
+    );
+  }
   const stats = [
     [`${m.latency_seconds.toFixed(1)} s`, "time"],
     [`${m.model_calls}`, m.model_calls === 1 ? "model step" : "model steps"],
