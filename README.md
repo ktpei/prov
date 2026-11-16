@@ -61,6 +61,15 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
+The opt-in `--runtime-profile trace-receipts-v1` is available on
+`run --engine langgraph --provider openrouter`. It records the projected messages
+and mapped application request before dispatch, including failed requests, and
+binds checkpoint v3 to instructions, tools, configuration, and source metadata.
+Use `--log-dir` to retain the trace. Receipt verification rebuilds the request
+locally; it does not attest provider wire bytes, model attention, or financial
+correctness. Legacy runs remain the default, and checkpoint profiles cannot be
+converted on resume. See the [H1 acceptance report](eval/assessments/model-input-receipts-v1/report.md).
+
 External benchmark pilots (2026-11-16): [core pilot](eval/reports/external-pilot-2026-11-16/report.md)
 and [table/conversation pilot](eval/reports/expansion-pilot-2026-11-16/report.md).
 The latter records TAT-QA 4/4 official matches and ConvFinQA 6/9 turns, 0/2 whole

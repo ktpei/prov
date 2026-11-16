@@ -4,6 +4,9 @@ The [next-round harness specification](harness-improvement-spec.md) now defines
 versioned evidence/calculation/answer contracts and benchmark-driven improvement
 within the selected single-agent research scope. Browser and workbook delivery
 remain separate. This is an implementation plan, not a new accuracy result.
+H1's opt-in model-input receipts and checkpoint v3 are now implemented; the
+[acceptance report](eval/assessments/model-input-receipts-v1/report.md) separates
+offline integrity checks from unmeasured financial effectiveness.
 
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all

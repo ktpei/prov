@@ -8,7 +8,11 @@ the earlier **Improve finance evaluation harness** chat remains paused. Its five
 untracked XBRL assessment files are preserved and are not owned by this new cycle.
 The [specification](harness-improvement-spec.md) defines H0–H6, contracts, migration,
 evaluation gates, and budget/holdout boundaries. Two independent Astra reviews
-informed it; no runtime change or new inference accompanies this planning cycle.
+informed it. H1 now implements opt-in model-input receipts and checkpoint v3
+policy/source identity binding; legacy behavior remains the default. Independent
+review, 470 shared-checkout tests, and 457 clean-commit tests pass. See the
+[H1 acceptance report](eval/assessments/model-input-receipts-v1/report.md) for
+committed-code verification and limitations. No paid inference accompanied H0/H1.
 
 Latest recorded aggregate spending is $0.4814193 against $1.00 historical
 authorization ($0.5185807 nominal remainder). This is not a verified current
@@ -18,7 +22,8 @@ the older authorization paragraph below records a prior balance.
 [Recent finance harness research](eval/finance-harness-research-2026-11-16.md)
 maps external designs to proposed evidence-linked arithmetic, model-input
 receipts, typed-evidence integration, and prospective full-agent evaluation.
-These are recommendations only; no runtime policy or benchmark score changed.
+The recommendations inform H0–H6; H1 receipt infrastructure is implemented, while
+arithmetic and typed-evidence integration remain planned. No benchmark score changed.
 Its research-exposure addendum records incidental external examples, including
 additional Microsoft exposure, without changing the six frozen reservations.
 

@@ -27,6 +27,30 @@ Existing spending limits, source reservations and original holdout rules remain.
   its bounded implementation/verification plan before changes; use synthetic and
   saved legacy artifacts without opening heldout content.
 
+## H1 — model-input receipts
+
+Implemented the opt-in `trace-receipts-v1` OpenRouter/LangGraph profile under the
+[frozen protocol](assessments/model-input-receipts-v1/protocol.md). Receipts capture
+canonical, projected, and mapped inputs before dispatch, with replayed inventories
+and policy identities. Checkpoint v3 binds full source metadata and effective policy;
+legacy checkpoints cannot silently migrate. Legacy behavior remains the default.
+
+Independent Astra review reproduced four verifier/configuration gaps; all were
+fixed and added to regression tests. Lint and 470 tests pass in the shared checkout,
+including 13 tests belonging to the paused assessment chat. See the
+[acceptance report](assessments/model-input-receipts-v1/report.md): clean commit
+`3dcd09b` passes lint, validation and 457 tests. No paid inference, heldout
+inspection, or financial accuracy gain.
+
+The [methodology research loop](harness-methodology-research-loop.md) feeds this
+implementation loop. Retain existing no-blind-retry protection; queue its synthetic
+external-success/local-acknowledgement crash test as a separate recovery check.
+Defer Inspect/Temporal migration. Next implementation increment is H2's bounded,
+evidence-linked arithmetic with synthetic financial-scope and replay tests.
+The [reference-contract research](harness-reference-contract-research-2026-11-16.md)
+reinforces Decimal and financial-operand validation. H3 must preserve budget and
+deadline exceptions as controller stops rather than repairable tool errors.
+
 ## Repeatable cycle
 
 1. Select one failure class from source QA, scorer adversarial tests, or a declared
@@ -61,7 +85,8 @@ Existing spending limits, source reservations and original holdout rules remain.
 
 ## Next work queue
 
-1. H1: record exact projected model inputs and effective policy identities.
+1. H1 accepted infrastructure: retain regression coverage; add the separately
+   proposed external-success/local-acknowledgement crash test before recovery changes.
 2. H2: implement bounded evidence-linked arithmetic with independent replay.
 3. H3: integrate versioned answers and typed discovery/read/claim contracts.
 4. H4: compare requirement-aware context retention and narrow workflow instructions.
