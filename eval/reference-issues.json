@@ -104,6 +104,19 @@
       "category": "underspecified_amortization_life",
       "note": "Turn 1 gold assumes ten-year life for the full allocation; supplied context gives a three-to-ten-year range. Neither upper endpoint nor midpoint is uniquely supported. Registry v1 flags the whole conversation pending adjudication.",
       "review": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "id": "reference-d00daa9a06589412",
+      "dataset": "financebench",
+      "subset": "open_source",
+      "source_split": "public",
+      "revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+      "source_sha256": "a5a2aa673e573e55675fc3c0f9aa38c1cf59d2abc91edb077534f71f10a71877",
+      "task_id": "financebench_id_00601",
+      "task_sha256": "d00daa9a06589412091d82eafa5ee63409f26367e79cd8d53920ca1099bc118f",
+      "category": "fiscal_year_label_convention",
+      "note": "Question says FY2023; source annual section says fiscal 2022. Reference explicitly assumes the year-ending convention. Preserve the original reference and require review of the period convention and annual-versus-quarterly evidence.",
+      "review": "eval/reports/pdf-visual-quality-2026-11-16/report.md#ulta-period-convention"
     }
   ]
 }

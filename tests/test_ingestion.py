@@ -56,6 +56,7 @@ class IngestionTests(unittest.TestCase):
         self.assertEqual(diagnostics["warning_count"], 2)
         self.assertEqual(diagnostics["warning_samples"][0]["page"], 1)
         self.assertEqual(diagnostics["warning_samples"][0]["count"], 2)
+        self.assertEqual(diagnostics["pages"][0]["warning_count"], 2)
         self.assertEqual(logger.handlers, original_handlers)
         self.assertEqual(diagnostics["text_completeness"], "not_verified")
 
@@ -77,6 +78,29 @@ class IngestionTests(unittest.TestCase):
         ):
             extract(self.root / "bad.pdf")
         self.assertEqual(logger.handlers, handlers)
+
+    def test_pdf_page_diagnostics_do_not_count_placeholders_as_native_text(self):
+        texts = ["Revenue 120\n\nCost 0\n", " \n\t", None, "-0.04\n"]
+        pages = [
+            SimpleNamespace(extract_text=lambda value=value, **kwargs: value) for value in texts
+        ]
+        with patch("pypdf.PdfReader", return_value=SimpleNamespace(pages=pages)):
+            lines, locations, diagnostics = extract(self.root / "fake.pdf")
+        self.assertEqual(diagnostics["diagnostics_version"], "pdf-extraction-diagnostics-v2")
+        self.assertEqual(diagnostics["empty_native_text_pages"], [2, 3])
+        self.assertEqual([p["native_line_count"] for p in diagnostics["pages"]], [2, 0, 0, 1])
+        self.assertEqual(
+            [p["native_nonwhitespace_characters"] for p in diagnostics["pages"]], [15, 0, 0, 5]
+        )
+        self.assertEqual(
+            [(p["emitted_line_start"], p["emitted_line_end"]) for p in diagnostics["pages"]],
+            [(1, 2), (3, 3), (4, 4), (5, 5)],
+        )
+        self.assertEqual([p["warning_count"] for p in diagnostics["pages"]], [0, 0, 0, 0])
+        self.assertEqual([p["page"] for p in locations], [1, 1, 2, 3, 4])
+        self.assertEqual(lines[-1], "-0.04")
+        self.assertEqual(diagnostics["text_completeness"], "not_verified")
+        self.assertFalse(diagnostics["ocr_performed"])
 
     def test_html_keeps_cell_order_headers_and_excludes_hidden_xbrl(self):
         parser = DocumentHTML()

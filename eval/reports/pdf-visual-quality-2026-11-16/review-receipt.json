@@ -1,0 +1,50 @@
+{
+  "version": "pdf-visual-review-v1",
+  "review_type": "coding_agent_visual_review_not_human_validation",
+  "scope": "Three already-exposed development tasks, four evidence pages and one empty-page diagnostic; not whole-document completeness.",
+  "renderer": "pdftoppm version 26.02.0",
+  "images": [
+    {
+      "path": "runs/pdf-visual-quality-2026-11-16/audit/walmart-physical-page-57.png",
+      "sha256": "ae9c8d2d646bd1d94f7d9618b49f84bee7cadbc20ab00f0ea12de41b2e1da4c3",
+      "bytes": 149315,
+      "dpi": 150
+    },
+    {
+      "path": "runs/pdf-visual-quality-2026-11-16/audit/walmart-physical-page-59.png",
+      "sha256": "5db80952fc2977958e682f208f8a905af7e402e56b998cdaa90014f740741b29",
+      "bytes": 194045,
+      "dpi": 150
+    },
+    {
+      "path": "runs/pdf-visual-quality-2026-11-16/research/nike-physical-62.png",
+      "sha256": "4d5f27e8f95548562c30732e9fd3fafbbfb97b355a5c0ea5a12e090ecce4f7db",
+      "bytes": 325476,
+      "dpi": 150
+    },
+    {
+      "path": "runs/pdf-visual-quality-2026-11-16/research/ulta-physical-2.png",
+      "sha256": "ae61db86eb61d11d881244cce3b0b35a9b8f54eb0d944714b9cb9dbdac2252f2",
+      "bytes": 496225,
+      "dpi": 150
+    },
+    {
+      "path": "runs/pdf-visual-quality-2026-11-16/walmart-page-60.png",
+      "sha256": "c2c0cfb3f22865896e1b9ff5d1f47e80988d4262b7816d45f99bce81f6de2328",
+      "bytes": 5912,
+      "dpi": 120
+    }
+  ],
+  "corpus_manifest_sha256": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+  "diagnostics_sha256": "baca036dac9f7eb5167cdc361f45d5a6d43c6415ef136b0308b630179ea81fc1",
+  "pages_replayed": 419,
+  "text_and_locations_unchanged": true,
+  "ocr_performed": false,
+  "model_calls": 0,
+  "new_reference_issue": "reference-d00daa9a06589412",
+  "reference_registry_sha256": "b5bfdbbc9b685a070a675ea3d993a42b991dae813a5a2ff5eadc9e4fa922a494",
+  "model_inputs_unchanged_after_issue_annotation": true,
+  "original_answer_unchanged": true,
+  "development_exposure_registry_sha256": "509551b42bdca54632502ffa0fab146262303f257fa82795786100ddc8f9444d",
+  "exposure_scope": "All three document groups were already registered as inspected development before this visual review; no holdout or new six-filing cohort content inspected."
+}

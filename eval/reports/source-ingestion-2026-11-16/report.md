@@ -3,7 +3,9 @@
 Three FinanceBench originals were acquired from the pinned repository mirror:
 Nike 2023 (106 pages), Ulta Q4 2023 earnings (9), and Walmart 2018 (304).
 All 419 pages have locations; Walmart page 60 has no native text. That absence
-needs visual classification before choosing OCR. Corpus selection is restricted
+was subsequently rendered and found to contain no readable content apart from a
+horizontal rule; it does not establish an OCR requirement. See the
+[visual review](../pdf-visual-quality-2026-11-16/report.md). Corpus selection is restricted
 to selected task documents, not open-web or entire-FinanceBench retrieval.
 
 A bounded exploratory font probe compared pypdf 6.21.4 without fontTools against

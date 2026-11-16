@@ -65,6 +65,10 @@ conversations in both history conditions. Small-sample, public-data and annotati
 limitations prevent broad accuracy claims. Total recorded conservative spending
 across development is $0.4814193. The original holdout remains unrun.
 
+[PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
+retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
+All 419 native-text pages replay unchanged with structured page diagnostics.
+
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
 `--html-text-version native-html-text-v2` to suppress explicit hidden content and

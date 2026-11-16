@@ -43,6 +43,14 @@ losses. Both earlier versions replay exactly; v2 remains the default. The negati
 result is retained, and broader uninspected development assessment is next.
 
 
+## PDF visual quality review — 2026-11-16
+
+[Five rendered pages](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguish
+Walmart retrieval misses from missing text and flag Ulta’s fiscal-year convention.
+A ninth content-bound reference issue preserves original gold. Page diagnostics
+now expose native-text counts and line ranges; all 419 extracted pages replay
+with identical text and locations. No OCR, inference or score changes occurred.
+
 ## Source-quality iteration — 2026-11-16
 
 Whole-document diagnostics bind originals, extracted text, and the full manifest.
@@ -50,7 +58,7 @@ Three-task retrieval reaches 2/4 annotated pages at five hits; declared-document
 scoping improves first-hit recall from 1/4 to 2/4 without fixing the remaining task.
 Native HTML v2 fixes explicit-hidden contamination and retains raw headers/captions;
 four evaluator-only packets check source/period/sign/scale associations. Lint and
-264 tests pass. Full-agent FinanceBench inference and human adjudication remain
+265 tests pass. Full-agent FinanceBench inference and human adjudication remain
 pending. [Source findings](eval/reports/source-ingestion-2026-11-16/report.md).
 
 

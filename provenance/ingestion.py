@@ -111,7 +111,7 @@ def _package_version(name):
 
 
 def extract(path, *, html_text_version="stdlib-html-v1"):
-    """Return complete native text and one location per line; never silently OCR."""
+    """Return extracted native text and line locations; never silently OCR."""
     if html_text_version not in {"stdlib-html-v1", "native-html-text-v2"}:
         raise ValueError("Unknown HTML text extraction version")
     path = Path(path)
@@ -123,17 +123,29 @@ def extract(path, *, html_text_version="stdlib-html-v1"):
         logger.addHandler(diagnostics)
         try:
             reader = PdfReader(path)
-            lines, locations, empty = [], [], []
+            lines, locations, empty, page_diagnostics = [], [], [], []
             for number, page in enumerate(reader.pages, 1):
                 diagnostics.page = number
+                warnings_before = diagnostics.total
                 text = (
                     page.extract_text(extraction_mode="layout", layout_mode_strip_rotated=False)
                     or ""
                 )
                 page_lines = [line.rstrip() for line in text.splitlines() if line.strip()]
+                native_line_count = len(page_lines)
                 if not page_lines:
                     empty.append(number)
                     page_lines = ["[No native text extracted; inspect original page or run OCR.]"]
+                page_diagnostics.append(
+                    {
+                        "page": number,
+                        "native_line_count": native_line_count,
+                        "native_nonwhitespace_characters": sum(not char.isspace() for char in text),
+                        "emitted_line_start": len(lines) + 1,
+                        "emitted_line_end": len(lines) + len(page_lines),
+                        "warning_count": diagnostics.total - warnings_before,
+                    }
+                )
                 lines.extend(page_lines)
                 locations.extend({"page": number} for _ in page_lines)
         finally:
@@ -143,7 +155,7 @@ def extract(path, *, html_text_version="stdlib-html-v1"):
             locations,
             {
                 "parser": "pypdf-layout",
-                "diagnostics_version": "pdf-extraction-diagnostics-v1",
+                "diagnostics_version": "pdf-extraction-diagnostics-v2",
                 "package_versions": {
                     name: _package_version(name) for name in ("pypdf", "fonttools")
                 },
@@ -154,8 +166,11 @@ def extract(path, *, html_text_version="stdlib-html-v1"):
                 "text_completeness": "not_verified",
                 "ocr_performed": False,
                 "page_count": len(reader.pages),
+                "empty_native_text_pages": empty,
+                "pages": page_diagnostics,
                 "warnings": [
                     "Native PDF text does not establish chart semantics or table alignment.",
+                    "Page text counts do not distinguish genuinely blank pages from extraction failures.",
                     *([f"Pages without native text: {empty}"] if empty else []),
                 ],
             },
