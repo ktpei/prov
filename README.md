@@ -87,6 +87,11 @@ A [same-budget retention challenger](eval/reports/context-priority-2026-11-16/re
 recovers the two inspected losses by prioritizing earlier optional reads. It remains
 experimental: these exposed cases do not justify changing the default policy.
 
+[Broader validation preparation](eval/assessments/financebench-context-v1/progress.md)
+now fixes six new development source groups and their pinned PDF inventory before
+content inspection. Acquisition and evaluation remain pending; failures will not
+be replaced with easier cases.
+
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
 All 419 native-text pages replay unchanged with structured page diagnostics.
