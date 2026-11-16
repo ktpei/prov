@@ -23,6 +23,13 @@ cap plus the prior uncertain reservation remains below authorization. Recheck
 the key's available limit before dispatch; this is capacity checking, not proof
 of request-level billing settlement.
 
+This conservative budget review deliberately supersedes the first report's
+settlement-before-next-trial gate for this one follow-up only. It does not claim
+that billing was reconciled. Independent review confirms the full retained
+reservation plus the new cap fits the authorization. The first task/arm request
+may be repeated; report it candidly as a deliberate second attempt, not a first
+attempt merely because it has a new output directory.
+
 Run once from a clean checkout containing this freeze, with output directory
 `runs/model-effort-v1/followup-results`. No reuse, no retries, no fallback. Stop
 on uncertain billing or integrity failure exactly as the runner specifies. If
