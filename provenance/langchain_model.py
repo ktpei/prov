@@ -12,8 +12,8 @@ from provenance.sources import TOOL_SCHEMAS
 from provenance.transport import ProviderError
 
 
-def chat_messages(messages):
-    converted = [SystemMessage(content=INSTRUCTIONS)]
+def chat_messages(messages, *, instructions=INSTRUCTIONS):
+    converted = [SystemMessage(content=instructions)]
     for item in messages:
         if item.get("role") == "user":
             converted.append(HumanMessage(content=item["content"]))
@@ -69,15 +69,31 @@ def chat_messages(messages):
 class OpenRouterModel:
     mode = "live_openrouter_langchain"
 
-    def __init__(self, key, model, input_rate, output_rate, *, max_output=1800, chat=None):
+    def __init__(
+        self,
+        key,
+        model,
+        input_rate,
+        output_rate,
+        *,
+        max_output=1800,
+        chat=None,
+        instructions=INSTRUCTIONS,
+        tool_schemas=None,
+    ):
         if not key or not model:
             raise ValueError("Set OPENROUTER_API_KEY and OPENROUTER_MODEL for a live run")
+        if not isinstance(instructions, str) or not instructions.strip():
+            raise ValueError("Instructions must be nonempty text")
+        self.instructions = instructions
+        self.tool_schemas = TOOL_SCHEMAS if tool_schemas is None else tool_schemas
         self.name = model
         self.input_rate = positive(input_rate, "input token rate")
         self.output_rate = positive(output_rate, "output token rate")
         if type(max_output) is not int or max_output < 1:
             raise ValueError("max_output must be a positive integer")
         self.max_output = max_output
+        self.last_response = None
         client = chat or ChatOpenAI(
             model=model,
             api_key=key,
@@ -95,9 +111,9 @@ class OpenRouterModel:
                     "parameters": schema["parameters"],
                 },
             }
-            for schema in TOOL_SCHEMAS
+            for schema in self.tool_schemas
         ]
-        self.chat = client.bind_tools(tools, parallel_tool_calls=False)
+        self.chat = client.bind_tools(tools, parallel_tool_calls=False) if tools else client
 
     def step(self, messages, timeout, budget):
         return self._step(messages, timeout, budget, final_only=False)
@@ -107,6 +123,7 @@ class OpenRouterModel:
         return self._step(messages, timeout, budget, final_only=True)
 
     def _step(self, messages, timeout, budget, *, final_only):
+        self.last_response = None
         before = tool_result_chars(messages)
         messages = project_messages(messages)
         projection = {
@@ -114,7 +131,7 @@ class OpenRouterModel:
             "tool_result_characters_after": tool_result_chars(messages),
         }
         serialized = json.dumps(
-            {"instructions": INSTRUCTIONS, "messages": messages, "tools": TOOL_SCHEMAS},
+            {"instructions": self.instructions, "messages": messages, "tools": self.tool_schemas},
             ensure_ascii=False,
         )
         input_bound = len(serialized.encode()) + 8192
@@ -126,13 +143,20 @@ class OpenRouterModel:
         settled = False
         try:
             options = {"timeout": timeout}
-            if final_only:
+            if final_only and self.tool_schemas:
                 options["tool_choice"] = "none"
-            response = self.chat.bind(**options).invoke(chat_messages(messages))
+            response = self.chat.bind(**options).invoke(
+                chat_messages(messages, instructions=self.instructions)
+            )
             usage = response.usage_metadata or {}
             counts = [usage.get("input_tokens"), usage.get("output_tokens")]
             if not all(type(value) is int and value >= 0 for value in counts):
                 raise ProviderError("Missing or invalid token usage; reservation retained")
+            self.last_response = {
+                "content": response.content if isinstance(response.content, str) else None,
+                "finish_reason": response.response_metadata.get("finish_reason"),
+                "usage": {"input_tokens": counts[0], "output_tokens": counts[1]},
+            }
             budget.settle(
                 reserved, (counts[0] * self.input_rate + counts[1] * self.output_rate) / 1_000_000
             )
@@ -149,7 +173,7 @@ class OpenRouterModel:
                     }
                     for call in response.tool_calls
                 ]
-            if calls and final_only:
+            if calls and (final_only or not self.tool_schemas):
                 raise ProviderError("Provider returned tool calls during final synthesis")
             if calls:
                 output = [

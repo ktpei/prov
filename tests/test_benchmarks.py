@@ -178,7 +178,7 @@ class BenchmarkTests(unittest.TestCase):
     def test_semantic_review_never_becomes_automatic_accuracy(self):
         prepared = bundle("financebench", "evidence_supplied")
         predictions = [
-            {"id": row["id"], "status": "completed", "output": "Anything"}
+            {"id": row["id"], "status": "completed", "output": {"answer_text": "Anything"}}
             for row in prepared["tasks"]
         ]
         report = score_run(prepared, predictions)

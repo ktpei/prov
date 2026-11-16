@@ -55,3 +55,19 @@ paid inference authorization. Existing spend limits and the original holdout rem
 Perfection is not a measurable stopping criterion. A promotion needs evidence on
 predeclared cases, a clear failure taxonomy, and no regression in critical support,
 unit/period, leakage, or abstention checks. Unrun comparisons remain proposed.
+
+## Cycle 2 — bounded execution
+
+- Tool-free OpenRouter execution now uses the existing adapter with benchmark-specific
+  instructions and no bound tools. Original research defaults remain unchanged.
+- Every selected ID is persisted before execution; pending reservations survive
+  crashes, uncertain charges stop the batch, and no automatic retry/repair occurs.
+- Independent review prompted generation-setting provenance, invalid empty-output
+  handling, and retained sanitized truncated-response diagnostics with known charges.
+- Lint and **109 tests passed** before the first external live pilot.
+- Account preflight found the inherited environment key invalid (HTTP 401); the
+  existing local `.env` key succeeded with a $1 daily limit and $1 remaining.
+  Credentials were not printed, copied into artifacts, or changed.
+- Exact requested model remains available. Catalog maximum scheduled rates are
+  $0.30/$1.20 per million input/output tokens; pilot accounting will conservatively
+  retain the established $0.60/$2.40 rates. No inference occurred during preflight.

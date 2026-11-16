@@ -153,6 +153,12 @@ def score_answer(task, prediction):
         result.update(passed=None, status="reference_conflict_requires_review")
         return result
     if dataset == "financebench":
+        if (
+            not isinstance(prediction, dict)
+            or not isinstance(prediction.get("answer_text"), str)
+            or not prediction["answer_text"].strip()
+        ):
+            return result
         result.update(passed=None, status="requires_semantic_review")
         return result
     if not isinstance(prediction, dict) or set(prediction) != {"answer"}:

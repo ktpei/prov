@@ -2,8 +2,8 @@
 
 Implemented development foundation, 2026-11-16. This adds pinned acquisition,
 three dataset adapters, development selection, input/reference separation, and
-offline scoring. It does not yet run the external suite through OpenRouter or
-establish financial model accuracy. Existing benchmarks, heldout tasks, and
+offline scoring. A separate explicit tool-free runner supports OpenRouter;
+its implementation tests do not establish financial model accuracy. Existing benchmarks, heldout tasks, and
 historical grades are unchanged.
 
 ## Acquire and prepare
@@ -103,6 +103,29 @@ blended accuracy is produced.
   remains null, even when every run is missing. A returned passage and correct
   number alone do not establish supported-task success.
 
+## Run a bounded tool-free development batch
+
+Set the existing OpenRouter environment variables for the exact model and verified
+conservative rates, then run:
+
+```sh
+uv run python -m provenance.benchmark_run --live \
+  --prepared runs/benchmark-prepared/finqa-dev \
+  --output runs/benchmark-live/finqa-pilot \
+  --budget-usd 0.05 --per-task-usd 0.02
+```
+
+This makes at most one request per selected task, with no research tools or gold
+references in model messages. It supports model-only, supplied-context, and
+FinanceBench evidence-supplied conditions. Full-agent mode is rejected until a
+verified document-corpus execution path is implemented. Each run records model,
+prompt, prices, revision/dirty state, permitted input, raw response, parse status,
+cost estimate, and latency. `submission.json` records every selected ID before
+inference. A pending reservation survives a crash; an existing output directory
+cannot be reused. Uncertain billing stops further calls. Invalid JSON and extra
+output fields remain visible contract failures, without a hidden repair attempt.
+Check account usage and the authorization ledger before invoking a paid batch.
+
 ## Verified development state
 
 All 883 FinQA dev records, 150 public FinanceBench records, 1,032 CFA-Easy records,
@@ -112,7 +135,7 @@ Prepared local selections: 100 FinQA, 100 FinanceBench evidence-supplied,
 not attempts or financial accuracy. Selection manifests are local evaluator
 artifacts. No third-party question text is redistributed in synthetic unit tests.
 
-Next iterations: execution adapters with durable spend accounting; source-aware
+Next iterations: measured tool-free pilots; source-aware
 research corpus assembly; independent reviewer calibration; TAT-QA official metric
 integration and ConvFinQA conversation/history separation; company/report-aware
 partitions; source ingestion comparisons. See [loop protocol](improvement-loop.md).
