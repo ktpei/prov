@@ -35,9 +35,11 @@ Bound lexical coefficient digits to 128 before constructing Decimal. Parsed
 exponent and adjusted exponent must independently be in [-100,100]. Exponent
 digits are checked before integer conversion, ignoring leading exponent zeros;
 bound the entire lexical input to 512 characters to reject oversized encodings.
-Reject booleans, floats, nil, malformed and nonfinite values. Every produced
-normalized/intermediate/result Decimal must meet the same coefficient/exponent
-bounds; rejection is atomic, with no partially accepted record.
+Reject booleans, floats, nil, malformed and nonfinite values. Accepted inputs,
+normalized operands, final arithmetic and display results must meet the same
+coefficient/exponent bounds; rejection is atomic. Pure internal intermediates
+use a wider bounded context and need not meet persisted-value bounds: for example,
+margin(9e100,9e100) must return 100 despite a temporary numerator exponent of 102.
 
 Normalize an explicit integer power-of-ten scale in [-100,100] by exact Decimal
 tuple exponent shifting, not context-rounded multiplication. Preserve lexical
@@ -46,6 +48,9 @@ fractions into percent by an exact +2 exponent shift before arithmetic. Other
 numeric values declare rate representation `none`. Percentage-point differences
 require two rate operands. The future ledger checks physical units and financial
 compatibility; this kernel cannot accept or certify evidence.
+The formula constant 100 uses an exact +2 exponent shift, also without rounding.
+Growth subtracts at precision 34, shifts that difference, then divides. Arithmetic
+uses context Emin=-1000/Emax=1000, clamp=0; persisted bounds are checked explicitly.
 
 Rounding requests have exactly `{decimal_places: integer 0..12}`. Display uses
 half-even quantization with sufficient precision (128) for permitted large values,
