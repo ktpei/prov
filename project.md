@@ -1,5 +1,11 @@
 # Project scope
 
+H3 begins with a controller-owned
+[typed read session](eval/assessments/typed-read-authorization-v1/report.md): source
+authorization, actual-read receipts, complete reconstruction and independent replay.
+Semantic admission, model visibility and answer-v2/dispatcher integration remain
+required; the existing default agent and H2 ledger are unchanged.
+
 The [first model/effort pilot](eval/assessments/model-effort-v1/pilot-protocol.md)
 freezes a small supplied-evidence comparison after acceptance of the dedicated
 runner (`01983f4`, 500 clean-checkout tests). Three cases are adjudicable; a fourth

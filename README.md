@@ -61,6 +61,11 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
+H3's opt-in backend [typed read session](eval/assessments/typed-read-authorization-v1/report.md)
+binds source authorization and cutoff, records actual FactReader responses and
+verifies reconstruction/replay. Completed delivery does not establish financial
+semantics or model visibility; calculator and answer-v2 integration remain pending.
+
 The [model/effort comparison runner](eval/assessments/model-effort-v1/infrastructure-report.md)
 now supports explicit effort, pinned providers, durable accounting and interleaved
 tool-free trials. The [first pilot protocol](eval/assessments/model-effort-v1/pilot-protocol.md)

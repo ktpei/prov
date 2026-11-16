@@ -118,6 +118,21 @@ conservative accounting is $0.5078571, remaining $0.4921429. No additional paid
 follow-up this cycle. Continue offline diagnosis and H3 source/visibility integration;
 do not mistake an infrastructure fix or failed transport for measured finance quality.
 
+## H3 — first typed-read authorization component
+
+H3 first component: protocol `6a5970f` freezes controller-owned typed-read
+authorization. FactReadSession now builds its own reader from authorized hashes,
+binds a fixed cutoff/run, records actual responses, reconstructs complete chunks
+and replays against fresh trusted artifacts plus an independently anchored inventory.
+Independent Astra design/implementation review passed eight focused tests. Lint
+and 523 shared-checkout tests pass (including thirteen unrelated untracked tests).
+Concurrent reconstruction reserves at most 256,000 declared payload characters;
+this does not bound total session/history or reader construction memory.
+See the [component report](assessments/typed-read-authorization-v1/report.md).
+No H2 operand admission, model visibility, default graph change, paid call or
+financial accuracy gain is claimed. Remaining H3 semantics/visibility/answer-v2
+and dispatcher integration continue under the original spec.
+
 ## Repeatable cycle
 
 1. Select one failure class from source QA, scorer adversarial tests, or a declared

@@ -23,6 +23,10 @@ reservations remain counted: combined conservative authorization accounting is
 $0.5078571, remaining $0.4921429. See the
 [follow-up report](eval/assessments/model-effort-v1/followup-report.md).
 Further paid comparison calls are stopped for this cycle; H3 integration remains available.
+H3's first typed-read component now constructs an authorized FactReader per run,
+records actual responses and verifies complete reconstruction and fresh-artifact
+replay. It does not yet admit semantic operands or establish model visibility.
+See the [component report](eval/assessments/typed-read-authorization-v1/report.md).
 
 H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
 The ledger binds trusted admitted evidence, financial compatibility, calculation
