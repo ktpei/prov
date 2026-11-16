@@ -1,12 +1,40 @@
 import unittest
 from types import SimpleNamespace
 
-from provenance.finance_retrieval import plan_queries, retrieve
+from provenance.finance_retrieval import CONTEXT_POLICY, POLICIES, plan_queries, retrieve
 from provenance.source_quality import evaluate_corpus
 from tests import test_source_quality as quality_tests
 
 
 class FinanceRetrievalTests(unittest.TestCase):
+    def test_context_policy_carries_only_explicit_statement_context(self):
+        question = "Days payable outstanding FY2018: use the statement of financial position and P&L statement."
+        baseline = plan_queries(question)
+        context = plan_queries(question, policy=CONTEXT_POLICY)
+        self.assertEqual(len(context), len(baseline))
+        self.assertEqual(context[0], question)
+        self.assertEqual(context[2], baseline[2])
+        self.assertIn("balance sheet", context[1])
+        self.assertIn("balance sheet", context[4])
+        self.assertIn("income statement", context[3])
+        self.assertNotIn("balance sheet", baseline[1])
+        for question in [
+            "days payable outstanding in 2018",
+            "revenue from balance sheets",
+            "days payable outstanding, avoid the balance sheet",
+            "days payable outstanding, do not use income statements",
+            "days payable outstanding using statement of financial position instead of income statement",
+        ]:
+            self.assertEqual(plan_queries(question, policy=CONTEXT_POLICY), plan_queries(question))
+        self.assertIn(
+            "income statement",
+            plan_queries(
+                "days payable outstanding using statements of income", policy=CONTEXT_POLICY
+            )[3],
+        )
+        with self.assertRaisesRegex(ValueError, "Unknown component"):
+            plan_queries("revenue", policy="unknown")
+
     def test_plan_is_question_only_and_preserves_explicit_conventions(self):
         question = "Days payable outstanding for FY2018 using average payables and 360 days?"
         queries = plan_queries(question)
@@ -67,32 +95,39 @@ class FinanceRetrievalTests(unittest.TestCase):
             calls.append(query)
             raise AssertionError("Search must not start before the full plan validates")
 
-        with self.assertRaisesRegex(ValueError, "Generated component query"):
-            retrieve(SimpleNamespace(search=search), question)
+        for policy in POLICIES:
+            with (
+                self.subTest(policy=policy),
+                self.assertRaisesRegex(ValueError, "Generated component query"),
+            ):
+                retrieve(SimpleNamespace(search=search), question, policy=policy)
         self.assertEqual(calls, [])
 
     def test_gold_changes_cannot_change_component_searches_or_hits(self):
         helper = quality_tests.SourceQualityTests()
         helper.setUp()
         self.addCleanup(helper.doCleanups)
-        traces, hits = [], []
-        for gold in ["secret answer alpha", "invented answer omega"]:
-            task = quality_tests._task(
-                "one", "days payable outstanding in 2018", [helper.evidence(0, gold)]
-            )
-            bundle = quality_tests._bundle([task])
-            corpus = helper.corpus(
-                bundle, lines=["Accounts payable 2018", "Cost of sales 2018", "Inventory 2018"]
-            )
-            report = evaluate_corpus(
-                bundle,
-                corpus,
-                source_scope="declared_document",
-                query_policy="dpo-component-round-robin-v1",
-            )
-            self.assertEqual(report["query_count"], 5)
-            self.assertNotIn(gold, str(report["tasks"][0]["query_trace"]))
-            traces.append(report["tasks"][0]["query_trace"])
-            hits.append(report["tasks"][0]["retrieved_hits"])
-        self.assertEqual(traces[0], traces[1])
-        self.assertEqual(hits[0], hits[1])
+        for policy in POLICIES:
+            traces, hits = [], []
+            for gold in ["secret answer alpha", "invented answer omega"]:
+                task = quality_tests._task(
+                    "one",
+                    "days payable outstanding in 2018 using the statement of financial position and P&L",
+                    [helper.evidence(0, gold)],
+                )
+                bundle = quality_tests._bundle([task])
+                corpus = helper.corpus(
+                    bundle, lines=["Accounts payable 2018", "Cost of sales 2018", "Inventory 2018"]
+                )
+                report = evaluate_corpus(
+                    bundle,
+                    corpus,
+                    source_scope="declared_document",
+                    query_policy=policy,
+                )
+                self.assertEqual(report["query_count"], 5)
+                self.assertNotIn(gold, str(report["tasks"][0]["query_trace"]))
+                traces.append(report["tasks"][0]["query_trace"])
+                hits.append(report["tasks"][0]["retrieved_hits"])
+            self.assertEqual(traces[0], traces[1])
+            self.assertEqual(hits[0], hits[1])

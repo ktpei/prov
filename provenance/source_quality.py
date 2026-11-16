@@ -7,7 +7,7 @@ import math
 from pathlib import Path
 
 from provenance.benchmarks import canonical_hash, load_bundle, score_run
-from provenance.finance_retrieval import POLICY as COMPONENT_POLICY
+from provenance.finance_retrieval import POLICIES as COMPONENT_POLICIES
 from provenance.finance_retrieval import retrieve as component_retrieve
 from provenance.sources import Sources
 
@@ -162,7 +162,7 @@ def evaluate_corpus(
     """Return identity-bound, offline retrieval and text-concordance diagnostics."""
     if source_scope not in {"selected_corpus", "declared_document"}:
         raise ValueError("Unknown diagnostic source scope")
-    if query_policy not in {"original-question-v1", COMPONENT_POLICY}:
+    if query_policy not in {"original-question-v1", *COMPONENT_POLICIES}:
         raise ValueError("Unknown diagnostic query policy")
     sources, binding, prepared_sha256, binding_sha256 = _validate(bundle, corpus_directory)
     all_documents = dict(sources.documents)
@@ -184,8 +184,10 @@ def evaluate_corpus(
             if source_scope == "declared_document"
             else all_documents
         )
-        if query_policy == COMPONENT_POLICY:
-            hits, query_trace = component_retrieve(sources, task["question"], timeout=1)
+        if query_policy in COMPONENT_POLICIES:
+            hits, query_trace = component_retrieve(
+                sources, task["question"], timeout=1, policy=query_policy
+            )
         else:
             hits = sources.search(task["question"], timeout=1)["results"]
         if len(hits) > 5:
@@ -248,7 +250,7 @@ def evaluate_corpus(
                 "evidence_text_concordance": concordance,
             }
         )
-        if query_policy == COMPONENT_POLICY:
+        if query_policy in COMPONENT_POLICIES:
             rows[-1]["query_trace"] = query_trace
 
     denominator = len(bundle["tasks"])
@@ -306,7 +308,7 @@ def evaluate_corpus(
             ),
         ],
     }
-    if query_policy == COMPONENT_POLICY:
+    if query_policy in COMPONENT_POLICIES:
         report["query_policy"] = query_policy
         report["query_count"] = sum(len(row["query_trace"]) for row in rows)
         report["ranking_interpretation"] = (
@@ -329,7 +331,7 @@ def main():
     )
     parser.add_argument(
         "--query-policy",
-        choices=["original-question-v1", COMPONENT_POLICY],
+        choices=["original-question-v1", *COMPONENT_POLICIES],
         default="original-question-v1",
     )
     args = parser.parse_args()
