@@ -1,6 +1,6 @@
 {
   "version": "blinded-evidence-audit-access-v1",
-  "stage": "masked_evidence_adjudication_locked",
+  "stage": "adjudication_locked_then_read_attribution_complete",
   "packet_commit": "5b016f4",
   "plan_commit": "948ee11",
   "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
@@ -145,5 +145,12 @@
     }
   ],
   "custodian": "root; outcome-aware, not a blinded judge",
-  "isolation": "Fresh-context workflow restrictions, not filesystem security isolation. Per-reviewer access and recognition disclosures are preserved verbatim; no model-training non-exposure claim."
+  "isolation": "Fresh-context workflow restrictions, not filesystem security isolation. Per-reviewer access and recognition disclosures are preserved verbatim; no model-training non-exposure claim.",
+  "attribution": {
+    "custodian": "root; outcome-aware",
+    "judgments_locked_commit": "78b5735",
+    "protocol_commit": "a84580a",
+    "result_sha256": "411c22b976635d90a5dab00165627850f767f5e25391a468723767a4745ec7c9",
+    "independent_mechanical_audit": "passed"
+  }
 }

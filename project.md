@@ -49,7 +49,9 @@ reviews and a fresh all-case adjudication are locked: 60 requirements and five
 complete sets across interpretations. All 223 adjudicated citation occurrences
 pass mechanical checks; this is coding-agent judgment, not human financial validation.
 Masked packets bind 68 excerpts and 36 uniform review-only pages.
-Historical scores remain unchanged; policy attribution is the next stage.
+Separately frozen read attribution finds no accepted set covered by either branch.
+Only two cases have adjudicated sets; no answer-accuracy claim follows. Independent
+reproduction passed. Historical scores remain unchanged.
 All 399 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 

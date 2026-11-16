@@ -3,7 +3,7 @@
 [Plan](plan.md), question-only builder and reviewer instructions were frozen at
 `948ee11` after independent review. Stage-1 [question packets](stage-1/receipt.json)
 were generated and committed at `5b016f4` before dispatch. Dispatch-time input and
-output hash verification passed. All 391 tests and lint pass, including five packet
+output hash verification passed. All 399 tests and lint pass, including five packet
 allowlist/integrity tests.
 
 Two fresh-context independent Astra reviewers completed all six literal question
@@ -18,8 +18,8 @@ blinded judge. Workflow restrictions are not filesystem security isolation.
 
 Initial reviews and reconciliation are locked under the [fixed instructions](reconciliation-instructions.md).
 Evidence was supplied only after that lock, using the predeclared pool
-and uniform review-only page context. Adjudicated evidence sets are locked separately; no changed
-scores exist. Historical evidence packets/results and reserved validation remain
+and uniform review-only page context. Adjudicated evidence sets are locked separately; historical
+scores remain unchanged. Historical evidence packets/results and reserved validation remain
 unchanged and closed respectively.
 
 Stage-2 [masked evidence preparation](evidence-preparation-report.md) is complete
@@ -34,4 +34,11 @@ across the declared interpretations. Its 223 citation occurrences (177 requireme
 citations plus repeated complete-set citations) pass the mechanical validator.
 All 60 notes entries match EA/EB/EC statuses and input hashes.
 [Stage-2 lock](reviews/stage-2-lock.json) preserves both outputs verbatim before
-policy attribution; no technical repairs or new benchmark scores exist.
+policy attribution; no technical repairs were requested.
+
+[Read attribution](evidence-report.md) is complete under the separately frozen
+`a84580a` protocol. Neither branch covers any accepted complete set at 1/3/5 reads
+under either context policy. Only two cases have adjudicated complete sets, so this
+is not six retrieval failures or an answer-accuracy score. Independent byte-identical
+reproduction verifies 21 bindings, 72 conditions and 384 interpretation/measure rows.
+Historical scores, reserved validation and default retrieval remain unchanged.

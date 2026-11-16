@@ -127,7 +127,9 @@ before evidence or outcomes are shown. Six cases retain 16 explicit interpretati
 two independent evidence reviews and fresh all-case adjudication are now locked
 with 60 requirements and five complete sets across interpretations. Mechanical
 checks verify 223 citation occurrences; financial validity is not independently
-established. Policy attribution is next. Frozen scores remain unchanged.
+established. A separately frozen read-attribution diagnostic finds no accepted set fully covered
+by either branch; only two cases have adjudicated sets, so this is not a six-case
+retrieval-failure rate. Independent reproduction passed. Frozen scores remain unchanged.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
