@@ -1,5 +1,14 @@
 # Working context — 2026-11-16
 
+## Raw table runtime — 2026-11-16
+
+[Fixed offline probe](eval/reports/table-runtime-2026-11-16/report.md): standalone
+raw-table reads cover all required cells for 4/4 explicit-window controls, while
+original-question search plus one read covers 1/4. Correct tables rank first3/4
+and within three4/4. The raw grader does not infer semantic or typed answer success.
+Default graph/citations remain unchanged; no additional paid inference occurred.
+
+
 ## Source-quality iteration — 2026-11-16
 
 Whole-document diagnostics bind originals, extracted text, and the full manifest.
@@ -7,7 +16,7 @@ Three-task retrieval reaches 2/4 annotated pages at five hits; declared-document
 scoping improves first-hit recall from 1/4 to 2/4 without fixing the remaining task.
 Native HTML v2 fixes explicit-hidden contamination and retains raw headers/captions;
 four evaluator-only packets check source/period/sign/scale associations. Lint and
-189 tests pass. Full-agent FinanceBench inference and human adjudication remain
+204 tests pass. Full-agent FinanceBench inference and human adjudication remain
 pending. [Source findings](eval/reports/source-ingestion-2026-11-16/report.md).
 
 

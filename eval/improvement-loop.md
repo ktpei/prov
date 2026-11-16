@@ -173,3 +173,16 @@ Queries contain no gold. This is exploratory development evidence, not heldout Q
 Sidecar v2 preserves all release cell IDs/text while fixing explicit-hidden and
 block-boundary contamination. Four structural packets and adversarial negatives
 are graded separately from any agent run. Lint and 189 tests passed; no paid calls.
+
+## Cycle 9 — actual raw-table tool path
+
+Standalone TableSources validates immutable originals, hashes sidecars/manifests,
+returns copied raw cells, and rejects oversized responses atomically. No default
+graph/citation changes. The distinct raw-read grader rejects forged captions,
+manifest identities, and error-bearing responses; semantic/typed correctness stays
+unmeasured. Lint and 204 tests passed.
+
+Fixed clean-code probe: explicit-window controls4/4 complete component coverage;
+question-search plus one read1/4, despite correct table3/4 at rank1 and4/4 by rank3.
+Wrong-table duplicate values and missing GAAP/asset rows remain actual failures.
+See [report](reports/table-runtime-2026-11-16/report.md). No paid calls occurred.
