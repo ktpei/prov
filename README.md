@@ -89,8 +89,8 @@ experimental: these exposed cases do not justify changing the default policy.
 
 [Broader validation preparation](eval/assessments/financebench-context-v1/progress.md)
 now fixes six new development source groups and their pinned PDF inventory before
-content inspection. Acquisition and evaluation remain pending; failures will not
-be replaced with easier cases.
+content inspection. All six bodies are now acquired and byte-verified; extraction
+and evaluation remain pending. Failed cases will not be replaced with easier ones.
 
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.

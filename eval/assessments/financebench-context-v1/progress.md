@@ -11,7 +11,7 @@ Costco, Johnson & Johnson, 3M and American Water Works.
 | Fixed task/source slots | 6 |
 | Distinct known companies | 6 |
 | Pinned mirror tree entries | 6 |
-| Downloaded/verified PDF bodies | 0 |
+| Downloaded/verified PDF bodies | 6 |
 | Extracted documents | 0 |
 | Inspected questions/evidence | 0 |
 | Executed retrieval/context cases | 0 |
@@ -24,7 +24,8 @@ the lead independently checked the commit-to-tree-to-blob chain through the
 The pinned commit resolves to tree `dd439a15cd136001f70afba8b77ac534bd83ce8e`.
 [Inventory](inventory.json) records each exact path, size and Git blob identity,
 with the commit/tree response hashes. Raw metadata responses are retained locally
-under `runs/financebench-context-v1-metadata/`; no PDF bodies were fetched.
+under `runs/financebench-context-v1-metadata/`. At that metadata stage no PDF bodies
+were fetched; the subsequent frozen acquisition is recorded below.
 
 | Source | Expected bytes | Git blob SHA-1 |
 | --- | ---: | --- |
@@ -35,8 +36,8 @@ under `runs/financebench-context-v1-metadata/`; no PDF bodies were fetched.
 | 3M_2022_10K | 1,655,681 | ac32e3076d5fc0378b5123b204eece5fc5d39dac |
 | AMERICANWATERWORKS_2021_10K | 1,975,636 | b716b0e0aece594ccb45d0006b183e49e24a1595 |
 
-Total expected body size is 10,443,871 bytes. These are ordinary file-mode blob
-entries, not verified downloaded PDF contents. The acquisition gate must check
+Total expected body size is 10,443,871 bytes. These inventory entries described
+ordinary file-mode blobs before acquisition. The acquisition gate checks
 PDF magic, exact byte length, and the Git blob digest over the header plus bytes,
 then record an independent SHA-256. Git's [object-format explanation](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
 describes the blob header and digest; a plain file SHA-1 is not the Git object ID.
@@ -54,14 +55,15 @@ selection. No final-partition group was recruited and no download-based replacem
 is allowed. Selection parses full JSON rows but projects only metadata; question,
 answer and evidence fields were not inspected or used.
 
-Next: freeze a bounded acquisition policy against this inventory, retain all six
-outcomes, and verify original bytes. Before task/PDF content inspection, freeze
+The [frozen acquisition](acquisition-report.md) now verifies all six repository
+bodies (10,443,871 bytes) with no failures or retries. Before task/PDF content inspection, freeze
 preparation/extraction/annotation rules and record development reservations. Later
 comparison must keep the context baseline/challenger and budget fixed; it cannot
 retune from the newly selected cases. This preparation is not a benchmark result.
 
-All 310 tests and lint pass. No paid calls, holdout runs, PDF downloads or source
-content inspection occurred during this stage. Spending remains $0.4814193.
+All 315 tests and lint pass. Six PDF bodies were acquired and byte-verified in
+the subsequent acquisition stage; there have been no paid calls, holdout runs or
+financial-content inspections. Spending remains $0.4814193.
 
 Independent metadata-only review verified the 394-path non-truncated tree, all six
 ordered blob entries, exact sizes, source links and response/selection hashes.
