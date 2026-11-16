@@ -44,10 +44,13 @@ proposes a separate blinded audit without changing historical scores.
 A [blinded evidence audit](eval/assessments/financebench-evidence-audit-v1/progress.md)
 has locked question-only interpretations from two fresh reviewers and all-six
 third-reviewer reconciliation: 16 interpretations, with two cases judged
-well-defined, two conditional and two underspecified. Evidence review has not
-started; these coding-agent judgments change no scores. Masked packets now bind
-68 excerpts and 36 uniform review-only pages; independent integrity audit passes.
-All 385 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+well-defined, two conditional and two underspecified. Two independent evidence
+reviews and a fresh all-case adjudication are locked: 60 requirements and five
+complete sets across interpretations. All 223 adjudicated citation occurrences
+pass mechanical checks; this is coding-agent judgment, not human financial validation.
+Masked packets bind 68 excerpts and 36 uniform review-only pages.
+Historical scores remain unchanged; policy attribution is the next stage.
+All 399 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16

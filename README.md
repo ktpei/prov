@@ -122,10 +122,12 @@ pools lack frozen locations; it is an evaluator diagnostic, not a retrieval poli
 keeps six slots closed; Amazon and Microsoft have prior issuer exposure and remain
 explicitly flagged without replacement. The separate [annotation-validity research](eval/incomplete-judgments-research-2026-11-16.md)
 supports a [staged blinded audit](eval/assessments/financebench-evidence-audit-v1/progress.md)
-has completed and locked independent question-only interpretation and reconciliation
+that has completed and locked independent question-only interpretation and reconciliation
 before evidence or outcomes are shown. Six cases retain 16 explicit interpretations;
-masked evidence packets are now prepared and independently integrity-audited,
-while financial evidence assessment remains pending. Frozen scores remain unchanged.
+two independent evidence reviews and fresh all-case adjudication are now locked
+with 60 requirements and five complete sets across interpretations. Mechanical
+checks verify 223 citation occurrences; financial validity is not independently
+established. Policy attribution is next. Frozen scores remain unchanged.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
