@@ -75,6 +75,10 @@ show complete annotated evidence in parent passages for 2/3 exposed tasks, but
 0/3 in returned snippets across all three retrieval conditions. This measures a
 search-to-read gap, not financial answer accuracy.
 
+A [journaled bounded-reading baseline](eval/reports/bounded-reading-2026-11-16/design.md)
+is synthetically verified; its frozen real-case comparison and separate grader
+remain pending. Default agent behavior is unchanged.
+
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
 All 419 native-text pages replay unchanged with structured page diagnostics.

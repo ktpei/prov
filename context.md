@@ -1,5 +1,14 @@
 # Working context — 2026-11-16
 
+## Bounded-reading implementation — 2026-11-16
+
+[A standalone reader](eval/reports/bounded-reading-2026-11-16/design.md) now opens
+ranked parent passages once each, preserving failure slots, exact returned lines,
+size/truncation accounting and durable interruption records. Eleven synthetic tests
+cover the policy and mutation hazards; all 289 tests and lint pass. Frozen run
+integration and separate replay grading remain pending. No new benchmark result,
+agent behavior change or paid spending is claimed.
+
 ## Evidence-component diagnostics — 2026-11-16
 
 [Replay-bound component coverage](eval/reports/evidence-components-2026-11-16/report.md)
