@@ -66,7 +66,9 @@ limitations prevent broad accuracy claims. Total recorded conservative spending
 across development is $0.4814193. The original holdout remains unrun.
 
 [A frozen DPO component-search experiment](eval/reports/dpo-retrieval-2026-11-16/report.md)
-used more searches without improving page coverage; it was not promoted.
+used more searches without improving page coverage; it was not promoted. An
+[equal-budget statement-context variant](eval/reports/statement-context-2026-11-16/report.md)
+also failed to improve final coverage and lost a required candidate page.
 
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.

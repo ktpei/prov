@@ -43,6 +43,14 @@ losses. Both earlier versions replay exactly; v2 remains the default. The negati
 result is retained, and broader uninspected development assessment is next.
 
 
+## Statement-context retrieval — 2026-11-16
+
+[Equal-budget context terms](eval/reports/statement-context-2026-11-16/report.md)
+left coverage at 2/4 pages and 2/3 complete tasks, while Walmart’s expected
+candidate-page coverage fell from 1/2 to 0/2. No promotion. The prior component
+policy replays exactly. Passage diagnostics do not support blaming numeric length
+or missing main-passage headers for these misses.
+
 ## DPO retrieval experiment — 2026-11-16
 
 [Question-only component retrieval](eval/reports/dpo-retrieval-2026-11-16/report.md)
