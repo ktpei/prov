@@ -213,7 +213,7 @@ export default function App() {
         </div>
       )}
       <main className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto lg:grid-cols-[minmax(0,44fr)_minmax(0,56fr)] lg:grid-rows-[minmax(0,1fr)] lg:overflow-hidden">
-        <section aria-label="Conversation" className="flex min-h-0 flex-col border-r border-rule bg-chrome">
+        <section aria-label="Conversation" className="flex min-h-[75vh] flex-col border-r border-rule bg-chrome lg:min-h-0">
           <div data-scroll className="min-h-0 flex-1 overflow-y-auto px-5">
             <Conversation
               corpus={corpus}

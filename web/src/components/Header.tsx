@@ -15,7 +15,7 @@ export function Header({ config, corpusId, mode, busy, onCorpus, onMode, onNew }
   const { total_usd, cap_usd } = config.spend;
   const used = Math.min(1, total_usd / cap_usd);
   return (
-    <header className="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-rule bg-surface px-5 py-2.5">
+    <header className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface px-5 py-2.5 2xl:gap-x-6">
       <div className="flex items-center gap-2">
         <svg aria-hidden viewBox="0 0 32 32" className="h-6 w-6">
           <rect width="32" height="32" rx="6" fill="#1B2430" />
@@ -25,7 +25,7 @@ export function Header({ config, corpusId, mode, busy, onCorpus, onMode, onNew }
       </div>
 
       <label className="flex items-center gap-2 text-sm text-ink-soft">
-        Evidence
+        <span className="sr-only 2xl:not-sr-only">Evidence</span>
         <select
           value={corpusId}
           disabled={busy}
@@ -40,12 +40,14 @@ export function Header({ config, corpusId, mode, busy, onCorpus, onMode, onNew }
         </select>
       </label>
       {corpus && (
-        <span className="text-sm text-ink-faint">
-          Information cutoff <span className="tabular text-ink-soft">{corpus.cutoff}</span>
+        <span className="text-sm text-ink-faint" title="Latest publication date in this evidence set">
+          <span className="hidden 2xl:inline">Information cutoff </span>
+          <span className="2xl:hidden">Cutoff </span>
+          <span className="tabular text-ink-soft">{corpus.cutoff}</span>
         </span>
       )}
 
-      <div className="ml-auto flex items-center gap-4">
+      <div className="ml-auto flex flex-wrap items-center gap-3 2xl:gap-4">
         <div role="radiogroup" aria-label="Answer mode" className="flex rounded-md border border-rule p-0.5 text-sm">
           {(["live", "replay"] as const).map((option) => {
             const disabled = busy || (option === "live" && !config.live_available);
@@ -72,12 +74,13 @@ export function Header({ config, corpusId, mode, busy, onCorpus, onMode, onNew }
                     : "text-ink-soft hover:text-ink disabled:opacity-40"
                 }`}
               >
-                {option === "live" ? "Live model" : "Scripted replay"}
+                <span className="sm:hidden">{option === "live" ? "Live" : "Replay"}</span>
+                <span className="hidden sm:inline">{option === "live" ? "Live model" : "Scripted replay"}</span>
               </button>
             );
           })}
         </div>
-        <div className="min-w-[150px] text-xs text-ink-soft" title="Live model spend recorded in runs/web/cost-log.jsonl">
+        <div className="min-w-[132px] text-xs text-ink-soft" title="Live model spend recorded in runs/web/cost-log.jsonl">
           <div className="tabular">
             Spent ${total_usd.toFixed(4)} of ${cap_usd.toFixed(2)}
           </div>
