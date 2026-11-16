@@ -1,0 +1,23 @@
+{
+  "version": "masked-evidence-adjudication-lock-v1",
+  "initial_reviews_commit": "92a4a80",
+  "adjudication_instructions_commit": "ee5bae3",
+  "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+  "artifacts": {
+    "evidence-adjudicated.json": "4d4c3d4389f9f7ec50df387eabf1aa5806854a577624af4e09deb7f462516fa5",
+    "evidence-adjudication-notes.json": "cc9b4bb4d596484cec5e2c451b6471e16b428340b25adde7ab10217c7ae86e32",
+    "evidence-adjudicated-validation.json": "64d968d3cc67cf23ca07cef1673226be9e25d7858f4c2aac370d1504058a3e99",
+    "evidence-adjudication-notes-validation.json": "ada3e194830a818d2ebef42b02ae23945a3ed7df7b27daace97c6b4e2b49ecef"
+  },
+  "counts": {
+    "cases": 6,
+    "interpretations": 16,
+    "requirements": 60,
+    "complete_sets": 5,
+    "citations": 223,
+    "review_only_citations": 44
+  },
+  "technical_repairs_requested": false,
+  "policy_attribution_revealed": false,
+  "financial_sufficiency": "coding_agent_adjudication_only; not human financial validation"
+}

@@ -1,6 +1,6 @@
 {
   "version": "blinded-evidence-audit-access-v1",
-  "stage": "initial_masked_evidence_reviews_complete",
+  "stage": "masked_evidence_adjudication_locked",
   "packet_commit": "5b016f4",
   "plan_commit": "948ee11",
   "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
@@ -106,8 +106,44 @@
         "disclosure": "Read only the assigned instructions and six masked case packets; wrote and verified only reviews/evidence-b.json. No internet, repository search/history, other source files, other reviewer output, original rubrics, reference answers or policy attribution accessed. During initial Q01 schema inspection, packet-embedded source metadata (URL, source SHA256 and original_sha256) was displayed incidentally; it was not visited, used for evidence assessment or used to infer custody/policy. Required input file hashes and source IDs were used for integrity/citation fields."
       },
       "structural_validation": "passed; not financial validation"
+    },
+    {
+      "role": "EC",
+      "agent": "/root/evidence_c",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "stage": "masked_evidence_adjudication",
+      "initial_reviews_commit": "92a4a80",
+      "instructions_commit": "ee5bae3",
+      "allowed_inputs": [
+        "evidence-adjudication-instructions.md",
+        "evidence-review-instructions.md",
+        "stage-2/reviewer/Q01.json",
+        "stage-2/reviewer/Q02.json",
+        "stage-2/reviewer/Q03.json",
+        "stage-2/reviewer/Q04.json",
+        "stage-2/reviewer/Q05.json",
+        "stage-2/reviewer/Q06.json",
+        "reviews/evidence-a.json",
+        "reviews/evidence-b.json"
+      ],
+      "exclusive_outputs": [
+        "reviews/evidence-adjudicated.json",
+        "reviews/evidence-adjudication-notes.json"
+      ],
+      "output_sha256": {
+        "evidence-adjudicated.json": "4d4c3d4389f9f7ec50df387eabf1aa5806854a577624af4e09deb7f462516fa5",
+        "evidence-adjudication-notes.json": "cc9b4bb4d596484cec5e2c451b6471e16b428340b25adde7ab10217c7ae86e32"
+      },
+      "outside_access_disclosed": {
+        "accessed": false,
+        "disclosure": "Read only the two assigned instructions, six masked case packets and two locked initial reviews; wrote and validated only the two assigned EC outputs. No internet, repository searches/history, external source documents, reference answers, retrieval attribution, separate custody metadata or communication with initial reviewers was used. During initial Q01 inspection, packet-embedded source URL and source/original hashes were incidentally rendered; they were not followed or used to infer custody, method or outcomes. Input hashes and source IDs were used only for integrity and citation."
+      },
+      "structural_validation": "passed; not financial validation"
     }
   ],
   "custodian": "root; outcome-aware, not a blinded judge",
-  "isolation": "Fresh-context workflow restrictions, not filesystem security isolation. All three reviewers self-report no outside access; general financial/company recognition disclosed without remembered reference answers."
+  "isolation": "Fresh-context workflow restrictions, not filesystem security isolation. Per-reviewer access and recognition disclosures are preserved verbatim; no model-training non-exposure claim."
 }

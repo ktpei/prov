@@ -1,0 +1,557 @@
+{
+  "stage": "masked_evidence_adjudication_notes",
+  "reviewer": "EC",
+  "initial_review_sha256": {
+    "evidence-a.json": "ef4d083a5d54240f99d2735fb7d35822e421ac72b8c05b5c3158c3d9b713c584",
+    "evidence-b.json": "ebc10a43173535bb7746ddad923a94b72326cdafd2e5739fc784e6e0c1cd5778"
+  },
+  "instructions_sha256": {
+    "evidence-adjudication-instructions.md": "5c7b357af995aea85ac26bdb0ca6a649b3ee6c1939c31597c97b48afc532004d",
+    "evidence-review-instructions.md": "1d11cdcb24e7241e1bd9a97bf17c528a0fe3b54a841070116eebea2543aead58"
+  },
+  "cases": [
+    {
+      "case_id": "Q01",
+      "interpretations": [
+        {
+          "interpretation_id": "I01",
+          "requirements": [
+            {
+              "requirement_id": "R01",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained after checking the consolidated operations header at 2888–2892 and positive operating-income row at 2900. The three year labels and three amounts retain coherent native-text ordering, and the requested first column is FY2021. Segment and quarterly amounts are not substitutes."
+            },
+            {
+              "requirement_id": "R02",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained because 2940–2948 explicitly identify the consolidated cash-flow statement, FY2021 first column, and depreciation and amortization row. Line 2949 separately labels deferred taxes and investment-tax-credit amortization, so it is not silently included."
+            },
+            {
+              "requirement_id": "R03",
+              "EA_status": "conditional",
+              "EB_status": "conditional",
+              "EC_status": "conditional",
+              "reason": "EA and EB agree on conditional; retained. Lines 2888–2893 and 2940–2946 establish matching entity, consolidated scope, years ended December 31, millions and dollar signs. They do not identify the dollar currency as USD. The locked currency requirement therefore still depends on an unprovided reporting-currency convention."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "Q02",
+      "interpretations": [
+        {
+          "interpretation_id": "I01",
+          "requirements": [
+            {
+              "requirement_id": "R01",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 2802–2805 identify the consolidated FY2017 income statement and 2820 explicitly labels consolidated net income. The separate parent-attributable label at 2822–2823 confirms that this interpretation must use the consolidated row, not the parent or continuing-operations row."
+            },
+            {
+              "requirement_id": "R02",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The consolidated balance-sheet heading and December 31 columns at 2858–2861 place FY2016 second, matching the second total-assets amount at 2882. Native-text ordering supports the association."
+            },
+            {
+              "requirement_id": "R03",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The consolidated balance-sheet heading and December 31 columns at 2858–2861 place FY2017 first, matching the first total-assets amount at 2882. It is total assets, not current assets."
+            },
+            {
+              "requirement_id": "R04",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 2802–2805, 2822–2823, 2858–2861 and 2882 identify one reporting entity, annual income versus year-end assets, million scale and consistent dollar units. The locked dimensionless ratio requires comparable reporting units rather than conversion to a named foreign currency; the statement dollar unit is common to the inputs. No claim of an explicit USD legend is made."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I02",
+          "requirements": [
+            {
+              "requirement_id": "R05",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 2802–2805 establish FY2017 first-column income and 2822–2823 contain the entire wrapped parent-shareowner attribution label and its amount. This differs from consolidated net income and applies only to I02."
+            },
+            {
+              "requirement_id": "R06",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The company and consolidated balance-sheet labels at 2858–2861 pair the second total-assets amount at 2882 with December 31, 2016. The denominator remains consolidated under I02's explicit assumption."
+            },
+            {
+              "requirement_id": "R07",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 2858–2861 pair the first total-assets amount at 2882 with December 31, 2017, at the consolidated scope required by I02."
+            },
+            {
+              "requirement_id": "R08",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 2802–2805, 2822–2823, 2858–2861 and 2882 establish the parent attribution of income, consolidated asset scope, fiscal dates, million scale and common dollar unit. I02 expressly permits that attribution difference. The ratio does not require a USD conversion; no explicit ISO currency legend is inferred."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "Q03",
+      "interpretations": [
+        {
+          "interpretation_id": "I01",
+          "requirements": [
+            {
+              "requirement_id": "R01",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 1186–1189 expressly name Costco Wholesale Corporation, consolidated balance sheets and the August 29, 2021 first closing column. Under the locked fiscal-closing interpretation this is the requested endpoint; no calendar-year substitution is made."
+            },
+            {
+              "requirement_id": "R02",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Line 1202 explicitly labels TOTAL ASSETS and provides the first-column amount corresponding to the August 29, 2021 header at 1189. The two-column native text is coherent and this is not the current-assets subtotal."
+            },
+            {
+              "requirement_id": "R03",
+              "EA_status": "conditional",
+              "EB_status": "conditional",
+              "EC_status": "conditional",
+              "reason": "EA and EB agree on conditional; retained. Line 1188 establishes million scale and 1202 supplies dollar notation, but the balance-sheet page does not name USD or give a conversion basis. Other note pages cannot cure the question's balance-sheet-only restriction. Support still requires an explicit authorization to interpret the unqualified dollar sign as USD."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "Q04",
+      "interpretations": [
+        {
+          "interpretation_id": "I01",
+          "requirements": [
+            {
+              "requirement_id": "R01",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 896–897 explicitly set annual 2022/2021 segment results and the paired table at 900–909 uses the same four segment identities and comparable sales columns. This supports the presented comparison without asserting unseen restatement details. The sales table is review-only context."
+            },
+            {
+              "requirement_id": "R02",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The 910–917 bridge separately labels acquisitions, divestitures, translation and total sales change. Removing the two identified M&A categories while retaining translation implements the locked adjustment. Lines 1140–1141 explicitly classify deconsolidation in the issuer's divestiture category and 1175–1177 explain the Health Care disposal; no narrower legal-M&A reclassification is assumed."
+            },
+            {
+              "requirement_id": "R03",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The bridge at 910–917 supports negative signs after subtracting the identified acquisition/divestiture effects while retaining translation. Positive prior-year bases and Total Company aggregation at 900–909 connect those signs to company sales change. The latter table is review-only; exact weights are unnecessary for direction."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I02",
+          "requirements": [
+            {
+              "requirement_id": "R04",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 896–897 explicitly set annual 2022/2021 segment results and the paired table at 900–909 uses the same four segment identities and comparable sales columns. This supports the presented comparison without asserting unseen restatement details. The sales table is review-only context."
+            },
+            {
+              "requirement_id": "R05",
+              "EA_status": "conditional",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA calls this conditional and EB partial. EC selects partial: the labeled organic rates at 910–917 and the individual sales analyses are useful evidence, but an exact definition of all organic inclusions/exclusions is missing. Arithmetic agreement of bridge components is not an exhaustive definition. Accepting the labeled bridge as sufficient would be a separate rubric revision, not support under the locked wording."
+            },
+            {
+              "requirement_id": "R06",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained for the reported organic series. Line 916 supplies a negative organic segment rate, and 900–909 supplies its positive prior-year base and aggregate relationship. This establishes sign and contribution for that series without resolving the separately missing exact definition in R05; no complete I02 set follows."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I03",
+          "requirements": [
+            {
+              "requirement_id": "R07",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 896–897 explicitly set annual 2022/2021 segment results and the paired table at 900–909 uses the same four segment identities and comparable sales columns. This supports the presented comparison without asserting unseen restatement details. The sales table is review-only context."
+            },
+            {
+              "requirement_id": "R08",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The 910–917 bridge separately labels acquisitions, divestitures, translation and total sales change. Removing the two identified M&A categories while retaining translation implements the locked adjustment. Lines 1140–1141 explicitly classify deconsolidation in the issuer's divestiture category and 1175–1177 explain the Health Care disposal; no narrower legal-M&A reclassification is assumed."
+            },
+            {
+              "requirement_id": "R09",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 910–917 put the Total Company row in the same annual worldwide sales-change bridge as the segments, with acquisition and divestiture components separately identified. Their removal, retaining translation, supports the company comparison on I03's M&A-only basis."
+            },
+            {
+              "requirement_id": "R10",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Review-only lines 900–909 show positive prior-year segment sales, their shares, Corporate and Unallocated, and Total Company. Combined with the same-period bridge at 910–917, this establishes the aggregation relationship at reported precision. It does not establish that any method delivered the review-only reconciliation or permit exact reconstruction from rounded rates."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I04",
+          "requirements": [
+            {
+              "requirement_id": "R11",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 896–897 explicitly set annual 2022/2021 segment results and the paired table at 900–909 uses the same four segment identities and comparable sales columns. This supports the presented comparison without asserting unseen restatement details. The sales table is review-only context."
+            },
+            {
+              "requirement_id": "R12",
+              "EA_status": "conditional",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA calls this conditional and EB partial. EC selects partial: the labeled organic rates at 910–917 and the individual sales analyses are useful evidence, but an exact definition of all organic inclusions/exclusions is missing. Arithmetic agreement of bridge components is not an exhaustive definition. Accepting the labeled bridge as sufficient would be a separate rubric revision, not support under the locked wording."
+            },
+            {
+              "requirement_id": "R13",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained for the labeled series. Lines 910–917 expressly give the same-period Total Company organic sales-growth rate alongside segment rates. This supplies the reported comparison, while R12 separately remains partial for the exact definition."
+            },
+            {
+              "requirement_id": "R14",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Review-only lines 900–909 show positive prior-year segment sales, their shares, Corporate and Unallocated, and Total Company. Combined with the same-period bridge at 910–917, this establishes the aggregation relationship at reported precision. It does not establish that any method delivered the review-only reconciliation or permit exact reconstruction from rounded rates."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I05",
+          "requirements": [
+            {
+              "requirement_id": "R15",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained under an explicitly selected M&A-only absolute-contribution reading. Lines 896–897 and 900–917 provide annual comparable segment identities, positive prior-year sales and adjusted change components, supporting weighted magnitude comparison rather than rate ordering alone. The material leading magnitude separation exceeds the displayed rounding precision; no exact dollar reconstruction is claimed."
+            },
+            {
+              "requirement_id": "R16",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. The 910–917 bridge separately labels acquisitions, divestitures, translation and total sales change. Removing the two identified M&A categories while retaining translation implements the locked adjustment. Lines 1140–1141 explicitly classify deconsolidation in the issuer's divestiture category and 1175–1177 explain the Health Care disposal; no narrower legal-M&A reclassification is assumed."
+            },
+            {
+              "requirement_id": "R17",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained only after explicitly selecting absolute contribution under the M&A-only adjustment, an option the locked I05 permits. The positive bases at 900–909 and bridge at 910–917 provide this comparison; no relative benchmark is invented. Other ranking conventions remain unresolved alternatives."
+            },
+            {
+              "requirement_id": "R18",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Review-only lines 900–909 show positive prior-year segment sales, their shares, Corporate and Unallocated, and Total Company. Combined with the same-period bridge at 910–917, this establishes the aggregation relationship at reported precision. It does not establish that any method delivered the review-only reconciliation or permit exact reconstruction from rounded rates."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "Q05",
+      "interpretations": [
+        {
+          "interpretation_id": "I01",
+          "requirements": [
+            {
+              "requirement_id": "R01",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. The FY2022 consolidated earnings heading at 1763–1766 and cost-of-products-sold row at 1768 identify the numerator amount. Lines 1330–1335 and 1340–1344 describe manufacturing exit and inventory-related costs but neither define the entire cost measure nor reconcile it to the inventory denominator. The truncated continuation is not reconstructed."
+            },
+            {
+              "requirement_id": "R02",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 1716–1720 explicitly pair consolidated FY2022/FY2021 columns with January 1, 2023/January 2, 2022 and 1726 gives both inventory balances. The prior-year closing balance is the opening endpoint under I01's declared two-point convention."
+            },
+            {
+              "requirement_id": "R03",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Lines 1716–1720, 1726 and 1763–1766 identify entity, fiscal labels, closing dates, dollars and millions. Review-only 1487–1493 supplies general GAAP context, but the inventory accounting and valuation policies referenced in Notes 1 and 3 are absent. Common reporting units do not establish the missing cost-flow or valuation relationship."
+            },
+            {
+              "requirement_id": "R04",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Review-only 1300–1318 identifies the late-December acquisition and mixed segment context; 1494–1497 describes product-sale recognition. Excerpt lines 1505–1517 link returns to inventories and disclose profit-share revenue, while 1340–1344 discusses manufacturing exit/inventory costs. The acquisition and exit effects on the annual numerator versus closing stock are not established, leaving scope compatibility and meaningfulness incompletely supported."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I02",
+          "requirements": [
+            {
+              "requirement_id": "R05",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. The FY2022 consolidated earnings heading at 1763–1766 and cost-of-products-sold row at 1768 identify the numerator amount. Lines 1330–1335 and 1340–1344 describe manufacturing exit and inventory-related costs but neither define the entire cost measure nor reconcile it to the inventory denominator. The truncated continuation is not reconstructed."
+            },
+            {
+              "requirement_id": "R06",
+              "EA_status": "partial",
+              "EB_status": "unsupported",
+              "EC_status": "partial",
+              "reason": "EA calls this partial and EB unsupported. EC retains partial because lines 1716–1720 and 1726 supply actual dated endpoint observations that can be useful inputs to an averaging scheme, but they are insufficient for the expressly distinct within-year average. No intermediate balances, sampling scheme or timing/weights are supplied or selected. Endpoint usefulness does not establish a complete denominator or authorize reverting to I01."
+            },
+            {
+              "requirement_id": "R07",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Lines 1716–1720, 1726 and 1763–1766 identify entity, fiscal labels, closing dates, dollars and millions. Review-only 1487–1493 supplies general GAAP context, but the inventory accounting and valuation policies referenced in Notes 1 and 3 are absent. Common reporting units do not establish the missing cost-flow or valuation relationship."
+            },
+            {
+              "requirement_id": "R08",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Review-only 1300–1318 identifies the late-December acquisition and mixed segment context; 1494–1497 describes product-sale recognition. Excerpt lines 1505–1517 link returns to inventories and disclose profit-share revenue, while 1340–1344 discusses manufacturing exit/inventory costs. The acquisition and exit effects on the annual numerator versus closing stock are not established, leaving scope compatibility and meaningfulness incompletely supported."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I03",
+          "requirements": [
+            {
+              "requirement_id": "R09",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. The FY2022 consolidated earnings heading at 1763–1766 and cost-of-products-sold row at 1768 identify the numerator amount. Lines 1330–1335 and 1340–1344 describe manufacturing exit and inventory-related costs but neither define the entire cost measure nor reconcile it to the inventory denominator. The truncated continuation is not reconstructed."
+            },
+            {
+              "requirement_id": "R10",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 1716–1720 identify FY2022 closing as January 1, 2023 and 1726 gives the first-column inventory. This supports the closing balance alone; whether it represents average inventory remains the explicitly disclosed proxy convention."
+            },
+            {
+              "requirement_id": "R11",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Lines 1716–1720, 1726 and 1763–1766 identify entity, fiscal labels, closing dates, dollars and millions. Review-only 1487–1493 supplies general GAAP context, but the inventory accounting and valuation policies referenced in Notes 1 and 3 are absent. Common reporting units do not establish the missing cost-flow or valuation relationship."
+            },
+            {
+              "requirement_id": "R12",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Review-only 1300–1318 identifies the late-December acquisition and mixed segment context; 1494–1497 describes product-sale recognition. Excerpt lines 1505–1517 link returns to inventories and disclose profit-share revenue, while 1340–1344 discusses manufacturing exit/inventory costs. The acquisition and exit effects on the annual numerator versus closing stock are not established, leaving scope compatibility and meaningfulness incompletely supported."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I04",
+          "requirements": [
+            {
+              "requirement_id": "R13",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 1763–1767 identify FY2022 consolidated sales to customers, with the amount itself review-only. Review-only 1494–1497 defines recognition on product-control transfer and sales reductions; 1505–1521 discloses returns, profit-share and other collaboration revenue. These facts explain the mixed revenue measure and its imperfect inventory relationship, rather than equating revenue valuation with product cost."
+            },
+            {
+              "requirement_id": "R14",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained after explicitly selecting the two-point average permitted by I04. Lines 1716–1720 and 1726 provide matching consolidated opening and closing endpoints. This does not support any alternative within-year sampling method."
+            },
+            {
+              "requirement_id": "R15",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Lines 1716–1720, 1726 and 1763–1766 identify entity, fiscal labels, closing dates, dollars and millions. Review-only 1487–1493 supplies general GAAP context, but the inventory accounting and valuation policies referenced in Notes 1 and 3 are absent. Common reporting units do not establish the missing cost-flow or valuation relationship."
+            },
+            {
+              "requirement_id": "R16",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Review-only 1300–1318 identifies the late-December acquisition and mixed segment context; 1494–1497 describes product-sale recognition. Excerpt lines 1505–1517 link returns to inventories and disclose profit-share revenue, while 1340–1344 discusses manufacturing exit/inventory costs. The acquisition and exit effects on the annual numerator versus closing stock are not established, leaving scope compatibility and meaningfulness incompletely supported."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I05",
+          "requirements": [
+            {
+              "requirement_id": "R17",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Review-only 1304–1314 describes FY2022 segment sales and 1494–1497 explains product-sale recognition. Lines 1505–1517 explicitly discuss returned goods and inventory, while 1716–1720 and 1726 confirm consolidated inventory. These support the nature and role of product inventory without establishing that every revenue stream arises from it."
+            },
+            {
+              "requirement_id": "R18",
+              "EA_status": "partial",
+              "EB_status": "partial",
+              "EC_status": "partial",
+              "reason": "EA and EB agree on partial; retained. Lines 1716–1726 and 1763–1768 establish consolidated inventory and related product cost; 1505–1521 discusses returns and collaboration revenue. Review-only 1300–1303 identifies a late-year acquisition and 1340–1344 identifies exit/inventory costs. Detailed inventory valuation scope and the effects of those events remain missing, so the full accounting-scope and limitation requirement is not met."
+            },
+            {
+              "requirement_id": "R19",
+              "EA_status": "unsupported",
+              "EB_status": "unsupported",
+              "EC_status": "unsupported",
+              "reason": "EA and EB agree on unsupported; retained. No allowed passage establishes a company-wide reasoning link to inventory management being meaningless. Inventory at 1726, product cost at 1768 and goods/returns discussion at 1505–1517 instead establish inventory relevance. Missing valuation details or mixed revenue do not justify non-applicability; no materiality cutoff is invented."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "Q06",
+      "interpretations": [
+        {
+          "interpretation_id": "I01",
+          "requirements": [
+            {
+              "requirement_id": "R01",
+              "EA_status": "partial",
+              "EB_status": "supported",
+              "EC_status": "partial",
+              "reason": "EA calls this partial and EB supported under a narrow issuer-reported-capex choice. EC selects partial. Lines 1010–1016 give annual capital expenditures and explicitly included C-Band spending; 939–949 describes broader spectrum, fiber and network requirements. Selecting the reported label is a plausible comparison convention, but the packet still does not establish which relevant investment categories are inside that flow, including treatment of spectrum purchases, leases or acquisitions. The locked explicit-definition requirement remains incomplete."
+            },
+            {
+              "requirement_id": "R02",
+              "EA_status": "partial",
+              "EB_status": "conditional",
+              "EC_status": "partial",
+              "reason": "EA calls this partial and EB conditional. EC selects partial: lines 1032–1034 and 1040 contain useful annual header, scale and named consolidated revenue values, but 1035–1039 shows interleaved narrative and a displaced Consumer label. Missing reliable column association is an extraction/context gap rather than a freely selectable financial convention. No clean alternative denominator is supplied, so the candidate FY2022 revenue is not promoted to supported."
+            },
+            {
+              "requirement_id": "R03",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 934–938 define Verizon as the parent and subsidiaries; 1010–1016 identify the year ended December 31, 2022 and dollar billions. Lines 1032–1034 and 1040 identify annual consolidated revenue labels and million scale. These metadata are explicit even though R02 retains uncertainty about the revenue cells' year association."
+            },
+            {
+              "requirement_id": "R04",
+              "EA_status": "conditional",
+              "EB_status": "conditional",
+              "EC_status": "conditional",
+              "reason": "EA and EB agree on conditional; retained. Lines 939–954 expressly describe significant capital requirements and network dependence, but they do not select a threshold, peer comparator or task decision rule. A disclosed qualitative operating-dependence standard could use these facts, yet treating it as sufficient for the requested classification remains an unresolved judgment convention."
+            },
+            {
+              "requirement_id": "R05",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. Lines 939–954 explicitly distinguish a peak C-Band deployment year from continuing capacity, fiber, maintenance and systems needs. Lines 1010–1016 quantify the included C-Band component and 1018–1031 describe ongoing deployment. The context addresses exceptional timing without assuming that the peak annual amount recurs."
+            }
+          ]
+        },
+        {
+          "interpretation_id": "I02",
+          "requirements": [
+            {
+              "requirement_id": "R06",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported but select different asset definitions: EA uses closing net PP&E, while EB adds wireless licenses. EC explicitly selects EA's narrower closing net-PP&E branch, excluding separately reported licenses, goodwill and lease right-of-use assets. Lines 2532–2535 and review-only 2545–2553 distinguish those balances; 934–949 and 1018–1031 connect networks and fiber to operations. The alternative license-inclusive branch is not silently merged."
+            },
+            {
+              "requirement_id": "R07",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported; retained. EC selects same-date closing total assets as the composition denominator. Lines 2532–2535 and 2554 directly establish consolidated December 31, 2022 total assets in a coherent two-column balance sheet. No average balances or uncertain revenue-table association are required for this branch."
+            },
+            {
+              "requirement_id": "R08",
+              "EA_status": "supported",
+              "EB_status": "supported",
+              "EC_status": "supported",
+              "reason": "EA and EB agree on supported but their numerator definitions differ. EC retains support for the selected net-PP&E/closing-total-assets branch: 2532–2535 states consolidated entity, fiscal date and dollar millions; review-only 2545–2547 explicitly deducts accumulated depreciation; 2554 supplies same-date total assets. No wireless-license valuation convention from EB is imported."
+            },
+            {
+              "requirement_id": "R09",
+              "EA_status": "conditional",
+              "EB_status": "conditional",
+              "EC_status": "conditional",
+              "reason": "EA and EB agree on conditional; retained for EC's net-PP&E branch. Lines 939–954 establish operational dependence and significant capital requirements, while review-only 2545–2547 and 2554 support asset-composition inputs. They do not select a classification standard or cutoff. Qualitative dependence is relevant evidence, but sufficiency of that criterion remains a declared judgment rather than a reported financial fact."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "All six cases, all 16 locked interpretations and all 60 requirements were reconciled, including agreements. Complete sets are conditional on their declared interpretation assumptions; no incompatible interpretations are merged.",
+    "Only native packet text was available; physical table geometry and extraction fidelity were not independently visually validated. Review-only context remains distinct from masked excerpt evidence and confers no delivery credit.",
+    "Proposed rubric revisions are kept separate; locked requirements were not removed or redefined. Qualitative standards, missing definitions, scope gaps and currency conventions remain unresolved where indicated.",
+    "No benchmark numerical answers, retrieval attribution or method scores are supplied. This is coding-agent adjudication, not human financial validation, exhaustive annotation or proof of model-training non-exposure."
+  ],
+  "outside_access": {
+    "accessed": false,
+    "disclosure": "Read only the two assigned instructions, six masked case packets and two locked initial reviews; wrote and validated only the two assigned EC outputs. No internet, repository searches/history, external source documents, reference answers, retrieval attribution, separate custody metadata or communication with initial reviewers was used. During initial Q01 inspection, packet-embedded source URL and source/original hashes were incidentally rendered; they were not followed or used to infer custody, method or outcomes. Input hashes and source IDs were used only for integrity and citation."
+  },
+  "recognition_or_prior_knowledge": {
+    "disclosure": "Company names and ordinary accounting/arithmetic concepts are recognizable. No remembered benchmark answer or issuer-specific financial fact was used. This fresh adjudication relies on packet evidence and independently checks both initial judgments. It is coding-agent adjudication, not human financial validation, exhaustive annotation or proof of model-training non-exposure."
+  }
+}

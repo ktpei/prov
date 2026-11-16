@@ -1,0 +1,16 @@
+{
+  "version": "adjudication-notes-crosscheck-v1",
+  "notes_sha256": "cc9b4bb4d596484cec5e2c451b6471e16b428340b25adde7ab10217c7ae86e32",
+  "review_hashes": {
+    "evidence-a.json": "ef4d083a5d54240f99d2735fb7d35822e421ac72b8c05b5c3158c3d9b713c584",
+    "evidence-b.json": "ebc10a43173535bb7746ddad923a94b72326cdafd2e5739fc784e6e0c1cd5778",
+    "evidence-adjudicated.json": "4d4c3d4389f9f7ec50df387eabf1aa5806854a577624af4e09deb7f462516fa5"
+  },
+  "instruction_hashes": {
+    "evidence-adjudication-instructions.md": "5c7b357af995aea85ac26bdb0ca6a649b3ee6c1939c31597c97b48afc532004d",
+    "evidence-review-instructions.md": "1d11cdcb24e7241e1bd9a97bf17c528a0fe3b54a841070116eebea2543aead58"
+  },
+  "ordered_requirement_status_crosschecks": 60,
+  "result": "passed",
+  "financial_sufficiency": "not_validated"
+}
