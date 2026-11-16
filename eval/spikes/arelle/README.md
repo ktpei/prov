@@ -95,6 +95,15 @@ codes and quarantines inconsistent duplicate occurrences without dropping their
 source records. Fifteen optional tests pass. The prior five-fact artifacts remain
 unchanged; no issuer extraction or general timezone support is claimed.
 
+## Candidate runtime comparison
+
+The [controlled 2.47.5 comparison](candidate-comparison-report.md) holds Python and
+all non-Arelle distribution versions at the baseline values. It uses two explicit
+temporary version-gate amendments, verifies import origins and compares complete
+case records except independently checked adapter hashes. Controlled draft runs
+pass the same 15 tests and 10 scenarios; 2.47.5 still needs the timezone guard.
+No frozen file or default tool is changed.
+
 ## Remaining acceptance work
 
 1. Extend the frozen synthetic taxonomy/manifest beyond the completed five-fact

@@ -141,7 +141,9 @@ issuer extraction remains pending. A separate [five-fact synthetic acceptance
 fixture](eval/spikes/arelle/typed-values-report.md) verifies typed values and source-cell
 ancestry; rendered visibility and broader fact types remain unverified. A separate
 [guarded version](eval/spikes/arelle/guarded-values-report.md) rejects a discovered
-timezone mismatch and preserves duplicate conflicts; 15 optional tests pass.
+timezone mismatch and preserves duplicate conflicts; 15 optional tests pass. A
+[controlled 2.47.5 comparison](eval/spikes/arelle/candidate-comparison-report.md)
+reproduces those synthetic behaviors while holding other package versions fixed.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select

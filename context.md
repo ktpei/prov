@@ -78,6 +78,10 @@ A [versioned guard](eval/spikes/arelle/guarded-values-report.md) now rejects a
 confirmed Arelle 2.47.2 negative fractional-timezone mismatch and preserves
 duplicate warnings/classifications, quarantining conflicting occurrences. Fifteen
 optional tests pass; original five-fact artifacts remain unchanged.
+A [controlled 2.47.5 candidate comparison](eval/spikes/arelle/candidate-comparison-report.md)
+holds all other distribution versions fixed, verifies import origins and preserves
+all scenario semantics. Draft runs match the 15 tests/10 scenarios; no default
+promotion or timezone repair is claimed.
 
 ## Context-priority challenger — 2026-11-16
 
