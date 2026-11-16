@@ -1,0 +1,258 @@
+{
+  "version": "model-effort-v1-pre-output-semantic-rubric-v1",
+  "status": "frozen_before_outputs",
+  "review_type": "coding-agent semantic review; not calibrated human finance validation",
+  "scope": "Only the four authorized exposed-development task/reference and input packets were reviewed, plus reservation/exposure-audit metadata. No source-document retrieval, network, paid calls, model outputs, arm configurations or model identities were inspected.",
+  "source_files": {
+    "/Users/kevinpei/provenanceXL/runs/model-effort-v1/prepared/tasks.json": {
+      "sha256": "bdc4887ae634b16d8dd049082ef67ec321c9b5410c6f3880b087a0ebf705aa50"
+    },
+    "/Users/kevinpei/provenanceXL/runs/model-effort-v1/prepared/inputs.json": {
+      "sha256": "c378287ce00e9e60b49b0cb36cc618e5c71cfa7942948f22540fbcbd14f54a0b"
+    }
+  },
+  "item_hash_definition": "SHA-256 of UTF-8 JSON with sorted keys, compact separators, ensure_ascii=False; file hashes cover exact bytes.",
+  "evaluation_rules": {
+    "evidence_scope": "Judge against the supplied input evidence only. Reference full-page text can aid review but cannot establish model access to omitted text. Do not require full-document retrieval or claim that unseen document content is absent.",
+    "rubric_freeze": "Any protocol-level resolution or exclusion must occur before paid execution and outputs. Never repair the reference in response to a favored output.",
+    "citation": "Require supporting locators that identify the supplied document and applicable zero-index evidence page(s); equivalent explicit quote/row attribution is evidentiary support but mark missing page locators as incomplete citation compliance. Explicitly labeled printed-page references are interpretable where visible in the supplied text, but record their difference from the requested zero-index convention. Do not credit unseen pages or invented quotations.",
+    "grading_dimensions": [
+      "answer correctness and completeness",
+      "financial facts and row/column alignment",
+      "operation and arithmetic",
+      "units and period",
+      "citation support and locator compliance",
+      "unsupported claims or invented facts",
+      "abstention/partial-answer appropriateness"
+    ],
+    "dimension_labels": [
+      "pass",
+      "partial",
+      "fail",
+      "not_applicable",
+      "excluded_unresolved_reference"
+    ],
+    "aggregation": "Record dimensions separately; do not turn a correct unsupported bare number into fully grounded success. Excluded cases do not enter correctness denominators and are not replaced.",
+    "abstention": "For answerable cases, unjustified full abstention is incomplete. Credit accurate supported partial facts separately. Refusing to invent missing evidence is appropriate; do not demand unsupported whole-document or industry claims.",
+    "numeric_tolerance": "Exact whole-million source values and arithmetic for Costco/American Water Works. For Verizon accept transparent rounding of 379680/136835, including 2.77, 2.775 or 2.774729; no prescribed decimal count."
+  },
+  "cases": [
+    {
+      "task_id": "financebench_id_04209",
+      "company": "Costco",
+      "disposition": "include",
+      "packet_answerability": "fully_answerable",
+      "whole_document_assessment": "Not needed; balance-sheet packet directly contains total assets. No claim of full filing verification.",
+      "reference_assessment": "Unambiguous and consistent with the supplied balance sheet.",
+      "required_facts": [
+        {
+          "metric": "Total assets",
+          "value": 59268,
+          "units": "USD millions",
+          "as_of": "2021-08-29",
+          "doc_name": "COSTCO_2021_10K",
+          "evidence_page_num": 37
+        }
+      ],
+      "required_operation": "Direct extraction from FY2021 TOTAL ASSETS row. Optional check: 29505+23492+2890+3381=59268 or 41190+18078=59268.",
+      "acceptable_answer": "59,268 USD million at FY2021 year-end (August 29, 2021). Explicit dollar-billion conversion is substantively equivalent but must also supply the requested millions for full unit compliance.",
+      "citation_requirements": [
+        {
+          "doc_name": "COSTCO_2021_10K",
+          "evidence_page_num": 37,
+          "row": "TOTAL ASSETS, August 29 2021",
+          "visible_printed_page": 38
+        }
+      ],
+      "failure_modes": [
+        "Selecting FY2020 55,556",
+        "Reporting current assets 29,505 as total assets",
+        "Presenting 59,268 dollars rather than USD millions",
+        "Counting lease or other assets twice"
+      ],
+      "abstention_partial": "Full answer is available; abstention is unwarranted. Correct amount without unit/date clarity or citation is partial on those dimensions.",
+      "unresolved_reference_exclusion": false,
+      "task_item_sha256": "1bcc32cdfcc218faf6b96aec462ad525320ff1394e679e11c613454a35ac2c70",
+      "input_item_sha256": "a5b387ca5d49b9dbddd952997e31e3e1fe3f01493f2e1d423afd6bbd655fa3d4"
+    },
+    {
+      "task_id": "financebench_id_04254",
+      "company": "American Water Works",
+      "disposition": "include",
+      "packet_answerability": "fully_answerable",
+      "whole_document_assessment": "Both required statements are supplied; no other filing content is needed or verified.",
+      "reference_assessment": "Unambiguous explicit operational definition overrides alternative generic EBITDA formulas.",
+      "required_facts": [
+        {
+          "metric": "Operating income",
+          "value": 1196,
+          "units": "USD millions",
+          "period": "year ended 2021-12-31",
+          "doc_name": "AMERICANWATERWORKS_2021_10K",
+          "evidence_page_num": 85
+        },
+        {
+          "metric": "Depreciation and amortization in cash flows",
+          "value": 636,
+          "units": "USD millions",
+          "period": "year ended 2021-12-31",
+          "doc_name": "AMERICANWATERWORKS_2021_10K",
+          "evidence_page_num": 87
+        }
+      ],
+      "required_operation": "1196+636=1832; add D&A once, using cash-flow statement D&A as requested.",
+      "acceptable_answer": "FY2021 unadjusted EBITDA, under the question’s definition, was 1,832 USD million.",
+      "citation_requirements": [
+        {
+          "doc_name": "AMERICANWATERWORKS_2021_10K",
+          "evidence_page_num": 85,
+          "row": "Operating income, 2021",
+          "visible_printed_page": 84
+        },
+        {
+          "doc_name": "AMERICANWATERWORKS_2021_10K",
+          "evidence_page_num": 87,
+          "row": "Depreciation and amortization, 2021",
+          "visible_printed_page": 86
+        }
+      ],
+      "failure_modes": [
+        "Using net income 1,263 or operating cash flow 1,441 as operating income",
+        "Using FY2020/FY2019 values",
+        "Subtracting D&A or double adding it",
+        "Substituting adjusted EBITDA or adding non-operating gains",
+        "Citing only the income statement for the explicitly requested cash-flow D&A"
+      ],
+      "abstention_partial": "Both operands are available. A correct operand alone is partial, not justified full abstention. D&A happens to equal income-statement D&A, but source compliance requires the supplied cash-flow row.",
+      "unresolved_reference_exclusion": false,
+      "task_item_sha256": "d21cd52e47fd52768161556c24a3c4871fb9234d8db7595763dd440a2ec8e254",
+      "input_item_sha256": "559a4e48b239a814de38ce1ec7d5b18b753a16ba9478894d42fda247b820382a"
+    },
+    {
+      "task_id": "financebench_id_00215",
+      "company": "Verizon",
+      "disposition": "include_with_qualitative_judgment_caveat",
+      "packet_answerability": "answerable_as_supported_inference",
+      "whole_document_assessment": "Supplied balance sheet and revenue table support an assets-to-revenue inference, not a complete investment or industry-comparative assessment. No annual capex figure is supplied.",
+      "reference_assessment": "Gold’s arithmetic is supported. Its classification is a qualitative inference; no universal threshold or industry benchmark is given. Capital intensity can be defined differently, so reward an explicit assets/revenue definition rather than treat the label as uniquely standardized.",
+      "required_facts": [
+        {
+          "metric": "Total assets",
+          "value": 379680,
+          "units": "USD millions",
+          "as_of": "2022-12-31",
+          "doc_name": "VERIZON_2022_10K",
+          "evidence_page_num": 55
+        },
+        {
+          "metric": "Consolidated operating revenues",
+          "value": 136835,
+          "units": "USD millions",
+          "period": "year ended 2022-12-31",
+          "doc_name": "VERIZON_2022_10K",
+          "evidence_page_num": 22
+        }
+      ],
+      "required_operation": "379680/136835=2.7747286878357147; about $2.77 of year-end assets per $1 of FY2022 revenue. The ratio is a multiple, not a dollar total or profit margin.",
+      "acceptable_answer": "Yes, the supplied FY2022 data suggest capital intensity: year-end assets of $379.680 billion divided by annual revenues of $136.835 billion are about 2.77 times. Accept a qualified classification acknowledging no comparative threshold; do not require an unsupported absolute cutoff.",
+      "alternative_supported_reasoning": "A clearly qualified yes based on substantial net PP&E of 107,434 and wireless licenses of 149,796 (USD millions, page 55) can be substantively defensible without the gold ratio. Record ratio-operation dimension as not demonstrated rather than inventing a false definition requirement. A conditional answer giving the ratio but withholding definitive industry classification for lack of benchmarks is acceptable calibrated uncertainty.",
+      "citation_requirements": [
+        {
+          "doc_name": "VERIZON_2022_10K",
+          "evidence_page_num": 55,
+          "row": "Total assets and optionally PP&E/wireless licenses, 2022"
+        },
+        {
+          "doc_name": "VERIZON_2022_10K",
+          "evidence_page_num": 22,
+          "row": "Consolidated Operating Revenues, 2022"
+        }
+      ],
+      "failure_modes": [
+        "Using FY2021 figures without disclosure",
+        "Calling inverse revenue/assets 2.77",
+        "Confusing gross PP&E, net PP&E or total assets",
+        "Treating ratio 2.77 as 2.77%",
+        "Inventing annual capital expenditures, industry average, a mandated threshold or unseen filing citations",
+        "Asserting a universal implication from assets/revenue without identifying inference"
+      ],
+      "abstention_partial": "No need to abstain from the supplied facts/ratio. It is reasonable to qualify the qualitative conclusion or distinguish capex/revenue (not supplied) from assets/revenue. A bare refusal because the packet lacks capex misses an available supported inference.",
+      "unresolved_reference_exclusion": false,
+      "task_item_sha256": "271ccd7a777629abc29ff5170b450c534dfa1370b9e03a0bc522acbbc53ccb29",
+      "input_item_sha256": "9be4af7a6a32113772c878e7e68765a58f198111d7fcdabf20ac0b06d1a17617"
+    },
+    {
+      "task_id": "financebench_id_01865",
+      "company": "3M",
+      "disposition": "exclude_unresolved_reference_without_replacement",
+      "packet_answerability": "numeric_table_answerable_but_question_scope_ambiguous",
+      "whole_document_assessment": "The supplied table exposes the ambiguity; further whole-document claims cannot resolve the intended meaning of the question. No unseen narrative was used.",
+      "reference_assessment": "Gold identifies Consumer’s -0.9% organic growth. Excluding M&A alone does not explicitly exclude translation; the gold silently applies an additional currency exclusion. All segments decline if translation is retained, so a unique segment dragging growth is not established under that literal interpretation. Consumer is still the most negative percentage-growth segment under both approaches, but that is different from the only negative segment or the largest dollar/weighted contribution.",
+      "required_facts": [
+        {
+          "segment": "Safety and Industrial",
+          "organic_growth_pct": 1.0,
+          "divestitures_pct": 0,
+          "translation_pct": -4.2,
+          "total_growth_pct": -3.2
+        },
+        {
+          "segment": "Transportation and Electronics",
+          "organic_growth_pct": 1.2,
+          "divestitures_pct": -0.5,
+          "translation_pct": -4.6,
+          "total_growth_pct": -3.9
+        },
+        {
+          "segment": "Health Care",
+          "organic_growth_pct": 3.2,
+          "divestitures_pct": -1.4,
+          "translation_pct": -3.8,
+          "total_growth_pct": -2.0
+        },
+        {
+          "segment": "Consumer",
+          "organic_growth_pct": -0.9,
+          "divestitures_pct": -0.4,
+          "translation_pct": -2.6,
+          "total_growth_pct": -3.9
+        },
+        {
+          "segment": "Total Company",
+          "organic_growth_pct": 1.2,
+          "divestitures_pct": -0.5,
+          "translation_pct": -3.9,
+          "total_growth_pct": -3.2
+        }
+      ],
+      "facts_caveat": "Blank acquisition columns and Safety divestitures are treated as no reported contribution for table arithmetic, not as an independently sourced transaction-history assertion. Percentages describe FY2022 versus FY2021.",
+      "required_operation": "Conditional organic interpretation: Consumer is the only negative organic segment (-0.9%). Literal ex-M&A retaining FX: organic+translation gives Safety -3.2%, Transportation -3.4%, Health Care -0.6%, Consumer -3.5%; company -2.7%. Do not infer weighted dollar contribution from these percentages alone.",
+      "conditional_acceptable_answers": [
+        "If by excluding M&A the question means organic growth, Consumer, down 0.9%; all other segments have positive organic growth.",
+        "If only acquisition/divestiture effects are excluded and currency is retained, all four decline; Consumer has the weakest percentage growth at -3.5%, but a unique negative segment cannot be selected."
+      ],
+      "citation_requirements": [
+        {
+          "doc_name": "3M_2022_10K",
+          "evidence_page_num": 24,
+          "row": "Worldwide Sales Change By Business Segment, organic/divestitures/translation/total columns"
+        }
+      ],
+      "failure_modes": [
+        "Calling -0.9% the literal ex-M&A result without recognizing FX",
+        "Claiming other segments grew after removing only M&A",
+        "Saying Consumer caused the largest dollar drag without weights/base sales in the packet",
+        "Confusing percent growth with percentage-point contribution to company growth",
+        "Treating total company -3.2% as Consumer organic growth"
+      ],
+      "abstention_partial": "Conditional supported facts plus explicit scope ambiguity is appropriate. Full numeric abstention is unnecessary; exclusion is a reference-quality decision, not evidence that the table is unreadable.",
+      "unresolved_reference_exclusion": true,
+      "resolution_before_execution": "Exclude from semantic accuracy denominator without replacement. If an already frozen protocol explicitly permits multiple interpretations, retain conditional descriptive assessment only under that documented rule; do not repair the question/reference after seeing outputs.",
+      "task_item_sha256": "e5cc99fed15787210e1d0899693025c9db96e4ba00415fe9a72ee8bcdad096f3",
+      "input_item_sha256": "d1af6f34a7d26ae3f3a9457b88e93dc9ac3d8961a6aa007c6b92f11b50e449a2"
+    }
+  ],
+  "exclusions_without_replacement": [
+    "financebench_id_01865"
+  ]
+}

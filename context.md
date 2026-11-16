@@ -5,7 +5,12 @@
 The user now explicitly authorizes model and reasoning-effort selection/comparison.
 Historical exact-model settings remain unchanged in saved results. A bounded
 [comparison plan](eval/model-effort-comparison-plan.md) is being prepared; existing
-aggregate spending limits still apply, and no new model trial has run.
+aggregate spending limits still apply. The comparison adapter/runner is committed
+at `01983f4`, with 500 clean-checkout tests and lint/validation passing. The
+[frozen first pilot](eval/assessments/model-effort-v1/pilot-protocol.md) compares
+two models at low/high effort on three supplied-evidence development cases;
+a fourth selected case is excluded without replacement for reference ambiguity.
+No new model trial has run at this protocol freeze; no accuracy gain is established.
 
 H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
 The ledger binds trusted admitted evidence, financial compatibility, calculation

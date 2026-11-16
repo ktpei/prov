@@ -1,0 +1,123 @@
+{
+  "version": "model-effort-spend-preflight-v1",
+  "ledgers": [
+    {
+      "path": "eval/reports/live/initial/experiment.json",
+      "sha256": "d489bb0e4b411f63204b5637df85b919eaa1d6557c99cc7b6aa0fa117ba0bf43",
+      "accounted_cost_usd": 0.0981087,
+      "status": "finished"
+    },
+    {
+      "path": "eval/reports/live/instructions/experiment.json",
+      "sha256": "1bea66de941a5e82b01095fc51ea340a3dc9a4308898bf67ca4c361ab1787b6f",
+      "accounted_cost_usd": 0.06423479999999998,
+      "status": "finished"
+    },
+    {
+      "path": "eval/reports/live/context-and-repair/experiment.json",
+      "sha256": "d9ac122910377805fc2a1ab4cef55167e37f297761317d8f5a1a1f1d11274582",
+      "accounted_cost_usd": 0.05536649999999999,
+      "status": "finished"
+    },
+    {
+      "path": "eval/reports/live/bm25/experiment.json",
+      "sha256": "b49a0a7e37bd907547812a2b969f20e55b4948a01ee5ed7664181654beb023ac",
+      "accounted_cost_usd": 0.08137049999999998,
+      "status": "finished"
+    },
+    {
+      "path": "eval/reports/live/finalization/experiment.json",
+      "sha256": "2367e5c7b982ceafa98197dd96e4c4bc93225902f3cc98393e04529ea0feef28",
+      "accounted_cost_usd": 0.050812199999999995,
+      "status": "finished"
+    },
+    {
+      "path": "eval/reports/frozen-evaluation-2026-11-07/fresh-run/experiment.json",
+      "sha256": "5f116694ba729aab7189ea36b64c9d7555ba0dba72461ef67148c0d237fc1ab0",
+      "accounted_cost_usd": 0.0863112,
+      "status": "finished"
+    },
+    {
+      "path": "runs/external-pilot-2026-11-16/results/fineval-easy/submission.json",
+      "sha256": "8147cdaa6b9735319d88132d185bbd5da7e03aa3300b9409737331c885b79492",
+      "accounted_cost_usd": 0.0008334000000000015,
+      "status": "finished"
+    },
+    {
+      "path": "runs/external-pilot-2026-11-16/results/fineval-challenge/submission.json",
+      "sha256": "8c693026bb43a7334945ad104fd62e68542a9baef6f7273ac04cd295660bc47e",
+      "accounted_cost_usd": 0.0020832000000000003,
+      "status": "finished"
+    },
+    {
+      "path": "runs/external-pilot-2026-11-16/results/finqa/submission.json",
+      "sha256": "e50f9728e1ddb60f1ffe599cd4480f3d6fddba6b5757f45adcb5bda13bbc978e",
+      "accounted_cost_usd": 0.0066995999999999965,
+      "status": "finished"
+    },
+    {
+      "path": "runs/external-pilot-2026-11-16/results/financebench/submission.json",
+      "sha256": "94ebe71c0dea4db4e2ce6282df6d67827a038fbf47b983212cee8e6079a8dec1",
+      "accounted_cost_usd": 0.006546000000000003,
+      "status": "finished"
+    },
+    {
+      "path": "runs/expansion-pilot-2026-11-16/results/tatqa/submission.json",
+      "sha256": "afdc3b4aa1d6e4ecb3b5b30d86f0a5dc63fb934d0b497b7c764a341d1b206145",
+      "accounted_cost_usd": 0.0035375999999999984,
+      "status": "finished"
+    },
+    {
+      "path": "runs/expansion-pilot-2026-11-16/results/convfinqa-agent/submission.json",
+      "sha256": "20fb887e8777a05fd1df917f21e581c78bbad29bf58f5c5ad710c59c61dc6e1f",
+      "accounted_cost_usd": 0.013115399999999998,
+      "status": "finished"
+    },
+    {
+      "path": "runs/expansion-pilot-2026-11-16/results/convfinqa-reference/submission.json",
+      "sha256": "be412fe007407640ba3a3809199c68c3b05fc663af2a1bbeab321aaf4857c3e6",
+      "accounted_cost_usd": 0.012400199999999998,
+      "status": "finished"
+    }
+  ],
+  "historical_authorization_usd": 1,
+  "historical_conservative_accounting_usd": 0.4814193,
+  "remaining_historical_authorization_usd": 0.5185807,
+  "independent_audit": {
+    "entries": 66,
+    "completed": 52,
+    "stopped": 10,
+    "failed": 4,
+    "pending": 0,
+    "cost_uncertain": 0
+  },
+  "provider_key_preflight": {
+    "checked_at": "2026-11-16T23:38:56.883309+00:00",
+    "endpoint": "https://openrouter.ai/api/v1/key",
+    "credential_source": "existing local configuration",
+    "data": {
+      "limit": 1,
+      "limit_remaining": 0.988928912,
+      "limit_reset": "daily",
+      "usage": 0.113681698,
+      "usage_daily": 0.011071088,
+      "usage_weekly": 0.011071088,
+      "usage_monthly": 0.113681698,
+      "byok_usage": 0,
+      "is_free_tier": false
+    },
+    "effective_budget": {
+      "limit_usd": 1,
+      "remaining_usd": 0.988928912,
+      "reset_interval": "daily",
+      "spend_usd": 0.011071088
+    }
+  },
+  "limitations": [
+    "Historical figures are preserved token-rate estimates, not repriced invoices.",
+    "Current key aggregate usage is below conservative historical accounting; do not subtract both as separate charges.",
+    "No per-request invoice reconstruction for historical runs; raw records lack billed-cost/request IDs.",
+    "Key budget is not a whole-account credit balance. Recheck usage immediately before paid dispatch.",
+    "No new inference made during this preflight."
+  ]
+}

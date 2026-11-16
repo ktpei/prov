@@ -61,6 +61,13 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
+The [model/effort comparison runner](eval/assessments/model-effort-v1/infrastructure-report.md)
+now supports explicit effort, pinned providers, durable accounting and interleaved
+tool-free trials. The [first pilot protocol](eval/assessments/model-effort-v1/pilot-protocol.md)
+freezes three supplied-evidence cases across two models at low/high effort, plus
+one unresolved-reference exclusion without replacement. Infrastructure acceptance
+is not an accuracy result or a model recommendation.
+
 H2's [calculation infrastructure](eval/assessments/evidence-calculations-v1/report.md)
 provides bounded Decimal arithmetic, trusted-evidence references, financial
 compatibility checks and full replay. It is not yet a model-facing tool: H3 must
