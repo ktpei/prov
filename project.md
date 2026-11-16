@@ -8,7 +8,9 @@ positive question slots and three publication-availability controls. The first f
 (0/6 verified downloads). A separately frozen issuer-delivery attempt verified
 2/6 copies (both Old Dominion); Casey’s returned HTTP 403 and Ameren delivered
 rendered viewer HTML that remains ineligible. Offline extraction succeeded on the
-two copies without a completeness claim. All six dispositions remain recorded in
+two copies without a completeness claim. A separately frozen complete-submission
+attempt returned four HTTP 403 responses (zero containers); those routes will not
+be automatically retried. All six dispositions remain recorded in
 [assessment progress](eval/assessments/native-html-v1/progress.md). Questions are not authored. A separate search-only runner
 passes synthetic integrity/interruption checks. Separate receipt-bound grading
 now validates replay and complete evidence alternatives. Selected-source cutoff

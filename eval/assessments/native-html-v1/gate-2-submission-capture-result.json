@@ -1,0 +1,23 @@
+{
+  "schema_version": "native-html-assessment-gate-v1",
+  "assessment_id": "native-html-v1",
+  "stage": "submission_capture_result",
+  "status": "all_candidate_requests_failed",
+  "previous_gate_sha256": "3f574c6fe9ad2df4e189cf53de439b2edb365a4a7c34a56df38c3f7fa77dc340",
+  "freeze_commit": "a2e9673",
+  "receipt_file": "submission-capture-attempt-1.json",
+  "receipt_sha256": "d4a81c5047a638d9d7a1892e2a8bf1a8d6902cc55e24e320c9088da341e6ee7d",
+  "runtime_sha256": "91f6cf9654e07159e119181d87c647e7a720d057e5346818ceaf93ef65324b1d",
+  "selected_denominator": 6,
+  "attempted_candidates": 4,
+  "http403_failures": 4,
+  "captured_unverified_count": 0,
+  "primary_extracted": false,
+  "identity_verified_count": 0,
+  "corpus_eligible": false,
+  "question_count": 0,
+  "annotation_count": 0,
+  "retrieval_runs": 0,
+  "model_calls": 0,
+  "disposition": "No container bodies or primary documents acquired. The earlier two issuer copies remain the only identity-verified alternate artifacts. Preserve all failures; no further automatic requests or substitutions."
+}

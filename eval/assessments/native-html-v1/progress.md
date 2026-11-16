@@ -115,3 +115,20 @@ never declares primary extraction, identity verification or corpus eligibility.
 The 32 MiB cap covers all four index-advertised sizes, including the two Ameren
 containers above 20 MB. A separate gate must freeze the implementation and request
 policy before any body requests.
+
+## Submission capture result: four HTTP 403 responses
+
+Implementation `ba96693` and the [capture-only freeze](gate-2-submission-capture-freeze.json)
+were committed as `a2e9673` before requests. All four candidate GETs returned HTTP
+403; **0/4 containers captured**, with the complete six-source disposition list
+retained in the [receipt](submission-capture-attempt-1.json) and
+[result gate](gate-2-submission-capture-result.json). No automatic retries,
+redirects or substitutions occurred. No container parser, extracted member,
+availability bound, question, annotation or retrieval result was produced.
+
+The earlier two Old Dominion issuer copies remain the only identity-verified
+alternate artifacts. The cohort is incomplete. SEC-original primary paths and
+these distinct complete-submission paths have both failed in this environment;
+no further automatic probes of these routes are planned. The cause of HTTP 403
+has not been established. This acquisition failure is not a financial accuracy
+score and does not justify weakening source eligibility.

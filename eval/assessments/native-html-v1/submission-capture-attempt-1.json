@@ -1,0 +1,73 @@
+{
+  "version": "sec-submission-capture-v1",
+  "selection_sha256": "d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4",
+  "candidates_sha256": "dfdbbb2109806df7bb37707559e64ff45ee5e3d79efd3e5d952f10a2600153fe",
+  "runtime_sha256": "91f6cf9654e07159e119181d87c647e7a720d057e5346818ceaf93ef65324b1d",
+  "capture_script_sha256": "f4c331094d221ac7b8b499272da273de2d3d596f4c6f16a6923a6ad77179616b",
+  "artifact_class": "unverified_submission_container",
+  "request_policy": "One request per candidate; no redirects/retries; one second between requests; 20-second socket-operation timeout; identity encoding",
+  "user_agent": "ProvenanceXL-research/1 (https://github.com/ktpei/prov; noncommercial assessment)",
+  "max_response_bytes": 33554432,
+  "elapsed_limit_seconds": 120,
+  "elapsed_limit_note": "Checked between response reads; urllib header/chunk parsing may perform multiple socket operations. No hard total-duration bound.",
+  "selected_denominator": 6,
+  "candidate_denominator": 4,
+  "identity_verified_count": 0,
+  "primary_extracted": false,
+  "corpus_eligible": false,
+  "model_calls": 0,
+  "documents": [
+    {
+      "source_id": "caseys-2025-07-31-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000101/0000726958-25-000101.txt",
+      "status": "failed",
+      "requested_at": "2026-11-16T14:17:19.959175+00:00",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "http_status": 403,
+      "finished_at": "2026-11-16T14:17:20.098648+00:00",
+      "elapsed_seconds": 0.13900216692127287
+    },
+    {
+      "source_id": "caseys-2025-10-31-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000114/0000726958-25-000114.txt",
+      "status": "failed",
+      "requested_at": "2026-11-16T14:17:21.109355+00:00",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "http_status": 403,
+      "finished_at": "2026-11-16T14:17:21.287025+00:00",
+      "elapsed_seconds": 0.17766637518070638
+    },
+    {
+      "source_id": "old-dominion-2025-06-30-10q",
+      "url": null,
+      "status": "not_requested_no_candidate"
+    },
+    {
+      "source_id": "old-dominion-2025-09-30-10q",
+      "url": null,
+      "status": "not_requested_no_candidate"
+    },
+    {
+      "source_id": "ameren-2025-06-30-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000112/0001002910-25-000112.txt",
+      "status": "failed",
+      "requested_at": "2026-11-16T14:17:22.298318+00:00",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "http_status": 403,
+      "finished_at": "2026-11-16T14:17:22.559285+00:00",
+      "elapsed_seconds": 0.2609369580168277
+    },
+    {
+      "source_id": "ameren-2025-09-30-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000129/0001002910-25-000129.txt",
+      "status": "failed",
+      "requested_at": "2026-11-16T14:17:23.574117+00:00",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "http_status": 403,
+      "finished_at": "2026-11-16T14:17:23.921104+00:00",
+      "elapsed_seconds": 0.3469690829515457
+    }
+  ],
+  "completed_at": "2026-11-16T14:17:23.922189+00:00",
+  "captured_unverified_count": 0
+}
