@@ -1,0 +1,20 @@
+{
+  "schema_version": "native-html-assessment-gate-v1",
+  "assessment_id": "native-html-v1",
+  "stage": 2,
+  "status": "acquisition_attempt_failed",
+  "previous_gate_sha256": "27198f11b281515a7547db391bab158e761f6e090b329e8f16826130c12fbe32",
+  "runtime_sha256": "534b35235b84aaa825bde0aebe955a2f1458639d60ac1670dfd1e7f0e263118f",
+  "acquisition_freeze_commit": "16562f0",
+  "receipt_file": "acquisition-attempt-1.json",
+  "receipt_sha256": "3c59e8ba7153d2676ba92e8477c7b6befde1fc187a0f31b4b53de6166d8a21dd",
+  "selected_documents": 6,
+  "attempted_documents": 6,
+  "identity_verified_documents": 0,
+  "http403_failures": 6,
+  "question_count": 0,
+  "annotation_count": 0,
+  "retrieval_runs": 0,
+  "model_calls": 0,
+  "disposition": "Do not create source corpus, observed_by bounds, questions, or retrieval accuracy from failed HTTP requests. No replacements or automatic retries. Any later attempt needs a separately recorded acquisition-policy decision and receipt; this result remains immutable."
+}

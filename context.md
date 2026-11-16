@@ -4,8 +4,8 @@
 
 The [locked native-HTML assessment plan](eval/assessments/native-html-v1/plan.md)
 records a metadata-verified six-filing proposal across three new issuers, with 21
-positive question slots and three publication-availability controls. Documents
-are not yet acquired and questions are not authored. A separate search-only runner
+positive question slots and three publication-availability controls. The first frozen acquisition attempt returned HTTP 403 for all six sources
+(0/6 verified downloads); all failures are retained. Questions are not authored. A separate search-only runner
 passes synthetic integrity/interruption checks. Separate receipt-bound grading
 now validates replay and complete evidence alternatives. Selected-source cutoff
 controls now distinguish unavailable, unknown and observed-available artifacts;
@@ -35,7 +35,7 @@ Three-task retrieval reaches 2/4 annotated pages at five hits; declared-document
 scoping improves first-hit recall from 1/4 to 2/4 without fixing the remaining task.
 Native HTML v2 fixes explicit-hidden contamination and retains raw headers/captions;
 four evaluator-only packets check source/period/sign/scale associations. Lint and
-243 tests pass. Full-agent FinanceBench inference and human adjudication remain
+246 tests pass. Full-agent FinanceBench inference and human adjudication remain
 pending. [Source findings](eval/reports/source-ingestion-2026-11-16/report.md).
 
 
