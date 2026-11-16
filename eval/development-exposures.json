@@ -70,6 +70,36 @@
       "group": "ULTABEAUTY_2023Q4_EARNINGS",
       "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
       "evidence": "eval/reports/source-ingestion-2026-11-16/report.md"
+    },
+    {
+      "group": "VERIZON_2022_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "COCACOLA_2017_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "COSTCO_2021_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "JOHNSON_JOHNSON_2022_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "3M_2022_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "AMERICANWATERWORKS_2021_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
     }
   ]
 }
