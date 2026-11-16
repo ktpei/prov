@@ -1,0 +1,17 @@
+{
+  "version": "evidence-review-structural-validation-v1",
+  "reviewer": "EA",
+  "counts": {
+    "cases": 6,
+    "interpretations": 16,
+    "requirements": 60,
+    "complete_sets": 5,
+    "citations": 220,
+    "review_only_citations": 43
+  },
+  "financial_sufficiency": "not_validated",
+  "outside_access_disclosed": "No internet, repository search/history, source documents outside the six assigned packets, other reviewer outputs, original rubrics/reference answers, or separate custody metadata accessed. Only the assigned instructions and six packets were read; this assigned output was written/read for validation.",
+  "review_sha256": "ef4d083a5d54240f99d2735fb7d35822e421ac72b8c05b5c3158c3d9b713c584",
+  "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+  "validator_sha256": "502eef87d6a553022f78a51b7341c50211aedeca82b8bf1de6c5795e7f161bff"
+}

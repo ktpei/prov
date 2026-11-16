@@ -1,0 +1,17 @@
+{
+  "version": "initial-masked-evidence-reviews-lock-v1",
+  "packet_commit": "4919a52",
+  "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+  "validator_sha256": "502eef87d6a553022f78a51b7341c50211aedeca82b8bf1de6c5795e7f161bff",
+  "reviews": {
+    "evidence-a.json": "ef4d083a5d54240f99d2735fb7d35822e421ac72b8c05b5c3158c3d9b713c584",
+    "evidence-b.json": "ebc10a43173535bb7746ddad923a94b72326cdafd2e5739fc784e6e0c1cd5778"
+  },
+  "cases_per_review": 6,
+  "interpretations_per_review": 16,
+  "requirements_per_review": 60,
+  "both_initial_reviews_locked_before_adjudication": true,
+  "technical_repairs_requested": false,
+  "financial_sufficiency": "not_adjudicated",
+  "policy_attribution_revealed": false
+}
