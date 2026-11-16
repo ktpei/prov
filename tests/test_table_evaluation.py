@@ -78,6 +78,21 @@ class TableEvaluationTests(unittest.TestCase):
             grade_table_packet(fixture, self.sidecar, packet)["complete_packet_passed"]
         )
 
+    def test_correct_cells_with_wrong_typed_period_fail(self):
+        for fixture in self.fixtures:
+            packet = self.packet(fixture)
+            packet["typed_values"]["period_type"] = (
+                "duration" if fixture["id"] == "fresh-02" else "instant"
+            )
+            self.assertFalse(
+                grade_table_packet(fixture, self.sidecar, packet)["complete_packet_passed"]
+            )
+            packet = self.packet(fixture)
+            packet["typed_values"]["period_end"] = "2023-09-30"
+            self.assertFalse(
+                grade_table_packet(fixture, self.sidecar, packet)["complete_packet_passed"]
+            )
+
     def test_fabricated_locations_source_and_oversized_packet_fail(self):
         fixture = self.fixtures[0]
         for mutation in ("location", "source", "oversized", "duplicate", "extra_claim"):

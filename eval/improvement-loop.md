@@ -172,4 +172,4 @@ the same three inspected tasks; top-five remains 2/4 and Walmart remains unresol
 Queries contain no gold. This is exploratory development evidence, not heldout QA.
 Sidecar v2 preserves all release cell IDs/text while fixing explicit-hidden and
 block-boundary contamination. Four structural packets and adversarial negatives
-are graded separately from any agent run. Lint and 188 tests passed; no paid calls.
+are graded separately from any agent run. Lint and 189 tests passed; no paid calls.

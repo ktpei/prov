@@ -45,3 +45,10 @@ geometry comparing equal to integers. Hidden empty cells in the real filing reta
 geometry and suppression until their explicit/implicit end. Canonical JSON cell
 comparison distinguishes Boolean and numeric coordinates/spans. All seven frozen
 benchmark score artifacts still reproduce exactly after these changes.
+
+Cross-chat review confirmed the four cell associations and identified a missing
+typed-period check. Packets now state instant/duration, period end, and duration
+months where applicable; correct cells with a wrong typed period fail. The per-share
+fixture also requires its adjacent dollar-symbol cell. USD remains the development
+task currency convention: a dollar symbol alone does not independently establish
+which dollar currency applies. Do not claim explicit ISO-currency provenance.

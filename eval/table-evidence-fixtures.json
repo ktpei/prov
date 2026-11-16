@@ -5,7 +5,8 @@
     "Evaluator-only component associations; never add these labels to extraction or retrieval.",
     "No runtime table-aware read implemented; fixtures do not establish agent success.",
     "Cell identities are scoped to original hash and sidecar version.",
-    "Normalized cell text differs from original byte quotation."
+    "Normalized cell text differs from original byte quotation.",
+    "USD is the development task currency convention; table dollar symbols alone do not independently identify the dollar currency."
   ],
   "fixtures": [
     {
@@ -118,7 +119,10 @@
         "statement_value": "-111884",
         "statement_unit": "USD_thousand",
         "requested_value": "111.884",
-        "requested_unit": "USD_million_magnitude"
+        "requested_unit": "USD_million_magnitude",
+        "period_type": "duration",
+        "period_end": "2024-09-30",
+        "duration_months": "9"
       },
       "known_wrong_cells": [
         "table-12-r7-c10",
@@ -238,7 +242,10 @@
       "expected_typed_values": {
         "gaap_value": "110.911",
         "non_gaap_value": "70.452",
-        "unit": "USD_million"
+        "unit": "USD_million",
+        "period_type": "duration",
+        "period_end": "2024-09-30",
+        "duration_months": "3"
       },
       "known_wrong_cells": [
         "table-9-r23-c11",
@@ -344,7 +351,9 @@
         "assets": "2163.878",
         "liabilities": "641.615",
         "difference": "1522.263",
-        "unit": "USD_million"
+        "unit": "USD_million",
+        "period_type": "instant",
+        "period_end": "2024-09-30"
       },
       "known_wrong_cells": [
         "table-7-r12-c6",
@@ -374,6 +383,9 @@
         "value_sign": [
           "table-10-r28-c3",
           "table-10-r28-c4"
+        ],
+        "currency_symbol": [
+          "table-10-r28-c2"
         ]
       },
       "expected_cells": {
@@ -442,11 +454,26 @@
             "line": 14306,
             "column": 44
           }
+        },
+        "table-10-r28-c2": {
+          "text": "$",
+          "row_start": 28,
+          "column_start": 2,
+          "row_span": 1,
+          "column_span": 1,
+          "original_location": {
+            "line": 14292,
+            "column": 44
+          }
         }
       },
       "expected_typed_values": {
         "value": "-0.04",
-        "unit": "USD_per_share"
+        "unit": "USD_per_share",
+        "period_type": "duration",
+        "period_end": "2024-09-30",
+        "duration_months": "3",
+        "currency_symbol": "$"
       },
       "known_wrong_cells": [
         "table-10-r28-c11",
