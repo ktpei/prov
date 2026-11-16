@@ -171,8 +171,10 @@ unverified. No default policy or reserved evaluation source changes.
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all
 420 mapped fact occurrences across 412 cells; 84 facts have no mapped cell. This
-is an exposed-source, location-assisted coverage check, not retrieval or answer accuracy. A bounded
-typed-reader contract and prospective question assessment remain pending.
+is an exposed-source, location-assisted coverage check, not retrieval or answer
+accuracy. The [opt-in exact-ID reader](eval/reports/xbrl-reader-2026-11-16/report.md) now
+reconstructs every occurrence within bounded responses: 484 immediate and 20
+deferred. Final case manifests and prospective question assessment remain pending.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select

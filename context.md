@@ -3,8 +3,10 @@
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all
 420 mapped fact occurrences across 412 cells; 84 facts have no mapped cell. This
-is an exposed-source, location-assisted coverage check, not retrieval or answer accuracy. A bounded
-typed-reader contract and prospective question assessment remain pending.
+is an exposed-source, location-assisted coverage check, not retrieval or answer
+accuracy. The [opt-in exact-ID reader](eval/reports/xbrl-reader-2026-11-16/report.md) now
+reconstructs every occurrence within bounded responses: 484 immediate and 20
+deferred. Final case manifests and prospective question assessment remain pending.
 
 The [experimental typed fact export](eval/reports/xbrl-facts-2026-11-16/report.md)
 now integrates all 504 exposed ODFL facts with 71 contexts, five units, separate

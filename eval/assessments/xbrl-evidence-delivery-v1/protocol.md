@@ -1,7 +1,7 @@
 # Typed-fact evidence delivery — development protocol v1
 
-Status: baseline diagnostic completed; typed-reader implementation and question
-assessment pending. This is the already exposed ODFL June 2025 issuer copy. It is
+Status: baseline diagnostic and opt-in typed-reader reconstruction completed;
+question assessment pending. This is the already exposed ODFL June 2025 issuer copy. It is
 not an unseen test set. The six reserved FinanceBench documents remain closed.
 
 ## Baseline diagnostic
@@ -39,7 +39,7 @@ returns rows 0–4, 33 and 34, including “Basic” and “Diluted,” but omit
 occurrence presence and parent-label completeness need separate checks. No score
 is retroactively changed; question-specific sufficiency has not yet been graded.
 
-## Required reader contract before question assessment
+## Reader contract before question assessment
 
 The experimental reader must be opt-in and consume authenticated, validated
 artifacts. Preserve source provenance: these bytes were acquired from the issuer;
@@ -74,3 +74,7 @@ unseen-source improvement. No model calls are needed for the first delivery gate
 
 [Eight proposed cases and failure controls](case-plan.md) make the next gate
 concrete. Their role alternatives are not yet frozen grading labels.
+
+The [implemented reader reconstruction check](../../reports/xbrl-reader-2026-11-16/report.md)
+verifies all 504 occurrence payloads. It does not execute or score the proposed
+questions; final role manifests and budgets remain pending.
