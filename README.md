@@ -124,7 +124,8 @@ explicitly flagged without replacement. The separate [annotation-validity resear
 supports a [staged blinded audit](eval/assessments/financebench-evidence-audit-v1/progress.md)
 has completed and locked independent question-only interpretation and reconciliation
 before evidence or outcomes are shown. Six cases retain 16 explicit interpretations;
-evidence assessment is still pending. Frozen scores remain unchanged.
+masked evidence packets are now prepared and independently integrity-audited,
+while financial evidence assessment remains pending. Frozen scores remain unchanged.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select

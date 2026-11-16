@@ -1,0 +1,2279 @@
+{
+  "stage": "masked_evidence_review",
+  "case_id": "Q01",
+  "question": "Basing your judgments off of the cash flow statement and the income statement, what is American Water Works's FY2021 unadjusted operating income + depreciation and amortization from the cash flow statement (unadjusted EBITDA) in USD millions?",
+  "source": {
+    "id": "AMERICANWATERWORKS_2021_10K",
+    "title": "AMERICANWATERWORKS_2021_10K",
+    "company": "American Water Works",
+    "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001410636/1228947b-ee48-4079-984b-7741727bbcea.pdf",
+    "sha256": "06e954d0e43fb906579d5f1bbdba25e09e7d435e75aa9f08f9e24c8f7cb66629",
+    "original_sha256": "701528ae6d14a77229468a829ee18f01ed439d5be012d0a915d2683335051029"
+  },
+  "interpretations": [
+    {
+      "id": "I01",
+      "description": "Add the unadjusted FY2021 consolidated operating-income amount to the cash-flow-statement FY2021 D&A amount under the question-defined EBITDA formula.",
+      "assumptions": [
+        "American Water Works is read at consolidated company level.",
+        "Unadjusted means retain reported amounts and apply only the stated addition."
+      ],
+      "unresolved_ambiguities": [
+        "If multiple differently scoped operating-income or D&A amounts exist, their labels must identify the requested amounts; no continuing-operations normalization is presumed.",
+        "Separate amortization categories qualify only insofar as their labels and relationships establish membership in the requested D&A term.",
+        "Rounding precision is unspecified."
+      ],
+      "required_facts": [
+        {
+          "id": "R01",
+          "description": "FY2021 operating income, including its sign, as reported in the income statement.",
+          "basis": "wording",
+          "rationale": "This is the first expressly named addend."
+        },
+        {
+          "id": "R02",
+          "description": "FY2021 depreciation and amortization from the cash flow statement, as one amount or identified corresponding components.",
+          "basis": "wording",
+          "rationale": "This is the second expressly named addend; unrelated amortization is not automatically included."
+        },
+        {
+          "id": "R03",
+          "description": "Entity scope, fiscal-year coverage, currency, scale and any labels needed to align the two named amounts and express their sum in USD millions.",
+          "basis": "wording",
+          "rationale": "These establish that the addends answer the same company/year request and permit the required unit conversion."
+        }
+      ]
+    }
+  ],
+  "excerpts": [
+    {
+      "evidence_id": "E001",
+      "start_line": 2939,
+      "end_line": 2970,
+      "lines": [
+        {
+          "line": 2939,
+          "page": 88,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2940,
+          "page": 88,
+          "text": "American Water Works Company, Inc. and Subsidiary Companies"
+        },
+        {
+          "line": 2941,
+          "page": 88,
+          "text": "Consolidated Statements of Cash Flows"
+        },
+        {
+          "line": 2942,
+          "page": 88,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2943,
+          "page": 88,
+          "text": "                                                                                                                                                                                                       For the Years Ended December 31,"
+        },
+        {
+          "line": 2944,
+          "page": 88,
+          "text": "                                                                                                                                                                                 2021                                     2020                                     2019"
+        },
+        {
+          "line": 2945,
+          "page": 88,
+          "text": "CASH FLOWS FROM OPERATING ACTIVITIES"
+        },
+        {
+          "line": 2946,
+          "page": 88,
+          "text": "    Net income                                                                                                                                                     $                          1,263        $                             709        $                             621"
+        },
+        {
+          "line": 2947,
+          "page": 88,
+          "text": "    Adjustments to reconcile to net cash flows provided by operating activities:"
+        },
+        {
+          "line": 2948,
+          "page": 88,
+          "text": "         Depreciation and amortization                                                                                                                                                           636                                     604                                      582"
+        },
+        {
+          "line": 2949,
+          "page": 88,
+          "text": "         Deferred income taxes and amortization of investment tax credits                                                                                                                        230                                     207                                      208"
+        },
+        {
+          "line": 2950,
+          "page": 88,
+          "text": "         Provision for losses on accounts receivable                                                                                                                                              37                                       34                                      28"
+        },
+        {
+          "line": 2951,
+          "page": 88,
+          "text": "         (Gain) or loss on sale of businesses                                                                                                                                                  (747)                                       —                                       34"
+        },
+        {
+          "line": 2952,
+          "page": 88,
+          "text": "         Pension and non-pension postretirement benefits                                                                                                                                         (41)                                    (14)                                      17"
+        },
+        {
+          "line": 2953,
+          "page": 88,
+          "text": "         Other non-cash, net                                                                                                                                                                     (23)                                    (20)                                     (41)"
+        },
+        {
+          "line": 2954,
+          "page": 88,
+          "text": "         Changes in assets and liabilities:"
+        },
+        {
+          "line": 2955,
+          "page": 88,
+          "text": "            Receivables and unbilled revenues                                                                                                                                                    (74)                                    (97)                                     (25)"
+        },
+        {
+          "line": 2956,
+          "page": 88,
+          "text": "            Pension and non-pension postretirement benefit contributions                                                                                                                         (40)                                    (39)                                     (31)"
+        },
+        {
+          "line": 2957,
+          "page": 88,
+          "text": "            Accounts payable and accrued liabilities                                                                                                                                              66                                       (2)                                     66"
+        },
+        {
+          "line": 2958,
+          "page": 88,
+          "text": "            Other assets and liabilities, net                                                                                                                                                    134                                       44                                     (76)"
+        },
+        {
+          "line": 2959,
+          "page": 88,
+          "text": "      Net cash provided by operating activities                                                                                                                                               1,441                                    1,426                                   1,383"
+        },
+        {
+          "line": 2960,
+          "page": 88,
+          "text": "CASH FLOWS FROM INVESTING ACTIVITIES"
+        },
+        {
+          "line": 2961,
+          "page": 88,
+          "text": "    Capital expenditures                                                                                                                                                                     (1,764)                                  (1,822)                                 (1,654)"
+        },
+        {
+          "line": 2962,
+          "page": 88,
+          "text": "    Acquisitions, net of cash acquired                                                                                                                                                         (135)                                    (135)                                   (235)"
+        },
+        {
+          "line": 2963,
+          "page": 88,
+          "text": "    Proceeds from sale of assets, net of cash on hand                                                                                                                                            472                                        2                                      48"
+        },
+        {
+          "line": 2964,
+          "page": 88,
+          "text": "    Removal costs from property, plant and equipment retirements, net                                                                                                                          (109)                                    (106)                                   (104)"
+        },
+        {
+          "line": 2965,
+          "page": 88,
+          "text": "      Net cash used in investing activities                                                                                                                                                  (1,536)                                  (2,061)                                 (1,945)"
+        },
+        {
+          "line": 2966,
+          "page": 88,
+          "text": "CASH FLOWS FROM FINANCING ACTIVITIES"
+        },
+        {
+          "line": 2967,
+          "page": 88,
+          "text": "    Proceeds from long-term debt                                                                                                                                                              1,118                                    1,334                                   1,530"
+        },
+        {
+          "line": 2968,
+          "page": 88,
+          "text": "    Repayments of long-term debt                                                                                                                                                               (372)                                    (342)                                   (495)"
+        },
+        {
+          "line": 2969,
+          "page": 88,
+          "text": "    (Repayments of) proceeds from term loan                                                                                                                                                    (500)                                     500                                       —"
+        },
+        {
+          "line": 2970,
+          "page": 88,
+          "text": "    Net short-term borrowings with maturities less than three months                                                                                                                           (198)                                       (5)                                  (178)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E002",
+      "start_line": 2900,
+      "end_line": 2900,
+      "lines": [
+        {
+          "line": 2900,
+          "page": 86,
+          "text": "Operating income                                                                                                                                                1,196                                1,248                                1,214"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E003",
+      "start_line": 2321,
+      "end_line": 2352,
+      "lines": [
+        {
+          "line": 2321,
+          "page": 69,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2322,
+          "page": 69,
+          "text": "Cash Flows from Operating Activities"
+        },
+        {
+          "line": 2323,
+          "page": 69,
+          "text": "        Cash flows from operating activities primarily result from the sale of water and wastewater services and, due to the seasonality of demand, are generally greater during the warmer months. The"
+        },
+        {
+          "line": 2324,
+          "page": 69,
+          "text": "Company’s future cash flows from operating activities will be affected by, among other things: customers’ ability to pay for service in a timely manner, economic utility regulation, inflation, compliance"
+        },
+        {
+          "line": 2325,
+          "page": 69,
+          "text": "with environmental, health and safety standards, production costs, maintenance costs, customer growth, declining customer usage of water, employee-related costs, including pension funding, weather"
+        },
+        {
+          "line": 2326,
+          "page": 69,
+          "text": "and seasonality, taxes, and overall economic conditions."
+        },
+        {
+          "line": 2327,
+          "page": 69,
+          "text": "        Operating cash flows can be negatively affected by changes in the Company’s rate regulated environments, changes in the Market-Based Businesses, changes in the economy, interest rates, the"
+        },
+        {
+          "line": 2328,
+          "page": 69,
+          "text": "timing of tax payments, and the Company’s customers’ ability to pay for service in a timely manner, among other items. The Company can provide no assurance that its customers’ historical payment"
+        },
+        {
+          "line": 2329,
+          "page": 69,
+          "text": "pattern will continue in the future. The Company’s current liabilities may exceed current assets mainly from debt maturities due within one year and the use of short-term debt as a funding source,"
+        },
+        {
+          "line": 2330,
+          "page": 69,
+          "text": "primarily to meet scheduled maturities of long-term debt, fund acquisitions and construction projects, as well as cash needs, which can fluctuate significantly due to the seasonality of the business and"
+        },
+        {
+          "line": 2331,
+          "page": 69,
+          "text": "other factors. The Company addresses cash timing differences primarily through its short-term liquidity funding mechanisms."
+        },
+        {
+          "line": 2332,
+          "page": 69,
+          "text": "        Presented in the table below is a summary of the major items affecting the Company’s cash flows from operating activities:"
+        },
+        {
+          "line": 2333,
+          "page": 69,
+          "text": "                                                                                                                                                                                  For the Years Ended December 31,"
+        },
+        {
+          "line": 2334,
+          "page": 69,
+          "text": "(In millions)                                                                                                                                               2021                                   2020                                   2019"
+        },
+        {
+          "line": 2335,
+          "page": 69,
+          "text": "Net income                                                                                                                                    $                         1,263        $                          709        $                           621"
+        },
+        {
+          "line": 2336,
+          "page": 69,
+          "text": "Add (less):"
+        },
+        {
+          "line": 2337,
+          "page": 69,
+          "text": "    Depreciation and amortization                                                                                                                                         636                                   604                                    582"
+        },
+        {
+          "line": 2338,
+          "page": 69,
+          "text": "    Deferred income taxes and amortization of investment tax credits                                                                                                      230                                   207                                    208"
+        },
+        {
+          "line": 2339,
+          "page": 69,
+          "text": "    Other non-cash activities (a)                                                                                                                                         (27)                                    —                                       4"
+        },
+        {
+          "line": 2340,
+          "page": 69,
+          "text": "    Changes in working capital (b)                                                                                                                                        126                                    (49)                                    (5)"
+        },
+        {
+          "line": 2341,
+          "page": 69,
+          "text": "    Settlement of cash flow hedges                                                                                                                                         —                                      (6)                                  (30)"
+        },
+        {
+          "line": 2342,
+          "page": 69,
+          "text": "    Pension and non-pension postretirement benefit contributions                                                                                                          (40)                                   (39)                                  (31)"
+        },
+        {
+          "line": 2343,
+          "page": 69,
+          "text": "    (Gain) or loss on sale of businesses                                                                                                                                 (747)                                    —                                      34"
+        },
+        {
+          "line": 2344,
+          "page": 69,
+          "text": "Net cash provided by operating activities                                                                                                     $                         1,441        $                        1,426        $                         1,383"
+        },
+        {
+          "line": 2345,
+          "page": 69,
+          "text": "(a)     Includes provision for losses on accounts receivable, pension and non-pension postretirement benefits and other non-cash, net. Details of each component can be found on the Consolidated Statements of Cash Flows."
+        },
+        {
+          "line": 2346,
+          "page": 69,
+          "text": "(b)     Changes in working capital include changes to receivables and unbilled revenues, accounts payable and accrued liabilities, and other current assets and liabilities, net, less the settlement of cash flow hedges."
+        },
+        {
+          "line": 2347,
+          "page": 69,
+          "text": "        In 2021, cash flows provided by operating activities increased $15 million, primarily due to an increase in net income, changes in working capital, primarily from an increase in accrued taxes, and"
+        },
+        {
+          "line": 2348,
+          "page": 69,
+          "text": "an increase in depreciation and amortization due to additional utility plant placed in service from capital infrastructure investments. Partially offsetting these increases was the gain on sale of businesses,"
+        },
+        {
+          "line": 2349,
+          "page": 69,
+          "text": "due to the gain on the sale of HOS."
+        },
+        {
+          "line": 2350,
+          "page": 69,
+          "text": "        The Company expects to make pension contributions to the plan trusts of $37 million in 2022. In addition, the Company estimates that contributions will amount to $35 million, $33 million, $30"
+        },
+        {
+          "line": 2351,
+          "page": 69,
+          "text": "million and $27 million in 2023, 2024, 2025 and 2026, respectively. Actual amounts contributed could change materially from these estimates as a result of changes in assumptions and actual investment"
+        },
+        {
+          "line": 2352,
+          "page": 69,
+          "text": "returns, among other factors."
+        }
+      ]
+    },
+    {
+      "evidence_id": "E004",
+      "start_line": 2134,
+      "end_line": 2165,
+      "lines": [
+        {
+          "line": 2134,
+          "page": 64,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2135,
+          "page": 64,
+          "text": "Regulated Businesses Segment"
+        },
+        {
+          "line": 2136,
+          "page": 64,
+          "text": "        Presented in the table below is financial information for the Regulated Businesses:"
+        },
+        {
+          "line": 2137,
+          "page": 64,
+          "text": "                                                                                                                                                                                              For the Years Ended December 31,"
+        },
+        {
+          "line": 2138,
+          "page": 64,
+          "text": "                                                                                                                                                                                     2021                      2020                      2019"
+        },
+        {
+          "line": 2139,
+          "page": 64,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2140,
+          "page": 64,
+          "text": "Operating revenues                                                                                                                                                          $              3,384      $              3,255      $              3,094"
+        },
+        {
+          "line": 2141,
+          "page": 64,
+          "text": "Operation and maintenance                                                                                                                                                                  1,325                     1,258                     1,182"
+        },
+        {
+          "line": 2142,
+          "page": 64,
+          "text": "Depreciation and amortization                                                                                                                                                                601                       562                       529"
+        },
+        {
+          "line": 2143,
+          "page": 64,
+          "text": "General taxes                                                                                                                                                                                301                       285                       262"
+        },
+        {
+          "line": 2144,
+          "page": 64,
+          "text": "Other operating expenses                                                                                                                                                                        1                        (3)                     (10)"
+        },
+        {
+          "line": 2145,
+          "page": 64,
+          "text": "Other income (expenses)                                                                                                                                                                     (195)                     (221)                     (262)"
+        },
+        {
+          "line": 2146,
+          "page": 64,
+          "text": "Income before income taxes                                                                                                                                                                   962                       932                       869"
+        },
+        {
+          "line": 2147,
+          "page": 64,
+          "text": "Provision for income taxes                                                                                                                                                                   172                       217                       215"
+        },
+        {
+          "line": 2148,
+          "page": 64,
+          "text": "Net income attributable to common shareholders                                                                                                                                               789                       715                       654"
+        },
+        {
+          "line": 2149,
+          "page": 64,
+          "text": "Operating Revenues"
+        },
+        {
+          "line": 2150,
+          "page": 64,
+          "text": "        Presented in the tables below is information regarding the main components of the Regulated Businesses’ operating revenues:"
+        },
+        {
+          "line": 2151,
+          "page": 64,
+          "text": "                                                                                                                                                                                              For the Years Ended December 31,"
+        },
+        {
+          "line": 2152,
+          "page": 64,
+          "text": "                                                                                                                                                                                     2021                      2020                      2019"
+        },
+        {
+          "line": 2153,
+          "page": 64,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2154,
+          "page": 64,
+          "text": "Water services:"
+        },
+        {
+          "line": 2155,
+          "page": 64,
+          "text": "   Residential                                                                                                                                                              $              1,935      $              1,895      $              1,735"
+        },
+        {
+          "line": 2156,
+          "page": 64,
+          "text": "   Commercial                                                                                                                                                                                676                       627                       639"
+        },
+        {
+          "line": 2157,
+          "page": 64,
+          "text": "   Fire service                                                                                                                                                                              151                       147                       142"
+        },
+        {
+          "line": 2158,
+          "page": 64,
+          "text": "   Industrial                                                                                                                                                                                141                       133                       138"
+        },
+        {
+          "line": 2159,
+          "page": 64,
+          "text": "   Public and other                                                                                                                                                                          239                       226                       230"
+        },
+        {
+          "line": 2160,
+          "page": 64,
+          "text": "Total water services                                                                                                                                                                       3,142                     3,028                     2,884"
+        },
+        {
+          "line": 2161,
+          "page": 64,
+          "text": "Wastewater services:"
+        },
+        {
+          "line": 2162,
+          "page": 64,
+          "text": "   Residential                                                                                                                                                                               151                       134                       119"
+        },
+        {
+          "line": 2163,
+          "page": 64,
+          "text": "   Commercial                                                                                                                                                                                  37                        34                        31"
+        },
+        {
+          "line": 2164,
+          "page": 64,
+          "text": "   Industrial                                                                                                                                                                                   4                         3                         3"
+        },
+        {
+          "line": 2165,
+          "page": 64,
+          "text": "   Public and other                                                                                                                                                                            16                        14                        14"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E005",
+      "start_line": 2243,
+      "end_line": 2274,
+      "lines": [
+        {
+          "line": 2243,
+          "page": 67,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2244,
+          "page": 67,
+          "text": "Market-Based Businesses"
+        },
+        {
+          "line": 2245,
+          "page": 67,
+          "text": "        Presented in the table below is information for the Market-Based Businesses:"
+        },
+        {
+          "line": 2246,
+          "page": 67,
+          "text": "                                                                                                                                                                                            For the Years Ended December 31,"
+        },
+        {
+          "line": 2247,
+          "page": 67,
+          "text": "                                                                                                                                                                                   2021                      2020                      2019"
+        },
+        {
+          "line": 2248,
+          "page": 67,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2249,
+          "page": 67,
+          "text": "Operating revenues                                                                                                                                                        $                563      $                540      $                539"
+        },
+        {
+          "line": 2250,
+          "page": 67,
+          "text": "Operation and maintenance                                                                                                                                                                  482                       389                       393"
+        },
+        {
+          "line": 2251,
+          "page": 67,
+          "text": "Depreciation and amortization                                                                                                                                                                22                        26                       37"
+        },
+        {
+          "line": 2252,
+          "page": 67,
+          "text": "Gain or (loss) on sale of businesses                                                                                                                                                       748                         (1)                     (44)"
+        },
+        {
+          "line": 2253,
+          "page": 67,
+          "text": "Income before income taxes                                                                                                                                                                 798                       120                        66"
+        },
+        {
+          "line": 2254,
+          "page": 67,
+          "text": "Provision for income taxes                                                                                                                                                                 248                         29                       20"
+        },
+        {
+          "line": 2255,
+          "page": 67,
+          "text": "Net income attributable to common shareholders                                                                                                                                             550                         91                       46"
+        },
+        {
+          "line": 2256,
+          "page": 67,
+          "text": "Operating Revenues"
+        },
+        {
+          "line": 2257,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, operating revenues increased $23 million primarily due to a $32 million increase in capital and O&M projects in the MSG, across several of the Company’s military"
+        },
+        {
+          "line": 2258,
+          "page": 67,
+          "text": "bases, primarily at the United States Military Academy at West Point, New York, Fort Belvoir and Joint Base Lewis-McChord and a $7 million increase in the CSG related to the contract with the City"
+        },
+        {
+          "line": 2259,
+          "page": 67,
+          "text": "of Camden, New Jersey. These increases were partially offset by a $17 million year over year decrease at HOS due to the sale of the business in the fourth quarter of 2021."
+        },
+        {
+          "line": 2260,
+          "page": 67,
+          "text": "Operation and Maintenance"
+        },
+        {
+          "line": 2261,
+          "page": 67,
+          "text": "        Presented in the table below is information regarding the main components of the Market-Based Businesses’ operating and maintenance expense:"
+        },
+        {
+          "line": 2262,
+          "page": 67,
+          "text": "                                                                                                                                                                                            For the Years Ended December 31,"
+        },
+        {
+          "line": 2263,
+          "page": 67,
+          "text": "                                                                                                                                                                                   2021                      2020                      2019"
+        },
+        {
+          "line": 2264,
+          "page": 67,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2265,
+          "page": 67,
+          "text": "Operating supplies and services                                                                                                                                           $                221      $                148      $                128"
+        },
+        {
+          "line": 2266,
+          "page": 67,
+          "text": "Maintenance materials and supplies                                                                                                                                                         123                       114                       109"
+        },
+        {
+          "line": 2267,
+          "page": 67,
+          "text": "Employee-related costs                                                                                                                                                                       96                        90                      109"
+        },
+        {
+          "line": 2268,
+          "page": 67,
+          "text": "Production costs                                                                                                                                                                             22                        21                       29"
+        },
+        {
+          "line": 2269,
+          "page": 67,
+          "text": "Other                                                                                                                                                                                        20                        16                       18"
+        },
+        {
+          "line": 2270,
+          "page": 67,
+          "text": "  Total                                                                                                                                                                   $                482      $                389      $                393"
+        },
+        {
+          "line": 2271,
+          "page": 67,
+          "text": "Operating Supplies and Services"
+        },
+        {
+          "line": 2272,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, operating supplies and services increased $73 million primarily due to the $45 million pre-tax contribution to the AWCF authorized by the Company in 2021, costs"
+        },
+        {
+          "line": 2273,
+          "page": 67,
+          "text": "associated with MSG from increased capital and O&M projects as discussed above and an increase in additional O&M costs related to CSG."
+        },
+        {
+          "line": 2274,
+          "page": 67,
+          "text": "Maintenance Materials and Supplies"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E006",
+      "start_line": 2890,
+      "end_line": 2890,
+      "lines": [
+        {
+          "line": 2890,
+          "page": 86,
+          "text": "(In millions, except per share data)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E007",
+      "start_line": 2888,
+      "end_line": 2889,
+      "lines": [
+        {
+          "line": 2888,
+          "page": 86,
+          "text": "American Water Works Company, Inc. and Subsidiary Companies"
+        },
+        {
+          "line": 2889,
+          "page": 86,
+          "text": "Consolidated Statements of Operations"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E008",
+      "start_line": 2942,
+      "end_line": 2942,
+      "lines": [
+        {
+          "line": 2942,
+          "page": 88,
+          "text": "(In millions)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E009",
+      "start_line": 4646,
+      "end_line": 4677,
+      "lines": [
+        {
+          "line": 4646,
+          "page": 137,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 4647,
+          "page": 137,
+          "text": "                                                                                                                                                                         2020"
+        },
+        {
+          "line": 4648,
+          "page": 137,
+          "text": "                                                                                                             Regulated"
+        },
+        {
+          "line": 4649,
+          "page": 137,
+          "text": "                                                                                                             Businesses                    Market-Based Businesses                         Other                             Consolidated"
+        },
+        {
+          "line": 4650,
+          "page": 137,
+          "text": "Operating revenues                                                                                $                        3,255        $                          540        $                          (18)       $                        3,777"
+        },
+        {
+          "line": 4651,
+          "page": 137,
+          "text": "Depreciation and amortization                                                                                                562                                     26                                    16                                  604"
+        },
+        {
+          "line": 4652,
+          "page": 137,
+          "text": "Total operating expenses, net                                                                                              2,102                                   421                                      6                                2,529"
+        },
+        {
+          "line": 4653,
+          "page": 137,
+          "text": "Interest expense                                                                                                            (293)                                    (7)                                 (97)                                 (397)"
+        },
+        {
+          "line": 4654,
+          "page": 137,
+          "text": "Interest income                                                                                                                 2                                     8                                    (8)                                    2"
+        },
+        {
+          "line": 4655,
+          "page": 137,
+          "text": "Income before income taxes                                                                                                   932                                   120                                  (128)                                  924"
+        },
+        {
+          "line": 4656,
+          "page": 137,
+          "text": "Provision for income taxes                                                                                                   217                                     29                                  (31)                                  215"
+        },
+        {
+          "line": 4657,
+          "page": 137,
+          "text": "Net income attributable to common shareholders                                                                               715                                     91                                  (97)                                  709"
+        },
+        {
+          "line": 4658,
+          "page": 137,
+          "text": "Total assets                                                                                                             22,357                                    891                                 1,518                               24,766"
+        },
+        {
+          "line": 4659,
+          "page": 137,
+          "text": "Cash paid for capital expenditures                                                                                         1,804                                     10                                     8                                1,822"
+        },
+        {
+          "line": 4660,
+          "page": 137,
+          "text": "                                                                                                                                                                         2019"
+        },
+        {
+          "line": 4661,
+          "page": 137,
+          "text": "                                                                                                             BusinessesRegulated           Market-Based Businesses                         Other                             Consolidated"
+        },
+        {
+          "line": 4662,
+          "page": 137,
+          "text": "Operating revenues                                                                                $                        3,094        $                          539        $                          (23)       $                        3,610"
+        },
+        {
+          "line": 4663,
+          "page": 137,
+          "text": "Depreciation and amortization                                                                                                529                                     37                                    16                                  582"
+        },
+        {
+          "line": 4664,
+          "page": 137,
+          "text": "Total operating expenses, net                                                                                              1,964                                   436                                     (4)                               2,396"
+        },
+        {
+          "line": 4665,
+          "page": 137,
+          "text": "Interest expense                                                                                                            (299)                                    (8)                                 (79)                                 (386)"
+        },
+        {
+          "line": 4666,
+          "page": 137,
+          "text": "Interest income                                                                                                                 4                                    13                                  (13)                                     4"
+        },
+        {
+          "line": 4667,
+          "page": 137,
+          "text": "Income before income taxes                                                                                                   869                                     66                                 (102)                                  833"
+        },
+        {
+          "line": 4668,
+          "page": 137,
+          "text": "Provision for income taxes                                                                                                   215                                     20                                  (23)                                  212"
+        },
+        {
+          "line": 4669,
+          "page": 137,
+          "text": "Net income attributable to common shareholders                                                                               654                                     46                                  (79)                                  621"
+        },
+        {
+          "line": 4670,
+          "page": 137,
+          "text": "Total assets                                                                                                              20,318                                 1,008                                 1,356                               22,682"
+        },
+        {
+          "line": 4671,
+          "page": 137,
+          "text": "Cash paid for capital expenditures                                                                                         1,627                                     13                                    14                                1,654"
+        },
+        {
+          "line": 4672,
+          "page": 137,
+          "text": "Note 22: Unaudited Quarterly Data"
+        },
+        {
+          "line": 4673,
+          "page": 137,
+          "text": "        Presented in the tables below are supplemental, unaudited, consolidated, quarterly financial data for each of the four quarters in the years ended December 31, 2021 and 2020, respectively. The"
+        },
+        {
+          "line": 4674,
+          "page": 137,
+          "text": "operating results for any quarter are not indicative of results that may be expected for a full year or any future periods."
+        },
+        {
+          "line": 4675,
+          "page": 137,
+          "text": "                                                                                                                                                                          2021"
+        },
+        {
+          "line": 4676,
+          "page": 137,
+          "text": "                                                                                                            First Quarter                        Second Quarter                        Third Quarter                        Fourth Quarter"
+        },
+        {
+          "line": 4677,
+          "page": 137,
+          "text": "Operating revenues                                                                                  $                         888        $                          999        $                       1,092        $                          951"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E010",
+      "start_line": 2940,
+      "end_line": 2941,
+      "lines": [
+        {
+          "line": 2940,
+          "page": 88,
+          "text": "American Water Works Company, Inc. and Subsidiary Companies"
+        },
+        {
+          "line": 2941,
+          "page": 88,
+          "text": "Consolidated Statements of Cash Flows"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E011",
+      "start_line": 2891,
+      "end_line": 2892,
+      "lines": [
+        {
+          "line": 2891,
+          "page": 86,
+          "text": "                                                                                                                                                                         For the Years Ended December 31,"
+        },
+        {
+          "line": 2892,
+          "page": 86,
+          "text": "                                                                                                                                                     2021                                 2020                                 2019"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E012",
+      "start_line": 2345,
+      "end_line": 2353,
+      "lines": [
+        {
+          "line": 2345,
+          "page": 69,
+          "text": "(a)     Includes provision for losses on accounts receivable, pension and non-pension postretirement benefits and other non-cash, net. Details of each component can be found on the Consolidated Statements of Cash Flows."
+        },
+        {
+          "line": 2346,
+          "page": 69,
+          "text": "(b)     Changes in working capital include changes to receivables and unbilled revenues, accounts payable and accrued liabilities, and other current assets and liabilities, net, less the settlement of cash flow hedges."
+        },
+        {
+          "line": 2347,
+          "page": 69,
+          "text": "        In 2021, cash flows provided by operating activities increased $15 million, primarily due to an increase in net income, changes in working capital, primarily from an increase in accrued taxes, and"
+        },
+        {
+          "line": 2348,
+          "page": 69,
+          "text": "an increase in depreciation and amortization due to additional utility plant placed in service from capital infrastructure investments. Partially offsetting these increases was the gain on sale of businesses,"
+        },
+        {
+          "line": 2349,
+          "page": 69,
+          "text": "due to the gain on the sale of HOS."
+        },
+        {
+          "line": 2350,
+          "page": 69,
+          "text": "        The Company expects to make pension contributions to the plan trusts of $37 million in 2022. In addition, the Company estimates that contributions will amount to $35 million, $33 million, $30"
+        },
+        {
+          "line": 2351,
+          "page": 69,
+          "text": "million and $27 million in 2023, 2024, 2025 and 2026, respectively. Actual amounts contributed could change materially from these estimates as a result of changes in assumptions and actual investment"
+        },
+        {
+          "line": 2352,
+          "page": 69,
+          "text": "returns, among other factors."
+        },
+        {
+          "line": 2353,
+          "page": 69,
+          "text": "                                                                                                                             67"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E013",
+      "start_line": 2943,
+      "end_line": 2944,
+      "lines": [
+        {
+          "line": 2943,
+          "page": 88,
+          "text": "                                                                                                                                                                                                       For the Years Ended December 31,"
+        },
+        {
+          "line": 2944,
+          "page": 88,
+          "text": "                                                                                                                                                                                 2021                                     2020                                     2019"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E014",
+      "start_line": 2948,
+      "end_line": 2948,
+      "lines": [
+        {
+          "line": 2948,
+          "page": 88,
+          "text": "         Depreciation and amortization                                                                                                                                                           636                                     604                                      582"
+        }
+      ]
+    }
+  ],
+  "review_only_pages": [
+    {
+      "page": 64,
+      "review_only": true,
+      "start_line": 2134,
+      "end_line": 2170,
+      "lines": [
+        {
+          "line": 2134,
+          "page": 64,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2135,
+          "page": 64,
+          "text": "Regulated Businesses Segment"
+        },
+        {
+          "line": 2136,
+          "page": 64,
+          "text": "        Presented in the table below is financial information for the Regulated Businesses:"
+        },
+        {
+          "line": 2137,
+          "page": 64,
+          "text": "                                                                                                                                                                                              For the Years Ended December 31,"
+        },
+        {
+          "line": 2138,
+          "page": 64,
+          "text": "                                                                                                                                                                                     2021                      2020                      2019"
+        },
+        {
+          "line": 2139,
+          "page": 64,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2140,
+          "page": 64,
+          "text": "Operating revenues                                                                                                                                                          $              3,384      $              3,255      $              3,094"
+        },
+        {
+          "line": 2141,
+          "page": 64,
+          "text": "Operation and maintenance                                                                                                                                                                  1,325                     1,258                     1,182"
+        },
+        {
+          "line": 2142,
+          "page": 64,
+          "text": "Depreciation and amortization                                                                                                                                                                601                       562                       529"
+        },
+        {
+          "line": 2143,
+          "page": 64,
+          "text": "General taxes                                                                                                                                                                                301                       285                       262"
+        },
+        {
+          "line": 2144,
+          "page": 64,
+          "text": "Other operating expenses                                                                                                                                                                        1                        (3)                     (10)"
+        },
+        {
+          "line": 2145,
+          "page": 64,
+          "text": "Other income (expenses)                                                                                                                                                                     (195)                     (221)                     (262)"
+        },
+        {
+          "line": 2146,
+          "page": 64,
+          "text": "Income before income taxes                                                                                                                                                                   962                       932                       869"
+        },
+        {
+          "line": 2147,
+          "page": 64,
+          "text": "Provision for income taxes                                                                                                                                                                   172                       217                       215"
+        },
+        {
+          "line": 2148,
+          "page": 64,
+          "text": "Net income attributable to common shareholders                                                                                                                                               789                       715                       654"
+        },
+        {
+          "line": 2149,
+          "page": 64,
+          "text": "Operating Revenues"
+        },
+        {
+          "line": 2150,
+          "page": 64,
+          "text": "        Presented in the tables below is information regarding the main components of the Regulated Businesses’ operating revenues:"
+        },
+        {
+          "line": 2151,
+          "page": 64,
+          "text": "                                                                                                                                                                                              For the Years Ended December 31,"
+        },
+        {
+          "line": 2152,
+          "page": 64,
+          "text": "                                                                                                                                                                                     2021                      2020                      2019"
+        },
+        {
+          "line": 2153,
+          "page": 64,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2154,
+          "page": 64,
+          "text": "Water services:"
+        },
+        {
+          "line": 2155,
+          "page": 64,
+          "text": "   Residential                                                                                                                                                              $              1,935      $              1,895      $              1,735"
+        },
+        {
+          "line": 2156,
+          "page": 64,
+          "text": "   Commercial                                                                                                                                                                                676                       627                       639"
+        },
+        {
+          "line": 2157,
+          "page": 64,
+          "text": "   Fire service                                                                                                                                                                              151                       147                       142"
+        },
+        {
+          "line": 2158,
+          "page": 64,
+          "text": "   Industrial                                                                                                                                                                                141                       133                       138"
+        },
+        {
+          "line": 2159,
+          "page": 64,
+          "text": "   Public and other                                                                                                                                                                          239                       226                       230"
+        },
+        {
+          "line": 2160,
+          "page": 64,
+          "text": "Total water services                                                                                                                                                                       3,142                     3,028                     2,884"
+        },
+        {
+          "line": 2161,
+          "page": 64,
+          "text": "Wastewater services:"
+        },
+        {
+          "line": 2162,
+          "page": 64,
+          "text": "   Residential                                                                                                                                                                               151                       134                       119"
+        },
+        {
+          "line": 2163,
+          "page": 64,
+          "text": "   Commercial                                                                                                                                                                                  37                        34                        31"
+        },
+        {
+          "line": 2164,
+          "page": 64,
+          "text": "   Industrial                                                                                                                                                                                   4                         3                         3"
+        },
+        {
+          "line": 2165,
+          "page": 64,
+          "text": "   Public and other                                                                                                                                                                            16                        14                        14"
+        },
+        {
+          "line": 2166,
+          "page": 64,
+          "text": "Total wastewater services                                                                                                                                                                    208                       185                       167"
+        },
+        {
+          "line": 2167,
+          "page": 64,
+          "text": "Other (a)                                                                                                                                                                                      34                        42                        43"
+        },
+        {
+          "line": 2168,
+          "page": 64,
+          "text": "Total operating revenues                                                                                                                                                    $              3,384      $              3,255      $              3,094"
+        },
+        {
+          "line": 2169,
+          "page": 64,
+          "text": "(a)     Includes other operating revenues consisting primarily of miscellaneous utility charges, fees and rents."
+        },
+        {
+          "line": 2170,
+          "page": 64,
+          "text": "                                                                                                                          62"
+        }
+      ]
+    },
+    {
+      "page": 67,
+      "review_only": true,
+      "start_line": 2243,
+      "end_line": 2282,
+      "lines": [
+        {
+          "line": 2243,
+          "page": 67,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2244,
+          "page": 67,
+          "text": "Market-Based Businesses"
+        },
+        {
+          "line": 2245,
+          "page": 67,
+          "text": "        Presented in the table below is information for the Market-Based Businesses:"
+        },
+        {
+          "line": 2246,
+          "page": 67,
+          "text": "                                                                                                                                                                                            For the Years Ended December 31,"
+        },
+        {
+          "line": 2247,
+          "page": 67,
+          "text": "                                                                                                                                                                                   2021                      2020                      2019"
+        },
+        {
+          "line": 2248,
+          "page": 67,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2249,
+          "page": 67,
+          "text": "Operating revenues                                                                                                                                                        $                563      $                540      $                539"
+        },
+        {
+          "line": 2250,
+          "page": 67,
+          "text": "Operation and maintenance                                                                                                                                                                  482                       389                       393"
+        },
+        {
+          "line": 2251,
+          "page": 67,
+          "text": "Depreciation and amortization                                                                                                                                                                22                        26                       37"
+        },
+        {
+          "line": 2252,
+          "page": 67,
+          "text": "Gain or (loss) on sale of businesses                                                                                                                                                       748                         (1)                     (44)"
+        },
+        {
+          "line": 2253,
+          "page": 67,
+          "text": "Income before income taxes                                                                                                                                                                 798                       120                        66"
+        },
+        {
+          "line": 2254,
+          "page": 67,
+          "text": "Provision for income taxes                                                                                                                                                                 248                         29                       20"
+        },
+        {
+          "line": 2255,
+          "page": 67,
+          "text": "Net income attributable to common shareholders                                                                                                                                             550                         91                       46"
+        },
+        {
+          "line": 2256,
+          "page": 67,
+          "text": "Operating Revenues"
+        },
+        {
+          "line": 2257,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, operating revenues increased $23 million primarily due to a $32 million increase in capital and O&M projects in the MSG, across several of the Company’s military"
+        },
+        {
+          "line": 2258,
+          "page": 67,
+          "text": "bases, primarily at the United States Military Academy at West Point, New York, Fort Belvoir and Joint Base Lewis-McChord and a $7 million increase in the CSG related to the contract with the City"
+        },
+        {
+          "line": 2259,
+          "page": 67,
+          "text": "of Camden, New Jersey. These increases were partially offset by a $17 million year over year decrease at HOS due to the sale of the business in the fourth quarter of 2021."
+        },
+        {
+          "line": 2260,
+          "page": 67,
+          "text": "Operation and Maintenance"
+        },
+        {
+          "line": 2261,
+          "page": 67,
+          "text": "        Presented in the table below is information regarding the main components of the Market-Based Businesses’ operating and maintenance expense:"
+        },
+        {
+          "line": 2262,
+          "page": 67,
+          "text": "                                                                                                                                                                                            For the Years Ended December 31,"
+        },
+        {
+          "line": 2263,
+          "page": 67,
+          "text": "                                                                                                                                                                                   2021                      2020                      2019"
+        },
+        {
+          "line": 2264,
+          "page": 67,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2265,
+          "page": 67,
+          "text": "Operating supplies and services                                                                                                                                           $                221      $                148      $                128"
+        },
+        {
+          "line": 2266,
+          "page": 67,
+          "text": "Maintenance materials and supplies                                                                                                                                                         123                       114                       109"
+        },
+        {
+          "line": 2267,
+          "page": 67,
+          "text": "Employee-related costs                                                                                                                                                                       96                        90                      109"
+        },
+        {
+          "line": 2268,
+          "page": 67,
+          "text": "Production costs                                                                                                                                                                             22                        21                       29"
+        },
+        {
+          "line": 2269,
+          "page": 67,
+          "text": "Other                                                                                                                                                                                        20                        16                       18"
+        },
+        {
+          "line": 2270,
+          "page": 67,
+          "text": "  Total                                                                                                                                                                   $                482      $                389      $                393"
+        },
+        {
+          "line": 2271,
+          "page": 67,
+          "text": "Operating Supplies and Services"
+        },
+        {
+          "line": 2272,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, operating supplies and services increased $73 million primarily due to the $45 million pre-tax contribution to the AWCF authorized by the Company in 2021, costs"
+        },
+        {
+          "line": 2273,
+          "page": 67,
+          "text": "associated with MSG from increased capital and O&M projects as discussed above and an increase in additional O&M costs related to CSG."
+        },
+        {
+          "line": 2274,
+          "page": 67,
+          "text": "Maintenance Materials and Supplies"
+        },
+        {
+          "line": 2275,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, maintenance materials and supplies increased $9 million primarily due to an increase in CSG related to the contract with the City of Camden, New Jersey and an"
+        },
+        {
+          "line": 2276,
+          "page": 67,
+          "text": "increase in HOS due to contract growth and an increase in claims. These increases were partially offset by a decrease in HOS due to the sale of its business in the fourth quarter of 2021."
+        },
+        {
+          "line": 2277,
+          "page": 67,
+          "text": "Employee-Related Costs"
+        },
+        {
+          "line": 2278,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, employee-related costs increased $6 million primarily due to an increase in salaries and wages in MSG from the addition of new bases in the second half of 2020"
+        },
+        {
+          "line": 2279,
+          "page": 67,
+          "text": "and HOS for additional customer service costs to support the business."
+        },
+        {
+          "line": 2280,
+          "page": 67,
+          "text": "Depreciation and Amortization"
+        },
+        {
+          "line": 2281,
+          "page": 67,
+          "text": "        In 2021, as compared to 2020, depreciation and amortization decreased $4 million primarily due to lower intangible asset amortization expenses in HOS."
+        },
+        {
+          "line": 2282,
+          "page": 67,
+          "text": "                                                                                                                         65"
+        }
+      ]
+    },
+    {
+      "page": 69,
+      "review_only": true,
+      "start_line": 2321,
+      "end_line": 2353,
+      "lines": [
+        {
+          "line": 2321,
+          "page": 69,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2322,
+          "page": 69,
+          "text": "Cash Flows from Operating Activities"
+        },
+        {
+          "line": 2323,
+          "page": 69,
+          "text": "        Cash flows from operating activities primarily result from the sale of water and wastewater services and, due to the seasonality of demand, are generally greater during the warmer months. The"
+        },
+        {
+          "line": 2324,
+          "page": 69,
+          "text": "Company’s future cash flows from operating activities will be affected by, among other things: customers’ ability to pay for service in a timely manner, economic utility regulation, inflation, compliance"
+        },
+        {
+          "line": 2325,
+          "page": 69,
+          "text": "with environmental, health and safety standards, production costs, maintenance costs, customer growth, declining customer usage of water, employee-related costs, including pension funding, weather"
+        },
+        {
+          "line": 2326,
+          "page": 69,
+          "text": "and seasonality, taxes, and overall economic conditions."
+        },
+        {
+          "line": 2327,
+          "page": 69,
+          "text": "        Operating cash flows can be negatively affected by changes in the Company’s rate regulated environments, changes in the Market-Based Businesses, changes in the economy, interest rates, the"
+        },
+        {
+          "line": 2328,
+          "page": 69,
+          "text": "timing of tax payments, and the Company’s customers’ ability to pay for service in a timely manner, among other items. The Company can provide no assurance that its customers’ historical payment"
+        },
+        {
+          "line": 2329,
+          "page": 69,
+          "text": "pattern will continue in the future. The Company’s current liabilities may exceed current assets mainly from debt maturities due within one year and the use of short-term debt as a funding source,"
+        },
+        {
+          "line": 2330,
+          "page": 69,
+          "text": "primarily to meet scheduled maturities of long-term debt, fund acquisitions and construction projects, as well as cash needs, which can fluctuate significantly due to the seasonality of the business and"
+        },
+        {
+          "line": 2331,
+          "page": 69,
+          "text": "other factors. The Company addresses cash timing differences primarily through its short-term liquidity funding mechanisms."
+        },
+        {
+          "line": 2332,
+          "page": 69,
+          "text": "        Presented in the table below is a summary of the major items affecting the Company’s cash flows from operating activities:"
+        },
+        {
+          "line": 2333,
+          "page": 69,
+          "text": "                                                                                                                                                                                  For the Years Ended December 31,"
+        },
+        {
+          "line": 2334,
+          "page": 69,
+          "text": "(In millions)                                                                                                                                               2021                                   2020                                   2019"
+        },
+        {
+          "line": 2335,
+          "page": 69,
+          "text": "Net income                                                                                                                                    $                         1,263        $                          709        $                           621"
+        },
+        {
+          "line": 2336,
+          "page": 69,
+          "text": "Add (less):"
+        },
+        {
+          "line": 2337,
+          "page": 69,
+          "text": "    Depreciation and amortization                                                                                                                                         636                                   604                                    582"
+        },
+        {
+          "line": 2338,
+          "page": 69,
+          "text": "    Deferred income taxes and amortization of investment tax credits                                                                                                      230                                   207                                    208"
+        },
+        {
+          "line": 2339,
+          "page": 69,
+          "text": "    Other non-cash activities (a)                                                                                                                                         (27)                                    —                                       4"
+        },
+        {
+          "line": 2340,
+          "page": 69,
+          "text": "    Changes in working capital (b)                                                                                                                                        126                                    (49)                                    (5)"
+        },
+        {
+          "line": 2341,
+          "page": 69,
+          "text": "    Settlement of cash flow hedges                                                                                                                                         —                                      (6)                                  (30)"
+        },
+        {
+          "line": 2342,
+          "page": 69,
+          "text": "    Pension and non-pension postretirement benefit contributions                                                                                                          (40)                                   (39)                                  (31)"
+        },
+        {
+          "line": 2343,
+          "page": 69,
+          "text": "    (Gain) or loss on sale of businesses                                                                                                                                 (747)                                    —                                      34"
+        },
+        {
+          "line": 2344,
+          "page": 69,
+          "text": "Net cash provided by operating activities                                                                                                     $                         1,441        $                        1,426        $                         1,383"
+        },
+        {
+          "line": 2345,
+          "page": 69,
+          "text": "(a)     Includes provision for losses on accounts receivable, pension and non-pension postretirement benefits and other non-cash, net. Details of each component can be found on the Consolidated Statements of Cash Flows."
+        },
+        {
+          "line": 2346,
+          "page": 69,
+          "text": "(b)     Changes in working capital include changes to receivables and unbilled revenues, accounts payable and accrued liabilities, and other current assets and liabilities, net, less the settlement of cash flow hedges."
+        },
+        {
+          "line": 2347,
+          "page": 69,
+          "text": "        In 2021, cash flows provided by operating activities increased $15 million, primarily due to an increase in net income, changes in working capital, primarily from an increase in accrued taxes, and"
+        },
+        {
+          "line": 2348,
+          "page": 69,
+          "text": "an increase in depreciation and amortization due to additional utility plant placed in service from capital infrastructure investments. Partially offsetting these increases was the gain on sale of businesses,"
+        },
+        {
+          "line": 2349,
+          "page": 69,
+          "text": "due to the gain on the sale of HOS."
+        },
+        {
+          "line": 2350,
+          "page": 69,
+          "text": "        The Company expects to make pension contributions to the plan trusts of $37 million in 2022. In addition, the Company estimates that contributions will amount to $35 million, $33 million, $30"
+        },
+        {
+          "line": 2351,
+          "page": 69,
+          "text": "million and $27 million in 2023, 2024, 2025 and 2026, respectively. Actual amounts contributed could change materially from these estimates as a result of changes in assumptions and actual investment"
+        },
+        {
+          "line": 2352,
+          "page": 69,
+          "text": "returns, among other factors."
+        },
+        {
+          "line": 2353,
+          "page": 69,
+          "text": "                                                                                                                             67"
+        }
+      ]
+    },
+    {
+      "page": 86,
+      "review_only": true,
+      "start_line": 2887,
+      "end_line": 2920,
+      "lines": [
+        {
+          "line": 2887,
+          "page": 86,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2888,
+          "page": 86,
+          "text": "American Water Works Company, Inc. and Subsidiary Companies"
+        },
+        {
+          "line": 2889,
+          "page": 86,
+          "text": "Consolidated Statements of Operations"
+        },
+        {
+          "line": 2890,
+          "page": 86,
+          "text": "(In millions, except per share data)"
+        },
+        {
+          "line": 2891,
+          "page": 86,
+          "text": "                                                                                                                                                                         For the Years Ended December 31,"
+        },
+        {
+          "line": 2892,
+          "page": 86,
+          "text": "                                                                                                                                                     2021                                 2020                                 2019"
+        },
+        {
+          "line": 2893,
+          "page": 86,
+          "text": "Operating revenues                                                                                                                     $                        3,930       $                        3,777       $                        3,610"
+        },
+        {
+          "line": 2894,
+          "page": 86,
+          "text": "Operating expenses:"
+        },
+        {
+          "line": 2895,
+          "page": 86,
+          "text": "   Operation and maintenance                                                                                                                                    1,777                                1,622                                1,544"
+        },
+        {
+          "line": 2896,
+          "page": 86,
+          "text": "   Depreciation and amortization                                                                                                                                  636                                  604                                  582"
+        },
+        {
+          "line": 2897,
+          "page": 86,
+          "text": "   General taxes                                                                                                                                                  321                                  303                                  280"
+        },
+        {
+          "line": 2898,
+          "page": 86,
+          "text": "   Other                                                                                                                                                           —                                    —                                   (10)"
+        },
+        {
+          "line": 2899,
+          "page": 86,
+          "text": "Total operating expenses, net                                                                                                                                   2,734                                2,529                                2,396"
+        },
+        {
+          "line": 2900,
+          "page": 86,
+          "text": "Operating income                                                                                                                                                1,196                                1,248                                1,214"
+        },
+        {
+          "line": 2901,
+          "page": 86,
+          "text": "Other income (expense):"
+        },
+        {
+          "line": 2902,
+          "page": 86,
+          "text": "   Interest expense                                                                                                                                              (403)                                (397)                                (386)"
+        },
+        {
+          "line": 2903,
+          "page": 86,
+          "text": "   Interest income                                                                                                                                                   4                                    2                                    4"
+        },
+        {
+          "line": 2904,
+          "page": 86,
+          "text": "   Non-operating benefit costs, net                                                                                                                                78                                   49                                   16"
+        },
+        {
+          "line": 2905,
+          "page": 86,
+          "text": "   Gain or (loss) on sale of businesses                                                                                                                           747                                   —                                   (44)"
+        },
+        {
+          "line": 2906,
+          "page": 86,
+          "text": "   Other, net                                                                                                                                                      18                                   22                                   29"
+        },
+        {
+          "line": 2907,
+          "page": 86,
+          "text": "Total other income (expense)                                                                                                                                      444                                 (324)                                (381)"
+        },
+        {
+          "line": 2908,
+          "page": 86,
+          "text": "Income before income taxes                                                                                                                                      1,640                                  924                                  833"
+        },
+        {
+          "line": 2909,
+          "page": 86,
+          "text": "Provision for income taxes                                                                                                                                        377                                  215                                  212"
+        },
+        {
+          "line": 2910,
+          "page": 86,
+          "text": "Net income attributable to common shareholders                                                                                         $                        1,263       $                          709       $                          621"
+        },
+        {
+          "line": 2911,
+          "page": 86,
+          "text": "Basic earnings per share: (a)"
+        },
+        {
+          "line": 2912,
+          "page": 86,
+          "text": "   Net income attributable to common shareholders                                                                                      $                         6.96       $                         3.91       $                         3.44"
+        },
+        {
+          "line": 2913,
+          "page": 86,
+          "text": "Diluted earnings per share: (a)"
+        },
+        {
+          "line": 2914,
+          "page": 86,
+          "text": "   Net income attributable to common shareholders                                                                                      $                         6.95       $                         3.91       $                         3.43"
+        },
+        {
+          "line": 2915,
+          "page": 86,
+          "text": "Weighted average common shares outstanding:"
+        },
+        {
+          "line": 2916,
+          "page": 86,
+          "text": "   Basic                                                                                                                                                          182                                  181                                  181"
+        },
+        {
+          "line": 2917,
+          "page": 86,
+          "text": "   Diluted                                                                                                                                                        182                                  182                                  181"
+        },
+        {
+          "line": 2918,
+          "page": 86,
+          "text": "(a)     Amounts may not calculate due to rounding."
+        },
+        {
+          "line": 2919,
+          "page": 86,
+          "text": "                                                                    The accompanying notes are an integral part of these Consolidated Financial Statements."
+        },
+        {
+          "line": 2920,
+          "page": 86,
+          "text": "                                                                                                                       84"
+        }
+      ]
+    },
+    {
+      "page": 88,
+      "review_only": true,
+      "start_line": 2939,
+      "end_line": 2989,
+      "lines": [
+        {
+          "line": 2939,
+          "page": 88,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 2940,
+          "page": 88,
+          "text": "American Water Works Company, Inc. and Subsidiary Companies"
+        },
+        {
+          "line": 2941,
+          "page": 88,
+          "text": "Consolidated Statements of Cash Flows"
+        },
+        {
+          "line": 2942,
+          "page": 88,
+          "text": "(In millions)"
+        },
+        {
+          "line": 2943,
+          "page": 88,
+          "text": "                                                                                                                                                                                                       For the Years Ended December 31,"
+        },
+        {
+          "line": 2944,
+          "page": 88,
+          "text": "                                                                                                                                                                                 2021                                     2020                                     2019"
+        },
+        {
+          "line": 2945,
+          "page": 88,
+          "text": "CASH FLOWS FROM OPERATING ACTIVITIES"
+        },
+        {
+          "line": 2946,
+          "page": 88,
+          "text": "    Net income                                                                                                                                                     $                          1,263        $                             709        $                             621"
+        },
+        {
+          "line": 2947,
+          "page": 88,
+          "text": "    Adjustments to reconcile to net cash flows provided by operating activities:"
+        },
+        {
+          "line": 2948,
+          "page": 88,
+          "text": "         Depreciation and amortization                                                                                                                                                           636                                     604                                      582"
+        },
+        {
+          "line": 2949,
+          "page": 88,
+          "text": "         Deferred income taxes and amortization of investment tax credits                                                                                                                        230                                     207                                      208"
+        },
+        {
+          "line": 2950,
+          "page": 88,
+          "text": "         Provision for losses on accounts receivable                                                                                                                                              37                                       34                                      28"
+        },
+        {
+          "line": 2951,
+          "page": 88,
+          "text": "         (Gain) or loss on sale of businesses                                                                                                                                                  (747)                                       —                                       34"
+        },
+        {
+          "line": 2952,
+          "page": 88,
+          "text": "         Pension and non-pension postretirement benefits                                                                                                                                         (41)                                    (14)                                      17"
+        },
+        {
+          "line": 2953,
+          "page": 88,
+          "text": "         Other non-cash, net                                                                                                                                                                     (23)                                    (20)                                     (41)"
+        },
+        {
+          "line": 2954,
+          "page": 88,
+          "text": "         Changes in assets and liabilities:"
+        },
+        {
+          "line": 2955,
+          "page": 88,
+          "text": "            Receivables and unbilled revenues                                                                                                                                                    (74)                                    (97)                                     (25)"
+        },
+        {
+          "line": 2956,
+          "page": 88,
+          "text": "            Pension and non-pension postretirement benefit contributions                                                                                                                         (40)                                    (39)                                     (31)"
+        },
+        {
+          "line": 2957,
+          "page": 88,
+          "text": "            Accounts payable and accrued liabilities                                                                                                                                              66                                       (2)                                     66"
+        },
+        {
+          "line": 2958,
+          "page": 88,
+          "text": "            Other assets and liabilities, net                                                                                                                                                    134                                       44                                     (76)"
+        },
+        {
+          "line": 2959,
+          "page": 88,
+          "text": "      Net cash provided by operating activities                                                                                                                                               1,441                                    1,426                                   1,383"
+        },
+        {
+          "line": 2960,
+          "page": 88,
+          "text": "CASH FLOWS FROM INVESTING ACTIVITIES"
+        },
+        {
+          "line": 2961,
+          "page": 88,
+          "text": "    Capital expenditures                                                                                                                                                                     (1,764)                                  (1,822)                                 (1,654)"
+        },
+        {
+          "line": 2962,
+          "page": 88,
+          "text": "    Acquisitions, net of cash acquired                                                                                                                                                         (135)                                    (135)                                   (235)"
+        },
+        {
+          "line": 2963,
+          "page": 88,
+          "text": "    Proceeds from sale of assets, net of cash on hand                                                                                                                                            472                                        2                                      48"
+        },
+        {
+          "line": 2964,
+          "page": 88,
+          "text": "    Removal costs from property, plant and equipment retirements, net                                                                                                                          (109)                                    (106)                                   (104)"
+        },
+        {
+          "line": 2965,
+          "page": 88,
+          "text": "      Net cash used in investing activities                                                                                                                                                  (1,536)                                  (2,061)                                 (1,945)"
+        },
+        {
+          "line": 2966,
+          "page": 88,
+          "text": "CASH FLOWS FROM FINANCING ACTIVITIES"
+        },
+        {
+          "line": 2967,
+          "page": 88,
+          "text": "    Proceeds from long-term debt                                                                                                                                                              1,118                                    1,334                                   1,530"
+        },
+        {
+          "line": 2968,
+          "page": 88,
+          "text": "    Repayments of long-term debt                                                                                                                                                               (372)                                    (342)                                   (495)"
+        },
+        {
+          "line": 2969,
+          "page": 88,
+          "text": "    (Repayments of) proceeds from term loan                                                                                                                                                    (500)                                     500                                       —"
+        },
+        {
+          "line": 2970,
+          "page": 88,
+          "text": "    Net short-term borrowings with maturities less than three months                                                                                                                           (198)                                       (5)                                  (178)"
+        },
+        {
+          "line": 2971,
+          "page": 88,
+          "text": "    (Remittances) proceeds from issuances of employee stock plans and direct stock purchase plan, net of taxes paid of $18, $17 and $11 in"
+        },
+        {
+          "line": 2972,
+          "page": 88,
+          "text": "    2021, 2020 and 2019, respectively                                                                                                                                                             (1)                                       9                                      15"
+        },
+        {
+          "line": 2973,
+          "page": 88,
+          "text": "    Advances and contributions in aid of construction, net of refunds of $25, $24 and $30 in 2021, 2020 and 2019, respectively                                                                    62                                       28                                      26"
+        },
+        {
+          "line": 2974,
+          "page": 88,
+          "text": "    Debt issuance costs and make-whole premium on early debt redemption                                                                                                                          (26)                                    (15)                                     (15)"
+        },
+        {
+          "line": 2975,
+          "page": 88,
+          "text": "    Dividends paid                                                                                                                                                                             (428)                                    (389)                                   (353)"
+        },
+        {
+          "line": 2976,
+          "page": 88,
+          "text": "    Anti-dilutive share repurchases                                                                                                                                                               —                                        —                                      (36)"
+        },
+        {
+          "line": 2977,
+          "page": 88,
+          "text": "      Net cash (used in) provided by financing activities                                                                                                                                      (345)                                   1,120                                      494"
+        },
+        {
+          "line": 2978,
+          "page": 88,
+          "text": "Net (decrease) increase in cash, cash equivalents and restricted funds                                                                                                                         (440)                                     485                                      (68)"
+        },
+        {
+          "line": 2979,
+          "page": 88,
+          "text": "Cash, cash equivalents and restricted funds at beginning of period                                                                                                                               576                                       91                                     159"
+        },
+        {
+          "line": 2980,
+          "page": 88,
+          "text": "Cash, cash equivalents and restricted funds at end of period                                                                                                       $                             136       $                             576        $                              91"
+        },
+        {
+          "line": 2981,
+          "page": 88,
+          "text": "Cash paid during the year for:"
+        },
+        {
+          "line": 2982,
+          "page": 88,
+          "text": "    Interest, net of capitalized amount                                                                                                                            $                             389       $                             382        $                             383"
+        },
+        {
+          "line": 2983,
+          "page": 88,
+          "text": "    Income taxes, net of refunds of $6, $2 and $4 in 2021, 2020 and 2019, respectively                                                                             $                               1       $                                7       $                              12"
+        },
+        {
+          "line": 2984,
+          "page": 88,
+          "text": "Non-cash investing activity:"
+        },
+        {
+          "line": 2985,
+          "page": 88,
+          "text": "    Capital expenditures acquired on account but unpaid as of year end                                                                                             $                             292       $                             221        $                             235"
+        },
+        {
+          "line": 2986,
+          "page": 88,
+          "text": "    Seller promissory note from the sale of the Homeowner Services Group                                                                                           $                             720       $                               —        $                              —"
+        },
+        {
+          "line": 2987,
+          "page": 88,
+          "text": "    Contingent cash payment from the sale of the Homeowner Services Group                                                                                          $                              75       $                               —        $                              —"
+        },
+        {
+          "line": 2988,
+          "page": 88,
+          "text": "                                                                              The accompanying notes are an integral part of these Consolidated Financial Statements."
+        },
+        {
+          "line": 2989,
+          "page": 88,
+          "text": "                                                                                                                                          86"
+        }
+      ]
+    },
+    {
+      "page": 137,
+      "review_only": true,
+      "start_line": 4646,
+      "end_line": 4685,
+      "lines": [
+        {
+          "line": 4646,
+          "page": 137,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 4647,
+          "page": 137,
+          "text": "                                                                                                                                                                         2020"
+        },
+        {
+          "line": 4648,
+          "page": 137,
+          "text": "                                                                                                             Regulated"
+        },
+        {
+          "line": 4649,
+          "page": 137,
+          "text": "                                                                                                             Businesses                    Market-Based Businesses                         Other                             Consolidated"
+        },
+        {
+          "line": 4650,
+          "page": 137,
+          "text": "Operating revenues                                                                                $                        3,255        $                          540        $                          (18)       $                        3,777"
+        },
+        {
+          "line": 4651,
+          "page": 137,
+          "text": "Depreciation and amortization                                                                                                562                                     26                                    16                                  604"
+        },
+        {
+          "line": 4652,
+          "page": 137,
+          "text": "Total operating expenses, net                                                                                              2,102                                   421                                      6                                2,529"
+        },
+        {
+          "line": 4653,
+          "page": 137,
+          "text": "Interest expense                                                                                                            (293)                                    (7)                                 (97)                                 (397)"
+        },
+        {
+          "line": 4654,
+          "page": 137,
+          "text": "Interest income                                                                                                                 2                                     8                                    (8)                                    2"
+        },
+        {
+          "line": 4655,
+          "page": 137,
+          "text": "Income before income taxes                                                                                                   932                                   120                                  (128)                                  924"
+        },
+        {
+          "line": 4656,
+          "page": 137,
+          "text": "Provision for income taxes                                                                                                   217                                     29                                  (31)                                  215"
+        },
+        {
+          "line": 4657,
+          "page": 137,
+          "text": "Net income attributable to common shareholders                                                                               715                                     91                                  (97)                                  709"
+        },
+        {
+          "line": 4658,
+          "page": 137,
+          "text": "Total assets                                                                                                             22,357                                    891                                 1,518                               24,766"
+        },
+        {
+          "line": 4659,
+          "page": 137,
+          "text": "Cash paid for capital expenditures                                                                                         1,804                                     10                                     8                                1,822"
+        },
+        {
+          "line": 4660,
+          "page": 137,
+          "text": "                                                                                                                                                                         2019"
+        },
+        {
+          "line": 4661,
+          "page": 137,
+          "text": "                                                                                                             BusinessesRegulated           Market-Based Businesses                         Other                             Consolidated"
+        },
+        {
+          "line": 4662,
+          "page": 137,
+          "text": "Operating revenues                                                                                $                        3,094        $                          539        $                          (23)       $                        3,610"
+        },
+        {
+          "line": 4663,
+          "page": 137,
+          "text": "Depreciation and amortization                                                                                                529                                     37                                    16                                  582"
+        },
+        {
+          "line": 4664,
+          "page": 137,
+          "text": "Total operating expenses, net                                                                                              1,964                                   436                                     (4)                               2,396"
+        },
+        {
+          "line": 4665,
+          "page": 137,
+          "text": "Interest expense                                                                                                            (299)                                    (8)                                 (79)                                 (386)"
+        },
+        {
+          "line": 4666,
+          "page": 137,
+          "text": "Interest income                                                                                                                 4                                    13                                  (13)                                     4"
+        },
+        {
+          "line": 4667,
+          "page": 137,
+          "text": "Income before income taxes                                                                                                   869                                     66                                 (102)                                  833"
+        },
+        {
+          "line": 4668,
+          "page": 137,
+          "text": "Provision for income taxes                                                                                                   215                                     20                                  (23)                                  212"
+        },
+        {
+          "line": 4669,
+          "page": 137,
+          "text": "Net income attributable to common shareholders                                                                               654                                     46                                  (79)                                  621"
+        },
+        {
+          "line": 4670,
+          "page": 137,
+          "text": "Total assets                                                                                                              20,318                                 1,008                                 1,356                               22,682"
+        },
+        {
+          "line": 4671,
+          "page": 137,
+          "text": "Cash paid for capital expenditures                                                                                         1,627                                     13                                    14                                1,654"
+        },
+        {
+          "line": 4672,
+          "page": 137,
+          "text": "Note 22: Unaudited Quarterly Data"
+        },
+        {
+          "line": 4673,
+          "page": 137,
+          "text": "        Presented in the tables below are supplemental, unaudited, consolidated, quarterly financial data for each of the four quarters in the years ended December 31, 2021 and 2020, respectively. The"
+        },
+        {
+          "line": 4674,
+          "page": 137,
+          "text": "operating results for any quarter are not indicative of results that may be expected for a full year or any future periods."
+        },
+        {
+          "line": 4675,
+          "page": 137,
+          "text": "                                                                                                                                                                          2021"
+        },
+        {
+          "line": 4676,
+          "page": 137,
+          "text": "                                                                                                            First Quarter                        Second Quarter                        Third Quarter                        Fourth Quarter"
+        },
+        {
+          "line": 4677,
+          "page": 137,
+          "text": "Operating revenues                                                                                  $                         888        $                          999        $                       1,092        $                          951"
+        },
+        {
+          "line": 4678,
+          "page": 137,
+          "text": "Operating income                                                                                                              229                                   330                                   417                                  220"
+        },
+        {
+          "line": 4679,
+          "page": 137,
+          "text": "Net income attributable to common shareholders                                                                                133                                   207                                   278                                  645"
+        },
+        {
+          "line": 4680,
+          "page": 137,
+          "text": "Basic earnings per share: (a)"
+        },
+        {
+          "line": 4681,
+          "page": 137,
+          "text": "   Net income attributable to common shareholders                                                   $                         0.73       $                         1.14        $                         1.53       $                         3.55"
+        },
+        {
+          "line": 4682,
+          "page": 137,
+          "text": "Diluted earnings per share:"
+        },
+        {
+          "line": 4683,
+          "page": 137,
+          "text": "   Net income attributable to common shareholders                                                                             0.73                                 1.14                                  1.53                                 3.55"
+        },
+        {
+          "line": 4684,
+          "page": 137,
+          "text": "(a)     Amounts may not sum due to rounding."
+        },
+        {
+          "line": 4685,
+          "page": 137,
+          "text": "                                                                                                                        135"
+        }
+      ]
+    }
+  ],
+  "scope_note": "Excerpt origins and outcomes are masked. Full native pages are review-only context, never delivered-evidence credit. Extraction is not independently visually validated; do not assume exhaustive support or correct table alignment."
+}

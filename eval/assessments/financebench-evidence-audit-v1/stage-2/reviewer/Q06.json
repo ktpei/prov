@@ -1,0 +1,2256 @@
+{
+  "stage": "masked_evidence_review",
+  "case_id": "Q06",
+  "question": "Is Verizon a capital intensive business based on FY 2022 data?",
+  "source": {
+    "id": "VERIZON_2022_10K",
+    "title": "VERIZON_2022_10K",
+    "company": "Verizon",
+    "url": "https://www.verizon.com/about/sites/default/files/2022-Annual-Report-on-Form-10K.pdf",
+    "sha256": "4353c2de4f08e362f256df5b37cbd98c39ded394eb2b41d485cc5ed09cd311f9",
+    "original_sha256": "403d7346e8a059472863d1789527f16e5127a61c2f6c4429012e6227f27576d7"
+  },
+  "interpretations": [
+    {
+      "id": "I01",
+      "description": "Assess capital intensity through FY2022 investment spending relative to an explicitly selected operating-scale or cash-generation measure.",
+      "assumptions": [
+        "Verizon means Verizon Communications at consolidated company scope.",
+        "Select the investment-flow definition, included investments, denominator and qualitative comparison standard before drawing a conclusion.",
+        "No universal numerical threshold or permanent business characteristic is inferred solely from one year."
+      ],
+      "unresolved_ambiguities": [
+        "Capital expenditures may have different treatment of leases, intangible investment and acquisitions; the question does not choose.",
+        "Revenue, operating cash flow or another justified scale measure can yield different assessments.",
+        "No threshold, peer group or recurrence criterion is specified."
+      ],
+      "required_facts": [
+        {
+          "id": "R01",
+          "description": "FY2022 investment spending under an explicit definition of included capital expenditure and relevant investment categories.",
+          "basis": "explicit_assumption",
+          "rationale": "The investment-flow reading requires a defined numerator; investment categories are conditional on that choice."
+        },
+        {
+          "id": "R02",
+          "description": "A comparably scoped FY2022 revenue, operating-cash-flow or other justified scale measure for the selected comparison.",
+          "basis": "explicit_assumption",
+          "rationale": "Absolute spending alone does not establish intensity relative to the business."
+        },
+        {
+          "id": "R03",
+          "description": "Fiscal coverage, currency, scale and reporting scope for selected inputs.",
+          "basis": "wording",
+          "rationale": "These ensure the judgment uses the requested FY2022 company data consistently."
+        },
+        {
+          "id": "R04",
+          "description": "An explicit qualitative standard or comparison basis, with supporting comparison facts only if that standard uses them.",
+          "basis": "explicit_assumption",
+          "rationale": "Capital intensive is undefined in the question; a decision criterion cannot be silently invented or treated as a reported financial fact."
+        },
+        {
+          "id": "R05",
+          "description": "FY2022 operating/investment context sufficient to address exceptional spending or timing when inferring ongoing business investment requirements.",
+          "basis": "explicit_assumption",
+          "rationale": "This is required to the extent the conclusion generalizes from the selected annual spending measure to the business characteristic."
+        }
+      ]
+    },
+    {
+      "id": "I02",
+      "description": "Assess capital intensity through the nature and scale of the FY2022 operating-asset base relative to an explicitly selected business-scale or asset-composition measure.",
+      "assumptions": [
+        "Verizon means Verizon Communications at consolidated company scope.",
+        "Select which operating assets count, gross or net valuation, closing or average balances, and the comparison standard.",
+        "Treat asset-base intensity as distinct from current-year spending intensity; neither is automatically controlling."
+      ],
+      "unresolved_ambiguities": [
+        "Physical fixed assets, leases, broader intangible operating assets and total invested capital are different capital definitions.",
+        "Asset share, assets relative to output and other justified comparisons need not yield the same classification.",
+        "The question supplies no numerical threshold, peer set or preferred capital definition."
+      ],
+      "required_facts": [
+        {
+          "id": "R06",
+          "description": "FY2022 relevant operating-asset balances/classifications and their relationship to business operations under the selected asset definition.",
+          "basis": "explicit_assumption",
+          "rationale": "This identifies the assets alleged to be required for operating output instead of presuming all assets represent productive capital."
+        },
+        {
+          "id": "R07",
+          "description": "A comparably scoped scale or composition measure, such as FY2022 revenue or total assets, and any additional balances needed only if an average is selected.",
+          "basis": "explicit_assumption",
+          "rationale": "The chosen relative assessment determines its denominator and whether endpoint or average data are necessary."
+        },
+        {
+          "id": "R08",
+          "description": "Valuation basis, fiscal dates, currency, scale and reporting scope of the chosen inputs.",
+          "basis": "stated_convention",
+          "rationale": "Gross/net and stock/flow alignment affect the selected capital-intensity comparison."
+        },
+        {
+          "id": "R09",
+          "description": "An explicit qualitative standard or comparison basis, supported by comparison facts if the selected standard uses them.",
+          "basis": "explicit_assumption",
+          "rationale": "The question supplies no cutoff; the reasoning connecting asset dependence to the classification must be stated."
+        }
+      ]
+    }
+  ],
+  "excerpts": [
+    {
+      "evidence_id": "E001",
+      "start_line": 3853,
+      "end_line": 3884,
+      "lines": [
+        {
+          "line": 3853,
+          "page": 84,
+          "text": "                                                                                    or more, or if a Business customer has been a customer for 12 months or more, the customer is considered an \"established"
+        },
+        {
+          "line": 3854,
+          "page": 84,
+          "text": "                                                                                    customer.\"  For  established  customers,  the  credit  decision  and  ongoing  credit  monitoring  processes  rely  on  a  combination  of"
+        },
+        {
+          "line": 3855,
+          "page": 84,
+          "text": "                                                                                    internal and external data sources. If a Consumer customer has been a customer less than 45 days, or a Business customer has"
+        },
+        {
+          "line": 3856,
+          "page": 84,
+          "text": "                                                                                    been a customer for less than 12 months, the customer is considered a \"short-tenured customer.\" For short-tenured customers,"
+        },
+        {
+          "line": 3857,
+          "page": 84,
+          "text": "                                                                                    the credit decision and credit monitoring processes rely more heavily on external data sources."
+        },
+        {
+          "line": 3858,
+          "page": 84,
+          "text": "                                                                                    Available external credit data from credit reporting agencies along with internal data are used to create custom credit risk scores"
+        },
+        {
+          "line": 3859,
+          "page": 84,
+          "text": "                                                                                    for  Consumer  customers.  The  custom  credit  risk  score  is  generated  automatically  from  the  applicant’s  credit  data  using"
+        },
+        {
+          "line": 3860,
+          "page": 84,
+          "text": "                                                                                    proprietary custom credit models. The credit risk score measures the likelihood that the potential customer will become severely"
+        },
+        {
+          "line": 3861,
+          "page": 84,
+          "text": "                                                                                    delinquent and be disconnected for non-payment. For a small portion of short-tenured customer applications, a traditional credit"
+        },
+        {
+          "line": 3862,
+          "page": 84,
+          "text": "                                                                                    report is not available from one of the national credit reporting agencies because the potential customer does not have sufficient"
+        },
+        {
+          "line": 3863,
+          "page": 84,
+          "text": "                                                                                    credit history. In those instances, alternative credit data is used for the risk assessment. For Business customers, we also verify"
+        },
+        {
+          "line": 3864,
+          "page": 84,
+          "text": "                                                                                    the existence of the business with external data sources."
+        },
+        {
+          "line": 3865,
+          "page": 84,
+          "text": "                                                                                    Based on the custom credit risk score, we assign each customer a credit class, each of which has specified offers of credit. This"
+        },
+        {
+          "line": 3866,
+          "page": 84,
+          "text": "                                                                                    includes  an  account  level  spending  limit  and  a  maximum  amount  of  credit  allowed  per  device  for  Consumer  customers  or  a"
+        },
+        {
+          "line": 3867,
+          "page": 84,
+          "text": "                                                                                    required down payment percentage for Business customers."
+        },
+        {
+          "line": 3868,
+          "page": 84,
+          "text": "                                                                                    Credit Quality Information"
+        },
+        {
+          "line": 3869,
+          "page": 84,
+          "text": "                                                                                    Subsequent to origination, we assess indicators for the quality of our wireless device payment plan agreement portfolio using two"
+        },
+        {
+          "line": 3870,
+          "page": 84,
+          "text": "                                                                                    models, one for new customers and one for existing customers. The model for new customers pools all Consumer and Business"
+        },
+        {
+          "line": 3871,
+          "page": 84,
+          "text": "                                                                                    wireless customers based on less than 210 days as \"new customers.\" The model for existing customers pools all Consumer and"
+        },
+        {
+          "line": 3872,
+          "page": 84,
+          "text": "                                                                                    Business wireless customers based on 210 days or more as \"existing customers.\""
+        },
+        {
+          "line": 3873,
+          "page": 84,
+          "text": "                                                                                    The following table presents device payment plan agreement receivables, at amortized cost, as of December 31, 2022, by credit"
+        },
+        {
+          "line": 3874,
+          "page": 84,
+          "text": "                                                                                    quality indicator and year of origination:"
+        },
+        {
+          "line": 3875,
+          "page": 84,
+          "text": "                                                                                                                                                              Year of Origination(1)"
+        },
+        {
+          "line": 3876,
+          "page": 84,
+          "text": "                                                                      (dollars in millions)                                                            2022                  2021          Prior to 2021                    Total"
+        },
+        {
+          "line": 3877,
+          "page": 84,
+          "text": "                                                                      New customers                                                        $             2,761   $                904 $                     24 $             3,689"
+        },
+        {
+          "line": 3878,
+          "page": 84,
+          "text": "                                                                      Existing customers                                                                                                                                           16,312 5,544 164 22,020"
+        },
+        {
+          "line": 3879,
+          "page": 84,
+          "text": "(1) Includes accounts that have been suspended at a point in time. Total                                                                   $           19,073    $             6,448  $                   188  $           25,709"
+        },
+        {
+          "line": 3880,
+          "page": 84,
+          "text": "The data presented in the table above was last updated on December 31, 2022."
+        },
+        {
+          "line": 3881,
+          "page": 84,
+          "text": "We assess indicators for the quality of our wireless service receivables portfolio as one overall pool. As of December 31, 2022,"
+        },
+        {
+          "line": 3882,
+          "page": 84,
+          "text": "wireless service receivables, at amortized cost, originating in 2022 and 2021 were $5.1 billion and $58 million, respectively."
+        },
+        {
+          "line": 3883,
+          "page": 84,
+          "text": "Allowance for Credit Losses"
+        },
+        {
+          "line": 3884,
+          "page": 84,
+          "text": "The credit quality indicators are used in determining the estimated amount and the timing of expected credit losses for the device"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E002",
+      "start_line": 2532,
+      "end_line": 2533,
+      "lines": [
+        {
+          "line": 2532,
+          "page": 56,
+          "text": "                                                                                                                                       Consolidated Balance Sheets"
+        },
+        {
+          "line": 2533,
+          "page": 56,
+          "text": "                                                                                                                                       Verizon Communications Inc. and Subsidiaries"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E003",
+      "start_line": 2554,
+      "end_line": 2554,
+      "lines": [
+        {
+          "line": 2554,
+          "page": 56,
+          "text": "                                                                                                                        Total assets                                                                                                            $      379,680     $      366,596"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E004",
+      "start_line": 2534,
+      "end_line": 2535,
+      "lines": [
+        {
+          "line": 2534,
+          "page": 56,
+          "text": "                                                                                                                                                                                                                            (dollars in millions, except per share amounts)"
+        },
+        {
+          "line": 2535,
+          "page": 56,
+          "text": "                                                                                                                        At December 31,                                                                                                                    2022               2021"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E005",
+      "start_line": 1003,
+      "end_line": 1034,
+      "lines": [
+        {
+          "line": 1003,
+          "page": 23,
+          "text": "                                                                                                                                                                            benefit related costs and interest and financing expenses. Corporate and other also includes the historical results of divested"
+        },
+        {
+          "line": 1004,
+          "page": 23,
+          "text": "                                                                                                                                                                            businesses, including Verizon Media Group (Verizon Media) divested in September 2021, and other adjustments and gains and"
+        },
+        {
+          "line": 1005,
+          "page": 23,
+          "text": "                                                                                                                                                                            losses that are not allocated in assessing segment performance due to their nature. Although such transactions are excluded"
+        },
+        {
+          "line": 1006,
+          "page": 23,
+          "text": "                                                                                                                                                                            from  the  business  segment  results,  they  are  included  in  reported  consolidated  earnings.  Gains  and  losses  from  these"
+        },
+        {
+          "line": 1007,
+          "page": 23,
+          "text": "                                                                                                                                                                            transactions that are not individually significant are included in segment results as these items are included in the chief operating"
+        },
+        {
+          "line": 1008,
+          "page": 23,
+          "text": "                                                                                                                                                                            decision  maker’s  assessment  of  segment  performance.  See  \"Consolidated  Results  of  Operations\"  for  additional  information"
+        },
+        {
+          "line": 1009,
+          "page": 23,
+          "text": "                                                                                                                                                                            regarding Corporate and other results."
+        },
+        {
+          "line": 1010,
+          "page": 23,
+          "text": "                                                                                                                                                                            Capital Expenditures and Investments"
+        },
+        {
+          "line": 1011,
+          "page": 23,
+          "text": "                                                                                                                                                             We continue to invest in our wireless networks, high-speed fiber and other advanced technologies to position ourselves at the"
+        },
+        {
+          "line": 1012,
+          "page": 23,
+          "text": "                                                                                                                                                             center of growth trends for the future. During the year ended December 31, 2022, these investments included $23.1 billion for"
+        },
+        {
+          "line": 1013,
+          "page": 23,
+          "text": "                                                                                                                                                             capital expenditures, inclusive of approximately $6.2 billion in C-Band related capital expenditures. See \"Cash Flows Used in"
+        },
+        {
+          "line": 1014,
+          "page": 23,
+          "text": "                                                                                                                                                             Investing Activities\" and \"Liquidity and Capital Resources\" for additional information. We believe that our investments aimed at"
+        },
+        {
+          "line": 1015,
+          "page": 23,
+          "text": "                                                                                                                                                             expanding our portfolio of products and services will provide our customers with an efficient, reliable infrastructure for competing"
+        },
+        {
+          "line": 1016,
+          "page": 23,
+          "text": "                                                                                                                                                             in the information economy."
+        },
+        {
+          "line": 1017,
+          "page": 23,
+          "text": "                                                                                                                                                             Global Network and Technology"
+        },
+        {
+          "line": 1018,
+          "page": 23,
+          "text": "                                                                                                                                                             We are focusing our capital spending on adding capacity and density to our 4G Long-Term Evolution (LTE) network, while also"
+        },
+        {
+          "line": 1019,
+          "page": 23,
+          "text": "                                                                                                                                                             building our next generation 5G network. We are densifying our networks by utilizing small cell technology, in-building solutions"
+        },
+        {
+          "line": 1020,
+          "page": 23,
+          "text": "                                                                                                                                                             and  distributed  antenna  systems.  Network  densification  enables  us  to  add  capacity  to  address  increasing  mobile  video"
+        },
+        {
+          "line": 1021,
+          "page": 23,
+          "text": "                                                                                                                                                             consumption and the growing demand for IoT products and services on our 4G LTE and 5G networks. Over the past several"
+        },
+        {
+          "line": 1022,
+          "page": 23,
+          "text": "                                                                                                                                                             years, we have been leading the development of 5G wireless technology industry standards and the ecosystems for fixed and"
+        },
+        {
+          "line": 1023,
+          "page": 23,
+          "text": "                                                                                                                                                             mobile 5G wireless services. 5G technology enables higher throughput and lower latency than the 4G LTE technology and allows"
+        },
+        {
+          "line": 1024,
+          "page": 23,
+          "text": "                                                                                                                                                             our networks to handle more traffic as the number of internet-connected devices grows. In January 2022, we began deploying C-"
+        },
+        {
+          "line": 1025,
+          "page": 23,
+          "text": "                                                                                                                                                             Band spectrum, which has been built out to cover approximately 189 million POPs in the U.S. as of December 31, 2022. We"
+        },
+        {
+          "line": 1026,
+          "page": 23,
+          "text": "                                                                                                                                                             expect  to  continue  deploying  C-Band  spectrum  across  the  continental  U.S.  as  more  and  more  of  the  spectrum  becomes"
+        },
+        {
+          "line": 1027,
+          "page": 23,
+          "text": "                                                                                                                                                             available for our use. We use low and mid-band spectrum and dynamic spectrum sharing (DSS) technology, to allow 5G service"
+        },
+        {
+          "line": 1028,
+          "page": 23,
+          "text": "                                                                                                                                                             to  run  simultaneously  with  4G  LTE  on  multiple  spectrum  bands.  With  DSS,  whenever  customers  move  outside  Verizon’s"
+        },
+        {
+          "line": 1029,
+          "page": 23,
+          "text": "                                                                                                                                                             millimeter wave and C-Band coverage areas, their 5G-enabled devices will remain on 5G technology using the lower spectrum"
+        },
+        {
+          "line": 1030,
+          "page": 23,
+          "text": "                                                                                                                                                             bands where this network is available. This allows us to more fully and effectively utilize our current spectrum resources to serve"
+        },
+        {
+          "line": 1031,
+          "page": 23,
+          "text": "                                                                                                                                                             both 4G and 5G customers."
+        },
+        {
+          "line": 1032,
+          "page": 23,
+          "text": "                                                                                                                                     (dollars in millions) To  compensate  for  the  shrinking  market  for  traditional  copper-based  products,  we  continue  to  build  fiber-based  networks"
+        },
+        {
+          "line": 1033,
+          "page": 23,
+          "text": "                                                                                                                                  Increase/(Decrease) supporting data, video and advanced business services - areas where demand for reliable high-speed connections is growing."
+        },
+        {
+          "line": 1034,
+          "page": 23,
+          "text": "Years Ended December 31,                                                                                2022           2021          2022 vs. 2021           We  are  transforming  the  architecture  of  our  networks  into  our  Intelligent  Edge  Network,  providing  improved  efficiency  and"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E006",
+      "start_line": 1032,
+      "end_line": 1032,
+      "lines": [
+        {
+          "line": 1032,
+          "page": 23,
+          "text": "                                                                                                                                     (dollars in millions) To  compensate  for  the  shrinking  market  for  traditional  copper-based  products,  we  continue  to  build  fiber-based  networks"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E007",
+      "start_line": 1034,
+      "end_line": 1034,
+      "lines": [
+        {
+          "line": 1034,
+          "page": 23,
+          "text": "Years Ended December 31,                                                                                2022           2021          2022 vs. 2021           We  are  transforming  the  architecture  of  our  networks  into  our  Intelligent  Edge  Network,  providing  improved  efficiency  and"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E008",
+      "start_line": 4378,
+      "end_line": 4394,
+      "lines": [
+        {
+          "line": 4378,
+          "page": 96,
+          "text": "                                                                               such as multiple broker quotes."
+        },
+        {
+          "line": 4379,
+          "page": 96,
+          "text": "                                                                               Commingled funds not traded on national exchanges are priced by the custodian or fund's administrator at their net asset value"
+        },
+        {
+          "line": 4380,
+          "page": 96,
+          "text": "                                                                               (NAV). Commingled funds held by third-party custodians appointed by the fund managers provide the fund managers with a NAV."
+        },
+        {
+          "line": 4381,
+          "page": 96,
+          "text": "                                                                               The fund managers have the responsibility for providing this information to the custodian of the respective plan."
+        },
+        {
+          "line": 4382,
+          "page": 96,
+          "text": "                                                                               The  investment  manager  of  the  entity  values  venture  capital,  corporate  finance  and  natural  resource  limited  partnership"
+        },
+        {
+          "line": 4383,
+          "page": 96,
+          "text": "                                                                               investments. Real estate investments are valued at amounts based upon appraisal reports prepared by either independent real"
+        },
+        {
+          "line": 4384,
+          "page": 96,
+          "text": "                                                                               estate  appraisers  or  the  investment  manager  using  discounted  cash  flows  or  market  comparable  data.  Loans  secured  by"
+        },
+        {
+          "line": 4385,
+          "page": 96,
+          "text": "                                                                               mortgages are carried at the lesser of the unpaid balance or appraised value of the underlying properties. The values assigned"
+        },
+        {
+          "line": 4386,
+          "page": 96,
+          "text": "                                                                               to these investments are based upon available and current market information and do not necessarily represent amounts that"
+        },
+        {
+          "line": 4387,
+          "page": 96,
+          "text": "                                                                               might ultimately be realized. Because of the inherent uncertainty of valuation, estimated fair values might differ significantly from"
+        },
+        {
+          "line": 4388,
+          "page": 96,
+          "text": "                                                                               the values that would have been used had a ready market for the securities existed. These differences could be material."
+        },
+        {
+          "line": 4389,
+          "page": 96,
+          "text": "                                                                               Forward currency contracts, futures, and options are valued by the trustee at the exchange rates and market prices prevailing on"
+        },
+        {
+          "line": 4390,
+          "page": 96,
+          "text": "                                                                               the last business day of the year. Both exchange rates and market prices are readily available from published sources. These"
+        },
+        {
+          "line": 4391,
+          "page": 96,
+          "text": "                                                                               securities are classified by the asset class of the underlying holdings."
+        },
+        {
+          "line": 4392,
+          "page": 96,
+          "text": "                                                                               Hedge funds are valued by the custodian at NAV based on statements received from the investment manager. These funds are"
+        },
+        {
+          "line": 4393,
+          "page": 96,
+          "text": "                                                                               valued in accordance with the terms of their corresponding offering or private placement memoranda."
+        },
+        {
+          "line": 4394,
+          "page": 96,
+          "text": "                                                                               Verizon 2022 Annual Report on Form 10-K                                96"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E009",
+      "start_line": 1040,
+      "end_line": 1040,
+      "lines": [
+        {
+          "line": 1040,
+          "page": 23,
+          "text": "Consolidated Operating Revenues                                                                  $  136,835     $  133,613      $     3,222          2.4      Consolidated Results of Operations"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E010",
+      "start_line": 933,
+      "end_line": 956,
+      "lines": [
+        {
+          "line": 933,
+          "page": 21,
+          "text": "     Item 7.    Management’s Discussion and Analysis of Financial Condition and Results of Operations Overview"
+        },
+        {
+          "line": 934,
+          "page": 21,
+          "text": "   21                                 Verizon 2022 Annual Report on Form 10-KVerizon  Communications  Inc.  (the  Company)  is  a  holding  company  that,  acting  through  its  subsidiaries  (together  with  the"
+        },
+        {
+          "line": 935,
+          "page": 21,
+          "text": "    Company,  collectively,  Verizon),  is  one  of  the  world’s  leading  providers  of  communications,  technology,  information  and"
+        },
+        {
+          "line": 936,
+          "page": 21,
+          "text": "    entertainment products and services to consumers, businesses and government entities. With a presence around the world, we"
+        },
+        {
+          "line": 937,
+          "page": 21,
+          "text": "    offer data, video and voice services and solutions on our networks and platforms that are designed to meet customers’ demand"
+        },
+        {
+          "line": 938,
+          "page": 21,
+          "text": "    for mobility, reliable network connectivity, security and control."
+        },
+        {
+          "line": 939,
+          "page": 21,
+          "text": "    To compete effectively in today’s dynamic marketplace, we are focused on the capabilities of our high-performing networks to"
+        },
+        {
+          "line": 940,
+          "page": 21,
+          "text": "    drive growth based on delivering what customers want and need in the digital world. In 2022, we focused on maintaining our"
+        },
+        {
+          "line": 941,
+          "page": 21,
+          "text": "    network leadership, including by rapidly deploying C-Band spectrum; retaining and growing our high-quality customer base while"
+        },
+        {
+          "line": 942,
+          "page": 21,
+          "text": "    balancing profitability in challenging market conditions; and driving monetization of our networks, platforms and solutions. We are"
+        },
+        {
+          "line": 943,
+          "page": 21,
+          "text": "    creating business value by earning the trust of our stakeholders, limiting our environmental impact and supporting our customer"
+        },
+        {
+          "line": 944,
+          "page": 21,
+          "text": "    base growth while creating social benefit through our products and services. Our strategy requires significant capital investments"
+        },
+        {
+          "line": 945,
+          "page": 21,
+          "text": "    primarily  to  acquire  wireless  spectrum,  put  the  spectrum  into  service,  provide  additional  capacity  for  growth  in  our  networks,"
+        },
+        {
+          "line": 946,
+          "page": 21,
+          "text": "    invest  in  the  fiber  that  supports  our  businesses,  evolve  and  maintain  our  networks  and  develop  and  maintain  significant"
+        },
+        {
+          "line": 947,
+          "page": 21,
+          "text": "    advanced information technology systems and data system capabilities. 2022 was a peak year of capital investment for us as we"
+        },
+        {
+          "line": 948,
+          "page": 21,
+          "text": "    rapidly deployed C-Band spectrum. We believe that this spectrum, together with our industry leading millimeter wave spectrum"
+        },
+        {
+          "line": 949,
+          "page": 21,
+          "text": "    holding, 4G LTE network and fiber infrastructure, will drive innovative products and services and fuel our growth."
+        },
+        {
+          "line": 950,
+          "page": 21,
+          "text": "    We are consistently deploying new network architecture and technologies to secure our leadership in both fourth-generation (4G)"
+        },
+        {
+          "line": 951,
+          "page": 21,
+          "text": "    and fifth-generation (5G) wireless networks. We expect that our next-generation multi-use platform, which we call the Intelligent"
+        },
+        {
+          "line": 952,
+          "page": 21,
+          "text": "    Edge Network, will simplify operations by eliminating legacy network elements, speed the deployment of 5G wireless technology"
+        },
+        {
+          "line": 953,
+          "page": 21,
+          "text": "    and create new opportunities in the business market in a cost efficient manner. Our network leadership is the hallmark of our"
+        },
+        {
+          "line": 954,
+          "page": 21,
+          "text": "    brand and the foundation for the connectivity, platforms and solutions upon which we build our competitive advantage."
+        },
+        {
+          "line": 955,
+          "page": 21,
+          "text": "    Highlights of Our 2022 Financial Results"
+        },
+        {
+          "line": 956,
+          "page": 21,
+          "text": "    (dollars in millions)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E011",
+      "start_line": 546,
+      "end_line": 577,
+      "lines": [
+        {
+          "line": 546,
+          "page": 12,
+          "text": "               penalties  for  non-compliance.  Generally,  attention  to  privacy  and  data  security  requirements  is  increasing  at  all  levels  of"
+        },
+        {
+          "line": 547,
+          "page": 12,
+          "text": "               government  globally,  and  privacy-related  legislation  has  been  introduced  or  is  under  consideration  in  many  locations.  These"
+        },
+        {
+          "line": 548,
+          "page": 12,
+          "text": "               regulations could have a significant impact on our businesses."
+        },
+        {
+          "line": 549,
+          "page": 12,
+          "text": "               Public Safety and Cybersecurity"
+        },
+        {
+          "line": 550,
+          "page": 12,
+          "text": "               The FCC plays a role in addressing public safety concerns by regulating emergency communications services and mandating"
+        },
+        {
+          "line": 551,
+          "page": 12,
+          "text": "               widespread availability of both media (broadcast/cable) and wireless emergency alerting services. In response to cyber attacks"
+        },
+        {
+          "line": 552,
+          "page": 12,
+          "text": "               that have occurred or could occur in the future, however, the FCC or other regulators may attempt to increase regulation of the"
+        },
+        {
+          "line": 553,
+          "page": 12,
+          "text": "               cybersecurity practices of providers. The FCC is also addressing the use by American companies of equipment produced by"
+        },
+        {
+          "line": 554,
+          "page": 12,
+          "text": "               certain companies deemed to cause potential national security risks. Verizon does not currently use equipment in its networks"
+        },
+        {
+          "line": 555,
+          "page": 12,
+          "text": "               from vendors under such restrictions. In addition, due to recent natural disasters, federal and state agencies may attempt to"
+        },
+        {
+          "line": 556,
+          "page": 12,
+          "text": "               impose  regulations  to  ensure  continuity  of  service  during  disasters.  For  example,  the  FCC  adopted  rules  requiring  wireless"
+        },
+        {
+          "line": 557,
+          "page": 12,
+          "text": "               providers  to  support  roaming  on  each  other’s  networks  during  disasters,  and  the  California  Public  Utilities  Commission  has"
+        },
+        {
+          "line": 558,
+          "page": 12,
+          "text": "               imposed regulations relating to back-up power for communications facilities."
+        },
+        {
+          "line": 559,
+          "page": 12,
+          "text": "               Intercarrier Compensation and Network Access"
+        },
+        {
+          "line": 560,
+          "page": 12,
+          "text": "               The FCC regulates some of the rates that carriers pay each other for the exchange of voice traffic (particularly traditional wireline"
+        },
+        {
+          "line": 561,
+          "page": 12,
+          "text": "               traffic) over different networks and other aspects of interconnection for some voice services. The FCC also regulates some of the"
+        },
+        {
+          "line": 562,
+          "page": 12,
+          "text": "               rates and terms and conditions for certain wireline \"business data services\" and other services and network facilities. Verizon is"
+        },
+        {
+          "line": 563,
+          "page": 12,
+          "text": "               both a seller and a buyer of these services, and both makes and receives interconnection payments."
+        },
+        {
+          "line": 564,
+          "page": 12,
+          "text": "Human Capital Resources"
+        },
+        {
+          "line": 565,
+          "page": 12,
+          "text": "At Verizon, we know that our people are one of our most valuable assets. In order to realize our core business strategy, we have"
+        },
+        {
+          "line": 566,
+          "page": 12,
+          "text": "developed human capital programs and practices that support, develop and care for our employees from the time they join our"
+        },
+        {
+          "line": 567,
+          "page": 12,
+          "text": "team through the entirety of their careers with Verizon. These programs are centered on the following principles:"
+        },
+        {
+          "line": 568,
+          "page": 12,
+          "text": "     •     Attract the right talent for our future and maintain a diverse workforce with high-value skills and expertise."
+        },
+        {
+          "line": 569,
+          "page": 12,
+          "text": "     •     Develop our employees to their full potential through best-in-class educational programs and exceptional development"
+        },
+        {
+          "line": 570,
+          "page": 12,
+          "text": "           experiences and create a culture of continuous learning and engagement."
+        },
+        {
+          "line": 571,
+          "page": 12,
+          "text": "     •     Inspire  individuals  to  build  a  career  at  Verizon  by  providing  meaningful  work  and  upskilling  opportunities  and"
+        },
+        {
+          "line": 572,
+          "page": 12,
+          "text": "           establishing an inclusive work environment for all."
+        },
+        {
+          "line": 573,
+          "page": 12,
+          "text": "Verizon is committed to being an employer of choice. With approximately 117,100 employees on a full-time equivalent basis as of"
+        },
+        {
+          "line": 574,
+          "page": 12,
+          "text": "December  31,  2022,  89%  of  whom  are  based  in  the  U.S.,  we  know  that  we  need  employees  with  diverse  backgrounds,"
+        },
+        {
+          "line": 575,
+          "page": 12,
+          "text": "experiences and perspectives to best meet the needs of the diverse customers and communities we serve. Our human capital"
+        },
+        {
+          "line": 576,
+          "page": 12,
+          "text": "programs and practices are designed to create a workplace where employees are empowered to share their authentic selves"
+        },
+        {
+          "line": 577,
+          "page": 12,
+          "text": "and  feel  seen  and  heard  as  vital  contributors  to  Verizon’s  corporate  purpose.  In  addition,  Verizon  has  extensive  on-the-job"
+        }
+      ]
+    }
+  ],
+  "review_only_pages": [
+    {
+      "page": 12,
+      "review_only": true,
+      "start_line": 546,
+      "end_line": 598,
+      "lines": [
+        {
+          "line": 546,
+          "page": 12,
+          "text": "               penalties  for  non-compliance.  Generally,  attention  to  privacy  and  data  security  requirements  is  increasing  at  all  levels  of"
+        },
+        {
+          "line": 547,
+          "page": 12,
+          "text": "               government  globally,  and  privacy-related  legislation  has  been  introduced  or  is  under  consideration  in  many  locations.  These"
+        },
+        {
+          "line": 548,
+          "page": 12,
+          "text": "               regulations could have a significant impact on our businesses."
+        },
+        {
+          "line": 549,
+          "page": 12,
+          "text": "               Public Safety and Cybersecurity"
+        },
+        {
+          "line": 550,
+          "page": 12,
+          "text": "               The FCC plays a role in addressing public safety concerns by regulating emergency communications services and mandating"
+        },
+        {
+          "line": 551,
+          "page": 12,
+          "text": "               widespread availability of both media (broadcast/cable) and wireless emergency alerting services. In response to cyber attacks"
+        },
+        {
+          "line": 552,
+          "page": 12,
+          "text": "               that have occurred or could occur in the future, however, the FCC or other regulators may attempt to increase regulation of the"
+        },
+        {
+          "line": 553,
+          "page": 12,
+          "text": "               cybersecurity practices of providers. The FCC is also addressing the use by American companies of equipment produced by"
+        },
+        {
+          "line": 554,
+          "page": 12,
+          "text": "               certain companies deemed to cause potential national security risks. Verizon does not currently use equipment in its networks"
+        },
+        {
+          "line": 555,
+          "page": 12,
+          "text": "               from vendors under such restrictions. In addition, due to recent natural disasters, federal and state agencies may attempt to"
+        },
+        {
+          "line": 556,
+          "page": 12,
+          "text": "               impose  regulations  to  ensure  continuity  of  service  during  disasters.  For  example,  the  FCC  adopted  rules  requiring  wireless"
+        },
+        {
+          "line": 557,
+          "page": 12,
+          "text": "               providers  to  support  roaming  on  each  other’s  networks  during  disasters,  and  the  California  Public  Utilities  Commission  has"
+        },
+        {
+          "line": 558,
+          "page": 12,
+          "text": "               imposed regulations relating to back-up power for communications facilities."
+        },
+        {
+          "line": 559,
+          "page": 12,
+          "text": "               Intercarrier Compensation and Network Access"
+        },
+        {
+          "line": 560,
+          "page": 12,
+          "text": "               The FCC regulates some of the rates that carriers pay each other for the exchange of voice traffic (particularly traditional wireline"
+        },
+        {
+          "line": 561,
+          "page": 12,
+          "text": "               traffic) over different networks and other aspects of interconnection for some voice services. The FCC also regulates some of the"
+        },
+        {
+          "line": 562,
+          "page": 12,
+          "text": "               rates and terms and conditions for certain wireline \"business data services\" and other services and network facilities. Verizon is"
+        },
+        {
+          "line": 563,
+          "page": 12,
+          "text": "               both a seller and a buyer of these services, and both makes and receives interconnection payments."
+        },
+        {
+          "line": 564,
+          "page": 12,
+          "text": "Human Capital Resources"
+        },
+        {
+          "line": 565,
+          "page": 12,
+          "text": "At Verizon, we know that our people are one of our most valuable assets. In order to realize our core business strategy, we have"
+        },
+        {
+          "line": 566,
+          "page": 12,
+          "text": "developed human capital programs and practices that support, develop and care for our employees from the time they join our"
+        },
+        {
+          "line": 567,
+          "page": 12,
+          "text": "team through the entirety of their careers with Verizon. These programs are centered on the following principles:"
+        },
+        {
+          "line": 568,
+          "page": 12,
+          "text": "     •     Attract the right talent for our future and maintain a diverse workforce with high-value skills and expertise."
+        },
+        {
+          "line": 569,
+          "page": 12,
+          "text": "     •     Develop our employees to their full potential through best-in-class educational programs and exceptional development"
+        },
+        {
+          "line": 570,
+          "page": 12,
+          "text": "           experiences and create a culture of continuous learning and engagement."
+        },
+        {
+          "line": 571,
+          "page": 12,
+          "text": "     •     Inspire  individuals  to  build  a  career  at  Verizon  by  providing  meaningful  work  and  upskilling  opportunities  and"
+        },
+        {
+          "line": 572,
+          "page": 12,
+          "text": "           establishing an inclusive work environment for all."
+        },
+        {
+          "line": 573,
+          "page": 12,
+          "text": "Verizon is committed to being an employer of choice. With approximately 117,100 employees on a full-time equivalent basis as of"
+        },
+        {
+          "line": 574,
+          "page": 12,
+          "text": "December  31,  2022,  89%  of  whom  are  based  in  the  U.S.,  we  know  that  we  need  employees  with  diverse  backgrounds,"
+        },
+        {
+          "line": 575,
+          "page": 12,
+          "text": "experiences and perspectives to best meet the needs of the diverse customers and communities we serve. Our human capital"
+        },
+        {
+          "line": 576,
+          "page": 12,
+          "text": "programs and practices are designed to create a workplace where employees are empowered to share their authentic selves"
+        },
+        {
+          "line": 577,
+          "page": 12,
+          "text": "and  feel  seen  and  heard  as  vital  contributors  to  Verizon’s  corporate  purpose.  In  addition,  Verizon  has  extensive  on-the-job"
+        },
+        {
+          "line": 578,
+          "page": 12,
+          "text": "training opportunities, tuition reimbursement programs and career development support to enable our employees to maximize"
+        },
+        {
+          "line": 579,
+          "page": 12,
+          "text": "their  potential  and  thrive  professionally.  Our  long-standing  commitment  to  diversity  and  inclusion  has  resulted  in  a  strong"
+        },
+        {
+          "line": 580,
+          "page": 12,
+          "text": "representation of women and people of color. As of December 31, 2022, Verizon's global workforce was approximately 66.5%"
+        },
+        {
+          "line": 581,
+          "page": 12,
+          "text": "male, 33.3% female and 0.2% unknown or undeclared, and the race/ethnicity of our U.S. workforce was 52.5% White, 20.0%"
+        },
+        {
+          "line": 582,
+          "page": 12,
+          "text": "Black, 12.9% Hispanic, 8.2% Asian, 0.5% American Indian/Alaskan Native, 0.3% Native Hawaiian/Pacific Islander, 2.7% two or"
+        },
+        {
+          "line": 583,
+          "page": 12,
+          "text": "more races, and 2.9% unknown or undeclared. Women represented 36.4% of U.S. senior leadership (vice president level and"
+        },
+        {
+          "line": 584,
+          "page": 12,
+          "text": "above). People of color represented 32.5% of U.S. senior leadership."
+        },
+        {
+          "line": 585,
+          "page": 12,
+          "text": "Verizon respects our employees’ rights to freedom of association and collective bargaining in compliance with applicable law,"
+        },
+        {
+          "line": 586,
+          "page": 12,
+          "text": "including  the  right  to  join  or  not  join  labor  unions.  We  have  a  long  history  of  working  with  the  Communications  Workers  of"
+        },
+        {
+          "line": 587,
+          "page": 12,
+          "text": "America and the International Brotherhood of Electrical Workers—the two unions that in total represent approximately 22.5% of"
+        },
+        {
+          "line": 588,
+          "page": 12,
+          "text": "our  employees  as  of  December  31,  2022.  The  current  collective  bargaining  agreements  covering  our  union-represented"
+        },
+        {
+          "line": 589,
+          "page": 12,
+          "text": "employees who serve customers in our Mid-Atlantic and Northeast service areas extend through August 1, 2026. In addition,"
+        },
+        {
+          "line": 590,
+          "page": 12,
+          "text": "where applicable outside of the U.S., we engage with employee representative bodies such as works council. Verizon meets with"
+        },
+        {
+          "line": 591,
+          "page": 12,
+          "text": "U.S.  national  and  local  union  leaders,  as  well  as  works  council  leaders  outside  the  U.S.,  to  talk  about  key  business  topics,"
+        },
+        {
+          "line": 592,
+          "page": 12,
+          "text": "including  safety,  customer  service,  plans  to  improve  operational  processes,  our  business  performance  and  the  impacts  that"
+        },
+        {
+          "line": 593,
+          "page": 12,
+          "text": "changing technology and competition are having on our customers, employees and business strategy."
+        },
+        {
+          "line": 594,
+          "page": 12,
+          "text": "For  a  discussion  of  the  oversight  provided  by  the  Company's  Board  of  Directors  over  Verizon's  human  capital  management"
+        },
+        {
+          "line": 595,
+          "page": 12,
+          "text": "practices, see the section entitled \"Governance — Our Governance Framework — Oversight of human capital management\" in"
+        },
+        {
+          "line": 596,
+          "page": 12,
+          "text": "our  definitive  Proxy  Statement  to  be  filed  with  the  Securities  and  Exchange  Commission  and  delivered  to  shareholders  in"
+        },
+        {
+          "line": 597,
+          "page": 12,
+          "text": "connection with our 2023 Annual Meeting of Shareholders."
+        },
+        {
+          "line": 598,
+          "page": 12,
+          "text": "Verizon 2022 Annual Report on Form 10-K                                12"
+        }
+      ]
+    },
+    {
+      "page": 21,
+      "review_only": true,
+      "start_line": 933,
+      "end_line": 956,
+      "lines": [
+        {
+          "line": 933,
+          "page": 21,
+          "text": "     Item 7.    Management’s Discussion and Analysis of Financial Condition and Results of Operations Overview"
+        },
+        {
+          "line": 934,
+          "page": 21,
+          "text": "   21                                 Verizon 2022 Annual Report on Form 10-KVerizon  Communications  Inc.  (the  Company)  is  a  holding  company  that,  acting  through  its  subsidiaries  (together  with  the"
+        },
+        {
+          "line": 935,
+          "page": 21,
+          "text": "    Company,  collectively,  Verizon),  is  one  of  the  world’s  leading  providers  of  communications,  technology,  information  and"
+        },
+        {
+          "line": 936,
+          "page": 21,
+          "text": "    entertainment products and services to consumers, businesses and government entities. With a presence around the world, we"
+        },
+        {
+          "line": 937,
+          "page": 21,
+          "text": "    offer data, video and voice services and solutions on our networks and platforms that are designed to meet customers’ demand"
+        },
+        {
+          "line": 938,
+          "page": 21,
+          "text": "    for mobility, reliable network connectivity, security and control."
+        },
+        {
+          "line": 939,
+          "page": 21,
+          "text": "    To compete effectively in today’s dynamic marketplace, we are focused on the capabilities of our high-performing networks to"
+        },
+        {
+          "line": 940,
+          "page": 21,
+          "text": "    drive growth based on delivering what customers want and need in the digital world. In 2022, we focused on maintaining our"
+        },
+        {
+          "line": 941,
+          "page": 21,
+          "text": "    network leadership, including by rapidly deploying C-Band spectrum; retaining and growing our high-quality customer base while"
+        },
+        {
+          "line": 942,
+          "page": 21,
+          "text": "    balancing profitability in challenging market conditions; and driving monetization of our networks, platforms and solutions. We are"
+        },
+        {
+          "line": 943,
+          "page": 21,
+          "text": "    creating business value by earning the trust of our stakeholders, limiting our environmental impact and supporting our customer"
+        },
+        {
+          "line": 944,
+          "page": 21,
+          "text": "    base growth while creating social benefit through our products and services. Our strategy requires significant capital investments"
+        },
+        {
+          "line": 945,
+          "page": 21,
+          "text": "    primarily  to  acquire  wireless  spectrum,  put  the  spectrum  into  service,  provide  additional  capacity  for  growth  in  our  networks,"
+        },
+        {
+          "line": 946,
+          "page": 21,
+          "text": "    invest  in  the  fiber  that  supports  our  businesses,  evolve  and  maintain  our  networks  and  develop  and  maintain  significant"
+        },
+        {
+          "line": 947,
+          "page": 21,
+          "text": "    advanced information technology systems and data system capabilities. 2022 was a peak year of capital investment for us as we"
+        },
+        {
+          "line": 948,
+          "page": 21,
+          "text": "    rapidly deployed C-Band spectrum. We believe that this spectrum, together with our industry leading millimeter wave spectrum"
+        },
+        {
+          "line": 949,
+          "page": 21,
+          "text": "    holding, 4G LTE network and fiber infrastructure, will drive innovative products and services and fuel our growth."
+        },
+        {
+          "line": 950,
+          "page": 21,
+          "text": "    We are consistently deploying new network architecture and technologies to secure our leadership in both fourth-generation (4G)"
+        },
+        {
+          "line": 951,
+          "page": 21,
+          "text": "    and fifth-generation (5G) wireless networks. We expect that our next-generation multi-use platform, which we call the Intelligent"
+        },
+        {
+          "line": 952,
+          "page": 21,
+          "text": "    Edge Network, will simplify operations by eliminating legacy network elements, speed the deployment of 5G wireless technology"
+        },
+        {
+          "line": 953,
+          "page": 21,
+          "text": "    and create new opportunities in the business market in a cost efficient manner. Our network leadership is the hallmark of our"
+        },
+        {
+          "line": 954,
+          "page": 21,
+          "text": "    brand and the foundation for the connectivity, platforms and solutions upon which we build our competitive advantage."
+        },
+        {
+          "line": 955,
+          "page": 21,
+          "text": "    Highlights of Our 2022 Financial Results"
+        },
+        {
+          "line": 956,
+          "page": 21,
+          "text": "    (dollars in millions)"
+        }
+      ]
+    },
+    {
+      "page": 23,
+      "review_only": true,
+      "start_line": 1003,
+      "end_line": 1047,
+      "lines": [
+        {
+          "line": 1003,
+          "page": 23,
+          "text": "                                                                                                                                                                            benefit related costs and interest and financing expenses. Corporate and other also includes the historical results of divested"
+        },
+        {
+          "line": 1004,
+          "page": 23,
+          "text": "                                                                                                                                                                            businesses, including Verizon Media Group (Verizon Media) divested in September 2021, and other adjustments and gains and"
+        },
+        {
+          "line": 1005,
+          "page": 23,
+          "text": "                                                                                                                                                                            losses that are not allocated in assessing segment performance due to their nature. Although such transactions are excluded"
+        },
+        {
+          "line": 1006,
+          "page": 23,
+          "text": "                                                                                                                                                                            from  the  business  segment  results,  they  are  included  in  reported  consolidated  earnings.  Gains  and  losses  from  these"
+        },
+        {
+          "line": 1007,
+          "page": 23,
+          "text": "                                                                                                                                                                            transactions that are not individually significant are included in segment results as these items are included in the chief operating"
+        },
+        {
+          "line": 1008,
+          "page": 23,
+          "text": "                                                                                                                                                                            decision  maker’s  assessment  of  segment  performance.  See  \"Consolidated  Results  of  Operations\"  for  additional  information"
+        },
+        {
+          "line": 1009,
+          "page": 23,
+          "text": "                                                                                                                                                                            regarding Corporate and other results."
+        },
+        {
+          "line": 1010,
+          "page": 23,
+          "text": "                                                                                                                                                                            Capital Expenditures and Investments"
+        },
+        {
+          "line": 1011,
+          "page": 23,
+          "text": "                                                                                                                                                             We continue to invest in our wireless networks, high-speed fiber and other advanced technologies to position ourselves at the"
+        },
+        {
+          "line": 1012,
+          "page": 23,
+          "text": "                                                                                                                                                             center of growth trends for the future. During the year ended December 31, 2022, these investments included $23.1 billion for"
+        },
+        {
+          "line": 1013,
+          "page": 23,
+          "text": "                                                                                                                                                             capital expenditures, inclusive of approximately $6.2 billion in C-Band related capital expenditures. See \"Cash Flows Used in"
+        },
+        {
+          "line": 1014,
+          "page": 23,
+          "text": "                                                                                                                                                             Investing Activities\" and \"Liquidity and Capital Resources\" for additional information. We believe that our investments aimed at"
+        },
+        {
+          "line": 1015,
+          "page": 23,
+          "text": "                                                                                                                                                             expanding our portfolio of products and services will provide our customers with an efficient, reliable infrastructure for competing"
+        },
+        {
+          "line": 1016,
+          "page": 23,
+          "text": "                                                                                                                                                             in the information economy."
+        },
+        {
+          "line": 1017,
+          "page": 23,
+          "text": "                                                                                                                                                             Global Network and Technology"
+        },
+        {
+          "line": 1018,
+          "page": 23,
+          "text": "                                                                                                                                                             We are focusing our capital spending on adding capacity and density to our 4G Long-Term Evolution (LTE) network, while also"
+        },
+        {
+          "line": 1019,
+          "page": 23,
+          "text": "                                                                                                                                                             building our next generation 5G network. We are densifying our networks by utilizing small cell technology, in-building solutions"
+        },
+        {
+          "line": 1020,
+          "page": 23,
+          "text": "                                                                                                                                                             and  distributed  antenna  systems.  Network  densification  enables  us  to  add  capacity  to  address  increasing  mobile  video"
+        },
+        {
+          "line": 1021,
+          "page": 23,
+          "text": "                                                                                                                                                             consumption and the growing demand for IoT products and services on our 4G LTE and 5G networks. Over the past several"
+        },
+        {
+          "line": 1022,
+          "page": 23,
+          "text": "                                                                                                                                                             years, we have been leading the development of 5G wireless technology industry standards and the ecosystems for fixed and"
+        },
+        {
+          "line": 1023,
+          "page": 23,
+          "text": "                                                                                                                                                             mobile 5G wireless services. 5G technology enables higher throughput and lower latency than the 4G LTE technology and allows"
+        },
+        {
+          "line": 1024,
+          "page": 23,
+          "text": "                                                                                                                                                             our networks to handle more traffic as the number of internet-connected devices grows. In January 2022, we began deploying C-"
+        },
+        {
+          "line": 1025,
+          "page": 23,
+          "text": "                                                                                                                                                             Band spectrum, which has been built out to cover approximately 189 million POPs in the U.S. as of December 31, 2022. We"
+        },
+        {
+          "line": 1026,
+          "page": 23,
+          "text": "                                                                                                                                                             expect  to  continue  deploying  C-Band  spectrum  across  the  continental  U.S.  as  more  and  more  of  the  spectrum  becomes"
+        },
+        {
+          "line": 1027,
+          "page": 23,
+          "text": "                                                                                                                                                             available for our use. We use low and mid-band spectrum and dynamic spectrum sharing (DSS) technology, to allow 5G service"
+        },
+        {
+          "line": 1028,
+          "page": 23,
+          "text": "                                                                                                                                                             to  run  simultaneously  with  4G  LTE  on  multiple  spectrum  bands.  With  DSS,  whenever  customers  move  outside  Verizon’s"
+        },
+        {
+          "line": 1029,
+          "page": 23,
+          "text": "                                                                                                                                                             millimeter wave and C-Band coverage areas, their 5G-enabled devices will remain on 5G technology using the lower spectrum"
+        },
+        {
+          "line": 1030,
+          "page": 23,
+          "text": "                                                                                                                                                             bands where this network is available. This allows us to more fully and effectively utilize our current spectrum resources to serve"
+        },
+        {
+          "line": 1031,
+          "page": 23,
+          "text": "                                                                                                                                                             both 4G and 5G customers."
+        },
+        {
+          "line": 1032,
+          "page": 23,
+          "text": "                                                                                                                                     (dollars in millions) To  compensate  for  the  shrinking  market  for  traditional  copper-based  products,  we  continue  to  build  fiber-based  networks"
+        },
+        {
+          "line": 1033,
+          "page": 23,
+          "text": "                                                                                                                                  Increase/(Decrease) supporting data, video and advanced business services - areas where demand for reliable high-speed connections is growing."
+        },
+        {
+          "line": 1034,
+          "page": 23,
+          "text": "Years Ended December 31,                                                                                2022           2021          2022 vs. 2021           We  are  transforming  the  architecture  of  our  networks  into  our  Intelligent  Edge  Network,  providing  improved  efficiency  and"
+        },
+        {
+          "line": 1035,
+          "page": 23,
+          "text": "                                                                                                $  103,506      $    95,300     $     8,206          8.6 % virtualization, increased automation and opportunities for edge computing services that will support our fiber-based and radio"
+        },
+        {
+          "line": 1036,
+          "page": 23,
+          "text": "Consumer                                                                                                                                                     access  network  technologies.  We  expect  that  this  new  architecture  will  simplify  operations  by  eliminating  legacy  network"
+        },
+        {
+          "line": 1037,
+          "page": 23,
+          "text": "Business                                                                                             31,072          31,042              30          0.1     elements,  speed  the  deployment  of  5G  wireless  technology  and  create  new  opportunities  in  the  business  market  in  a  cost-"
+        },
+        {
+          "line": 1038,
+          "page": 23,
+          "text": "Corporate and other                                                                                   2,510           7,722          (5,212)       (67.5)    efficient manner."
+        },
+        {
+          "line": 1039,
+          "page": 23,
+          "text": "Eliminations                                                                                            (253)           (451)           198         43.9"
+        },
+        {
+          "line": 1040,
+          "page": 23,
+          "text": "Consolidated Operating Revenues                                                                  $  136,835     $  133,613      $     3,222          2.4      Consolidated Results of Operations"
+        },
+        {
+          "line": 1041,
+          "page": 23,
+          "text": "                            Consolidated operating revenues increased during 2022 compared to 2021, due to increases in our Consumer and Business In  this  section,  we  discuss  our  overall  results  of  operations  and  highlight  special  items  that  are  not  included  in  our  segment"
+        },
+        {
+          "line": 1042,
+          "page": 23,
+          "text": "                            segments, partially offset by a decrease in Corporate and other.                                                                 results. In \"Segment Results of Operations,\" we review the performance of our two reportable segments in more detail. A detailed"
+        },
+        {
+          "line": 1043,
+          "page": 23,
+          "text": "                                                                                                                                                             discussion of 2020 items and year-over-year comparisons between 2021 and 2020 that are not included in this Form 10-K can"
+        },
+        {
+          "line": 1044,
+          "page": 23,
+          "text": "                                                                                                                                                             be found in the \"Management's Discussion and Analysis of Financial Condition and Results of Operations\" in our Annual Report"
+        },
+        {
+          "line": 1045,
+          "page": 23,
+          "text": "                                                                                                                                                             on Form 10-K for the year ended December 31, 2021."
+        },
+        {
+          "line": 1046,
+          "page": 23,
+          "text": "                                                                                                          23                                  Verizon 2022 Annual Report on Form 10-K"
+        },
+        {
+          "line": 1047,
+          "page": 23,
+          "text": "                                                                                                                                                             Consolidated Operating Revenues"
+        }
+      ]
+    },
+    {
+      "page": 56,
+      "review_only": true,
+      "start_line": 2532,
+      "end_line": 2581,
+      "lines": [
+        {
+          "line": 2532,
+          "page": 56,
+          "text": "                                                                                                                                       Consolidated Balance Sheets"
+        },
+        {
+          "line": 2533,
+          "page": 56,
+          "text": "                                                                                                                                       Verizon Communications Inc. and Subsidiaries"
+        },
+        {
+          "line": 2534,
+          "page": 56,
+          "text": "                                                                                                                                                                                                                            (dollars in millions, except per share amounts)"
+        },
+        {
+          "line": 2535,
+          "page": 56,
+          "text": "                                                                                                                        At December 31,                                                                                                                    2022               2021"
+        },
+        {
+          "line": 2536,
+          "page": 56,
+          "text": "                                                                                                                        Assets"
+        },
+        {
+          "line": 2537,
+          "page": 56,
+          "text": "                                                                                                                        Current assets"
+        },
+        {
+          "line": 2538,
+          "page": 56,
+          "text": "                                                                                                                            Cash and cash equivalents                                                                                           $          2,605    $          2,921"
+        },
+        {
+          "line": 2539,
+          "page": 56,
+          "text": "                                                                                                                            Accounts receivable                                                                                                         25,332              24,742"
+        },
+        {
+          "line": 2540,
+          "page": 56,
+          "text": "                                                                                                                             Less Allowance for credit losses                                                                                               826                896"
+        },
+        {
+          "line": 2541,
+          "page": 56,
+          "text": "                                                                                                                            Accounts receivable, net                                                                                                    24,506              23,846"
+        },
+        {
+          "line": 2542,
+          "page": 56,
+          "text": "                                                                                                                            Inventories                                                                                                                  2,388               3,055"
+        },
+        {
+          "line": 2543,
+          "page": 56,
+          "text": "                                                                                                                            Prepaid expenses and other                                                                                                   8,358               6,906"
+        },
+        {
+          "line": 2544,
+          "page": 56,
+          "text": "                                                                                                                        Total current assets                                                                                                            37,857              36,728"
+        },
+        {
+          "line": 2545,
+          "page": 56,
+          "text": "                                                                                                                        Property, plant and equipment                                                                                                 307,689             289,897"
+        },
+        {
+          "line": 2546,
+          "page": 56,
+          "text": "                                                                                                                            Less Accumulated depreciation                                                                                             200,255             190,201"
+        },
+        {
+          "line": 2547,
+          "page": 56,
+          "text": "                                                                                                                        Property, plant and equipment, net                                                                                            107,434               99,696"
+        },
+        {
+          "line": 2548,
+          "page": 56,
+          "text": "                                                                                                                        Investments in unconsolidated businesses                                                                                         1,071               1,061"
+        },
+        {
+          "line": 2549,
+          "page": 56,
+          "text": "                                                                                                                        Wireless licenses                                                                                                             149,796             147,619"
+        },
+        {
+          "line": 2550,
+          "page": 56,
+          "text": "                                                                                                                        Goodwill                                                                                                                        28,671              28,603"
+        },
+        {
+          "line": 2551,
+          "page": 56,
+          "text": "                                                                                                                        Other intangible assets, net                                                                                                    11,461              11,677"
+        },
+        {
+          "line": 2552,
+          "page": 56,
+          "text": "                                                                                                                        Operating lease right-of-use assets                                                                                             26,130              27,883"
+        },
+        {
+          "line": 2553,
+          "page": 56,
+          "text": "                                                                                                                        Other assets                                                                                                                    17,260              13,329"
+        },
+        {
+          "line": 2554,
+          "page": 56,
+          "text": "                                                                                                                        Total assets                                                                                                            $      379,680     $      366,596"
+        },
+        {
+          "line": 2555,
+          "page": 56,
+          "text": "                                                                                                                        Liabilities and Equity"
+        },
+        {
+          "line": 2556,
+          "page": 56,
+          "text": "                                                                                                                        Current liabilities"
+        },
+        {
+          "line": 2557,
+          "page": 56,
+          "text": "                                                                                                                            Debt maturing within one year                                                                                       $          9,963    $          7,443"
+        },
+        {
+          "line": 2558,
+          "page": 56,
+          "text": "                                                                                                                            Accounts payable and accrued liabilities                                                                                    23,977              24,833"
+        },
+        {
+          "line": 2559,
+          "page": 56,
+          "text": "                                                                                                                            Current operating lease liabilities                                                                                          4,134               3,859"
+        },
+        {
+          "line": 2560,
+          "page": 56,
+          "text": "                                                                                                                            Other current liabilities                                                                                                   12,097              11,025"
+        },
+        {
+          "line": 2561,
+          "page": 56,
+          "text": "                                                                                                                        Total current liabilities                                                                                                       50,171              47,160"
+        },
+        {
+          "line": 2562,
+          "page": 56,
+          "text": "                                                                                                                        Long-term debt                                                                                                                140,676             143,425"
+        },
+        {
+          "line": 2563,
+          "page": 56,
+          "text": "                                                                                                                        Employee benefit obligations                                                                                                    12,974              15,410"
+        },
+        {
+          "line": 2564,
+          "page": 56,
+          "text": "                                                                                                                        Deferred income taxes                                                                                                           43,441              40,685"
+        },
+        {
+          "line": 2565,
+          "page": 56,
+          "text": "                                                                                                                        Non-current operating lease liabilities                                                                                         21,558              23,203"
+        },
+        {
+          "line": 2566,
+          "page": 56,
+          "text": "                                                                                                                        Other liabilities                                                                                                               18,397              13,513"
+        },
+        {
+          "line": 2567,
+          "page": 56,
+          "text": "                                                                                                                        Total long-term liabilities                                                                                                   237,046             236,236"
+        },
+        {
+          "line": 2568,
+          "page": 56,
+          "text": "                                                                                                                        Commitments and Contingencies (Note 16)"
+        },
+        {
+          "line": 2569,
+          "page": 56,
+          "text": "                                                                                                                        Equity"
+        },
+        {
+          "line": 2570,
+          "page": 56,
+          "text": "                                                                                                                            Series preferred stock ($0.10 par value; 250,000,000 shares authorized; none issued)                                              —                  —"
+        },
+        {
+          "line": 2571,
+          "page": 56,
+          "text": "                                                                                                                            Common stock ($0.10 par value; 6,250,000,000 shares authorized in each period;"
+        },
+        {
+          "line": 2572,
+          "page": 56,
+          "text": "                                                                                                                            4,291,433,646 shares issued in each period)                                                                                     429                429"
+        },
+        {
+          "line": 2573,
+          "page": 56,
+          "text": "                                                                                                                            Additional paid in capital                                                                                                  13,420              13,861"
+        },
+        {
+          "line": 2574,
+          "page": 56,
+          "text": "                                                                                                                            Retained earnings                                                                                                           82,380              71,993"
+        },
+        {
+          "line": 2575,
+          "page": 56,
+          "text": "                                                                                                                            Accumulated other comprehensive loss                                                                                         (1,865)               (927)"
+        },
+        {
+          "line": 2576,
+          "page": 56,
+          "text": "                                                                                                                            Common stock in treasury, at cost (91,572,258 and 93,634,725 shares outstanding)                                             (4,013)            (4,104)"
+        },
+        {
+          "line": 2577,
+          "page": 56,
+          "text": "                                                                                                                            Deferred compensation – employee stock ownership plans (ESOPs) and other                                                        793                538"
+        },
+        {
+          "line": 2578,
+          "page": 56,
+          "text": "                                                                                                                            Noncontrolling interests                                                                                                     1,319               1,410"
+        },
+        {
+          "line": 2579,
+          "page": 56,
+          "text": "                                                                                                                        Total equity                                                                                                                    92,463              83,200"
+        },
+        {
+          "line": 2580,
+          "page": 56,
+          "text": "                                                 See Notes to Consolidated Financial Statements                         Total liabilities and equity                                                                                            $      379,680      $      366,596"
+        },
+        {
+          "line": 2581,
+          "page": 56,
+          "text": "Verizon 2022 Annual Report on Form 10-K                                56"
+        }
+      ]
+    },
+    {
+      "page": 84,
+      "review_only": true,
+      "start_line": 3853,
+      "end_line": 3899,
+      "lines": [
+        {
+          "line": 3853,
+          "page": 84,
+          "text": "                                                                                    or more, or if a Business customer has been a customer for 12 months or more, the customer is considered an \"established"
+        },
+        {
+          "line": 3854,
+          "page": 84,
+          "text": "                                                                                    customer.\"  For  established  customers,  the  credit  decision  and  ongoing  credit  monitoring  processes  rely  on  a  combination  of"
+        },
+        {
+          "line": 3855,
+          "page": 84,
+          "text": "                                                                                    internal and external data sources. If a Consumer customer has been a customer less than 45 days, or a Business customer has"
+        },
+        {
+          "line": 3856,
+          "page": 84,
+          "text": "                                                                                    been a customer for less than 12 months, the customer is considered a \"short-tenured customer.\" For short-tenured customers,"
+        },
+        {
+          "line": 3857,
+          "page": 84,
+          "text": "                                                                                    the credit decision and credit monitoring processes rely more heavily on external data sources."
+        },
+        {
+          "line": 3858,
+          "page": 84,
+          "text": "                                                                                    Available external credit data from credit reporting agencies along with internal data are used to create custom credit risk scores"
+        },
+        {
+          "line": 3859,
+          "page": 84,
+          "text": "                                                                                    for  Consumer  customers.  The  custom  credit  risk  score  is  generated  automatically  from  the  applicant’s  credit  data  using"
+        },
+        {
+          "line": 3860,
+          "page": 84,
+          "text": "                                                                                    proprietary custom credit models. The credit risk score measures the likelihood that the potential customer will become severely"
+        },
+        {
+          "line": 3861,
+          "page": 84,
+          "text": "                                                                                    delinquent and be disconnected for non-payment. For a small portion of short-tenured customer applications, a traditional credit"
+        },
+        {
+          "line": 3862,
+          "page": 84,
+          "text": "                                                                                    report is not available from one of the national credit reporting agencies because the potential customer does not have sufficient"
+        },
+        {
+          "line": 3863,
+          "page": 84,
+          "text": "                                                                                    credit history. In those instances, alternative credit data is used for the risk assessment. For Business customers, we also verify"
+        },
+        {
+          "line": 3864,
+          "page": 84,
+          "text": "                                                                                    the existence of the business with external data sources."
+        },
+        {
+          "line": 3865,
+          "page": 84,
+          "text": "                                                                                    Based on the custom credit risk score, we assign each customer a credit class, each of which has specified offers of credit. This"
+        },
+        {
+          "line": 3866,
+          "page": 84,
+          "text": "                                                                                    includes  an  account  level  spending  limit  and  a  maximum  amount  of  credit  allowed  per  device  for  Consumer  customers  or  a"
+        },
+        {
+          "line": 3867,
+          "page": 84,
+          "text": "                                                                                    required down payment percentage for Business customers."
+        },
+        {
+          "line": 3868,
+          "page": 84,
+          "text": "                                                                                    Credit Quality Information"
+        },
+        {
+          "line": 3869,
+          "page": 84,
+          "text": "                                                                                    Subsequent to origination, we assess indicators for the quality of our wireless device payment plan agreement portfolio using two"
+        },
+        {
+          "line": 3870,
+          "page": 84,
+          "text": "                                                                                    models, one for new customers and one for existing customers. The model for new customers pools all Consumer and Business"
+        },
+        {
+          "line": 3871,
+          "page": 84,
+          "text": "                                                                                    wireless customers based on less than 210 days as \"new customers.\" The model for existing customers pools all Consumer and"
+        },
+        {
+          "line": 3872,
+          "page": 84,
+          "text": "                                                                                    Business wireless customers based on 210 days or more as \"existing customers.\""
+        },
+        {
+          "line": 3873,
+          "page": 84,
+          "text": "                                                                                    The following table presents device payment plan agreement receivables, at amortized cost, as of December 31, 2022, by credit"
+        },
+        {
+          "line": 3874,
+          "page": 84,
+          "text": "                                                                                    quality indicator and year of origination:"
+        },
+        {
+          "line": 3875,
+          "page": 84,
+          "text": "                                                                                                                                                              Year of Origination(1)"
+        },
+        {
+          "line": 3876,
+          "page": 84,
+          "text": "                                                                      (dollars in millions)                                                            2022                  2021          Prior to 2021                    Total"
+        },
+        {
+          "line": 3877,
+          "page": 84,
+          "text": "                                                                      New customers                                                        $             2,761   $                904 $                     24 $             3,689"
+        },
+        {
+          "line": 3878,
+          "page": 84,
+          "text": "                                                                      Existing customers                                                                                                                                           16,312 5,544 164 22,020"
+        },
+        {
+          "line": 3879,
+          "page": 84,
+          "text": "(1) Includes accounts that have been suspended at a point in time. Total                                                                   $           19,073    $             6,448  $                   188  $           25,709"
+        },
+        {
+          "line": 3880,
+          "page": 84,
+          "text": "The data presented in the table above was last updated on December 31, 2022."
+        },
+        {
+          "line": 3881,
+          "page": 84,
+          "text": "We assess indicators for the quality of our wireless service receivables portfolio as one overall pool. As of December 31, 2022,"
+        },
+        {
+          "line": 3882,
+          "page": 84,
+          "text": "wireless service receivables, at amortized cost, originating in 2022 and 2021 were $5.1 billion and $58 million, respectively."
+        },
+        {
+          "line": 3883,
+          "page": 84,
+          "text": "Allowance for Credit Losses"
+        },
+        {
+          "line": 3884,
+          "page": 84,
+          "text": "The credit quality indicators are used in determining the estimated amount and the timing of expected credit losses for the device"
+        },
+        {
+          "line": 3885,
+          "page": 84,
+          "text": "payment plan agreement and wireless service receivables portfolios."
+        },
+        {
+          "line": 3886,
+          "page": 84,
+          "text": "For device payment plan agreement receivables, we record bad debt expense based on a default and loss calculation using our"
+        },
+        {
+          "line": 3887,
+          "page": 84,
+          "text": "proprietary loss model. The expected loss rate is determined based on customer credit scores and other qualitative factors as"
+        },
+        {
+          "line": 3888,
+          "page": 84,
+          "text": "noted above. The loss rate is assigned individually on a customer by customer basis and the custom credit scores are then"
+        },
+        {
+          "line": 3889,
+          "page": 84,
+          "text": "aggregated by vintage and used in our proprietary loss model to calculate the weighted-average loss rate used for determining"
+        },
+        {
+          "line": 3890,
+          "page": 84,
+          "text": "the allowance balance."
+        },
+        {
+          "line": 3891,
+          "page": 84,
+          "text": "We  monitor  the  collectability  of  our  wireless  service  receivables  as  one  overall  pool.  Wireline  service  receivables  are"
+        },
+        {
+          "line": 3892,
+          "page": 84,
+          "text": "disaggregated and pooled by the following customer groups: consumer, small and medium business, global enterprise, public"
+        },
+        {
+          "line": 3893,
+          "page": 84,
+          "text": "sector and wholesale. For wireless service receivables and wireline consumer and small and medium business receivables, the"
+        },
+        {
+          "line": 3894,
+          "page": 84,
+          "text": "allowance is calculated based on a 12 month rolling average write-off balance multiplied by the average life-cycle of an account"
+        },
+        {
+          "line": 3895,
+          "page": 84,
+          "text": "from billing to write-off. The risk of loss is assessed over the contractual life of the receivables and is adjusted based on the"
+        },
+        {
+          "line": 3896,
+          "page": 84,
+          "text": "historical  loss  amounts  for  current  and  future  conditions  based  on  management’s  qualitative  considerations.  For  global"
+        },
+        {
+          "line": 3897,
+          "page": 84,
+          "text": "enterprise,  public  sector  and  wholesale  wireline  receivables,  the  allowance  for  credit  losses  is  based  on  historical  write-off"
+        },
+        {
+          "line": 3898,
+          "page": 84,
+          "text": "experience and individual customer credit risk, if applicable."
+        },
+        {
+          "line": 3899,
+          "page": 84,
+          "text": "Verizon 2022 Annual Report on Form 10-K                                84"
+        }
+      ]
+    },
+    {
+      "page": 96,
+      "review_only": true,
+      "start_line": 4354,
+      "end_line": 4394,
+      "lines": [
+        {
+          "line": 4354,
+          "page": 96,
+          "text": "                                                                                                                                                                                 Health Care and Life Plans"
+        },
+        {
+          "line": 4355,
+          "page": 96,
+          "text": "                                                                                                                                                                                 The fair values for the other postretirement benefit plans by asset category at December 31, 2022 are as follows:"
+        },
+        {
+          "line": 4356,
+          "page": 96,
+          "text": "                                                                                                                                         (dollars in millions) (dollars in millions)"
+        },
+        {
+          "line": 4357,
+          "page": 96,
+          "text": "Asset CategoryAsset Category                                                                 TotalTotal       Level 1Level 1       Level 2Level 2      Level 3 Level 3"
+        },
+        {
+          "line": 4358,
+          "page": 96,
+          "text": "Cash and cash equivalentsCash and cash equivalents                                $               30 $               36 $                 1 $                — $               29 $               36 $                — $                —"
+        },
+        {
+          "line": 4359,
+          "page": 96,
+          "text": "Equity securitiesEquity securities                                                             252 284             252 284               — —                 — —"
+        },
+        {
+          "line": 4360,
+          "page": 96,
+          "text": "Fixed income securities Fixed income securities"
+        },
+        {
+          "line": 4361,
+          "page": 96,
+          "text": "   U.S. Treasuries and agenciesU.S. Treasuries and agencies                                    101 160             150 82                19 10               — —"
+        },
+        {
+          "line": 4362,
+          "page": 96,
+          "text": "   Corporate bondsCorporate bonds                                                               35 64                25 50               10 14               — —"
+        },
+        {
+          "line": 4363,
+          "page": 96,
+          "text": "   International bondsInternational bonds                                                       12 14                10 9                 3 4                — —"
+        },
+        {
+          "line": 4364,
+          "page": 96,
+          "text": "   OtherOther                                                                                   11 10                — —                 11 10               — —"
+        },
+        {
+          "line": 4365,
+          "page": 96,
+          "text": "Total investments at fair valueTotal investments at fair value                                 441 568             369 494               72 74               — —"
+        },
+        {
+          "line": 4366,
+          "page": 96,
+          "text": "   Investments measured at NAVInvestments measured at NAV                                       13 9"
+        },
+        {
+          "line": 4367,
+          "page": 96,
+          "text": "TotalTotal                                                                        $             450 $             581 $             369 $             494 $               72 $               74 $                — $                —"
+        },
+        {
+          "line": 4368,
+          "page": 96,
+          "text": "                                                                               The fair values for the other postretirement benefit plans by asset category at December 31, 2021 are as follows: The following are general descriptions of asset categories, as well as the valuation methodologies and inputs used to determine"
+        },
+        {
+          "line": 4369,
+          "page": 96,
+          "text": "                                                                               the fair value of each major category of assets."
+        },
+        {
+          "line": 4370,
+          "page": 96,
+          "text": "                                                                               Cash and cash equivalents include short-term investment funds (less than 90 days to maturity), primarily in diversified portfolios"
+        },
+        {
+          "line": 4371,
+          "page": 96,
+          "text": "                                                                               of  investment  grade  money  market  instruments  and  are  valued  using  quoted  market  prices  or  other  valuation  methods. The"
+        },
+        {
+          "line": 4372,
+          "page": 96,
+          "text": "                                                                               carrying value of cash equivalents approximates fair value due to the short-term nature of these investments."
+        },
+        {
+          "line": 4373,
+          "page": 96,
+          "text": "                                                                               Investments in securities traded on national and foreign securities exchanges are valued by the trustee at the last reported sale"
+        },
+        {
+          "line": 4374,
+          "page": 96,
+          "text": "                                                                               prices on the last business day of the year or, if no sales were reported on that date, at the last reported bid prices. Government"
+        },
+        {
+          "line": 4375,
+          "page": 96,
+          "text": "                                                                               obligations,  corporate  bonds,  international  bonds  and  asset-backed  debt  are  valued  using  matrix  prices  with  input  from"
+        },
+        {
+          "line": 4376,
+          "page": 96,
+          "text": "                                                                               independent third-party valuation sources. Over-the-counter securities are valued at the bid prices or the average of the bid and"
+        },
+        {
+          "line": 4377,
+          "page": 96,
+          "text": "                                                                               ask prices on the last business day of the year from published sources or, if not available, from other sources considered reliable"
+        },
+        {
+          "line": 4378,
+          "page": 96,
+          "text": "                                                                               such as multiple broker quotes."
+        },
+        {
+          "line": 4379,
+          "page": 96,
+          "text": "                                                                               Commingled funds not traded on national exchanges are priced by the custodian or fund's administrator at their net asset value"
+        },
+        {
+          "line": 4380,
+          "page": 96,
+          "text": "                                                                               (NAV). Commingled funds held by third-party custodians appointed by the fund managers provide the fund managers with a NAV."
+        },
+        {
+          "line": 4381,
+          "page": 96,
+          "text": "                                                                               The fund managers have the responsibility for providing this information to the custodian of the respective plan."
+        },
+        {
+          "line": 4382,
+          "page": 96,
+          "text": "                                                                               The  investment  manager  of  the  entity  values  venture  capital,  corporate  finance  and  natural  resource  limited  partnership"
+        },
+        {
+          "line": 4383,
+          "page": 96,
+          "text": "                                                                               investments. Real estate investments are valued at amounts based upon appraisal reports prepared by either independent real"
+        },
+        {
+          "line": 4384,
+          "page": 96,
+          "text": "                                                                               estate  appraisers  or  the  investment  manager  using  discounted  cash  flows  or  market  comparable  data.  Loans  secured  by"
+        },
+        {
+          "line": 4385,
+          "page": 96,
+          "text": "                                                                               mortgages are carried at the lesser of the unpaid balance or appraised value of the underlying properties. The values assigned"
+        },
+        {
+          "line": 4386,
+          "page": 96,
+          "text": "                                                                               to these investments are based upon available and current market information and do not necessarily represent amounts that"
+        },
+        {
+          "line": 4387,
+          "page": 96,
+          "text": "                                                                               might ultimately be realized. Because of the inherent uncertainty of valuation, estimated fair values might differ significantly from"
+        },
+        {
+          "line": 4388,
+          "page": 96,
+          "text": "                                                                               the values that would have been used had a ready market for the securities existed. These differences could be material."
+        },
+        {
+          "line": 4389,
+          "page": 96,
+          "text": "                                                                               Forward currency contracts, futures, and options are valued by the trustee at the exchange rates and market prices prevailing on"
+        },
+        {
+          "line": 4390,
+          "page": 96,
+          "text": "                                                                               the last business day of the year. Both exchange rates and market prices are readily available from published sources. These"
+        },
+        {
+          "line": 4391,
+          "page": 96,
+          "text": "                                                                               securities are classified by the asset class of the underlying holdings."
+        },
+        {
+          "line": 4392,
+          "page": 96,
+          "text": "                                                                               Hedge funds are valued by the custodian at NAV based on statements received from the investment manager. These funds are"
+        },
+        {
+          "line": 4393,
+          "page": 96,
+          "text": "                                                                               valued in accordance with the terms of their corresponding offering or private placement memoranda."
+        },
+        {
+          "line": 4394,
+          "page": 96,
+          "text": "                                                                               Verizon 2022 Annual Report on Form 10-K                                96"
+        }
+      ]
+    }
+  ],
+  "scope_note": "Excerpt origins and outcomes are masked. Full native pages are review-only context, never delivered-evidence credit. Extraction is not independently visually validated; do not assume exhaustive support or correct table alignment."
+}
