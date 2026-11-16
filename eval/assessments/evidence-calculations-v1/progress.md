@@ -1,6 +1,9 @@
 # H2 progress: numerical kernel
 
-2026-11-16 · implementation `3b4f4ca` · H2 remains incomplete
+Historical kernel milestone · 2026-11-16 · implementation `3b4f4ca`
+
+Superseded by the [H2 ledger acceptance report](report.md). The incomplete status
+and next-work descriptions below describe the earlier kernel-only milestone.
 
 [Frozen protocol](protocol.md), commits `015e7e9` and pre-implementation clarification
 `13234fe`. Baseline `82aa34b`. Synthetic-only infrastructure work; no paid inference,

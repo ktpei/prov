@@ -2,11 +2,17 @@
 
 ## Active harness improvement goal
 
-H2 progress: the internal bounded Decimal kernel is committed at `3b4f4ca`, with
-12 focused numerical tests and independent review. It is not a model tool and
-does not accept evidence. Financial compatibility, admitted-evidence references,
-calculation chaining and replay remain required before H2 acceptance. See the
-[component report](eval/assessments/evidence-calculations-v1/progress.md).
+The user now explicitly authorizes model and reasoning-effort selection/comparison.
+Historical exact-model settings remain unchanged in saved results. A bounded
+[comparison plan](eval/model-effort-comparison-plan.md) is being prepared; existing
+aggregate spending limits still apply, and no new model trial has run.
+
+H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
+The ledger binds trusted admitted evidence, financial compatibility, calculation
+ancestry and full replay. Fourteen ledger tests and twelve numeric tests pass,
+with two independent ledger reviews. H3's actual source admission, semantic/visibility
+boundary and model-tool integration remain pending. See the
+[acceptance report](eval/assessments/evidence-calculations-v1/report.md).
 
 The user requested a thorough implementation spec and a continuous benchmark-driven
 improvement goal in **Research finance agent harnesses**. The goal is active here;

@@ -1,9 +1,9 @@
 # Project scope
 
-H2's internal arithmetic kernel is implemented without a new service or dependency.
-It is not yet agent-accessible; admitted-evidence integration, financial compatibility
-and calculation replay remain pending. The [component report](eval/assessments/evidence-calculations-v1/progress.md)
-records numerical verification separately from financial-effectiveness evaluation.
+H2's internal arithmetic and trusted-snapshot calculation ledger are implemented
+without a new service or dependency. H3 must supply actual source admission and
+model-visible support before agent integration. The [acceptance report](eval/assessments/evidence-calculations-v1/report.md)
+separates arithmetic/compatibility replay from unmeasured financial effectiveness.
 
 The [next-round harness specification](harness-improvement-spec.md) now defines
 versioned evidence/calculation/answer contracts and benchmark-driven improvement

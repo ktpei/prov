@@ -61,10 +61,11 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
-H2's [numerical component](eval/assessments/evidence-calculations-v1/progress.md)
-provides bounded Decimal arithmetic internally. It is not yet a model-facing tool:
-accepted-evidence references, financial compatibility and calculation replay must
-be integrated first. Existing agent tools and defaults remain unchanged.
+H2's [calculation infrastructure](eval/assessments/evidence-calculations-v1/report.md)
+provides bounded Decimal arithmetic, trusted-evidence references, financial
+compatibility checks and full replay. It is not yet a model-facing tool: H3 must
+provide actual source admission, complete model-visible support and budget
+integration first. Existing agent tools and defaults remain unchanged.
 
 The opt-in `--runtime-profile trace-receipts-v1` is available on
 `run --engine langgraph --provider openrouter`. It records the projected messages

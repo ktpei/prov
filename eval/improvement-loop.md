@@ -67,6 +67,18 @@ snapshot, compatibility checks, calculation references/ancestry and independent
 replay. See the [progress report](assessments/evidence-calculations-v1/progress.md).
 No paid calls or heldout content inspection occurred.
 
+## H2 — trusted-snapshot ledger
+
+Frozen ledger contract `364fe8a`; implementation `03e7342`. Added immutable
+same-run evidence/calculation references, financial compatibility checks, structural
+metric and comparison-period identities, precision-preserving chains, depth/size
+limits, atomic failure and full replay. Fourteen ledger tests and two independent
+read-only reviews pass; shared-checkout lint and 496 tests pass. Clean commit
+`03e7342` passes the same checks with 483 tests. See the
+[acceptance report](assessments/evidence-calculations-v1/report.md) for clean checks
+and the synthetic trusted-admission boundary. H3 still owns real reader admission,
+claim visibility and model-tool budget integration. No paid calls or accuracy gain.
+
 ## Repeatable cycle
 
 1. Select one failure class from source QA, scorer adversarial tests, or a declared
@@ -101,9 +113,15 @@ No paid calls or heldout content inspection occurred.
 
 ## Next work queue
 
+The user authorized choosing/comparing models and reasoning efforts. Prepare the
+[bounded comparison](model-effort-comparison-plan.md) alongside H2/H3, preserving
+historical results and reconciling spending before any trial. No comparison has
+run yet; capability, accounting and aggregate-budget gates precede inference.
+
 1. H1 accepted infrastructure: retain regression coverage; add the separately
    proposed external-success/local-acknowledgement crash test before recovery changes.
-2. H2: implement bounded evidence-linked arithmetic with independent replay.
+2. H2 accepted as trusted-snapshot infrastructure; retain numerical/compatibility
+   replay tests while H3 supplies actual source admission and model-tool exposure.
 3. H3: integrate versioned answers and typed discovery/read/claim contracts.
 4. H4: compare requirement-aware context retention and narrow workflow instructions.
 5. H5: run source-accepted, preregistered full-agent development comparisons within

@@ -6,9 +6,10 @@ Status: implementation specification and continuous-improvement operating contra
 Requirements below are intended behavior, not claims that the features exist.
 Implementation status: H0 is committed; H1's opt-in application-input receipts and
 checkpoint v3 are implemented. See its [acceptance report](eval/assessments/model-input-receipts-v1/report.md).
-H2's internal numerical kernel is implemented; evidence admission, compatibility,
-calculation chaining and replay remain required before H2 acceptance. H3–H6 remain
-planned; H1 and the numerical kernel do not establish financial accuracy improvement.
+H2's internal numerical kernel and trusted-snapshot calculation ledger are implemented;
+see [H2 acceptance](eval/assessments/evidence-calculations-v1/report.md). H3 must still
+provide actual source admission, model-visible support and tool-budget integration.
+H3–H6 remain planned; infrastructure acceptance is not a financial accuracy gain.
 The active goal is in **Research finance agent harnesses**. Finishing this document
 or one experiment does not complete that ongoing goal.
 
