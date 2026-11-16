@@ -1,0 +1,276 @@
+{
+  "version": "synthetic-typed-values-v1",
+  "original_sha256": "538be17a275944bdcd320c1ce24acf13e84e53ca90271ab941e88d2238a159c9",
+  "manifest_sha256": "6baf010f23a752617e9340e03606d2679178e1a864913f215ccaad521a1704e1",
+  "loaded_document_sha256": {
+    "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+    "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+    "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+    "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+    "synthetic.xsd": "dafd9a9a33c6c5812c438aa7ccd38a89523853b4bb589b816b4c66fdd8007930",
+    "valid-values.xhtml": "538be17a275944bdcd320c1ce24acf13e84e53ca90271ab941e88d2238a159c9"
+  },
+  "diagnostics": [],
+  "facts": [
+    {
+      "id": "assets",
+      "concept": "{urn:synthetic:finance}Assets",
+      "source_xpath": "/*/*[2]/*[2]/*[2]/*[2]/ix:nonFraction",
+      "xpath_namespaces": {
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "s": "urn:synthetic:finance",
+        "alias": "urn:synthetic:finance",
+        "iso4217": "http://www.xbrl.org/2003/iso4217"
+      },
+      "source_element_name": "{http://www.xbrl.org/2013/inlineXBRL}nonFraction",
+      "source_cell_id": "cell-assets",
+      "source_cell_xpath": "/*/*[2]/*[2]/*[2]/*[2]",
+      "source_text": "12",
+      "attributes": {
+        "id": "assets",
+        "name": "s:Assets",
+        "contextRef": "instant",
+        "unitRef": "dollars",
+        "decimals": "-3",
+        "scale": "3",
+        "sign": "-"
+      },
+      "value": "-12000",
+      "nil": false,
+      "validation_state": 4,
+      "context_id": "instant",
+      "entity": [
+        "urn:example",
+        "synthetic"
+      ],
+      "reported_period": {
+        "instant": "2025-12-31"
+      },
+      "normalized_period": {
+        "instant": "2026-01-01T00:00:00"
+      },
+      "unit_id": "dollars",
+      "unit_measures": [
+        [
+          "{http://www.xbrl.org/2003/iso4217}USD"
+        ],
+        []
+      ],
+      "context_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[1]",
+      "unit_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:unit[1]",
+      "association": "original_source_cell_ancestry; rendered_visibility_not_verified"
+    },
+    {
+      "id": "eps",
+      "concept": "{urn:synthetic:finance}EarningsPerShare",
+      "source_xpath": "/*/*[2]/*[2]/*[4]/*[2]/ix:nonFraction",
+      "xpath_namespaces": {
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "s": "urn:synthetic:finance",
+        "alias": "urn:synthetic:finance",
+        "iso4217": "http://www.xbrl.org/2003/iso4217"
+      },
+      "source_element_name": "{http://www.xbrl.org/2013/inlineXBRL}nonFraction",
+      "source_cell_id": "cell-eps",
+      "source_cell_xpath": "/*/*[2]/*[2]/*[4]/*[2]",
+      "source_text": "2.50",
+      "attributes": {
+        "id": "eps",
+        "name": "s:EarningsPerShare",
+        "contextRef": "duration",
+        "unitRef": "per-share",
+        "decimals": "2"
+      },
+      "value": "2.50",
+      "nil": false,
+      "validation_state": 4,
+      "context_id": "duration",
+      "entity": [
+        "urn:example",
+        "synthetic"
+      ],
+      "reported_period": {
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31"
+      },
+      "normalized_period": {
+        "start": "2025-01-01T00:00:00",
+        "end": "2026-01-01T00:00:00"
+      },
+      "unit_id": "per-share",
+      "unit_measures": [
+        [
+          "{http://www.xbrl.org/2003/iso4217}USD"
+        ],
+        [
+          "{http://www.xbrl.org/2003/instance}shares"
+        ]
+      ],
+      "context_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[2]",
+      "unit_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:unit[2]",
+      "association": "original_source_cell_ancestry; rendered_visibility_not_verified"
+    },
+    {
+      "id": "missing",
+      "concept": "{urn:synthetic:finance}MissingAmount",
+      "source_xpath": "/*/*[2]/*[2]/*[5]/*[2]/ix:nonFraction",
+      "xpath_namespaces": {
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "s": "urn:synthetic:finance",
+        "alias": "urn:synthetic:finance",
+        "iso4217": "http://www.xbrl.org/2003/iso4217"
+      },
+      "source_element_name": "{http://www.xbrl.org/2013/inlineXBRL}nonFraction",
+      "source_cell_id": "cell-missing",
+      "source_cell_xpath": "/*/*[2]/*[2]/*[5]/*[2]",
+      "source_text": null,
+      "attributes": {
+        "id": "missing",
+        "name": "s:MissingAmount",
+        "contextRef": "instant",
+        "unitRef": "dollars",
+        "{http://www.w3.org/2001/XMLSchema-instance}nil": "true"
+      },
+      "value": null,
+      "nil": true,
+      "validation_state": 4,
+      "context_id": "instant",
+      "entity": [
+        "urn:example",
+        "synthetic"
+      ],
+      "reported_period": {
+        "instant": "2025-12-31"
+      },
+      "normalized_period": {
+        "instant": "2026-01-01T00:00:00"
+      },
+      "unit_id": "dollars",
+      "unit_measures": [
+        [
+          "{http://www.xbrl.org/2003/iso4217}USD"
+        ],
+        []
+      ],
+      "context_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[1]",
+      "unit_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:unit[1]",
+      "association": "original_source_cell_ancestry; rendered_visibility_not_verified"
+    },
+    {
+      "id": "revenue",
+      "concept": "{urn:synthetic:finance}Revenue",
+      "source_xpath": "/*/*[2]/*[2]/*[3]/*[2]/ix:nonFraction",
+      "xpath_namespaces": {
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "s": "urn:synthetic:finance",
+        "alias": "urn:synthetic:finance",
+        "iso4217": "http://www.xbrl.org/2003/iso4217"
+      },
+      "source_element_name": "{http://www.xbrl.org/2013/inlineXBRL}nonFraction",
+      "source_cell_id": "cell-revenue",
+      "source_cell_xpath": "/*/*[2]/*[2]/*[3]/*[2]",
+      "source_text": "1.25",
+      "attributes": {
+        "id": "revenue",
+        "name": "alias:Revenue",
+        "contextRef": "duration",
+        "unitRef": "dollars",
+        "decimals": "-4",
+        "scale": "6"
+      },
+      "value": "1250000",
+      "nil": false,
+      "validation_state": 4,
+      "context_id": "duration",
+      "entity": [
+        "urn:example",
+        "synthetic"
+      ],
+      "reported_period": {
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31"
+      },
+      "normalized_period": {
+        "start": "2025-01-01T00:00:00",
+        "end": "2026-01-01T00:00:00"
+      },
+      "unit_id": "dollars",
+      "unit_measures": [
+        [
+          "{http://www.xbrl.org/2003/iso4217}USD"
+        ],
+        []
+      ],
+      "context_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[2]",
+      "unit_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:unit[1]",
+      "association": "original_source_cell_ancestry; rendered_visibility_not_verified"
+    },
+    {
+      "id": "zero",
+      "concept": "{urn:synthetic:finance}ZeroAmount",
+      "source_xpath": "/*/*[2]/*[2]/*[6]/*[2]/ix:nonFraction",
+      "xpath_namespaces": {
+        "ix": "http://www.xbrl.org/2013/inlineXBRL",
+        "xbrli": "http://www.xbrl.org/2003/instance",
+        "link": "http://www.xbrl.org/2003/linkbase",
+        "xlink": "http://www.w3.org/1999/xlink",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "s": "urn:synthetic:finance",
+        "alias": "urn:synthetic:finance",
+        "iso4217": "http://www.xbrl.org/2003/iso4217"
+      },
+      "source_element_name": "{http://www.xbrl.org/2013/inlineXBRL}nonFraction",
+      "source_cell_id": "cell-zero",
+      "source_cell_xpath": "/*/*[2]/*[2]/*[6]/*[2]",
+      "source_text": "0",
+      "attributes": {
+        "id": "zero",
+        "name": "s:ZeroAmount",
+        "contextRef": "instant",
+        "unitRef": "dollars",
+        "decimals": "0"
+      },
+      "value": "0",
+      "nil": false,
+      "validation_state": 4,
+      "context_id": "instant",
+      "entity": [
+        "urn:example",
+        "synthetic"
+      ],
+      "reported_period": {
+        "instant": "2025-12-31"
+      },
+      "normalized_period": {
+        "instant": "2026-01-01T00:00:00"
+      },
+      "unit_id": "dollars",
+      "unit_measures": [
+        [
+          "{http://www.xbrl.org/2003/iso4217}USD"
+        ],
+        []
+      ],
+      "context_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[1]",
+      "unit_xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:unit[1]",
+      "association": "original_source_cell_ancestry; rendered_visibility_not_verified"
+    }
+  ],
+  "driver_sha256": "f9b13fc32c42def9f1da7d84216c3f3dbadcc3e8e05d6a0d4225b69f2954021f"
+}

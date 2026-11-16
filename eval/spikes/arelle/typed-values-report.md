@@ -76,3 +76,9 @@ classification, transformed/localized numbers, parser recovery, rendering,
 arbitrary issuer extensions and unknown dependency graphs remain acceptance work.
 No issuer document has been loaded. The next iteration must expand these cases
 before treating this spike as a usable knowledge-ingestion path.
+
+The implementation was committed at `b06b476` before writing the retained
+[result](typed-values-result.json). Root reproduced it byte-for-byte in a fresh
+denied-network process. [Verification](typed-values-verification.json) records
+independent implementation/test review separately from root result reproduction.
+Result SHA-256: `4308ed64e294d474c3298feb24692bc8914408e9e5ee0f5a2bc9b0fcd3476e34`.
