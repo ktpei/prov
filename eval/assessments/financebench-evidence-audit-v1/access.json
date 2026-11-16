@@ -1,0 +1,39 @@
+{
+  "version": "blinded-evidence-audit-access-v1",
+  "stage": "interpretation",
+  "packet_commit": "5b016f4",
+  "plan_commit": "948ee11",
+  "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+  "dispatch_time_utc": "2026-11-16 17:43:32 UTC",
+  "dispatch_hash_verification": "passed",
+  "reviewers": [
+    {
+      "role": "A",
+      "agent": "/root/interpretation_a",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "dispatched",
+      "allowed_inputs": [
+        "reviewer-instructions.md",
+        "stage-1/questions.json"
+      ],
+      "exclusive_output": "reviews/interpretation-a.json"
+    },
+    {
+      "role": "B",
+      "agent": "/root/interpretation_b",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "dispatched",
+      "allowed_inputs": [
+        "reviewer-instructions.md",
+        "stage-1/questions.json"
+      ],
+      "exclusive_output": "reviews/interpretation-b.json"
+    }
+  ],
+  "custodian": "root; outcome-aware, not a blinded judge",
+  "isolation": "Workflow restrictions, not filesystem security isolation; outside access and recognition disclosures pending."
+}
