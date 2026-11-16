@@ -104,6 +104,25 @@ def validate_report_evidence(task, report, *, directory=None):
     No model calls, expected answers, or external network requests are involved.
     """
     events = report.get("events")
+    if (
+        not isinstance(events, list)
+        or len(events) < 3
+        or not all(isinstance(e, dict) for e in events)
+    ):
+        raise ValueError("Missing complete event trace")
+    if report.get("runtime_profile", "legacy-v1") not in {"legacy-v1", "trace-receipts-v1"}:
+        raise ValueError("Unsupported report runtime profile")
+    if report.get("runtime_profile") == "trace-receipts-v1" or (
+        isinstance(events, list)
+        and any(
+            event.get("event") == "model_input_receipt"
+            or event.get("runtime_profile") == "trace-receipts-v1"
+            for event in events
+        )
+    ):
+        from provenance.receipts import verify_report_receipts
+
+        verify_report_receipts(report)
     if not isinstance(events, list) or len(events) < 3:
         raise ValueError("Missing complete event trace")
     first, last = events[0], events[-1]
