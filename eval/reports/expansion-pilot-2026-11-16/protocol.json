@@ -1,0 +1,91 @@
+{
+  "version": "expansion-pilot-2026-11-16-v1",
+  "purpose": "Fixed small public development integration diagnostic, not official benchmark or secret holdout accuracy",
+  "runtime_revision": "79d5376ae5f7e8778d32a21ee15441927dcdc40a",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "seed": 20261116,
+  "total_budget_usd": 0.2,
+  "historical_accounted_usd": 0.4523661,
+  "authorized_remaining_before_pilot_usd": 0.5476339,
+  "pricing": {
+    "input_usd_per_million": 0.6,
+    "output_usd_per_million": 2.4
+  },
+  "account_preflight": {
+    "daily_limit_usd": 1,
+    "daily_remaining_usd": 0.995463084,
+    "daily_usage_usd": 0.004536916,
+    "date": "2026-11-16"
+  },
+  "max_output_tokens": 2000,
+  "timeout_seconds": 60,
+  "retry_policy": "One request per eligible task/turn; no retries, repair, or resume. Retain all failures and unused turns. Uncertain billing stops all batches.",
+  "analysis_plan": [
+    "TAT-QA official EM/F1 plus scale and completion separately, fixed four-question denominator.",
+    "ConvFinQA adapted scalar per-turn and whole-conversation metrics with fixed 9-turn/2-conversation denominators per condition.",
+    "Compare paired history conditions descriptively only; public overlapping sources and small sample prevent generalization.",
+    "Code-agent evidence review is diagnostic, not human financial validation."
+  ],
+  "batches": [
+    {
+      "name": "tatqa",
+      "prepared": "runs/expansion-pilot-2026-11-16/prepared/tatqa",
+      "output": "runs/expansion-pilot-2026-11-16/results/tatqa",
+      "prepared_sha256": "bfddaf2199afb73da65451fabf59e05eb9db05cab3f01ca46d5de06829666778",
+      "selected_ids": [
+        "197c37a3-cd56-4eef-bccc-756f88753971",
+        "0339e2bb-4a63-4f23-aaea-b9fa3cb29737",
+        "94ef7822-a201-493e-b557-a640f4ea4d83",
+        "d3dc2462-fd1b-4871-a0f6-6b4837100c05"
+      ],
+      "condition": "supplied_context",
+      "count": 4,
+      "turn_count": 0,
+      "budget_usd": 0.04,
+      "per_task_usd": 0.015,
+      "per_turn_usd": 0.015,
+      "source_sha256": "8da095a819af6db3c14877c6df2d4d29960e41d1a63dd1fa853507bd2a616af5",
+      "reference_conflicts": 0
+    },
+    {
+      "name": "convfinqa-agent",
+      "prepared": "runs/expansion-pilot-2026-11-16/prepared/convfinqa-agent",
+      "output": "runs/expansion-pilot-2026-11-16/results/convfinqa-agent",
+      "prepared_sha256": "905958b77b7c2c6a687ff1e496f04d55be3e22ef7262c563db3fd9daddad0390",
+      "selected_ids": [
+        "Single_GS/2017/page_143.pdf-1",
+        "Double_GPN/2009/page_70.pdf"
+      ],
+      "condition": "agent_history",
+      "count": 2,
+      "turn_count": 9,
+      "budget_usd": 0.08,
+      "per_task_usd": 0.05,
+      "per_turn_usd": 0.015,
+      "source_sha256": "9665dd60f106e5cd41d37537edac97bbd26eb7629ad63ca2390b19d4619ba51b",
+      "reference_conflicts": 0
+    },
+    {
+      "name": "convfinqa-reference",
+      "prepared": "runs/expansion-pilot-2026-11-16/prepared/convfinqa-reference",
+      "output": "runs/expansion-pilot-2026-11-16/results/convfinqa-reference",
+      "prepared_sha256": "d431df0d73a5707140e98face664200cc286de8a1c8daf447ccb1500fc19096c",
+      "selected_ids": [
+        "Single_GS/2017/page_143.pdf-1",
+        "Double_GPN/2009/page_70.pdf"
+      ],
+      "condition": "reference_history",
+      "count": 2,
+      "turn_count": 9,
+      "budget_usd": 0.08,
+      "per_task_usd": 0.05,
+      "per_turn_usd": 0.015,
+      "source_sha256": "9665dd60f106e5cd41d37537edac97bbd26eb7629ad63ca2390b19d4619ba51b",
+      "reference_conflicts": 0
+    }
+  ],
+  "checks_before_pilot": {
+    "lint": "passed",
+    "tests": 161
+  }
+}
