@@ -77,7 +77,8 @@ without claiming semantic answer success. A separately frozen soft-prefix
 weighting experiment stayed at 2/4 and was not promoted. Full-agent FinanceBench inference
 remains disabled pending source-quality acceptance. A separate
 [locked assessment runner](eval/table-runtime-design.md) now keeps annotation files
-out of retrieval execution; broader cohort acquisition and grading remain pending.
+out of retrieval execution, with separate receipt-bound replay grading. Broader
+cohort acquisition, annotation and publication-cutoff controls remain pending.
 
 Latest frozen company-research evaluation (2026-11-07): six new public development questions,
 **5/6 completed**, **2/6 unchanged mechanical passes**, and **4/6 evidence-supported

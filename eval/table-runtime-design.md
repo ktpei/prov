@@ -102,7 +102,61 @@ revalidate input bytes, runtime digest and corpus original/text hashes. Output
 directories cannot be reused. Hard process termination may leave an explicitly
 incomplete running receipt; it must not be reported as a completed run.
 
-The runner is tested only with invented HTML. It does not yet provide separate
-annotation grading, publication-cutoff enforcement, or the complete staged
+The runner is tested only with invented HTML. Separate annotation grading is now available below. It does not yet provide
+publication-cutoff enforcement or the complete staged
 provenance gates in the [broader assessment plan](assessments/native-html-v1/plan.md).
 No new real-document accuracy result is claimed.
+
+## Precommitted annotations and separate grading
+
+New locked assessments use `table-assessment-run-protocol-v2`. It adds the sole
+field `assessment_receipt_sha256` to v1. The runner copies this opaque digest into
+its report but never opens a receipt or annotation file. V1 execution remains
+supported for compatibility; the new grader requires v2.
+
+Before execution, freeze a `table-assessment-receipt-v1` JSON object containing
+`version`, `questions_sha256`, `annotations_sha256`, `corpus_manifest_sha256` and
+`runtime_sha256`. Commit that receipt and its referenced artifacts according to
+the assessment gates, then bind its exact byte hash in the run protocol. After
+execution, freeze a grading protocol with version `table-assessment-grade-protocol-v1`
+and the exact hashes of `run_protocol`, `questions`, `report`, `annotations` and
+`receipt` (each field suffixed `_sha256`). This avoids circular identities.
+
+```sh
+uv run python -m provenance.table_assessment \
+  --protocol GRADE_PROTOCOL.json --run-protocol RUN_PROTOCOL.json \
+  --questions QUESTIONS.json --report FROZEN_RUN_REPORT.json \
+  --annotations ANNOTATIONS.json --receipt ASSESSMENT_RECEIPT.json \
+  --corpus CORPUS_DIRECTORY --output NEW_GRADE_DIRECTORY
+```
+
+The grader validates completed status, exact case order and fixed denominators,
+then replays the prescribed source-scoped search and at most one read. It checks
+arguments, response bytes/hashes/sizes, call counts and statuses against that
+replay before opening annotation bytes. Duplicate JSON keys and nonfinite JSON
+constants are rejected; canonical comparison distinguishes booleans and numbers.
+It rechecks local inputs, corpus and runtime before publishing a grade and refuses
+output reuse. Invalid inputs raise an error and produce no successful grade.
+
+Annotations use `table-assessment-annotations-v1`, with question/manifest hashes,
+source bindings (`original_sha256`, `sidecar_version`, `sidecar_sha256`) and one
+ordered case per question. Each case has `id`, `source_id`, `disposition`,
+`required_components`, `alternatives` and `reason`. Dispositions are `mapped`,
+`unmapped` or `unresolved`. The required-component list must be nonempty and unique.
+Every mapped alternative contains one `table_id` and a `components` object mapping
+**every** declared role to nonempty visible cell-ID lists. Missing roles, empty or
+hidden cells and duplicate alternatives are rejected. Unmapped/unresolved cases
+require a reason and no partial alternatives; they cannot pass.
+
+Complete context requires a single complete evidence alternative in one actual
+read. Components are never pooled across alternatives or tables. Reports preserve
+all selected cases, show mapped eligibility and disposition counts separately,
+and report table hits at 1/3/5 plus per-alternative component coverage. Numeric
+answer correctness, inferred associations and annotation adequacy remain unmeasured.
+
+The receipt establishes consistent identities across artifacts; it does not prove
+historical timing without the external committed gate chain. Replay establishes
+reproducible behavior, not cryptographic proof that a historical run occurred.
+Neither proves that annotators listed every necessary qualification. These
+limitations must accompany new assessment results. Current verification uses
+invented HTML only; the six proposed filings remain unacquired and ungraded.

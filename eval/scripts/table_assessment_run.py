@@ -70,9 +70,22 @@ def runtime_digest():
     return _digest(_canonical(mapping).encode("utf-8"))
 
 
+def _unique_pairs(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def _reject_constant(value):
+    raise ValueError(f"Nonfinite JSON constant: {value}")
+
+
 def _load_object(raw, label):
     try:
-        value = json.loads(raw)
+        value = json.loads(raw, object_pairs_hook=_unique_pairs, parse_constant=_reject_constant)
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValueError(f"{label} must be valid UTF-8 JSON") from exc
     if not isinstance(value, dict):
@@ -94,6 +107,7 @@ def _validate_sha256(value, label):
 
 
 def _validate_protocol(protocol):
+    committed = protocol.get("version") == "table-assessment-run-protocol-v2"
     _require_exact_keys(
         protocol,
         {
@@ -102,11 +116,14 @@ def _validate_protocol(protocol):
             "corpus_manifest_sha256",
             "search_version",
             "runtime_sha256",
-        },
+        }
+        | ({"assessment_receipt_sha256"} if committed else set()),
         "Protocol",
     )
-    if protocol["version"] != PROTOCOL_VERSION:
+    if protocol["version"] != PROTOCOL_VERSION and not committed:
         raise ValueError(f"Protocol version must be {PROTOCOL_VERSION}")
+    if committed:
+        _validate_sha256(protocol["assessment_receipt_sha256"], "Assessment receipt")
     for field in ("questions_sha256", "corpus_manifest_sha256", "runtime_sha256"):
         _validate_sha256(protocol[field], f"Protocol {field}")
     if (
@@ -279,6 +296,8 @@ def run(protocol_path, questions_path, corpus, output):
             for case in cases
         ],
     }
+    if "assessment_receipt_sha256" in protocol:
+        report["assessment_receipt_sha256"] = protocol["assessment_receipt_sha256"]
     output.mkdir(parents=True, exist_ok=False)
     _persist(report, output)
 

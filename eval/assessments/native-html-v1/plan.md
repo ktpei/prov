@@ -114,3 +114,16 @@ acquisition hashes or observed response lengths. Primary HTML, exhibits and
 viewer wrappers remain unopened. Acquisition must record actual bytes, content
 type, URL and time, and follow identified sequential SEC access. Do not infer a
 UTC instant from a displayed timestamp without establishing its timezone.
+
+
+## Implemented grading boundary
+
+The runner now accepts a v2 protocol containing only an opaque assessment-receipt
+hash in addition to its existing inputs. The separate grader verifies that receipt,
+replays exact calls before opening labels, validates complete alternative evidence
+sets and preserves mapped/unmapped/unresolved counts. It does not automatically
+establish committed gate chronology, annotation adequacy or cutoff enforcement.
+See the [schema and commands](../../table-runtime-design.md). No real assessment
+has been executed. Metadata proposals were already inspected before the eventual
+implementation freeze; that exposure must be retained, not described as blinded
+issuer selection. Financial tables and question/answer evidence remain uninspected.
