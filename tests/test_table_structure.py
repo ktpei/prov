@@ -21,6 +21,127 @@ class TableStructureTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.tmp_path = Path(temporary.name)
 
+    def test_v3_excludes_inert_tables_without_changing_visible_ids(self):
+        path = self.tmp_path / "input.html"
+        path.write_text(
+            "<template><table><tr><td>999</td></tr></table></template>"
+            "<table><tr><td>42</td></tr></table>"
+        )
+        legacy = extract_html_tables(path)
+        self.assertEqual(len(legacy["tables"]), 2)
+        result = extract_html_tables(path, version="native-html-tables-v3")
+        self.assertEqual(result["version"], "native-html-tables-v3")
+        self.assertEqual(len(result["tables"]), 1)
+        self.assertEqual(result["tables"][0]["id"], "table-1")
+        self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42")
+        self.assertEqual(extract_html_tables(path, version="native-html-tables-v2"), legacy)
+
+    def test_v3_template_fragment_cannot_change_parent_geometry_or_text(self):
+        path = self.tmp_path / "input.html"
+        path.write_text(
+            "<table><caption>USD<template>millions</template> thousands</caption>"
+            "<tr><td>4<template><tr><td rowspan=500>999"
+            "<template><table><tr><td>888</table></template></template>2</td>"
+            "<td>0</td></tr><template><tr><td>777</template>"
+            "<tr><td>7</td></tr></table>"
+        )
+        result = extract_html_tables(path, version="native-html-tables-v3")
+        table = result["tables"][0]
+        self.assertEqual(len(result["tables"]), 1)
+        self.assertEqual(table["caption"]["text"], "USD thousands")
+        self.assertEqual(
+            [[c["text"] for c in r["cells"]] for r in table["rows"]], [["42", "0"], ["7"]]
+        )
+        self.assertEqual(table["rows"][1]["cells"][0]["column_start"], 0)
+
+    def test_v3_template_inside_hidden_cell_does_not_end_hidden_scope(self):
+        path = self.tmp_path / "input.html"
+        path.write_text("<table><tr><td hidden><template><td>999</template>888<td>42</table>")
+        result = extract_html_tables(path, version="native-html-tables-v3")
+        self.assertEqual([c["text"] for c in result["tables"][0]["rows"][0]["cells"]], ["", "42"])
+
+    def test_v3_rejects_ambiguous_templates_and_unknown_versions(self):
+        path = self.tmp_path / "input.html"
+        for html in [
+            "<template/>",
+            "<template>",
+            "</template>",
+            "<template shadowrootmode=open></template>",
+            "<template><template/></template>",
+        ]:
+            path.write_text(html)
+            with self.subTest(html=html), self.assertRaises(ValueError):
+                extract_html_tables(path, version="native-html-tables-v3")
+        with self.assertRaisesRegex(ValueError, "Unknown table extraction version"):
+            extract_html_tables(path, version="unrecognized")
+
+    def test_v3_cli_selects_template_suppression(self):
+        path = self.tmp_path / "input.html"
+        path.write_text("<template><table><tr><td>999</td></tr></table></template>")
+        output = self.tmp_path / "v3.json"
+        subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "provenance.table_structure",
+                str(path),
+                str(output),
+                "--version",
+                "native-html-tables-v3",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(json.loads(output.read_text())["tables"], [])
+
+    def test_v3_raw_text_cannot_escape_template_suppression(self):
+        path = self.tmp_path / "input.html"
+        for tag in [
+            "textarea",
+            "title",
+            "xmp",
+            "iframe",
+            "noembed",
+            "noframes",
+            "noscript",
+            "plaintext",
+        ]:
+            path.write_text(
+                f"<table><tr><td>42<template><{tag}></template>999<template>"
+                f"</{tag}></template></td></tr></table>"
+            )
+            with self.subTest(tag=tag), self.assertRaisesRegex(ValueError, "raw-text context"):
+                extract_html_tables(path, version="native-html-tables-v3")
+        for tag in ["script", "style"]:
+            path.write_text(
+                f"<table><tr><td>42<template><{tag}></template>999<template>"
+                f"</{tag}></template></td></tr></table>"
+            )
+            result = extract_html_tables(path, version="native-html-tables-v3")
+            self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42")
+
+    def test_v3_literal_template_tags_in_visible_raw_text_are_rejected(self):
+        path = self.tmp_path / "input.html"
+        for tag in [
+            "textarea",
+            "title",
+            "xmp",
+            "iframe",
+            "noembed",
+            "noframes",
+            "noscript",
+            "plaintext",
+        ]:
+            path.write_text(
+                f"<table><tr><td><{tag}>4<template>999</template>2</{tag}></td></tr></table>"
+            )
+            with self.subTest(tag=tag), self.assertRaisesRegex(ValueError, "raw-text context"):
+                extract_html_tables(path, version="native-html-tables-v3")
+        path.write_text("<head><title>Example</title></head><table><tr><td>42</td></tr></table>")
+        result = extract_html_tables(path, version="native-html-tables-v3")
+        self.assertEqual(result["tables"][0]["rows"][0]["cells"][0]["text"], "42")
+
     def test_block_boundaries_and_caption_break_do_not_merge_values(self):
         result = extract(
             self.tmp_path,

@@ -119,8 +119,10 @@ def _is_explicitly_hidden(attrs):
 
 
 class _TableParser(HTMLParser):
-    def __init__(self):
+    def __init__(self, *, version="native-html-tables-v2"):
         super().__init__(convert_charrefs=True)
+        self.version = version
+        self.template_depth = 0
         self.tables = []
         self.stack = []
         self.blocked = []
@@ -193,6 +195,29 @@ class _TableParser(HTMLParser):
 
     def _starttag(self, tag, attrs, self_closing=False):
         tag = tag.lower()
+        if self.version == "native-html-tables-v3":
+            if (self.template_depth or not self.blocked) and tag in {
+                "textarea",
+                "title",
+                "xmp",
+                "iframe",
+                "noembed",
+                "noframes",
+                "noscript",
+                "plaintext",
+            }:
+                # HTMLParser only implements raw-text tokenization for script/style.
+                # Literal </template> text elsewhere must not escape the inert subtree.
+                raise ValueError("Unsupported raw-text context for template-aware extraction")
+            if tag == "template":
+                if self_closing:
+                    raise ValueError("Unsupported self-closing template")
+                if any(name == "shadowrootmode" for name, _ in attrs):
+                    raise ValueError("Unsupported declarative shadow DOM template")
+                self.template_depth += 1
+                return
+            if self.template_depth:
+                return
         if self.blocked and self.blocked[-1]["cell"] and tag in {"td", "th", "tr"}:
             self._close_cell(self._current())
             self.blocked.pop()  # An incoming cell/row implicitly ends the preceding cell.
@@ -258,6 +283,11 @@ class _TableParser(HTMLParser):
         self._starttag(tag, attrs)
 
     def handle_startendtag(self, tag, attrs):
+        if self.version == "native-html-tables-v3" and (
+            self.template_depth or tag.lower() == "template"
+        ):
+            self._starttag(tag, attrs, self_closing=True)
+            return
         if tag.lower() in {"td", "th"} and _is_explicitly_hidden(attrs):
             self._starttag(tag, attrs)  # HTML ignores the slash on non-void cells.
             return
@@ -271,6 +301,14 @@ class _TableParser(HTMLParser):
 
     def handle_endtag(self, tag):
         tag = tag.lower()
+        if self.version == "native-html-tables-v3":
+            if tag == "template":
+                if not self.template_depth:
+                    raise ValueError("Unmatched template end tag")
+                self.template_depth -= 1
+                return
+            if self.template_depth:
+                return
         if self.blocked and self.blocked[-1]["cell"] and tag in {"tr", "table"}:
             self._close_cell(self._current())
             self.blocked.pop()
@@ -313,7 +351,7 @@ class _TableParser(HTMLParser):
                 target["parts"].append(" ")
 
     def handle_data(self, data):
-        if self.blocked or not self.stack:
+        if self.template_depth or self.blocked or not self.stack:
             return
         table = self._current()
         if table.get("caption") is not None:
@@ -325,6 +363,8 @@ class _TableParser(HTMLParser):
             table["cell"]["parts"].append(data)
 
     def finish(self):
+        if self.template_depth:
+            raise ValueError("Unfinished template")
         if self.blocked:
             raise ValueError(f"Unfinished hidden or suppressed element: {self.blocked[-1]['tag']}")
         if self.stack:
@@ -333,18 +373,28 @@ class _TableParser(HTMLParser):
             raise ValueError(f"Unfinished active {active}")
 
 
-def extract_html_tables(path):
+def extract_html_tables(path, *, version="native-html-tables-v2"):
     """Return a versioned JSON-compatible table sidecar for *path*."""
+    if version not in {"native-html-tables-v2", "native-html-tables-v3"}:
+        raise ValueError("Unknown table extraction version")
     raw = Path(path).read_bytes()
-    parser = _TableParser()
+    parser = _TableParser(version=version)
     parser.feed(raw.decode("utf-8", errors="strict"))
     parser.close()
     parser.finish()
     return {
-        "version": "native-html-tables-v2",
+        "version": version,
         "original_sha256": hashlib.sha256(raw).hexdigest(),
         "tables": parser.tables,
-        "limitations": LIMITATIONS.copy(),
+        "limitations": LIMITATIONS.copy()
+        + (
+            [
+                "Ordinary template contents are excluded; declarative shadow DOM templates are unsupported and rejected.",
+                "RCDATA and raw-text elements are rejected outside already-suppressed content and inside templates, except script/style whose tokenization is supported.",
+            ]
+            if version == "native-html-tables-v3"
+            else []
+        ),
     }
 
 
@@ -352,8 +402,13 @@ def main():
     argument_parser = argparse.ArgumentParser(description=__doc__)
     argument_parser.add_argument("input_html", type=Path)
     argument_parser.add_argument("output_json", type=Path)
+    argument_parser.add_argument(
+        "--version",
+        choices=["native-html-tables-v2", "native-html-tables-v3"],
+        default="native-html-tables-v2",
+    )
     args = argument_parser.parse_args()
-    sidecar = extract_html_tables(args.input_html)
+    sidecar = extract_html_tables(args.input_html, version=args.version)
     encoded = (json.dumps(sidecar, indent=2, ensure_ascii=False) + "\n").encode()
     with args.output_json.open("xb") as output:
         output.write(encoded)

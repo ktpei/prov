@@ -20,6 +20,14 @@ explicit CSS/completeness limitations; legacy replay and frozen corpora remain
 unchanged. This is preparation, not a new accuracy result.
 
 
+## Template extraction repair — 2026-11-16
+
+[Opt-in sidecar v3](eval/reports/table-template-2026-11-16/report.md) isolates inert
+HTML templates from visible table geometry and text. Seven new synthetic tests
+pass; four v2 sidecars replay exactly. Existing tools and the locked assessment
+remain on v2; promotion requires explicit version plumbing and a new freeze.
+This is a standalone extraction repair, not improved financial accuracy.
+
 ## Raw table runtime — 2026-11-16
 
 [Fixed offline probe](eval/reports/table-runtime-2026-11-16/report.md): standalone
@@ -39,7 +47,7 @@ Three-task retrieval reaches 2/4 annotated pages at five hits; declared-document
 scoping improves first-hit recall from 1/4 to 2/4 without fixing the remaining task.
 Native HTML v2 fixes explicit-hidden contamination and retains raw headers/captions;
 four evaluator-only packets check source/period/sign/scale associations. Lint and
-247 tests pass. Full-agent FinanceBench inference and human adjudication remain
+254 tests pass. Full-agent FinanceBench inference and human adjudication remain
 pending. [Source findings](eval/reports/source-ingestion-2026-11-16/report.md).
 
 
