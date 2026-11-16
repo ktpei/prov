@@ -1,0 +1,363 @@
+{
+  "version": "pdf-evidence-coverage-report-v1",
+  "protocol_sha256": "e82b621b9173ceea590cb0733ffd314319fbb631200b41f7e6892d71406304d6",
+  "selected_denominator": 3,
+  "mapped_denominator": 3,
+  "cases": [
+    {
+      "id": "financebench_id_06247",
+      "source_id": "WALMART_2018_10K",
+      "disposition": "mapped",
+      "reason": "",
+      "coverage": {
+        "parent_passage_opportunity": {
+          "top_1": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_3": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_5": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        },
+        "returned_snippets": {
+          "top_1": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_3": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_5": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_01163",
+      "source_id": "NIKE_2023_10K",
+      "disposition": "mapped",
+      "reason": "",
+      "coverage": {
+        "parent_passage_opportunity": {
+          "top_1": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": false,
+                  "cashflow_period_scale_columns": false,
+                  "operations_total": false,
+                  "investing_total": true,
+                  "financing_total": true
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_3": {
+            "complete": true,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": true,
+                  "cashflow_period_scale_columns": true,
+                  "operations_total": true,
+                  "investing_total": true,
+                  "financing_total": true
+                },
+                "complete": true
+              }
+            ]
+          },
+          "top_5": {
+            "complete": true,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": true,
+                  "cashflow_period_scale_columns": true,
+                  "operations_total": true,
+                  "investing_total": true,
+                  "financing_total": true
+                },
+                "complete": true
+              }
+            ]
+          }
+        },
+        "returned_snippets": {
+          "top_1": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": false,
+                  "cashflow_period_scale_columns": false,
+                  "operations_total": false,
+                  "investing_total": true,
+                  "financing_total": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_3": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": false,
+                  "cashflow_period_scale_columns": false,
+                  "operations_total": false,
+                  "investing_total": true,
+                  "financing_total": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_5": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": false,
+                  "cashflow_period_scale_columns": false,
+                  "operations_total": false,
+                  "investing_total": true,
+                  "financing_total": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_00601",
+      "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+      "disposition": "mapped",
+      "reason": "Mapped source lines do not resolve reference-d00daa9a06589412: question FY2023 versus company fiscal2022 convention.",
+      "coverage": {
+        "parent_passage_opportunity": {
+          "top_1": {
+            "complete": true,
+            "single_hit_complete": true,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": true,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": true,
+                  "primary_drivers": true,
+                  "offsets_and_causes": true
+                },
+                "complete": true
+              }
+            ]
+          },
+          "top_3": {
+            "complete": true,
+            "single_hit_complete": true,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": true,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": true,
+                  "primary_drivers": true,
+                  "offsets_and_causes": true
+                },
+                "complete": true
+              }
+            ]
+          },
+          "top_5": {
+            "complete": true,
+            "single_hit_complete": true,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": true,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": true,
+                  "primary_drivers": true,
+                  "offsets_and_causes": true
+                },
+                "complete": true
+              }
+            ]
+          }
+        },
+        "returned_snippets": {
+          "top_1": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": false,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": false,
+                  "primary_drivers": false,
+                  "offsets_and_causes": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_3": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": false,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": false,
+                  "primary_drivers": false,
+                  "offsets_and_causes": false
+                },
+                "complete": false
+              }
+            ]
+          },
+          "top_5": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": false,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": false,
+                  "primary_drivers": false,
+                  "offsets_and_causes": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "semantic_correctness": "not_measured",
+  "replay_verified": true,
+  "limitations": [
+    "Posthoc development component annotations, not human validation.",
+    "Line coverage does not establish correct column association, calculation or complete annotation adequacy.",
+    "Parent passages are opportunities to read; only returned nonempty snippets count as already exposed text."
+  ],
+  "summary": {
+    "parent_passage_opportunity": {
+      "top_1_complete_count": 1,
+      "top_3_complete_count": 2,
+      "top_5_complete_count": 2
+    },
+    "returned_snippets": {
+      "top_1_complete_count": 0,
+      "top_3_complete_count": 0,
+      "top_5_complete_count": 0
+    }
+  }
+}

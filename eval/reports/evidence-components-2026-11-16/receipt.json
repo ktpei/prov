@@ -1,0 +1,63 @@
+{
+  "version": "pdf-evidence-coverage-receipt-v1",
+  "implementation_commit": "f5954bb",
+  "freeze_commit": "3ec598a",
+  "head_before_grading": "3ec598ae2fe75041cc27fcbf587f759e69b13cf3",
+  "conditions": {
+    "original": {
+      "protocol_sha256": "e82b621b9173ceea590cb0733ffd314319fbb631200b41f7e6892d71406304d6",
+      "result_sha256": "2d9dd6d8297ea42072c73b78db6305e3ab50294df8900c421be236ede0ade0c7",
+      "replay_verified": true,
+      "summary": {
+        "parent_passage_opportunity": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        },
+        "returned_snippets": {
+          "top_1_complete_count": 0,
+          "top_3_complete_count": 0,
+          "top_5_complete_count": 0
+        }
+      }
+    },
+    "components": {
+      "protocol_sha256": "e050cca28914851042275b50e82f96d6e60c0f37129e272ef111f9201dcfb285",
+      "result_sha256": "c81c9a757d84ee48c6dd6da6244a73340cb0bdb88a2cf04bbf54ff0693514a5f",
+      "replay_verified": true,
+      "summary": {
+        "parent_passage_opportunity": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        },
+        "returned_snippets": {
+          "top_1_complete_count": 0,
+          "top_3_complete_count": 0,
+          "top_5_complete_count": 0
+        }
+      }
+    },
+    "statement-context": {
+      "protocol_sha256": "3b3b1e5db24da903386d9f530a5bd9b47d9f2ace890e154235d1f7815dd5551c",
+      "result_sha256": "dee4edaaf0f8858f9e60108529b4220f7a112575a854af52bf321a12df463b98",
+      "replay_verified": true,
+      "summary": {
+        "parent_passage_opportunity": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        },
+        "returned_snippets": {
+          "top_1_complete_count": 0,
+          "top_3_complete_count": 0,
+          "top_5_complete_count": 0
+        }
+      }
+    }
+  },
+  "paid_model_calls": 0,
+  "source_read_calls": 0,
+  "selected_tasks": 3,
+  "annotation_status": "posthoc coding-agent development annotations; human validation pending"
+}

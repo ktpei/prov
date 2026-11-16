@@ -1,5 +1,15 @@
 # Working context — 2026-11-16
 
+## Evidence-component diagnostics — 2026-11-16
+
+[Replay-bound component coverage](eval/reports/evidence-components-2026-11-16/report.md)
+shows the same result for all three saved retrieval conditions: complete annotated
+packets in parent passages for 2/3 tasks at top three/five, but 0/3 in returned
+snippets. NIKE requires a union of parent passages; Ulta has a complete first
+parent. This posthoc development diagnostic separates read opportunities from
+text actually returned, without changing page scores or claiming answer accuracy.
+All 278 tests and lint pass. Bounded reading is the next evaluation question.
+
 ## Broader assessment preparation — 2026-11-16
 
 The [locked native-HTML assessment plan](eval/assessments/native-html-v1/plan.md)

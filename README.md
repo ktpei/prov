@@ -70,6 +70,11 @@ used more searches without improving page coverage; it was not promoted. An
 [equal-budget statement-context variant](eval/reports/statement-context-2026-11-16/report.md)
 also failed to improve final coverage and lost a required candidate page.
 
+[Evidence-component diagnostics](eval/reports/evidence-components-2026-11-16/report.md)
+show complete annotated evidence in parent passages for 2/3 exposed tasks, but
+0/3 in returned snippets across all three retrieval conditions. This measures a
+search-to-read gap, not financial answer accuracy.
+
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
 All 419 native-text pages replay unchanged with structured page diagnostics.
