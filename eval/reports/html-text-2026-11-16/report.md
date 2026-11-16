@@ -29,3 +29,11 @@ filing lines matched legacy order. Original markup supports the release's hidden
 heading omission. These particular documents do not demonstrate removal of hidden
 numeric content; that protection is supported by synthetic regressions. This is
 bounded compatibility review, not human adjudication or rendered-page verification.
+
+The [final clean rebuild](final-check.json), under `8aa5cec`, yields 380 release
+lines and 1,718 filing lines, with zero separator-only lines. This removes empty
+layout rows as well as the newly noticed separator artifacts. Content-bearing
+lines match the initial v2 output in order after removing whitespace/separators;
+this comparison does not assert that whitespace is semantically irrelevant.
+The old corpus remains byte-identical. Local initial and final corpora are kept
+separately at `runs/cloudflare-html-text-v2` and `runs/cloudflare-html-text-v2-final`.

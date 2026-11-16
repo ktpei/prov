@@ -1,0 +1,25 @@
+{
+  "version": "native-html-text-final-check-v1",
+  "git_revision": "8aa5cec87f9ca3cbddc20309e643c78b0ab17709",
+  "working_tree_dirty": false,
+  "model_calls": 0,
+  "new_manifest_sha256": "7f90d66853858db836e8d49f9828f3bc2d779a8e7f6cc3f446727aee22684d0d",
+  "original_corpus_unchanged": true,
+  "sources": [
+    {
+      "source_id": "cloudflare-q3-2024-release",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "text_sha256": "479e70d7d917cc0c109d17b591a6adff31f3bfdd7c000e85a018b13d274e6bf5",
+      "lines": 380,
+      "separator_only_lines": 0
+    },
+    {
+      "source_id": "cloudflare-q3-2024-filing",
+      "original_sha256": "a5152b82107a7a4c578a80931e1d00f5564cc7f2373ffbc77274f1ae1004361f",
+      "text_sha256": "16f8ed65e74b9a980559446939db7cff2fdb82aaf2323aa8dd1195f7ab703651",
+      "lines": 1718,
+      "separator_only_lines": 0
+    }
+  ],
+  "scope": "Two previously inspected sources; synthetic visibility regressions and bounded compatibility only, not full text completeness."
+}
