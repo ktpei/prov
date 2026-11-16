@@ -68,6 +68,24 @@ It can also penalize useful dates, units, or metrics; these are retained with
 positive weight. It cannot fix a wrong top-ranked table. Synthetic checks cover
 caption/body metric repetition, date-only and title-only queries, hidden cells,
 determinism, unchanged table scores/reads, body-only ordering, and recovery of a
-candidate outside v2's returned eight. The four real development cases will run
-only after this implementation and protocol are committed. No generalization
-claim or default promotion is planned from those inspected cases.
+candidate outside v2's returned eight. The protocol required committing implementation and selection before running
+the four real development cases. No generalization claim or default promotion
+was planned from those inspected cases.
+
+The frozen experiment ran under clean `bc3d749`, with zero model/network calls.
+Complete required context remained **2/4**, with no paired wins or losses;
+explicit-window controls remained 4/4. Table rankings/scores were unchanged,
+and every v1 and v2 tool-response hash replayed exactly. The
+[complete summary](soft-prefix-summary.json) retains all cases and hashes;
+raw traces are local at `runs/table-runtime-soft-prefix-v3/report.json`.
+
+For the balance sheet, selected rows changed from `[36,35,28]` (two stock
+classes and current liabilities) to `[28,22,24]` (liability rows), still omitting
+current assets. Per-share candidates changed but retained all required context.
+The wrong-table cash-flow failure and successful paired R&D read were unchanged.
+All question-search reads fit the cap (5,130–11,653 characters). This is a
+negative improvement result: discounting repeated positional context alone does
+not establish coverage of multiple requested metrics. V3 remains an experimental
+replay option; v2 remains the default. Next work should test metric diversity and
+table selection separately, with a locked, previously uninspected development
+assessment before any promotion. No holdout inference or additional spend occurred.
