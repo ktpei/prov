@@ -1,0 +1,131 @@
+import hashlib
+import json
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+from provenance.table_structure import MAX_SPAN, extract_html_tables
+
+
+def extract(tmp_path, html):
+    path = tmp_path / "input.html"
+    path.write_text(html, encoding="utf-8")
+    return extract_html_tables(path)
+
+
+class TableStructureTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.tmp_path = Path(temporary.name)
+
+    def test_headers_data_text_locations_and_stability(self):
+        html = '<table id="facts">\n<tr><th>Name<br>label</th><th>Value</th></tr>\n<tr><td>A &amp; B</td><td>3</td></tr></table>'
+        first = extract(self.tmp_path, html)
+        second = extract(self.tmp_path, html)
+
+        assert first == second
+        assert first["version"] == "native-html-tables-v1"
+        assert first["original_sha256"] == hashlib.sha256(html.encode()).hexdigest()
+        table = first["tables"][0]
+        assert table["id"] == "table-1"
+        assert table["html_id"] == "facts"
+        assert table["original_location"] == {"line": 1, "column": 0}
+        assert [(cell["tag"], cell["text"]) for cell in table["rows"][0]["cells"]] == [
+            ("th", "Name label"),
+            ("th", "Value"),
+        ]
+        cell = table["rows"][1]["cells"][0]
+        assert cell["id"] == "table-1-r1-c0"
+        assert cell["original_location"] == {"line": 3, "column": 4}
+        assert cell["text"] == "A & B"
+
+    def test_colspan_and_rowspan_geometry(self):
+        result = extract(
+            self.tmp_path,
+            "<table><tr><td rowspan=2>A</td><td colspan=2>B</td></tr>"
+            "<tr><td>C</td><td>D</td></tr></table>",
+        )
+        rows = result["tables"][0]["rows"]
+        assert [(c["column_start"], c["row_span"], c["column_span"]) for c in rows[0]["cells"]] == [
+            (0, 2, 1),
+            (1, 1, 2),
+        ]
+        assert [(c["id"], c["column_start"]) for c in rows[1]["cells"]] == [
+            ("table-1-r1-c1", 1),
+            ("table-1-r1-c2", 2),
+        ]
+
+    def test_empty_and_separate_parenthesis_cells_remain(self):
+        row = extract(
+            self.tmp_path, "<table><tr><td></td><td>(</td><td>1,234</td><td>)</td></tr></table>"
+        )["tables"][0]["rows"][0]
+        assert [cell["text"] for cell in row["cells"]] == ["", "(", "1,234", ")"]
+        assert [cell["column_start"] for cell in row["cells"]] == [0, 1, 2, 3]
+
+    def test_hidden_content_omitted(self):
+        result = extract(
+            self.tmp_path,
+            "<head><table><tr><td>hidden table</td></tr></table></head>"
+            "<table><tr><td>A<script>bad</script><style>worse</style>"
+            "<noscript>fallback</noscript><ix:header>xbrl</ix:header>B</td></tr></table>",
+        )
+        assert len(result["tables"]) == 1
+        assert result["tables"][0]["rows"][0]["cells"][0]["text"] == "AB"
+
+    def test_nested_tables_are_independent(self):
+        result = extract(
+            self.tmp_path,
+            "<table><tr><td>parent <table><tr><td>child</td></tr></table> tail</td></tr></table>",
+        )
+        assert [table["id"] for table in result["tables"]] == ["table-1", "table-2"]
+        assert result["tables"][0]["rows"][0]["cells"][0]["text"] == "parent tail"
+        assert result["tables"][1]["rows"][0]["cells"][0]["text"] == "child"
+
+    def test_invalid_spans_rejected(self):
+        for attribute in [
+            "rowspan=0",
+            "colspan=-1",
+            "rowspan=nope",
+            f"colspan={MAX_SPAN + 1}",
+            "rowspan=1 rowspan=2",
+        ]:
+            with (
+                self.subTest(attribute=attribute),
+                self.assertRaisesRegex(ValueError, "Invalid|Duplicate"),
+            ):
+                extract(self.tmp_path, f"<table><tr><td {attribute}>x</td></tr></table>")
+
+    def test_overlap_and_unfinished_structures_rejected(self):
+        with self.assertRaisesRegex(ValueError, "overlaps"):
+            extract(
+                self.tmp_path,
+                "<table><tr><td></td><td rowspan=2></td></tr><tr><td colspan=2></td></tr></table>",
+            )
+        with self.assertRaisesRegex(ValueError, "Unfinished active cell"):
+            extract(self.tmp_path, "<table><tr><td>unfinished")
+        with self.assertRaisesRegex(ValueError, "outside an active row"):
+            extract(self.tmp_path, "<table><td>missing row</td></table>")
+
+    def test_optional_cell_and_row_end_tags(self):
+        result = extract(self.tmp_path, "<table><tr><td>A<td>B<tr><td>C</table>")
+        assert [[cell["text"] for cell in row["cells"]] for row in result["tables"][0]["rows"]] == [
+            ["A", "B"],
+            ["C"],
+        ]
+
+    def test_cli_requires_new_file_and_reports_counts_and_hashes(self):
+        source = self.tmp_path / "source.html"
+        output = self.tmp_path / "sidecar.json"
+        source.write_text("<table><tr><td>x</td></tr></table>")
+        command = [sys.executable, "-m", "provenance.table_structure", str(source), str(output)]
+        completed = subprocess.run(command, check=True, capture_output=True, text=True)
+        report = json.loads(completed.stdout)
+
+        assert (report["tables"], report["rows"], report["cells"]) == (1, 1, 1)
+        assert set(report) == {"tables", "rows", "cells", "original_sha256", "sidecar_sha256"}
+        assert json.loads(output.read_text())["tables"][0]["id"] == "table-1"
+        with self.assertRaises(subprocess.CalledProcessError):
+            subprocess.run(command, check=True, capture_output=True, text=True)
