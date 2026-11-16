@@ -5,7 +5,10 @@ cohort while preserving every search result, read window and evidence line. The
 thirty compact read responses total 250,316 serialized output-string characters,
 versus 1,045,305 for full metadata: a **76.05% reduction**. Complete evidence
 coverage remains 0/6, 0/6 and 1/6 after one/three/five reads. This repairs the
-measured context-size failure, not the five incomplete retrieved packets.
+measured context-size failure, not the five frozen-packet misses. Those misses are
+not proof that equivalent evidence is absent: the later [saved-result diagnosis](../../retrieval-research-2026-11-16.md)
+finds relevant 3M segment tables outside the frozen locations, without assigning
+new semantic success or changing the original grade.
 
 The following counts hold under both the unchanged production priority and the
 unchanged earlier-read challenger:

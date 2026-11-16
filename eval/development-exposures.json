@@ -100,6 +100,16 @@
       "group": "AMERICANWATERWORKS_2021_10K",
       "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
       "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "VERIZON_2021_10K",
+      "reason": "Published FinanceBench question/evidence example incidentally exposed during primary-paper retrieval research; exclude from untouched validation and preserve as development.",
+      "evidence": "eval/retrieval-research-2026-11-16.md#incidental-research-exposure"
+    },
+    {
+      "group": "AMCOR_2020_10K",
+      "reason": "Published FinanceBench question/evidence example incidentally exposed during primary-paper retrieval research; exclude from untouched validation and preserve as development.",
+      "evidence": "eval/retrieval-research-2026-11-16.md#incidental-research-exposure"
     }
   ]
 }

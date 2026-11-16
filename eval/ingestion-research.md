@@ -114,3 +114,13 @@ which full-page records accompany an excerpt. Full metadata stays in the corpus
 and remains the default response mode. Independent review and synthetic checks
 pass; no compact-mode cohort outcome is measured yet. Historical protocols and
 reference answers remain unchanged.
+
+## Retrieval interpretation and primary research — 2026-11-16
+
+The [new review](retrieval-research-2026-11-16.md) distinguishes missing frozen
+locations from missing semantic support; 3M has relevant segment tables outside
+its original packet. Five primary papers motivate a proposed matched page-context
+ranking ablation, with no new results yet. Incidental Verizon 2021 and Amcor 2020
+examples are registered as development exposures. The compact read mode is now
+available through the CLI, recorded/replayed by both engines and bound to resume
+identity; full metadata remains the default.

@@ -64,3 +64,10 @@ parent reads, independent one/three/five-read snapshots, current 32K output-char
 budget and unchanged baseline/challenger policies. No result-driven annotation
 revision is allowed within this version. No paid calls, holdout runs or production
 policy changes occurred in annotation.
+
+## Later annotation-scope finding
+
+A [saved-response diagnosis](../../retrieval-research-2026-11-16.md) found relevant
+3M segment tables outside these frozen page-25 locations. These packets are not
+exhaustive semantic judgments. No alternative was added and no result was regraded;
+future alternative-evidence assessment requires a separate version and review.

@@ -24,10 +24,15 @@ and full-diagnostics provenance while narrowing only response page records.
 Independent review and synthetic checks pass. A [controlled assessment wrapper](eval/assessments/financebench-compact-read-v1/progress.md)
 verified historical full-mode compatibility and exact replay in both modes. Compact
 metadata removed all blocked projections and reduced read output characters
-76.05%; complete evidence coverage remained 0/6, 0/6 and 1/6. Operational mode
-integration and missing retrieval components are next. Full metadata
-remains the default.
-All 342 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+76.05%; complete evidence coverage remained 0/6, 0/6 and 1/6. The explicit mode
+is now wired through the CLI, both engines, typed trace grading
+and checkpoint identity; full metadata remains the default. A [saved-result and
+primary-research review](eval/retrieval-research-2026-11-16.md) identifies unmatched
+statement/context locations and potentially useful 3M evidence outside the frozen
+packet. Location misses are not exhaustive semantic failures. Two incidentally
+exposed paper-example groups are registered for development. A matched page-context
+ranking experiment and separate validation reservation are proposed, not executed.
+All 346 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16
