@@ -1,4 +1,27 @@
-# Working context — 2026-11-07
+# Working context — 2026-11-16
+
+## Selected finance accuracy benchmarks — 2026-11-16
+
+The user selected the comprehensive suite discussed in planning and requested it
+be recorded for future implementation. Canonical plan:
+[Finance accuracy benchmark plan](eval/benchmark-plan.md).
+
+- Core first: Salesforce FinEval CFA subsets, FinQA, FinanceBench, and custom prov tasks.
+- Next: TAT-QA for report-table interpretation and ConvFinQA for conversations.
+- Later challenge: Finance Agent Benchmark when tools/source coverage support it.
+- Excel/workbook benchmarking is explicitly deferred. Financial knowledge and
+  evidence-backed research accuracy take priority over workbook-aware research.
+- Separate model-only, correct-evidence-supplied, and full-agent conditions where
+  applicable. Keep benchmark scores, citation support, and runtime compliance distinct.
+- Initial targets: 100 FinEval, 100 FinQA, 100 TAT-QA questions, all 150 public
+  FinanceBench examples across declared partitions, 30 ConvFinQA conversations,
+  and 50 custom tasks. These are planning targets, not completed runs or guarantees.
+- Preserve the original 25-task corpus and untouched 15-task holdout. Verify data
+  licensing, versions, leakage boundaries, grader calibration, and execution budgets.
+
+This update records a decision only. It does not install adapters, download data,
+run inference, select an eval platform, or authorize additional spending. Historical
+verification and authorization below remain dated records, not new measurements.
 
 ## Evaluation milestone — measured development baseline
 
@@ -49,7 +72,7 @@ account usage before a future paid batch; application estimates are not invoices
 
 Build company-context research tooling and evaluation first. The user selected
 LangChain + LangGraph with OpenRouter. Workbook capabilities, browser UI, ownership
-questions, and export are deferred; workbook-aware research is the next milestone,
+questions, and export are deferred; finance accuracy benchmarking is the next planning priority,
 and the eventual product is an Excel add-in.
 
 The user approved parallel development subagents (runtime, ingestion, evaluation)

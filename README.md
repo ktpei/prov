@@ -21,9 +21,12 @@ rules, and semester deliverables.
   dependencies, current status, and milestone checks.
 - [Project scope](project.md) records the sponsor brief and implementation boundary.
 - [Working context](context.md) records verified status and decisions still pending.
+- [Finance accuracy benchmark plan](eval/benchmark-plan.md) records the selected
+  datasets, scoring, test conditions, and future implementation stages.
 
-The active milestone is company-context tooling and evaluation. Workbook-aware
-research is next; the eventual product interface is an Excel add-in. Browser UI,
+The active milestone is company-context tooling and evaluation. Finance accuracy
+benchmarking is the next planning priority; external benchmark adapters and runs
+remain planned. The eventual product interface is an Excel add-in. Browser UI,
 workbook operations, and approved exports are deferred.
 
 ## Try it without credentials

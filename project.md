@@ -8,6 +8,17 @@ The 2026-11-07 approval authorizes company-context tooling, LangChain + LangGrap
 OpenRouter integration, and reproducible evaluation. Workbook and UI implementation
 remain deferred.
 
+## Benchmark selection — 2026-11-16
+
+The selected next evaluation scope is financial knowledge, numerical reasoning,
+report interpretation, supported research, and conversations. Use Salesforce
+FinEval, FinQA, FinanceBench, TAT-QA, ConvFinQA, and custom prov tasks as specified
+in the [benchmark implementation plan](eval/benchmark-plan.md). Core implementation
+starts with FinEval, FinQA, FinanceBench, and custom tasks; Finance Agent Benchmark
+is a later challenge. Excel/workbook benchmarking is deferred. Dataset adapters,
+external benchmark runs, and new scores are not yet implemented by this decision.
+The plan records proposed counts, scoring, split discipline, and exit checks.
+
 ## Evaluation update — 2026-11-07
 
 A preregistered frozen-runtime batch of six fresh public company-research tasks
@@ -139,7 +150,7 @@ deployment, a production UI, and a production financial research service.
 - Keep old custom loop and 25-task corpus as regression baselines; heldout tasks
   remain separate from development and are not run without authorization.
 - Browser chatbot, workbook reading/writing/export, and ownership allocation deferred.
-  Workbook-aware research is next; eventual interface is an Office.js Excel add-in.
+  Finance accuracy benchmarking takes priority; eventual interface is an Office.js Excel add-in.
 - Frozen local packets require no Exa key. Live web discovery is optional/later.
 - Backend file writes are deterministic diagnostics/ingestion, authorized by the
   developer action; model tools remain read-only.
