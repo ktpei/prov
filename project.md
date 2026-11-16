@@ -21,9 +21,11 @@ replay are complete. [Saved-response diagnosis](eval/assessments/financebench-co
 attributes 79.53% of read output characters to extraction metadata. The new opt-in
 [returned-page projection](eval/read-extraction-design.md) preserves global warnings
 and full-diagnostics provenance while narrowing only response page records.
-Independent review and synthetic checks pass; compact-mode cohort assessment is
-next. Full metadata remains the default.
-All 334 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+Independent review and synthetic checks pass. A [controlled assessment wrapper](eval/assessments/financebench-compact-read-v1/progress.md)
+now checks historical full-mode compatibility before compact dispatch and retains
+exact replay/attribution gates; cohort execution remains pending. Full metadata
+remains the default.
+All 342 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16

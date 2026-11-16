@@ -48,7 +48,8 @@ legacy/unknown metadata, malformed records and direct/tool error handling. Indep
 review identified contradictory-page and null-mapping cases; both were fixed and
 verified before acceptance.
 
-No compact-mode cohort result is claimed yet. A separately frozen comparison must
+No compact-mode cohort result is claimed yet. The [controlled wrapper](assessments/financebench-compact-read-v1/progress.md)
+is implemented with synthetic verification; its separately frozen comparison must
 bind this option and the new runtime, verify default-response compatibility against
 saved responses, and keep the six-case denominator, existing annotations, questions,
 read windows and context policies fixed. Historical experiment protocols remain
