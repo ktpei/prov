@@ -47,12 +47,18 @@ all other annotations and precomputed retrieval. Hashes identify each projection
 The separate files are an application boundary, not an operating-system sandbox;
 a runner must not grant its agent filesystem access to the evaluator directory.
 
-Selection uses a declared seed and stable hashes. A document (FinQA filename or
-FinanceBench document name) stays in one internal partition; 20% of hash buckets
+Selection uses a declared seed and stable hashes. New preparation uses partition
+v2: FinQA `TICKER/YEAR` reports (rather than individual pages) and FinanceBench
+document names stay in one internal partition; 20% of hash buckets
 are reserved for `internal_final`, and only `dev` tasks are emitted. This is a
-public-data development partition, not a secret holdout. FinQA filenames identify
-pages, so this does not yet guarantee company/report separation. CFA shared
+public-data development partition, not a secret holdout. Legacy v1 manifests grouped FinQA pages and still replay unchanged. V2 uses report
+groups for released page-path filenames. The development-exposure registry keeps
+previously reviewed reports in development, including overlapping ConvFinQA contexts. CFA shared
 scenarios and cross-suite FinQA/ConvFinQA overlap require additional auditing.
+The six content-bound unresolved issues in `eval/reference-issues.json` are applied
+to new preparations only. Source/task hash mismatches fail; gold is never rewritten
+or excluded. Review-required tasks stay in the denominator with null accuracy and
+are skipped before any paid request. Existing frozen manifests are unchanged.
 Changing the seed changes the partition and is not a legitimate way to replenish
 a final set already inspected or tuned on. Original upstream split labels remain.
 

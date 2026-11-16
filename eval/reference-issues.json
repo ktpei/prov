@@ -1,0 +1,83 @@
+{
+  "version": "finance-reference-issues-v1",
+  "issues": [
+    {
+      "id": "reference-b05e56a502d9c993",
+      "dataset": "fineval",
+      "subset": "CFA-Easy",
+      "source_split": "test",
+      "revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+      "source_sha256": "cd6005e33184b7e21d6735371ff82f7018fa67bca673ad26cb3e5803de4dfa0c",
+      "task_id": "sha256:ccd654f3b95f17734345a5451846be28cfd78c8b497276bd14438f9c5bd2c205",
+      "task_sha256": "da6326129eebc46307ac8fd9ea55f4c23913efdd414b972adee1130fed5bf751",
+      "category": "conflicting_choice_gold",
+      "note": "Upstream answer letter and indexed gold choice disagree; neither is adjudicated.",
+      "review": "eval/external-benchmark-research.md#complete-release-import-audit"
+    },
+    {
+      "id": "reference-c8122ac7f780782e",
+      "dataset": "fineval",
+      "subset": "CFA-Easy",
+      "source_split": "test",
+      "revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+      "source_sha256": "cd6005e33184b7e21d6735371ff82f7018fa67bca673ad26cb3e5803de4dfa0c",
+      "task_id": "sha256:e5f0c43e43444a0da6c6d103fb3b4fd82f4c2ca7052aa2ce79cbfbe20251a723",
+      "task_sha256": "1e4044e1500a479ce462b09fc203c51b0647153485e0151a78f542c6d13e8ad5",
+      "category": "conflicting_choice_gold",
+      "note": "Upstream answer letter and indexed gold choice disagree; neither is adjudicated.",
+      "review": "eval/external-benchmark-research.md#complete-release-import-audit"
+    },
+    {
+      "id": "reference-f21a77363b4e529d",
+      "dataset": "fineval",
+      "subset": "CFA-Easy",
+      "source_split": "test",
+      "revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+      "source_sha256": "cd6005e33184b7e21d6735371ff82f7018fa67bca673ad26cb3e5803de4dfa0c",
+      "task_id": "sha256:7b18f699bb67dbea91118de9497e66d5046c70dbf6912b12db62b23cbb40d2b7",
+      "task_sha256": "b707d2f96cd0c7638d5718d5b5037b067aef0ccc6d1044f55177123f693475ef",
+      "category": "conflicting_choice_gold",
+      "note": "Upstream answer letter and indexed gold choice disagree; neither is adjudicated.",
+      "review": "eval/external-benchmark-research.md#complete-release-import-audit"
+    },
+    {
+      "id": "reference-5cad2baf81f1bdba",
+      "dataset": "finqa",
+      "subset": "default",
+      "source_split": "dev",
+      "revision": "0f16e2867befa6840783e58be38c9efb9229d742",
+      "source_sha256": "a847fb7e0d61a3125a1e2909852df6b89f1ee64d2c5ff1bf689e332214deee51",
+      "task_id": "MRO/2007/page_149.pdf-1",
+      "task_sha256": "6fd10c4b79b6c995f30232e2f61099cc2cff4962428c78a5dbb90b56b9e82c04",
+      "category": "underspecified_question",
+      "note": "Question does not clearly request the average required by its reference program. Retain original gold pending adjudication.",
+      "review": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "id": "reference-92d1d52b696f88ab",
+      "dataset": "financebench",
+      "subset": "open_source",
+      "source_split": "public",
+      "revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+      "source_sha256": "a5a2aa673e573e55675fc3c0f9aa38c1cf59d2abc91edb077534f71f10a71877",
+      "task_id": "financebench_id_00591",
+      "task_sha256": "8e551d8885508ae9410e4c9f1f355128e38f9323b608aa44866b8bffa7d8d448",
+      "category": "percentage_wording",
+      "note": "Reference explanation needs percentage-point versus relative-percentage adjudication; underlying ratio arithmetic remains unchanged.",
+      "review": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "id": "reference-2c33192bfa93de7c",
+      "dataset": "financebench",
+      "subset": "open_source",
+      "source_split": "public",
+      "revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+      "source_sha256": "a5a2aa673e573e55675fc3c0f9aa38c1cf59d2abc91edb077534f71f10a71877",
+      "task_id": "financebench_id_00540",
+      "task_sha256": "b62db51d2264f223373c03bc6c90e74d740444a9b7f11de83e5c290b02cf538c",
+      "category": "ambiguous_denominator",
+      "note": "Question leaves average versus ending inventory convention unresolved; gold and observed output use different conventions.",
+      "review": "eval/reports/external-pilot-2026-11-16/review.md"
+    }
+  ]
+}

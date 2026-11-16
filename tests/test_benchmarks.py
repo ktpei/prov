@@ -4,8 +4,11 @@ import copy
 import unittest
 
 from provenance.benchmarks import (
+    PARTITION_V1,
+    PARTITION_V2,
     canonical_hash,
     model_input,
+    partition_group,
     prepare,
     score_answer,
 )
@@ -130,6 +133,47 @@ class BenchmarkTests(unittest.TestCase):
                 seed=17,
                 condition="model_only",
             )
+
+    def test_report_grouping_preserves_legacy_partition_replay(self):
+        first, second = task(0, "finqa"), task(1, "finqa")
+        first["metadata"] = {"filename": "SYN/2024/page_1.pdf"}
+        second["metadata"] = {"filename": "SYN/2024/page_99.pdf"}
+        self.assertEqual(partition_group(first), partition_group(second))
+        self.assertNotEqual(
+            partition_group(first, PARTITION_V1), partition_group(second, PARTITION_V1)
+        )
+        source = bundle()["manifest"]["source"]
+        legacy = prepare(
+            [task(i) for i in range(30)],
+            source=source,
+            count=5,
+            seed=17,
+            condition="model_only",
+            partition_method=PARTITION_V1,
+        )
+        self.assertEqual(legacy["manifest"]["partition_method"], PARTITION_V1)
+        self.assertEqual(score_run(legacy, [])["selected_count"], 5)
+        self.assertEqual(bundle()["manifest"]["partition_method"], PARTITION_V2)
+        legacy["manifest"]["partition_method"] = "unknown"
+        with self.assertRaises(ValueError):
+            score_run(legacy, [])
+
+    def test_previously_observed_reports_cannot_become_new_final_cases(self):
+        record = task(0, "finqa")
+        record["metadata"] = {"filename": "MRO/2007/page_149.pdf"}
+        source = {**bundle()["manifest"]["source"], "dataset": "finqa"}
+        with self.assertRaisesRegex(ValueError, "eligible"):
+            prepare([record], source=source, count=1, seed=20261116, condition="supplied_context")
+        exposed = prepare(
+            [record],
+            source=source,
+            count=1,
+            seed=20261116,
+            condition="supplied_context",
+            development_groups=["MRO/2007"],
+        )
+        self.assertEqual(exposed["manifest"]["partitions"][record["id"]], "dev")
+        self.assertEqual(score_run(exposed, [])["selected_count"], 1)
 
     def test_choice_rejects_explanations_and_multiple_answers(self):
         self.assertTrue(score_answer(task(), {"answer": "B"})["passed"])

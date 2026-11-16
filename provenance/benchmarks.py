@@ -15,6 +15,8 @@ from pathlib import Path
 
 VERSION = "external-finance-v1"
 SCORER_VERSION = "external-answer-only-v1"
+PARTITION_V1 = "sha256(seed,document_or_id)-mod5-v1"
+PARTITION_V2 = "sha256(seed,report_or_id)-mod5-v2"
 CONDITIONS = {
     "fineval": {"model_only"},
     "finqa": {"supplied_context"},
@@ -62,14 +64,27 @@ def model_input(task, condition):
     return payload
 
 
-def partition_group(task):
+def partition_group(task, method=PARTITION_V2):
     """Keep a document together; related suites still require a cross-suite overlap audit."""
     metadata = task["metadata"]
     document = metadata.get("filename") or metadata.get("doc_name")
+    if document and task["dataset"] == "finqa" and method == PARTITION_V2:
+        # Released FinQA filenames identify pages, not entire company reports.
+        document = re.sub(r"/page_[0-9]+\.pdf$", "", str(document))
     return str(document) if document else task["id"]
 
 
-def prepare(tasks, *, source, count, seed, condition):
+def prepare(
+    tasks, *, source, count, seed, condition, partition_method=PARTITION_V2, development_groups=()
+):
+    if not isinstance(development_groups, (list, tuple)) or any(
+        not isinstance(group, str) or not group for group in development_groups
+    ):
+        raise ValueError("Development exposure groups must be nonempty strings")
+    if partition_method == PARTITION_V1 and development_groups:
+        raise ValueError("Legacy partitions cannot introduce exposure overrides")
+    if partition_method not in {PARTITION_V1, PARTITION_V2}:
+        raise ValueError("Unsupported partition method")
     if not tasks or type(count) is not int or count <= 0:
         raise ValueError("Nonempty tasks and positive integer count required")
     if type(seed) is not int:
@@ -92,7 +107,9 @@ def prepare(tasks, *, source, count, seed, condition):
     assignments = {
         task["id"]: (
             "internal_final"
-            if int(canonical_hash([seed, partition_group(task)])[:8], 16) % 5 == 0
+            if partition_group(task, partition_method) not in development_groups
+            and int(canonical_hash([seed, partition_group(task, partition_method)])[:8], 16) % 5
+            == 0
             else "dev"
         )
         for task in tasks
@@ -108,7 +125,7 @@ def prepare(tasks, *, source, count, seed, condition):
         "source": source,
         "seed": seed,
         "condition": condition,
-        "partition_method": "sha256(seed,document_or_id)-mod5-v1",
+        "partition_method": partition_method,
         "partitions": assignments,
         "selected_ids": [task["id"] for task in selected],
         "inputs_sha256": canonical_hash(inputs),
@@ -122,6 +139,8 @@ def prepare(tasks, *, source, count, seed, condition):
             "FinanceBench strict success requires calibrated semantic and evidence review.",
         ],
     }
+    if partition_method == PARTITION_V2:
+        manifest["development_groups"] = sorted(set(development_groups))
     return {"manifest": manifest, "tasks": selected, "inputs": inputs}
 
 
@@ -202,6 +221,8 @@ def score_run(bundle, submission):
         count=len(tasks),
         seed=manifest["seed"],
         condition=manifest["condition"],
+        partition_method=manifest["partition_method"],
+        development_groups=manifest.get("development_groups", []),
     )
     if checked["manifest"]["selected_ids"] != manifest["selected_ids"] or any(
         manifest["partitions"].get(task["id"]) != "dev" for task in tasks
@@ -230,7 +251,9 @@ def score_run(bundle, submission):
     rows = []
     for task in tasks:
         prediction = by_id.get(task["id"])
-        if prediction is None or prediction.get("status") != "completed":
+        if task["reference"].get("requires_review"):
+            rows.append(score_answer(task, None))
+        elif prediction is None or prediction.get("status") != "completed":
             rows.append({"id": task["id"], "passed": False, "status": "missing_or_incomplete"})
         else:
             rows.append(score_answer(task, prediction.get("output")))
@@ -285,6 +308,7 @@ def main():
     if args.command == "prepare":
         from provenance.benchmark_adapters import adapt_records
         from provenance.benchmark_data import read_records
+        from provenance.reference_issues import apply_reference_issues
 
         source = json.loads(args.source_manifest.read_text())
         raw = args.input.read_bytes()
@@ -294,8 +318,25 @@ def main():
         tasks = adapt_records(
             source["dataset"], records, subset=source["subset"], source_split=source["source_split"]
         )
+        registry = json.loads(
+            (Path(__file__).resolve().parent.parent / "eval/reference-issues.json").read_text()
+        )
+        tasks, _ = apply_reference_issues(tasks, source, registry)
+        exposures = json.loads(
+            (Path(__file__).resolve().parent.parent / "eval/development-exposures.json").read_text()
+        )
+        if exposures.get("version") != "finance-development-exposures-v1":
+            raise ValueError("Unknown development exposure registry")
         bundle = prepare(
             tasks, source=source, count=args.count, seed=args.seed, condition=args.condition
+        )
+        bundle["manifest"]["reference_registry_sha256"] = canonical_hash(registry)
+        bundle["manifest"]["applied_reference_issues"] = sorted(
+            {
+                issue
+                for task in bundle["tasks"]
+                for issue in task["reference"].get("reference_issues", [])
+            }
         )
         args.output.mkdir(parents=True, exist_ok=False)
         for key, value in bundle.items():

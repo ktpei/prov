@@ -105,7 +105,15 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
     }
     path = output / "submission.json"
     write_json(path, ledger)
+    references = {task["id"]: task["reference"] for task in bundle["tasks"]}
     for payload, row in zip(bundle["inputs"], ledger["predictions"], strict=True):
+        if references[payload["id"]].get("requires_review"):
+            row.update(
+                status="reference_review_required",
+                failure="Unresolved reference; no inference attempted",
+            )
+            write_json(path, ledger)
+            continue
         remaining = budget_usd - ledger["accounted_cost_usd"]
         if remaining <= 1e-12:
             ledger["status"] = "aggregate_budget_exhausted"

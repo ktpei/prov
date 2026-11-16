@@ -87,3 +87,21 @@ $0.5476339. See the [report](reports/external-pilot-2026-11-16/report.md).
 Independent review found upstream question and convention ambiguity; original
 scores remain unchanged. Next: content-bound reference issue registry and broader
 source/document partitions before more inference.
+
+## Cycle 3 — reference quality and overlap
+
+- Added six content-bound unresolved reference issues: three CFA label conflicts,
+  one underspecified FinQA question, and two FinanceBench interpretation/wording
+  ambiguities. New preparation annotates references only; inputs/gold are unchanged.
+- New runs skip unresolved references before making paid requests, retain them in
+  the selection, and leave accuracy unset. Frozen pilot artifacts remain unchanged.
+- Partition v2 groups FinQA pages by `TICKER/YEAR`; legacy v1 is still replayable.
+  Reviewed report groups are forced into development. This prevents the previously
+  seen MRO report from accidentally moving into a newly computed final partition.
+- Full expansion research found all 421 ConvFinQA dev conversations overlap FinQA
+  dev by source page. Shared report partitions are required; independent coverage
+  cannot be claimed. TAT-QA's stable table IDs support context, not report, grouping.
+- Lint and **121 tests passed** after reference/exposure integration. A new 100-task
+  FinQA manifest was prepared offline with the reference registry and report groups.
+- TAT-QA/ConvFinQA files acquired with pinned archive/member hashes; adapter and
+  official-metric integration is in progress. No additional inference spending.

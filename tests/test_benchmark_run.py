@@ -10,7 +10,7 @@ from unittest.mock import Mock
 from langchain_core.messages import AIMessage
 
 from provenance.benchmark_run import INSTRUCTIONS, parse_output, run_prepared
-from provenance.benchmarks import prepare
+from provenance.benchmarks import canonical_hash, prepare
 from provenance.controls import Budget
 from provenance.langchain_model import OpenRouterModel
 from provenance.transport import ProviderError
@@ -86,6 +86,26 @@ class BenchmarkRunTests(unittest.TestCase):
             score = json.loads((Path(tmp) / "run/score.json").read_text())
             self.assertEqual(score["passed_count"], 3)
             self.assertEqual(score["selected_count"], 3)
+
+    def test_unresolved_reference_prevents_paid_request_and_stays_visible(self):
+        data = prepared()
+        for task in data["tasks"]:
+            task["reference"]["requires_review"] = "Synthetic unresolved reference"
+        data["manifest"]["tasks_sha256"] = canonical_hash(data["tasks"])
+        with tempfile.TemporaryDirectory() as tmp:
+            callback = Mock(side_effect=AssertionError("Must not invoke provider"))
+            ledger = run_prepared(
+                data, fake(callback), Path(tmp) / "run", budget_usd=0.06, per_task_usd=0.02
+            )
+            callback.assert_not_called()
+            self.assertEqual(ledger["accounted_cost_usd"], 0)
+            self.assertEqual(len(ledger["predictions"]), 3)
+            self.assertTrue(
+                all(row["status"] == "reference_review_required" for row in ledger["predictions"])
+            )
+            score = json.loads((Path(tmp) / "run/score.json").read_text())
+            self.assertEqual(score["pending_review_count"], 3)
+            self.assertIsNone(score["accuracy"])
 
     def test_crash_retains_reservation_and_no_automatic_resume(self):
         with tempfile.TemporaryDirectory() as tmp:
