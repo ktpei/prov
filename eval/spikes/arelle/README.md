@@ -125,7 +125,9 @@ The [subsequent pinned-plugin comparison](sec-transforms-report.md) resolves tho
 twelve values against independent expectations and preserves the other 492 records.
 All 504 facts pass schema validation. The [source-occurrence bridge](../../reports/xbrl-occurrences-2026-11-16/report.md)
 now binds all 504 to original markup, including 420 exact nearest-cell joins.
-Complete typed-value integration and rendered visibility remain separate steps.
+The [integrated typed export](../../reports/xbrl-facts-2026-11-16/report.md) now
+preserves all values, contexts, units and source locations. Rendered visibility
+and financial acceptance remain separate steps.
 
 ## Remaining acceptance work
 
@@ -138,7 +140,7 @@ Complete typed-value integration and rendered visibility remain separate steps.
    or unresolved references instead of silently accepting partial models.
 4. Round-trip accepted source locators and verify visible-cell associations with
    local rendering. Hidden/detached/ambiguous facts get explicit dispositions.
-5. Integrate the verified ODFL package/plugin smoke into a full occurrence sidecar,
+5. Assess bounded evidence delivery from the integrated ODFL typed sidecar,
    preserving the initial rejected run and paired comparison. Acquisition stays
    separate from denied-network loading. The other two tagged filings remain
    unbundled; preserve them and the untagged release disposition. This remains

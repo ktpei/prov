@@ -161,6 +161,12 @@ hidden dispositions. Source locations are bound to the validated runtime; render
 visibility and general financial evidence acceptance remain unverified.
 
 
+The [experimental typed fact export](eval/reports/xbrl-facts-2026-11-16/report.md)
+now integrates all 504 exposed ODFL facts with 71 contexts, five units, separate
+provenance-bound taxonomy defaults and rebuilt source geometry. Exact numeric and
+partial-date representations pass independent source expectations. Seven optional
+checks and 431 core tests pass; financial acceptance and rendered visibility remain
+unverified. No default policy or reserved evaluation source changes.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select

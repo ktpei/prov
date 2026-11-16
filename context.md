@@ -1,5 +1,12 @@
 # Working context — 2026-11-16
 
+The [experimental typed fact export](eval/reports/xbrl-facts-2026-11-16/report.md)
+now integrates all 504 exposed ODFL facts with 71 contexts, five units, separate
+provenance-bound taxonomy defaults and rebuilt source geometry. Exact numeric and
+partial-date representations pass independent source expectations. Seven optional
+checks and 431 core tests pass; financial acceptance and rendered visibility remain
+unverified. No default policy or reserved evaluation source changes.
+
 ## Broader context validation result — 2026-11-16
 
 [Six new development source groups](eval/assessments/financebench-context-v1/progress.md)
