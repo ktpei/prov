@@ -104,9 +104,17 @@ case records except independently checked adapter hashes. Independent and retain
 pass the same 15 tests and 10 scenarios; 2.47.5 still needs the timezone guard.
 No frozen file or default tool is changed.
 
+## Dimensional scope observation
+
+The [separate dimensional fixture](dimensions/README.md) observes 13 occurrences
+in 10 contexts and verifies explicit/typed members, residual scenario content and
+namespace-alias equality. Six optional tests pass under denied-network execution.
+It has no hypercubes or default relationships, so this is context identity coverage,
+not taxonomy applicability or general extraction.
+
 ## Remaining acceptance work
 
-1. Extend the frozen synthetic taxonomy/manifest beyond the completed five-fact
+1. Add separately versioned fixtures beyond the frozen five-fact
    positive path; retain the same denied-network execution and dependency checks.
 2. Cover sign/scale/accuracy, nil/zero, divided units, namespace aliases, periods,
    explicit/typed dimensions, unknown concepts/transforms, duplicates and broken

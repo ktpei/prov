@@ -144,6 +144,9 @@ ancestry; rendered visibility and broader fact types remain unverified. A separa
 timezone mismatch and preserves duplicate conflicts; 15 optional tests pass. A
 [controlled 2.47.5 comparison](eval/spikes/arelle/candidate-comparison-report.md)
 reproduces those synthetic behaviors while holding other package versions fixed.
+A [dimensional scope fixture](eval/spikes/arelle/dimensions/README.md) additionally
+preserves explicit/typed members and residual scenario content; six optional tests
+pass. Default-member and hypercube applicability checks remain pending.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select

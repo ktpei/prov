@@ -82,6 +82,10 @@ A [controlled 2.47.5 candidate comparison](eval/spikes/arelle/candidate-comparis
 holds all other distribution versions fixed, verifies import origins and preserves
 all scenario semantics. Independent and retained runs match the 15 tests/10 scenarios; no default
 promotion or timezone repair is claimed.
+A [dimensional context observation](eval/spikes/arelle/dimensions/README.md) now
+checks explicit and simple typed dimensions, residual scenario content and namespace
+alias equality across 13 occurrences/10 contexts. Six optional tests pass. Defaults,
+hypercube applicability and integration with the guarded adapter remain pending.
 
 ## Context-priority challenger — 2026-11-16
 

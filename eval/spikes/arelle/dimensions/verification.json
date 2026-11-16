@@ -1,0 +1,12 @@
+{
+  "result_sha256": "0a901389bc33729d2580754c205300d0d6dd1788fd622abe27194e094f2ac4ee",
+  "independent_reproduction_sha256": "0a901389bc33729d2580754c205300d0d6dd1788fd622abe27194e094f2ac4ee",
+  "review": "read-only same-model-family coding-agent review; not human financial validation",
+  "optional_tests": 6,
+  "core_tests": 399,
+  "lint": "passed",
+  "source_records_independently_checked": 21,
+  "prior_top_level_spike_files_unchanged": 26,
+  "test_code_sha256": "6c08531f8c678ff8816864b2a75ab0af6526d63a11b74a667479659fab04f12b",
+  "scope": "fixed-fixture context observation; no default or hypercube applicability claim"
+}
