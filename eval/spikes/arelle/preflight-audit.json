@@ -1,0 +1,15 @@
+{
+  "version": "arelle-preflight-independent-audit-v1",
+  "reviewer": "/root/masked_packet_review",
+  "result_sha256": "e1cad5143f116839d6d2402e3b3008adedc9a520bd74938ca64f15a913ba442c",
+  "driver_sha256": "4d75b5ff58b028c66a4d27bbc511a8de5c2bb52b79c8d955b9c7a605d4ab040f",
+  "fixture_sha256": "48e9ed3b31fe50e269c7dbbb0e3cff0bd54c52fc4962ebd3e91a6b90e81bddbe",
+  "byte_identical_reproduction": true,
+  "clean_distributions": 22,
+  "overlay_distributions": 71,
+  "all_clean_distributions_inside_virtualenv": true,
+  "system_packages_disabled": true,
+  "negative_path_accepted": true,
+  "successful_typed_extraction": "not_tested",
+  "result": "passed"
+}

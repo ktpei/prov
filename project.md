@@ -66,6 +66,11 @@ Explicit-header-only implementation is deferred for this cohort. Investigate a
 mature Inline XBRL processor with isolated offline dependencies, diagnostics and
 original-markup provenance before adding typed-context tools. No dependency,
 extractor default, benchmark score or validation content changed.
+An [Arelle preflight](eval/spikes/arelle/README.md) installed version 2.47.2 in a
+clean temporary Python 3.13.2 environment and reproduced a missing-schema rejection
+under OS network denial. The API returns true and one parsed fact despite two
+validation errors: accepted facts remain zero. Successful typed extraction,
+complete dependency hashing and visible-cell provenance are still untested.
 
 ## Context-priority challenger — 2026-11-16
 
