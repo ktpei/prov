@@ -1,6 +1,6 @@
 # Working context — 2026-11-16
 
-## Broader context validation selection — 2026-11-16
+## Broader context validation result — 2026-11-16
 
 [Six new development source groups](eval/assessments/financebench-context-v1/progress.md)
 are frozen before content inspection: Verizon, Coca-Cola, Costco, Johnson & Johnson,
@@ -11,10 +11,14 @@ retries. Frozen preparation/native extraction is complete (981 pages, 34,904 lin
 [Outcome-blind annotation](eval/assessments/financebench-context-v1/annotation-report.md)
 and independent review are complete for all six cases across ten referenced pages.
 Packets preserve ambiguities in 3M, Coca-Cola and Verizon; mapped locations are not
-validated financial answers. Retrieval/context comparison remains unrun. Five other
-pages lack native text and remain visually unverified. The independently reviewed
+validated financial answers. [Frozen comparison](eval/assessments/financebench-context-v1/comparison-report.md)
+now retains complete packets for 0/6, 0/6 and 1/6 at one/three/five reads under
+both policies, with 4/6, 5/6 and 5/6 blocked projections. No challenger promotion.
+Five other pages lack native text and remain visually unverified. The independently reviewed
 [comparison runner](eval/assessments/financebench-context-v1/compare.py) passes
-synthetic failure/replay tests; protocol freeze and execution are next.
+nine synthetic failure/replay tests; six original searches/thirty reads and an exact
+replay are complete. Repeated document-wide extraction metadata is the next size
+investigation, alongside incomplete retrieval.
 All 329 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 

@@ -1,0 +1,102 @@
+{
+  "version": "financebench-context-comparison-independent-audit-v1",
+  "scope": "Saved identities and bookkeeping only; no searches, source reads, projection/replay execution, or regrading.",
+  "status": "passed_no_inconsistency_found",
+  "protocol_sha256": "9c65970ae428b9b11205801a43817b2da610b799562fef819f9cbcf620e7240d",
+  "run_sha256": "c754a2a7d191c4dd276c66d15ac74e7fb7651ec94f9bdaaca48fd28dd35f1aac",
+  "grade_sha256": "57395fe829ce49c9cbd847c9487548d752824270ac9179d4fe3f0abf819eab9b",
+  "case_order": [
+    "financebench_id_04209",
+    "financebench_id_04254",
+    "financebench_id_00215",
+    "financebench_id_03473",
+    "financebench_id_01865",
+    "financebench_id_00711"
+  ],
+  "selected_denominator": 6,
+  "mapped_denominator": 6,
+  "checks": [
+    "Protocol matches committed HEAD bytes and both run/grade protocol identities.",
+    "All protocol-bound files, runtime digest, annotation receipt inputs/artifacts match saved hashes.",
+    "All six complete case IDs/source IDs match frozen annotation order and all30 ordered read records match journal results.",
+    "Exact run inventory is run.json pluscase-0..5.jsonl; each journal hash, event sequence, requests and final budgets match run metadata.",
+    "Search-hit bounds equal read requests; all30 reads returned exact requested end without recorded failures/truncations.",
+    "Both policy snapshots are identical for every saved prefix, including canonical history hashes, retained ranks, statuses and character counts.",
+    "Per-policy complete/blocking and paired counts independently recomputed from saved flags; blocked states retain no read snippets."
+  ],
+  "execution_operations_verified_from_artifacts": {
+    "completed_cases": 6,
+    "search_calls": 6,
+    "read_attempts": 30,
+    "failed_reads": 0,
+    "truncated_reads": 0
+  },
+  "replay_operations_reported_by_grade": {
+    "replay_search_calls": 6,
+    "replay_read_attempts": 30
+  },
+  "replay_flag_reported_by_grade": true,
+  "replay_independently_reexecuted_in_this_audit": false,
+  "delivery_complete_counts_from_saved_grade": {
+    "search": {
+      "parent_passage_opportunity": {
+        "top_1": 0,
+        "top_3": 0,
+        "top_5": 1
+      },
+      "returned_snippets": {
+        "top_1": 0,
+        "top_3": 0,
+        "top_5": 0
+      }
+    },
+    "read": {
+      "parent_passage_opportunity": {
+        "top_1": 0,
+        "top_3": 0,
+        "top_5": 1
+      },
+      "returned_snippets": {
+        "top_1": 0,
+        "top_3": 0,
+        "top_5": 1
+      }
+    }
+  },
+  "each_policy_retained_complete_counts": {
+    "top_1": 0,
+    "top_3": 0,
+    "top_5": 1
+  },
+  "each_policy_blocked_counts": {
+    "top_1": 4,
+    "top_3": 5,
+    "top_5": 5
+  },
+  "paired_counts": {
+    "top_1": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 6
+    },
+    "top_3": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 6
+    },
+    "top_5": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 6
+    }
+  },
+  "only_top5_complete_case": "financebench_id_04209",
+  "semantic_correctness": "not_measured",
+  "interpretation": [
+    "No retention improvement is observed; both policies have identical saved snapshots and six paired ties at everyprefix.",
+    "Context-budget blocking is operational and distinct from read failure, retrieval delivery coverage, and financial correctness. Allsix executions completed despite4/5/5 blocked projections.",
+    "The top5 one-of-six complete-annotation result is not financial accuracy. Five blocked snapshots must not be presented as five incorrect financial answers.",
+    "Recorded grading replay operations are6 searches+30reads in addition to6+30 execution operations; this audit checked records without rerunning them.",
+    "No provider/model-call events occur in this local deterministic trace; no paid inference was performed by this audit."
+  ]
+}

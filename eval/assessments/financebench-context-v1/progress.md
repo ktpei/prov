@@ -1,4 +1,4 @@
-# Broader context validation: preparation status
+# Broader context validation: comparison status
 
 Selection rules were frozen in `40d24d2`; all six selections were committed in
 `aaeb24e` before acquisition or content inspection. Independent review reproduced
@@ -15,7 +15,7 @@ Costco, Johnson & Johnson, 3M and American Water Works.
 | Extracted documents | 6 |
 | Prepared task/reference records | 6 |
 | Annotation-reviewed questions/evidence | 6 |
-| Executed retrieval/context cases | 0 |
+| Executed retrieval/context cases | 6 |
 
 ## Source-inventory research
 
@@ -63,13 +63,16 @@ and development reservations: 981 pages, 34,904 emitted lines, five empty-native
 pages and zero warnings. [Outcome-blind annotation](annotation-report.md) and
 independent page review are complete: six mapped location packets across ten
 referenced pages, with no adjacent-page expansion. Semantic caveats remain explicit
-for 3M, Coca-Cola and Verizon. Comparison remains unexecuted and must keep policies/budget fixed; it cannot
-retune from these cases. This preparation is not a benchmark score.
+for 3M, Coca-Cola and Verizon. The [frozen comparison](comparison-report.md) is now complete with unchanged
+policies/budget: both retain 0/6, 0/6 and 1/6 complete packets, with 4/6, 5/6 and
+5/6 blocked projections. Neither policy is promoted. This is evidence retention,
+not a financial benchmark score.
 
 All 329 tests and lint pass. Six bodies have been byte-verified and natively
 extracted; selected task/reference records were prepared by code. All six packets
 were independently reviewed and frozen before retrieval; this is not human finance
-validation. No retrieval/context run, paid call or holdout run has occurred. Spending
+validation. Six original searches and thirty reads, plus an exact replay, completed. No paid
+call or holdout run occurred. Spending
 remains $0.4814193.
 
 Independent metadata-only review verified the 394-path non-truncated tree, all six
@@ -84,6 +87,6 @@ The reviewed driver SHA-256 is
 Nine synthetic tests cover label-free collection, byte-exact replay before packet
 parsing, identical histories, empty searches, failed read slots, durable search/read
 interruption, blocked contexts, post-replay tampering and policy divergence. All
-329 repository tests and lint pass. No real cohort search has run; freeze the exact
-protocol before execution. Historical policy code and production defaults are
+329 repository tests and lint pass. The exact protocol was frozen in `289cdd0`
+before the real cohort run; [results](comparison-report.md) are recorded separately. Historical policy code and production defaults are
 unchanged.

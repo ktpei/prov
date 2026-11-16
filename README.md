@@ -87,12 +87,15 @@ A [same-budget retention challenger](eval/reports/context-priority-2026-11-16/re
 recovers the two inspected losses by prioritizing earlier optional reads. It remains
 experimental: these exposed cases do not justify changing the default policy.
 
-[Broader validation preparation](eval/assessments/financebench-context-v1/progress.md)
+[Broader six-source validation](eval/assessments/financebench-context-v1/progress.md)
 now fixes six new development source groups and their pinned PDF inventory before
 content inspection. All six bodies are acquired and extracted (981 pages);
 all six evidence-location packets are [independently reviewed](eval/assessments/financebench-context-v1/annotation-report.md)
 and frozen before retrieval. Three semantic caveats remain explicit; financial
-answers are not validated. The comparison runner passes synthetic replay/failure checks; its frozen real-cohort run is still pending. Native text quality outside the ten inspected pages is unverified,
+answers are not validated. The [frozen comparison](eval/assessments/financebench-context-v1/comparison-report.md)
+finds no challenger improvement: both retain 1/6 complete packets at five reads,
+with five blocked projections. Production remains unchanged. Native text quality outside the ten inspected pages
+is unverified,
 and failed cases will not be replaced with easier ones.
 
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
