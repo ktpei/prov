@@ -55,3 +55,30 @@ therefore do not by themselves establish missing financial information. The
 metric remains unchanged; visual financial-cell review is still needed.
 
 Gold stays on the evaluation side. Full-agent paid execution remains disabled.
+
+## Declared-document scope ablation
+
+An exploratory follow-up kept the three tasks, original query strings, extraction,
+and BM25 ranking fixed, while restricting each query to its already-permitted
+`doc_name`. Gold document/page labels were not used for retrieval. This changes
+corpus statistics as well as excluding distractor documents, so it is a source-scope
+comparison, not an isolated ranking-formula test.
+
+First-hit pooled annotated-page recall improved 1/4 → 2/4. Top-three/top-five stayed
+2/4; Walmart still missed both required pages. Nike's required page moved to rank 1.
+No new model calls occurred. These inspected development cases do not establish
+broader improvement. [Hashes and per-condition results](source-scope-ablation.json).
+
+## Native HTML v2 and packet grading
+
+The independently reviewed hidden-text defect is fixed in sidecar v2. Explicit
+hidden attributes and simple inline hiding styles suppress text; hidden cells
+retain geometry and an explicit status. Captions and raw scope/headers attributes
+are preserved without semantic inference. Block text boundaries cannot merge
+adjacent numeric tokens. Valid `rowspan=0` remains explicitly unsupported.
+
+The release retains all 16 tables/253 rows/2,682 cells with unchanged IDs and text;
+the filing yields 55/679/8,247. Four frozen evaluator-only packets cover purchases,
+R&D GAAP/non-GAAP periods, balance-sheet instants, and per-share scale exceptions.
+Structural grader positives and adversarial negatives pass. External CSS, semantic
+header association, and agent retrieval of a complete packet remain unverified.

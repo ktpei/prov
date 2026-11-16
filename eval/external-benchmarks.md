@@ -209,3 +209,10 @@ completed 22 requests for $0.0290532. Eight content-bound reference issues now
 include a TAT-QA metric-label concern and one ConvFinQA amortization ambiguity.
 These annotations affect future preparations only; original scores stay frozen.
 Inspected contexts are recorded in the development exposure registry.
+
+Offline source diagnostics can compare `--source-scope selected_corpus` (default)
+and `--source-scope declared_document` via `python -m provenance.source_quality`.
+Both verify binding v2 and use only original questions for search; gold page/text
+concordance is computed afterwards. The three-task development ablation improves
+top-one annotated-page recall 1/4 → 2/4, with unchanged top-five 2/4. This does not
+establish answer support or full-agent success.

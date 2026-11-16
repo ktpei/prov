@@ -26,6 +26,22 @@ Required negatives:
 
 Report component presence, association correctness, numeric/unit correctness, and
 complete-packet success separately. Keep unresolved header relationships visible.
-The current v1 sidecar has a known explicit-hidden-text defect; v2 remediation is
-in progress. Version promotion requires replay of all fixture cells and negative
-checks. This protocol does not alter the original task corpus or holdout.
+The v2 sidecar suppresses explicit hidden content, preserves raw header attributes
+and captions, and separates block text. All frozen release cell IDs/text replayed
+unchanged; fixture sidecar identities were deliberately promoted to v2. Original
+v1 artifacts remain unchanged. External CSS and inferred header links remain unresolved. This protocol does not alter the original task corpus or holdout.
+
+`provenance.table_evaluation.grade_table_packet` now checks strict packet fields,
+source/table/version/hash identity, every included cell against the sidecar,
+required component associations, typed numeric values/units, and the size limit.
+Synthetic complete packets pass all four fixtures. Negative tests reject missing
+components, wrong-table duplicate values, wrong periods, split-sign omissions,
+per-share scaling, fabricated locations, duplicates, and unsupported extra claims.
+This is a grader check, not evidence that a runtime retrieved the packet.
+
+Additional independent adversarial review found and fixed spaced CSS importance,
+hidden self-closing rows/wrappers, additional block-number boundaries, and Boolean
+geometry comparing equal to integers. Hidden empty cells in the real filing retain
+geometry and suppression until their explicit/implicit end. Canonical JSON cell
+comparison distinguishes Boolean and numeric coordinates/spans. All seven frozen
+benchmark score artifacts still reproduce exactly after these changes.

@@ -1,5 +1,16 @@
 # Working context — 2026-11-16
 
+## Source-quality iteration — 2026-11-16
+
+Whole-document diagnostics bind originals, extracted text, and the full manifest.
+Three-task retrieval reaches 2/4 annotated pages at five hits; declared-document
+scoping improves first-hit recall from 1/4 to 2/4 without fixing the remaining task.
+Native HTML v2 fixes explicit-hidden contamination and retains raw headers/captions;
+four evaluator-only packets check source/period/sign/scale associations. Lint and
+188 tests pass. Full-agent FinanceBench inference and human adjudication remain
+pending. [Source findings](eval/reports/source-ingestion-2026-11-16/report.md).
+
+
 ## Expansion pilot — 2026-11-16
 
 [Fixed table/conversation pilot](eval/reports/expansion-pilot-2026-11-16/report.md):

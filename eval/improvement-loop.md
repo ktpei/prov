@@ -155,12 +155,21 @@ scale review remains separate from these fixed scores. See the
 
 - PDF diagnostics now preserve warning counts/samples per page and package versions.
   Five Nike font-risk pages produced identical text with/without fontTools 4.68.0;
-  warnings fell87→0. No extraction improvement or dependency promotion is claimed.
+  warnings fell 87 → 0. No extraction improvement or dependency promotion is claimed.
 - FinanceBench corpus binding v2 hashes the complete source manifest, preventing
   silent page-map changes. Three-document v2 originals/text match the prior corpus.
-- Question-only top-five retrieval reached2/4 annotated pages and covered2/3 tasks;
-  the Walmart task missed both required pages. Exact excerpt concordance2/4 reflects
+- Question-only top-five retrieval reached 2/4 annotated pages and covered 2/3 tasks;
+  the Walmart task missed both required pages. Exact excerpt concordance 2/4 reflects
   retained dash characters in the two nonmatches, not proven missing information.
 - Four evaluator-only table fixtures bind source/table/period/scale/sign roles.
-  Hidden HTML text and dropped explicit headers are being repaired separately.
+  Sidecar v2 repairs hidden text and retains explicit caption/header metadata.
   No additional paid inference or original holdout access.
+
+## Cycle 8 — scoped retrieval and adversarial table packets
+
+Declared-document scoping improves top-one annotated-page recall 1/4 → 2/4 on
+the same three inspected tasks; top-five remains 2/4 and Walmart remains unresolved.
+Queries contain no gold. This is exploratory development evidence, not heldout QA.
+Sidecar v2 preserves all release cell IDs/text while fixing explicit-hidden and
+block-boundary contamination. Four structural packets and adversarial negatives
+are graded separately from any agent run. Lint and 188 tests passed; no paid calls.
