@@ -52,14 +52,15 @@ class SnapshotTests(unittest.TestCase):
         self.assertIn("Model", [sheet["name"] for sheet in snapshot.sheets])
         cells = snapshot.cells("Model", "B7:B9", 200)
         self.assertEqual([cell["address"] for cell in cells], ["B7", "B8", "B9"])
-        self.assertEqual([cell["display"] for cell in cells], ["1650", "215", "0.1303030303"])
+        self.assertEqual([cell["display"] for cell in cells], ["1,650.0", "215.0", "13.0%"])
+        self.assertEqual([cell["value"] for cell in cells], ["1650", "215", "0.1303030303"])
         self.assertIsNone(cells[0]["formula"])
         self.assertEqual(cells[2]["formula"], "=B8/B7")
 
     def test_grid_shape(self):
         grid = fixture().grid("Model")
         self.assertEqual(grid["sheet"], "Model")
-        self.assertEqual(grid["rows"][6][1]["display"], "1650")
+        self.assertEqual(grid["rows"][6][1]["display"], "1,650.0")
         self.assertEqual(grid["rows"][6][1]["address"], "B7")
         self.assertLessEqual(len(grid["rows"]), 60)
         with self.assertRaises(WorkbookError):

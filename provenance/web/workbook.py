@@ -67,6 +67,25 @@ def display(value):
     return str(value)
 
 
+_DECIMALS = re.compile(r"0\.(0+)")
+
+
+def formatted(value, number_format):
+    """Render common Excel number formats (percent, thousands, fixed decimals)."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not number_format:
+        return display(value)
+    section = number_format.split(";")[0]
+    match = _DECIMALS.search(section)
+    decimals = len(match[1]) if match else 0
+    if "%" in section:
+        return f"{value * 100:.{decimals}f}%"
+    if "#,##0" in section:
+        return f"{value:,.{decimals}f}"
+    if re.fullmatch(r"0(\.0+)?", section.strip()):
+        return f"{value:.{decimals}f}"
+    return display(value)
+
+
 def _formula(value):
     text = getattr(value, "text", value)  # ArrayFormula keeps its text separately
     return text if isinstance(text, str) and text.startswith("=") else None
@@ -97,9 +116,11 @@ class Snapshot:
 
     def cell(self, sheet, row, col):
         values, formulas = self._sheet(sheet)
+        source = values.cell(row, col)
         return {
             "address": format_address(row, col),
-            "display": display(values.cell(row, col).value),
+            "display": formatted(source.value, source.number_format),
+            "value": display(source.value),
             "formula": _formula(formulas.cell(row, col).value),
         }
 

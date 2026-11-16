@@ -90,7 +90,7 @@ export type WorkbookInfo = {
   warnings: string[];
 };
 
-export type Cell = { address: string; display: string; formula: string | null };
+export type Cell = { address: string; display: string; value: string; formula: string | null };
 
 export type Grid = { sheet: string; max_row: number; max_col: number; rows: (Cell | null)[][] };
 

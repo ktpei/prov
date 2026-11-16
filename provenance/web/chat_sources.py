@@ -210,7 +210,9 @@ class ChatSources(Sources):
         read = self.seen.get(self.workbook_id, set()) | self.preread
         if any(f"{sheet}!{cell['address']}" not in read for cell in cells):
             raise ValueError("Citation refers to unread workbook cells")
-        text = " ".join(f"{cell['display']} {cell['formula'] or ''}" for cell in cells)
+        text = " ".join(
+            f"{cell['display']} {cell['value']} {cell['formula'] or ''}" for cell in cells
+        )
         if _normalize(quote) not in _normalize(text):
             raise ValueError("Citation quote is absent from cited workbook cells")
 

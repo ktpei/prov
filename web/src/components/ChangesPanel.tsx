@@ -107,6 +107,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
           );
         })}
       </ul>
+      {proposals.some((p) => p.status === "pending") ? (
       <div className="mt-3 flex flex-wrap items-center gap-3">
         <button
           type="button"
@@ -120,6 +121,13 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
         </button>
         {error && <p role="alert" className="text-sm text-rust">{error}</p>}
       </div>
+      ) : (
+        <p className="mt-3 text-sm text-ink-soft">
+          {proposals.some((p) => p.status === "exported")
+            ? "Approved changes are in the edited copy below."
+            : "These proposals refer to a workbook you replaced. Ask again to get proposals for the current file."}
+        </p>
+      )}
 
       {latest && (
         <div className="mt-5 rounded-lg border border-ledger/40 bg-ledger-soft px-4 py-3">

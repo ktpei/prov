@@ -205,7 +205,7 @@ class WorkbookFlowTests(AppTestCase):
         info = self.upload(client, sid).json()
         self.assertEqual(info["snapshot_id"], "a34195a4a257")
         grid = client.get(f"/api/sessions/{sid}/workbook/Model").json()
-        self.assertEqual(grid["rows"][6][1]["display"], "1650")
+        self.assertEqual(grid["rows"][6][1]["display"], "1,650.0")
         context = client.put(
             f"/api/sessions/{sid}/context", json={"sheet": "Model", "range": "B7:B8"}
         )

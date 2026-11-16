@@ -60,7 +60,7 @@ class ChatSourcesTests(unittest.TestCase):
         result = src.call("read_workbook_range", {"sheet": "Model", "range": "A7:B7"}, 5)
         self.assertEqual(result["snapshot_id"], snap.snapshot_id)
         self.assertEqual(result["source_id"], f"workbook:{snap.snapshot_id}")
-        self.assertEqual([cell["display"] for cell in result["cells"]][1], "1650")
+        self.assertEqual([cell["display"] for cell in result["cells"]][1], "1,650.0")
         self.assertIn("Model!B7", src.seen[f"workbook:{snap.snapshot_id}"])
         too_big = src.call("read_workbook_range", {"sheet": "Model", "range": "A1:Z20"}, 5)
         self.assertIn("error", too_big)
@@ -73,6 +73,7 @@ class ChatSourcesTests(unittest.TestCase):
         src = sources(snapshot=snap, preread_range=("Model", "B8:B8"))
         src.call("read_workbook_range", {"sheet": "Model", "range": "B7"}, 5)
         src.check_citation({"source_id": workbook_id, "locator": "Model!B7", "quote": "1650"})
+        src.check_citation({"source_id": workbook_id, "locator": "Model!B7", "quote": "1,650.0"})
         with self.assertRaises(ValueError):
             src.check_citation({"source_id": workbook_id, "locator": "Model!B7", "quote": "1700"})
         src.check_citation({"source_id": workbook_id, "locator": "Model!B8", "quote": "215"})
@@ -104,7 +105,7 @@ class ChatSourcesTests(unittest.TestCase):
         proposal = src.proposals[0]
         self.assertEqual(
             (proposal["sheet"], proposal["cell"], proposal["old_display"], proposal["old_formula"]),
-            ("Model", "B7", "1650", None),
+            ("Model", "B7", "1,650.0", None),
         )
         self.assertEqual(proposal["new_content"], 1661.5)
 
@@ -166,7 +167,7 @@ class ComposeQuestionTests(unittest.TestCase):
         self.assertIn("Evidence set: Cloudflare Q3 2024 packet", text)
         self.assertIn("2024-11-07", text)
         self.assertIn(f"workbook:{snap.snapshot_id}", text)
-        self.assertIn("Model!B7 = 1650", text)
+        self.assertIn("Model!B7 = 1,650.0", text)
         self.assertNotIn("Question 1", text)
         for index in (2, 3, 4):
             self.assertIn(f"Question {index}", text)
