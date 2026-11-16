@@ -7,6 +7,8 @@ import math
 from pathlib import Path
 
 from provenance.benchmarks import canonical_hash, load_bundle, score_run
+from provenance.finance_retrieval import POLICY as COMPONENT_POLICY
+from provenance.finance_retrieval import retrieve as component_retrieve
 from provenance.sources import Sources
 
 VERSION = "financebench-source-quality-v1"
@@ -154,10 +156,14 @@ def _reference_flags(reference):
     }
 
 
-def evaluate_corpus(bundle, corpus_directory, *, source_scope="selected_corpus"):
+def evaluate_corpus(
+    bundle, corpus_directory, *, source_scope="selected_corpus", query_policy="original-question-v1"
+):
     """Return identity-bound, offline retrieval and text-concordance diagnostics."""
     if source_scope not in {"selected_corpus", "declared_document"}:
         raise ValueError("Unknown diagnostic source scope")
+    if query_policy not in {"original-question-v1", COMPONENT_POLICY}:
+        raise ValueError("Unknown diagnostic query policy")
     sources, binding, prepared_sha256, binding_sha256 = _validate(bundle, corpus_directory)
     all_documents = dict(sources.documents)
     permitted_documents = {item["id"]: item["context"]["doc_name"] for item in bundle["inputs"]}
@@ -178,7 +184,10 @@ def evaluate_corpus(bundle, corpus_directory, *, source_scope="selected_corpus")
             if source_scope == "declared_document"
             else all_documents
         )
-        hits = sources.search(task["question"], timeout=1)["results"]
+        if query_policy == COMPONENT_POLICY:
+            hits, query_trace = component_retrieve(sources, task["question"], timeout=1)
+        else:
+            hits = sources.search(task["question"], timeout=1)["results"]
         if len(hits) > 5:
             raise ValueError("Retrieval returned more than the fixed top five")
         raw_hits, hit_pages = [], []
@@ -239,6 +248,8 @@ def evaluate_corpus(bundle, corpus_directory, *, source_scope="selected_corpus")
                 "evidence_text_concordance": concordance,
             }
         )
+        if query_policy == COMPONENT_POLICY:
+            rows[-1]["query_trace"] = query_trace
 
     denominator = len(bundle["tasks"])
     report = {
@@ -295,6 +306,13 @@ def evaluate_corpus(bundle, corpus_directory, *, source_scope="selected_corpus")
             ),
         ],
     }
+    if query_policy == COMPONENT_POLICY:
+        report["query_policy"] = query_policy
+        report["query_count"] = sum(len(row["query_trace"]) for row in rows)
+        report["ranking_interpretation"] = (
+            "Round-robin by per-query rank, original query first; deduplicate exact passages; "
+            "retain five passages. Hit scores remain originating-query BM25 scores, not fused scores."
+        )
     json.dumps(report, allow_nan=False)
     return report
 
@@ -309,9 +327,17 @@ def main():
         choices=["selected_corpus", "declared_document"],
         default="selected_corpus",
     )
+    parser.add_argument(
+        "--query-policy",
+        choices=["original-question-v1", COMPONENT_POLICY],
+        default="original-question-v1",
+    )
     args = parser.parse_args()
     report = evaluate_corpus(
-        load_bundle(args.prepared), args.corpus, source_scope=args.source_scope
+        load_bundle(args.prepared),
+        args.corpus,
+        source_scope=args.source_scope,
+        query_policy=args.query_policy,
     )
     with args.output.open("x") as handle:
         handle.write(json.dumps(report, indent=2, allow_nan=False) + "\n")
