@@ -212,9 +212,21 @@ def run_turn_process(job, queue):
         queue.put(("error", f"{type(exc).__name__}: {exc}"))
 
 
+def standby_entry(jobs, queue):
+    """Pre-import the runtime, then wait for one job so a turn starts without import delay."""
+    import provenance.graph  # noqa: F401
+    import provenance.langchain_model  # noqa: F401
+    import provenance.web.chat_sources  # noqa: F401
+
+    job = jobs.get()
+    if job is not None:
+        run_turn_process(job, queue)
+
+
 class Turn:
     def __init__(self, turn_id):
         self.id = turn_id
+        self.pid = None
         self.events = []
         self.result = None
         self.error = None
@@ -224,19 +236,50 @@ class Turn:
 class TurnRunner:
     """Parent side: spawn a worker per turn and collect its messages on a thread."""
 
-    def __init__(self, target=run_turn_process):
+    def __init__(self, target=run_turn_process, *, prewarm=False):
         self.context = multiprocessing.get_context("spawn")
         self.target = target
+        self.prewarm = prewarm
+        self.lock = threading.Lock()
+        self.standby = None
+        if prewarm:
+            self._spawn_standby()
+
+    def _spawn_standby(self):
+        jobs, queue = self.context.Queue(), self.context.Queue()
+        process = self.context.Process(target=standby_entry, args=(jobs, queue), daemon=True)
+        process.start()
+        self.standby = (process, jobs, queue)
 
     def start(self, job, on_finish=None):
-        queue = self.context.Queue()
-        process = self.context.Process(target=self.target, args=(job, queue), daemon=True)
-        process.start()
+        with self.lock:
+            standby = self.standby if self.prewarm else None
+            keepalive = standby
+            if standby and standby[0].is_alive():
+                process, jobs, queue = standby
+                jobs.put(job)
+                self._spawn_standby()
+            else:
+                queue = self.context.Queue()
+                process = self.context.Process(target=self.target, args=(job, queue), daemon=True)
+                process.start()
+                if self.prewarm:
+                    self._spawn_standby()
         turn = Turn(job["turn_id"])
+        turn.pid = process.pid
+        # Queues must outlive the child's startup unpickling, or macOS unlinks their semaphores.
+        turn.keepalive = keepalive if keepalive and keepalive[0] is process else (queue,)
         threading.Thread(
             target=self._collect, args=(turn, process, queue, job, on_finish), daemon=True
         ).start()
         return turn
+
+    def close(self):
+        if self.standby:
+            process, jobs, _ = self.standby
+            jobs.put(None)
+            process.join(timeout=5)
+            self.standby = None
 
     def _collect(self, turn, process, queue, job, on_finish):
         deadline = time.monotonic() + float(job["limits"]["timeout_seconds"]) + 30

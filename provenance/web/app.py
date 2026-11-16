@@ -23,6 +23,7 @@ from provenance.web.worker import TurnRunner, load_replay_script
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "web/dist"
+DEMO_WORKBOOK = ROOT / "data/demo/cloudflare-fy2024-model.xlsx"
 TURN_LIMITS = {
     "max_model_calls": 8,
     "max_tool_calls": 10,
@@ -132,7 +133,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         ledger_path or os.environ.get("WEB_LEDGER") or ROOT / "runs/web/cost-log.jsonl",
         cap_usd if cap_usd is not None else float(os.environ.get("WEB_SPEND_CAP_USD") or 1.0),
     )
-    runner = runner or TurnRunner()
+    runner = runner or TurnRunner(prewarm=True)
     export_root = Path(export_dir or ROOT / "runs/web/exports")
     log_root = ROOT / "runs/web/traces"
     sessions, exports = {}, {}
@@ -249,12 +250,20 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             snapshot = load_snapshot(data, file.filename or "workbook.xlsx")
         except WorkbookError as exc:
             raise HTTPException(400, str(exc)) from exc
+        return attach(session, snapshot)
+
+    def attach(session, snapshot):
         with session.lock:
             session.snapshot, session.context = snapshot, None
             for proposal in session.proposals.values():
                 if proposal["status"] == "pending":
                     proposal["status"] = "stale"
         return snapshot.info()
+
+    @app.post("/api/sessions/{sid}/workbook/demo")
+    def demo_workbook(sid: str):
+        session = session_or_404(sid)
+        return attach(session, load_snapshot(DEMO_WORKBOOK.read_bytes(), DEMO_WORKBOOK.name))
 
     @app.get("/api/sessions/{sid}/workbook/{sheet}")
     def workbook_grid(sid: str, sheet: str):

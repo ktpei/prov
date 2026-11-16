@@ -250,6 +250,16 @@ class WorkbookFlowTests(AppTestCase):
         )
         self.assertEqual(response.status_code, 409)
 
+    def test_demo_workbook_loads_fixture(self):
+        client = self.client()
+        sid = self.session(client)
+        info = client.post(f"/api/sessions/{sid}/workbook/demo").json()
+        self.assertEqual(info["snapshot_id"], "a34195a4a257")
+        self.assertEqual(info["filename"], FIXTURE.name)
+        self.assertEqual(
+            client.get(f"/api/sessions/{sid}").json()["workbook"]["snapshot_id"], "a34195a4a257"
+        )
+
     def test_export_rejects_unknown_ids(self):
         client = self.client()
         sid = self.session(client)

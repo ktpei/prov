@@ -191,6 +191,22 @@ class WorkerTests(unittest.TestCase):
         self.assertTrue(any(event["kind"] == "read" for event in turn.events))
         self.assertEqual(finished, [turn])
 
+    def test_runner_prewarm_reuses_standby(self):
+        from provenance.web.worker import TurnRunner
+
+        runner = TurnRunner(prewarm=True)
+        self.assertIsNotNone(runner.standby)
+        warm_pid = runner.standby[0].pid
+        first = runner.start(job(Q1))
+        self.assertTrue(first.done.wait(60))
+        self.assertIsNone(first.error)
+        self.assertEqual(first.pid, warm_pid)
+        second = runner.start(job(Q1))
+        self.assertTrue(second.done.wait(60))
+        self.assertIsNone(second.error)
+        self.assertNotEqual(second.pid, warm_pid)
+        runner.close()
+
     def test_load_replay_script_match(self):
         from provenance.web.worker import load_replay_script
 
