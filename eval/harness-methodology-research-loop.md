@@ -15,6 +15,13 @@ decision, and a falsifiable check. Distinguish source claims, inspected code,
 proposed experiments, and measured results. Preserve negative findings. Recheck
 implementation state before recommending already-completed work.
 
+The user's project-fit gate additionally requires demonstrated local need, the
+smallest sufficient integration, build/maintenance effort, dependencies/deployment
+burden, latency/cost, and comparison with no change and a simpler local solution.
+Unknown production workload, staffing and user counts stay unknown. Preserve
+financial correctness while simplifying; revisit deferred mechanisms only when
+observable workload or failure evidence warrants them.
+
 Consult the validation reservation and exposure audit before browsing. Preserve
 all six selected issuers and their dispositions, including Amazon/Microsoft prior
 issuer exposure. Audit metadata using both source manifests and cross-suite
@@ -100,3 +107,22 @@ Cycle 3: [reference transport and financial acceptance](harness-reference-contra
 pins the upstream resolver/dispatcher/calculator, reinforces H2's Decimal contract,
 and proposes explicit preservation of resource-stop exceptions in H3. Its isolated
 evaluator checks are not end-to-end benchmark results.
+
+## Reviewed research backlog
+
+- [Context boundaries](harness-context-boundary-research-2026-11-16.md): H4 may
+  compare deterministic candidate filtering plus complete support reads; do not
+  replace claim support with private aggregation or summaries.
+- [Tool catalog fit](tool-catalog-fit-2026-11-16.md): two current schemas total
+  711 compact JSON characters/bytes, not tokens. Keep fixed tools; require
+  measured burden before dynamic discovery.
+- [Evaluation fit](harness-evaluation-fit-2026-11-16.md): retain local evaluation.
+  A future external adapter must preserve failures/unscored cases, scoring
+  coverage and the declared strict-success denominator.
+- [Narrow workflows](finance-workflow-fit-2026-11-16.md): after H2/H3, isolate a
+  short two-period instruction comparison from retention changes at equal budgets.
+
+These are reviewed design inputs, not implemented features or benchmark gains.
+H2 evidence admission and calculation replay take precedence; the acknowledgement
+gap test remains a discrete offline recovery check. Framework migration stays
+deferred.
