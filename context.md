@@ -17,6 +17,12 @@ spend to $0.4946382. No retry, model winner or accuracy gain is established.
 The subsequent offline diagnostic repair retains allowlisted transport HTTP
 statuses/fixed messages in comparison failures, while stripping arbitrary text.
 Independent review and 19 focused tests pass; the original failed pilot is unchanged.
+One separately frozen follow-up (`2109681`) returned HTTP 404 and stopped after
+its first request. No completed output across either pilot. Both uncertain
+reservations remain counted: combined conservative authorization accounting is
+$0.5078571, remaining $0.4921429. See the
+[follow-up report](eval/assessments/model-effort-v1/followup-report.md).
+Further paid comparison calls are stopped for this cycle; H3 integration remains available.
 
 H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
 The ledger binds trusted admitted evidence, financial compatibility, calculation

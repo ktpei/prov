@@ -1,0 +1,236 @@
+{
+  "protocol_commit": "2109681",
+  "runtime_diagnostics_commit": "6875c1b",
+  "status": "stopped_for_billing_review",
+  "selected_rows": 16,
+  "eligible_rows": 12,
+  "excluded_reference_rows": 4,
+  "attempted": 1,
+  "completed": 0,
+  "failed": 1,
+  "unvisited_rows": 15,
+  "failure": "Comparison transport failed: API HTTP 404; no automatic retry",
+  "latency_seconds": 0.2982376250438392,
+  "uncertain_reservation_usd": 0.013218899999999999,
+  "both_pilots_uncertain_usd": 0.0264378,
+  "combined_conservative_usd": 0.5078571,
+  "file_sha256": {
+    "runs/model-effort-v1/followup-results/comparison.json": "587be8907ff69af03d2ea465b618aef749071b10d2b2fb7b2c680e7e9eb4fcf4",
+    "runs/model-effort-v1/followup-results/scores.json": "f0fa5659d3e5c5a8e3274a572403a47762761b7e166de7528a161d97e464d896",
+    "runs/model-effort-v1/followup-key-preflight.json": "5757b198e88666b6387c1d3406051cb0ed6d546577d7b7da768a41664344f603"
+  },
+  "postflight_metadata_checked_at": "2026-11-16T23:53:35.924998+00:00",
+  "postflight_metadata": [
+    {
+      "url": "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints",
+      "snapshot_sha256": "f2a5165cebecc9b1111e35fd232c63843f2d9da86fd965566ca364f18fb1b7f4",
+      "selected_endpoint": [
+        {
+          "name": "DeepSeek | deepseek/deepseek-v4.1-flash-20261017",
+          "model_id": "deepseek/deepseek-v4.1-flash-1017",
+          "model_name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+          "context_length": 1048576,
+          "pricing": {
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003",
+            "discount": 0,
+            "overrides": [
+              {
+                "utc_days": [
+                  "saturday",
+                  "sunday"
+                ],
+                "prompt": "0.00000015",
+                "completion": "0.0000006",
+                "input_cache_read": "0.000000003"
+              },
+              {
+                "utc_start": 0,
+                "utc_end": 100,
+                "utc_days": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday"
+                ],
+                "prompt": "0.00000015",
+                "completion": "0.0000006",
+                "input_cache_read": "0.000000003"
+              },
+              {
+                "utc_start": 100,
+                "utc_end": 400,
+                "utc_days": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday"
+                ],
+                "prompt": "0.0000003",
+                "completion": "0.0000012",
+                "input_cache_read": "0.000000006"
+              },
+              {
+                "utc_start": 400,
+                "utc_end": 600,
+                "utc_days": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday"
+                ],
+                "prompt": "0.00000015",
+                "completion": "0.0000006",
+                "input_cache_read": "0.000000003"
+              },
+              {
+                "utc_start": 600,
+                "utc_end": 1000,
+                "utc_days": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday"
+                ],
+                "prompt": "0.0000003",
+                "completion": "0.0000012",
+                "input_cache_read": "0.000000006"
+              },
+              {
+                "utc_start": 1000,
+                "utc_end": 0,
+                "utc_days": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday"
+                ],
+                "prompt": "0.00000015",
+                "completion": "0.0000006",
+                "input_cache_read": "0.000000003"
+              }
+            ]
+          },
+          "provider_name": "DeepSeek",
+          "tag": "deepseek",
+          "service_tier": null,
+          "quantization": "unknown",
+          "max_completion_tokens": 393216,
+          "max_prompt_tokens": null,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "temperature",
+            "top_p",
+            "stop",
+            "frequency_penalty",
+            "presence_penalty",
+            "logprobs",
+            "top_logprobs",
+            "tools",
+            "tool_choice",
+            "response_format",
+            "reasoning_effort"
+          ],
+          "supports_tool_choice": {
+            "none": true,
+            "auto": true,
+            "required": false,
+            "function": false
+          },
+          "status": 0,
+          "uptime_last_30m": 100,
+          "uptime_last_5m": 100,
+          "uptime_last_1d": 100,
+          "supports_implicit_caching": true,
+          "native_tools": {},
+          "supports_voice_cloning": false,
+          "supports_multiple_audio_references": false,
+          "supports_image_reference": false,
+          "supports_diarization": false,
+          "latency_last_30m": null,
+          "throughput_last_30m": null
+        }
+      ]
+    },
+    {
+      "url": "https://openrouter.ai/api/v1/models/openai/gpt-6-luna/endpoints",
+      "snapshot_sha256": "e36d8128944694cd85ba0acc4bbf54f185c05588e4de170b89c6200f9e9357ad",
+      "selected_endpoint": [
+        {
+          "name": "OpenAI | openai/gpt-6-luna-20260922",
+          "model_id": "openai/gpt-6-luna",
+          "model_name": "OpenAI: GPT-6 Luna",
+          "context_length": 1050000,
+          "pricing": {
+            "prompt": "0.0000001",
+            "completion": "0.0000005",
+            "web_search": "0.01",
+            "input_cache_read": "0.00000001",
+            "input_cache_write": "0.000000125",
+            "discount": 0,
+            "overrides": [
+              {
+                "min_prompt_tokens": 272000,
+                "prompt": "0.0000002",
+                "completion": "0.00000075",
+                "input_cache_read": "0.00000002",
+                "input_cache_write": "0.00000025"
+              }
+            ]
+          },
+          "provider_name": "OpenAI",
+          "tag": "openai",
+          "service_tier": null,
+          "quantization": "unknown",
+          "max_completion_tokens": 128000,
+          "max_prompt_tokens": 922000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "seed",
+            "max_tokens",
+            "response_format",
+            "structured_outputs",
+            "tools",
+            "tool_choice",
+            "verbosity",
+            "reasoning_effort"
+          ],
+          "supports_tool_choice": {
+            "none": true,
+            "auto": true,
+            "required": true,
+            "function": true
+          },
+          "status": 0,
+          "uptime_last_30m": 100,
+          "uptime_last_5m": 100,
+          "uptime_last_1d": 100,
+          "supports_implicit_caching": false,
+          "native_tools": {
+            "openrouter:web_search": {
+              "type": "web_search"
+            },
+            "openrouter:apply_patch": {
+              "type": "apply_patch"
+            }
+          },
+          "supports_voice_cloning": false,
+          "supports_multiple_audio_references": false,
+          "supports_image_reference": false,
+          "supports_diarization": false,
+          "latency_last_30m": null,
+          "throughput_last_30m": null
+        }
+      ]
+    }
+  ]
+}

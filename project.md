@@ -9,6 +9,8 @@ full-agent retrieval evaluation or authorize model promotion. The
 after one transport failure, retaining the uncertain reservation and all rows.
 An offline repair preserves safe transport diagnostics in future comparison
 records; it does not recover the old failure cause or change billing/retry rules.
+The separately frozen follow-up returned HTTP 404 and stopped with zero outputs.
+Both uncertain reservations remain counted; no model ranking or promotion exists.
 
 H2's internal arithmetic and trusted-snapshot calculation ledger are implemented
 without a new service or dependency. H3 must supply actual source admission and

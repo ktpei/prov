@@ -73,6 +73,9 @@ ranking resulted.
 Comparison failures now retain only recognized transport messages/HTTP statuses
 for diagnosis. Arbitrary exception text remains stripped, and unknown billing
 still stops all remaining calls without retrying.
+The [one frozen follow-up](eval/assessments/model-effort-v1/followup-report.md)
+returned HTTP 404 on its first request and stopped. Neither pilot produced
+completed answers; public model listings do not establish live compatibility.
 
 H2's [calculation infrastructure](eval/assessments/evidence-calculations-v1/report.md)
 provides bounded Decimal arithmetic, trusted-evidence references, financial

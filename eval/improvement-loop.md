@@ -105,6 +105,19 @@ cannot recover the original failure cause.
 No additional paid call was made. A revised live protocol and explicit treatment
 of the retained uncertain reservation are required before another trial.
 
+## M2 — one deliberate diagnostic follow-up
+
+Independent review and protocol `2109681` authorized one explicitly recorded
+repeat within the existing budget, carrying the prior uncertain charge in full.
+The clean checkout passed 19 focused tests. First request returned HTTP 404;
+diagnostics survived, all later rows stopped, and no successful outputs exist.
+Read-only provider metadata still lists the model/provider; specific rejection
+cause remains unknown. See the [report](assessments/model-effort-v1/followup-report.md).
+Two attempts across both pilots retain $0.0264378 uncertain reservations; combined
+conservative accounting is $0.5078571, remaining $0.4921429. No additional paid
+follow-up this cycle. Continue offline diagnosis and H3 source/visibility integration;
+do not mistake an infrastructure fix or failed transport for measured finance quality.
+
 ## Repeatable cycle
 
 1. Select one failure class from source QA, scorer adversarial tests, or a declared
