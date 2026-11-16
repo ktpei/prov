@@ -82,3 +82,22 @@ The [new assessment plan](assessments/native-html-v1/plan.md) also separates a
 search-only runtime from later annotation grading. Its proposed six filing
 identities were selected from metadata; acquisition, question authoring and source
 annotation are still pending implementation and provenance gates.
+
+### Opt-in versioned repair
+
+`native-html-text-v2` now provides a separate native-text path through
+`extract(..., html_text_version=...)`, `ingest(...)`, and the ingestion CLI's
+`--html-text-version`. The default remains `stdlib-html-v1` for exact legacy replay.
+V2 shares the bounded inline-hiding predicate but has its own text/suppression
+stack. It suppresses templates, preserves visible block/heading boundaries and
+cell separators, handles optional cell/row endings within the nearest table, and
+rejects ambiguous hidden closures/self-closing elements. Visible inline XBRL,
+zero and parentheses remain text. It makes no browser-rendering or completeness
+claim; parser identity and unresolved CSS limitations are recorded in metadata.
+
+Independent adversarial review found and fixed two additional issues before
+commit: implicit table starts escaping a suppressed template/XBRL wrapper, and
+heading line breaks losing currency context. Eight focused tests cover those
+cases plus inherited hiding, nested tables, malformed suppression and legacy
+replay. Real-source diagnostics are separate from these synthetic checks.
+Existing corpus files are never rewritten by selecting this new path.

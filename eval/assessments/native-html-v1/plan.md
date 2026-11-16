@@ -85,8 +85,9 @@ extraction path or explicitly constrain the assessment to verified original-HTML
 sidecars and mark legacy text ineligible as evidence. A future text fix should
 reuse the bounded visibility predicate, preserve narrative/cell boundaries, reject
 ambiguous suppression, and retain the legacy replay path. External CSS, conflicting
-styles and rendered visibility remain unresolved. This prerequisite is not yet
-resolved; no new corpus has been declared ready.
+styles and rendered visibility remain unresolved. An opt-in `native-html-text-v2` repair now passes synthetic adversarial checks;
+its version must be explicitly selected and frozen before acquisition. No new
+assessment corpus has been declared ready.
 
 
 ## Proposed question matrix and capability controls

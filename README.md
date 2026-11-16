@@ -66,7 +66,9 @@ limitations prevent broad accuracy claims. Total recorded conservative spending
 across development is $0.4814193. The original holdout remains unrun.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
-FinanceBench whole-document assembly, and bounded page-level PDF diagnostics.
+FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
+`--html-text-version native-html-text-v2` to suppress explicit hidden content and
+preserve text boundaries; legacy extraction remains the default for replay.
 [Extraction findings](eval/reports/source-ingestion-2026-11-16/report.md) and
 [connected table-evidence protocol](eval/table-evidence-protocol.md) distinguish
 structure, retrieval, and financial meaning. The [raw table tool probe](eval/reports/table-runtime-2026-11-16/report.md)

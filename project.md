@@ -9,7 +9,8 @@ are not yet acquired and questions are not authored. A separate search-only runn
 passes synthetic integrity/interruption checks; annotation grading and cutoff
 enforcement remain prerequisites.
 Synthetic review found hidden-text and block-boundary defects in legacy HTML text
-extraction; sidecar v2 guarantees do not apply to that path. Frozen corpora remain
+extraction. An opt-in `native-html-text-v2` repair passes adversarial tests, with
+explicit CSS/completeness limitations; legacy replay and frozen corpora remain
 unchanged. This is preparation, not a new accuracy result.
 
 
@@ -32,7 +33,7 @@ Three-task retrieval reaches 2/4 annotated pages at five hits; declared-document
 scoping improves first-hit recall from 1/4 to 2/4 without fixing the remaining task.
 Native HTML v2 fixes explicit-hidden contamination and retains raw headers/captions;
 four evaluator-only packets check source/period/sign/scale associations. Lint and
-218 tests pass. Full-agent FinanceBench inference and human adjudication remain
+226 tests pass. Full-agent FinanceBench inference and human adjudication remain
 pending. [Source findings](eval/reports/source-ingestion-2026-11-16/report.md).
 
 

@@ -110,8 +110,10 @@ def _package_version(name):
         return None
 
 
-def extract(path):
+def extract(path, *, html_text_version="stdlib-html-v1"):
     """Return complete native text and one location per line; never silently OCR."""
+    if html_text_version not in {"stdlib-html-v1", "native-html-text-v2"}:
+        raise ValueError("Unknown HTML text extraction version")
     path = Path(path)
     if path.suffix.lower() == ".pdf":
         from pypdf import PdfReader
@@ -159,6 +161,26 @@ def extract(path):
             },
         )
     if path.suffix.lower() in {".html", ".htm"}:
+        if html_text_version == "native-html-text-v2":
+            from provenance.html_text import VERSION, DocumentHTMLV2
+
+            parser = DocumentHTMLV2()
+            parser.feed(path.read_text(encoding="utf-8", errors="strict"))
+            parser.close()
+            return (
+                parser.lines,
+                parser.locations,
+                {
+                    "parser": VERSION,
+                    "text_completeness": "not_verified",
+                    "visibility": "explicit_hiding_suppressed_not_computed_css",
+                    "warnings": [
+                        "External CSS, conflicting declarations and descendant visibility overrides are unresolved.",
+                        "Conservative hidden-markup rejection can reject browser-renderable documents.",
+                        "Text separators do not establish table geometry or financial header associations.",
+                    ],
+                },
+            )
         parser = DocumentHTML()
         parser.feed(path.read_text(encoding="utf-8", errors="strict"))
         parser.flush()
@@ -178,8 +200,10 @@ def extract(path):
     raise ValueError("Supported input formats: PDF, HTML, TXT, MD")
 
 
-def ingest(packet, output):
+def ingest(packet, output, *, html_text_version="stdlib-html-v1"):
     """Ingest local originals atomically at manifest level; source IDs are immutable."""
+    if html_text_version not in {"stdlib-html-v1", "native-html-text-v2"}:
+        raise ValueError("Unknown HTML text extraction version")
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     if (output / "sources.json").exists():
@@ -193,7 +217,7 @@ def ingest(packet, output):
             raise ValueError("Duplicate source ID")
         original = Path(spec["input_file"])
         raw = original.read_bytes()
-        lines, locations, extraction = extract(original)
+        lines, locations, extraction = extract(original, html_text_version=html_text_version)
         if not lines:
             raise ValueError(f"No content extracted from {source_id}")
         original_file = f"originals/{source_id}{original.suffix.lower()}"
@@ -224,8 +248,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("packet", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument(
+        "--html-text-version",
+        choices=("stdlib-html-v1", "native-html-text-v2"),
+        default="stdlib-html-v1",
+    )
     args = parser.parse_args()
-    manifest = ingest(json.loads(args.packet.read_text()), args.output)
+    manifest = ingest(
+        json.loads(args.packet.read_text()), args.output, html_text_version=args.html_text_version
+    )
     print(json.dumps({"sources": len(manifest["sources"]), "output": str(args.output)}))
 
 
