@@ -1,5 +1,14 @@
 # Project scope
 
+## Context-retention result — 2026-11-16
+
+[The original-question context diagnostic](eval/reports/context-retention-2026-11-16/report.md)
+retains complete annotated read packets for 1/3, 2/3 and 0/3 tasks at one/three/five
+reads, versus delivered coverage of 1/3, 2/3 and 2/3. At five reads the existing
+newest-first policy drops early NIKE/Ulta evidence. All snapshots fit the current
+32K serialized-output character budget; no policy changed. This is synthetic
+context retention, not measured model accuracy. All 304 tests and lint pass.
+
 ## Bounded-reading result — 2026-11-16
 
 [The frozen comparison](eval/reports/bounded-reading-2026-11-16/report.md) delivers
@@ -7,8 +16,9 @@ complete annotated packets for 1/3 tasks after one read and 2/3 after three/five
 versus 0/3 in search snippets. All three retrieval policies tie. All 45 original
 reads succeeded without truncation; 45 separate replay reads verified the traces.
 Ulta is complete in one response, NIKE needs a union, and Walmart still misses.
-No financial accuracy or model-visible context claim follows; context projection
-remains to be tested. All 295 tests and lint pass; no additional paid spending.
+The read result alone establishes neither financial accuracy nor model-visible
+context; the separate retention result above finds later evidence loss. This
+reading cycle passed 295 tests and lint, with no additional paid spending.
 
 ## Evidence-component diagnostics — 2026-11-16
 

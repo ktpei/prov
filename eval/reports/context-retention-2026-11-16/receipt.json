@@ -1,0 +1,14 @@
+{
+  "version": "context-retention-receipt-v1",
+  "implementation_commit": "e082698",
+  "freeze_commit": "a08780c",
+  "protocol_sha256": "7068d56ebe10e9022cc8927b8b86b276535fb6807e558eb5343abacba4e6880f",
+  "raw_result_sha256": "b4b9c26063f436d80e4760c5dc3d0a1f37778ec5ebe0cafaa364812a19037561",
+  "summary_sha256": "4c0f8260d29540ef0a5a516a976d39dc2772ea289af028855da7493e4d6d9af1",
+  "verification_read_calls": 15,
+  "verification_search_calls": 6,
+  "paid_model_calls": 0,
+  "source_changes": false,
+  "default_policy_changed": false,
+  "semantic_correctness": "not_measured"
+}

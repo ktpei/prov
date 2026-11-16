@@ -77,8 +77,11 @@ search-to-read gap, not financial answer accuracy.
 
 [Bounded reads](eval/reports/bounded-reading-2026-11-16/report.md) deliver complete
 annotated packets for 2/3 tasks after three reads, with all three retrieval policies
-tied. All 45 original reads succeeded and replayed exactly. Model-context projection
-and answer accuracy remain untested by this diagnostic; agent defaults are unchanged.
+tied. All 45 original reads succeeded and replayed exactly. A separate
+[context-retention diagnostic](eval/reports/context-retention-2026-11-16/report.md)
+finds that the current policy loses those complete packets after five reads
+(2/3 before projection, 0/3 retained). This is not measured answer accuracy; agent
+defaults are unchanged.
 
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.

@@ -63,3 +63,7 @@ spending stays $0.4814193. Default agent behavior remains unchanged.
 Independent saved-artifact review recomputed counts, per-case budgets, overlaps
 and single-response results; all protocol, source, prepared, run, journal and grade
 hashes agree. That review did not perform additional retrieval or read calls.
+
+Follow-up: the separately frozen [context-retention experiment](../context-retention-2026-11-16/report.md)
+now measures the previously untested projection and finds evidence loss at five
+reads. It does not alter this tool-delivery result.

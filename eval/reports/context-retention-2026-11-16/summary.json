@@ -1,0 +1,316 @@
+{
+  "version": "context-retention-result-v1",
+  "protocol_sha256": "7068d56ebe10e9022cc8927b8b86b276535fb6807e558eb5343abacba4e6880f",
+  "selected_denominator": 3,
+  "cases": [
+    {
+      "id": "financebench_id_06247",
+      "snapshots": {
+        "top_1": {
+          "attempted_read_slots": 1,
+          "characters_before": 14194,
+          "retained_read_ranks": [
+            1
+          ],
+          "omitted_read_ranks": [],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 14194,
+          "projected_sha256": "9331bbbca8aafd872b15ebf9b11d2611b83bc89752bd6fe9f25cbc83ebde1416",
+          "canonical_sha256": "9331bbbca8aafd872b15ebf9b11d2611b83bc89752bd6fe9f25cbc83ebde1416",
+          "component_coverage": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        },
+        "top_3": {
+          "attempted_read_slots": 3,
+          "characters_before": 27454,
+          "retained_read_ranks": [
+            1,
+            2,
+            3
+          ],
+          "omitted_read_ranks": [],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 27454,
+          "projected_sha256": "e128456ddedbf2c486df34787eeda1d5032da9451392332b38cd9de5453542b1",
+          "canonical_sha256": "e128456ddedbf2c486df34787eeda1d5032da9451392332b38cd9de5453542b1",
+          "component_coverage": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        },
+        "top_5": {
+          "attempted_read_slots": 5,
+          "characters_before": 42231,
+          "retained_read_ranks": [
+            3,
+            4,
+            5
+          ],
+          "omitted_read_ranks": [
+            1,
+            2
+          ],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 26533,
+          "projected_sha256": "5bd0d483cd7c88e5fa83a7887aadf81d22e04ea003eed542348be246cbc61ee4",
+          "canonical_sha256": "36e136949760b9adf80ac97ac08e7672892a0d217862131c12760a82510267d7",
+          "component_coverage": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "income_statement_identity": false,
+                  "income_period_and_units": false,
+                  "cost_of_sales": false,
+                  "balance_statement_identity": false,
+                  "balance_dates_and_units": false,
+                  "current_and_prior_inventories": false,
+                  "current_and_prior_accounts_payable": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_01163",
+      "snapshots": {
+        "top_1": {
+          "attempted_read_slots": 1,
+          "characters_before": 11074,
+          "retained_read_ranks": [
+            1
+          ],
+          "omitted_read_ranks": [],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 11074,
+          "projected_sha256": "93d1943f57dad9f92d7a8e7c585d5ca87c7484f29ca2bfb145578ab1e196ee1f",
+          "canonical_sha256": "93d1943f57dad9f92d7a8e7c585d5ca87c7484f29ca2bfb145578ab1e196ee1f",
+          "component_coverage": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": false,
+                  "cashflow_period_scale_columns": false,
+                  "operations_total": false,
+                  "investing_total": true,
+                  "financing_total": true
+                },
+                "complete": false
+              }
+            ]
+          }
+        },
+        "top_3": {
+          "attempted_read_slots": 3,
+          "characters_before": 26549,
+          "retained_read_ranks": [
+            1,
+            2,
+            3
+          ],
+          "omitted_read_ranks": [],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 26549,
+          "projected_sha256": "a1a3c90a8c8d57a7d8e72b3198aa05d5cac34d8c5e62e6397daa421c73dfac5e",
+          "canonical_sha256": "a1a3c90a8c8d57a7d8e72b3198aa05d5cac34d8c5e62e6397daa421c73dfac5e",
+          "component_coverage": {
+            "complete": true,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": true,
+                  "cashflow_period_scale_columns": true,
+                  "operations_total": true,
+                  "investing_total": true,
+                  "financing_total": true
+                },
+                "complete": true
+              }
+            ]
+          }
+        },
+        "top_5": {
+          "attempted_read_slots": 5,
+          "characters_before": 40639,
+          "retained_read_ranks": [
+            3,
+            4,
+            5
+          ],
+          "omitted_read_ranks": [
+            1,
+            2
+          ],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 25481,
+          "projected_sha256": "763e15a5bfdb1f289e47adc664489aac8263171e6b176702843735ea9d6db117",
+          "canonical_sha256": "750ab1d46f332fa31298bccb645d24792b09d75f783c937698e92cefab2caa04",
+          "component_coverage": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "entity_and_cashflow_statement": false,
+                  "cashflow_period_scale_columns": false,
+                  "operations_total": false,
+                  "investing_total": false,
+                  "financing_total": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_00601",
+      "snapshots": {
+        "top_1": {
+          "attempted_read_slots": 1,
+          "characters_before": 9817,
+          "retained_read_ranks": [
+            1
+          ],
+          "omitted_read_ranks": [],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 9817,
+          "projected_sha256": "8e97f1e812b3b79d539788e5f53a0b6c21436eb7e5f77ac5ebcb7ccbc99d73fc",
+          "canonical_sha256": "8e97f1e812b3b79d539788e5f53a0b6c21436eb7e5f77ac5ebcb7ccbc99d73fc",
+          "component_coverage": {
+            "complete": true,
+            "single_hit_complete": true,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": true,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": true,
+                  "primary_drivers": true,
+                  "offsets_and_causes": true
+                },
+                "complete": true
+              }
+            ]
+          }
+        },
+        "top_3": {
+          "attempted_read_slots": 3,
+          "characters_before": 21946,
+          "retained_read_ranks": [
+            1,
+            2,
+            3
+          ],
+          "omitted_read_ranks": [],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 21946,
+          "projected_sha256": "ce3f92c0ce4c4654c6bb361f4017322347b21e2838e9458c962d5450ae959dee",
+          "canonical_sha256": "ce3f92c0ce4c4654c6bb361f4017322347b21e2838e9458c962d5450ae959dee",
+          "component_coverage": {
+            "complete": true,
+            "single_hit_complete": true,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": true,
+                  "absolute_vs_relative_sga": true,
+                  "sga_percentage_and_comparison": true,
+                  "primary_drivers": true,
+                  "offsets_and_causes": true
+                },
+                "complete": true
+              }
+            ]
+          }
+        },
+        "top_5": {
+          "attempted_read_slots": 5,
+          "characters_before": 33356,
+          "retained_read_ranks": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "omitted_read_ranks": [
+            1
+          ],
+          "failed_read_ranks": [],
+          "status": "projected",
+          "characters_after": 28921,
+          "projected_sha256": "1cfc30ef57dc841b663e3fad222a850e6370520fd33313adb30913287af13e51",
+          "canonical_sha256": "3efe9025888541434e55d075f9d99d3c3e9cf6c094b8261f4cc44e963e1e6e02",
+          "component_coverage": {
+            "complete": false,
+            "single_hit_complete": false,
+            "alternatives": [
+              {
+                "components_present": {
+                  "annual_period_heading": true,
+                  "absolute_vs_relative_sga": false,
+                  "sga_percentage_and_comparison": false,
+                  "primary_drivers": false,
+                  "offsets_and_causes": false
+                },
+                "complete": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "semantic_correctness": "not_measured",
+  "summary": {
+    "top_1_complete_count": 1,
+    "top_3_complete_count": 2,
+    "top_5_complete_count": 0
+  }
+}
