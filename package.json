@@ -4,6 +4,10 @@
   "scripts": {
     "lint": "uv run ruff check . && uv run ruff format --check . && uv run python -m provenance validate",
     "test": "uv run --extra benchmark-metrics python -m unittest discover -s tests -v",
-    "demo": "uv run python -m provenance demo"
+    "demo": "uv run python -m provenance demo",
+    "web": "npm --prefix web install --no-audit --no-fund && npm --prefix web run build && uv run python -m provenance.web",
+    "web:dev": "uv run python -m provenance.web",
+    "web:build": "npm --prefix web run build",
+    "web:e2e": "npm --prefix web run e2e"
   }
 }

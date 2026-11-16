@@ -1,0 +1,265 @@
+import hashlib
+import io
+import json
+import os
+import tempfile
+import unittest
+from pathlib import Path
+from unittest import mock
+
+from fastapi.testclient import TestClient
+from openpyxl import load_workbook
+
+from provenance.web.app import create_app
+
+ROOT = Path(__file__).resolve().parent.parent
+FIXTURE = ROOT / "data/demo/cloudflare-fy2024-model.xlsx"
+Q1 = (
+    "What revenue did Cloudflare report for Q3 2024, and what full-year 2024 revenue "
+    "guidance did management give?"
+)
+Q2 = (
+    "Does the FY2024 revenue assumption in my model match management's latest guidance? "
+    "If not, propose an update."
+)
+LIVE_ENV = {
+    "OPENROUTER_API_KEY": "sk-or-test-SECRET123",
+    "OPENROUTER_MODEL": "test/model",
+    "OPENROUTER_INPUT_USD_PER_MILLION": "0.30",
+    "OPENROUTER_OUTPUT_USD_PER_MILLION": "1.20",
+}
+NO_LIVE_ENV = {key: "" for key in LIVE_ENV}
+
+
+def read_events(client, sid, tid, last_id=None):
+    headers = {"Last-Event-ID": str(last_id)} if last_id is not None else {}
+    received, current = [], {}
+    url = f"/api/sessions/{sid}/turns/{tid}/events"
+    with client.stream("GET", url, headers=headers) as response:
+        assert response.status_code == 200, response.read()
+        for line in response.iter_lines():
+            if not line:
+                if current:
+                    received.append(current)
+                    if current.get("event") == "done":
+                        break
+                current = {}
+                continue
+            key, _, value = line.partition(": ")
+            current[key] = value
+    return received
+
+
+class AppTestCase(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.env = mock.patch.dict(os.environ, NO_LIVE_ENV)
+        self.env.start()
+        self.addCleanup(self.env.stop)
+
+    def client(self, **kwargs):
+        app = create_app(
+            ledger_path=Path(self.directory.name) / "ledger.jsonl",
+            export_dir=Path(self.directory.name) / "exports",
+            **kwargs,
+        )
+        return TestClient(app)
+
+    def session(self, client, corpus="cloudflare-2024-q3"):
+        response = client.post("/api/sessions", json={"corpus": corpus})
+        self.assertEqual(response.status_code, 200, response.text)
+        return response.json()["id"]
+
+    def run_turn(self, client, sid, question, mode="replay"):
+        response = client.post(
+            f"/api/sessions/{sid}/turns", json={"question": question, "mode": mode}
+        )
+        self.assertEqual(response.status_code, 200, response.text)
+        tid = response.json()["turn_id"]
+        events = read_events(client, sid, tid)
+        return tid, events, json.loads(events[-1]["data"])
+
+    def upload(self, client, sid, data=None, name=FIXTURE.name):
+        files = {
+            "file": (name, io.BytesIO(data or FIXTURE.read_bytes()), "application/octet-stream")
+        }
+        return client.post(f"/api/sessions/{sid}/workbook", files=files)
+
+
+class ConfigAndSourcesTests(AppTestCase):
+    def test_config_lists_corpora_without_secrets(self):
+        with mock.patch.dict(os.environ, LIVE_ENV):
+            response = self.client().get("/api/config")
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn("SECRET123", response.text)
+        config = response.json()
+        self.assertTrue(config["live_available"])
+        self.assertEqual(config["model"], "test/model")
+        self.assertEqual(config["spend"]["cap_usd"], 1.0)
+        ids = [corpus["id"] for corpus in config["corpora"]]
+        self.assertEqual(ids, ["cloudflare-2024-q3", "earnings-excerpts"])
+        cloudflare = config["corpora"][0]
+        self.assertEqual(cloudflare["cutoff"], "2024-11-07")
+        self.assertTrue(cloudflare["starters"])
+        self.assertTrue(all(doc["has_original"] for doc in cloudflare["documents"]))
+        starters = " ".join(s for c in config["corpora"] for s in c["starters"]).lower()
+        self.assertNotIn("amazon", starters)
+        self.assertNotIn("microsoft", starters)
+
+    def test_live_unavailable_without_key(self):
+        self.assertFalse(self.client().get("/api/config").json()["live_available"])
+
+    def test_source_window(self):
+        client = self.client()
+        url = "/api/sources/cloudflare-2024-q3/cloudflare-q3-2024-release"
+        window = client.get(url, params={"start": 59, "end": 64}).json()
+        self.assertTrue(window["has_original"])
+        self.assertEqual(window["lines"][4]["line"], 63)
+        self.assertIn("$1,661.0 to $1,662.0 million", window["lines"][4]["text"])
+        self.assertEqual(client.get(url, params={"start": 1, "end": 300}).status_code, 400)
+        self.assertEqual(client.get("/api/sources/cloudflare-2024-q3/nope").status_code, 404)
+        self.assertEqual(client.get("/api/sources/nope/x").status_code, 404)
+        original = client.get(url + "/original")
+        self.assertEqual(original.status_code, 200)
+        self.assertIn("sandbox", original.headers.get("content-security-policy", ""))
+        pdf = client.get("/api/sources/cloudflare-2024-q3/cloudflare-q3-2024-transcript/original")
+        self.assertEqual(pdf.headers["content-type"], "application/pdf")
+        excerpt = client.get("/api/sources/earnings-excerpts/aapl-fy2024/original")
+        self.assertEqual(excerpt.status_code, 404)
+
+
+class TurnTests(AppTestCase):
+    def test_replay_turn_streams_and_completes(self):
+        client = self.client(replay=True)
+        sid = self.session(client)
+        tid, events, view = self.run_turn(client, sid, Q1)
+        kinds = [json.loads(e["data"])["kind"] for e in events if e.get("event") == "progress"]
+        self.assertIn("search", kinds)
+        self.assertIn("read", kinds)
+        self.assertEqual(view["status"], "completed")
+        self.assertEqual(view["mode"], "offline_replay")
+        self.assertEqual(view["answer"]["claims"][0]["value"], 430.1)
+        session = client.get(f"/api/sessions/{sid}").json()
+        self.assertEqual(session["turns"][0]["id"], tid)
+        ledger = (Path(self.directory.name) / "ledger.jsonl").read_text()
+        self.assertIn('"mode": "replay"', ledger)
+
+    def test_sse_resume_no_duplicates(self):
+        client = self.client()
+        sid = self.session(client)
+        tid, events, _ = self.run_turn(client, sid, Q1)
+        resumed = read_events(client, sid, tid, last_id=1)
+        self.assertEqual(resumed[0]["id"], "2")
+        self.assertEqual(len(resumed), len(events) - 2)
+
+    def test_follow_up_carries_context(self):
+        client = self.client()
+        sid = self.session(client)
+        self.run_turn(client, sid, Q1)
+        response = client.post(
+            f"/api/sessions/{sid}/turns", json={"question": "And Q4?", "mode": "replay"}
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertIn("No scripted replay", response.json()["detail"])
+
+    def test_rejections(self):
+        client = self.client()
+        sid = self.session(client)
+        post = lambda body: client.post(f"/api/sessions/{sid}/turns", json=body)  # noqa: E731
+        self.assertEqual(post({"question": "  ", "mode": "replay"}).status_code, 400)
+        self.assertEqual(post({"question": "x" * 4001, "mode": "replay"}).status_code, 400)
+        self.assertEqual(post({"question": Q1, "mode": "other"}).status_code, 400)
+        live = post({"question": Q1, "mode": "live"})
+        self.assertEqual(live.status_code, 409)
+        self.assertIn("not configured", live.json()["detail"])
+        self.assertEqual(self.upload(client, sid, name="model.xlsm").status_code, 400)
+        self.assertEqual(self.upload(client, sid, data=b"junk").status_code, 400)
+        self.assertEqual(client.post("/api/sessions", json={"corpus": "nope"}).status_code, 404)
+        self.assertEqual(client.get("/api/sessions/missing").status_code, 404)
+
+    def test_concurrent_turn_rejected(self):
+        client = self.client()
+        sid = self.session(client)
+        first = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"})
+        second = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"})
+        self.assertEqual(second.status_code, 409)
+        read_events(client, sid, first.json()["turn_id"])
+
+    def test_spend_cap_blocks_live(self):
+        with mock.patch.dict(os.environ, LIVE_ENV):
+            client = self.client(cap_usd=0.005)
+            sid = self.session(client)
+            response = client.post(
+                f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "live"}
+            )
+        self.assertEqual(response.status_code, 409)
+        self.assertIn("cap", response.json()["detail"].lower())
+
+
+class WorkbookFlowTests(AppTestCase):
+    def test_workbook_flow_and_export_idempotent(self):
+        client = self.client()
+        sid = self.session(client)
+        before = hashlib.sha256(FIXTURE.read_bytes()).hexdigest()
+        info = self.upload(client, sid).json()
+        self.assertEqual(info["snapshot_id"], "a34195a4a257")
+        grid = client.get(f"/api/sessions/{sid}/workbook/Model").json()
+        self.assertEqual(grid["rows"][6][1]["display"], "1650")
+        context = client.put(
+            f"/api/sessions/{sid}/context", json={"sheet": "Model", "range": "B7:B8"}
+        )
+        self.assertEqual(context.json()["cells"], 2)
+        too_big = client.put(
+            f"/api/sessions/{sid}/context", json={"sheet": "Model", "range": "A1:Z20"}
+        )
+        self.assertEqual(too_big.status_code, 400)
+        _, _, view = self.run_turn(client, sid, Q2)
+        self.assertEqual(view["status"], "completed", view)
+        self.assertEqual(view["carried"]["workbook_range"], "Model!B7:B8")
+        session = client.get(f"/api/sessions/{sid}").json()
+        proposal = session["proposals"][0]
+        self.assertEqual(proposal["id"], f"{view['id']}-P1")
+        self.assertEqual(proposal["status"], "pending")
+        self.assertEqual(view["proposal_ids"], [proposal["id"]])
+        body = {"snapshot_id": info["snapshot_id"], "proposal_ids": [proposal["id"]]}
+        first = client.post(f"/api/sessions/{sid}/exports", json=body)
+        second = client.post(f"/api/sessions/{sid}/exports", json=body)
+        self.assertEqual(first.status_code, 200, first.text)
+        self.assertEqual(first.json()["id"], second.json()["id"])
+        download = client.get(first.json()["download_url"])
+        self.assertEqual(download.status_code, 200)
+        self.assertIn("attachment", download.headers["content-disposition"])
+        book = load_workbook(io.BytesIO(download.content))
+        self.assertEqual(book["Model"]["B7"].value, 1661.5)
+        self.assertIn("Provenance log", book.sheetnames)
+        self.assertEqual(hashlib.sha256(FIXTURE.read_bytes()).hexdigest(), before)
+
+    def test_reupload_marks_stale(self):
+        client = self.client()
+        sid = self.session(client)
+        self.upload(client, sid)
+        _, _, view = self.run_turn(client, sid, Q2)
+        self.upload(client, sid)
+        session = client.get(f"/api/sessions/{sid}").json()
+        self.assertEqual(session["proposals"][0]["status"], "stale")
+        self.assertIsNone(session["context"])
+        response = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={"snapshot_id": "a34195a4a257", "proposal_ids": view["proposal_ids"]},
+        )
+        self.assertEqual(response.status_code, 409)
+
+    def test_export_rejects_unknown_ids(self):
+        client = self.client()
+        sid = self.session(client)
+        self.upload(client, sid)
+        response = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={"snapshot_id": "a34195a4a257", "proposal_ids": ["nope"]},
+        )
+        self.assertEqual(response.status_code, 409)
+
+
+if __name__ == "__main__":
+    unittest.main()
