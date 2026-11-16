@@ -196,6 +196,78 @@ class TableSourcesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "version"):
             TableSources(self.corpus, search_version="unknown")
 
+    def test_soft_prefix_candidates_preserve_metric_evidence_and_table_scores(self):
+        challenger = TableSources(self.corpus, search_version="source-scoped-visible-row-bm25-v3")
+        for query in ("quarterly", "header context needle revenue", "expense", "999999"):
+            with self.subTest(query=query):
+                old = self.tables.search_tables("html-source", query)
+                new = challenger.search_tables("html-source", query)
+                self.assertEqual(
+                    [(h["table_id"], h["score"]) for h in old["results"]],
+                    [(h["table_id"], h["score"]) for h in new["results"]],
+                )
+                self.assertEqual(new, challenger.search_tables("html-source", query))
+        self.assertEqual(
+            challenger.search_tables("html-source", "quarterly")["results"][0][
+                "matched_row_indices"
+            ],
+            [],
+        )
+        # A metric repeated in the prefix must retain positive body evidence.
+        html = self.root / "repeated.html"
+        html.write_text(
+            "<table><caption>Net margin</caption>"
+            + "<tr><td>Reporting period 2040</td></tr>" * 5
+            + "<tr><td>Net margin</td><td>17</td></tr>"
+            + "<tr><td>Reporting period 2040</td><td>29</td></tr></table>"
+        )
+        corpus = self.root / "repeated-corpus"
+        ingest(
+            {"sources": [{"id": "synthetic", "title": "Invented facts", "input_file": str(html)}]},
+            corpus,
+        )
+        tool = TableSources(corpus, search_version="source-scoped-visible-row-bm25-v3")
+        self.assertEqual(
+            tool.search_tables("synthetic", "net margin")["results"][0]["matched_row_indices"], [5]
+        )
+        self.assertEqual(
+            tool.search_tables("synthetic", "2040")["results"][0]["matched_row_indices"], [6]
+        )
+        self.assertEqual(
+            tool.read_table("synthetic", "table-1", [5]),
+            TableSources(corpus).read_table("synthetic", "table-1", [5]),
+        )
+
+    def test_soft_prefix_reranks_before_limit_and_keeps_body_only_order(self):
+        html = self.root / "candidate-limit.html"
+        prefix = " ".join(f"calendar{i}" for i in range(40))
+        html.write_text(
+            "<table><caption>Repeated calendar</caption>"
+            + f"<tr><td>{prefix}</td></tr>" * 5
+            + f"<tr><td>{prefix}</td></tr>" * 9
+            + "<tr><td>invented metric "
+            + "detail " * 80
+            + "</td></tr></table>"
+        )
+        corpus = self.root / "candidate-limit-corpus"
+        ingest(
+            {"sources": [{"id": "synthetic", "title": "Invented facts", "input_file": str(html)}]},
+            corpus,
+        )
+        old = TableSources(corpus)
+        new = TableSources(corpus, search_version="source-scoped-visible-row-bm25-v3")
+        query = prefix + " invented metric"
+        before = old.search_tables("synthetic", query)["results"][0]
+        after = new.search_tables("synthetic", query)["results"][0]
+        self.assertEqual(before["score"], after["score"])
+        self.assertNotIn(14, before["matched_row_indices"])
+        self.assertEqual(after["matched_row_indices"][0], 14)
+        for query in ("invented metric", "calendar"):
+            self.assertEqual(
+                old.search_tables("synthetic", query)["results"],
+                new.search_tables("synthetic", query)["results"],
+            )
+
     def test_returned_cells_and_captions_cannot_mutate_snapshot(self):
         original = self.read([8])
         changed = self.read([8])

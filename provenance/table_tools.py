@@ -90,6 +90,7 @@ class TableSources:
         if search_version not in {
             "source-scoped-visible-row-bm25-v1",
             "source-scoped-visible-row-bm25-v2",
+            "source-scoped-visible-row-bm25-v3",
         }:
             raise ValueError("Unknown table search version")
         self.search_version = search_version
@@ -207,9 +208,23 @@ class TableSources:
             # The read policy already includes these rows; reserve candidates for new context.
             read_candidates = (
                 [match for match in row_matches if match[1] >= 5]
-                if self.search_version == "source-scoped-visible-row-bm25-v2"
+                if self.search_version != "source-scoped-visible-row-bm25-v1"
                 else row_matches
             )
+            if self.search_version == "source-scoped-visible-row-bm25-v3":
+                # Softly discount repeated prefix evidence, without deleting metric terms.
+                prefix_terms = set(_tokens(title_text))
+                candidate_idf = {
+                    term: weight * (0.25 if term in prefix_terms else 1.0)
+                    for term, weight in idf.items()
+                }
+                read_candidates = sorted(
+                    read_candidates,
+                    key=lambda item: (
+                        -_bm25(_tokens(item[2]), candidate_idf, average_length),
+                        item[1],
+                    ),
+                )
             snippets = [
                 {"row_index": row_index, "text": _literal_snippet(text, query_terms)}
                 for _, row_index, text in read_candidates[:MAX_ROW_INDICES]
@@ -241,6 +256,11 @@ class TableSources:
         if self.search_version == "source-scoped-visible-row-bm25-v2":
             response["diagnostics"]["read_candidate_policy"] = (
                 "Exclude first five prefix rows already included by reads; table scores unchanged."
+            )
+        if self.search_version == "source-scoped-visible-row-bm25-v3":
+            response["diagnostics"]["read_candidate_policy"] = (
+                "Exclude first five prefix rows; rerank body rows with BM25 query-term "
+                "weights 0.25 for terms in caption/prefix, 1.0 otherwise; table scores unchanged."
             )
         self._ensure_size(response)
         return copy.deepcopy(response)

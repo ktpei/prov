@@ -52,3 +52,22 @@ This is a measured development improvement on inspected fixtures, not an unseen
 quality estimate. Further work should separately address table-type disambiguation
 and multi-metric row selection, then assess broader, uninspected development cases.
 Do not hide these remaining failures by inserting fixture-selected rows.
+
+## Preregistered soft-prefix candidate experiment
+
+Search v3 is opt-in; v2 remains the default. The
+[protocol](soft-prefix-protocol.json) changes only body-row ordering: retain the
+existing corpus-wide BM25 statistics, multiply query-term IDF by 0.25 for terms
+present in the table caption/first five rows, and by 1 otherwise. Rerank all
+matching body rows before the eight-candidate limit. Table scores/order, literal
+tokenization, first-three selection, read windows and budgets remain unchanged.
+The constant is a declared heuristic, not a fitted or literature-derived optimum.
+
+This tests whether repeated positional context crowds out body-specific evidence.
+It can also penalize useful dates, units, or metrics; these are retained with
+positive weight. It cannot fix a wrong top-ranked table. Synthetic checks cover
+caption/body metric repetition, date-only and title-only queries, hidden cells,
+determinism, unchanged table scores/reads, body-only ordering, and recovery of a
+candidate outside v2's returned eight. The four real development cases will run
+only after this implementation and protocol are committed. No generalization
+claim or default promotion is planned from those inspected cases.
