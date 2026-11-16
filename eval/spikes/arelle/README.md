@@ -77,10 +77,19 @@ document hashes, unique element identity/structural paths, containing cell/table
 and continuation fragment chains. Parser recovery and visibility remain separate
 acceptance concerns; a returned tree is not proof of faithful original structure.
 
+## Positive fixture milestone
+
+The [schema-resolved fixture](typed-values-report.md) now verifies five numeric
+occurrences, exact Decimal values, nil versus zero, divided units, lexical and
+normalized periods, and original source-cell ancestry. Six model-document hashes
+are declared before loading and rechecked afterward. Eight optional acceptance
+tests pass under OS network denial, alongside the 399-test core suite and lint.
+This does not establish rendered visibility or general issuer extraction.
+
 ## Remaining acceptance work
 
-1. Freeze a local synthetic taxonomy/dependency manifest and test a successful
-   schema-resolved path under the same denied-network process.
+1. Extend the frozen synthetic taxonomy/manifest beyond the completed five-fact
+   positive path; retain the same denied-network execution and dependency checks.
 2. Cover sign/scale/accuracy, nil/zero, divided units, namespace aliases, periods,
    explicit/typed dimensions, unknown concepts/transforms, duplicates and broken
    continuations. Every occurrence must be exported or explicitly rejected.

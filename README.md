@@ -137,7 +137,9 @@ XBRL tags in three filings. This prioritizes a typed-context extraction investig
 lexical tags are not validated facts. The v3 release-page rejection is retained.
 A separate [Arelle negative preflight](eval/spikes/arelle/README.md) verifies that
 missing schemas must reject facts even when its API reports success. Successful
-typed extraction and source-to-cell provenance remain pending.
+issuer extraction remains pending. A separate [five-fact synthetic acceptance
+fixture](eval/spikes/arelle/typed-values-report.md) verifies typed values and source-cell
+ancestry; rendered visibility and broader fact types remain unverified.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
