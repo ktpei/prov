@@ -70,3 +70,39 @@ five physical rows from read candidates because every read already includes that
 prefix. V1 remains selectable for baseline replay. Protocols without an explicit
 search version replay v1; challenger protocols specify v2. The first-three row
 selection rule is unchanged, and no fixture roles or answer values enter ranking.
+
+## Separate locked-assessment execution
+
+`eval.scripts.table_assessment_run` is a distinct search-only runner for future
+locked assessments. It accepts strict questions containing only `id`, `source_id`
+and `question`, plus a protocol binding question bytes, corpus manifest, runtime
+code/dependency digest and explicit search version. It never opens annotations or
+runs oracle reads. The existing four-case probe remains unchanged for replay.
+
+```sh
+uv run python -m eval.scripts.table_assessment_run --runtime-digest
+uv run python -m eval.scripts.table_assessment_run \
+  --protocol RUN_PROTOCOL.json --questions QUESTIONS.json \
+  --corpus CORPUS_DIRECTORY --output NEW_RUN_DIRECTORY
+```
+
+The protocol version is `table-assessment-run-protocol-v1`; its only other fields
+are `questions_sha256`, `corpus_manifest_sha256`, `runtime_sha256` and
+`search_version`. Question files use `table-assessment-questions-v1` and a `cases`
+list. Extra fields are rejected before retrieval. Runtime hashing includes all
+Python files under `provenance`, scripts under `eval/scripts`, `pyproject.toml`
+and `uv.lock`, including untracked matching files. This is an identity check,
+not an enforced gold-confidentiality boundary or a complete assessment gate.
+
+All cases are persisted before execution. A running-case receipt precedes dispatch;
+completed search/read responses are persisted before the next call. Interruptions
+retain observed traces and pending cases. No-hit, search errors and read errors
+remain outcomes; constructor/integrity failures invalidate the run. Final checks
+revalidate input bytes, runtime digest and corpus original/text hashes. Output
+directories cannot be reused. Hard process termination may leave an explicitly
+incomplete running receipt; it must not be reported as a completed run.
+
+The runner is tested only with invented HTML. It does not yet provide separate
+annotation grading, publication-cutoff enforcement, or the complete staged
+provenance gates in the [broader assessment plan](assessments/native-html-v1/plan.md).
+No new real-document accuracy result is claimed.
