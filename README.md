@@ -55,9 +55,11 @@ OPENROUTER_OUTPUT_USD_PER_MILLION=1.20
 ```
 
 Without a key, or with `uv run python -m provenance.web --replay`, the app runs
-**scripted replay**: recorded tool calls for the starter questions run against
-the real evidence and validators, with no model call and no cost. Replay is
-labeled everywhere it appears and cannot answer unscripted questions.
+**scripted replay**: recorded tool calls for two Cloudflare questions (the revenue
+and guidance starter, and the workbook guidance check) run against the real evidence
+and validators, with no model call and no cost. In replay mode the UI shows only those
+scripted questions. Replay is labeled everywhere it appears, including in exported
+workbooks, and cannot answer unscripted questions.
 
 What you can do:
 

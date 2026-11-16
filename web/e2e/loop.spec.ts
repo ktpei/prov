@@ -64,3 +64,19 @@ test("unscripted replay questions explain what to do", async ({ page }) => {
   await expect(page.getByRole("alert")).toContainText("No scripted replay for this question");
   await expect(page.getByLabel("Question")).toHaveValue("What is Cloudflare's dividend policy?");
 });
+
+test("double-clicking a starter runs it once without an error", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: Q1 }).dblclick();
+  await expect(page.getByText("Cited answer")).toBeVisible();
+  await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(page.locator("section[aria-label^='Question']")).toHaveCount(1);
+});
+
+test("replay mode shows only scripted starters", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByText("Scripted replay covers only the questions below.")).toBeVisible();
+  await expect(page.getByRole("button", { name: /go-to-market/ })).toHaveCount(0);
+  await page.locator("select").selectOption("earnings-excerpts");
+  await expect(page.getByText("This evidence set has no scripted questions yet.")).toBeVisible();
+});

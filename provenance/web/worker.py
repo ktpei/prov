@@ -22,6 +22,15 @@ def _normalize(text):
     return " ".join(str(text).lower().split())
 
 
+def scripted_questions(corpus):
+    """Questions with a scripted replay for this evidence set."""
+    return [
+        entry["question"]
+        for entry in json.loads(SCRIPTS.read_text())["scripts"]
+        if entry["corpus"] == corpus
+    ]
+
+
 def load_replay_script(question, corpus, *, snapshot_id=None):
     """Return scripted responses for an exact (normalized) question match, else None."""
     for entry in json.loads(SCRIPTS.read_text())["scripts"]:
@@ -236,9 +245,10 @@ class Turn:
 class TurnRunner:
     """Parent side: spawn a worker per turn and collect its messages on a thread."""
 
-    def __init__(self, target=run_turn_process, *, prewarm=False):
+    def __init__(self, target=run_turn_process, *, prewarm=False, grace_seconds=30):
         self.context = multiprocessing.get_context("spawn")
         self.target = target
+        self.grace_seconds = grace_seconds
         self.prewarm = prewarm
         self.lock = threading.Lock()
         self.standby = None
@@ -282,7 +292,21 @@ class TurnRunner:
             self.standby = None
 
     def _collect(self, turn, process, queue, job, on_finish):
-        deadline = time.monotonic() + float(job["limits"]["timeout_seconds"]) + 30
+        try:
+            self._drain(turn, process, queue, job)
+        except Exception:  # noqa: BLE001 - malformed or broken worker messages
+            turn.error = turn.error or "worker_crashed"
+            if process.is_alive():
+                process.terminate()
+        process.join(timeout=5)
+        try:
+            if on_finish:
+                on_finish(turn)
+        finally:
+            turn.done.set()
+
+    def _drain(self, turn, process, queue, job):
+        deadline = time.monotonic() + float(job["limits"]["timeout_seconds"]) + self.grace_seconds
         exited_at = None
         while True:
             try:
@@ -292,23 +316,17 @@ class TurnRunner:
                     exited_at = exited_at or time.monotonic()
                     if time.monotonic() - exited_at > 1.0:  # allow the feeder to flush
                         turn.error = "worker_crashed"
-                        break
+                        return
                 elif time.monotonic() > deadline:
                     process.terminate()
                     turn.error = "worker_timeout"
-                    break
+                    return
                 continue
             if kind == "event":
                 turn.events.append(payload)
             elif kind == "done":
                 turn.result = payload
-                break
+                return
             else:
                 turn.error = str(payload)
-                break
-        process.join(timeout=5)
-        try:
-            if on_finish:
-                on_finish(turn)
-        finally:
-            turn.done.set()
+                return

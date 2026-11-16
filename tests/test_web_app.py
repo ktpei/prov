@@ -316,5 +316,194 @@ class WorkbookFlowTests(AppTestCase):
         self.assertEqual(response.status_code, 409)
 
 
+class FakeRunner:
+    """Holds turns open so tests control when they finish."""
+
+    def __init__(self, fail=False):
+        self.pending, self.fail = [], fail
+
+    def start(self, job, on_finish=None):
+        from provenance.web.worker import Turn
+
+        if self.fail:
+            raise RuntimeError("could not start worker")
+        turn = Turn(job["turn_id"])
+        self.pending.append((turn, job, on_finish))
+        return turn
+
+    def finish(self, proposals, *, status="completed", cost=0.0, mode="offline_replay"):
+        turn, job, on_finish = self.pending.pop(0)
+        turn.result = {
+            "report": {
+                "run_id": "r",
+                "mode": mode,
+                "status": status,
+                "stop_reason": None if status == "completed" else "model_call_limit",
+                "answer": {"answerable": True, "answer": "ok", "claims": []},
+                "metrics": {"accounted_cost_usd": cost, "cost_uncertain": False},
+                "model": "scripted-test-double" if mode == "offline_replay" else "test/model",
+            },
+            "proposals": proposals,
+        }
+        on_finish(turn)
+        turn.done.set()
+        return job
+
+
+def proposal(cell, value, pid="P1"):
+    return {
+        "proposal_id": pid,
+        "sheet": "Model",
+        "cell": cell,
+        "new_content": value,
+        "rationale": "Align with guidance",
+        "citations": [
+            {
+                "source_id": "cloudflare-q3-2024-release",
+                "locator": "L63",
+                "quote": "Total revenue of $1,661.0 to $1,662.0 million",
+            }
+        ],
+        "old_display": "1,650.0" if cell == "B7" else "215.0",
+        "old_formula": None,
+    }
+
+
+def other_workbook():
+    book = load_workbook(FIXTURE)
+    book["Model"]["B7"] = 999
+    buffer = io.BytesIO()
+    book.save(buffer)
+    return buffer.getvalue()
+
+
+class MultiTurnWorkbookTests(AppTestCase):
+    def start(self, client, sid, question=Q2):
+        response = client.post(
+            f"/api/sessions/{sid}/turns", json={"question": question, "mode": "replay"}
+        )
+        self.assertEqual(response.status_code, 200, response.text)
+        return response.json()["turn_id"]
+
+    def test_proposals_keep_the_snapshot_their_turn_ran_on(self):
+        runner = FakeRunner()
+        client = self.client(runner=runner)
+        sid = self.session(client)
+        self.upload(client, sid)
+        self.start(client, sid)
+        newer = self.upload(client, sid, data=other_workbook(), name="other.xlsx").json()
+        runner.finish([proposal("B7", 1661.5)])
+        state = client.get(f"/api/sessions/{sid}").json()
+        self.assertEqual(state["proposals"][0]["snapshot_id"], "a34195a4a257")
+        self.assertEqual(state["proposals"][0]["status"], "stale")
+        export = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={
+                "snapshot_id": newer["snapshot_id"],
+                "proposal_ids": [state["proposals"][0]["id"]],
+            },
+        )
+        self.assertEqual(export.status_code, 409)
+
+    def test_reproposing_a_cell_supersedes_the_older_proposal(self):
+        runner = FakeRunner()
+        client = self.client(runner=runner)
+        sid = self.session(client)
+        self.upload(client, sid)
+        self.start(client, sid)
+        runner.finish([proposal("B7", 1661.5)])
+        self.start(client, sid)
+        runner.finish([proposal("B7", 1661.0)])
+        proposals = client.get(f"/api/sessions/{sid}").json()["proposals"]
+        self.assertEqual([p["status"] for p in proposals], ["superseded", "pending"])
+        pending = [p["id"] for p in proposals if p["status"] == "pending"]
+        export = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={"snapshot_id": "a34195a4a257", "proposal_ids": pending},
+        )
+        self.assertEqual(export.status_code, 200, export.text)
+
+    def test_exports_accumulate_approved_changes(self):
+        runner = FakeRunner()
+        client = self.client(runner=runner)
+        sid = self.session(client)
+        self.upload(client, sid)
+        self.start(client, sid)
+        runner.finish([proposal("B7", 1661.5)])
+        first_id = client.get(f"/api/sessions/{sid}").json()["proposals"][0]["id"]
+        first = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={"snapshot_id": "a34195a4a257", "proposal_ids": [first_id]},
+        ).json()
+        self.start(client, sid)
+        runner.finish([proposal("B8", 220.5)])
+        second_id = client.get(f"/api/sessions/{sid}").json()["proposals"][1]["id"]
+        second = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={"snapshot_id": "a34195a4a257", "proposal_ids": [second_id]},
+        ).json()
+        self.assertNotEqual(first["id"], second["id"])
+        self.assertEqual([c["cell"] for c in second["changes"]], ["Model!B7", "Model!B8"])
+        book = load_workbook(io.BytesIO(client.get(second["download_url"]).content))
+        self.assertEqual((book["Model"]["B7"].value, book["Model"]["B8"].value), (1661.5, 220.5))
+        self.assertEqual(len(client.get(f"/api/sessions/{sid}").json()["exports"]), 2)
+
+    def test_replay_proposals_are_labeled_in_the_export(self):
+        runner = FakeRunner()
+        client = self.client(runner=runner)
+        sid = self.session(client)
+        self.upload(client, sid)
+        self.start(client, sid)
+        runner.finish([proposal("B7", 1661.5)])
+        state = client.get(f"/api/sessions/{sid}").json()
+        self.assertEqual(state["proposals"][0]["mode"], "offline_replay")
+        export = client.post(
+            f"/api/sessions/{sid}/exports",
+            json={"snapshot_id": "a34195a4a257", "proposal_ids": [state["proposals"][0]["id"]]},
+        ).json()
+        book = load_workbook(io.BytesIO(client.get(export["download_url"]).content))
+        log = book["Provenance log"]
+        headers = [cell.value for cell in log[1]]
+        self.assertIn("Generated by", headers)
+        self.assertIn("Scripted replay", log.cell(2, headers.index("Generated by") + 1).value)
+        self.assertIn("Scripted replay", book["Model"]["B7"].comment.text)
+
+    def test_live_turns_reserve_budget_while_running(self):
+        runner = FakeRunner()
+        with mock.patch.dict(os.environ, LIVE_ENV):
+            client = self.client(runner=runner, cap_usd=0.15)
+            first, second = self.session(client), self.session(client)
+            ask = lambda sid: client.post(  # noqa: E731
+                f"/api/sessions/{sid}/turns", json={"question": "Q?", "mode": "live"}
+            )
+            self.assertEqual(ask(first).status_code, 200)
+            self.assertEqual(runner.pending[0][1]["limits"]["budget_usd"], 0.10)
+            self.assertEqual(ask(second).status_code, 200)
+            self.assertAlmostEqual(runner.pending[1][1]["limits"]["budget_usd"], 0.05)
+            third = self.session(client)
+            self.assertEqual(ask(third).status_code, 409)
+            runner.finish([], cost=0.004, mode="live_openrouter_langchain")
+            self.assertEqual(ask(third).status_code, 200)
+
+    def test_worker_start_failure_releases_the_session(self):
+        client = self.client(runner=FakeRunner(fail=True))
+        sid = self.session(client)
+        response = client.post(
+            f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"}
+        )
+        self.assertEqual(response.status_code, 500)
+        state = client.get(f"/api/sessions/{sid}").json()
+        self.assertEqual(state["turns"][0]["status"], "failed")
+        retry = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"})
+        self.assertNotEqual(retry.status_code, 409)
+
+    def test_config_marks_scripted_starters(self):
+        config = self.client().get("/api/config").json()
+        cloudflare = config["corpora"][0]
+        self.assertIn(Q1, cloudflare["scripted"])
+        self.assertIn(Q2, cloudflare["scripted"])
+        self.assertEqual(config["corpora"][1]["scripted"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

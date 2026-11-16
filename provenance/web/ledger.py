@@ -14,6 +14,7 @@ class Ledger:
         self.path, self.cap = Path(path), float(cap_usd)
         self.lock = threading.Lock()
         self._total = 0.0
+        self._reserved = 0.0
         if self.path.exists():
             for line in self.path.read_text().splitlines():
                 if line.strip():
@@ -25,13 +26,22 @@ class Ledger:
         return self._total
 
     def remaining(self):
-        return max(0.0, self.cap - self._total)
+        """Cap minus recorded spend and budgets held by running turns."""
+        return max(0.0, self.cap - self._total - self._reserved)
 
     def turn_budget(self, max_turn=MAX_TURN_USD):
         remaining = self.remaining()
         return None if remaining < MIN_TURN_USD else min(max_turn, remaining)
 
-    def record(self, turn_id, cost_usd, *, uncertain, model, mode, status):
+    def reserve(self, max_turn=MAX_TURN_USD):
+        """Hold a running turn's budget so concurrent turns cannot overshoot the cap."""
+        with self.lock:
+            budget = self.turn_budget(max_turn)
+            if budget is not None:
+                self._reserved += budget
+            return budget
+
+    def record(self, turn_id, cost_usd, *, uncertain, model, mode, status, reserved=0.0):
         row = {
             "time": datetime.now(timezone.utc).isoformat(),
             "turn_id": turn_id,
@@ -47,3 +57,4 @@ class Ledger:
                 stream.write(json.dumps(row) + "\n")
             if mode == "live":
                 self._total += float(cost_usd)
+            self._reserved = max(0.0, self._reserved - float(reserved))

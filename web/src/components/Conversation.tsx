@@ -9,6 +9,7 @@ type Props = {
   titles: Record<string, string>;
   selection: Selection | null;
   busy: boolean;
+  mode: "live" | "replay";
   onAsk: (question: string) => void;
   onCite: (citation: Citation) => void;
   onShowActivity: (turnId: string) => void;
@@ -32,7 +33,10 @@ function Running({ turn, events, onShowActivity }: { turn: TurnView; events: Pro
 }
 
 export function Conversation(props: Props) {
-  const { corpus, session, progress, busy, onAsk } = props;
+  const { corpus, session, progress, busy, onAsk, mode } = props;
+  const available = (question: string) => mode === "live" || corpus.scripted.includes(question);
+  const starters = corpus.starters.filter(available);
+  const workbookStarters = corpus.workbook_starters.filter(available);
   const end = useRef<HTMLDivElement>(null);
   const lastTurn = session.turns.at(-1);
   useEffect(() => {
@@ -55,8 +59,16 @@ export function Conversation(props: Props) {
           ))}
         </ul>
         <h2 className="mt-6 text-sm font-medium text-ink-soft">Try a question</h2>
+        {mode === "replay" && (
+          <p className="mt-1 text-sm text-replay">
+            Scripted replay covers only the questions below. Switch to Live model to ask anything.
+          </p>
+        )}
+        {mode === "replay" && starters.length === 0 && workbookStarters.length === 0 && (
+          <p className="mt-2 text-sm text-ink-soft">This evidence set has no scripted questions yet.</p>
+        )}
         <div className="mt-2 flex flex-col items-start gap-2">
-          {corpus.starters.map((starter) => (
+          {starters.map((starter) => (
             <button
               key={starter}
               type="button"
@@ -67,9 +79,9 @@ export function Conversation(props: Props) {
               {starter}
             </button>
           ))}
-          {corpus.workbook_starters.length > 0 &&
+          {workbookStarters.length > 0 &&
             (session.workbook ? (
-              corpus.workbook_starters.map((starter) => (
+              workbookStarters.map((starter) => (
                 <button
                   key={starter}
                   type="button"
@@ -128,7 +140,7 @@ export function Conversation(props: Props) {
       ))}
       {session.workbook && !busy && (
         <div className="flex flex-col items-start gap-2">
-          {corpus.workbook_starters
+          {workbookStarters
             .filter((starter) => !session.turns.some((turn) => turn.question === starter))
             .map((starter) => (
               <button

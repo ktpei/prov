@@ -14,6 +14,7 @@ const STATUS: Record<Proposal["status"], { label: string; className: string }> =
   pending: { label: "Awaiting approval", className: "bg-highlight-soft text-ink" },
   exported: { label: "In edited copy", className: "bg-ledger-soft text-ledger" },
   stale: { label: "Stale: workbook replaced", className: "bg-rust-soft text-rust" },
+  superseded: { label: "Replaced by a newer proposal", className: "bg-chrome text-ink-faint" },
 };
 
 function content(value: number | string) {
@@ -96,6 +97,18 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
                     <span className={`ml-auto rounded px-1.5 py-0.5 text-xs ${status.className}`}>{status.label}</span>
                   </div>
                   <p className="mt-1 text-sm text-ink-soft">{proposal.rationale}</p>
+                  {(proposal.mode === "offline_replay" || (proposal.turn_status && proposal.turn_status !== "completed")) && (
+                    <p className="mt-1 flex flex-wrap gap-1.5 text-xs">
+                      {proposal.mode === "offline_replay" && (
+                        <span className="rounded bg-replay-soft px-1.5 py-0.5 text-replay">From scripted replay, no model call</span>
+                      )}
+                      {proposal.turn_status && proposal.turn_status !== "completed" && (
+                        <span className="rounded bg-rust-soft px-1.5 py-0.5 text-rust">
+                          From a question that ended without a validated answer
+                        </span>
+                      )}
+                    </p>
+                  )}
                   <div className="mt-1.5 flex flex-wrap gap-1">
                     {proposal.citations.map((citation, index) => (
                       <CitationChip key={index} citation={citation} titles={titles} onOpen={onCite} />
@@ -133,10 +146,14 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
         <div className="mt-5 rounded-lg border border-ledger/40 bg-ledger-soft px-4 py-3">
           <p className="font-medium text-ledger">Edited copy ready</p>
           <p className="tabular mt-0.5 text-sm">{latest.filename}</p>
+          <p className="mt-1 text-xs text-ink-soft">Includes every change approved so far for this workbook.</p>
           <ul className="tabular mt-2 space-y-0.5 text-sm">
             {latest.changes.map((change) => (
               <li key={change.cell}>
                 {change.cell}: {change.old || "empty"} to <span className="font-medium">{content(change.new)}</span>
+                {change.generated_by?.startsWith("Scripted replay") && (
+                  <span className="ml-2 text-xs text-replay">scripted replay</span>
+                )}
               </li>
             ))}
           </ul>
@@ -148,10 +165,28 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
             Download edited copy
           </a>
           <p className="mt-2 text-xs text-ink-soft">
-            Each changed cell carries a comment with its source, and a Provenance log sheet lists every change.
-            Formulas recalculate when Excel opens the file; the app does not compute them.
+            Each changed cell carries a comment with its source, and a Provenance log sheet lists every change and
+            what generated it. Formulas recalculate when Excel opens the file; the app does not compute them.
           </p>
         </div>
+      )}
+      {session.exports.length > 1 && (
+        <details className="mt-3 text-sm">
+          <summary className="cursor-pointer text-ink-soft">Earlier copies ({session.exports.length - 1})</summary>
+          <ul className="mt-2 space-y-1">
+            {session.exports
+              .slice(0, -1)
+              .reverse()
+              .map((record) => (
+                <li key={record.id} className="flex flex-wrap items-baseline gap-2">
+                  <a href={record.download_url} download={record.filename} className="tabular text-ledger underline">
+                    {record.filename}
+                  </a>
+                  <span className="text-xs text-ink-faint">{record.changes.map((c) => c.cell).join(", ")}</span>
+                </li>
+              ))}
+          </ul>
+        </details>
       )}
     </div>
   );

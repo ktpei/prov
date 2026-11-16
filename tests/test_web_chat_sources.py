@@ -188,5 +188,31 @@ class ComposeQuestionTests(unittest.TestCase):
         self.assertTrue(text.endswith("Current question: What was revenue?"))
 
 
+class StrictnessTests(unittest.TestCase):
+    def test_workbook_quote_must_match_one_cell(self):
+        snap = snapshot()
+        workbook_id = f"workbook:{snap.snapshot_id}"
+        src = sources(snapshot=snap)
+        src.call("read_workbook_range", {"sheet": "Model", "range": "B7:B9"}, 5)
+        for quote in ("1,650.0", "1650", "215", "=B8/B7", "13.0%"):
+            src.check_citation({"source_id": workbook_id, "locator": "Model!B7:B9", "quote": quote})
+        for quote in ("50", "650", "1,650.0 215.0"):
+            with self.assertRaises(ValueError, msg=quote):
+                src.check_citation(
+                    {"source_id": workbook_id, "locator": "Model!B7:B9", "quote": quote}
+                )
+
+    def test_proposal_content_is_checked(self):
+        src = sources(snapshot=snapshot())
+        src.call("read_source", {"source_id": RELEASE, "start_line": 59, "end_line": 64}, 5)
+        self.assertIn("error", propose(src, new_content="=SUM(B1:B3"))
+        self.assertIn("error", propose(src, new_content='="unclosed'))
+        self.assertIn("error", propose(src, new_content="$1,661.5M"))
+        self.assertNotIn("error", propose(src, new_content="=B6+1216.5"))
+        self.assertNotIn(
+            "error", propose(src, cell="D7", new_content="Q3 release guidance midpoint")
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

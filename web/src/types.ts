@@ -71,6 +71,7 @@ export type Corpus = {
   documents: DocumentInfo[];
   starters: string[];
   workbook_starters: string[];
+  scripted: string[];
 };
 
 export type Config = {
@@ -105,7 +106,11 @@ export type Proposal = {
   new_content: number | string;
   rationale: string;
   citations: Citation[];
-  status: "pending" | "stale" | "exported";
+  mode: string | null;
+  model: string | null;
+  generated_by: string | null;
+  turn_status: string | null;
+  status: "pending" | "stale" | "exported" | "superseded";
 };
 
 export type ExportRecord = {
@@ -113,7 +118,7 @@ export type ExportRecord = {
   filename: string;
   snapshot_id: string;
   proposal_ids: string[];
-  changes: { cell: string; old: string; new: number | string }[];
+  changes: { cell: string; old: string; new: number | string; generated_by: string | null }[];
   created_at: string;
   download_url: string;
 };

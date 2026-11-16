@@ -16,6 +16,24 @@ CONTEXT_LIMIT = 400
 PROPOSAL_LIMIT = 10
 TEXT_LIMIT = 500
 _NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
+_NUMBERISH = re.compile(
+    r"[\s$€£¥(+-]*\d[\d,.\s]*[)%]?\s*(k|m|mm|bn|b|million|billion|thousand)?\s*", re.IGNORECASE
+)
+
+
+def _balanced(formula):
+    depth, quoted = 0, False
+    for char in formula:
+        if char == '"':
+            quoted = not quoted
+        elif not quoted and char == "(":
+            depth += 1
+        elif not quoted and char == ")":
+            depth -= 1
+            if depth < 0:
+                return False
+    return depth == 0 and not quoted
+
 
 CHAT_ADDENDUM = """
 Conversation and workbook rules for this chat:
@@ -93,6 +111,12 @@ def _content(value):
     if _NUMBER.fullmatch(plain):
         number = float(plain)
         return int(number) if number.is_integer() and "." not in plain else number
+    if text.startswith("="):
+        if len(text) < 2 or not _balanced(text):
+            raise ValueError("Formula has unbalanced parentheses or quotes")
+        return text
+    if _NUMBERISH.fullmatch(text):
+        raise ValueError("Write numbers plainly in the cell's units, e.g. 1661.5, not $1,661.5M")
     return text
 
 
@@ -210,11 +234,19 @@ class ChatSources(Sources):
         read = self.seen.get(self.workbook_id, set()) | self.preread
         if any(f"{sheet}!{cell['address']}" not in read for cell in cells):
             raise ValueError("Citation refers to unread workbook cells")
-        text = " ".join(
-            f"{cell['display']} {cell['value']} {cell['formula'] or ''}" for cell in cells
-        )
-        if _normalize(quote) not in _normalize(text):
-            raise ValueError("Citation quote is absent from cited workbook cells")
+        wanted = _normalize(quote)
+        if not any(
+            wanted
+            in {
+                _normalize(cell["display"]),
+                _normalize(cell["value"]),
+                _normalize(cell["formula"] or ""),
+            }
+            for cell in cells
+        ):
+            raise ValueError(
+                "Workbook quote must equal one cited cell's displayed value, raw value, or formula"
+            )
 
 
 def _claim_line(claim):

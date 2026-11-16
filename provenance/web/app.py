@@ -20,8 +20,14 @@ from provenance.controls import positive
 from provenance.sources import Sources
 from provenance.web.chat_sources import CONTEXT_LIMIT, compose_question
 from provenance.web.ledger import Ledger
-from provenance.web.workbook import MAX_BYTES, WorkbookError, export_copy, load_snapshot
-from provenance.web.worker import TurnRunner, load_replay_script
+from provenance.web.workbook import (
+    MAX_BYTES,
+    WorkbookError,
+    export_copy,
+    load_snapshot,
+    parse_range,
+)
+from provenance.web.worker import TurnRunner, load_replay_script, scripted_questions
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "web/dist"
@@ -118,19 +124,21 @@ class Session:
         self.context = None
         self.proposals = {}
         self.exports = []
+        self.approved = {}
         self.running = None
         self.lock = threading.Lock()
 
     def view(self):
-        return {
-            "id": self.id,
-            "corpus": self.corpus,
-            "turns": list(self.turns),
-            "workbook": self.snapshot.info() if self.snapshot else None,
-            "context": self.context,
-            "proposals": list(self.proposals.values()),
-            "exports": list(self.exports),
-        }
+        with self.lock:
+            return {
+                "id": self.id,
+                "corpus": self.corpus,
+                "turns": [dict(turn) for turn in self.turns],
+                "workbook": self.snapshot.info() if self.snapshot else None,
+                "context": self.context,
+                "proposals": [dict(p) for p in self.proposals.values()],
+                "exports": list(self.exports),
+            }
 
 
 def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
@@ -204,6 +212,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             ],
             "starters": spec["starters"],
             "workbook_starters": spec["workbook_starters"],
+            "scripted": scripted_questions(key),
         }
 
     def session_or_404(sid):
@@ -289,9 +298,10 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         )
 
     @app.post("/api/sessions/{sid}/workbook")
-    async def upload_workbook(sid: str, file: Annotated[UploadFile, File()]):
+    def upload_workbook(sid: str, file: Annotated[UploadFile, File()]):
+        # Sync handler: FastAPI runs it in a worker thread, so parsing never blocks streams.
         session = session_or_404(sid)
-        data = await file.read(MAX_BYTES + 1)
+        data = file.file.read(MAX_BYTES + 1)
         try:
             snapshot = load_snapshot(data, file.filename or "workbook.xlsx")
         except WorkbookError as exc:
@@ -342,10 +352,11 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         result, error = turn.result, turn.error
         report = (result or {}).get("report") or {}
         metrics = report.get("metrics") or {}
-        with session.lock:
-            if error:
-                record.update(status="failed", stop_reason=error)
-            else:
+        try:
+            with session.lock:
+                if error:
+                    record.update(status="failed", stop_reason=error)
+                    return
                 record.update(
                     status=report.get("status"),
                     stop_reason=report.get("stop_reason"),
@@ -355,12 +366,32 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                     metrics=metrics,
                     run_id=report.get("run_id"),
                 )
+                turn_snapshot = record["carried"]["snapshot_id"]
+                current = session.snapshot.snapshot_id if session.snapshot else None
+                replay = report.get("mode") == "offline_replay"
+                generated_by = (
+                    "Scripted replay (no model call)"
+                    if replay
+                    else f"Live model {report.get('model')}"
+                )
                 for proposal in result.get("proposals", []):
                     pid = f"{record['id']}-{proposal['proposal_id']}"
+                    target = (turn_snapshot, proposal["sheet"], proposal["cell"])
+                    for older in session.proposals.values():
+                        if (
+                            older["status"] == "pending"
+                            and (
+                                older["snapshot_id"],
+                                older["sheet"],
+                                older["cell"],
+                            )
+                            == target
+                        ):
+                            older["status"] = "superseded"
                     session.proposals[pid] = {
                         "id": pid,
                         "turn_id": record["id"],
-                        "snapshot_id": session.snapshot.snapshot_id if session.snapshot else None,
+                        "snapshot_id": turn_snapshot,
                         "sheet": proposal["sheet"],
                         "cell": proposal["cell"],
                         "old_display": proposal["old_display"],
@@ -368,30 +399,39 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                         "new_content": proposal["new_content"],
                         "rationale": proposal["rationale"],
                         "citations": proposal["citations"],
-                        "status": "pending",
+                        "mode": report.get("mode"),
+                        "model": report.get("model"),
+                        "generated_by": generated_by,
+                        "turn_status": record["status"],
+                        "status": "pending"
+                        if turn_snapshot and turn_snapshot == current
+                        else "stale",
                     }
                     record["proposal_ids"].append(pid)
-            session.running = None
-        if job["mode"] == "live":
-            cost = metrics.get("accounted_cost_usd")
-            uncertain = bool(metrics.get("cost_uncertain")) or cost is None
-            ledger.record(
-                record["id"],
-                job["limits"]["budget_usd"] if cost is None else cost,
-                uncertain=uncertain,
-                model=record.get("model"),
-                mode="live",
-                status=record["status"],
-            )
-        else:
-            ledger.record(
-                record["id"],
-                0.0,
-                uncertain=False,
-                model="replay",
-                mode="replay",
-                status=record["status"],
-            )
+        finally:
+            with session.lock:
+                if session.running == record["id"]:
+                    session.running = None
+            if job["mode"] == "live":
+                cost = metrics.get("accounted_cost_usd")
+                ledger.record(
+                    record["id"],
+                    job["limits"]["budget_usd"] if cost is None else cost,
+                    uncertain=bool(metrics.get("cost_uncertain")) or cost is None,
+                    model=record.get("model"),
+                    mode="live",
+                    status=record["status"],
+                    reserved=job["limits"]["budget_usd"],
+                )
+            else:
+                ledger.record(
+                    record["id"],
+                    0.0,
+                    uncertain=False,
+                    model="replay",
+                    mode="replay",
+                    status=record["status"],
+                )
 
     @app.post("/api/sessions/{sid}/turns")
     def start_turn(sid: str, body: TurnBody):
@@ -401,36 +441,38 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             raise HTTPException(400, "Questions must contain 1–4000 characters")
         if body.mode not in ("live", "replay"):
             raise HTTPException(400, "mode must be live or replay")
-        snapshot = session.snapshot
-        responses, budget = None, 0.10
-        if body.mode == "replay":
-            responses = load_replay_script(
-                question, session.corpus, snapshot_id=snapshot.snapshot_id if snapshot else None
-            )
-            if responses is None:
-                raise HTTPException(
-                    404,
-                    "No scripted replay for this question. Use a starter question or switch "
-                    "to live mode.",
-                )
-        else:
-            live = _live_settings()
-            if not live:
-                raise HTTPException(
-                    409, "Live model is not configured (set OPENROUTER_API_KEY in .env)"
-                )
-            budget = ledger.turn_budget()
-            if budget is None:
-                raise HTTPException(
-                    409,
-                    f"Live spend cap reached (${ledger.total():.4f} of ${ledger.cap:.2f} used)",
-                )
         with session.lock:
             if session.running:
                 raise HTTPException(409, "A question is already running in this conversation")
+            snapshot = session.snapshot
+            context = session.context if snapshot else None
+            responses, budget = None, 0.10
+            if body.mode == "replay":
+                responses = load_replay_script(
+                    question,
+                    session.corpus,
+                    snapshot_id=snapshot.snapshot_id if snapshot else None,
+                )
+                if responses is None:
+                    raise HTTPException(
+                        404,
+                        "No scripted replay for this question. Use a starter question marked "
+                        "as scripted, or switch to live mode.",
+                    )
+            else:
+                if not _live_settings():
+                    raise HTTPException(
+                        409, "Live model is not configured (set OPENROUTER_API_KEY in .env)"
+                    )
+                budget = ledger.reserve()
+                if budget is None:
+                    raise HTTPException(
+                        409,
+                        f"Live spend cap reached (${ledger.total():.4f} of ${ledger.cap:.2f} "
+                        "used, including questions still running)",
+                    )
             history = [t for t in session.turns if t["status"] != "running"]
             turn_id = f"t{len(session.turns) + 1}"
-            context = session.context if snapshot else None
             record = {
                 "id": turn_id,
                 "question": question,
@@ -470,9 +512,25 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             }
             session.turns.append(record)
             session.running = turn_id
-        session.live[turn_id] = runner.start(
-            job, on_finish=lambda turn: finish(session, record, job, turn)
-        )
+        try:
+            session.live[turn_id] = runner.start(
+                job, on_finish=lambda turn: finish(session, record, job, turn)
+            )
+        except Exception as exc:  # noqa: BLE001 - report and release the session
+            with session.lock:
+                record.update(status="failed", stop_reason="worker_start_failed")
+                session.running = None
+            if body.mode == "live":
+                ledger.record(
+                    turn_id,
+                    0.0,
+                    uncertain=False,
+                    model=None,
+                    mode="live",
+                    status="failed",
+                    reserved=budget,
+                )
+            raise HTTPException(500, "Could not start the research worker; try again") from exc
         return {"turn_id": turn_id}
 
     @app.get("/api/sessions/{sid}/turns/{tid}/progress")
@@ -525,41 +583,53 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
         )
 
+    def cell_order(proposal):
+        row, col, _, _ = parse_range(proposal["cell"])
+        return (proposal["sheet"], row, col)
+
     @app.post("/api/sessions/{sid}/exports")
     def create_export(sid: str, body: ExportBody):
+        """Each copy contains every change approved so far for this workbook snapshot."""
         session = session_or_404(sid)
-        snapshot = session.snapshot
         ids = sorted(set(body.proposal_ids))
         with session.lock:
+            snapshot = session.snapshot
             if not snapshot or body.snapshot_id != snapshot.snapshot_id:
                 raise HTTPException(
                     409, "The workbook changed since these proposals; ask again on the current file"
                 )
             if not ids or any(pid not in session.proposals for pid in ids):
                 raise HTTPException(409, "Unknown or missing proposals")
+            chosen = [session.proposals[pid] for pid in ids]
+            if any(
+                p["status"] not in ("pending", "exported")
+                or p["snapshot_id"] != snapshot.snapshot_id
+                for p in chosen
+            ):
+                raise HTTPException(409, "Stale or superseded proposals cannot be exported")
+            cells = [(p["sheet"], p["cell"]) for p in chosen]
+            if len(set(cells)) != len(cells):
+                raise HTTPException(409, "Choose one proposal per cell")
+            approved = session.approved.get(snapshot.snapshot_id, {})
+            merged = {**approved, **{(p["sheet"], p["cell"]): p["id"] for p in chosen}}
+            merged_ids = sorted(merged.values())
             existing = next(
                 (
                     e
                     for e in session.exports
-                    if e["snapshot_id"] == body.snapshot_id and sorted(e["proposal_ids"]) == ids
+                    if e["snapshot_id"] == snapshot.snapshot_id
+                    and sorted(e["proposal_ids"]) == merged_ids
                 ),
                 None,
             )
             if existing:
                 return existing
-            chosen = [session.proposals[pid] for pid in ids]
-            if any(
-                p["status"] == "stale" or p["snapshot_id"] != snapshot.snapshot_id for p in chosen
-            ):
-                raise HTTPException(409, "Stale proposals cannot be exported")
-            cells = [(p["sheet"], p["cell"]) for p in chosen]
-            if len(set(cells)) != len(cells):
-                raise HTTPException(409, "Choose one proposal per cell")
+            included = sorted((session.proposals[pid] for pid in merged.values()), key=cell_order)
             titles = {
                 doc["id"]: doc.get("title") for doc in corpora[session.corpus].documents.values()
             }
             titles[f"workbook:{snapshot.snapshot_id}"] = f"Uploaded workbook {snapshot.filename}"
-            changes = [{**p, "source_titles": titles} for p in chosen]
+            changes = [{**p, "source_titles": titles} for p in included]
             export_id = uuid.uuid4().hex[:10]
             try:
                 path = export_copy(
@@ -571,21 +641,26 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                 "id": export_id,
                 "filename": path.name,
                 "snapshot_id": snapshot.snapshot_id,
-                "proposal_ids": ids,
+                "proposal_ids": merged_ids,
                 "changes": [
                     {
                         "cell": f"{p['sheet']}!{p['cell']}",
                         "old": p["old_formula"] or p["old_display"],
                         "new": p["new_content"],
+                        "generated_by": p.get("generated_by"),
                     }
-                    for p in chosen
+                    for p in included
                 ],
                 "created_at": _now(),
                 "download_url": f"/api/exports/{export_id}/download",
             }
             session.exports.append(record)
             exports[export_id] = path
-            for proposal in chosen:
+            for key, pid in approved.items():
+                if merged[key] != pid:
+                    session.proposals[pid]["status"] = "superseded"
+            session.approved[snapshot.snapshot_id] = merged
+            for proposal in included:
                 proposal["status"] = "exported"
         return record
 

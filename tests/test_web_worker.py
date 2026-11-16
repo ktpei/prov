@@ -219,5 +219,100 @@ class WorkerTests(unittest.TestCase):
         )
 
 
+def sleep_target(job, queue):
+    import time
+
+    time.sleep(60)
+
+
+def malformed_target(job, queue):
+    queue.put(("done",))
+
+
+class WorkerFailureTests(unittest.TestCase):
+    def test_ledger_reservations(self):
+        with tempfile.TemporaryDirectory() as directory:
+            ledger = Ledger(Path(directory) / "l.jsonl", 0.25)
+            self.assertEqual(ledger.reserve(), 0.10)
+            self.assertEqual(ledger.reserve(), 0.10)
+            self.assertAlmostEqual(ledger.reserve(), 0.05)
+            self.assertIsNone(ledger.reserve())
+            ledger.record(
+                "t1",
+                0.02,
+                uncertain=False,
+                model="m",
+                mode="live",
+                status="completed",
+                reserved=0.10,
+            )
+            self.assertAlmostEqual(ledger.remaining(), 0.08)
+
+    def test_runner_times_out_hung_worker(self):
+        from provenance.web.worker import TurnRunner
+
+        turn = TurnRunner(target=sleep_target, grace_seconds=0.5).start(
+            job(Q1, limits={**LIMITS, "timeout_seconds": 0.5})
+        )
+        self.assertTrue(turn.done.wait(30))
+        self.assertEqual(turn.error, "worker_timeout")
+
+    def test_runner_survives_malformed_messages(self):
+        from provenance.web.worker import TurnRunner
+
+        turn = TurnRunner(target=malformed_target).start(job(Q1))
+        self.assertTrue(turn.done.wait(30))
+        self.assertEqual(turn.error, "worker_crashed")
+
+    def test_unread_citation_fails_after_one_repair(self):
+        from provenance.web.worker import run_turn_process
+
+        bad = {
+            "status": "completed",
+            "output": [
+                {
+                    "type": "message",
+                    "role": "assistant",
+                    "content": [
+                        {
+                            "type": "output_text",
+                            "text": json.dumps(
+                                {
+                                    "answerable": True,
+                                    "answer": "Revenue was 430.1",
+                                    "claims": [
+                                        {
+                                            "key": "q3_revenue",
+                                            "value": 430.1,
+                                            "unit": "USD million",
+                                            "period": "Q3 2024",
+                                            "citations": [
+                                                {
+                                                    "source_id": "cloudflare-q3-2024-release",
+                                                    "locator": "L50",
+                                                    "quote": "Total revenue of $430.1 million",
+                                                }
+                                            ],
+                                        }
+                                    ],
+                                }
+                            ),
+                        }
+                    ],
+                }
+            ],
+        }
+        out = queue.Queue()
+        run_turn_process(job("Unscripted", replay_responses=[bad, bad]), out)
+        messages = drain(out)
+        kinds = [payload["kind"] for kind, payload in messages if kind == "event"]
+        self.assertIn("answer_rejected", kinds)
+        terminal, payload = messages[-1]
+        self.assertEqual(terminal, "done")
+        self.assertEqual(payload["report"]["status"], "failed")
+        self.assertIn("unread", payload["report"]["stop_reason"])
+        self.assertIsNone(payload["report"]["answer"])
+
+
 if __name__ == "__main__":
     unittest.main()

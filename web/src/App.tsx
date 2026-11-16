@@ -43,6 +43,7 @@ export default function App() {
   const [busy, setBusy] = useState(false);
   const [locked, setLocked] = useState(false);
   const unsubscribe = useRef<(() => void) | null>(null);
+  const submitting = useRef(false);
 
   const refreshConfig = useCallback(() => getConfig().then(setConfig).catch(() => undefined), []);
 
@@ -105,7 +106,7 @@ export default function App() {
 
   const afterTurn = useCallback(
     (turn: TurnView) => {
-      if (turn.proposal_ids.length) {
+      if (turn.status === "completed" && turn.proposal_ids.length) {
         setTab("changes");
         return;
       }
@@ -117,18 +118,21 @@ export default function App() {
 
   const ask = useCallback(
     async (question: string): Promise<boolean> => {
-      if (!session || busy) return false;
+      if (!session || busy || submitting.current) return false;
+      submitting.current = true;
       setBanner(null);
       let turnId: string;
       try {
         turnId = (await startTurn(session.id, question, mode)).turn_id;
       } catch (err) {
+        submitting.current = false;
         if (err instanceof ApiError && err.status === 401) setLocked(true);
         else setBanner((err as Error).message);
         return false;
       }
       const sid = session.id;
       setBusy(true);
+      submitting.current = false;
       setActivityTurn(turnId);
       setTab("activity");
       setProgress((current) => ({ ...current, [turnId]: [] }));
@@ -218,6 +222,7 @@ export default function App() {
               titles={titles}
               selection={selection}
               busy={busy}
+              mode={mode}
               onAsk={(q) => void ask(q)}
               onCite={openCitation}
               onShowActivity={(id) => {
