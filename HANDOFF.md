@@ -11,6 +11,13 @@ You have a research engine working behind the scenes. It can search company
 documents, read supporting passages, and return answers with citations. Your
 main job is to make those capabilities easy for someone to use.
 
+**Your UI north star is something similar to the Excel plugin Provenance already
+has.** Use their existing plugin as the reference for the overall look, layout,
+and interaction style, so your research experience feels familiar alongside
+their product. Review the plugin with the team before making detailed design
+choices. This is a design direction; connecting to the live Excel workbook
+remains a later implementation step.
+
 You will mostly build the user experience, plus the connection between the
 interface and the research engine:
 
