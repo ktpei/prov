@@ -157,7 +157,12 @@ def _reference_flags(reference):
 
 
 def evaluate_corpus(
-    bundle, corpus_directory, *, source_scope="selected_corpus", query_policy="original-question-v1"
+    bundle,
+    corpus_directory,
+    *,
+    source_scope="selected_corpus",
+    query_policy="original-question-v1",
+    include_snippets=False,
 ):
     """Return identity-bound, offline retrieval and text-concordance diagnostics."""
     if source_scope not in {"selected_corpus", "declared_document"}:
@@ -195,6 +200,8 @@ def evaluate_corpus(
         raw_hits, hit_pages = [], []
         for rank, hit in enumerate(hits, 1):
             raw, pages = _hit_record(hit, sources)
+            if include_snippets:
+                raw["snippet"] = hit.get("snippet", "")
             raw_hits.append({"rank": rank, **raw})
             hit_pages.append(pages)
 
