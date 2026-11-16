@@ -14,3 +14,25 @@ No originals, corpus, publication observation bounds, questions, annotations or
 retrieval results were created from these failures. This is an acquisition result,
 not zero finance accuracy. No automatic retries or replacement documents occurred.
 A later attempt requires a separately recorded policy decision and receipt.
+
+## Access review after attempt 1
+
+SEC requests a declared User-Agent and shows company name plus administrative
+email as its example. The reviewed guidance does not establish that absence of an
+email caused these 403s. No contact address was inferred or message sent to SEC.
+[Access guidance](https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data),
+[developer guidance](https://www.sec.gov/about/developer-resources).
+
+Independent metadata-only research found two candidate issuer-hosted HTML links
+for the same Old Dominion accessions in its official filing list:
+
+- https://ir.odfl.com/sec-filings/all-sec-filings/content/0000950170-25-103916/odfl-20250630.htm
+- https://ir.odfl.com/sec-filings/all-sec-filings/content/0001193125-25-268415/odfl-20250930.htm
+
+Their bodies have not been fetched. Candidate accession/filename matches do not
+establish byte equivalence with SEC originals; any alternate delivery artifact
+requires its own URL/hash/receipt and an explicit new acquisition protocol. The
+Casey's exact filing-detail pages were located, but later metadata views returned
+403. Ameren's dynamic official list did not yet yield verified exact document
+links. No PDF replacement, repeated SEC request, or alternate acquisition occurred.
+The related source-ingestion chat is researching those remaining metadata routes.
