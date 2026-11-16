@@ -1,6 +1,6 @@
 {
   "version": "blinded-evidence-audit-access-v1",
-  "stage": "interpretation",
+  "stage": "interpretation_complete_before_evidence",
   "packet_commit": "5b016f4",
   "plan_commit": "948ee11",
   "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
@@ -36,8 +36,27 @@
       "exclusive_output": "reviews/interpretation-b.json",
       "output_sha256": "d785c4a1fe3752cc0bcea6c3f5314658506ce73f52d5523477c3b6c532e40820",
       "outside_access_disclosed": []
+    },
+    {
+      "role": "C",
+      "agent": "/root/interpretation_c",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "stage": "interpretation_reconciliation",
+      "initial_reviews_commit": "4fbd9ce",
+      "allowed_inputs": [
+        "reconciliation-instructions.md",
+        "stage-1/questions.json",
+        "reviews/interpretation-a.json",
+        "reviews/interpretation-b.json"
+      ],
+      "exclusive_output": "reviews/reconciliation-c.json",
+      "output_sha256": "605c928421163c82e3a33b47bb1b54cd46db77a2021e44b0037ab1b8185ba9fc",
+      "outside_access_disclosed": []
     }
   ],
   "custodian": "root; outcome-aware, not a blinded judge",
-  "isolation": "Workflow restrictions, not filesystem security isolation; outside access and recognition disclosures pending."
+  "isolation": "Fresh-context workflow restrictions, not filesystem security isolation. All three reviewers self-report no outside access; general financial/company recognition disclosed without remembered reference answers."
 }

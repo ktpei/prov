@@ -1,0 +1,71 @@
+{
+  "version": "evidence-audit-interpretation-lock-v1",
+  "initial_reviews_commit": "4fbd9ce",
+  "plan_commit": "948ee11",
+  "packet_commit": "5b016f4",
+  "inputs": {
+    "stage-1/questions.json": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+    "reviews/interpretation-a.json": "1bbe3ed0bd6a829aca6c7507e2a3116e6e796facb4841a33a50f1791d2f9b85d",
+    "reviews/interpretation-b.json": "d785c4a1fe3752cc0bcea6c3f5314658506ce73f52d5523477c3b6c532e40820",
+    "reconciliation-instructions.md": "9ad76e63abfe0142bfdbb27d7d080ac1b03a2b40672181c7a44a753f13b33998",
+    "reviews/reconciliation-c.json": "605c928421163c82e3a33b47bb1b54cd46db77a2021e44b0037ab1b8185ba9fc"
+  },
+  "all_six_reconciled_before_evidence": true,
+  "cases": [
+    {
+      "case_id": "Q01",
+      "well_defined_as_judged": "yes",
+      "interpretation_ids": [
+        "I01"
+      ]
+    },
+    {
+      "case_id": "Q02",
+      "well_defined_as_judged": "conditional",
+      "interpretation_ids": [
+        "I01",
+        "I02"
+      ]
+    },
+    {
+      "case_id": "Q03",
+      "well_defined_as_judged": "yes",
+      "interpretation_ids": [
+        "I01"
+      ]
+    },
+    {
+      "case_id": "Q04",
+      "well_defined_as_judged": "no",
+      "interpretation_ids": [
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05"
+      ]
+    },
+    {
+      "case_id": "Q05",
+      "well_defined_as_judged": "conditional",
+      "interpretation_ids": [
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05"
+      ]
+    },
+    {
+      "case_id": "Q06",
+      "well_defined_as_judged": "no",
+      "interpretation_ids": [
+        "I01",
+        "I02"
+      ]
+    }
+  ],
+  "interpretations": 16,
+  "human_financial_validation": false,
+  "evidence_review_started": false
+}

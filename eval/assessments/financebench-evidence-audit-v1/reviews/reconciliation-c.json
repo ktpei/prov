@@ -1,0 +1,938 @@
+{
+  "stage": "interpretation_reconciliation",
+  "reviewer": "C",
+  "input_sha256": {
+    "stage-1/questions.json": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+    "reviews/interpretation-a.json": "1bbe3ed0bd6a829aca6c7507e2a3116e6e796facb4841a33a50f1791d2f9b85d",
+    "reviews/interpretation-b.json": "d785c4a1fe3752cc0bcea6c3f5314658506ce73f52d5523477c3b6c532e40820"
+  },
+  "instruction_sha256": {
+    "reconciliation-instructions.md": "9ad76e63abfe0142bfdbb27d7d080ac1b03a2b40672181c7a44a753f13b33998"
+  },
+  "cases": [
+    {
+      "case_id": "Q01",
+      "agreements": [
+        "Both reviews require the reported FY2021 operating income plus cash-flow-statement depreciation and amortization, without additional adjustments, in USD millions.",
+        "Both require aligned entity scope, fiscal period and units. A combined D&A line versus separately corresponding components is a presentation difference if the components represent the same named amount.",
+        "No rounding precision is supplied; this is not an additional source-evidence requirement."
+      ],
+      "material_disagreements": [
+        "A classifies the question conditional because separately reported amortization categories might make the requested D&A amount ambiguous; B classifies it yes and treats such problems as contingent statement interpretation.",
+        "B expressly flags multiple reporting scopes; A assumes consolidated reporting. Neither authorizes silently combining incompatible scopes."
+      ],
+      "interpretations": [
+        {
+          "id": "I01",
+          "description": "Add the unadjusted FY2021 consolidated operating-income amount to the cash-flow-statement FY2021 D&A amount under the question-defined EBITDA formula.",
+          "assumptions": [
+            "American Water Works is read at consolidated company level.",
+            "Unadjusted means retain reported amounts and apply only the stated addition."
+          ],
+          "unresolved_ambiguities": [
+            "If multiple differently scoped operating-income or D&A amounts exist, their labels must identify the requested amounts; no continuing-operations normalization is presumed.",
+            "Separate amortization categories qualify only insofar as their labels and relationships establish membership in the requested D&A term.",
+            "Rounding precision is unspecified."
+          ],
+          "required_facts": [
+            {
+              "id": "R01",
+              "description": "FY2021 operating income, including its sign, as reported in the income statement.",
+              "basis": "wording",
+              "rationale": "This is the first expressly named addend."
+            },
+            {
+              "id": "R02",
+              "description": "FY2021 depreciation and amortization from the cash flow statement, as one amount or identified corresponding components.",
+              "basis": "wording",
+              "rationale": "This is the second expressly named addend; unrelated amortization is not automatically included."
+            },
+            {
+              "id": "R03",
+              "description": "Entity scope, fiscal-year coverage, currency, scale and any labels needed to align the two named amounts and express their sum in USD millions.",
+              "basis": "wording",
+              "rationale": "These establish that the addends answer the same company/year request and permit the required unit conversion."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q01-I1 and B Q01-I1 support this merged interpretation. B supports the well-defined classification; A's presentation concern is retained as an unresolved contingent ambiguity."
+          ]
+        }
+      ],
+      "rejected_or_merged_proposals": [
+        {
+          "reviewer_proposals": [
+            "A Q01-I1",
+            "B Q01-I1"
+          ],
+          "decision": "merged",
+          "reason": "The proposed calculation is substantively identical. Reject only treating hypothetical document presentation difficulty as sufficient to classify the question conditional before seeing evidence."
+        }
+      ],
+      "well_defined": "yes",
+      "reason": "The wording defines the arithmetic, inputs, statements, year and output units. Possible ambiguities in unavailable statement presentation do not themselves make the question undefined. Consolidated company reporting is the ordinary explicit scope assumption; any actual competing D&A labels or scopes must later be disclosed, not silently resolved."
+    },
+    {
+      "case_id": "Q02",
+      "agreements": [
+        "Both reviews use FY2017 income over the arithmetic mean of FY2016 and FY2017 fiscal-year-end consolidated total assets.",
+        "Both independently retain consolidated-income and parent-attributable-income alternatives.",
+        "Both flag decimal versus percentage presentation before two-decimal rounding."
+      ],
+      "material_disagreements": [
+        "There is no substantive disagreement about the two numerator alternatives. B additionally treats presentation scale as a required fact; C retains it as an output convention, not a financial evidence role.",
+        "B emphasizes that a parent-attributable numerator does not authorize replacing the stated total-assets denominator with a parent-only asset measure."
+      ],
+      "interpretations": [
+        {
+          "id": "I01",
+          "description": "Calculate ROA using FY2017 consolidated net income and the arithmetic mean of consolidated FY2016 and FY2017 year-end total assets.",
+          "assumptions": [
+            "Coca Cola means The Coca-Cola Company at consolidated company scope.",
+            "Average total assets is the simple arithmetic mean of the two fiscal-year-end balances.",
+            "Net income is the consolidated total before allocation to noncontrolling interests.",
+            "The answer must identify whether it displays a decimal ratio or a percentage, then round that representation to two decimal places."
+          ],
+          "unresolved_ambiguities": [
+            "The question does not select consolidated versus parent-attributable net income; these interpretations coincide only if the attribution distinction is immaterial or absent.",
+            "Decimal ratio versus percentage display is unspecified; neither is silently made the exclusive acceptable form."
+          ],
+          "required_facts": [
+            {
+              "id": "R01",
+              "description": "FY2017 consolidated net income from the P&L, with labels establishing its attribution.",
+              "basis": "explicit_assumption",
+              "rationale": "The income input is explicit; its attribution is the assumption distinguishing this interpretation."
+            },
+            {
+              "id": "R02",
+              "description": "Consolidated total assets at the FY2016 fiscal-year end from the balance sheet.",
+              "basis": "stated_convention",
+              "rationale": "The stated two-point averaging convention requires the first endpoint."
+            },
+            {
+              "id": "R03",
+              "description": "Consolidated total assets at the FY2017 fiscal-year end from the balance sheet.",
+              "basis": "stated_convention",
+              "rationale": "The stated two-point averaging convention requires the second endpoint."
+            },
+            {
+              "id": "R04",
+              "description": "Reporting entity, fiscal dates, currency and scale of the three inputs.",
+              "basis": "wording",
+              "rationale": "These establish that the specified numerator and denominator refer to the requested periods and comparable units."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q02-I1 and B Q02-I1 support this interpretation."
+          ]
+        },
+        {
+          "id": "I02",
+          "description": "Calculate ROA using FY2017 parent-attributable net income and the arithmetic mean of consolidated FY2016 and FY2017 year-end total assets.",
+          "assumptions": [
+            "Coca Cola means The Coca-Cola Company at consolidated company scope.",
+            "Average total assets is the simple arithmetic mean of the two fiscal-year-end balances.",
+            "Net income is income attributable to the parent; retain the consolidated total-assets denominator despite the attribution difference.",
+            "The answer must identify whether it displays a decimal ratio or a percentage, then round that representation to two decimal places."
+          ],
+          "unresolved_ambiguities": [
+            "The question does not select consolidated versus parent-attributable net income; these interpretations coincide only if the attribution distinction is immaterial or absent.",
+            "Decimal ratio versus percentage display is unspecified; neither is silently made the exclusive acceptable form."
+          ],
+          "required_facts": [
+            {
+              "id": "R05",
+              "description": "FY2017 parent-attributable net income from the P&L, with labels establishing its attribution.",
+              "basis": "explicit_assumption",
+              "rationale": "The income input is explicit; its attribution is the assumption distinguishing this interpretation."
+            },
+            {
+              "id": "R06",
+              "description": "Consolidated total assets at the FY2016 fiscal-year end from the balance sheet.",
+              "basis": "stated_convention",
+              "rationale": "The stated two-point averaging convention requires the first endpoint."
+            },
+            {
+              "id": "R07",
+              "description": "Consolidated total assets at the FY2017 fiscal-year end from the balance sheet.",
+              "basis": "stated_convention",
+              "rationale": "The stated two-point averaging convention requires the second endpoint."
+            },
+            {
+              "id": "R08",
+              "description": "Reporting entity, fiscal dates, currency and scale of the three inputs.",
+              "basis": "wording",
+              "rationale": "These establish that the specified numerator and denominator refer to the requested periods and comparable units."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q02-I2 and B Q02-I2 support this interpretation."
+          ]
+        }
+      ],
+      "rejected_or_merged_proposals": [
+        {
+          "reviewer_proposals": [
+            "A Q02-I1",
+            "B Q02-I1"
+          ],
+          "decision": "merged",
+          "reason": "Consolidated-income proposals are duplicates; small differences in wording do not change facts required."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q02-I2",
+            "B Q02-I2"
+          ],
+          "decision": "merged",
+          "reason": "Parent-attributable proposals are duplicates but remain separate from consolidated income because the numerator may differ."
+        },
+        {
+          "reviewer_proposals": [
+            "B Q02-I1 required display-scale fact",
+            "B Q02-I2 required display-scale fact"
+          ],
+          "decision": "reclassified",
+          "reason": "Display scale is an explicit output convention retained in assumptions and ambiguities, not evidence to retrieve from the financial statements."
+        }
+      ],
+      "well_defined": "conditional",
+      "reason": "The formula, years and statements constrain the task, but income attribution remains materially open. The arithmetic two-point averaging convention and display scale must be stated. Presentation scale affects rounding but creates no extra source-evidence role."
+    },
+    {
+      "case_id": "Q03",
+      "agreements": [
+        "Both reviews identify one total-assets line at Costco's FY2021 fiscal closing date from the balance sheet alone.",
+        "Both use consolidated reporting, distinguish fiscal from calendar year-end and require currency and scale for USD millions.",
+        "Differences in how they group date, entity and units are harmless."
+      ],
+      "material_disagreements": [
+        "B explicitly notes that an external exchange rate would violate the balance-sheet-only restriction if conversion information were absent. This is compatible with A rather than a competing interpretation."
+      ],
+      "interpretations": [
+        {
+          "id": "I01",
+          "description": "Read consolidated Costco FY2021 closing total assets solely from the balance sheet and express the reported balance in USD millions.",
+          "assumptions": [
+            "Costco means Costco Wholesale Corporation at consolidated company level.",
+            "End of FY2021 means the company fiscal closing date."
+          ],
+          "unresolved_ambiguities": [
+            "No rounding precision is specified; preserving reported precision after conversion is an output choice."
+          ],
+          "required_facts": [
+            {
+              "id": "R01",
+              "description": "The balance-sheet entity and column/date identifying the FY2021 fiscal closing balance.",
+              "basis": "wording",
+              "rationale": "This selects the requested company and endpoint."
+            },
+            {
+              "id": "R02",
+              "description": "Total assets in that FY2021 closing column.",
+              "basis": "wording",
+              "rationale": "This is the expressly requested balance."
+            },
+            {
+              "id": "R03",
+              "description": "Balance-sheet currency, unit scale and, only if conversion is necessary, a sufficient conversion basis within the balance sheet.",
+              "basis": "wording",
+              "rationale": "These permit USD-million reporting while respecting the exclusive source restriction; outside conversion evidence is not allowed."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q03-I1 and B Q03-I1 support the same reading; B makes the source restriction on currency conversion explicit."
+          ]
+        }
+      ],
+      "rejected_or_merged_proposals": [
+        {
+          "reviewer_proposals": [
+            "A Q03-I1",
+            "B Q03-I1"
+          ],
+          "decision": "merged",
+          "reason": "Identical substantive interpretation. The conversion caveat is conditional evidence sufficiency, not a separate interpretation or mandatory external lookup."
+        }
+      ],
+      "well_defined": "yes",
+      "reason": "The line item, fiscal endpoint, exclusive source and output unit are explicit. Whether a later balance sheet supplies sufficient conversion information concerns evidence availability, not the question's definition."
+    },
+    {
+      "case_id": "Q04",
+      "agreements": [
+        "Both reviews find that growth metric, comparison period, adjustment scope and the meaning of drag are unstated.",
+        "Both retain outright contraction, relative underperformance and reported-organic-growth readings; M&A-only and organic adjustments are not assumed equivalent.",
+        "Both reject inferring that exactly one segment qualifies from singular wording."
+      ],
+      "material_disagreements": [
+        "A Q04-I1 requires negative segment growth; B Q04-I1 requires negative contribution to company growth and explicitly asks for contribution bases. The sign tests coincide only with a positive, comparable segment base and a valid aggregation relationship.",
+        "A Q04-I2 uses organic contraction. B Q04-I3 leaves organic contraction, relative underperformance and greatest contribution open; those criteria are not merged into one silently selected test.",
+        "A treats acquisitions and divestitures as excluded in its M&A-only branch; B requires that divestiture treatment be defined. C makes divestiture inclusion an explicit assumption and preserves the alternative as unresolved."
+      ],
+      "interpretations": [
+        {
+          "id": "I01",
+          "description": "Identify segment(s) with negative absolute contribution to company sales growth on a M&A-only adjusted basis.",
+          "assumptions": [
+            "Growth is sales growth for full-year 2022 versus the preceding full year.",
+            "Use a comparable segment reporting structure across the two periods.",
+            "Exclude acquisitions and divestitures; retain currency and other non-M&A effects unless reclassified explicitly.",
+            "Drag means contraction that contributes negatively to overall sales change; a negative segment rate alone needs a valid positive-base aggregation link."
+          ],
+          "unresolved_ambiguities": [
+            "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+            "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+            "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+            "Contraction is not interchangeable with underperforming the aggregate or being the largest adverse contributor.",
+            "M&A-only adjustment is not automatically currency-neutral or organic."
+          ],
+          "required_facts": [
+            {
+              "id": "R01",
+              "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+              "basis": "explicit_assumption",
+              "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+            },
+            {
+              "id": "R02",
+              "description": "Comparable segment sales growth and identified acquisition/divestiture effects or an explicitly equivalent growth measure excluding those effects.",
+              "basis": "explicit_assumption",
+              "rationale": "This establishes the selected adjustment basis without substituting another convention."
+            },
+            {
+              "id": "R03",
+              "description": "A negative adjusted segment contribution, or negative adjusted growth together with a positive comparable base and aggregation relationship to company sales change.",
+              "basis": "explicit_assumption",
+              "rationale": "This supports the claimed direction of drag; exact weights and an independently reported company rate are not mandatory if the sign and relationship are otherwise established."
+            }
+          ],
+          "reviewer_provenance": [
+            "Supported by A Q04-I1, B Q04-I1. C explicitly separates adjustment basis and drag criterion; no observed segment result is presumed."
+          ]
+        },
+        {
+          "id": "I02",
+          "description": "Identify segment(s) with negative absolute contribution to company sales growth on a reported organic basis.",
+          "assumptions": [
+            "Growth is sales growth for full-year 2022 versus the preceding full year.",
+            "Use a comparable segment reporting structure across the two periods.",
+            "Excluding M&A is explicitly interpreted as shorthand for a reported organic sales-growth definition, including any additional exclusions it actually specifies.",
+            "Drag means contraction that contributes negatively to overall sales change; a negative segment rate alone needs a valid positive-base aggregation link."
+          ],
+          "unresolved_ambiguities": [
+            "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+            "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+            "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+            "Contraction is not interchangeable with underperforming the aggregate or being the largest adverse contributor.",
+            "Organic treatment may remove currency or other effects beyond M&A and can change identification."
+          ],
+          "required_facts": [
+            {
+              "id": "R04",
+              "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+              "basis": "explicit_assumption",
+              "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+            },
+            {
+              "id": "R05",
+              "description": "The exact organic-growth definition and comparable segment growth rates on that basis.",
+              "basis": "explicit_assumption",
+              "rationale": "This establishes the selected adjustment basis without substituting another convention."
+            },
+            {
+              "id": "R06",
+              "description": "A negative adjusted segment contribution, or negative adjusted growth together with a positive comparable base and aggregation relationship to company sales change.",
+              "basis": "explicit_assumption",
+              "rationale": "This supports the claimed direction of drag; exact weights and an independently reported company rate are not mandatory if the sign and relationship are otherwise established."
+            }
+          ],
+          "reviewer_provenance": [
+            "Supported by A Q04-I2, B Q04-I3. C explicitly separates adjustment basis and drag criterion; no observed segment result is presumed."
+          ]
+        },
+        {
+          "id": "I03",
+          "description": "Identify segment(s) with growth below the company overall rate on a M&A-only adjusted basis.",
+          "assumptions": [
+            "Growth is sales growth for full-year 2022 versus the preceding full year.",
+            "Use a comparable segment reporting structure across the two periods.",
+            "Exclude acquisitions and divestitures; retain currency and other non-M&A effects unless reclassified explicitly.",
+            "Drag means below-company growth, which can occur with positive segment growth."
+          ],
+          "unresolved_ambiguities": [
+            "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+            "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+            "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+            "The question does not choose any below-average segment versus the lowest rate. Greatest weighted drag is a separate criterion retained in I05.",
+            "M&A-only adjustment is not automatically currency-neutral or organic."
+          ],
+          "required_facts": [
+            {
+              "id": "R07",
+              "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+              "basis": "explicit_assumption",
+              "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+            },
+            {
+              "id": "R08",
+              "description": "Comparable segment sales growth and identified acquisition/divestiture effects or an explicitly equivalent growth measure excluding those effects.",
+              "basis": "explicit_assumption",
+              "rationale": "This establishes the selected adjustment basis without substituting another convention."
+            },
+            {
+              "id": "R09",
+              "description": "Company sales-growth rate on the same adjustment and period basis.",
+              "basis": "explicit_assumption",
+              "rationale": "Below-company growth cannot be established from segment rates alone."
+            },
+            {
+              "id": "R10",
+              "description": "Positive segment aggregation bases or contribution information and any material reconciliation to company growth.",
+              "basis": "explicit_assumption",
+              "rationale": "These connect relative segment performance to the aggregate; exact weights are needed if quantifying or ranking weighted impact, not merely identifying a below-average rate."
+            }
+          ],
+          "reviewer_provenance": [
+            "Supported by A Q04-I3, B Q04-I2. C explicitly separates adjustment basis and drag criterion; no observed segment result is presumed."
+          ]
+        },
+        {
+          "id": "I04",
+          "description": "Identify segment(s) with growth below the company overall rate on a reported organic basis.",
+          "assumptions": [
+            "Growth is sales growth for full-year 2022 versus the preceding full year.",
+            "Use a comparable segment reporting structure across the two periods.",
+            "Excluding M&A is explicitly interpreted as shorthand for a reported organic sales-growth definition, including any additional exclusions it actually specifies.",
+            "Drag means below-company growth, which can occur with positive segment growth."
+          ],
+          "unresolved_ambiguities": [
+            "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+            "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+            "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+            "The question does not choose any below-average segment versus the lowest rate. Greatest weighted drag is a separate criterion retained in I05.",
+            "Organic treatment may remove currency or other effects beyond M&A and can change identification."
+          ],
+          "required_facts": [
+            {
+              "id": "R11",
+              "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+              "basis": "explicit_assumption",
+              "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+            },
+            {
+              "id": "R12",
+              "description": "The exact organic-growth definition and comparable segment growth rates on that basis.",
+              "basis": "explicit_assumption",
+              "rationale": "This establishes the selected adjustment basis without substituting another convention."
+            },
+            {
+              "id": "R13",
+              "description": "Company sales-growth rate on the same adjustment and period basis.",
+              "basis": "explicit_assumption",
+              "rationale": "Below-company growth cannot be established from segment rates alone."
+            },
+            {
+              "id": "R14",
+              "description": "Positive segment aggregation bases or contribution information and any material reconciliation to company growth.",
+              "basis": "explicit_assumption",
+              "rationale": "These connect relative segment performance to the aggregate; exact weights are needed if quantifying or ranking weighted impact, not merely identifying a below-average rate."
+            }
+          ],
+          "reviewer_provenance": [
+            "Supported by A Q04-I3, B Q04-I2, B Q04-I3. C explicitly separates adjustment basis and drag criterion; no observed segment result is presumed."
+          ]
+        },
+        {
+          "id": "I05",
+          "description": "Identify the segment with the greatest adverse weighted effect on overall sales growth, under an explicitly selected adjustment basis and drag benchmark.",
+          "assumptions": [
+            "Growth is sales growth for full-year 2022 versus the preceding full year.",
+            "Use a comparable segment reporting structure across the two periods.",
+            "Largest drag is an explicit ranking interpretation of which segment; it is not implied solely by singular grammar.",
+            "Before applying this interpretation select M&A-only or an exactly defined organic adjustment, and absolute contribution versus a stated relative-growth counterfactual. These alternatives remain conditional and are not equivalent."
+          ],
+          "unresolved_ambiguities": [
+            "The question supplies neither greatest-impact wording nor a counterfactual baseline; this reading is defensible only when the chosen ranking convention is stated.",
+            "Largest absolute adverse contribution, largest below-benchmark weighted shortfall and lowest growth rate may identify different segments.",
+            "Tie handling, divestiture treatment and additional organic exclusions remain unspecified."
+          ],
+          "required_facts": [
+            {
+              "id": "R15",
+              "description": "Comparable segment identities, sales bases and adjusted growth rates for full-year 2022 versus the preceding year, or equivalent contribution data.",
+              "basis": "explicit_assumption",
+              "rationale": "Weighted ranking needs both magnitude and scale, not only a sign or rate ranking."
+            },
+            {
+              "id": "R16",
+              "description": "The selected M&A-only or organic adjustment definition and data sufficient to apply it consistently.",
+              "basis": "explicit_assumption",
+              "rationale": "The adjustment must be fixed before contribution comparison."
+            },
+            {
+              "id": "R17",
+              "description": "For a relative-drag ranking, the explicitly selected benchmark growth rate and its comparison basis; for absolute contribution, no invented relative benchmark.",
+              "basis": "explicit_assumption",
+              "rationale": "The ranking relationship changes with the chosen counterfactual; no benchmark is given in the question."
+            },
+            {
+              "id": "R18",
+              "description": "The aggregation relationship and any material reconciliation between segment contributions and company sales growth.",
+              "basis": "explicit_assumption",
+              "rationale": "This establishes that the ranked effects actually relate to overall growth."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q04-I3 and B Q04-I2 explicitly flag greatest weighted drag versus lowest rate; B Q04-I3 flags largest adverse contribution under organic measures. C retains these as a conditional ranking family instead of silently discarding them."
+          ]
+        }
+      ],
+      "rejected_or_merged_proposals": [
+        {
+          "reviewer_proposals": [
+            "A Q04-I1",
+            "B Q04-I1"
+          ],
+          "decision": "merged conditionally",
+          "reason": "The sign-based proposals merge in I01 only when positive comparable bases and the aggregation link make segment contraction a negative company contribution. Exact weights are not universally necessary for a sign-only judgment."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q04-I2",
+            "B Q04-I3"
+          ],
+          "decision": "partially merged",
+          "reason": "Organic contraction is I02; B's additional relative and weighted possibilities remain in I04 and I05. Organic does not mean M&A-only by default."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q04-I3",
+            "B Q04-I2"
+          ],
+          "decision": "merged with distinctions retained",
+          "reason": "Relative underperformance is I03; organic relative underperformance is I04. Lowest-rate selection remains an unresolved selection rule, while greatest weighted effect is I05."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q04-I1 divestiture assumption",
+            "B Q04-I1 adjustment-scope ambiguity"
+          ],
+          "decision": "retained conditionally",
+          "reason": "Including divestitures is explicit in the M&A-only working interpretation, not a fact supplied by the question. A narrower M&A scope remains unresolved and cannot be silently substituted."
+        }
+      ],
+      "well_defined": "no",
+      "reason": "The literal question does not uniquely define the measured growth, adjustment, comparison or drag criterion. Distinct defensible readings can identify different segments; no source facts or outcome are assumed here."
+    },
+    {
+      "case_id": "Q05",
+      "agreements": [
+        "Both favor a stated cost-based turnover convention while retaining a distinct sales-based interpretation.",
+        "Both require appropriate inventory observations, compatible scope and units, and business context to assess the expressly permitted non-applicability branch.",
+        "Neither missing figures nor an invented numerical threshold establishes that inventory management is meaningless; roughly supplies no exact precision."
+      ],
+      "material_disagreements": [
+        "A separately proposes closing inventory as a proxy; B does not. It is retained only as an explicit approximation, not inferred from roughly or lack of opening data.",
+        "B permits another explicitly chosen averaging scheme; A notes that a more frequent average can differ from the two-point mean. C preserves that material convention separately.",
+        "B separately enumerates non-applicability; A embeds it across its ratio proposals. C consolidates this common conditional branch into one interpretation."
+      ],
+      "interpretations": [
+        {
+          "id": "I01",
+          "description": "Use cost-based inventory turnover with the arithmetic mean of FY2022 opening and closing inventory.",
+          "assumptions": [
+            "JnJ means Johnson & Johnson at consolidated company scope.",
+            "Times sold means an accounting turnover ratio, not repeated physical sales of identical items.",
+            "Choose a cost-based turnover numerator related to the inventory represented in the denominator.",
+            "Approximate average inventory by the arithmetic mean of opening and closing balances."
+          ],
+          "unresolved_ambiguities": [
+            "No formula or averaging/proxy convention is supplied.",
+            "The qualitative meaningfulness standard and handling of a mixed consolidated business are unspecified.",
+            "Roughly gives no fixed decimal precision."
+          ],
+          "required_facts": [
+            {
+              "id": "R01",
+              "description": "FY2022 cost of goods sold or a corresponding inventory-related cost-of-sales amount, with its definition and relationship to the inventory denominator.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover numerator must reflect the stated cost-based or sales-based convention."
+            },
+            {
+              "id": "R02",
+              "description": "Inventory at FY2022 opening and closing dates for the same scope.",
+              "basis": "explicit_assumption",
+              "rationale": "The denominator convention distinguishes this interpretation and determines the inventory facts needed."
+            },
+            {
+              "id": "R03",
+              "description": "Fiscal dates, currency, scale, entity scope and accounting/valuation basis of numerator and inventory amounts.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover convention requires comparable coverage and units; numerator valuation must be explained."
+            },
+            {
+              "id": "R04",
+              "description": "FY2022 business and inventory context linking the chosen numerator to inventory-bearing operations, including material scope changes if relevant.",
+              "basis": "wording",
+              "rationale": "This assesses the question's explicit meaningfulness condition and prevents incompatible numerator/denominator scope."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q05-I1",
+            "B Q05-I1"
+          ]
+        },
+        {
+          "id": "I02",
+          "description": "Use cost-based inventory turnover with an explicitly defined within-year inventory average other than the two-point mean.",
+          "assumptions": [
+            "JnJ means Johnson & Johnson at consolidated company scope.",
+            "Times sold means an accounting turnover ratio, not repeated physical sales of identical items.",
+            "Choose a cost-based turnover numerator related to the inventory represented in the denominator.",
+            "Select and disclose a within-year averaging method before calculating; do not silently substitute it for the two-point convention."
+          ],
+          "unresolved_ambiguities": [
+            "No formula or averaging/proxy convention is supplied.",
+            "The qualitative meaningfulness standard and handling of a mixed consolidated business are unspecified.",
+            "Roughly gives no fixed decimal precision.",
+            "No particular within-year sampling schedule or weighting is selected by the question; this interpretation stays conditional on an explicitly stated scheme."
+          ],
+          "required_facts": [
+            {
+              "id": "R05",
+              "description": "FY2022 cost of goods sold or a corresponding inventory-related cost-of-sales amount, with its definition and relationship to the inventory denominator.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover numerator must reflect the stated cost-based or sales-based convention."
+            },
+            {
+              "id": "R06",
+              "description": "Inventory observations and timing/weights sufficient for the expressly chosen within-year averaging method.",
+              "basis": "explicit_assumption",
+              "rationale": "The denominator convention distinguishes this interpretation and determines the inventory facts needed."
+            },
+            {
+              "id": "R07",
+              "description": "Fiscal dates, currency, scale, entity scope and accounting/valuation basis of numerator and inventory amounts.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover convention requires comparable coverage and units; numerator valuation must be explained."
+            },
+            {
+              "id": "R08",
+              "description": "FY2022 business and inventory context linking the chosen numerator to inventory-bearing operations, including material scope changes if relevant.",
+              "basis": "wording",
+              "rationale": "This assesses the question's explicit meaningfulness condition and prevents incompatible numerator/denominator scope."
+            }
+          ],
+          "reviewer_provenance": [
+            "B Q05-I1 alternative-average proposal",
+            "A Q05-I1 averaging ambiguity"
+          ]
+        },
+        {
+          "id": "I03",
+          "description": "Estimate cost-based turnover using FY2022 closing inventory as an explicitly disclosed proxy for average inventory.",
+          "assumptions": [
+            "JnJ means Johnson & Johnson at consolidated company scope.",
+            "Times sold means an accounting turnover ratio, not repeated physical sales of identical items.",
+            "Choose a cost-based turnover numerator related to the inventory represented in the denominator.",
+            "Closing inventory is selected as a simplified proxy, not treated as an actual average."
+          ],
+          "unresolved_ambiguities": [
+            "No formula or averaging/proxy convention is supplied.",
+            "The qualitative meaningfulness standard and handling of a mixed consolidated business are unspecified.",
+            "Roughly gives no fixed decimal precision.",
+            "Roughly does not authorize this proxy in preference to an average; a closing balance may be unrepresentative. This is a conditional convention, not an evidence-availability shortcut."
+          ],
+          "required_facts": [
+            {
+              "id": "R09",
+              "description": "FY2022 cost of goods sold or a corresponding inventory-related cost-of-sales amount, with its definition and relationship to the inventory denominator.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover numerator must reflect the stated cost-based or sales-based convention."
+            },
+            {
+              "id": "R10",
+              "description": "Inventory at the FY2022 closing date.",
+              "basis": "explicit_assumption",
+              "rationale": "The denominator convention distinguishes this interpretation and determines the inventory facts needed."
+            },
+            {
+              "id": "R11",
+              "description": "Fiscal dates, currency, scale, entity scope and accounting/valuation basis of numerator and inventory amounts.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover convention requires comparable coverage and units; numerator valuation must be explained."
+            },
+            {
+              "id": "R12",
+              "description": "FY2022 business and inventory context linking the chosen numerator to inventory-bearing operations, including material scope changes if relevant.",
+              "basis": "wording",
+              "rationale": "This assesses the question's explicit meaningfulness condition and prevents incompatible numerator/denominator scope."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q05-I2; B makes no corresponding proposal"
+          ]
+        },
+        {
+          "id": "I04",
+          "description": "Use a sales-based revenue-to-average-inventory ratio, explicitly distinguished from cost-based turnover.",
+          "assumptions": [
+            "JnJ means Johnson & Johnson at consolidated company scope.",
+            "Times sold means an accounting turnover ratio, not repeated physical sales of identical items.",
+            "Choose sales revenue as the numerator based on the informal sold wording; revenue and inventory have different valuation bases.",
+            "Choose and disclose the inventory averaging method; a two-point arithmetic mean is one convention, not an implicit equivalence to all averages."
+          ],
+          "unresolved_ambiguities": [
+            "No formula or averaging/proxy convention is supplied.",
+            "The qualitative meaningfulness standard and handling of a mixed consolidated business are unspecified.",
+            "Roughly gives no fixed decimal precision.",
+            "The named inventory-turnover ratio commonly supports the cost-based reading; the sales-based alternative cannot be relabeled as equivalent."
+          ],
+          "required_facts": [
+            {
+              "id": "R13",
+              "description": "FY2022 sales revenue, with its definition and relationship to the inventory denominator.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover numerator must reflect the stated cost-based or sales-based convention."
+            },
+            {
+              "id": "R14",
+              "description": "Opening and closing inventory for a two-point average, or observations and timing/weights for a separately disclosed within-year average.",
+              "basis": "explicit_assumption",
+              "rationale": "The denominator convention distinguishes this interpretation and determines the inventory facts needed."
+            },
+            {
+              "id": "R15",
+              "description": "Fiscal dates, currency, scale, entity scope and accounting/valuation basis of numerator and inventory amounts.",
+              "basis": "stated_convention",
+              "rationale": "The selected turnover convention requires comparable coverage and units; numerator valuation must be explained."
+            },
+            {
+              "id": "R16",
+              "description": "FY2022 business and inventory context linking the chosen numerator to inventory-bearing operations, including material scope changes if relevant.",
+              "basis": "wording",
+              "rationale": "This assesses the question's explicit meaningfulness condition and prevents incompatible numerator/denominator scope."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q05-I3",
+            "B Q05-I2"
+          ]
+        },
+        {
+          "id": "I05",
+          "description": "Use the explicitly permitted non-applicability response only if FY2022 company facts support why conventional inventory management is not meaningful.",
+          "assumptions": [
+            "JnJ means Johnson & Johnson and the requested assessment is company-wide.",
+            "Non-applicability is a business/accounting conclusion, not a substitute for missing numerical inputs.",
+            "No numerical materiality threshold is supplied or invented."
+          ],
+          "unresolved_ambiguities": [
+            "Meaningfulness is qualitative and has no specified decision threshold.",
+            "Inventory turnover can be informative for some segments yet limited at company level; the wording does not settle that mixed case."
+          ],
+          "required_facts": [
+            {
+              "id": "R17",
+              "description": "The nature of FY2022 operations and inventory's role in producing revenue.",
+              "basis": "wording",
+              "rationale": "The express exception requires an explanation grounded in how the business operates."
+            },
+            {
+              "id": "R18",
+              "description": "Presence, significance and accounting scope of inventory and a related cost measure, including any material limitations of a consolidated turnover interpretation.",
+              "basis": "wording",
+              "rationale": "These facts distinguish actual non-applicability from unavailable data or an inconvenient calculation; exact cost and balance amounts are needed only if the explanation relies on them."
+            },
+            {
+              "id": "R19",
+              "description": "A stated qualitative reasoning link from those company facts to why conventional inventory management is not meaningful.",
+              "basis": "explicit_assumption",
+              "rationale": "The question asks why; the unstated judgment standard must remain explicit rather than inferred from an invented cutoff."
+            }
+          ],
+          "reviewer_provenance": [
+            "B Q05-I3 directly supports this branch; A Q05 literal request, all three interpretations and case reason support the same conditional exception."
+          ]
+        }
+      ],
+      "rejected_or_merged_proposals": [
+        {
+          "reviewer_proposals": [
+            "A Q05-I1",
+            "B Q05-I1"
+          ],
+          "decision": "merged with averaging alternatives retained",
+          "reason": "The two-point cost-based convention is I01; the materially different within-year-average possibility is conditionally I02."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q05-I2"
+          ],
+          "decision": "retained conditionally",
+          "reason": "The closing-balance approximation is I03, with its unsupported denominator choice disclosed. It is not preferred because it would require fewer facts."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q05-I3",
+            "B Q05-I2"
+          ],
+          "decision": "merged",
+          "reason": "The revenue-based alternative is I04 and remains distinct from cost-based turnover."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q05 embedded meaningfulness branches",
+            "B Q05-I3"
+          ],
+          "decision": "merged",
+          "reason": "I05 captures the same non-applicability condition without requiring every numerical input from an unused ratio branch."
+        }
+      ],
+      "well_defined": "conditional",
+      "reason": "A conventional ratio is available, but formula and inventory denominator are unstated, and meaningfulness requires a supported qualitative assessment. Distinct numerator and denominator conventions are retained without assigning a computed value or deciding applicability."
+    },
+    {
+      "case_id": "Q06",
+      "agreements": [
+        "Both reviews retain current investment-flow and operating-asset-base meanings of capital intensity.",
+        "Both require a stated definition, scale or comparison basis and qualitative evaluative standard; neither supplies a universal cutoff.",
+        "Both distinguish business-level judgment from simply observing one year's expenditure or a large absolute asset balance."
+      ],
+      "material_disagreements": [
+        "A classifies the question conditional because a reasoned qualitative assessment is possible; B classifies it no because the wording supplies no unique definition or criterion. This is a classification disagreement, not conflicting financial inputs.",
+        "B expressly includes recurring-versus-exceptional spending context; A flags the same concern as ambiguity. C makes that context necessary only to the extent that the assessment generalizes from FY2022 flow to the business characteristic."
+      ],
+      "interpretations": [
+        {
+          "id": "I01",
+          "description": "Assess capital intensity through FY2022 investment spending relative to an explicitly selected operating-scale or cash-generation measure.",
+          "assumptions": [
+            "Verizon means Verizon Communications at consolidated company scope.",
+            "Select the investment-flow definition, included investments, denominator and qualitative comparison standard before drawing a conclusion.",
+            "No universal numerical threshold or permanent business characteristic is inferred solely from one year."
+          ],
+          "unresolved_ambiguities": [
+            "Capital expenditures may have different treatment of leases, intangible investment and acquisitions; the question does not choose.",
+            "Revenue, operating cash flow or another justified scale measure can yield different assessments.",
+            "No threshold, peer group or recurrence criterion is specified."
+          ],
+          "required_facts": [
+            {
+              "id": "R01",
+              "description": "FY2022 investment spending under an explicit definition of included capital expenditure and relevant investment categories.",
+              "basis": "explicit_assumption",
+              "rationale": "The investment-flow reading requires a defined numerator; investment categories are conditional on that choice."
+            },
+            {
+              "id": "R02",
+              "description": "A comparably scoped FY2022 revenue, operating-cash-flow or other justified scale measure for the selected comparison.",
+              "basis": "explicit_assumption",
+              "rationale": "Absolute spending alone does not establish intensity relative to the business."
+            },
+            {
+              "id": "R03",
+              "description": "Fiscal coverage, currency, scale and reporting scope for selected inputs.",
+              "basis": "wording",
+              "rationale": "These ensure the judgment uses the requested FY2022 company data consistently."
+            },
+            {
+              "id": "R04",
+              "description": "An explicit qualitative standard or comparison basis, with supporting comparison facts only if that standard uses them.",
+              "basis": "explicit_assumption",
+              "rationale": "Capital intensive is undefined in the question; a decision criterion cannot be silently invented or treated as a reported financial fact."
+            },
+            {
+              "id": "R05",
+              "description": "FY2022 operating/investment context sufficient to address exceptional spending or timing when inferring ongoing business investment requirements.",
+              "basis": "explicit_assumption",
+              "rationale": "This is required to the extent the conclusion generalizes from the selected annual spending measure to the business characteristic."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q06-I1 and B Q06-I2 support this merged flow-based interpretation."
+          ]
+        },
+        {
+          "id": "I02",
+          "description": "Assess capital intensity through the nature and scale of the FY2022 operating-asset base relative to an explicitly selected business-scale or asset-composition measure.",
+          "assumptions": [
+            "Verizon means Verizon Communications at consolidated company scope.",
+            "Select which operating assets count, gross or net valuation, closing or average balances, and the comparison standard.",
+            "Treat asset-base intensity as distinct from current-year spending intensity; neither is automatically controlling."
+          ],
+          "unresolved_ambiguities": [
+            "Physical fixed assets, leases, broader intangible operating assets and total invested capital are different capital definitions.",
+            "Asset share, assets relative to output and other justified comparisons need not yield the same classification.",
+            "The question supplies no numerical threshold, peer set or preferred capital definition."
+          ],
+          "required_facts": [
+            {
+              "id": "R06",
+              "description": "FY2022 relevant operating-asset balances/classifications and their relationship to business operations under the selected asset definition.",
+              "basis": "explicit_assumption",
+              "rationale": "This identifies the assets alleged to be required for operating output instead of presuming all assets represent productive capital."
+            },
+            {
+              "id": "R07",
+              "description": "A comparably scoped scale or composition measure, such as FY2022 revenue or total assets, and any additional balances needed only if an average is selected.",
+              "basis": "explicit_assumption",
+              "rationale": "The chosen relative assessment determines its denominator and whether endpoint or average data are necessary."
+            },
+            {
+              "id": "R08",
+              "description": "Valuation basis, fiscal dates, currency, scale and reporting scope of the chosen inputs.",
+              "basis": "stated_convention",
+              "rationale": "Gross/net and stock/flow alignment affect the selected capital-intensity comparison."
+            },
+            {
+              "id": "R09",
+              "description": "An explicit qualitative standard or comparison basis, supported by comparison facts if the selected standard uses them.",
+              "basis": "explicit_assumption",
+              "rationale": "The question supplies no cutoff; the reasoning connecting asset dependence to the classification must be stated."
+            }
+          ],
+          "reviewer_provenance": [
+            "A Q06-I2 and B Q06-I1 support this merged asset-base interpretation."
+          ]
+        }
+      ],
+      "rejected_or_merged_proposals": [
+        {
+          "reviewer_proposals": [
+            "A Q06-I1",
+            "B Q06-I2"
+          ],
+          "decision": "merged",
+          "reason": "Same investment-flow meaning; alternative denominators and investment definitions remain explicit conditional choices."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q06-I2",
+            "B Q06-I1"
+          ],
+          "decision": "merged",
+          "reason": "Same asset-base meaning; balance definitions and comparison choices remain conditional rather than interchangeable."
+        },
+        {
+          "reviewer_proposals": [
+            "A Q06 well_defined conditional",
+            "B Q06 well_defined no"
+          ],
+          "decision": "resolved in favor of no",
+          "reason": "C distinguishes the ability to make a justified conditional assessment from the question itself specifying a unique criterion. A's substantive conditional readings are fully retained."
+        }
+      ],
+      "well_defined": "no",
+      "reason": "A defensible conditional assessment is possible, as A notes, but the question itself does not select an asset-base or investment-flow definition or a decision standard. C uses no for this lack of a uniquely specified test, independently of the unknown availability of evidence. No financial judgment about Verizon is made."
+    }
+  ],
+  "outside_access": [],
+  "recognition_or_prior_knowledge": {
+    "recognition": "I recognize the company names and general financial-statement concepts, including ROA, inventory turnover, organic growth and capital intensity. I do not recall a specific reference answer or company/year value for these six questions and used no remembered answer.",
+    "access_disclosure": "Read and hashed only the four assigned files. No source evidence, reference answers, old rubrics, repository history, retrieval results, policies, other filesystem files or internet were accessed. Only the assigned reconciliation output was written and validated.",
+    "status": "These are interpretive coding-agent judgments, not human financial validation. No financial values were calculated and no case question was answered. This output precedes source evidence; any later substantive change must be recorded as a rubric revision."
+  }
+}
