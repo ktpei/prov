@@ -28,8 +28,8 @@ def sources(**kwargs):
     return ChatSources(CORPUS, **kwargs)
 
 
-def propose(src, **overrides):
-    args = {
+def edit(**overrides):
+    return {
         "sheet": "Model",
         "cell": "B7",
         "new_content": 1661.5,
@@ -37,7 +37,12 @@ def propose(src, **overrides):
         "citations": [GUIDANCE],
         **overrides,
     }
-    return src.call("propose_cell_edit", args, 5)
+
+
+def propose(src, **overrides):
+    """Propose one edit; return its single result (proposal or error)."""
+    result = src.call("propose_cell_edits", {"edits": [edit(**overrides)]}, 5)
+    return result["results"][0] if "results" in result else result
 
 
 class ChatSourcesTests(unittest.TestCase):
@@ -45,9 +50,9 @@ class ChatSourcesTests(unittest.TestCase):
         self.assertEqual(sources().tool_schemas, TOOL_SCHEMAS)
         names = [schema["name"] for schema in sources(snapshot=snapshot()).tool_schemas]
         self.assertEqual(
-            names, ["search", "read_source", "read_workbook_range", "propose_cell_edit"]
+            names, ["search", "read_source", "read_workbook_range", "propose_cell_edits"]
         )
-        self.assertIn("propose_cell_edit", CHAT_INSTRUCTIONS)
+        self.assertIn("propose_cell_edits", CHAT_INSTRUCTIONS)
         self.assertTrue(CHAT_INSTRUCTIONS.startswith("You are a read-only finance research agent"))
 
     def test_workbook_tools_unavailable_without_snapshot(self):
@@ -212,6 +217,33 @@ class StrictnessTests(unittest.TestCase):
         self.assertNotIn(
             "error", propose(src, cell="D7", new_content="Q3 release guidance midpoint")
         )
+
+
+class BatchProposalTests(unittest.TestCase):
+    def test_one_call_proposes_several_cells(self):
+        src = sources(snapshot=snapshot())
+        src.call("read_source", {"source_id": RELEASE, "start_line": 59, "end_line": 64}, 5)
+        result = src.call(
+            "propose_cell_edits",
+            {
+                "edits": [
+                    edit(cell="B7", new_content=1661.5),
+                    edit(cell="B8", new_content=220.5),
+                    edit(cell="B0", new_content=1),
+                ]
+            },
+            5,
+        )
+        self.assertEqual([r.get("proposal_id") for r in result["results"]], ["P1", "P2", None])
+        self.assertIn("error", result["results"][2])
+        self.assertEqual([p["cell"] for p in src.proposals], ["B7", "B8"])
+        self.assertIn("Nothing was written", result["note"])
+
+    def test_batch_shape_is_validated(self):
+        src = sources(snapshot=snapshot())
+        self.assertIn("error", src.call("propose_cell_edits", {"edits": []}, 5))
+        self.assertIn("error", src.call("propose_cell_edits", {"edits": [edit()] * 11}, 5))
+        self.assertIn("error", src.call("propose_cell_edits", {"cell": "B7"}, 5))
 
 
 if __name__ == "__main__":

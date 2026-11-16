@@ -40,7 +40,7 @@ Conversation and workbook rules for this chat:
 - The user message may begin with a research context block and earlier turns. Earlier answers are not evidence: re-read any source lines you cite in this turn. Carried locators show where to read.
 - If a workbook is attached, read_workbook_range returns cells from that immutable snapshot. Cite cells with source_id "workbook:<snapshot_id>", locator "Sheet!B5" or "Sheet!A1:C3", and a quote equal to a cell's displayed value or formula. Cells listed in the context block count as read.
 - Workbook inputs are analyst assumptions unless the workbook says otherwise; never present them as reported facts.
-- Use propose_cell_edit only when the user asks for changes or clearly asks whether an input should be updated. Each proposal needs a short rationale and citations to evidence you already read. Proposals are not applied: never say the workbook was changed; say the analyst can review and approve them.
+- Use propose_cell_edits only when the user asks for changes or clearly asks whether an input should be updated. Put every edit in ONE call (up to 10 edits); each edit needs a short rationale and citations to evidence you already read. Proposals are not applied: never say the workbook was changed; say the analyst can review and approve them.
 """
 
 CHAT_INSTRUCTIONS = INSTRUCTIONS + CHAT_ADDENDUM
@@ -67,18 +67,31 @@ WORKBOOK_TOOL_SCHEMAS = [
         },
     ),
     function(
-        "propose_cell_edit",
-        "Propose (never apply) a change to one workbook cell for the analyst to approve. "
-        "Citations must point to evidence already returned by read_source or read_workbook_range.",
+        "propose_cell_edits",
+        "Propose (never apply) changes to workbook cells for the analyst to approve, all in one "
+        "call. Citations must point to evidence already returned by read_source or "
+        "read_workbook_range.",
         {
-            "sheet": {"type": "string"},
-            "cell": {"type": "string", "description": "One cell, e.g. B7"},
-            "new_content": {
-                "type": ["number", "string"],
-                "description": "New value, or a formula starting with =",
-            },
-            "rationale": {"type": "string", "maxLength": TEXT_LIMIT},
-            "citations": {"type": "array", "minItems": 1, "items": _CITATION},
+            "edits": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": PROPOSAL_LIMIT,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "sheet": {"type": "string"},
+                        "cell": {"type": "string", "description": "One cell, e.g. B7"},
+                        "new_content": {
+                            "type": ["number", "string"],
+                            "description": "New value, or a formula starting with =",
+                        },
+                        "rationale": {"type": "string", "maxLength": TEXT_LIMIT},
+                        "citations": {"type": "array", "minItems": 1, "items": _CITATION},
+                    },
+                    "required": ["sheet", "cell", "new_content", "rationale", "citations"],
+                    "additionalProperties": False,
+                },
+            }
         },
     ),
 ]
@@ -138,7 +151,7 @@ class ChatSources(Sources):
         return f"workbook:{self.snapshot.snapshot_id}" if self.snapshot else None
 
     def call(self, name, args, timeout):
-        if name not in ("read_workbook_range", "propose_cell_edit"):
+        if name not in ("read_workbook_range", "propose_cell_edits"):
             return super().call(name, args, timeout)
         try:
             if not self.snapshot:
@@ -147,9 +160,8 @@ class ChatSources(Sources):
                 raise ValueError("Tool arguments must be an object")
             if name == "read_workbook_range" and set(args) == {"sheet", "range"}:
                 return self._read_workbook(args["sheet"], args["range"])
-            fields = {"sheet", "cell", "new_content", "rationale", "citations"}
-            if name == "propose_cell_edit" and set(args) == fields:
-                return self._propose(args)
+            if name == "propose_cell_edits" and set(args) == {"edits"}:
+                return self._propose_batch(args["edits"])
             raise ValueError("Unknown tool or invalid argument fields")
         except ValueError as exc:
             return {"error": str(exc)}
@@ -169,6 +181,26 @@ class ChatSources(Sources):
             "range": rng,
             "cells": cells,
             "note": "Immutable uploaded snapshot. Inputs are analyst values unless labeled.",
+        }
+
+    def _propose_batch(self, edits):
+        if not isinstance(edits, list) or not 1 <= len(edits) <= PROPOSAL_LIMIT:
+            raise ValueError(f"edits must list 1–{PROPOSAL_LIMIT} cell changes")
+        fields = {"sheet", "cell", "new_content", "rationale", "citations"}
+        results = []
+        for item in edits:
+            cell = item.get("cell") if isinstance(item, dict) else None
+            try:
+                if not isinstance(item, dict) or set(item) != fields:
+                    raise ValueError(
+                        "Each edit needs sheet, cell, new_content, rationale, citations"
+                    )
+                results.append(self._propose(item))
+            except ValueError as exc:
+                results.append({"cell": cell, "error": str(exc)})
+        return {
+            "results": results,
+            "note": "Nothing was written. The analyst reviews and approves proposals separately.",
         }
 
     def _propose(self, args):
@@ -215,7 +247,6 @@ class ChatSources(Sources):
             "status": "pending_human_approval",
             "cell": f"{sheet}!{address}",
             "old_display": old["display"],
-            "note": "Nothing was written. The analyst reviews and approves proposals separately.",
         }
 
     def check_citation(self, citation):

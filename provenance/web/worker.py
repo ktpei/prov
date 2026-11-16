@@ -111,12 +111,19 @@ def summarize_event(event, started, calls):
                     "cells": len(result.get("cells", [])),
                 },
             )
-        elif name == "propose_cell_edit":
-            summary = (
-                "proposal",
-                f"Proposed change to {result.get('cell')}",
-                {"proposal_id": result.get("proposal_id"), "cell": result.get("cell")},
-            )
+        elif name == "propose_cell_edits":
+            results = result.get("results", [])
+            made = [r for r in results if "proposal_id" in r]
+            errors = [r for r in results if "error" in r]
+            if made:
+                summary = (
+                    "proposal",
+                    "Proposed changes to " + ", ".join(str(r.get("cell")) for r in made),
+                    {"cells": [r.get("cell") for r in made], "rejected": len(errors)},
+                )
+            else:
+                first = errors[0]["error"] if errors else "no edits"
+                summary = ("tool_error", "propose_cell_edits error", {"error": first})
     elif kind == "tool_call_skipped":
         summary = (
             "tool_error",

@@ -98,7 +98,7 @@ class WorkerTests(unittest.TestCase):
             ("s", "search", {"query": "q"}),
             ("r", "read_source", {"source_id": "x", "start_line": 1, "end_line": 2}),
             ("w", "read_workbook_range", {"sheet": "Model", "range": "B7"}),
-            ("p", "propose_cell_edit", {"sheet": "Model", "cell": "B7"}),
+            ("p", "propose_cell_edits", {"edits": []}),
             ("e", "search", {"query": "bad"}),
         ):
             call = {"call_id": call_id, "name": name, "arguments": json.dumps(args)}
@@ -110,7 +110,7 @@ class WorkerTests(unittest.TestCase):
             ),
             "r": ({"id": "x", "title": "X", "locator": "L1-L2"}, "read"),
             "w": ({"sheet": "Model", "range": "B7", "cells": [{}]}, "workbook_read"),
-            "p": ({"proposal_id": "P1", "cell": "Model!B7"}, "proposal"),
+            "p": ({"results": [{"proposal_id": "P1", "cell": "Model!B7"}]}, "proposal"),
             "e": ({"error": "nope"}, "tool_error"),
         }
         for call_id, (result, expected) in results.items():

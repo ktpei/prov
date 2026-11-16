@@ -89,8 +89,8 @@
             {
               "type": "function_call",
               "call_id": "r2-propose",
-              "name": "propose_cell_edit",
-              "arguments": "{\"sheet\": \"Model\", \"cell\": \"B7\", \"new_content\": 1661.5, \"rationale\": \"The model assumes $1,650.0M, but the Q3 2024 release guides FY2024 total revenue to $1,661.0\\u2013$1,662.0M. Use the $1,661.5M midpoint.\", \"citations\": [{\"source_id\": \"cloudflare-q3-2024-release\", \"locator\": \"L63\", \"quote\": \"Total revenue of $1,661.0 to $1,662.0 million\"}]}"
+              "name": "propose_cell_edits",
+              "arguments": "{\"edits\": [{\"sheet\": \"Model\", \"cell\": \"B7\", \"new_content\": 1661.5, \"rationale\": \"The model assumes $1,650.0M, but the Q3 2024 release guides FY2024 total revenue to $1,661.0\\u2013$1,662.0M. Use the $1,661.5M midpoint.\", \"citations\": [{\"source_id\": \"cloudflare-q3-2024-release\", \"locator\": \"L63\", \"quote\": \"Total revenue of $1,661.0 to $1,662.0 million\"}]}]}"
             }
           ]
         },
