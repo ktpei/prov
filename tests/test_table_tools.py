@@ -168,6 +168,34 @@ class TableSourcesTests(unittest.TestCase):
                 self.assertEqual(set(result), {"error"})
                 self.assertTrue(result["error"])
 
+    def test_search_candidates_exclude_rows_already_in_read_prefix(self):
+        result = self.call(
+            "search_tables", {"source_id": "html-source", "query": "header context needle revenue"}
+        )
+        hit = result["results"][0]
+        self.assertIn(8, hit["matched_row_indices"])
+        self.assertTrue(all(index >= 5 for index in hit["matched_row_indices"]))
+        prefix_only = self.call(
+            "search_tables", {"source_id": "html-source", "query": "header context"}
+        )
+        self.assertEqual(prefix_only["results"][0]["matched_row_indices"], [])
+        self.assertTrue(prefix_only["results"][0]["literal_match_snippets"])
+
+    def test_legacy_search_version_preserves_prefix_candidates_and_table_scores(self):
+        args = {"source_id": "html-source", "query": "header context needle revenue"}
+        old = TableSources(self.corpus, search_version="source-scoped-visible-row-bm25-v1").call(
+            "search_tables", args, 1
+        )
+        new = self.call("search_tables", args)
+        self.assertTrue(any(index < 5 for index in old["results"][0]["matched_row_indices"]))
+        self.assertEqual(
+            [(h["table_id"], h["score"]) for h in old["results"]],
+            [(h["table_id"], h["score"]) for h in new["results"]],
+        )
+        self.assertNotIn("read_candidate_policy", old["diagnostics"])
+        with self.assertRaisesRegex(ValueError, "version"):
+            TableSources(self.corpus, search_version="unknown")
+
     def test_returned_cells_and_captions_cannot_mutate_snapshot(self):
         original = self.read([8])
         changed = self.read([8])

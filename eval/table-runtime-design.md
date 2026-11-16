@@ -64,3 +64,9 @@ response sizes, latency, and errors for every selected case. Its raw-context gra
 checks the trusted manifest hash, sidecar hash, exact cells and captions, and
 rejects error-bearing responses. It does not synthesize role labels or typed
 answers from the fixture to make a read pass.
+
+Table search v2 leaves table scores and order unchanged, but excludes the first
+five physical rows from read candidates because every read already includes that
+prefix. V1 remains selectable for baseline replay. Protocols without an explicit
+search version replay v1; challenger protocols specify v2. The first-three row
+selection rule is unchanged, and no fixture roles or answer values enter ranking.

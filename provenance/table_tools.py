@@ -86,7 +86,13 @@ class TableSources:
     first-five/predecessor heuristic does not claim to find every header.
     """
 
-    def __init__(self, directory):
+    def __init__(self, directory, *, search_version="source-scoped-visible-row-bm25-v2"):
+        if search_version not in {
+            "source-scoped-visible-row-bm25-v1",
+            "source-scoped-visible-row-bm25-v2",
+        }:
+            raise ValueError("Unknown table search version")
+        self.search_version = search_version
         self.directory = Path(directory)
         manifest_path = self.directory / "sources.json"
         manifest_before = manifest_path.read_bytes()
@@ -198,9 +204,15 @@ class TableSources:
         ranked.sort(key=lambda item: (-item[0], item[1]))
         results = []
         for score, _, table, row_matches, title_text in ranked[:MAX_RESULTS]:
+            # The read policy already includes these rows; reserve candidates for new context.
+            read_candidates = (
+                [match for match in row_matches if match[1] >= 5]
+                if self.search_version == "source-scoped-visible-row-bm25-v2"
+                else row_matches
+            )
             snippets = [
                 {"row_index": row_index, "text": _literal_snippet(text, query_terms)}
-                for _, row_index, text in row_matches[:MAX_ROW_INDICES]
+                for _, row_index, text in read_candidates[:MAX_ROW_INDICES]
             ]
             if not snippets:
                 snippets = [{"title_context": _literal_snippet(title_text, query_terms)}]
@@ -210,14 +222,14 @@ class TableSources:
                     "table_id": table["id"],
                     "score": round(score, 4),
                     "matched_row_indices": [
-                        row_index for _, row_index, _ in row_matches[:MAX_ROW_INDICES]
+                        row_index for _, row_index, _ in read_candidates[:MAX_ROW_INDICES]
                     ],
                     "literal_match_snippets": snippets,
                 }
             )
         response = {
             **self._identity(source_id, source),
-            "search_policy": "source-scoped-visible-row-bm25-v1",
+            "search_policy": self.search_version,
             "results": results,
             "diagnostics": {
                 "semantic_matching": False,
@@ -226,6 +238,10 @@ class TableSources:
                 "external_css_visibility": "unresolved",
             },
         }
+        if self.search_version == "source-scoped-visible-row-bm25-v2":
+            response["diagnostics"]["read_candidate_policy"] = (
+                "Exclude first five prefix rows already included by reads; table scores unchanged."
+            )
         self._ensure_size(response)
         return copy.deepcopy(response)
 

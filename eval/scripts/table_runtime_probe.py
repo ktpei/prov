@@ -51,7 +51,9 @@ def run(protocol_path, fixture_path, corpus, output):
     if source["original_sha256"] != protocol["original_sha256"]:
         raise ValueError("Protocol original hash mismatch")
     sidecar = extract_html_tables(corpus / source["original_file"])
-    tables = TableSources(corpus)
+    tables = TableSources(
+        corpus, search_version=protocol.get("search_version", "source-scoped-visible-row-bm25-v1")
+    )
     report = {
         "version": "table-runtime-probe-v1",
         "protocol_sha256": digest(protocol_raw),
