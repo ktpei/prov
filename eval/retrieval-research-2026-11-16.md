@@ -65,7 +65,7 @@ questions. It supports preserving entity/period/unit compatibility and complete
 alternatives instead of rewarding isolated plausible operands.
 [Join-Aware Multi-Table Retrieval](https://aclanthology.org/2024.acl-long.148.pdf)
 
-## Proposed next experiment — prototype implemented, assessment not executed or frozen
+## Page-ranking experiment — completed, not promoted
 
 Our inference from these findings is to test one source-page ranking signal before
 adding a query planner. Keep original questions, declared documents, native text,
@@ -124,13 +124,17 @@ and pages; the 25 limit bounds retention, not scoring work.
 
 Verification: seven synthetic tests passed, and ten synthetic default search
 responses (both legacy and BM25 versions) were byte-identical to commit `495f901`.
-No cohort query, candidate-pool inspection, PDF acquisition or paid call was made.
+Those prototype checks involved no cohort query or candidate inspection. The later
+frozen experiment uses only the six exposed development cases; no acquisition or
+paid call occurred.
 Independent review also verified thirty synthetic default response comparisons.
 A frozen six-response pre-refactor fixture is now checked by the test suite.
 Full lint and all 369 tests pass. The [metadata-only reservation](assessments/financebench-page-validation-v1/progress.md)
 is complete, with two prior-issuer overlaps explicitly retained and all selected
-documents closed. A hash-bound assessment protocol is still required before any
-development comparison. The [draft wrapper design](page-ranking-assessment-design.md)
+documents closed. The [hash-bound comparison](assessments/financebench-page-ranking-v1/report.md)
+is now complete: control retains 1/6 at five reads and challenger 0/6, with no
+blocks or read failures. Shared pool-25 opportunity is 2/6. The challenger is not
+promoted and no frozen annotation or prior result changed. The [draft wrapper design](page-ranking-assessment-design.md)
 specifies shared ranking, separate branch reads and whole-run replay before labels.
 The [implemented runner](assessments/financebench-page-ranking-v1/progress.md) has
 passed independent review and eleven synthetic assessment tests.

@@ -14,7 +14,13 @@ startup hash seed, exact disjoint pool unions, alternative isolation, all-read
 failures, challenger-only failures and truncated boundary evidence. Successful
 packet parsing is checked to occur only after both branches finish replay.
 
-No real cohort search, candidate scoring, read or grade has occurred. The protocol
-must be generated and committed after this implementation commit. The six earlier
-exposed development cases remain the comparison cohort; all separately reserved
-validation documents/questions remain closed. No paid/provider calls are involved.
+The protocol was committed at `07b10e0` before execution. The real comparison and
+whole-wrapper replay/grade are complete: [report](report.md), [result](result.json).
+Both policies retain 1/6 control versus 0/6 challenger at five reads (one Costco
+loss, no wins); shared pool-25 opportunity is 2/6. No failures, truncation or context
+blocks occurred. The challenger is not promoted. No paid/provider calls were made.
+All separately reserved validation documents/questions remain closed.
+
+Independent [saved-artifact audit](audit.json) verifies all 35 bindings, original
+receipt/journals, historical control compatibility, shared response identity and
+reported counts/character arithmetic. It did not rerun the recorded replay.

@@ -32,7 +32,9 @@ statement/context locations and potentially useful 3M evidence outside the froze
 packet. Location misses are not exhaustive semantic failures. Two incidentally
 exposed paper-example groups are registered for development. A matched page-context
 ranking prototype and [assessment runner](eval/assessments/financebench-page-ranking-v1/progress.md)
-are independently reviewed with synthetic checks; the protocol freeze is still pending. A [validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
+are independently reviewed. The [frozen comparison](eval/assessments/financebench-page-ranking-v1/report.md)
+regressed from 1/6 to 0/6 at five reads under both priorities; pool-25 opportunity
+is only 2/6. Exact replay passes; no promotion or validation-content access. A [validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
 is complete. Its post-selection audit found two prior-issuer overlaps (Amazon and
 Microsoft), retained without replacement; all six selected documents remain closed. The [annotation-validity review](eval/incomplete-judgments-research-2026-11-16.md)
 proposes a separate blinded audit without changing historical scores.
