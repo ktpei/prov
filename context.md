@@ -1,4 +1,24 @@
-# Working context — 2026-11-16
+# Working context — 2026-11-17
+
+## Web MVP — 2026-11-17
+
+The user decided to show the complete MVP in the browser first (demo 2026-11-17
+20:00). Branch `feat/web-chatbot-mvp` starts from `codex/finance-benchmark-loop`
+(PR #2); `feat/evaluation-agent-foundation` is an earlier draft of the same work and
+was not merged. Scope chosen by the user: cited chat, follow-ups, workbook upload
+and range context, approved edits with download; both evidence sets selectable;
+OpenRouter `deepseek/deepseek-v4.1-flash-1017`; $1.00 live-spend cap for building
+and dogfooding, with a separate allowance for the demo. Design:
+[docs/web-mvp-design.md](docs/web-mvp-design.md); plan:
+[docs/superpowers/plans/2026-11-17-web-chatbot-mvp.md](docs/superpowers/plans/2026-11-17-web-chatbot-mvp.md).
+
+Verified: 477+ Python tests and lint pass (40+ new web tests); Playwright replay loop
+passes; live browser questions completed with valid citations (single question
+$0.0085, follow-up $0.018, workbook proposal $0.0072). The base runtime is unchanged:
+chat tools extend `Sources` through `ChatSources`. Desktop Excel opening of exports
+is not yet confirmed (AppleScript automation was blocked by an Excel dialog).
+Dogfood rounds and scores are recorded in [docs/dogfood/2026-11-17-web-mvp.md](docs/dogfood/2026-11-17-web-mvp.md).
+
 
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all
