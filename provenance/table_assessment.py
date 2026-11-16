@@ -16,6 +16,7 @@ from eval.scripts.table_assessment_run import (
     _validate_questions,
     runtime_digest,
 )
+from provenance.source_availability import availability
 from provenance.sources import Sources
 from provenance.table_structure import extract_html_tables
 from provenance.table_tools import TableSources
@@ -59,12 +60,38 @@ def _verify_execution(run_protocol, questions, report, corpus):
     cases = report.get("cases")
     if not isinstance(cases, list) or len(cases) != len(questions):
         raise ValueError("Run cases missing or duplicated")
-    tables = TableSources(corpus, search_version=run_protocol["search_version"])
+    temporal = run_protocol["version"] == "table-assessment-run-protocol-v3"
+    metadata = {
+        source["id"]: source
+        for source in _load_object((corpus / "sources.json").read_bytes(), "Corpus manifest")[
+            "sources"
+        ]
+    }
+    decisions = (
+        [availability(metadata[q["source_id"]], q["as_of"]) for q in questions] if temporal else []
+    )
+    tables = (
+        TableSources(corpus, search_version=run_protocol["search_version"])
+        if not temporal or any(d["allowed"] for d in decisions)
+        else None
+    )
     for question, case in zip(questions, cases, strict=True):
         if not isinstance(case, dict):
             raise ValueError("Invalid run case")
         for key in ("id", "source_id", "question"):
             _same(case.get(key), question[key], "Run question identity/order mismatch")
+        if temporal:
+            _same(case.get("as_of"), question["as_of"], "Run cutoff mismatch")
+            decision = availability(metadata[question["source_id"]], question["as_of"])
+            _same(case.get("availability"), decision, "Run availability mismatch")
+            if not decision["allowed"]:
+                if (
+                    case.get("status") != "availability_blocked"
+                    or case.get("trace") != []
+                    or "error" in case
+                ):
+                    raise ValueError("Blocked source must have zero tool calls")
+                continue
         trace = case.get("trace")
         if not isinstance(trace, list) or not trace:
             raise ValueError("Run case requires an actual search trace")
@@ -108,7 +135,11 @@ def _validate_annotations(annotations, questions, sources, corpus, run_protocol)
         {"version", "questions_sha256", "corpus_manifest_sha256", "sources", "cases"},
         "Annotations",
     )
-    if annotations["version"] != "table-assessment-annotations-v1":
+    temporal = run_protocol["version"] == "table-assessment-run-protocol-v3"
+    expected_version = (
+        "table-assessment-annotations-v2" if temporal else "table-assessment-annotations-v1"
+    )
+    if annotations["version"] != expected_version:
         raise ValueError("Unsupported annotations")
     for key in ("questions_sha256", "corpus_manifest_sha256"):
         _same(annotations[key], run_protocol[key], "Annotation identity mismatch")
@@ -144,13 +175,34 @@ def _validate_annotations(annotations, questions, sources, corpus, run_protocol)
     for question, case in zip(questions, cases, strict=True):
         if not isinstance(case, dict):
             raise ValueError("Annotation case must be an object")
+        control = case.get("disposition") == "availability_control"
         _require_exact_keys(
             case,
-            {"id", "source_id", "disposition", "required_components", "alternatives", "reason"},
+            {"id", "source_id", "disposition", "required_components", "alternatives", "reason"}
+            | ({"expected_availability"} if control else set()),
             "Annotation case",
         )
         for key in ("id", "source_id"):
             _same(case[key], question[key], "Annotation case identity/order mismatch")
+        if control:
+            if (
+                not temporal
+                or question["as_of"] is None
+                or case["expected_availability"]
+                not in ("available", "not_yet_available", "unknown")
+                or case["required_components"] != []
+                or case["alternatives"] != []
+                or not isinstance(case["reason"], str)
+                or not case["reason"].strip()
+            ):
+                raise ValueError(
+                    "Availability controls require cutoff, expected state, reason and no financial labels"
+                )
+            continue
+        if temporal and question["as_of"] is not None:
+            raise ValueError(
+                "Positive annotations require a null cutoff; temporal cases are separate controls"
+            )
         roles = case["required_components"]
         if (
             not isinstance(roles, list)
@@ -238,7 +290,10 @@ def grade(
             raise ValueError(f"Frozen {name} hash mismatch")
     run_protocol = _load_object(raw["run_protocol"], "Run protocol")
     _validate_protocol(run_protocol)
-    if run_protocol["version"] != "table-assessment-run-protocol-v2":
+    if run_protocol["version"] not in (
+        "table-assessment-run-protocol-v2",
+        "table-assessment-run-protocol-v3",
+    ):
         raise ValueError("Grading requires a precommitted assessment receipt")
     if run_protocol["assessment_receipt_sha256"] != protocol["receipt_sha256"]:
         raise ValueError("Assessment receipt differs from execution commitment")
@@ -273,6 +328,9 @@ def grade(
     questions = _validate_questions(
         _load_object(raw["questions"], "Questions"), _native_html_source_ids(json.loads(manifest))
     )
+    temporal = run_protocol["version"] == "table-assessment-run-protocol-v3"
+    if temporal != ("as_of" in questions[0]):
+        raise ValueError("Question and run-protocol temporal versions must agree")
     report = _load_object(raw["report"], "Report")
     _same(report.get("protocol_sha256"), protocol["run_protocol_sha256"], "Run protocol mismatch")
     _same(
@@ -319,6 +377,11 @@ def grade(
                 "run_status": case["status"],
                 "reason": annotation["reason"],
                 "alternatives": alternatives,
+                "availability_control_passed": (
+                    case["availability"]["state"] == annotation["expected_availability"]
+                    if annotation["disposition"] == "availability_control"
+                    else None
+                ),
                 "complete_context_present": any(
                     a["complete_context_present"] for a in alternatives
                 ),
@@ -343,7 +406,7 @@ def grade(
         "complete_context_count": sum(r["complete_context_present"] for r in results),
         "disposition_counts": {
             status: sum(a["disposition"] == status for a in annotations)
-            for status in ("mapped", "unmapped", "unresolved")
+            for status in ("mapped", "unmapped", "unresolved", "availability_control")
         },
         "table_hit_counts": {
             str(k): sum(
@@ -351,6 +414,15 @@ def grade(
             )
             for k in (1, 3, 5)
         },
+        "positive_denominator": sum(
+            a["disposition"] != "availability_control" for a in annotations
+        ),
+        "availability_control_denominator": sum(
+            a["disposition"] == "availability_control" for a in annotations
+        ),
+        "availability_control_pass_count": sum(
+            r["availability_control_passed"] is True for r in results
+        ),
         "execution_replay_verified": True,
         "semantic_answer_correctness": "not_measured",
         "limitations": "Replay establishes consistency, not cryptographic proof of historical execution or human annotation completeness.",

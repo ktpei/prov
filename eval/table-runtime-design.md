@@ -103,7 +103,7 @@ directories cannot be reused. Hard process termination may leave an explicitly
 incomplete running receipt; it must not be reported as a completed run.
 
 The runner is tested only with invented HTML. Separate annotation grading is now available below. It does not yet provide
-publication-cutoff enforcement or the complete staged
+the complete staged
 provenance gates in the [broader assessment plan](assessments/native-html-v1/plan.md).
 No new real-document accuracy result is claimed.
 
@@ -160,3 +160,12 @@ reproducible behavior, not cryptographic proof that a historical run occurred.
 Neither proves that annotators listed every necessary qualification. These
 limitations must accompany new assessment results. Current verification uses
 invented HTML only; the six proposed filings remain unacquired and ungraded.
+
+
+## Temporal control protocol
+
+Protocol v3 and question schema v2 add explicit `as_of` values and conservative
+source-availability bounds. Annotation schema v2 keeps availability controls
+separate from positive financial evidence. The [availability policy](source-availability-policy.md)
+defines schema, uncertainty, trace requirements, metadata provenance and SEC
+calendar-day conventions. No real temporal assessment has run yet.

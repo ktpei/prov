@@ -101,12 +101,13 @@ not whether its underlying facts appeared earlier elsewhere. Ameren positive que
 its combined filing contains subsidiary registrants as well.
 
 The 21 positive slots and three availability controls have separate denominators.
-The current source-scoped table runner cannot enforce publication cutoffs: the
-three controls are a declared capability gap, not passes and not ordinary table
-recall misses. The broader 24-slot assessment cannot be called complete until
-that control path is implemented and assessed. Runtime question schemas must not
-silently accept unsupported cutoff fields. Final wording and slot assignments
-remain uncreated pending the implementation/ingestion/grader freeze.
+The versioned runner now supports [selected-source availability controls](../../source-availability-policy.md)
+with explicit hash-bound time intervals, uncertain-state blocking and zero tool
+calls for blocked sources. Controls are graded separately and never count as
+financial-context passes. The broader 24-slot assessment remains incomplete:
+metadata acquisition, frozen questions, independent annotations and stage gates
+have not run. Final wording and slot assignments remain uncreated pending the
+implementation/ingestion/grader freeze.
 
 Metadata sources are the six SEC filing-index URLs in the proposal. The exact
 acceptance strings and listed file sizes were checked on 2026-11-16; they are not
@@ -122,7 +123,8 @@ The runner now accepts a v2 protocol containing only an opaque assessment-receip
 hash in addition to its existing inputs. The separate grader verifies that receipt,
 replays exact calls before opening labels, validates complete alternative evidence
 sets and preserves mapped/unmapped/unresolved counts. It does not automatically
-establish committed gate chronology, annotation adequacy or cutoff enforcement.
+establish committed gate chronology, annotation adequacy. Cutoff controls are implemented separately with synthetic
+verification.
 See the [schema and commands](../../table-runtime-design.md). No real assessment
 has been executed. Metadata proposals were already inspected before the eventual
 implementation freeze; that exposure must be retained, not described as blinded

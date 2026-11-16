@@ -8,6 +8,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from provenance.source_availability import availability, timestamp
 from provenance.sources import Sources
 from provenance.table_tools import TableSources
 
@@ -29,6 +30,7 @@ STATUSES = (
     "read_error",
     "failed",
     "interrupted",
+    "availability_blocked",
 )
 _HEX_SHA256 = re.compile(r"[0-9a-f]{64}")
 _LEXICAL = re.compile(r"\w", re.UNICODE)
@@ -107,7 +109,10 @@ def _validate_sha256(value, label):
 
 
 def _validate_protocol(protocol):
-    committed = protocol.get("version") == "table-assessment-run-protocol-v2"
+    committed = protocol.get("version") in (
+        "table-assessment-run-protocol-v2",
+        "table-assessment-run-protocol-v3",
+    )
     _require_exact_keys(
         protocol,
         {
@@ -156,7 +161,8 @@ def _native_html_source_ids(manifest):
 
 def _validate_questions(questions, native_html_ids):
     _require_exact_keys(questions, {"version", "cases"}, "Questions")
-    if questions["version"] != QUESTIONS_VERSION:
+    temporal = questions["version"] == "table-assessment-questions-v2"
+    if questions["version"] != QUESTIONS_VERSION and not temporal:
         raise ValueError(f"Questions version must be {QUESTIONS_VERSION}")
     cases = questions["cases"]
     if not isinstance(cases, list) or not cases:
@@ -166,7 +172,11 @@ def _validate_questions(questions, native_html_ids):
         label = f"Question case {index}"
         if not isinstance(case, dict):
             raise ValueError(f"{label} must be an object")
-        _require_exact_keys(case, {"id", "source_id", "question"}, label)
+        _require_exact_keys(
+            case, {"id", "source_id", "question"} | ({"as_of"} if temporal else set()), label
+        )
+        if temporal and case["as_of"] is not None:
+            timestamp(case["as_of"])
         case_id = case["id"]
         if not isinstance(case_id, str) or not case_id:
             raise ValueError(f"{label} id must be a nonempty string")
@@ -268,6 +278,15 @@ def run(protocol_path, questions_path, corpus, output):
     if current_runtime_sha256 != protocol["runtime_sha256"]:
         raise ValueError("Runtime SHA-256 does not match protocol")
     cases = _validate_questions(questions, _native_html_source_ids(manifest))
+    temporal = protocol["version"] == "table-assessment-run-protocol-v3"
+    if temporal != (questions["version"] == "table-assessment-questions-v2"):
+        raise ValueError("Question and run-protocol temporal versions must agree")
+    source_metadata = {source["id"]: source for source in manifest["sources"]}
+    decisions = (
+        [availability(source_metadata[case["source_id"]], case["as_of"]) for case in cases]
+        if temporal
+        else []
+    )
     if output.exists():
         raise ValueError("Output directory already exists; use a new directory")
 
@@ -296,13 +315,21 @@ def run(protocol_path, questions_path, corpus, output):
             for case in cases
         ],
     }
+    if temporal:
+        for original, case, decision in zip(cases, report["cases"], decisions, strict=True):
+            case["as_of"] = original["as_of"]
+            case["availability"] = decision
     if "assessment_receipt_sha256" in protocol:
         report["assessment_receipt_sha256"] = protocol["assessment_receipt_sha256"]
     output.mkdir(parents=True, exist_ok=False)
     _persist(report, output)
 
     try:
-        tables = TableSources(corpus, search_version=protocol["search_version"])
+        tables = (
+            TableSources(corpus, search_version=protocol["search_version"])
+            if not temporal or any(d["allowed"] for d in decisions)
+            else None
+        )
         manifest_after = manifest_path.read_bytes()
         if (
             manifest_after != manifest_before
@@ -318,6 +345,10 @@ def run(protocol_path, questions_path, corpus, output):
     _persist(report, output)
 
     for case in report["cases"]:
+        if temporal and not case["availability"]["allowed"]:
+            case["status"] = "availability_blocked"
+            _persist(report, output)
+            continue
         case["status"] = "running"
         _persist(report, output)
         try:
