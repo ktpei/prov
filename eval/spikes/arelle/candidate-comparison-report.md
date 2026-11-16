@@ -72,3 +72,11 @@ Dimensions, continuations, broader transformations, equivalent-context duplicate
 cases and rendered-cell provenance still require acceptance work before real
 filing extraction. The newer runtime is a tested candidate for those development
 steps, not a validated general financial ingestion system.
+
+The harness was committed at `1f90d90` before writing the retained
+[result](candidate-comparison-result.json). Its SHA-256 matches the independently
+reproduced temporary record exactly:
+`101b9449588e3d52e57878a960976ec05c7b8efc0fe869a11665dbd23d09cfa4`. [Verification](candidate-comparison-verification.json)
+records the 22-distribution check, two gate amendments, 15 tests and 10 matched
+cases. This same-condition byte reproduction is distinct from the explicitly
+normalized cross-version semantic comparison.
