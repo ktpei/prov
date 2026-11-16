@@ -1,0 +1,87 @@
+{
+  "version": "dpo-retrieval-run-receipt-v1",
+  "protocol_sha256": "157947af13eb5f2ab2f7fc1333d37b2700a8eeb236180e2e3f042101c3786e76",
+  "freeze_commit": "6d9837ddad982cad3ff84880ebbe79ac10c26b29",
+  "runtime_sha256": "4d766d9ca3aef8a3c29864835bd2247ff722a523deac8f23a418ed7c8fe8b435",
+  "status": "completed",
+  "conditions": {
+    "baseline": {
+      "query_count": 3,
+      "calls": [
+        {
+          "query": "What is FY2018 days payable outstanding (DPO) for Walmart? DPO is defined as: 365 * (average accounts payable between FY2017 and FY2018) / (FY2018 COGS + change in inventory between FY2017 and FY2018). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the statement of financial position and the P&L statement.",
+          "source_ids": [
+            "WALMART_2018_10K"
+          ]
+        },
+        {
+          "query": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?",
+          "source_ids": [
+            "NIKE_2023_10K"
+          ]
+        },
+        {
+          "query": "What drove the reduction in SG&A expense as a percent of net sales in FY2023?",
+          "source_ids": [
+            "ULTABEAUTY_2023Q4_EARNINGS"
+          ]
+        }
+      ],
+      "report_sha256": "7e63caba745916bd6b680721b04fa1f4d5626e95836f9114e93a50a585d6b3c9",
+      "report_file": "runs/dpo-retrieval-2026-11-16/baseline.json"
+    },
+    "challenger": {
+      "query_count": 7,
+      "calls": [
+        {
+          "query": "What is FY2018 days payable outstanding (DPO) for Walmart? DPO is defined as: 365 * (average accounts payable between FY2017 and FY2018) / (FY2018 COGS + change in inventory between FY2017 and FY2018). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the statement of financial position and the P&L statement.",
+          "source_ids": [
+            "WALMART_2018_10K"
+          ]
+        },
+        {
+          "query": "accounts payable trade payables 2018 2017",
+          "source_ids": [
+            "WALMART_2018_10K"
+          ]
+        },
+        {
+          "query": "purchases credit purchases 2018 2017",
+          "source_ids": [
+            "WALMART_2018_10K"
+          ]
+        },
+        {
+          "query": "cost of sales cost of goods sold 2018 2017",
+          "source_ids": [
+            "WALMART_2018_10K"
+          ]
+        },
+        {
+          "query": "inventory inventories 2018 2017",
+          "source_ids": [
+            "WALMART_2018_10K"
+          ]
+        },
+        {
+          "query": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?",
+          "source_ids": [
+            "NIKE_2023_10K"
+          ]
+        },
+        {
+          "query": "What drove the reduction in SG&A expense as a percent of net sales in FY2023?",
+          "source_ids": [
+            "ULTABEAUTY_2023Q4_EARNINGS"
+          ]
+        }
+      ],
+      "report_sha256": "6364505d556643c8c76e1ab32a510e297d411db9f66981e3168a186fdb28b0e6",
+      "report_file": "runs/dpo-retrieval-2026-11-16/challenger.json"
+    }
+  },
+  "model_calls": 0,
+  "instrumentation": "Passthrough Sources.search wrapper records query and permitted source IDs without changing arguments or responses.",
+  "baseline_exact_replay": true,
+  "post_run_integrity_verified": true
+}

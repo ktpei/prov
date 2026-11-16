@@ -43,6 +43,14 @@ losses. Both earlier versions replay exactly; v2 remains the default. The negati
 result is retained, and broader uninspected development assessment is next.
 
 
+## DPO retrieval experiment — 2026-11-16
+
+[Question-only component retrieval](eval/reports/dpo-retrieval-2026-11-16/report.md)
+used seven searches versus three but remained at 2/4 annotated pages and 2/3 tasks
+with complete page coverage. No paired wins/losses; default unchanged. One missing
+Walmart page entered the candidate pool but was discarded, and the other never
+entered it. The negative result and exact baseline replay are retained.
+
 ## PDF visual quality review — 2026-11-16
 
 [Five rendered pages](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguish

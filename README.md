@@ -65,6 +65,9 @@ conversations in both history conditions. Small-sample, public-data and annotati
 limitations prevent broad accuracy claims. Total recorded conservative spending
 across development is $0.4814193. The original holdout remains unrun.
 
+[A frozen DPO component-search experiment](eval/reports/dpo-retrieval-2026-11-16/report.md)
+used more searches without improving page coverage; it was not promoted.
+
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
 All 419 native-text pages replay unchanged with structured page diagnostics.
