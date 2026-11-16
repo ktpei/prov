@@ -25,8 +25,8 @@ rules, and semester deliverables.
   datasets, scoring, test conditions, and future implementation stages.
 
 The active milestone is company-context tooling and evaluation. Finance accuracy
-benchmarking is the next planning priority; external benchmark adapters and runs
-remain planned. The eventual product interface is an Excel add-in. Browser UI,
+benchmarking is active: [external benchmark preparation and scoring](eval/external-benchmarks.md)
+now support three core datasets. External live runs remain pending. The eventual product interface is an Excel add-in. Browser UI,
 workbook operations, and approved exports are deferred.
 
 ## Try it without credentials

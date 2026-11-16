@@ -1,5 +1,16 @@
 # Working context — 2026-11-16
 
+## Active benchmark loop — 2026-11-16
+
+The user authorized continuous benchmark integration, extensive ingestion research,
+and coordinated subagent work. [Workflow](eval/external-benchmarks.md),
+[research](eval/external-benchmark-research.md), and [cycle ledger](eval/improvement-loop.md)
+record current work. Three core adapters and hash-pinned acquisition/preparation
+are implemented with offline scoring. Full-file QA found three conflicting CFA
+labels; they remain review-required. No external live accuracy, human review, or
+new paid spend is claimed. Earlier planning-only statements below are historical.
+
+
 ## Selected finance accuracy benchmarks — 2026-11-16
 
 The user selected the comprehensive suite discussed in planning and requested it
