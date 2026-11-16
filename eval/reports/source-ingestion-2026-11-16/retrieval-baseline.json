@@ -1,0 +1,1907 @@
+{
+  "version": "financebench-source-quality-v1",
+  "binding_version": "financebench-full-documents-v2",
+  "prepared_sha256": "c5d1a1919261243c57b03324750c2b8111a63ceb3be3d8b2fde8e43cc3be3ac6",
+  "binding_sha256": "275c64b7b08bd205a55693222457d10edd50c26ab6ec44696eaa76994f317dca",
+  "source_hashes": {
+    "NIKE_2023_10K": "6eda66aaebd41093c2e747c9589959fcf6b117e04a9190c284c8a5cb98b31c7d",
+    "ULTABEAUTY_2023Q4_EARNINGS": "247570850559924741f6395318efd960adfb3a23e378522093faad3e01b07269",
+    "WALMART_2018_10K": "923deef38fead717880b0a36577da5764f47678987e8398b007113a7422eba70"
+  },
+  "original_hashes": {
+    "NIKE_2023_10K": "51f5a0fc6ede20de4f5cfdeae8791a57bdd65c95db2ceb263eb120696ff90172",
+    "ULTABEAUTY_2023Q4_EARNINGS": "c7df6210a627042e231c9579982648a43f3ff8b630b4020540330c2a85e0d781",
+    "WALMART_2018_10K": "661512df698c895a4a5ab3d4ab879fd8ffc8f17a9038e27bcb208401982b6c15"
+  },
+  "dataset_revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+  "retrieval_version": "bm25-v2",
+  "fixed_k": [
+    1,
+    3,
+    5
+  ],
+  "task_denominator": 3,
+  "retrieval_interpretation": {
+    "page_coverage_basis": "full passage start/end lines mapped to original pages",
+    "query_focused_snippet_content_evaluated": false
+  },
+  "concordance_method": "Case-sensitive exact containment after whitespace normalization within one full extracted original page; numeric token matches alone do not qualify.",
+  "summary": {
+    "top_1": {
+      "pooled_expected_page_recall": 0.25,
+      "macro_task_expected_page_recall": 0.3333333333333333,
+      "all_required_pages_task_rate": 0.3333333333333333
+    },
+    "top_3": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    },
+    "top_5": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    }
+  },
+  "tasks": [
+    {
+      "id": "financebench_id_06247",
+      "reference_flags": {
+        "unresolved": false,
+        "requires_review": false,
+        "reference_issues": [],
+        "diagnostic_only": true
+      },
+      "expected_distinct_page_keys": [
+        {
+          "source_id": "WALMART_2018_10K",
+          "page": 57
+        },
+        {
+          "source_id": "WALMART_2018_10K",
+          "page": 59
+        }
+      ],
+      "expected_distinct_page_count": 2,
+      "retrieval": {
+        "top_1": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 31
+            }
+          ],
+          "expected_pages_retrieved": [],
+          "expected_page_recall": 0.0,
+          "all_required_pages_retrieved": false
+        },
+        "top_3": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 31
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 234
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 273
+            }
+          ],
+          "expected_pages_retrieved": [],
+          "expected_page_recall": 0.0,
+          "all_required_pages_retrieved": false
+        },
+        "top_5": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 27
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 31
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 49
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 234
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 273
+            }
+          ],
+          "expected_pages_retrieved": [],
+          "expected_page_recall": 0.0,
+          "all_required_pages_retrieved": false
+        }
+      },
+      "retrieved_hits": [
+        {
+          "rank": 1,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L1168-L1199",
+          "start_line": 1168,
+          "end_line": 1199,
+          "snippet_locator": "L1193-L1197",
+          "original_location": {
+            "page": 31
+          },
+          "passage_original_locations": [
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            },
+            {
+              "page": 31
+            }
+          ],
+          "passage_pages": [
+            31
+          ],
+          "score": 23.6879
+        },
+        {
+          "rank": 2,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L7874-L7902",
+          "start_line": 7874,
+          "end_line": 7902,
+          "snippet_locator": "L7886-L7892",
+          "original_location": {
+            "page": 234
+          },
+          "passage_original_locations": [
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            },
+            {
+              "page": 234
+            }
+          ],
+          "passage_pages": [
+            234
+          ],
+          "score": 21.7216
+        },
+        {
+          "rank": 3,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L8962-L8985",
+          "start_line": 8962,
+          "end_line": 8985,
+          "snippet_locator": "L8964-L8972",
+          "original_location": {
+            "page": 273
+          },
+          "passage_original_locations": [
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            },
+            {
+              "page": 273
+            }
+          ],
+          "passage_pages": [
+            273
+          ],
+          "score": 21.1736
+        },
+        {
+          "rank": 4,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L1927-L1958",
+          "start_line": 1927,
+          "end_line": 1958,
+          "snippet_locator": "L1939-L1945",
+          "original_location": {
+            "page": 49
+          },
+          "passage_original_locations": [
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            },
+            {
+              "page": 49
+            }
+          ],
+          "passage_pages": [
+            49
+          ],
+          "score": 20.6258
+        },
+        {
+          "rank": 5,
+          "id": "NIKE_2023_10K",
+          "source_id": "NIKE_2023_10K",
+          "locator": "L1270-L1301",
+          "start_line": 1270,
+          "end_line": 1301,
+          "snippet_locator": "L1276-L1282",
+          "original_location": {
+            "page": 27
+          },
+          "passage_original_locations": [
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            },
+            {
+              "page": 27
+            }
+          ],
+          "passage_pages": [
+            27
+          ],
+          "score": 20.4189
+        }
+      ],
+      "evidence_text_concordance": [
+        {
+          "source_id": "WALMART_2018_10K",
+          "page": 57,
+          "evidence_sha256": "68bf19bba8483785a1c5e5ad57fa169035ae7d106454577b936fcdbc9c64a65c",
+          "evidence_char_count": 1289,
+          "status": "not_found",
+          "exact_text_found": false
+        },
+        {
+          "source_id": "WALMART_2018_10K",
+          "page": 59,
+          "evidence_sha256": "c6d607a66c0105d942b962941090ea38e75e47591193917f0fd1c2b8e3c81ed6",
+          "evidence_char_count": 1628,
+          "status": "found",
+          "exact_text_found": true
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01163",
+      "reference_flags": {
+        "unresolved": false,
+        "requires_review": false,
+        "reference_issues": [],
+        "diagnostic_only": true
+      },
+      "expected_distinct_page_keys": [
+        {
+          "source_id": "NIKE_2023_10K",
+          "page": 62
+        }
+      ],
+      "expected_distinct_page_count": 1,
+      "retrieval": {
+        "top_1": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 41
+            }
+          ],
+          "expected_pages_retrieved": [],
+          "expected_page_recall": 0.0,
+          "all_required_pages_retrieved": false
+        },
+        "top_3": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 62
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 41
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 62
+            }
+          ],
+          "expected_pages_retrieved": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 62
+            }
+          ],
+          "expected_page_recall": 1.0,
+          "all_required_pages_retrieved": true
+        },
+        "top_5": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 62
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 40
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 41
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 62
+            }
+          ],
+          "expected_pages_retrieved": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 62
+            }
+          ],
+          "expected_page_recall": 1.0,
+          "all_required_pages_retrieved": true
+        }
+      },
+      "retrieved_hits": [
+        {
+          "rank": 1,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L1580-L1611",
+          "start_line": 1580,
+          "end_line": 1611,
+          "snippet_locator": "L1582-L1584",
+          "original_location": {
+            "page": 41
+          },
+          "passage_original_locations": [
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            },
+            {
+              "page": 41
+            }
+          ],
+          "passage_pages": [
+            41
+          ],
+          "score": 29.5219
+        },
+        {
+          "rank": 2,
+          "id": "NIKE_2023_10K",
+          "source_id": "NIKE_2023_10K",
+          "locator": "L2582-L2604",
+          "start_line": 2582,
+          "end_line": 2604,
+          "snippet_locator": "L2583-L2585",
+          "original_location": {
+            "page": 62
+          },
+          "passage_original_locations": [
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            }
+          ],
+          "passage_pages": [
+            62
+          ],
+          "score": 25.2064
+        },
+        {
+          "rank": 3,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L2334-L2355",
+          "start_line": 2334,
+          "end_line": 2355,
+          "snippet_locator": "L2334-L2336",
+          "original_location": {
+            "page": 62
+          },
+          "passage_original_locations": [
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            }
+          ],
+          "passage_pages": [
+            62
+          ],
+          "score": 23.5386
+        },
+        {
+          "rank": 4,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L1555-L1579",
+          "start_line": 1555,
+          "end_line": 1579,
+          "snippet_locator": "L1563-L1568",
+          "original_location": {
+            "page": 40
+          },
+          "passage_original_locations": [
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            },
+            {
+              "page": 40
+            }
+          ],
+          "passage_pages": [
+            40
+          ],
+          "score": 22.5297
+        },
+        {
+          "rank": 5,
+          "id": "NIKE_2023_10K",
+          "source_id": "NIKE_2023_10K",
+          "locator": "L2558-L2589",
+          "start_line": 2558,
+          "end_line": 2589,
+          "snippet_locator": "L2583-L2585",
+          "original_location": {
+            "page": 62
+          },
+          "passage_original_locations": [
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            },
+            {
+              "page": 62
+            }
+          ],
+          "passage_pages": [
+            62
+          ],
+          "score": 21.9275
+        }
+      ],
+      "evidence_text_concordance": [
+        {
+          "source_id": "NIKE_2023_10K",
+          "page": 62,
+          "evidence_sha256": "72a8d74bd01ef05eab3ee6768090f1f0281a469669cb343ea218514127c5c3a0",
+          "evidence_char_count": 2059,
+          "status": "not_found",
+          "exact_text_found": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00601",
+      "reference_flags": {
+        "unresolved": false,
+        "requires_review": false,
+        "reference_issues": [],
+        "diagnostic_only": true
+      },
+      "expected_distinct_page_keys": [
+        {
+          "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "page": 2
+        }
+      ],
+      "expected_distinct_page_count": 1,
+      "retrieval": {
+        "top_1": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            }
+          ],
+          "expected_pages_retrieved": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            }
+          ],
+          "expected_page_recall": 1.0,
+          "all_required_pages_retrieved": true
+        },
+        "top_3": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 174
+            }
+          ],
+          "expected_pages_retrieved": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            }
+          ],
+          "expected_page_recall": 1.0,
+          "all_required_pages_retrieved": true
+        },
+        "top_5": {
+          "retrieved_distinct_page_keys": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 39
+            },
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 150
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 174
+            }
+          ],
+          "expected_pages_retrieved": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            }
+          ],
+          "expected_page_recall": 1.0,
+          "all_required_pages_retrieved": true
+        }
+      },
+      "retrieved_hits": [
+        {
+          "rank": 1,
+          "id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "locator": "L62-L84",
+          "start_line": 62,
+          "end_line": 84,
+          "snippet_locator": "L75-L82",
+          "original_location": {
+            "page": 2
+          },
+          "passage_original_locations": [
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            }
+          ],
+          "passage_pages": [
+            2
+          ],
+          "score": 14.5505
+        },
+        {
+          "rank": 2,
+          "id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "locator": "L38-L69",
+          "start_line": 38,
+          "end_line": 69,
+          "snippet_locator": "L46-L54",
+          "original_location": {
+            "page": 2
+          },
+          "passage_original_locations": [
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            },
+            {
+              "page": 2
+            }
+          ],
+          "passage_pages": [
+            2
+          ],
+          "score": 13.6076
+        },
+        {
+          "rank": 3,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L6220-L6251",
+          "start_line": 6220,
+          "end_line": 6251,
+          "snippet_locator": "L6237-L6243",
+          "original_location": {
+            "page": 174
+          },
+          "passage_original_locations": [
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            },
+            {
+              "page": 174
+            }
+          ],
+          "passage_pages": [
+            174
+          ],
+          "score": 13.236
+        },
+        {
+          "rank": 4,
+          "id": "NIKE_2023_10K",
+          "source_id": "NIKE_2023_10K",
+          "locator": "L1684-L1713",
+          "start_line": 1684,
+          "end_line": 1713,
+          "snippet_locator": "L1708-L1709",
+          "original_location": {
+            "page": 39
+          },
+          "passage_original_locations": [
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            },
+            {
+              "page": 39
+            }
+          ],
+          "passage_pages": [
+            39
+          ],
+          "score": 12.0966
+        },
+        {
+          "rank": 5,
+          "id": "WALMART_2018_10K",
+          "source_id": "WALMART_2018_10K",
+          "locator": "L5173-L5204",
+          "start_line": 5173,
+          "end_line": 5204,
+          "snippet_locator": "L5193-L5193",
+          "original_location": {
+            "page": 150
+          },
+          "passage_original_locations": [
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            },
+            {
+              "page": 150
+            }
+          ],
+          "passage_pages": [
+            150
+          ],
+          "score": 12.0365
+        }
+      ],
+      "evidence_text_concordance": [
+        {
+          "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "page": 2,
+          "evidence_sha256": "50ba592f2901bde41ded267c468650eec2398536fc0dadb6ae4969e8feb85ada",
+          "evidence_char_count": 1331,
+          "status": "found",
+          "exact_text_found": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Gold annotations may be incomplete; unresolved reference flags are diagnostics, not correctness claims.",
+    "Exact-text concordance is case-sensitive after whitespace normalization and is sensitive to extraction quality.",
+    "Page recall measures passage page coverage, not answer correctness, semantic entailment, sufficient evidence, or agent completion.",
+    "Query-focused snippets are not used as full-passage page coverage, and a page hit does not imply the snippet contains the answer.",
+    "No OCR completeness, chart interpretation, table geometry, or semantic-completeness claim is made."
+  ]
+}

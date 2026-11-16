@@ -34,6 +34,24 @@ The HTML sidecar currently retains geometry but does not resolve semantic header
 [W3C header relationships](https://www.w3.org/WAI/tutorials/tables/multi-level/),
 [GriTS topology/content/location distinction](https://arxiv.org/abs/2203.12555).
 
-A source-retrieval diagnostic is being implemented with fixed question-only queries,
-top-five retrieval, original-page evidence concordance, and exact corpus bindings.
+The offline source diagnostic now uses fixed question-only queries, top-five
+retrieval, original-page evidence concordance, and exact corpus bindings. Binding
+v2 hashes the complete source manifest as well as originals/text, so page mappings
+cannot change silently. The newly assembled v2 corpus has identical original and
+text hashes to v1 and records Nike's 87 warnings; other PDFs recorded none.
+
+[Baseline result](retrieval-baseline.json): top-one pooled annotated-page recall
+1/4; top-three and top-five 2/4. Complete annotated-page coverage is 1/3 tasks at
+one hit and 2/3 at three/five hits. Walmart's required pages 57 and 59 were both
+missed in the top five. Nike page 62 and Ulta page 2 were reached. This is a
+three-task development diagnostic, not general retrieval accuracy or evidence
+sufficiency, and measures passage pages rather than snippet contents.
+
+Exact whitespace-normalized evidence concordance is 2/4 excerpts. Examination
+shows the two nonmatches contain dashes retained by extraction but absent from
+the benchmark excerpt: Walmart adds two dash placeholders; Nike retains dash
+punctuation/placeholders and additional page content. These exact-match failures
+therefore do not by themselves establish missing financial information. The
+metric remains unchanged; visual financial-cell review is still needed.
+
 Gold stays on the evaluation side. Full-agent paid execution remains disabled.

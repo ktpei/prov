@@ -78,10 +78,13 @@ def build_corpus(bundle, metadata_path, metadata_source, output):
         ingest({"sources": specs}, output)
     verified = Sources(output)
     binding = {
-        "version": "financebench-full-documents-v1",
+        "version": "financebench-full-documents-v2",
         "prepared_sha256": identity,
         "document_metadata_sha256": source["sha256"],
         "dataset_revision": source["revision"],
+        "sources_manifest_sha256": hashlib.sha256(
+            (output / "sources.json").read_bytes()
+        ).hexdigest(),
         "source_ids": selected,
         "source_hashes": {key: doc["sha256"] for key, doc in verified.documents.items()},
         "original_hashes": {key: doc["original_sha256"] for key, doc in verified.documents.items()},

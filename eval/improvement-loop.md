@@ -150,3 +150,17 @@ ConvFinQA both conditions scored 6/9 turns and 0/2 whole conversations.
 Cost $0.0290532; remaining authorization $0.5185807. Source-level annotation and
 scale review remains separate from these fixed scores. See the
 [report](reports/expansion-pilot-2026-11-16/report.md).
+
+## Cycle 7 — source-quality separation
+
+- PDF diagnostics now preserve warning counts/samples per page and package versions.
+  Five Nike font-risk pages produced identical text with/without fontTools 4.68.0;
+  warnings fell87→0. No extraction improvement or dependency promotion is claimed.
+- FinanceBench corpus binding v2 hashes the complete source manifest, preventing
+  silent page-map changes. Three-document v2 originals/text match the prior corpus.
+- Question-only top-five retrieval reached2/4 annotated pages and covered2/3 tasks;
+  the Walmart task missed both required pages. Exact excerpt concordance2/4 reflects
+  retained dash characters in the two nonmatches, not proven missing information.
+- Four evaluator-only table fixtures bind source/table/period/scale/sign roles.
+  Hidden HTML text and dropped explicit headers are being repaired separately.
+  No additional paid inference or original holdout access.
