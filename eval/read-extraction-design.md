@@ -48,12 +48,13 @@ legacy/unknown metadata, malformed records and direct/tool error handling. Indep
 review identified contradictory-page and null-mapping cases; both were fixed and
 verified before acceptance.
 
-No compact-mode cohort result is claimed yet. The [controlled wrapper](assessments/financebench-compact-read-v1/progress.md)
-is implemented with synthetic verification; its separately frozen comparison must
-bind this option and the new runtime, verify default-response compatibility against
-saved responses, and keep the six-case denominator, existing annotations, questions,
-read windows and context policies fixed. Historical experiment protocols remain
-bound to their original runtime; do not rewrite them to accept the new code.
+The [frozen six-case assessment](assessments/financebench-compact-read-v1/report.md)
+now verifies exact default-response compatibility, unchanged evidence and global
+metadata, and exact replay in both modes. Compact metadata removes all blocked
+projections and reduces read output characters 76.05%, while complete evidence
+coverage stays 0/6, 0/6 and 1/6. This is a development diagnostic, not fresh financial
+validation. Historical protocols remain bound to their original runtime and were
+not rewritten to accept the new code.
 
 This projection is not a universal serialized-response size bound: global warning
 metadata remains complete, and evidence text/escaping can still be large. It does

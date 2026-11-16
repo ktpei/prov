@@ -1,0 +1,163 @@
+{
+  "version": "compact-read-grade-v1",
+  "protocol_sha256": "9a3651ff6d292f9dbc9b58e7a5c6d5a08815e2eefee05ec5960bc18cca1aeb37",
+  "status": "complete",
+  "conditions": {
+    "full-v1": {
+      "grade_sha256": "d99c175326676785853c8cc0b22177f1982288b49ddaee477a37a84d6adfc616",
+      "selected_denominator": 6,
+      "operations": {
+        "completed_cases": 6,
+        "search_calls": 6,
+        "read_attempts": 30,
+        "failed_reads": 0,
+        "truncated_reads": 0,
+        "replay_search_calls": 6,
+        "replay_read_attempts": 30
+      },
+      "priority_paired": {
+        "top_1": {
+          "wins": 0,
+          "losses": 0,
+          "ties": 6
+        },
+        "top_3": {
+          "wins": 0,
+          "losses": 0,
+          "ties": 6
+        },
+        "top_5": {
+          "wins": 0,
+          "losses": 0,
+          "ties": 6
+        }
+      },
+      "policies": {
+        "production-newest-first": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 4
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 5
+          },
+          "top_5": {
+            "complete_count": 1,
+            "blocked_count": 5
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 4
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 5
+          },
+          "top_5": {
+            "complete_count": 1,
+            "blocked_count": 5
+          }
+        }
+      }
+    },
+    "pdf-returned-pages-v1": {
+      "grade_sha256": "6f0fd2b5db2fd03a56ba3bbb53ca22c4c04d5c0dfc0a792f09b18f98cb3cd1b9",
+      "selected_denominator": 6,
+      "operations": {
+        "completed_cases": 6,
+        "search_calls": 6,
+        "read_attempts": 30,
+        "failed_reads": 0,
+        "truncated_reads": 0,
+        "replay_search_calls": 6,
+        "replay_read_attempts": 30
+      },
+      "priority_paired": {
+        "top_1": {
+          "wins": 0,
+          "losses": 0,
+          "ties": 6
+        },
+        "top_3": {
+          "wins": 0,
+          "losses": 0,
+          "ties": 6
+        },
+        "top_5": {
+          "wins": 0,
+          "losses": 0,
+          "ties": 6
+        }
+      },
+      "policies": {
+        "production-newest-first": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 0
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 0
+          },
+          "top_5": {
+            "complete_count": 1,
+            "blocked_count": 0
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 0
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 0
+          },
+          "top_5": {
+            "complete_count": 1,
+            "blocked_count": 0
+          }
+        }
+      }
+    }
+  },
+  "metadata_paired": {
+    "production-newest-first": {
+      "top_1": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_3": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_5": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      }
+    },
+    "earlier-optional-results-first-v1": {
+      "top_1": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_3": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_5": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      }
+    }
+  }
+}

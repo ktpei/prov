@@ -13,7 +13,9 @@ Independent review found immediate file/object binding and Boolean/integer compa
 gaps; regression tests cover the fixes, and re-review accepted the wrapper with
 no remaining blockers. All 342 repository tests and lint pass.
 
-No new real cohort calls or compact-mode outcome have occurred. Exact protocol
-freeze and independent review acceptance precede execution. The six selected cases,
+[Frozen execution](report.md) is complete: current full mode exactly reproduces
+historical outcomes, and compact mode eliminates all blocked projections under
+both priority policies. Read-response characters fall 76.05%; complete coverage
+remains 0/6, 0/6 and 1/6. The metadata-only contract and both replays pass. The six selected cases,
 existing annotations, both priority policies and 32K character budget stay fixed.
 This is development diagnostics, not a fresh or financially adjudicated benchmark.

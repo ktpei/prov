@@ -1,0 +1,114 @@
+{
+  "protocol_sha256": "9a3651ff6d292f9dbc9b58e7a5c6d5a08815e2eefee05ec5960bc18cca1aeb37",
+  "runtime_sha256": "d03c97e213a5ffac7670221d7c2c411eb016fb71637f077a60e93a49103149e5",
+  "bound_files_verified": 32,
+  "historical_default_compatible": true,
+  "cases": 6,
+  "modes": {
+    "full-v1": {
+      "read_chars": 1045305,
+      "search_chars": 32850,
+      "policies": {
+        "production-newest-first": {
+          "top_1": {
+            "complete": 0,
+            "blocked": 4
+          },
+          "top_3": {
+            "complete": 0,
+            "blocked": 5
+          },
+          "top_5": {
+            "complete": 1,
+            "blocked": 5
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "complete": 0,
+            "blocked": 4
+          },
+          "top_3": {
+            "complete": 0,
+            "blocked": 5
+          },
+          "top_5": {
+            "complete": 1,
+            "blocked": 5
+          }
+        }
+      },
+      "journal_events": {
+        "plan": 6,
+        "started": 30,
+        "result": 30,
+        "complete": 6
+      },
+      "operations": {
+        "completed_cases": 6,
+        "search_calls": 6,
+        "read_attempts": 30,
+        "failed_reads": 0,
+        "truncated_reads": 0,
+        "replay_search_calls": 6,
+        "replay_read_attempts": 30
+      },
+      "semantic_correctness": "not_measured",
+      "saved_replay_verified": true
+    },
+    "pdf-returned-pages-v1": {
+      "read_chars": 250316,
+      "search_chars": 32850,
+      "policies": {
+        "production-newest-first": {
+          "top_1": {
+            "complete": 0,
+            "blocked": 0
+          },
+          "top_3": {
+            "complete": 0,
+            "blocked": 0
+          },
+          "top_5": {
+            "complete": 1,
+            "blocked": 0
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "complete": 0,
+            "blocked": 0
+          },
+          "top_3": {
+            "complete": 0,
+            "blocked": 0
+          },
+          "top_5": {
+            "complete": 1,
+            "blocked": 0
+          }
+        }
+      },
+      "journal_events": {
+        "plan": 6,
+        "started": 30,
+        "result": 30,
+        "complete": 6
+      },
+      "operations": {
+        "completed_cases": 6,
+        "search_calls": 6,
+        "read_attempts": 30,
+        "failed_reads": 0,
+        "truncated_reads": 0,
+        "replay_search_calls": 6,
+        "replay_read_attempts": 30
+      },
+      "semantic_correctness": "not_measured",
+      "saved_replay_verified": true
+    }
+  },
+  "search_equal_count": 6,
+  "read_equal_except_extraction_count": 30,
+  "diagnostics_projection_verified_count": 30
+}

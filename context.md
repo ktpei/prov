@@ -22,8 +22,10 @@ attributes 79.53% of read output characters to extraction metadata. The new opt-
 [returned-page projection](eval/read-extraction-design.md) preserves global warnings
 and full-diagnostics provenance while narrowing only response page records.
 Independent review and synthetic checks pass. A [controlled assessment wrapper](eval/assessments/financebench-compact-read-v1/progress.md)
-now checks historical full-mode compatibility before compact dispatch and retains
-exact replay/attribution gates; cohort execution remains pending. Full metadata
+verified historical full-mode compatibility and exact replay in both modes. Compact
+metadata removed all blocked projections and reduced read output characters
+76.05%; complete evidence coverage remained 0/6, 0/6 and 1/6. Operational mode
+integration and missing retrieval components are next. Full metadata
 remains the default.
 All 342 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.

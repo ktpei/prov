@@ -1,0 +1,1000 @@
+{
+  "version": "compact-read-result-receipt-v1",
+  "protocol_sha256": "9a3651ff6d292f9dbc9b58e7a5c6d5a08815e2eefee05ec5960bc18cca1aeb37",
+  "run_root": "runs/financebench-compact-read-v1",
+  "grade_root": "runs/financebench-compact-read-v1-grade",
+  "files_sha256": {
+    "runs/financebench-compact-read-v1/run.json": "c6772ac10c7d463465915a3218f70c39c4f66bf4982bb207cc7a8f7d4bb06749",
+    "runs/financebench-compact-read-v1/full-v1/case-0.jsonl": "bd175df61054d7eededecc2975ef0dc2b058af9239ce2ef6fc428ae309eaa60f",
+    "runs/financebench-compact-read-v1/full-v1/case-1.jsonl": "0647878e45b23601d15802a5d4def3e88be8cf39dc1b77f9d82f8bc2438815a4",
+    "runs/financebench-compact-read-v1/full-v1/case-2.jsonl": "bf75376d0898b1858c8ce7c2ca294d2dc2454948629e410af5fbdb293e4756ef",
+    "runs/financebench-compact-read-v1/full-v1/case-3.jsonl": "582e474a226d467576ce7942fa445d204dc1eeddfa1c1cbd0c8feee182fdfbad",
+    "runs/financebench-compact-read-v1/full-v1/case-4.jsonl": "5bd93f6a355ada5293466b8efab3640313c4ccb46e7c3ba78f298d8b24e7edc7",
+    "runs/financebench-compact-read-v1/full-v1/case-5.jsonl": "15e9ab8624def69952d521e51dd2f28259fb0ce6dcf10edbf7944cc44ccb70d1",
+    "runs/financebench-compact-read-v1/full-v1/run.json": "5763ae88787cb2114361254a37006e44a64de05fe4b1c0eba6abedd48c82b41b",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/case-0.jsonl": "aeba0aab51e62694b9ec0667d1af5b97b5cbc5330c929b89c1d6728056f3491d",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/case-1.jsonl": "264ebc9042ea390446bab7d71d59d13992aecbdf8115c3838aab5c6fa57e7be5",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/case-2.jsonl": "e98fa88d5b4c682279845d9391fe87d93ac7d354130daff537e2b3343e6a3c26",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/case-3.jsonl": "fdc535a15cf3a3ea12703ff522b48d3b28aa1ebfcf495814a619cc641503c840",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/case-4.jsonl": "b375aef9262cdd971dab7f9a5e25c33a6094aff0339d34f9ef5922c814d8b726",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/case-5.jsonl": "90ddcd994bdf896616ee256ed1ba7710d7d358bf3fdc484deb1ae5aba0adac2b",
+    "runs/financebench-compact-read-v1/pdf-returned-pages-v1/run.json": "36678f6c463203363929845691570f6483ee79babeaf816044437ec90754ac1b",
+    "runs/financebench-compact-read-v1-grade/full-v1.json": "d99c175326676785853c8cc0b22177f1982288b49ddaee477a37a84d6adfc616",
+    "runs/financebench-compact-read-v1-grade/pdf-returned-pages-v1.json": "6f0fd2b5db2fd03a56ba3bbb53ca22c4c04d5c0dfc0a792f09b18f98cb3cd1b9",
+    "runs/financebench-compact-read-v1-grade/summary.json": "bfc7a066b4d9769c6f80480288e048457bbde6245e5024e98f37e339077f838d"
+  },
+  "characters": {
+    "full-v1": {
+      "total_read_output_characters": 1045305,
+      "min_read": 19624,
+      "max_read": 50152,
+      "cases": [
+        {
+          "id": "financebench_id_04209",
+          "read_output_characters": 100711,
+          "min_read": 19624,
+          "max_read": 20495,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 24560,
+                "characters_after": 24560,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 64783,
+                "characters_after": 25299,
+                "retained_read_ranks": [
+                  3
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 105647,
+                "characters_after": 26213,
+                "retained_read_ranks": [
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 24560,
+                "characters_after": 24560,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 64783,
+                "characters_after": 25299,
+                "retained_read_ranks": [
+                  3
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 105647,
+                "characters_after": 26213,
+                "retained_read_ranks": [
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_04254",
+          "read_output_characters": 193833,
+          "min_read": 33522,
+          "max_read": 40590,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 45484,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 119450,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 199714,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 45484,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 119450,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 199714,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_00215",
+          "read_output_characters": 143846,
+          "min_read": 26329,
+          "max_read": 32920,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 31620,
+                "characters_after": 31620,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 92541,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 148929,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 31620,
+                "characters_after": 31620,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 92541,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 148929,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_03473",
+          "read_output_characters": 197621,
+          "min_read": 37964,
+          "max_read": 42020,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 44973,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 122884,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 202868,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 44973,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 122884,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 202868,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_01865",
+          "read_output_characters": 249110,
+          "min_read": 49442,
+          "max_read": 50152,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 56298,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 155892,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 255417,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 56298,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 155892,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 255417,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_00711",
+          "read_output_characters": 160184,
+          "min_read": 30540,
+          "max_read": 33406,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 35936,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 100098,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 165580,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "blocked",
+                "characters_before": 35936,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_3": {
+                "status": "blocked",
+                "characters_before": 100098,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "top_5": {
+                "status": "blocked",
+                "characters_before": 165580,
+                "characters_after": null,
+                "retained_read_ranks": [],
+                "omitted_read_ranks": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "pdf-returned-pages-v1": {
+      "total_read_output_characters": 250316,
+      "min_read": 4137,
+      "max_read": 13002,
+      "cases": [
+        {
+          "id": "financebench_id_04209",
+          "read_output_characters": 41179,
+          "min_read": 7716,
+          "max_read": 8589,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 12652,
+                "characters_after": 12652,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 29063,
+                "characters_after": 29063,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 46115,
+                "characters_after": 30445,
+                "retained_read_ranks": [
+                  3,
+                  4,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 12652,
+                "characters_after": 12652,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 29063,
+                "characters_after": 29063,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 46115,
+                "characters_after": 29977,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  3,
+                  4
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_04254",
+          "read_output_characters": 46909,
+          "min_read": 4137,
+          "max_read": 11206,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 16099,
+                "characters_after": 16099,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 31295,
+                "characters_after": 31295,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 52790,
+                "characters_after": 31929,
+                "retained_read_ranks": [
+                  3,
+                  4,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 16099,
+                "characters_after": 16099,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 31295,
+                "characters_after": 31295,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 52790,
+                "characters_after": 31858,
+                "retained_read_ranks": [
+                  1,
+                  3,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  2,
+                  4
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_00215",
+          "read_output_characters": 44252,
+          "min_read": 6411,
+          "max_read": 13002,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 11700,
+                "characters_after": 11700,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 32783,
+                "characters_after": 26361,
+                "retained_read_ranks": [
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 49335,
+                "characters_after": 30108,
+                "retained_read_ranks": [
+                  3,
+                  4,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 11700,
+                "characters_after": 11700,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 32783,
+                "characters_after": 19978,
+                "retained_read_ranks": [
+                  1,
+                  3
+                ],
+                "omitted_read_ranks": [
+                  2
+                ]
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 49335,
+                "characters_after": 30316,
+                "retained_read_ranks": [
+                  1,
+                  3,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  2,
+                  4
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_03473",
+          "read_output_characters": 37170,
+          "min_read": 5873,
+          "max_read": 9930,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 12883,
+                "characters_after": 12883,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 26614,
+                "characters_after": 26614,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 42417,
+                "characters_after": 27373,
+                "retained_read_ranks": [
+                  3,
+                  4,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 12883,
+                "characters_after": 12883,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 26614,
+                "characters_after": 26614,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 42417,
+                "characters_after": 26956,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  3,
+                  4
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_01865",
+          "read_output_characters": 42638,
+          "min_read": 8148,
+          "max_read": 8858,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 15004,
+                "characters_after": 15004,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 32010,
+                "characters_after": 23505,
+                "retained_read_ranks": [
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": [
+                  1
+                ]
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 48945,
+                "characters_after": 31774,
+                "retained_read_ranks": [
+                  2,
+                  4,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  3
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 15004,
+                "characters_after": 15004,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 32010,
+                "characters_after": 24054,
+                "retained_read_ranks": [
+                  1,
+                  3
+                ],
+                "omitted_read_ranks": [
+                  2
+                ]
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 48945,
+                "characters_after": 24295,
+                "retained_read_ranks": [
+                  1,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  2,
+                  3,
+                  4
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "financebench_id_00711",
+          "read_output_characters": 38168,
+          "min_read": 6137,
+          "max_read": 9004,
+          "conditions": {
+            "production-newest-first": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 11533,
+                "characters_after": 11533,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 26890,
+                "characters_after": 26890,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 43564,
+                "characters_after": 31484,
+                "retained_read_ranks": [
+                  3,
+                  4,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "earlier-optional-results-first-v1": {
+              "top_1": {
+                "status": "projected",
+                "characters_before": 11533,
+                "characters_after": 11533,
+                "retained_read_ranks": [
+                  1
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_3": {
+                "status": "projected",
+                "characters_before": 26890,
+                "characters_after": 26890,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  3
+                ],
+                "omitted_read_ranks": []
+              },
+              "top_5": {
+                "status": "projected",
+                "characters_before": 43564,
+                "characters_after": 26496,
+                "retained_read_ranks": [
+                  1,
+                  2,
+                  5
+                ],
+                "omitted_read_ranks": [
+                  3,
+                  4
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "read_output_character_reduction_fraction": 0.7605330501623928,
+  "independent_audit_sha256": "bee40dc9669365e0dad24784871524391558f16ca3c7b466a401f715ddb48a3f"
+}
