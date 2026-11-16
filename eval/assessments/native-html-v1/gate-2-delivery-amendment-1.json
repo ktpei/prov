@@ -1,0 +1,33 @@
+{
+  "schema_version": "native-html-assessment-gate-v1",
+  "assessment_id": "native-html-v1",
+  "stage": "acquisition_amendment_1",
+  "previous_gate_sha256": "1ea5ffb1eefa075aaf2d18dc81ce2cc02ed3ff29938dceafc9ba31af3e1a5d70",
+  "original_implementation_gate_sha256": "93898882dc472661582f4441d71d23b5b65d2f44c59386f924a241eb21aa168b",
+  "implementation_revision": "41bcd2faa3d842b641a6477a212ba7d453f9a534",
+  "runtime_sha256": "b5326b106fd1f414f3c03a0fa3b81835d40d059bba4f9563acbd0aa168d729df",
+  "runtime_changes": [
+    {
+      "path": "eval/scripts/acquire_native_html.py",
+      "sha256": "8c1b6f4ebd98d37ebb79dbddd8f2ba1d13c4b46c0a5a0df16dc160ba5a2e5efe",
+      "bytes": 14645
+    }
+  ],
+  "unchanged_runtime_files_verified": 38,
+  "selection_sha256": "d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4",
+  "delivery_policy_sha256": "dff9308cd6c40f73b7906a650191f3e04af9674411eb2be8df94c55f63bb248a",
+  "prior_receipt_sha256": "3c59e8ba7153d2676ba92e8477c7b6befde1fc187a0f31b4b53de6166d8a21dd",
+  "request_count": 6,
+  "attempt_limit_per_route": 1,
+  "automatic_retries": false,
+  "redirects": false,
+  "declared_condition": "Issuer-published native HTML copies; no SEC-byte-equivalence claim; not a replacement for the failed SEC-original condition.",
+  "unchanged_policies": [
+    "Same six selected filing identities",
+    "Same retrieval/search/read/grade/HTML-text/sidecar code",
+    "Same24plannedslots and separateavailabilitycontrols; no questionsorlabelscreated",
+    "No failedcase replacement ordefaultpromotion"
+  ],
+  "temporal_scope": "SEC acceptance bounds do not automatically transfer to issuer copies. Acquisition observation only concerns actual delivery bytes/location.",
+  "exposure": "Root and metadataresearchchat inspected link metadata only; no new financial answer cells or retrieval outputs."
+}
