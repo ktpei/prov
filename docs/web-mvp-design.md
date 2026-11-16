@@ -100,7 +100,7 @@ that to the full web MVP workflow in [spec.md](../spec.md#later-interface-workfl
 - **`ChatSources(Sources)`** adds two tools when a workbook snapshot is attached:
   - `read_workbook_range(sheet, range)` — ≤ 200 cells; returns address, display
     value, formula text (if any) and whether the value is a cached formula result.
-  - `propose_cell_edit(sheet, cell, new_value | new_formula, rationale, citations)`
+  - `propose_cell_edits(edits[])` — one call carries up to 10 edits, each `(sheet, cell, new_content, rationale, citations)` (batched after dogfood round 5 so proposals fit the 10-tool budget)
     — validates the target address and that each evidence citation passes
     `check_citation` (so evidence must already be read); records old value and
     formula; returns `pending_human_approval`. It writes nothing.
