@@ -27,6 +27,20 @@ House rules for agents in this repo. These override default behavior.
   distinguish verified results from plans or assumptions. Respect read-only
   snapshots and the ownership boundaries above.
 
+
+## Evaluation reservations
+
+- Before development selection or source research, consult
+  `eval/assessments/financebench-page-validation-v1/reservation.json` and its
+  `exposure-audit.json`. Keep all six reserved issuers out of development tuning;
+  validation content opens only after the final policy and protocol are frozen.
+- The development exposure registry alone is not an exhaustive issuer history.
+  Include company metadata from `data/corpus/sources.json` and
+  `data/cloudflare-2024-q3/sources.json`, known cross-suite aliases and other
+  reservations. Do not open held-out task/source content to audit these identities.
+- Preserve frozen selection and all six dispositions: Amazon and Microsoft have
+  prior issuer exposure. Do not silently replace them or claim six unseen issuers.
+
 ---
 
 # Behavioral Guidelines

@@ -127,8 +127,10 @@ responses (both legacy and BM25 versions) were byte-identical to commit `495f901
 No cohort query, candidate-pool inspection, PDF acquisition or paid call was made.
 Independent review also verified thirty synthetic default response comparisons.
 A frozen six-response pre-refactor fixture is now checked by the test suite.
-Full lint and all 353 tests pass. A metadata-only validation reservation and a
-hash-bound assessment protocol must precede any development comparison.
+Full lint and all 358 tests pass. The [metadata-only reservation](assessments/financebench-page-validation-v1/progress.md)
+is complete, with two prior-issuer overlaps explicitly retained and all selected
+documents closed. A hash-bound assessment protocol is still required before any
+development comparison.
 The runner must fix Python hash seed before process startup because baseline query
 terms retain set iteration and floating-point summation order; this prototype does
 not change that historical behavior. Physical-page identity is trusted from the
