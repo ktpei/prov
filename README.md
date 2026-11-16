@@ -155,6 +155,11 @@ uses 24 acquired dependencies for the existing ODFL June filing. The subsequent
 its twelve transformation failures while preserving the other 492 records. All 504
 facts pass schema validation; general financial evidence acceptance remains unverified.
 The dependency inventory/acquisition path adds 13 core regression tests.
+The [source-occurrence sidecar](eval/reports/xbrl-occurrences-2026-11-16/report.md)
+accounts for all 504 facts, including 420 exact cell joins and explicit outside-table/
+hidden dispositions. Source locations are bound to the validated runtime; rendered
+visibility and general financial evidence acceptance remain unverified.
+
 
 
 Source ingestion now includes an independent native HTML geometry sidecar,

@@ -96,6 +96,12 @@ initially rejected 12 of 504 facts for absent SEC transforms. A subsequent
 all twelve against independent source expectations, preserves the other 492 records,
 and validates all 504 occurrences. General evidence acceptance remains unverified.
 Thirteen core tests cover reference semantics and bounded-acquisition failures.
+A [source-occurrence bridge](eval/reports/xbrl-occurrences-2026-11-16/report.md) now
+accounts for all 504 facts: 420 exact table-cell joins, 77 outside-table and seven
+hidden dispositions. It preserves nested facts and six continuations and matches
+every occurrence to the frozen runtime observation. Typed-value integration and
+browser visibility remain separate; twelve new core regression tests pass.
+
 
 
 ## Context-priority challenger — 2026-11-16

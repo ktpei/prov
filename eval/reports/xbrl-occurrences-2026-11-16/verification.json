@@ -1,0 +1,17 @@
+{
+  "result_sha256": "8d4ba2e658b08c17323c02dbed33d515e5c2e7102ed72ebca211cdfbe07c12cb",
+  "independent_reproduction_sha256": "8d4ba2e658b08c17323c02dbed33d515e5c2e7102ed72ebca211cdfbe07c12cb",
+  "review": "Independent read-only same-model-family coding-agent verification; not financial validation",
+  "facts_checked": 504,
+  "continuations_checked": 6,
+  "source_elements_aligned": 14413,
+  "exact_cell_joins_checked": 420,
+  "distinct_mapped_cells": 412,
+  "runtime_source_matches": 504,
+  "new_core_tests": 12,
+  "core_tests": 424,
+  "lint": "passed",
+  "test_source_sha256": "cf7e884a8f6c7f2203f6b52faf85a1baca48d9140c1d5fa275fae5485012a029",
+  "review_fixes": "Reject ambiguous HTML/XML geometry and restrict continuation-link source identity; adversarial tests added",
+  "scope": "Original source occurrence identity and positions; no rendered visibility or financial-value export"
+}

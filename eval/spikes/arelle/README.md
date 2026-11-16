@@ -123,8 +123,9 @@ now loads the existing ODFL June original and 24 declared dependencies under OS
 network denial. The initial run rejects 12 missing SEC transforms among 504 facts.
 The [subsequent pinned-plugin comparison](sec-transforms-report.md) resolves those
 twelve values against independent expectations and preserves the other 492 records.
-All 504 facts pass schema validation; full occurrence/source-cell evidence acceptance
-remains the next integration step.
+All 504 facts pass schema validation. The [source-occurrence bridge](../../reports/xbrl-occurrences-2026-11-16/report.md)
+now binds all 504 to original markup, including 420 exact nearest-cell joins.
+Complete typed-value integration and rendered visibility remain separate steps.
 
 ## Remaining acceptance work
 
