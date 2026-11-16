@@ -65,10 +65,11 @@ completeness. Raw artifacts remain under `runs/`.
 The earlier 2/3-versus-0/3 improvement on exposed cases did not reproduce here.
 Do not promote the challenger from this evidence. The source-quality pipeline must
 address both incomplete retrieved evidence and oversized required tool responses.
-Initial inspection of saved responses shows that each read repeats document-wide
-extraction diagnostics, including per-page details. Diagnose those sizes using
-saved responses before defining a separately frozen remedy; do not alter this
-result, its packets or its policies.
+The subsequent [saved-response diagnosis](response-size-report.md) attributes
+79.53% of read output characters to repeated document-wide extraction diagnostics.
+It reproduces every blocked minimum without new tool calls. Define any remedy as
+a separately bound experiment; this result, its packets and its policies remain
+unchanged.
 
 All six packets map source locations, but the [annotation caveats](annotation-report.md)
 remain: 3M's M&A/organic-growth distinction, Coca-Cola's net-income convention and
