@@ -1,5 +1,10 @@
 # Project scope
 
+H2's internal arithmetic kernel is implemented without a new service or dependency.
+It is not yet agent-accessible; admitted-evidence integration, financial compatibility
+and calculation replay remain pending. The [component report](eval/assessments/evidence-calculations-v1/progress.md)
+records numerical verification separately from financial-effectiveness evaluation.
+
 The [next-round harness specification](harness-improvement-spec.md) now defines
 versioned evidence/calculation/answer contracts and benchmark-driven improvement
 within the selected single-agent research scope. Browser and workbook delivery

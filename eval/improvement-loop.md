@@ -51,6 +51,22 @@ The [reference-contract research](harness-reference-contract-research-2026-11-16
 reinforces Decimal and financial-operand validation. H3 must preserve budget and
 deadline exceptions as controller stops rather than repairable tool errors.
 
+## H2 — numerical component, ledger pending
+
+Frozen [protocol](assessments/evidence-calculations-v1/protocol.md) before code;
+independent numerical/financial-contract reviewers clarified internal bounds,
+exact scaling, structural derived metrics and comparison-period identity. The
+kernel is committed at `3b4f4ca`; 12 focused tests and 482 shared-checkout tests
+pass with lint; clean commit `3b4f4ca` passes 469 tests and the same lint/validation
+checks. Review found ambient Decimal flags/exponent formatting could
+alter records; both are fixed with full-record regression coverage.
+
+This is a required component, not H2 completion. No model-facing calculator,
+financial acceptance or accuracy gain is claimed. Next: immutable admitted-evidence
+snapshot, compatibility checks, calculation references/ancestry and independent
+replay. See the [progress report](assessments/evidence-calculations-v1/progress.md).
+No paid calls or heldout content inspection occurred.
+
 ## Repeatable cycle
 
 1. Select one failure class from source QA, scorer adversarial tests, or a declared

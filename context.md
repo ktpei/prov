@@ -2,6 +2,12 @@
 
 ## Active harness improvement goal
 
+H2 progress: the internal bounded Decimal kernel is committed at `3b4f4ca`, with
+12 focused numerical tests and independent review. It is not a model tool and
+does not accept evidence. Financial compatibility, admitted-evidence references,
+calculation chaining and replay remain required before H2 acceptance. See the
+[component report](eval/assessments/evidence-calculations-v1/progress.md).
+
 The user requested a thorough implementation spec and a continuous benchmark-driven
 improvement goal in **Research finance agent harnesses**. The goal is active here;
 the earlier **Improve finance evaluation harness** chat remains paused. Its five

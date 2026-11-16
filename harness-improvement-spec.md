@@ -6,7 +6,9 @@ Status: implementation specification and continuous-improvement operating contra
 Requirements below are intended behavior, not claims that the features exist.
 Implementation status: H0 is committed; H1's opt-in application-input receipts and
 checkpoint v3 are implemented. See its [acceptance report](eval/assessments/model-input-receipts-v1/report.md).
-H2–H6 remain planned; H1 does not establish a financial accuracy improvement.
+H2's internal numerical kernel is implemented; evidence admission, compatibility,
+calculation chaining and replay remain required before H2 acceptance. H3–H6 remain
+planned; H1 and the numerical kernel do not establish financial accuracy improvement.
 The active goal is in **Research finance agent harnesses**. Finishing this document
 or one experiment does not complete that ongoing goal.
 
@@ -227,6 +229,12 @@ digits, parsed exponent and adjusted exponent each within -100 to 100, chain dep
 16, and 12,000 serialized response characters. Reject booleans, malformed decimal
 strings, nonfinite values and results outside bounds atomically. Freeze these
 limits with the calculation policy; changes require a new policy version.
+The frozen [H2 protocol](eval/assessments/evidence-calculations-v1/protocol.md)
+adds a 512-character lexical bound, exact exponent shifts for scale/percent
+constants, canonical uppercase exponent serialization, and separate arithmetic
+versus display flags. Persisted inputs/normalized operands/results obey the stated
+bounds; internal formula intermediates use wider bounds so valid ratios survive.
+Display quantization uses precision 128 to retain valid large fixed-point values.
 
 The coefficient-digit bound applies to the lexical coefficient before normalization;
 validate length and exponent syntax before Decimal construction. Output coefficient
@@ -550,6 +558,15 @@ ordinary completed cycles; report a real dependency when further useful work
 cannot continue rather than claiming completion or silently resetting budgets.
 
 ## 8. Implementation increments and acceptance
+
+Every proposed mechanism must pass a project-fit gate: demonstrated local need,
+smallest sufficient integration, implementation/maintenance effort, added
+dependencies and deployment burden, latency/cost, and comparison with no change
+and a simpler local alternative. Production workload, staffing and user counts
+remain unknown. Prefer compact in-process contracts and targeted tests for the
+current supplied-document, single-agent prototype. Defer service orchestration,
+analyst teams, arbitrary code execution and dynamic discovery without measured
+need; revisit on observed workloads or failures, not speculative scale.
 
 | Increment | Deliverable | Required acceptance | Default behavior |
 | --- | --- | --- | --- |
