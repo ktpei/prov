@@ -71,3 +71,9 @@ unit/period, leakage, or abstention checks. Unrun comparisons remain proposed.
 - Exact requested model remains available. Catalog maximum scheduled rates are
   $0.30/$1.20 per million input/output tokens; pilot accounting will conservatively
   retain the established $0.60/$2.40 rates. No inference occurred during preflight.
+
+- Packet experiment preflight now requires unique task IDs, explicit development
+  labels, and exact source ID/hash equality before provider construction. Its ledger
+  includes the full selection, benchmark hash, and skipped/pending/completed status.
+  Historical task files are unchanged; a new explicitly labeled development manifest
+  is required when an older file lacks split labels.
