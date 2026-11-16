@@ -5,6 +5,7 @@ import io
 import json
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -48,6 +49,38 @@ class AcquisitionTests(unittest.TestCase):
                 ):
                     fetch("test", root / "data", catalog=catalog)
                 self.assertFalse((root / "data").exists())
+
+    def test_archive_and_member_are_independently_pinned(self):
+        member = b'[{"id":"synthetic"}]'
+        zipped = io.BytesIO()
+        with zipfile.ZipFile(zipped, "w") as archive:
+            archive.writestr("data/dev.json", member)
+            archive.writestr("../unwanted", "must never extract arbitrary members")
+        raw = zipped.getvalue()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = {
+                "filename": "dev.json",
+                "url": "https://example.org/data.zip",
+                "download_sha256": hashlib.sha256(raw).hexdigest(),
+                "archive_member": "data/dev.json",
+                "sha256": hashlib.sha256(member).hexdigest(),
+            }
+            catalog = root / "catalog.json"
+            catalog.write_text(json.dumps({"sources": {"test": source}}))
+            with patch("urllib.request.urlopen", return_value=io.BytesIO(raw)):
+                fetch("test", root / "data", catalog=catalog)
+            self.assertEqual((root / "data/dev.json").read_bytes(), member)
+            self.assertEqual((root / "data/original.zip").read_bytes(), raw)
+            self.assertFalse((root / "unwanted").exists())
+            source["sha256"] = "0" * 64
+            catalog.write_text(json.dumps({"sources": {"test": source}}))
+            with (
+                patch("urllib.request.urlopen", return_value=io.BytesIO(raw)),
+                self.assertRaisesRegex(ValueError, "member"),
+            ):
+                fetch("test", root / "bad", catalog=catalog)
+            self.assertFalse((root / "bad").exists())
 
 
 if __name__ == "__main__":

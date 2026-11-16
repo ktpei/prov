@@ -2,8 +2,10 @@
 
 import argparse
 import hashlib
+import io
 import json
 import urllib.request
+import zipfile
 from pathlib import Path
 
 CATALOG = Path(__file__).resolve().parent.parent / "eval/external-sources.json"
@@ -27,10 +29,21 @@ def fetch(name, output, *, catalog=CATALOG):
         raw = response.read(MAX_BYTES + 1)
     if len(raw) > MAX_BYTES:
         raise ValueError("Benchmark download exceeds size limit")
-    if hashlib.sha256(raw).hexdigest() != source["sha256"]:
+    if hashlib.sha256(raw).hexdigest() != source.get("download_sha256", source["sha256"]):
         raise ValueError("Downloaded file does not match pinned SHA256")
+    data = raw
+    if source.get("archive_member"):
+        with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+            info = archive.getinfo(source["archive_member"])
+            if info.file_size > MAX_BYTES:
+                raise ValueError("Archive member exceeds size limit")
+            data = archive.read(info)
+        if hashlib.sha256(data).hexdigest() != source["sha256"]:
+            raise ValueError("Archive member does not match pinned SHA256")
     output.mkdir(parents=True, exist_ok=False)
-    (output / source["filename"]).write_bytes(raw)
+    if source.get("archive_member"):
+        (output / "original.zip").write_bytes(raw)
+    (output / source["filename"]).write_bytes(data)
     (output / "source.json").write_text(json.dumps(source, indent=2) + "\n")
     return source
 

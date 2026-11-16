@@ -41,6 +41,28 @@
       "sha256": "f2ba5573260b19de88bc9546b2684dfe7da6de5e4d40676aa4601962aa331fb9",
       "license": "CC-BY-NC-4.0; review underlying CFA data terms",
       "filename": "CFA-Challenge.parquet"
+    },
+    "tatqa-dev": {
+      "dataset": "tatqa",
+      "subset": "default",
+      "source_split": "dev",
+      "revision": "870accc41953dcde885aabeb963d94aabdc0fbc3",
+      "url": "https://raw.githubusercontent.com/NExTplusplus/TAT-QA/870accc41953dcde885aabeb963d94aabdc0fbc3/dataset_raw/tatqa_dataset_dev.json",
+      "sha256": "8da095a819af6db3c14877c6df2d4d29960e41d1a63dd1fa853507bd2a616af5",
+      "license": "CC-BY-4.0 dataset; MIT code; underlying reports retain their rights",
+      "filename": "tatqa-dev.json"
+    },
+    "convfinqa-dev": {
+      "dataset": "convfinqa",
+      "subset": "default",
+      "source_split": "dev",
+      "revision": "cf3eed2d5984960bf06bb8145bcea5e80b0222a6",
+      "url": "https://raw.githubusercontent.com/czyssrs/ConvFinQA/cf3eed2d5984960bf06bb8145bcea5e80b0222a6/data.zip",
+      "download_sha256": "d764271fae60d81b62e6d58dfc481807ebc8cfbcd633811241723c4a2101072a",
+      "archive_member": "data/dev.json",
+      "sha256": "9665dd60f106e5cd41d37537edac97bbd26eb7629ad63ca2390b19d4619ba51b",
+      "license": "MIT repository; underlying reports retain their rights",
+      "filename": "convfinqa-dev.json"
     }
   }
 }
