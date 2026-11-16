@@ -131,6 +131,11 @@ established. A separately frozen read-attribution diagnostic finds no accepted s
 by either branch; only two cases have adjudicated sets, so this is not a six-case
 retrieval-failure rate. Independent reproduction passed. Frozen scores remain unchanged.
 
+A [context-markup inventory](eval/reports/context-markup-2026-11-16/report.md)
+finds no explicit HTML header links in four exposed sources, but numeric Inline
+XBRL tags in three filings. This prioritizes a typed-context extraction investigation;
+lexical tags are not validated facts. The v3 release-page rejection is retained.
+
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
 `--html-text-version native-html-text-v2` to suppress explicit hidden content and

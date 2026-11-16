@@ -55,6 +55,18 @@ reproduction passed. Historical scores remain unchanged.
 All 399 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
+## Source-context ingestion — 2026-11-16
+
+A [four-source markup inventory](eval/reports/context-markup-2026-11-16/report.md)
+reproduces exactly against existing original hashes. None of the extracted cells
+has `th`, `headers` or `scope` markup; three filings contain 1,016/452/452 lexical
+Inline XBRL numeric tags. These are not validated facts or coverage counts. V3
+rejects the Cloudflare release's raw-text context; that disposition is retained.
+Explicit-header-only implementation is deferred for this cohort. Investigate a
+mature Inline XBRL processor with isolated offline dependencies, diagnostics and
+original-markup provenance before adding typed-context tools. No dependency,
+extractor default, benchmark score or validation content changed.
+
 ## Context-priority challenger — 2026-11-16
 
 [Earlier optional-read preference](eval/reports/context-priority-2026-11-16/report.md)
