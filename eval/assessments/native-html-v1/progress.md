@@ -91,3 +91,18 @@ Both corpora were independently rebuilt offline from their recorded source metad
 manifest/text bytes and parsed sidecars replayed exactly. The frozen plan and
 runtime hashes still match their gates. Lint and all 247 tests passed for the
 frozen implementation.
+
+## Metadata research after partial acquisition
+
+The related source-ingestion chat found no additional issuer route verified as
+original filing HTML. Its Ameren archive-directory inspection found six XBRL
+members in each official ZIP, without the selected primary `.htm`; Casey’s
+quarterly archive led to earnings materials, not another selected 10-Q copy.
+These are bounded negative research findings, not proof that no route exists.
+
+The [submission candidates](submission-candidates.json) record the four unchanged
+accessions' SEC complete-submission containers, based on official filing-index
+metadata and documented archive paths. No submission bodies were requested.
+A future attempt requires a separate freeze, transport/framing checks, exact
+primary-member selection and dual container/member provenance. Access and byte
+equivalence remain unverified. This metadata record is not an acquisition policy.

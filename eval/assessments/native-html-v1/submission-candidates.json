@@ -1,0 +1,67 @@
+{
+  "version": "native-html-submission-candidates-v1",
+  "status": "metadata_research_not_acquisition_policy",
+  "selection_sha256": "d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4",
+  "research_chat": "01a1c30c-3a5d-7811-85bd-725b022bed8a",
+  "research_turn": "01a1e4ac-5236-7ef1-9380-6750b82b7fd4",
+  "submission_requests": 0,
+  "sources": [
+    {
+      "source_id": "caseys-2025-07-31-10q",
+      "accession": "0000726958-25-000101",
+      "cik": "0000726958",
+      "period_end": "2025-07-31",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000101/0000726958-25-000101-index.htm",
+      "expected_filename": "casy-20250731.htm",
+      "expected_document_type": "10-Q",
+      "expected_sequence": 1,
+      "complete_submission_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000101/0000726958-25-000101.txt"
+    },
+    {
+      "source_id": "caseys-2025-10-31-10q",
+      "accession": "0000726958-25-000114",
+      "cik": "0000726958",
+      "period_end": "2025-10-31",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000114/0000726958-25-000114-index.htm",
+      "expected_filename": "casy-20251031.htm",
+      "expected_document_type": "10-Q",
+      "expected_sequence": 1,
+      "complete_submission_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000114/0000726958-25-000114.txt"
+    },
+    {
+      "source_id": "ameren-2025-06-30-10q",
+      "accession": "0001002910-25-000112",
+      "cik": "0001002910",
+      "period_end": "2025-06-30",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000112/0001002910-25-000112-index.htm",
+      "expected_filename": "aee-20250630.htm",
+      "expected_document_type": "10-Q",
+      "expected_sequence": 1,
+      "complete_submission_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000112/0001002910-25-000112.txt"
+    },
+    {
+      "source_id": "ameren-2025-09-30-10q",
+      "accession": "0001002910-25-000129",
+      "cik": "0001002910",
+      "period_end": "2025-09-30",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000129/0001002910-25-000129-index.htm",
+      "expected_filename": "aee-20250930.htm",
+      "expected_document_type": "10-Q",
+      "expected_sequence": 1,
+      "complete_submission_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000129/0001002910-25-000129.txt"
+    }
+  ],
+  "format_documentation": [
+    "https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data#paths-and-directory-structure",
+    "https://www.sec.gov/search-filings/public-dissemination-service-system-contact",
+    "https://www.sec.gov/files/info/edgar/specifications/pds_dissemination_spec.pdf"
+  ],
+  "required_future_checks": [
+    "Freeze bounded acquisition and strict container extraction before requests.",
+    "Verify transport completeness and intact outer, DOCUMENT and TEXT framing; reject partial or ambiguous containers.",
+    "Require exactly one primary member with exact filename, type 10-Q and sequence 1; reject duplicate/conflicting fields or matches.",
+    "Verify outer accession, form and period, then independently verify primary HTML DEI identity.",
+    "Preserve raw container/member hashes, byte offsets, extraction version and all six cohort dispositions.",
+    "Do not claim equivalence to independently served primary HTML without a byte comparison."
+  ]
+}
