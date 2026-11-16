@@ -10,9 +10,10 @@ type Props = {
 
 export function CitationChip({ citation, titles, active, onOpen }: Props) {
   const isCell = citation.source_id.startsWith("workbook:");
+  const locator = citation.locator.replace(/^L(\d+)-L?\1$/, "L$1");
   const label = isCell
     ? citation.locator
-    : `${shortSource(citation.source_id, titles[citation.source_id])} ${citation.locator}`;
+    : `${shortSource(citation.source_id, titles[citation.source_id])} ${locator}`;
   return (
     <button
       type="button"

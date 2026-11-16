@@ -1,6 +1,8 @@
 """FastAPI backend for the browser MVP: chat turns, evidence, workbooks, exports."""
 
 import asyncio
+import hashlib
+import hmac
 import json
 import os
 import threading
@@ -10,7 +12,7 @@ from pathlib import Path
 from typing import Annotated
 
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -73,6 +75,10 @@ class TurnBody(BaseModel):
 class ContextBody(BaseModel):
     sheet: str
     range: str
+
+
+class LoginBody(BaseModel):
+    code: str
 
 
 class ExportBody(BaseModel):
@@ -138,6 +144,46 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
     log_root = ROOT / "runs/web/traces"
     sessions, exports = {}, {}
     corpora = {key: Sources(spec["dir"]) for key, spec in CORPORA.items()}
+    access_code = (os.environ.get("WEB_ACCESS_CODE") or "").strip()
+    access_token = (
+        hmac.new(access_code.encode(), b"provenance-web-v1", hashlib.sha256).hexdigest()
+        if access_code
+        else None
+    )
+
+    def authenticated(request):
+        if not access_token:
+            return True
+        return hmac.compare_digest(
+            request.cookies.get("prov_access", "").encode(), access_token.encode()
+        )
+
+    @app.middleware("http")
+    async def access_gate(request: Request, call_next):
+        path = request.url.path
+        if path.startswith("/api/") and path not in ("/api/auth", "/api/login"):
+            if not authenticated(request):
+                return JSONResponse(
+                    {"detail": "Enter the access code to use this demo"}, status_code=401
+                )
+        return await call_next(request)
+
+    @app.get("/api/auth")
+    def auth_status(request: Request):
+        return {"required": bool(access_token), "authenticated": authenticated(request)}
+
+    @app.post("/api/login")
+    async def login(body: LoginBody):
+        if not access_token:
+            return {"ok": True}
+        if not hmac.compare_digest(body.code.strip().encode(), access_code.encode()):
+            await asyncio.sleep(0.5)
+            raise HTTPException(401, "That access code is not right")
+        response = JSONResponse({"ok": True})
+        response.set_cookie(
+            "prov_access", access_token, httponly=True, samesite="lax", max_age=12 * 3600
+        )
+        return response
 
     def corpus_view(key):
         spec, documents = CORPORA[key], corpora[key].documents.values()
@@ -428,6 +474,23 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             job, on_finish=lambda turn: finish(session, record, job, turn)
         )
         return {"turn_id": turn_id}
+
+    @app.get("/api/sessions/{sid}/turns/{tid}/progress")
+    def turn_progress(sid: str, tid: str, after: int = -1):
+        """Polling alternative to the event stream; works through buffering proxies."""
+        session = session_or_404(sid)
+        turn = session.live.get(tid)
+        record = next((t for t in session.turns if t["id"] == tid), None)
+        if turn is None or record is None:
+            raise HTTPException(404, "Unknown turn")
+        done = turn.done.is_set()
+        events = list(turn.events)
+        start = max(0, after + 1)
+        return {
+            "events": [{"id": index, **events[index]} for index in range(start, len(events))],
+            "done": done,
+            "turn": record if done else None,
+        }
 
     @app.get("/api/sessions/{sid}/turns/{tid}/events")
     async def turn_events(sid: str, tid: str, request: Request):

@@ -15,6 +15,6 @@ export default defineConfig({
     reuseExistingServer: false,
     timeout: 60_000,
     // Replay only: blank key keeps live calls off even when .env has one.
-    env: { WEB_LEDGER: "runs/web/e2e-ledger.jsonl", OPENROUTER_API_KEY: "" },
+    env: { WEB_LEDGER: "runs/web/e2e-ledger.jsonl", OPENROUTER_API_KEY: "", WEB_ACCESS_CODE: "" },
   },
 });

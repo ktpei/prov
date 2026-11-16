@@ -83,23 +83,15 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
               <tr className="border-b border-rule text-left text-xs text-ink-faint">
                 <th className="py-1 pr-3 font-normal">Figure</th>
                 <th className="py-1 pr-3 text-right font-normal">Value</th>
-                <th className="py-1 pr-3 font-normal">Period</th>
-                <th className="py-1 font-normal">Source</th>
+                <th className="py-1 font-normal">Period</th>
               </tr>
             </thead>
             <tbody>
               {figures.map((claim) => (
                 <tr key={claim.key} className="border-b border-rule/60 align-top last:border-0">
-                  <td className="min-w-[9rem] py-1.5 pr-3">{humanizeKey(claim.key)}</td>
-                  <td className="tabular py-1.5 pr-3 text-right font-medium whitespace-nowrap">
-                    {formatValue(claim.value, claim.unit)}
-                    {formatUnit(claim.unit) && (
-                      <span className="ml-1 font-normal text-ink-faint">{formatUnit(claim.unit)}</span>
-                    )}
-                  </td>
-                  <td className="tabular py-1.5 pr-3 whitespace-nowrap text-ink-soft">{claim.period}</td>
-                  <td className="py-1.5">
-                    <div className="flex flex-wrap gap-1">
+                  <td className="py-1.5 pr-3">
+                    <span>{humanizeKey(claim.key)}</span>
+                    <span className="mt-1 flex flex-wrap gap-1">
                       {claim.citations.map((citation, index) => (
                         <CitationChip
                           key={index}
@@ -109,8 +101,15 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
                           onOpen={onCite}
                         />
                       ))}
-                    </div>
+                    </span>
                   </td>
+                  <td className="tabular py-1.5 pr-3 text-right font-medium whitespace-nowrap">
+                    {formatValue(claim.value, claim.unit)}
+                    {formatUnit(claim.unit) && (
+                      <span className="ml-1 font-normal text-ink-faint">{formatUnit(claim.unit)}</span>
+                    )}
+                  </td>
+                  <td className="tabular py-1.5 whitespace-nowrap text-ink-soft">{claim.period}</td>
                 </tr>
               ))}
             </tbody>

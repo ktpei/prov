@@ -81,6 +81,23 @@ $1.00); set `WEB_LEDGER` to use a separate ledger, for example for a demo. Each 
 runs in its own worker process (the runtime's deadlines need a main thread), and
 traces are written to `runs/web/traces/`.
 
+### Share a demo link
+
+To let others use the app running on this machine, set an access code in `.env`
+(`WEB_ACCESS_CODE=...`), then run the demo server and a Cloudflare quick tunnel:
+
+```sh
+scripts/demo-server.sh                                   # port 8780, $0.25 demo ledger
+cloudflared tunnel --no-autoupdate --url http://127.0.0.1:8780
+```
+
+The tunnel prints an `https://….trycloudflare.com` link. Visitors enter the access
+code once (HttpOnly cookie, 12 hours). The demo server keeps a separate ledger
+(`runs/web/demo-ledger.jsonl`) with its own cap (`WEB_SPEND_CAP_USD`, default $0.25 in
+the script). The link lasts while this machine, the server, and the tunnel keep
+running; restarting only the server keeps the same link. The browser follows turn
+progress by polling, because the tunnel buffers event streams.
+
 Tests: `corepack yarn test` covers the web backend (workbook snapshots and export,
 workbook tools and citations, ledger, worker, API). `corepack yarn web:e2e` runs the
 full browser loop in replay mode with Playwright.

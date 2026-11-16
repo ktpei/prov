@@ -75,7 +75,10 @@ export const createExport = (sid: string, snapshotId: string, ids: string[]) =>
     json("POST", { snapshot_id: snapshotId, proposal_ids: ids }),
   );
 
-/** Subscribe to a turn's progress. Returns an unsubscribe function. */
+/**
+ * Follow a turn's progress by polling. Polling works through tunnels and proxies
+ * that buffer event streams. Returns a function that stops following.
+ */
 export function streamTurn(
   sid: string,
   tid: string,
@@ -83,27 +86,42 @@ export function streamTurn(
   onDone: (turn: TurnView) => void,
   onError: (message: string) => void,
 ): () => void {
-  const source = new EventSource(`/api/sessions/${sid}/turns/${tid}/events`);
-  let finished = false;
-  source.addEventListener("progress", (event) => {
-    const message = event as MessageEvent;
-    onProgress(JSON.parse(message.data), Number(message.lastEventId));
-  });
-  source.addEventListener("done", (event) => {
-    finished = true;
-    source.close();
-    onDone(JSON.parse((event as MessageEvent).data));
-  });
-  source.onerror = () => {
-    if (finished) return;
-    if (source.readyState === EventSource.CLOSED) {
-      onError("Lost the progress stream. Refresh to see the final result.");
+  let stopped = false;
+  let after = -1;
+  let failures = 0;
+  const tick = async () => {
+    if (stopped) return;
+    try {
+      const body = await request<{ events: (Progress & { id: number })[]; done: boolean; turn: TurnView | null }>(
+        `/api/sessions/${sid}/turns/${tid}/progress?after=${after}`,
+      );
+      failures = 0;
+      for (const event of body.events) {
+        after = event.id;
+        onProgress(event, event.id);
+      }
+      if (body.done && body.turn) {
+        stopped = true;
+        onDone(body.turn);
+        return;
+      }
+    } catch (err) {
+      failures += 1;
+      if (failures >= 8) {
+        stopped = true;
+        onError(`Lost contact with the server while following this question. ${(err as Error).message}`);
+        return;
+      }
     }
+    window.setTimeout(tick, 450);
   };
+  void tick();
   return () => {
-    finished = true;
-    source.close();
+    stopped = true;
   };
 }
+
 export const useDemoWorkbook = (sid: string) =>
   request<WorkbookInfo>(`/api/sessions/${sid}/workbook/demo`, { method: "POST" });
+export const login = (code: string) => request<{ ok: boolean }>("/api/login", json("POST", { code }));
+export const getAuth = () => request<{ required: boolean; authenticated: boolean }>("/api/auth");

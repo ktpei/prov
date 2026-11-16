@@ -28,7 +28,7 @@ LIVE_ENV = {
     "OPENROUTER_INPUT_USD_PER_MILLION": "0.30",
     "OPENROUTER_OUTPUT_USD_PER_MILLION": "1.20",
 }
-NO_LIVE_ENV = {key: "" for key in LIVE_ENV}
+NO_LIVE_ENV = {**{key: "" for key in LIVE_ENV}, "WEB_ACCESS_CODE": ""}
 
 
 def read_events(client, sid, tid, last_id=None):
@@ -129,6 +129,29 @@ class ConfigAndSourcesTests(AppTestCase):
         self.assertEqual(excerpt.status_code, 404)
 
 
+class AccessGateTests(AppTestCase):
+    def test_access_code_gate(self):
+        with mock.patch.dict(os.environ, {"WEB_ACCESS_CODE": "tulip-42"}):
+            client = self.client()
+        self.assertEqual(client.get("/api/auth").json(), {"required": True, "authenticated": False})
+        self.assertEqual(client.get("/api/config").status_code, 401)
+        self.assertEqual(
+            client.post("/api/sessions", json={"corpus": "cloudflare-2024-q3"}).status_code, 401
+        )
+        self.assertEqual(client.post("/api/login", json={"code": "nope"}).status_code, 401)
+        login = client.post("/api/login", json={"code": " tulip-42 "})
+        self.assertEqual(login.status_code, 200)
+        self.assertIn("httponly", login.headers["set-cookie"].lower())
+        self.assertEqual(client.get("/api/config").status_code, 200)
+        self.assertTrue(client.get("/api/auth").json()["authenticated"])
+        self.assertEqual(self.session(client)[:0], "")
+
+    def test_no_gate_without_code(self):
+        client = self.client()
+        self.assertEqual(client.get("/api/auth").json(), {"required": False, "authenticated": True})
+        self.assertEqual(client.get("/api/config").status_code, 200)
+
+
 class TurnTests(AppTestCase):
     def test_replay_turn_streams_and_completes(self):
         client = self.client(replay=True)
@@ -152,6 +175,28 @@ class TurnTests(AppTestCase):
         resumed = read_events(client, sid, tid, last_id=1)
         self.assertEqual(resumed[0]["id"], "2")
         self.assertEqual(len(resumed), len(events) - 2)
+
+    def test_progress_polling(self):
+        import time
+
+        client = self.client()
+        sid = self.session(client)
+        tid = client.post(
+            f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"}
+        ).json()["turn_id"]
+        url = f"/api/sessions/{sid}/turns/{tid}/progress"
+        for _ in range(200):
+            body = client.get(url, params={"after": -1}).json()
+            if body["done"]:
+                break
+            time.sleep(0.1)
+        self.assertTrue(body["done"])
+        self.assertEqual(body["turn"]["status"], "completed")
+        ids = [event["id"] for event in body["events"]]
+        self.assertEqual(ids, list(range(len(ids))))
+        later = client.get(url, params={"after": 1}).json()
+        self.assertEqual(later["events"][0]["id"], 2)
+        self.assertEqual(client.get(f"/api/sessions/{sid}/turns/nope/progress").status_code, 404)
 
     def test_follow_up_carries_context(self):
         client = self.client()

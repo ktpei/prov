@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  ApiError,
   clearContext,
   createExport,
   createSession,
+  getAuth,
   getConfig,
   getSession,
+  login,
   setContext,
   startTurn,
   streamTurn,
@@ -17,6 +20,7 @@ import { Composer } from "./components/Composer";
 import { Conversation } from "./components/Conversation";
 import { EvidencePanel } from "./components/EvidencePanel";
 import { Header } from "./components/Header";
+import { Login } from "./components/Login";
 import { WorkbookPanel } from "./components/WorkbookPanel";
 import type { Citation, Config, Progress, Selection, Session, Tab, TurnView } from "./types";
 
@@ -37,6 +41,7 @@ export default function App() {
   const [activityTurn, setActivityTurn] = useState<string | null>(null);
   const [banner, setBanner] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [locked, setLocked] = useState(false);
   const unsubscribe = useRef<(() => void) | null>(null);
 
   const refreshConfig = useCallback(() => getConfig().then(setConfig).catch(() => undefined), []);
@@ -56,16 +61,30 @@ export default function App() {
     }
   }, []);
 
-  useEffect(() => {
-    getConfig()
-      .then((cfg) => {
+  const boot = useCallback(() => {
+    getAuth()
+      .then((auth) => {
+        if (auth.required && !auth.authenticated) {
+          setLocked(true);
+          return;
+        }
+        return getConfig().then((cfg) => {
+        setLocked(false);
         setConfig(cfg);
         setMode(cfg.live_available && !cfg.replay ? "live" : "replay");
         return startConversation(cfg.corpora[0].id);
+        });
       })
-      .catch((err: Error) => setBanner(err.message));
-    return () => unsubscribe.current?.();
+      .catch((err: Error) => {
+        if (err instanceof ApiError && err.status === 401) setLocked(true);
+        else setBanner(err.message);
+      });
   }, [startConversation]);
+
+  useEffect(() => {
+    boot();
+    return () => unsubscribe.current?.();
+  }, [boot]);
 
   const corpus = config?.corpora.find((c) => c.id === session?.corpus) ?? null;
   const titles = useMemo(() => {
@@ -104,7 +123,8 @@ export default function App() {
       try {
         turnId = (await startTurn(session.id, question, mode)).turn_id;
       } catch (err) {
-        setBanner((err as Error).message);
+        if (err instanceof ApiError && err.status === 401) setLocked(true);
+        else setBanner((err as Error).message);
         return false;
       }
       const sid = session.id;
@@ -146,6 +166,17 @@ export default function App() {
   const reloadSession = useCallback(async () => {
     if (session) setSession(await getSession(session.id));
   }, [session]);
+
+  if (locked) {
+    return (
+      <Login
+        onSubmit={async (code) => {
+          await login(code);
+          boot();
+        }}
+      />
+    );
+  }
 
   if (!config || !session || !corpus) {
     return (
