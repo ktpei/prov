@@ -1,0 +1,14 @@
+{
+  "version": "pdf-evidence-coverage-protocol-v1",
+  "report_sha256": "a1d38571089584ebb5151f7105085a66c3dc36db2dbcf70693a33b8f70e0687c",
+  "packets_sha256": "af6e595ea0dfada57d17d3977f9fe92d6cdc8f62835d0572de1ac9bf9f8f9a18",
+  "corpus_manifest_sha256": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+  "prepared_sha256": "c5d1a1919261243c57b03324750c2b8111a63ceb3be3d8b2fde8e43cc3be3ac6",
+  "prepared_files_sha256": {
+    "manifest.json": "c36fee4071eca7bb2d1db3e3484afea49e3343c155694748daaf8431dfcbe800",
+    "tasks.json": "b3dfdb462914f18656742e2e0183d225102cdabe47e1661982b623950b6086a5",
+    "inputs.json": "7b8b322a2f0ea04d8bf64e680b1c14e856c607445217047700cb629eee156eca"
+  },
+  "corpus_binding_sha256": "52a01ef7f469f4113f6701c2967c90e91ecad91dc78ff44d6ccd99bab90c0905",
+  "runtime_sha256": "38545ad751782249f6ed73d48e1fc15ad61b280f98b69eb174cf0c445cbf0be8"
+}
