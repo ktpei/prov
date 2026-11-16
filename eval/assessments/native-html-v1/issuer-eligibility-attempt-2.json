@@ -1,0 +1,58 @@
+{
+  "version": "native-html-issuer-eligibility-v1",
+  "runtime_sha256": "b5326b106fd1f414f3c03a0fa3b81835d40d059bba4f9563acbd0aa168d729df",
+  "acquisition_sha256": "8607775d0b72c3d4707a8ab0ba620226236a477448356828b1586cf9c5fbc0f2",
+  "artifact_class": "issuer_copy_not_sec_byte_equivalent",
+  "selected_denominator": 6,
+  "model_calls": 0,
+  "documents": [
+    {
+      "source_id": "caseys-2025-07-31-10q",
+      "acquisition_status": "failed",
+      "text_status": "not_attempted",
+      "table_status": "not_attempted"
+    },
+    {
+      "source_id": "caseys-2025-10-31-10q",
+      "acquisition_status": "failed",
+      "text_status": "not_attempted",
+      "table_status": "not_attempted"
+    },
+    {
+      "source_id": "old-dominion-2025-06-30-10q",
+      "acquisition_status": "identity_verified",
+      "text_status": "extracted_not_completeness_verified",
+      "table_status": "extracted_not_semantics_verified",
+      "corpus_manifest_sha256": "1a63e3af4c9f2483ac3836a2c13d38a2d2eb8962eea66677d3a72ecbef5ae335",
+      "text_sha256": "991220c7e3d889a53b30e5036fc408d8f98e8f5b72113182325311f97009e121",
+      "line_count": 585,
+      "sidecar_sha256": "dc09b556c16f71a949fd04998acb619b25ac6e40c67f8f4fd5ba6f550109dcd3",
+      "table_count": 24,
+      "cell_count": 4084
+    },
+    {
+      "source_id": "old-dominion-2025-09-30-10q",
+      "acquisition_status": "identity_verified",
+      "text_status": "extracted_not_completeness_verified",
+      "table_status": "extracted_not_semantics_verified",
+      "corpus_manifest_sha256": "8c2905e73659e1b130ef611829c2d7fe3da92efc9a44db1d3c1c3ea9d0d07f2f",
+      "text_sha256": "5448fd1f7c6872bbc16d3a1ad203400fd16d6f55b0cb77fadceb6e07423f9657",
+      "line_count": 588,
+      "sidecar_sha256": "2f16331bbd245fc3486b5a70999b96ae96195fdb4d56bfa1c2483533d9cf5284",
+      "table_count": 24,
+      "cell_count": 4067
+    },
+    {
+      "source_id": "ameren-2025-06-30-10q",
+      "acquisition_status": "failed",
+      "text_status": "not_attempted",
+      "table_status": "not_attempted"
+    },
+    {
+      "source_id": "ameren-2025-09-30-10q",
+      "acquisition_status": "failed",
+      "text_status": "not_attempted",
+      "table_status": "not_attempted"
+    }
+  ]
+}

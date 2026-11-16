@@ -1,0 +1,76 @@
+{
+  "version": "native-html-local-artifact-inventory-v1",
+  "files": [
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/acquisition.json",
+      "bytes": 7671,
+      "sha256": "8607775d0b72c3d4707a8ab0ba620226236a477448356828b1586cf9c5fbc0f2"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/ameren-2025-06-30-10q.partial",
+      "bytes": 5669607,
+      "sha256": "031e9bfd1f08c1656ab1fd5838ba48bc3bb0d3347520442827aff92db8c95aae"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/ameren-2025-09-30-10q.partial",
+      "bytes": 5747059,
+      "sha256": "651235ab29dccc4479b43b41aae9d81aecda0a78d77ca0b3ced44419ecb700c2"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/old-dominion-2025-06-30-10q.html",
+      "bytes": 1762675,
+      "sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/old-dominion-2025-09-30-10q.html",
+      "bytes": 1760566,
+      "sha256": "36189b5d8096fc1112d380c6ace04ef205c5ce79c14c42bf0ae302d23ca9a3ee"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/eligibility.json",
+      "bytes": 2218,
+      "sha256": "f57be84544f3610c0c68ffa94d91aa66918e93856317bc8781b8287c6daa5059"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-06-30-10q/old-dominion-2025-06-30-10q.txt",
+      "bytes": 83582,
+      "sha256": "991220c7e3d889a53b30e5036fc408d8f98e8f5b72113182325311f97009e121"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-06-30-10q/originals/old-dominion-2025-06-30-10q.html",
+      "bytes": 1762675,
+      "sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-06-30-10q/sources.json",
+      "bytes": 32864,
+      "sha256": "1a63e3af4c9f2483ac3836a2c13d38a2d2eb8962eea66677d3a72ecbef5ae335"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-06-30-10q-tables.json",
+      "bytes": 794974,
+      "sha256": "dc09b556c16f71a949fd04998acb619b25ac6e40c67f8f4fd5ba6f550109dcd3"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-09-30-10q/old-dominion-2025-09-30-10q.txt",
+      "bytes": 86187,
+      "sha256": "5448fd1f7c6872bbc16d3a1ad203400fd16d6f55b0cb77fadceb6e07423f9657"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-09-30-10q/originals/old-dominion-2025-09-30-10q.html",
+      "bytes": 1760566,
+      "sha256": "36189b5d8096fc1112d380c6ace04ef205c5ce79c14c42bf0ae302d23ca9a3ee"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-09-30-10q/sources.json",
+      "bytes": 33023,
+      "sha256": "8c2905e73659e1b130ef611829c2d7fe3da92efc9a44db1d3c1c3ea9d0d07f2f"
+    },
+    {
+      "path": "runs/native-html-v1-issuer-eligibility/old-dominion-2025-09-30-10q-tables.json",
+      "bytes": 791016,
+      "sha256": "2f16331bbd245fc3486b5a70999b96ae96195fdb4d56bfa1c2483533d9cf5284"
+    }
+  ],
+  "limitations": "Local artifacts are not embedded in Git. Hashes bind captured bytes; neither extraction completeness nor SEC byte equivalence is established."
+}

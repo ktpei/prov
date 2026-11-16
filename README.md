@@ -78,7 +78,9 @@ weighting experiment stayed at 2/4 and was not promoted. Full-agent FinanceBench
 remains disabled pending source-quality acceptance. A separate
 [locked assessment runner](eval/table-runtime-design.md) now keeps annotation files
 out of retrieval execution, with separate receipt-bound replay grading. Broader
-cohort acquisition and annotation remain pending. Versioned publication-cutoff
+cohort acquisition and annotation remain incomplete: a frozen issuer-delivery
+attempt verified 2/6 copies, with all four failures retained. See
+[assessment progress](eval/assessments/native-html-v1/progress.md). Versioned publication-cutoff
 controls now enforce conservative source eligibility and are scored separately.
 
 Latest frozen company-research evaluation (2026-11-07): six new public development questions,

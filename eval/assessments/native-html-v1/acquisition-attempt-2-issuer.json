@@ -1,0 +1,148 @@
+{
+  "version": "native-html-acquisition-v1",
+  "selection_sha256": "d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4",
+  "python": "3.13.2 (main, Feb  4 2025, 14:51:09) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "runtime_sha256": "b5326b106fd1f414f3c03a0fa3b81835d40d059bba4f9563acbd0aa168d729df",
+  "script_sha256": "8c1b6f4ebd98d37ebb79dbddd8f2ba1d13c4b46c0a5a0df16dc160ba5a2e5efe",
+  "user_agent": "ProvenanceXL-research/1 (https://github.com/ktpei/prov; noncommercial assessment)",
+  "max_response_bytes": 10485760,
+  "request_policy": "Sequential; one second between requests; 20-second socket-operation timeout; no redirects or retries; identity encoding",
+  "document_denominator": 6,
+  "documents": [
+    {
+      "source_id": "caseys-2025-07-31-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000101/casy-20250731.htm",
+      "status": "failed",
+      "delivery_url": "https://investor.caseys.com/node/17011/html",
+      "metadata_url": "https://investor.caseys.com/financials/sec-filings?field_nir_sec_form_group_target_id=496&field_nir_sec_date_filed_value=2025",
+      "link_kind": "official_opaque_html_link",
+      "requested_at": "2026-11-16T13:53:03.266493+00:00",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "finished_at": "2026-11-16T13:53:03.541393+00:00",
+      "http_status": 403
+    },
+    {
+      "source_id": "caseys-2025-10-31-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000114/casy-20251031.htm",
+      "status": "failed",
+      "delivery_url": "https://investor.caseys.com/node/17101/html",
+      "metadata_url": "https://investor.caseys.com/financials/sec-filings?field_nir_sec_form_group_target_id=496&field_nir_sec_date_filed_value=2025",
+      "link_kind": "official_opaque_html_link",
+      "requested_at": "2026-11-16T13:53:04.552566+00:00",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "finished_at": "2026-11-16T13:53:04.661358+00:00",
+      "http_status": 403
+    },
+    {
+      "source_id": "old-dominion-2025-06-30-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm",
+      "status": "identity_verified",
+      "delivery_url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0000950170-25-103916/odfl-20250630.htm",
+      "metadata_url": "https://ir.odfl.com/sec-filings/quarterly-reports",
+      "link_kind": "accession_filename_path",
+      "requested_at": "2026-11-16T13:53:05.668251+00:00",
+      "http_status": 200,
+      "final_url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0000950170-25-103916/odfl-20250630.htm",
+      "content_type": "text/html",
+      "declared_content_length": null,
+      "content_encoding": "identity",
+      "observed_at": "2026-11-16T13:53:06.224361+00:00",
+      "response_bytes": 1762675,
+      "response_sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0",
+      "identity_fields": {
+        "dei:entitycentralindexkey": [
+          "0000878927"
+        ],
+        "dei:documentperiodenddate": [
+          "June 30, 2025"
+        ],
+        "dei:documenttype": [
+          "10-Q"
+        ]
+      },
+      "original_file": "old-dominion-2025-06-30-10q.html",
+      "index_size_matches": true,
+      "finished_at": "2026-11-16T13:53:06.289092+00:00"
+    },
+    {
+      "source_id": "old-dominion-2025-09-30-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/878927/000119312525268415/odfl-20250930.htm",
+      "status": "identity_verified",
+      "delivery_url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0001193125-25-268415/odfl-20250930.htm",
+      "metadata_url": "https://ir.odfl.com/sec-filings/quarterly-reports",
+      "link_kind": "accession_filename_path",
+      "requested_at": "2026-11-16T13:53:07.299438+00:00",
+      "http_status": 200,
+      "final_url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0001193125-25-268415/odfl-20250930.htm",
+      "content_type": "text/html",
+      "declared_content_length": null,
+      "content_encoding": "identity",
+      "observed_at": "2026-11-16T13:53:07.760339+00:00",
+      "response_bytes": 1760566,
+      "response_sha256": "36189b5d8096fc1112d380c6ace04ef205c5ce79c14c42bf0ae302d23ca9a3ee",
+      "identity_fields": {
+        "dei:entitycentralindexkey": [
+          "0000878927"
+        ],
+        "dei:documentperiodenddate": [
+          "September 30, 2025"
+        ],
+        "dei:documenttype": [
+          "10-Q"
+        ]
+      },
+      "original_file": "old-dominion-2025-09-30-10q.html",
+      "index_size_matches": true,
+      "finished_at": "2026-11-16T13:53:07.822477+00:00"
+    },
+    {
+      "source_id": "ameren-2025-06-30-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000112/aee-20250630.htm",
+      "status": "failed",
+      "delivery_url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001002910/f56a6a97-9d4b-4432-89ef-0ca04599d6f1.html",
+      "metadata_url": "https://www.amereninvestors.com/investors/sec-filings/sec-filings-details/default.aspx?FilingId=18660741",
+      "link_kind": "official_opaque_html_link",
+      "requested_at": "2026-11-16T13:53:08.832835+00:00",
+      "http_status": 200,
+      "final_url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001002910/f56a6a97-9d4b-4432-89ef-0ca04599d6f1.html",
+      "content_type": "text/html",
+      "declared_content_length": "5669607",
+      "content_encoding": "identity",
+      "observed_at": "2026-11-16T13:53:09.544462+00:00",
+      "response_bytes": 5669607,
+      "response_sha256": "031e9bfd1f08c1656ab1fd5838ba48bc3bb0d3347520442827aff92db8c95aae",
+      "error": "ValueError: Response does not establish the selected filing type, period and registrant CIK",
+      "finished_at": "2026-11-16T13:53:09.786856+00:00",
+      "partial_file": "ameren-2025-06-30-10q.partial",
+      "partial_bytes": 5669607,
+      "partial_sha256": "031e9bfd1f08c1656ab1fd5838ba48bc3bb0d3347520442827aff92db8c95aae"
+    },
+    {
+      "source_id": "ameren-2025-09-30-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000129/aee-20250930.htm",
+      "status": "failed",
+      "delivery_url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001002910/936b0b05-a20c-4105-b1c4-c700e98245a8.html",
+      "metadata_url": "https://www.amereninvestors.com/investors/sec-filings/sec-filings-details/default.aspx?FilingId=18898713",
+      "link_kind": "official_opaque_html_link",
+      "requested_at": "2026-11-16T13:53:10.802229+00:00",
+      "http_status": 200,
+      "final_url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001002910/936b0b05-a20c-4105-b1c4-c700e98245a8.html",
+      "content_type": "text/html",
+      "declared_content_length": "5747059",
+      "content_encoding": "identity",
+      "observed_at": "2026-11-16T13:53:11.410351+00:00",
+      "response_bytes": 5747059,
+      "response_sha256": "651235ab29dccc4479b43b41aae9d81aecda0a78d77ca0b3ced44419ecb700c2",
+      "error": "ValueError: Response does not establish the selected filing type, period and registrant CIK",
+      "finished_at": "2026-11-16T13:53:11.657209+00:00",
+      "partial_file": "ameren-2025-09-30-10q.partial",
+      "partial_bytes": 5747059,
+      "partial_sha256": "651235ab29dccc4479b43b41aae9d81aecda0a78d77ca0b3ced44419ecb700c2"
+    }
+  ],
+  "delivery_policy_sha256": "dff9308cd6c40f73b7906a650191f3e04af9674411eb2be8df94c55f63bb248a",
+  "previous_receipt_sha256": "3c59e8ba7153d2676ba92e8477c7b6befde1fc187a0f31b4b53de6166d8a21dd",
+  "artifact_class": "issuer_copy_not_sec_byte_equivalent",
+  "completed_at": "2026-11-16T13:53:11.664908+00:00",
+  "identity_verified_count": 2
+}

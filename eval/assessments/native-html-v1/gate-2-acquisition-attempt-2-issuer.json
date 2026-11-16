@@ -1,0 +1,35 @@
+{
+  "schema_version": "native-html-assessment-gate-v1",
+  "assessment_id": "native-html-v1",
+  "stage": "acquisition_attempt_2_issuer",
+  "status": "partial_acquisition_not_cohort_complete",
+  "previous_gate_sha256": "366b2f323990371832078e3e04ef7518da24cf61260fe9e347d3b35e6724affe",
+  "acquisition_freeze_commit": "119ab3f",
+  "runtime_sha256": "b5326b106fd1f414f3c03a0fa3b81835d40d059bba4f9563acbd0aa168d729df",
+  "selected_documents": 6,
+  "attempted_documents": 6,
+  "identity_verified_documents": 2,
+  "http403_failures": 2,
+  "identity_failures": 2,
+  "text_extracted_documents": 2,
+  "table_extracted_documents": 2,
+  "question_count": 0,
+  "annotation_count": 0,
+  "retrieval_runs": 0,
+  "model_calls": 0,
+  "artifacts": [
+    {
+      "file": "acquisition-attempt-2-issuer.json",
+      "sha256": "8607775d0b72c3d4707a8ab0ba620226236a477448356828b1586cf9c5fbc0f2"
+    },
+    {
+      "file": "issuer-eligibility-attempt-2.json",
+      "sha256": "f57be84544f3610c0c68ffa94d91aa66918e93856317bc8781b8287c6daa5059"
+    },
+    {
+      "file": "issuer-artifact-inventory-attempt-2.json",
+      "sha256": "bcfeafce25f743b5d02c8a65ca17045be81fc175638d9a158bf2db9c66acc73c"
+    }
+  ],
+  "disposition": "Two Old Dominion issuer copies only. Casey\u2019s HTTP failures and Ameren rendered-viewer identity failures remain in the denominator. No SEC equivalence, complete cohort, extraction completeness, financial accuracy, or transferred SEC availability bounds are claimed."
+}
