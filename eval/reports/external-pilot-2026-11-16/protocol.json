@@ -1,0 +1,93 @@
+{
+  "version": "external-pilot-2026-11-16-v1",
+  "purpose": "Small development integration pilot, not official benchmark accuracy or heldout evaluation",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "total_budget_usd": 0.15,
+  "per_task_usd": 0.02,
+  "seed": 20261116,
+  "pricing": {
+    "input_usd_per_million": 0.6,
+    "output_usd_per_million": 2.4
+  },
+  "historical_accounted_usd": 0.4362039,
+  "authorized_remaining_before_pilot_usd": 0.5637961,
+  "account_preflight": {
+    "daily_limit_usd": 1,
+    "daily_remaining_usd": 1,
+    "daily_usage_usd": 0,
+    "observed": "2026-11-16"
+  },
+  "retry_policy": "one request per task; no retries or repairs; retain all attempts",
+  "max_output_tokens": 2000,
+  "timeout_seconds": 60,
+  "semantic_review": "coding-agent review is diagnostic, not human financial validation",
+  "batches": [
+    {
+      "name": "fineval-easy",
+      "condition": "model_only",
+      "count": 3,
+      "budget_usd": 0.04,
+      "prepared": "runs/external-pilot-2026-11-16/prepared/fineval-easy",
+      "output": "runs/external-pilot-2026-11-16/results/fineval-easy",
+      "prepared_sha256": "8cf1204b0a625c97b82007aa8e53db87c9fbefdafa7042647753cb85b61334f8",
+      "selected_ids": [
+        "sha256:7c4a2acccc7df098109f14cc44e0c1831b8d3fc36c1713bb26814c5e68c14644",
+        "sha256:fb2bb58a3e49a3d34b27dfb656d20a41a534fe06fc03659712a2ff6a164cf421",
+        "sha256:94da841c52dffa9319681bfb786f4a435b4ddee6f46a63912326b46d704f86c4"
+      ],
+      "source_sha256": "cd6005e33184b7e21d6735371ff82f7018fa67bca673ad26cb3e5803de4dfa0c",
+      "reference_conflicts": 0
+    },
+    {
+      "name": "fineval-challenge",
+      "condition": "model_only",
+      "count": 2,
+      "budget_usd": 0.03,
+      "prepared": "runs/external-pilot-2026-11-16/prepared/fineval-challenge",
+      "output": "runs/external-pilot-2026-11-16/results/fineval-challenge",
+      "prepared_sha256": "0077fcb9d8cacfaa7aff3c147d56bad91ae932b12eb4f07bb744b791c945d0a5",
+      "selected_ids": [
+        "sha256:34b7ffcd870bf49a7f1872cf91873b87e5fdcd21072588c8e3d64d2ddb065e7c",
+        "sha256:fe4e69a76fbd683af2785aefc3825fab555ae3d3e8bd99c3861a75eeb9298858"
+      ],
+      "source_sha256": "f2ba5573260b19de88bc9546b2684dfe7da6de5e4d40676aa4601962aa331fb9",
+      "reference_conflicts": 0
+    },
+    {
+      "name": "finqa",
+      "condition": "supplied_context",
+      "count": 3,
+      "budget_usd": 0.05,
+      "prepared": "runs/external-pilot-2026-11-16/prepared/finqa",
+      "output": "runs/external-pilot-2026-11-16/results/finqa",
+      "prepared_sha256": "d0d6bee0ad966a6e6d00e867b492dae010e70631739d03794d23cc63c8e22f4e",
+      "selected_ids": [
+        "MRO/2007/page_149.pdf-1",
+        "RSG/2015/page_142.pdf-1",
+        "AES/2002/page_46.pdf-1"
+      ],
+      "source_sha256": "a847fb7e0d61a3125a1e2909852df6b89f1ee64d2c5ff1bf689e332214deee51",
+      "reference_conflicts": 0
+    },
+    {
+      "name": "financebench",
+      "condition": "evidence_supplied",
+      "count": 2,
+      "budget_usd": 0.03,
+      "prepared": "runs/external-pilot-2026-11-16/prepared/financebench",
+      "output": "runs/external-pilot-2026-11-16/results/financebench",
+      "prepared_sha256": "748febf72c56f4d4ae067d93c56025ab1c94814b26bc553f6e3001fab7ed3645",
+      "selected_ids": [
+        "financebench_id_00591",
+        "financebench_id_00540"
+      ],
+      "source_sha256": "a5a2aa673e573e55675fc3c0f9aa38c1cf59d2abc91edb077534f71f10a71877",
+      "reference_conflicts": 0
+    }
+  ],
+  "runtime_revision": "b6dc09e",
+  "checks_before_pilot": {
+    "lint": "passed",
+    "tests": 112
+  }
+}
