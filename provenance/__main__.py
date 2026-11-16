@@ -39,6 +39,12 @@ def main():
     for command in (demo, live):
         command.add_argument("--engine", choices=("langgraph", "custom"), default="langgraph")
         command.add_argument("--corpus", type=Path, default=ROOT / "data/corpus")
+        command.add_argument(
+            "--read-extraction-version",
+            choices=("full-v1", "pdf-returned-pages-v1"),
+            default="full-v1",
+            help="Extraction diagnostics included in read responses",
+        )
         command.add_argument("--checkpoint", type=Path, help="SQLite checkpoint file")
         command.add_argument("--thread-id", help="Stable ID for checkpointed research")
         command.add_argument("--resume", action="store_true")
@@ -71,7 +77,10 @@ def main():
                 fixture["question"],
                 ReplayModel(fixture["responses"], checkpoint_replay=True),
             )
-            sources, limits = Sources(args.corpus), Limits()
+            sources, limits = (
+                Sources(args.corpus, read_extraction_version=args.read_extraction_version),
+                Limits(),
+            )
         else:
             if not args.live:
                 raise ValueError(
@@ -117,7 +126,10 @@ def main():
             if args.web and not exa_key:
                 raise ValueError("--web requires EXA_API_KEY")
             sources = Sources(
-                args.corpus, exa_key=exa_key, exa_cap=os.environ.get("EXA_MAX_REQUEST_USD")
+                args.corpus,
+                exa_key=exa_key,
+                exa_cap=os.environ.get("EXA_MAX_REQUEST_USD"),
+                read_extraction_version=args.read_extraction_version,
             )
             if args.task:
                 sources.documents = {

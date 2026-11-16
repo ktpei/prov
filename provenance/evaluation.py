@@ -5,6 +5,7 @@ import math
 from collections import Counter
 from pathlib import Path
 
+from provenance.benchmarks import canonical_hash
 from provenance.model import validate_answer
 from provenance.sources import Sources, locator_range
 
@@ -109,6 +110,7 @@ def validate_report_evidence(task, report, *, directory=None):
     sources = Sources(
         directory or Path(__file__).resolve().parent.parent / "data/corpus",
         retrieval_version=first.get("retrieval_version", "passage-v1"),
+        read_extraction_version=first.get("read_extraction_version", "full-v1"),
     )
     if first.get("event") != "run_started" or last.get("event") != "run_finished":
         raise ValueError("Missing trace start or finish")
@@ -140,7 +142,7 @@ def validate_report_evidence(task, report, *, directory=None):
                 actual = {"error": "Tool arguments must be valid JSON"}
             else:
                 actual = sources.call(call.get("name"), args, 1)
-            if actual != event["result"]:
+            if canonical_hash(actual) != canonical_hash(event["result"]):
                 raise ValueError("Tool result differs from verified local evidence")
             if "lines" in actual and actual["id"] not in task["source_ids"]:
                 raise ValueError("Read evidence outside task source scope")

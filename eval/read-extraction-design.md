@@ -13,8 +13,19 @@ large before optional retention ordering mattered. See the
 full extraction metadata. `read_extraction_version="pdf-returned-pages-v1"` opts
 into a projection for `pdf-extraction-diagnostics-v2` metadata only. Legacy PDF,
 HTML, unknown and missing metadata retain their prior response representation.
-This is a Python source-tool option, not a new CLI flag or a production-default
-change.
+The option is also available on both `demo` and `run`:
+
+```sh
+uv run python -m provenance demo --read-extraction-version pdf-returned-pages-v1
+```
+
+Both custom and LangGraph engines record `read_extraction_version` in their start
+trace; local evidence grading reconstructs that exact mode and compares canonical
+JSON tool results, including numeric/Boolean types. Legacy traces without the field
+mean `full-v1`. LangGraph checkpoint identity also binds the mode: resume must use
+the same option, including when returning an already completed report. Old
+checkpoints missing the field retain full-metadata semantics. Production defaults
+and existing paid-run acknowledgements/budgets are unchanged.
 
 The projection changes only the response's `extraction` object. Its `pages` array
 contains complete diagnostic entries for physical pages represented by the
@@ -41,12 +52,14 @@ Projection and subsequent response mutation cannot change the source metadata.
 
 ## Verification and boundaries
 
-Five synthetic tests cover default/explicit-full serialized equality, unchanged
+Five source-level synthetic tests cover default/explicit-full serialized equality, unchanged
 search/evidence fields, one/multiple returned pages, character-cap truncation,
 omitted-page warning preservation, independent full-object hashing, copy isolation,
 legacy/unknown metadata, malformed records and direct/tool error handling. Independent
 review identified contradictory-page and null-mapping cases; both were fixed and
-verified before acceptance.
+verified before acceptance. Four additional integration tests cover both engines,
+CLI selection, typed trace replay, changed-mode resume rejection before model calls
+or cached-result reuse, and legacy SQLite checkpoint compatibility.
 
 The [frozen six-case assessment](assessments/financebench-compact-read-v1/report.md)
 now verifies exact default-response compatibility, unchanged evidence and global

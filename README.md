@@ -107,7 +107,10 @@ only returned-page diagnostic entries while preserving global warnings and the
 full diagnostics hash/reference. The [frozen assessment](eval/assessments/financebench-compact-read-v1/report.md)
 removes all blocked projections and cuts read-response characters 76.05%, with
 evidence unchanged. Complete coverage remains 1/6 at five reads; retrieval gaps
-persist. Full metadata remains the default.
+persist, and frozen locations are not exhaustive semantic judgments. Full metadata
+remains the default. Both `demo` and `run` accept
+`--read-extraction-version pdf-returned-pages-v1`; the mode is recorded in traces,
+respected by grading, and must match on checkpoint resume.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
