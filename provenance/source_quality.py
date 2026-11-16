@@ -154,9 +154,13 @@ def _reference_flags(reference):
     }
 
 
-def evaluate_corpus(bundle, corpus_directory):
+def evaluate_corpus(bundle, corpus_directory, *, source_scope="selected_corpus"):
     """Return identity-bound, offline retrieval and text-concordance diagnostics."""
+    if source_scope not in {"selected_corpus", "declared_document"}:
+        raise ValueError("Unknown diagnostic source scope")
     sources, binding, prepared_sha256, binding_sha256 = _validate(bundle, corpus_directory)
+    all_documents = dict(sources.documents)
+    permitted_documents = {item["id"]: item["context"]["doc_name"] for item in bundle["inputs"]}
     page_texts = {
         source_id: _page_texts(sources.documents[source_id]) for source_id in sources.documents
     }
@@ -169,6 +173,11 @@ def evaluate_corpus(bundle, corpus_directory):
     for task in bundle["tasks"]:
         evidence = task["reference"]["evidence"]
         expected = {(entry["doc_name"], entry["evidence_page_num"] + 1) for entry in evidence}
+        sources.documents = (
+            {permitted_documents[task["id"]]: all_documents[permitted_documents[task["id"]]]}
+            if source_scope == "declared_document"
+            else all_documents
+        )
         hits = sources.search(task["question"], timeout=1)["results"]
         if len(hits) > 5:
             raise ValueError("Retrieval returned more than the fixed top five")
@@ -221,6 +230,7 @@ def evaluate_corpus(bundle, corpus_directory):
         rows.append(
             {
                 "id": task["id"],
+                "searched_source_ids": sorted(sources.documents),
                 "reference_flags": _reference_flags(task["reference"]),
                 "expected_distinct_page_keys": _sorted_keys(expected),
                 "expected_distinct_page_count": len(expected),
@@ -240,6 +250,7 @@ def evaluate_corpus(bundle, corpus_directory):
         "original_hashes": binding["original_hashes"],
         "dataset_revision": binding["dataset_revision"],
         "retrieval_version": RETRIEVAL_VERSION,
+        "source_scope": source_scope,
         "fixed_k": list(FIXED_K),
         "task_denominator": denominator,
         "retrieval_interpretation": {
@@ -293,8 +304,15 @@ def main():
     parser.add_argument("--prepared", type=Path, required=True)
     parser.add_argument("--corpus", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--source-scope",
+        choices=["selected_corpus", "declared_document"],
+        default="selected_corpus",
+    )
     args = parser.parse_args()
-    report = evaluate_corpus(load_bundle(args.prepared), args.corpus)
+    report = evaluate_corpus(
+        load_bundle(args.prepared), args.corpus, source_scope=args.source_scope
+    )
     with args.output.open("x") as handle:
         handle.write(json.dumps(report, indent=2, allow_nan=False) + "\n")
     print(

@@ -50,7 +50,7 @@ def _bundle(tasks):
         count=len(tasks),
         seed=17,
         condition="full_agent",
-        development_groups=["REPORT"],
+        development_groups=sorted({task["metadata"]["doc_name"] for task in tasks}),
     )
 
 
@@ -101,6 +101,38 @@ class SourceQualityTests(unittest.TestCase):
     @staticmethod
     def evidence(page, text, doc="REPORT"):
         return {"doc_name": doc, "evidence_page_num": page, "evidence_text": text}
+
+    def test_declared_document_scope_uses_permitted_metadata_not_gold(self):
+        one = _task("one", "alpha", [self.evidence(0, "Alpha")])
+        two = _task("two", "alpha", [self.evidence(0, "Alpha", doc="OTHER")])
+        two["metadata"]["doc_name"] = "OTHER"
+        bundle = _bundle([one, two])
+        corpus = self.corpus(bundle)
+        path = corpus / "sources.json"
+        manifest = json.loads(path.read_text())
+        other = dict(manifest["sources"][0], id="OTHER")
+        manifest["sources"].append(other)
+        path.write_text(json.dumps(manifest))
+        binding_path = corpus / "benchmark_binding.json"
+        binding = json.loads(binding_path.read_text())
+        binding["source_ids"] = ["OTHER", "REPORT"]
+        for field in ["source_hashes", "original_hashes"]:
+            binding[field]["OTHER"] = binding[field]["REPORT"]
+        binding["sources_manifest_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        binding_path.write_text(json.dumps(binding))
+        baseline = evaluate_corpus(bundle, corpus)
+        scoped = evaluate_corpus(bundle, corpus, source_scope="declared_document")
+        self.assertTrue(
+            all(row["searched_source_ids"] == ["OTHER", "REPORT"] for row in baseline["tasks"])
+        )
+        for row in scoped["tasks"]:
+            self.assertEqual(
+                row["searched_source_ids"], ["REPORT" if row["id"] == "one" else "OTHER"]
+            )
+            self.assertTrue(
+                all(hit["source_id"] in row["searched_source_ids"] for hit in row["retrieved_hits"])
+            )
+        self.assertEqual(scoped["source_scope"], "declared_document")
 
     def test_zero_based_gold_pages_convert_to_one_based_original_pages(self):
         bundle = _bundle([_task("one", "alpha", [self.evidence(0, "Alpha result")])])
