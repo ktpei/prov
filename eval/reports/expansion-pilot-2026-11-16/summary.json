@@ -1,0 +1,77 @@
+{
+  "version": "expansion-pilot-summary-v1",
+  "batches": [
+    {
+      "dataset": "tatqa",
+      "condition": "supplied_context",
+      "selected_count": 4,
+      "passed_count": 4,
+      "accuracy": 1.0,
+      "statuses": {
+        "scored": 4
+      },
+      "name": "tatqa",
+      "accounted_cost_usd": 0.0035376,
+      "working_tree_dirty": false,
+      "git_revision": "17ee7a48b027fa616dac1a8a9cbad7de810cf606",
+      "submission_file_sha256": "afdc3b4aa1d6e4ecb3b5b30d86f0a5dc63fb934d0b497b7c764a341d1b206145",
+      "score_file_sha256": "2b67c6463069c8ebf0312d09058b650e44dc64b19f35cd0fda6d1dcaccf5eaf3",
+      "official_metrics": {
+        "exact_match": 1.0,
+        "f1": 1.0,
+        "scale_accuracy": 1.0
+      }
+    },
+    {
+      "dataset": "convfinqa",
+      "condition": "agent_history",
+      "selected_count": 2,
+      "passed_count": 0,
+      "accuracy": 0.0,
+      "statuses": {
+        "scored": 2
+      },
+      "name": "convfinqa-agent",
+      "accounted_cost_usd": 0.0131154,
+      "working_tree_dirty": false,
+      "git_revision": "17ee7a48b027fa616dac1a8a9cbad7de810cf606",
+      "submission_file_sha256": "20fb887e8777a05fd1df917f21e581c78bbad29bf58f5c5ad710c59c61dc6e1f",
+      "score_file_sha256": "7de5d54cf1222d36c3384d52afb97a58c5a0f9a4496ef5e94622968f5ae4a951",
+      "conversation_metrics": {
+        "conversation_count": 2,
+        "completed_conversation_count": 2,
+        "whole_conversation_accuracy": 0.0,
+        "turn_count": 9,
+        "turn_passed_count": 6,
+        "turn_accuracy": 0.6666666666666666
+      }
+    },
+    {
+      "dataset": "convfinqa",
+      "condition": "reference_history",
+      "selected_count": 2,
+      "passed_count": 0,
+      "accuracy": 0.0,
+      "statuses": {
+        "scored": 2
+      },
+      "name": "convfinqa-reference",
+      "accounted_cost_usd": 0.0124002,
+      "working_tree_dirty": false,
+      "git_revision": "17ee7a48b027fa616dac1a8a9cbad7de810cf606",
+      "submission_file_sha256": "be412fe007407640ba3a3809199c68c3b05fc663af2a1bbeab321aaf4857c3e6",
+      "score_file_sha256": "f22f5f315404b0c58d3c3cfb02dc754a4f7517eb83cc17ebd31d4e3ef7d73aca",
+      "conversation_metrics": {
+        "conversation_count": 2,
+        "completed_conversation_count": 2,
+        "whole_conversation_accuracy": 0.0,
+        "turn_count": 9,
+        "turn_passed_count": 6,
+        "turn_accuracy": 0.6666666666666666
+      }
+    }
+  ],
+  "accounted_cost_usd": 0.0290532,
+  "historical_total_usd": 0.4814193,
+  "authorized_remaining_usd": 0.5185807
+}

@@ -1,5 +1,14 @@
 # Project scope
 
+## Expansion pilot — 2026-11-16
+
+[Fixed table/conversation pilot](eval/reports/expansion-pilot-2026-11-16/report.md):
+TAT-QA EM/F1/scale 4/4; both ConvFinQA history conditions 6/9 turns and 0/2 whole
+conversations. All 22 requests completed; $0.0290532 conservative cost. Remaining
+authorization $0.5185807. Source-level review flags annotation/scale ambiguities;
+these small public development results are not human-validated financial accuracy.
+
+
 ## Table/conversation expansion — 2026-11-16
 
 All five selected public dataset families now have adapters. TAT-QA uses a pinned

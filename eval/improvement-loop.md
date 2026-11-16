@@ -141,3 +141,12 @@ source/document partitions before more inference.
   is recorded without guessing a resolution. Full-agent execution remains disabled.
 - Lint and 161 tests passed. No additional paid calls; remaining authorization is
   $0.5476339. Native table review is coordinated with the ingestion research chat.
+
+## Cycle 6 — measured table/conversation pilot
+
+The frozen 22-request pilot completed under clean commit `17ee7a4`; all scores
+reproduced from saved submissions. TAT-QA official EM/F1/scale matched 4/4;
+ConvFinQA both conditions scored 6/9 turns and 0/2 whole conversations.
+Cost $0.0290532; remaining authorization $0.5185807. Source-level annotation and
+scale review remains separate from these fixed scores. See the
+[report](reports/expansion-pilot-2026-11-16/report.md).
