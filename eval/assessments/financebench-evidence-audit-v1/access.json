@@ -13,12 +13,14 @@
       "context": "fresh_no_parent_history",
       "requested_model": "gpt-6-astra",
       "requested_reasoning": "high",
-      "status": "dispatched",
+      "status": "completed",
       "allowed_inputs": [
         "reviewer-instructions.md",
         "stage-1/questions.json"
       ],
-      "exclusive_output": "reviews/interpretation-a.json"
+      "exclusive_output": "reviews/interpretation-a.json",
+      "output_sha256": "1bbe3ed0bd6a829aca6c7507e2a3116e6e796facb4841a33a50f1791d2f9b85d",
+      "outside_access_disclosed": []
     },
     {
       "role": "B",
@@ -26,12 +28,14 @@
       "context": "fresh_no_parent_history",
       "requested_model": "gpt-6-astra",
       "requested_reasoning": "high",
-      "status": "dispatched",
+      "status": "completed",
       "allowed_inputs": [
         "reviewer-instructions.md",
         "stage-1/questions.json"
       ],
-      "exclusive_output": "reviews/interpretation-b.json"
+      "exclusive_output": "reviews/interpretation-b.json",
+      "output_sha256": "d785c4a1fe3752cc0bcea6c3f5314658506ce73f52d5523477c3b6c532e40820",
+      "outside_access_disclosed": []
     }
   ],
   "custodian": "root; outcome-aware, not a blinded judge",

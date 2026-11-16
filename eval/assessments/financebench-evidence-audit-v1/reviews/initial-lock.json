@@ -1,0 +1,15 @@
+{
+  "version": "initial-interpretation-reviews-lock-v1",
+  "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+  "reviews": {
+    "interpretation-a.json": "1bbe3ed0bd6a829aca6c7507e2a3116e6e796facb4841a33a50f1791d2f9b85d",
+    "interpretation-b.json": "d785c4a1fe3752cc0bcea6c3f5314658506ce73f52d5523477c3b6c532e40820"
+  },
+  "cases": 6,
+  "both_reviews_complete_before_reconciliation": true,
+  "outside_access_disclosed": {
+    "A": [],
+    "B": []
+  },
+  "reconciliation_instructions_sha256": "9ad76e63abfe0142bfdbb27d7d080ac1b03a2b40672181c7a44a753f13b33998"
+}
