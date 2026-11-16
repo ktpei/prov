@@ -124,6 +124,22 @@ export function Conversation(props: Props) {
           )}
         </section>
       ))}
+      {session.workbook && !busy && (
+        <div className="flex flex-col items-start gap-2">
+          {corpus.workbook_starters
+            .filter((starter) => !session.turns.some((turn) => turn.question === starter))
+            .map((starter) => (
+              <button
+                key={starter}
+                type="button"
+                onClick={() => onAsk(starter)}
+                className="rounded-md border border-highlight bg-highlight-soft px-3 py-2 text-left text-sm hover:border-ink-faint"
+              >
+                {starter}
+              </button>
+            ))}
+        </div>
+      )}
       <div ref={end} />
     </div>
   );
