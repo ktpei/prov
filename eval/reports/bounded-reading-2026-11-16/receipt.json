@@ -1,0 +1,401 @@
+{
+  "version": "parent-read-receipt-v1",
+  "implementation_commit": "ec9023d",
+  "freeze_commit": "4171bcd",
+  "conditions": {
+    "original": {
+      "protocol_sha256": "9d2c5da85ea51a2cf4a23cc1f86382b9ad7a422a012e013533de76b6957ad27a",
+      "run_sha256": "4fbf686caa250ca071b3eac31afc4808966484e30e1d81ea9fd1e68ef9a8297b",
+      "grade_sha256": "e80d986114be2c5b46aea69d6b8d439d0959c6c0355f87fa93d38670c8bdf594",
+      "journal_sha256": {
+        "case-0.jsonl": "0bf99cf3b172e2d30c9c6edf08b043ffc57112124bf04e4c0734bae0e00e8432",
+        "case-1.jsonl": "83f04b662f4fbf5009232e3a7995f550f0d541ad34b8f32e3b3d99b6e26c53f2",
+        "case-2.jsonl": "77699ac00c31270ab295ba4e12adffae87ad15515176684e8958a72740e8b849"
+      },
+      "summary": {
+        "parent_passage_opportunity": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        },
+        "returned_reads": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        }
+      },
+      "aggregate_budgets": {
+        "top_1": {
+          "attempted_reads": 3,
+          "requested_lines": 78,
+          "successful_reads": 3,
+          "unique_returned_lines": 78,
+          "returned_text_characters": 9497,
+          "returned_json_bytes": 17665
+        },
+        "top_3": {
+          "attempted_reads": 9,
+          "requested_lines": 249,
+          "successful_reads": 9,
+          "unique_returned_lines": 233,
+          "returned_text_characters": 29367,
+          "returned_json_bytes": 54689
+        },
+        "top_5": {
+          "attempted_reads": 15,
+          "requested_lines": 417,
+          "successful_reads": 15,
+          "unique_returned_lines": 393,
+          "returned_text_characters": 48720,
+          "returned_json_bytes": 91173
+        }
+      },
+      "case_budgets": {
+        "financebench_id_06247": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 32,
+            "successful_reads": 1,
+            "unique_returned_lines": 32,
+            "returned_text_characters": 4398,
+            "returned_json_bytes": 7309
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 88,
+            "successful_reads": 3,
+            "unique_returned_lines": 88,
+            "returned_text_characters": 11072,
+            "returned_json_bytes": 19341
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 149,
+            "successful_reads": 5,
+            "unique_returned_lines": 149,
+            "returned_text_characters": 18783,
+            "returned_json_bytes": 32801
+          }
+        },
+        "financebench_id_01163": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 23,
+            "successful_reads": 1,
+            "unique_returned_lines": 23,
+            "returned_text_characters": 3322,
+            "returned_json_bytes": 6237
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 82,
+            "successful_reads": 3,
+            "unique_returned_lines": 74,
+            "returned_text_characters": 10838,
+            "returned_json_bytes": 20308
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 141,
+            "successful_reads": 5,
+            "unique_returned_lines": 133,
+            "returned_text_characters": 16986,
+            "returned_json_bytes": 32994
+          }
+        },
+        "financebench_id_00601": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 23,
+            "successful_reads": 1,
+            "unique_returned_lines": 23,
+            "returned_text_characters": 1777,
+            "returned_json_bytes": 4119
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 79,
+            "successful_reads": 3,
+            "unique_returned_lines": 71,
+            "returned_text_characters": 7457,
+            "returned_json_bytes": 15040
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 127,
+            "successful_reads": 5,
+            "unique_returned_lines": 111,
+            "returned_text_characters": 12951,
+            "returned_json_bytes": 25378
+          }
+        }
+      },
+      "failed_reads": 0,
+      "truncated_reads": 0
+    },
+    "components": {
+      "protocol_sha256": "ec9477d629dcf8749e227e2812884eb55f84a525adca4350ffc84458ee652e8f",
+      "run_sha256": "c6a14b4d64a60afa6c58a600b7ca15d3abfbcce198acbae177dbdcd88b596464",
+      "grade_sha256": "bdd6263dd95db167cbcc4b696b3c55c642a856481723ebb77be470b3d603fd7d",
+      "journal_sha256": {
+        "case-0.jsonl": "bf77e3d7f16f6cba0e98c932077637ffce2382b58027a094d3557889b5c0ea1e",
+        "case-1.jsonl": "83f04b662f4fbf5009232e3a7995f550f0d541ad34b8f32e3b3d99b6e26c53f2",
+        "case-2.jsonl": "77699ac00c31270ab295ba4e12adffae87ad15515176684e8958a72740e8b849"
+      },
+      "summary": {
+        "parent_passage_opportunity": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        },
+        "returned_reads": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        }
+      },
+      "aggregate_budgets": {
+        "top_1": {
+          "attempted_reads": 3,
+          "requested_lines": 78,
+          "successful_reads": 3,
+          "unique_returned_lines": 78,
+          "returned_text_characters": 9497,
+          "returned_json_bytes": 17665
+        },
+        "top_3": {
+          "attempted_reads": 9,
+          "requested_lines": 257,
+          "successful_reads": 9,
+          "unique_returned_lines": 241,
+          "returned_text_characters": 32671,
+          "returned_json_bytes": 58441
+        },
+        "top_5": {
+          "attempted_reads": 15,
+          "requested_lines": 428,
+          "successful_reads": 15,
+          "unique_returned_lines": 404,
+          "returned_text_characters": 52897,
+          "returned_json_bytes": 95839
+        }
+      },
+      "case_budgets": {
+        "financebench_id_06247": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 32,
+            "successful_reads": 1,
+            "unique_returned_lines": 32,
+            "returned_text_characters": 4398,
+            "returned_json_bytes": 7309
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 96,
+            "successful_reads": 3,
+            "unique_returned_lines": 96,
+            "returned_text_characters": 14376,
+            "returned_json_bytes": 23093
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 160,
+            "successful_reads": 5,
+            "unique_returned_lines": 160,
+            "returned_text_characters": 22960,
+            "returned_json_bytes": 37467
+          }
+        },
+        "financebench_id_01163": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 23,
+            "successful_reads": 1,
+            "unique_returned_lines": 23,
+            "returned_text_characters": 3322,
+            "returned_json_bytes": 6237
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 82,
+            "successful_reads": 3,
+            "unique_returned_lines": 74,
+            "returned_text_characters": 10838,
+            "returned_json_bytes": 20308
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 141,
+            "successful_reads": 5,
+            "unique_returned_lines": 133,
+            "returned_text_characters": 16986,
+            "returned_json_bytes": 32994
+          }
+        },
+        "financebench_id_00601": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 23,
+            "successful_reads": 1,
+            "unique_returned_lines": 23,
+            "returned_text_characters": 1777,
+            "returned_json_bytes": 4119
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 79,
+            "successful_reads": 3,
+            "unique_returned_lines": 71,
+            "returned_text_characters": 7457,
+            "returned_json_bytes": 15040
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 127,
+            "successful_reads": 5,
+            "unique_returned_lines": 111,
+            "returned_text_characters": 12951,
+            "returned_json_bytes": 25378
+          }
+        }
+      },
+      "failed_reads": 0,
+      "truncated_reads": 0
+    },
+    "statement-context": {
+      "protocol_sha256": "5fcc703a7b96d0621610be4f6543a90d7f702012a3279f973bdc80be7b88ad3d",
+      "run_sha256": "c028a79d3acca10283bfcacd71be27f24f14a5a87544ccca2ffff2eebe29b925",
+      "grade_sha256": "c08d91b9fd0cec102503616057d0d3398bafc369639a785f57e0400dffc5517c",
+      "journal_sha256": {
+        "case-0.jsonl": "de303378ee7a07246f4b13849389414a96f28356139956ec67cfc0372720d21d",
+        "case-1.jsonl": "83f04b662f4fbf5009232e3a7995f550f0d541ad34b8f32e3b3d99b6e26c53f2",
+        "case-2.jsonl": "77699ac00c31270ab295ba4e12adffae87ad15515176684e8958a72740e8b849"
+      },
+      "summary": {
+        "parent_passage_opportunity": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        },
+        "returned_reads": {
+          "top_1_complete_count": 1,
+          "top_3_complete_count": 2,
+          "top_5_complete_count": 2
+        }
+      },
+      "aggregate_budgets": {
+        "top_1": {
+          "attempted_reads": 3,
+          "requested_lines": 78,
+          "successful_reads": 3,
+          "unique_returned_lines": 78,
+          "returned_text_characters": 9497,
+          "returned_json_bytes": 17665
+        },
+        "top_3": {
+          "attempted_reads": 9,
+          "requested_lines": 257,
+          "successful_reads": 9,
+          "unique_returned_lines": 241,
+          "returned_text_characters": 32671,
+          "returned_json_bytes": 58441
+        },
+        "top_5": {
+          "attempted_reads": 15,
+          "requested_lines": 428,
+          "successful_reads": 15,
+          "unique_returned_lines": 404,
+          "returned_text_characters": 52224,
+          "returned_json_bytes": 95166
+        }
+      },
+      "case_budgets": {
+        "financebench_id_06247": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 32,
+            "successful_reads": 1,
+            "unique_returned_lines": 32,
+            "returned_text_characters": 4398,
+            "returned_json_bytes": 7309
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 96,
+            "successful_reads": 3,
+            "unique_returned_lines": 96,
+            "returned_text_characters": 14376,
+            "returned_json_bytes": 23093
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 160,
+            "successful_reads": 5,
+            "unique_returned_lines": 160,
+            "returned_text_characters": 22287,
+            "returned_json_bytes": 36794
+          }
+        },
+        "financebench_id_01163": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 23,
+            "successful_reads": 1,
+            "unique_returned_lines": 23,
+            "returned_text_characters": 3322,
+            "returned_json_bytes": 6237
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 82,
+            "successful_reads": 3,
+            "unique_returned_lines": 74,
+            "returned_text_characters": 10838,
+            "returned_json_bytes": 20308
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 141,
+            "successful_reads": 5,
+            "unique_returned_lines": 133,
+            "returned_text_characters": 16986,
+            "returned_json_bytes": 32994
+          }
+        },
+        "financebench_id_00601": {
+          "top_1": {
+            "attempted_reads": 1,
+            "requested_lines": 23,
+            "successful_reads": 1,
+            "unique_returned_lines": 23,
+            "returned_text_characters": 1777,
+            "returned_json_bytes": 4119
+          },
+          "top_3": {
+            "attempted_reads": 3,
+            "requested_lines": 79,
+            "successful_reads": 3,
+            "unique_returned_lines": 71,
+            "returned_text_characters": 7457,
+            "returned_json_bytes": 15040
+          },
+          "top_5": {
+            "attempted_reads": 5,
+            "requested_lines": 127,
+            "successful_reads": 5,
+            "unique_returned_lines": 111,
+            "returned_text_characters": 12951,
+            "returned_json_bytes": 25378
+          }
+        }
+      },
+      "failed_reads": 0,
+      "truncated_reads": 0
+    }
+  },
+  "original_read_attempts": 45,
+  "verification_replay_reads": 45,
+  "paid_calls": 0,
+  "semantic_correctness": "not_measured"
+}

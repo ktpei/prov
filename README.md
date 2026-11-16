@@ -75,9 +75,10 @@ show complete annotated evidence in parent passages for 2/3 exposed tasks, but
 0/3 in returned snippets across all three retrieval conditions. This measures a
 search-to-read gap, not financial answer accuracy.
 
-A [journaled bounded-reading baseline](eval/reports/bounded-reading-2026-11-16/design.md)
-is synthetically verified; its frozen real-case comparison and separate grader
-remain pending. Default agent behavior is unchanged.
+[Bounded reads](eval/reports/bounded-reading-2026-11-16/report.md) deliver complete
+annotated packets for 2/3 tasks after three reads, with all three retrieval policies
+tied. All 45 original reads succeeded and replayed exactly. Model-context projection
+and answer accuracy remain untested by this diagnostic; agent defaults are unchanged.
 
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
 retrieval misses from extraction failure and records a fiscal-year reference ambiguity.

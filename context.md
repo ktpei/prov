@@ -1,13 +1,14 @@
 # Working context — 2026-11-16
 
-## Bounded-reading implementation — 2026-11-16
+## Bounded-reading result — 2026-11-16
 
-[A standalone reader](eval/reports/bounded-reading-2026-11-16/design.md) now opens
-ranked parent passages once each, preserving failure slots, exact returned lines,
-size/truncation accounting and durable interruption records. Eleven synthetic tests
-cover the policy and mutation hazards; all 289 tests and lint pass. Frozen run
-integration and separate replay grading remain pending. No new benchmark result,
-agent behavior change or paid spending is claimed.
+[The frozen comparison](eval/reports/bounded-reading-2026-11-16/report.md) delivers
+complete annotated packets for 1/3 tasks after one read and 2/3 after three/five,
+versus 0/3 in search snippets. All three retrieval policies tie. All 45 original
+reads succeeded without truncation; 45 separate replay reads verified the traces.
+Ulta is complete in one response, NIKE needs a union, and Walmart still misses.
+No financial accuracy or model-visible context claim follows; context projection
+remains to be tested. All 295 tests and lint pass; no additional paid spending.
 
 ## Evidence-component diagnostics — 2026-11-16
 

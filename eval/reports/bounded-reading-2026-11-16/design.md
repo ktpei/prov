@@ -2,7 +2,8 @@
 
 Status: standalone reader, frozen benchmark runner and separate trace-replay
 grader implemented and synthetically verified. The real three-case comparison is
-not yet run. Execution rules are in plan.md; later outcomes belong in report.md.
+complete; outcomes and limitations are in report.md. Execution rules in plan.md
+and all condition protocols remain frozen.
 
 The preceding component diagnostic found complete packets in selected parent
 passages for 2/3 exposed tasks, but none in returned snippets. The next question
@@ -36,7 +37,7 @@ toward gross delivery cost but not unique coverage. The tool's 18,000-character
 limit excludes JSON overhead/newline separators; it is not a token or byte cap.
 This standalone baseline does not simulate the agent's 32K context projection.
 
-## Pending assessment requirements
+## Assessment requirements
 
 Before any real run, bind the implementation/runtime, exact corpus and prepared
 files, saved search report and projected hit plan in a new protocol. Keep packet
