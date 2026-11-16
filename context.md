@@ -10,7 +10,10 @@ at `01983f4`, with 500 clean-checkout tests and lint/validation passing. The
 [frozen first pilot](eval/assessments/model-effort-v1/pilot-protocol.md) compares
 two models at low/high effort on three supplied-evidence development cases;
 a fourth selected case is excluded without replacement for reference ambiguity.
-No new model trial has run at this protocol freeze; no accuracy gain is established.
+The [first live attempt](eval/assessments/model-effort-v1/pilot-report.md) stopped
+after one transport failure with unknown billing; zero successful outputs.
+The $0.0132189 reservation remains accounted, bringing conservative combined
+spend to $0.4946382. No retry, model winner or accuracy gain is established.
 
 H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
 The ledger binds trusted admitted evidence, financial compatibility, calculation

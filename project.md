@@ -4,7 +4,9 @@ The [first model/effort pilot](eval/assessments/model-effort-v1/pilot-protocol.m
 freezes a small supplied-evidence comparison after acceptance of the dedicated
 runner (`01983f4`, 500 clean-checkout tests). Three cases are adjudicable; a fourth
 selected case remains excluded for reference ambiguity. This does not replace
-full-agent retrieval evaluation or authorize model promotion.
+full-agent retrieval evaluation or authorize model promotion. The
+[first live attempt](eval/assessments/model-effort-v1/pilot-report.md) stopped
+after one transport failure, retaining the uncertain reservation and all rows.
 
 H2's internal arithmetic and trusted-snapshot calculation ledger are implemented
 without a new service or dependency. H3 must supply actual source admission and

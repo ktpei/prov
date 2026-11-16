@@ -66,7 +66,10 @@ now supports explicit effort, pinned providers, durable accounting and interleav
 tool-free trials. The [first pilot protocol](eval/assessments/model-effort-v1/pilot-protocol.md)
 freezes three supplied-evidence cases across two models at low/high effort, plus
 one unresolved-reference exclusion without replacement. Infrastructure acceptance
-is not an accuracy result or a model recommendation.
+is not an accuracy result or a model recommendation. The
+[first live pilot](eval/assessments/model-effort-v1/pilot-report.md) stopped on its
+first transport failure with unknown billing; no successful outputs or model
+ranking resulted.
 
 H2's [calculation infrastructure](eval/assessments/evidence-calculations-v1/report.md)
 provides bounded Decimal arithmetic, trusted-evidence references, financial

@@ -1,0 +1,22 @@
+{
+  "protocol_commit": "1422bad",
+  "status": "stopped_for_billing_review",
+  "selected_cases": 4,
+  "eligible_cases": 3,
+  "planned_eligible_calls": 12,
+  "attempted_calls": 1,
+  "successful_outputs": 0,
+  "failed_calls": 1,
+  "remaining_rows": 15,
+  "unresolved_reference_rows_among_remaining": 4,
+  "pilot_uncertain_reservation_usd": 0.0132189,
+  "historical_conservative_usd": 0.4814193,
+  "combined_conservative_usd": 0.4946382,
+  "key_usage_delta_observed": 0.0,
+  "file_sha256": {
+    "runs/model-effort-v1/results/comparison.json": "954deb0c004faae04aec516918b63771e5d1d749eca17fde644ee5665e6c788b",
+    "runs/model-effort-v1/results/scores.json": "405f622ba660c83b0f746c5b20cca5dc1fd79216fbed47ce4d2e6ec09eb7536b",
+    "runs/model-effort-v1/live-key-preflight.json": "9bd2ee4635dd53e84ffb3c17da33d667de9ddfecf85ace03468b870fc8ff69c0",
+    "runs/model-effort-v1/live-key-postflight.json": "683e979f22c40e065d599703540b25d15f5413ef0adfeefdbe552bba38d3f39b"
+  }
+}
