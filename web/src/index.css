@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1b2430;
+  --color-ink-soft: #4a5666;
+  --color-ink-faint: #7d8796;
+  --color-chrome: #e9edf1;
+  --color-rule: #d3d9e0;
+  --color-surface: #ffffff;
+  --color-paper: #fbfaf6;
+  --color-paper-rule: #ece7da;
+  --color-ledger: #0f6e5c;
+  --color-ledger-soft: #e3f1ec;
+  --color-highlight: #f3e58a;
+  --color-highlight-soft: #fbf4c6;
+  --color-rust: #b4532a;
+  --color-rust-soft: #f8e9e1;
+  --color-replay: #6b5ba8;
+  --color-replay-soft: #eeebf7;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-chrome);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ledger);
+  outline-offset: 2px;
+}
+
+mark.quote {
+  background: var(--color-highlight);
+  color: inherit;
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px var(--color-highlight);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse-dot {
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+}
