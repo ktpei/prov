@@ -1,0 +1,178 @@
+{
+  "baseline_commit": "495f901",
+  "pages": [
+    [
+      "assets 100",
+      "revenue 20"
+    ],
+    [
+      "costs 5",
+      "assets 200"
+    ],
+    [
+      "unrelated"
+    ]
+  ],
+  "cases": [
+    {
+      "version": "passage-v1",
+      "query": "assets",
+      "response": {
+        "results": [
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 1,
+            "end_line": 2,
+            "snippet": "assets 100\nrevenue 20",
+            "score": 0.6931,
+            "original_location": {
+              "page": 1
+            }
+          },
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 3,
+            "end_line": 4,
+            "snippet": "costs 5\nassets 200",
+            "score": 0.6931,
+            "original_location": {
+              "page": 2
+            }
+          }
+        ],
+        "mode": "frozen_corpus"
+      }
+    },
+    {
+      "version": "passage-v1",
+      "query": "revenue costs",
+      "response": {
+        "results": [
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 1,
+            "end_line": 2,
+            "snippet": "assets 100\nrevenue 20",
+            "score": 0.9163,
+            "original_location": {
+              "page": 1
+            }
+          },
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 3,
+            "end_line": 4,
+            "snippet": "costs 5\nassets 200",
+            "score": 0.9163,
+            "original_location": {
+              "page": 2
+            }
+          }
+        ],
+        "mode": "frozen_corpus"
+      }
+    },
+    {
+      "version": "passage-v1",
+      "query": "the what",
+      "response": {
+        "results": [],
+        "mode": "frozen_corpus"
+      }
+    },
+    {
+      "version": "bm25-v2",
+      "query": "assets",
+      "response": {
+        "results": [
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 1,
+            "end_line": 2,
+            "snippet": "assets 100",
+            "snippet_locator": "L1-L1",
+            "score": 0.4225,
+            "original_location": {
+              "page": 1
+            }
+          },
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 3,
+            "end_line": 4,
+            "snippet": "assets 200",
+            "snippet_locator": "L4-L4",
+            "score": 0.4225,
+            "original_location": {
+              "page": 2
+            }
+          }
+        ],
+        "mode": "frozen_corpus"
+      }
+    },
+    {
+      "version": "bm25-v2",
+      "query": "revenue costs",
+      "response": {
+        "results": [
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 1,
+            "end_line": 2,
+            "snippet": "revenue 20",
+            "snippet_locator": "L2-L2",
+            "score": 0.8816,
+            "original_location": {
+              "page": 1
+            }
+          },
+          {
+            "id": "synthetic",
+            "title": "Synthetic",
+            "url": null,
+            "published": null,
+            "start_line": 3,
+            "end_line": 4,
+            "snippet": "costs 5",
+            "snippet_locator": "L3-L3",
+            "score": 0.8816,
+            "original_location": {
+              "page": 2
+            }
+          }
+        ],
+        "mode": "frozen_corpus"
+      }
+    },
+    {
+      "version": "bm25-v2",
+      "query": "the what",
+      "response": {
+        "results": [],
+        "mode": "frozen_corpus"
+      }
+    }
+  ]
+}

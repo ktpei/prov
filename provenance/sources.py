@@ -56,6 +56,11 @@ def locator_range(locator):
     return start, end
 
 
+def _query_terms(query):
+    stopwords = {"the", "a", "an", "of", "to", "and", "in", "for", "what", "was", "is", "did"}
+    return set(re.findall(r"\w+", query.lower())) - stopwords
+
+
 def _bm25(tokens, idf, average_length):
     """Standard BM25 with fixed k1=1.5, b=.75 and positive Robertson IDF."""
     frequencies = Counter(tokens)
@@ -245,9 +250,10 @@ class Sources:
             self.budget.uncertain = True
             raise
 
-    def search(self, query, timeout):
-        stopwords = {"the", "a", "an", "of", "to", "and", "in", "for", "what", "was", "is", "did"}
-        terms = set(re.findall(r"\w+", query.lower())) - stopwords
+    def _local_ranking(self, query):
+        """Return local candidates and snippet parameters without dispatching tools."""
+        idf, average_length = None, None
+        terms = _query_terms(query)
         passages = [item for item in self.passages if item["source_id"] in self.documents]
         if self.retrieval_version == "passage-v1":
             counts = {term: sum(term in item["terms"] for item in passages) for term in terms}
@@ -291,8 +297,11 @@ class Sources:
                 if score:
                     ranked.append((score, passage, source))
         ranked.sort(key=lambda item: (-item[0], item[2]["id"], item[1]["start_line"]))
+        return ranked, idf, average_length
+
+    def _passage_hits(self, ranked, idf, average_length):
         hits = []
-        for score, passage, source in ranked[:5]:
+        for score, passage, source in ranked:
             hits.append(
                 {
                     **self.metadata(source),
@@ -309,6 +318,11 @@ class Sources:
                     ],
                 }
             )
+        return hits
+
+    def search(self, query, timeout):
+        ranked, idf, average_length = self._local_ranking(query)
+        hits = self._passage_hits(ranked[:5], idf, average_length)
         if self.exa_key:
             result = self._exa("search", {"query": query, "type": "auto", "numResults": 5}, timeout)
             for item in result.get("results", [])[:5]:

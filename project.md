@@ -31,8 +31,10 @@ primary-research review](eval/retrieval-research-2026-11-16.md) identifies unmat
 statement/context locations and potentially useful 3M evidence outside the frozen
 packet. Location misses are not exhaustive semantic failures. Two incidentally
 exposed paper-example groups are registered for development. A matched page-context
-ranking experiment and separate validation reservation are proposed, not executed.
-All 346 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+ranking prototype is implemented with synthetic checks; a frozen assessment and
+separate validation reservation remain pending. The [annotation-validity review](eval/incomplete-judgments-research-2026-11-16.md)
+proposes a separate blinded audit without changing historical scores.
+All 353 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16

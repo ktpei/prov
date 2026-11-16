@@ -112,6 +112,11 @@ remains the default. Both `demo` and `run` accept
 `--read-extraction-version pdf-returned-pages-v1`; the mode is recorded in traces,
 respected by grading, and must match on checkpoint resume.
 
+A [page-context ranking prototype](eval/retrieval-research-2026-11-16.md) passes
+synthetic checks while preserving default search responses; no benchmark comparison
+has run. The separate [annotation-validity research](eval/incomplete-judgments-research-2026-11-16.md)
+proposes blinded alternative-evidence review without rewriting frozen scores.
+
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
 `--html-text-version native-html-text-v2` to suppress explicit hidden content and

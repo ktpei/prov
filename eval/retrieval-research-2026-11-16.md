@@ -65,18 +65,18 @@ questions. It supports preserving entity/period/unit compatibility and complete
 alternatives instead of rewarding isolated plausible operands.
 [Join-Aware Multi-Table Retrieval](https://aclanthology.org/2024.acl-long.148.pdf)
 
-## Proposed next experiment — not executed or frozen
+## Proposed next experiment — prototype implemented, assessment not executed or frozen
 
 Our inference from these findings is to test one source-page ranking signal before
 adding a query planner. Keep original questions, declared documents, native text,
-parent windows, compact read metadata and context policies fixed. Score a fixed
-25-passage BM25 pool in both conditions. Control selects its first five; challenger
+parent windows, compact read metadata and context policies fixed. Score all eligible passages and retain up to 25 positive-score BM25 candidates
+in both conditions. Control selects its first five; challenger
 reranks that same pool using equal reciprocal-rank contributions from passage and
 containing-page BM25 with constant 60 and deterministic ties. No page filter,
 generated text, synonym expansion, inferred formulas or label-derived query terms.
 
 Both conditions compute the same score sets and preserve one question, two local
-scoring passes, 25 candidates, at most five parent reads and the 32K context budget.
+scoring passes, up to 25 retained candidates, at most five parent reads and the 32K context budget.
 Record actual compute/runtime and response sizes; equal caps are not equal cost.
 Page text used in ranking receives no delivered-evidence credit unless returned.
 Freeze code, all parameters and provenance before searches, then replay before
@@ -103,3 +103,35 @@ additional questions/references. The Amcor excerpt did not supply a task ID, so 
 question-level identity match is claimed. Future selection must exclude these
 issuers from untouched-validation claims. No source-document retrieval or paid
 model call was made for this research.
+
+
+## Prototype verification and remaining gates
+
+`provenance/page_ranking.py` implements a local, single-document experiment only;
+it is not exposed as an agent tool and does not change the default retrieval
+policy. It reuses the existing unrounded passage ranking and hit construction.
+Pages are assembled from unique source lines, with metadata appended once per
+page. Page BM25 has its own collection statistics across every physical page.
+Only positive-scoring pages receive ranks; zero-score pages remain in collection
+statistics and contribute no reciprocal rank. Score ties use source/page identity;
+fusion uses exact fractions and breaks ties by original passage rank. Missing,
+non-integer, unordered, incomplete or cross-page candidate mappings fail explicitly.
+
+All ranking diagnostics are separate from returned hits. Page text used for ranking
+is not evidence delivered to the agent. The method cannot recover passages outside
+the candidate pool or repair a passage boundary. Both conditions score all passages
+and pages; the 25 limit bounds retention, not scoring work.
+
+Verification: seven synthetic tests passed, and ten synthetic default search
+responses (both legacy and BM25 versions) were byte-identical to commit `495f901`.
+No cohort query, candidate-pool inspection, PDF acquisition or paid call was made.
+Independent review also verified thirty synthetic default response comparisons.
+A frozen six-response pre-refactor fixture is now checked by the test suite.
+Full lint and all 353 tests pass. A metadata-only validation reservation and a
+hash-bound assessment protocol must precede any development comparison.
+The runner must fix Python hash seed before process startup because baseline query
+terms retain set iteration and floating-point summation order; this prototype does
+not change that historical behavior. Physical-page identity is trusted from the
+verified corpus mapping; this scorer does not independently inspect PDF contents. A separate
+[incomplete-judgment review](incomplete-judgments-research-2026-11-16.md) specifies
+how to audit equivalent evidence without rewriting the original scores.
