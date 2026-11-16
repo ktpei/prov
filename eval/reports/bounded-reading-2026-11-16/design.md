@@ -1,8 +1,8 @@
 # Ranked parent reading: implementation and assessment design
 
-Status: standalone reader implemented and synthetically verified. The frozen
-benchmark runner, separate trace-replay grader and real three-case comparison are
-still pending. This document is not an execution freeze or an accuracy result.
+Status: standalone reader, frozen benchmark runner and separate trace-replay
+grader implemented and synthetically verified. The real three-case comparison is
+not yet run. Execution rules are in plan.md; later outcomes belong in report.md.
 
 The preceding component diagnostic found complete packets in selected parent
 passages for 2/3 exposed tasks, but none in returned snippets. The next question
@@ -77,3 +77,7 @@ All 289 repository tests and lint pass. Independent review found three mutation
 hazards and a boolean/numeric equality bypass; all were fixed and independently
 rechecked before any real reading experiment. No paid calls or
 new benchmark source reads occurred in this implementation stage.
+
+Runner/grader integration adds six synthetic tests for replay-before-packets,
+forged reports/plans, journal/result/inventory tampering, interruption, changed
+inputs and failed/empty prefix slots. All 295 tests and lint pass.
