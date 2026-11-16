@@ -1,0 +1,15 @@
+{
+  "version": "parent-read-protocol-v1",
+  "policy": "ranked-parent-once-v1",
+  "runtime_sha256": "46e934c36c802e2a73ff9ca66663de22276728d7b095e183c7e565cd57c4b7f9",
+  "prepared_files_sha256": {
+    "manifest.json": "c36fee4071eca7bb2d1db3e3484afea49e3343c155694748daaf8431dfcbe800",
+    "tasks.json": "b3dfdb462914f18656742e2e0183d225102cdabe47e1661982b623950b6086a5",
+    "inputs.json": "7b8b322a2f0ea04d8bf64e680b1c14e856c607445217047700cb629eee156eca"
+  },
+  "corpus_manifest_sha256": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+  "corpus_binding_sha256": "52a01ef7f469f4113f6701c2967c90e91ecad91dc78ff44d6ccd99bab90c0905",
+  "report_sha256": "7e63caba745916bd6b680721b04fa1f4d5626e95836f9114e93a50a585d6b3c9",
+  "plan_sha256": "3dad7a914be7cf2f6a3bd4eb2adbc46bc5abc682878b29f98add0623871f0fa6",
+  "packets_sha256": "af6e595ea0dfada57d17d3977f9fe92d6cdc8f62835d0572de1ac9bf9f8f9a18"
+}
