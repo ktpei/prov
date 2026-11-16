@@ -86,6 +86,15 @@ are declared before loading and rechecked afterward. Eight optional acceptance
 tests pass under OS network denial, alongside the 399-test core suite and lint.
 This does not establish rendered visibility or general issuer extraction.
 
+## Expanded guards
+
+[The versioned guarded adapter](guarded-values-report.md) adds negative-scale and
+explicit-timezone cases plus duplicate classifications. It rejects a verified
+negative fractional-offset normalization defect in Arelle 2.47.2, retains warning
+codes and quarantines inconsistent duplicate occurrences without dropping their
+source records. Fifteen optional tests pass. The prior five-fact artifacts remain
+unchanged; no issuer extraction or general timezone support is claimed.
+
 ## Remaining acceptance work
 
 1. Extend the frozen synthetic taxonomy/manifest beyond the completed five-fact

@@ -74,6 +74,10 @@ validation errors: accepted facts remain zero in that negative fixture. A separa
 passes exact value, unit, period and original-cell ancestry checks with six bound
 model documents. Eight optional tests pass. Complete runtime hashing, broader
 fact types, rendered visibility and issuer extraction remain unverified.
+A [versioned guard](eval/spikes/arelle/guarded-values-report.md) now rejects a
+confirmed Arelle 2.47.2 negative fractional-timezone mismatch and preserves
+duplicate warnings/classifications, quarantining conflicting occurrences. Fifteen
+optional tests pass; original five-fact artifacts remain unchanged.
 
 ## Context-priority challenger — 2026-11-16
 
