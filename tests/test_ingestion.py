@@ -1,10 +1,13 @@
 import hashlib
 import json
+import logging
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
-from provenance.ingestion import DocumentHTML, ingest
+from provenance.ingestion import DocumentHTML, PDFDiagnostics, extract, ingest
 from provenance.sources import Sources, locator_range
 
 
@@ -33,6 +36,47 @@ class IngestionTests(unittest.TestCase):
             output,
         )
         return output
+
+    def test_pdf_warnings_are_captured_by_page_without_changing_text(self):
+        logger = logging.getLogger("pypdf")
+        original_handlers = list(logger.handlers)
+
+        def text(**kwargs):
+            logger.warning("fontTools is required for font dictionary containing huge diagnostics")
+            logger.warning("fontTools is required for font dictionary containing huge diagnostics")
+            return "Revenue 120\n"
+
+        with patch(
+            "pypdf.PdfReader",
+            return_value=SimpleNamespace(pages=[SimpleNamespace(extract_text=text)]),
+        ):
+            lines, locations, diagnostics = extract(self.root / "fake.pdf")
+        self.assertEqual(lines, ["Revenue 120"])
+        self.assertEqual(locations, [{"page": 1}])
+        self.assertEqual(diagnostics["warning_count"], 2)
+        self.assertEqual(diagnostics["warning_samples"][0]["page"], 1)
+        self.assertEqual(diagnostics["warning_samples"][0]["count"], 2)
+        self.assertEqual(logger.handlers, original_handlers)
+        self.assertEqual(diagnostics["text_completeness"], "not_verified")
+
+    def test_pdf_warning_samples_are_bounded_and_handler_removed_after_error(self):
+        diagnostics = PDFDiagnostics()
+        for number in range(30):
+            diagnostics.page = number + 1
+            diagnostics.emit(
+                logging.LogRecord("pypdf", logging.WARNING, "", 1, "x" * 1000, (), None)
+            )
+        self.assertEqual(diagnostics.total, 30)
+        self.assertEqual(len(diagnostics.records), 20)
+        self.assertEqual(len(diagnostics.records[0]["message"]), 300)
+        logger = logging.getLogger("pypdf")
+        handlers = list(logger.handlers)
+        with (
+            patch("pypdf.PdfReader", side_effect=ValueError("bad PDF")),
+            self.assertRaises(ValueError),
+        ):
+            extract(self.root / "bad.pdf")
+        self.assertEqual(logger.handlers, handlers)
 
     def test_html_keeps_cell_order_headers_and_excludes_hidden_xbrl(self):
         parser = DocumentHTML()

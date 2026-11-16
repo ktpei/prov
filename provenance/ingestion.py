@@ -8,10 +8,12 @@ Native extraction is not OCR: charts, scans and complex PDF tables need review.
 import argparse
 import hashlib
 import json
+import logging
 import re
 import shutil
 from datetime import date
 from html.parser import HTMLParser
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
 
@@ -77,29 +79,76 @@ class DocumentHTML(HTMLParser):
             self.parts.append(data)
 
 
+class PDFDiagnostics(logging.Handler):
+    """Bounded page-specific diagnostics; captured warnings do not prove completeness."""
+
+    def __init__(self):
+        super().__init__(logging.WARNING)
+        self.page = None
+        self.records = []
+        self.total = 0
+
+    def emit(self, record):
+        self.total += 1
+        message = record.getMessage()
+        # Font dictionaries are huge and include process-specific object addresses.
+        if message.startswith("fontTools is required"):
+            message = "fontTools is required to parse a CFF Type1 font; fontTools is not installed."
+        message = message[:300]
+        for entry in self.records:
+            if entry["page"] == self.page and entry["message"] == message:
+                entry["count"] += 1
+                return
+        if len(self.records) < 20:
+            self.records.append({"page": self.page, "message": message, "count": 1})
+
+
+def _package_version(name):
+    try:
+        return version(name)
+    except PackageNotFoundError:
+        return None
+
+
 def extract(path):
     """Return complete native text and one location per line; never silently OCR."""
     path = Path(path)
     if path.suffix.lower() == ".pdf":
         from pypdf import PdfReader
 
-        reader = PdfReader(path)
-        lines, locations, empty = [], [], []
-        for number, page in enumerate(reader.pages, 1):
-            text = (
-                page.extract_text(extraction_mode="layout", layout_mode_strip_rotated=False) or ""
-            )
-            page_lines = [line.rstrip() for line in text.splitlines() if line.strip()]
-            if not page_lines:
-                empty.append(number)
-                page_lines = ["[No native text extracted; inspect original page or run OCR.]"]
-            lines.extend(page_lines)
-            locations.extend({"page": number} for _ in page_lines)
+        diagnostics = PDFDiagnostics()
+        logger = logging.getLogger("pypdf")
+        logger.addHandler(diagnostics)
+        try:
+            reader = PdfReader(path)
+            lines, locations, empty = [], [], []
+            for number, page in enumerate(reader.pages, 1):
+                diagnostics.page = number
+                text = (
+                    page.extract_text(extraction_mode="layout", layout_mode_strip_rotated=False)
+                    or ""
+                )
+                page_lines = [line.rstrip() for line in text.splitlines() if line.strip()]
+                if not page_lines:
+                    empty.append(number)
+                    page_lines = ["[No native text extracted; inspect original page or run OCR.]"]
+                lines.extend(page_lines)
+                locations.extend({"page": number} for _ in page_lines)
+        finally:
+            logger.removeHandler(diagnostics)
         return (
             lines,
             locations,
             {
                 "parser": "pypdf-layout",
+                "diagnostics_version": "pdf-extraction-diagnostics-v1",
+                "package_versions": {
+                    name: _package_version(name) for name in ("pypdf", "fonttools")
+                },
+                "warning_count": diagnostics.total,
+                "warning_samples": diagnostics.records,
+                "warning_samples_truncated": diagnostics.total
+                > sum(item["count"] for item in diagnostics.records),
                 "text_completeness": "not_verified",
                 "ocr_performed": False,
                 "page_count": len(reader.pages),

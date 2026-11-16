@@ -1,0 +1,166 @@
+{
+  "version": "font-probe-comparison-v1",
+  "baseline": {
+    "version": "native-font-probe-v1",
+    "original_sha256": "51f5a0fc6ede20de4f5cfdeae8791a57bdd65c95db2ceb263eb120696ff90172",
+    "packages": {
+      "pypdf": "6.21.4",
+      "fonttools": null
+    },
+    "configuration": {
+      "extraction_mode": "layout",
+      "layout_mode_strip_rotated": false,
+      "per_page_timeout_seconds": 30
+    },
+    "pages": [
+      {
+        "page": 1,
+        "status": "extracted",
+        "characters": 18,
+        "text_sha256": "8bc9797d906ede6342d4c2d6b2cff3f6d06052cf843acfff082fbc4377c2335c",
+        "warning_count": 18,
+        "warning_samples": [
+          {
+            "page": 1,
+            "message": "fontTools is required to parse a CFF Type1 font; fontTools is not installed.",
+            "count": 18
+          }
+        ],
+        "seconds": 0.01249970798380673
+      },
+      {
+        "page": 37,
+        "status": "extracted",
+        "characters": 3739,
+        "text_sha256": "9341c7750995dbb8711b9e9e64b1dc5dfc6292019c26932531eeccc9a48f8779",
+        "warning_count": 21,
+        "warning_samples": [
+          {
+            "page": 37,
+            "message": "fontTools is required to parse a CFF Type1 font; fontTools is not installed.",
+            "count": 21
+          }
+        ],
+        "seconds": 0.011344874976202846
+      },
+      {
+        "page": 38,
+        "status": "extracted",
+        "characters": 4239,
+        "text_sha256": "3ba570f76f93d327220febb9b09c7524922b9b67a59995e6fc96722d3aa5d548",
+        "warning_count": 28,
+        "warning_samples": [
+          {
+            "page": 38,
+            "message": "fontTools is required to parse a CFF Type1 font; fontTools is not installed.",
+            "count": 28
+          }
+        ],
+        "seconds": 0.005967292003333569
+      },
+      {
+        "page": 105,
+        "status": "extracted",
+        "characters": 3223,
+        "text_sha256": "0efc20676a430ebf74a0482ae17e2869dcfc8dc3c42201b202eb27593836ed30",
+        "warning_count": 16,
+        "warning_samples": [
+          {
+            "page": 105,
+            "message": "fontTools is required to parse a CFF Type1 font; fontTools is not installed.",
+            "count": 16
+          }
+        ],
+        "seconds": 0.009156333981081843
+      },
+      {
+        "page": 106,
+        "status": "extracted",
+        "characters": 67,
+        "text_sha256": "9f9c3f5ff1b911347cf9a0365b5714744a9e5dde688ef79ac8f5602d83425455",
+        "warning_count": 4,
+        "warning_samples": [
+          {
+            "page": 106,
+            "message": "fontTools is required to parse a CFF Type1 font; fontTools is not installed.",
+            "count": 4
+          }
+        ],
+        "seconds": 0.0005157499108463526
+      }
+    ],
+    "peak_rss_platform_units": 42663936,
+    "limitations": [
+      "Five known font-risk development pages only; no visual semantic validation.",
+      "Text changes or warning disappearance do not prove correct extraction.",
+      "Peak RSS recorded; no hard memory bound imposed."
+    ]
+  },
+  "challenger": {
+    "version": "native-font-probe-v1",
+    "original_sha256": "51f5a0fc6ede20de4f5cfdeae8791a57bdd65c95db2ceb263eb120696ff90172",
+    "packages": {
+      "pypdf": "6.21.4",
+      "fonttools": "4.68.0"
+    },
+    "configuration": {
+      "extraction_mode": "layout",
+      "layout_mode_strip_rotated": false,
+      "per_page_timeout_seconds": 30
+    },
+    "pages": [
+      {
+        "page": 1,
+        "status": "extracted",
+        "characters": 18,
+        "text_sha256": "8bc9797d906ede6342d4c2d6b2cff3f6d06052cf843acfff082fbc4377c2335c",
+        "warning_count": 0,
+        "warning_samples": [],
+        "seconds": 0.21299312496557832
+      },
+      {
+        "page": 37,
+        "status": "extracted",
+        "characters": 3739,
+        "text_sha256": "9341c7750995dbb8711b9e9e64b1dc5dfc6292019c26932531eeccc9a48f8779",
+        "warning_count": 0,
+        "warning_samples": [],
+        "seconds": 0.013464250136166811
+      },
+      {
+        "page": 38,
+        "status": "extracted",
+        "characters": 4239,
+        "text_sha256": "3ba570f76f93d327220febb9b09c7524922b9b67a59995e6fc96722d3aa5d548",
+        "warning_count": 0,
+        "warning_samples": [],
+        "seconds": 0.0067678329069167376
+      },
+      {
+        "page": 105,
+        "status": "extracted",
+        "characters": 3223,
+        "text_sha256": "0efc20676a430ebf74a0482ae17e2869dcfc8dc3c42201b202eb27593836ed30",
+        "warning_count": 0,
+        "warning_samples": [],
+        "seconds": 0.009640499949455261
+      },
+      {
+        "page": 106,
+        "status": "extracted",
+        "characters": 67,
+        "text_sha256": "9f9c3f5ff1b911347cf9a0365b5714744a9e5dde688ef79ac8f5602d83425455",
+        "warning_count": 0,
+        "warning_samples": [],
+        "seconds": 0.0006053331308066845
+      }
+    ],
+    "peak_rss_platform_units": 59572224,
+    "limitations": [
+      "Five known font-risk development pages only; no visual semantic validation.",
+      "Text changes or warning disappearance do not prove correct extraction.",
+      "Peak RSS recorded; no hard memory bound imposed."
+    ]
+  },
+  "conclusion": "All five extracted text hashes identical; missing-font warnings eliminated, no measured text recovery. No dependency promotion or correctness claim."
+}
