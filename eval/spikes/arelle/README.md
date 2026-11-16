@@ -116,6 +116,14 @@ closed-cube relationships with 14 cases, including nine expected validation
 rejections despite schema-valid facts. Seven optional tests pass. These fixtures
 remain separate from the guarded extraction path.
 
+## First real-filing package load
+
+The [dependency acquisition experiment](../../reports/xbrl-dependencies-2026-11-16/report.md)
+now loads the existing ODFL June original and 24 declared dependencies under OS
+network denial. The run is rejected for 12 missing SEC transforms among 504 facts.
+This is exploratory loading, not the completed guarded extractor or accepted
+source-cell evidence. Targeted transform verification is the next concrete step.
+
 ## Remaining acceptance work
 
 1. Add separately versioned fixtures beyond the frozen five-fact
@@ -127,9 +135,11 @@ remain separate from the guarded extraction path.
    or unresolved references instead of silently accepting partial models.
 4. Round-trip accepted source locators and verify visible-cell associations with
    local rendering. Hidden/detached/ambiguous facts get explicit dispositions.
-5. Only then attempt the three existing tagged filings without fetching missing
-   dependencies, retaining failures and the untagged release disposition. This
-   remains development smoke testing, not prospective benchmark improvement.
+5. Complete the separately staged ODFL package smoke with an explicitly pinned
+   SEC transform plugin, preserving the initial rejected run. Acquisition stays
+   separate from denied-network loading. The other two tagged filings remain
+   unbundled; preserve them and the untagged release disposition. This remains
+   development smoke testing, not prospective benchmark improvement.
 
 The independent research agent checked primary documentation and tagged code;
 root executed the negative preflight. Financial correctness, benchmark-role

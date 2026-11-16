@@ -88,6 +88,12 @@ alias equality across 13 occurrences/10 contexts. Six optional tests pass. A sep
 [applicability matrix](eval/spikes/arelle/applicability/README.md) checks 14 default/domain/
 closed-cube cases: five pass and nine reject despite API success and schema-valid
 facts. Seven optional tests pass. Integration with the guarded adapter remains pending.
+A [real-filing dependency experiment](eval/reports/xbrl-dependencies-2026-11-16/report.md)
+acquired 24 schema/linkbase documents and replayed 2,417 reference edges offline.
+The existing ODFL June filing loads all 25 declared documents from a local package,
+but remains rejected: 12 of 504 facts require absent SEC transforms. Thirteen new
+core tests cover reference semantics and durable bounded-acquisition failures.
+
 
 ## Context-priority challenger — 2026-11-16
 

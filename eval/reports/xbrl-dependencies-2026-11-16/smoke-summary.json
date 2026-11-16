@@ -1,0 +1,1088 @@
+{
+  "version": "exploratory-offline-issuer-smoke-v1",
+  "full_diagnostics_file": "runs/xbrl-dependency-acquisition-v1/exploratory-smoke.json",
+  "full_record_sha256": "7b49abdf2393bb09c7069f1fc22527b4ad714ae7d6c74ac86bb0002e879fb69e",
+  "package_builder_sha256": "bd4ff4b215d5190e5d48298cdc6044ec5fb2f6f50ad549a845d263e4ba0d1537",
+  "smoke_driver_sha256": "e9ba4b172f61f9e01088a9b5d84df146ff65643ea97a9931de9ad53c3b1a941d",
+  "api_success": true,
+  "entrypoint_uri": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm",
+  "loaded_documents": {
+    "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm": "bundle/filing/odfl-20250630.htm",
+    "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.xsd": "bundle/documents/36a992b6fea7bc0e1648a0971ed0d7eafdc705edfa0930552086a4d87f77f08e.xml",
+    "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "bundle/documents/5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827.xml",
+    "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "bundle/documents/f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca.xml",
+    "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "bundle/documents/e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818.xml",
+    "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "bundle/documents/5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971.xml",
+    "http://www.xbrl.org/2005/xbrldt-2005.xsd": "bundle/documents/caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7.xml",
+    "https://xbrl.sec.gov/ecd/2025/ecd-2025.xsd": "bundle/documents/730691096fe90e516b6434594e7c050bcd71458b0823be01e4f121267f2bfe1d.xml",
+    "https://www.xbrl.org/dtr/type/2024-01-31/types.xsd": "bundle/documents/1fdffdb8629c8de20e33d47a0ff1fbdd84abea44f9e8c36e57a3c9e132c9ca35.xml",
+    "http://www.xbrl.org/2006/ref-2006-02-27.xsd": "bundle/documents/fae0144a41edf741c3b74c866988f64d24714dba4ca822258dea8b490b7904b7.xml",
+    "https://xbrl.fasb.org/us-gaap/2025/elts/us-gaap-2025.xsd": "bundle/documents/4639263ec38aaa5d531cb7d0afb33f9582c2d602fb4623d4921e47e365b6ac9f.xml",
+    "https://xbrl.fasb.org/us-gaap/2025/elts/us-types-2025.xsd": "bundle/documents/fd4fe8b98867fce2c54735b9f9fe71275f491aeee4bd01e506cb194775a2673b.xml",
+    "https://xbrl.fasb.org/srt/2025/elts/srt-types-2025.xsd": "bundle/documents/7c1d7b6e0c7595c3c3fba42d327be55acaf3ba0c4df9ebcd1a132ab601dfb144.xml",
+    "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd": "bundle/documents/17a021e3e3fd5ca2ff0cde05988c78f12a6cadd71077347e0ae4376a78b586e8.xml",
+    "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd": "bundle/documents/a62f1f3635bc6b6cddd1422ab2c9ba00ebbe73cefc3500e207fa0e9c12ee0293.xml",
+    "https://xbrl.fasb.org/srt/2025/elts/srt-2025.xsd": "bundle/documents/ac913af701a6cb5b15c6fff85383270d6ab65c86b3da0f6bcef389cd9a23235a.xml",
+    "https://xbrl.sec.gov/country/2025/country-2025.xsd": "bundle/documents/dad858d60293b4a7d89934a33a3950950a3b0066af7998c3ad6570399cc80599.xml",
+    "https://xbrl.fasb.org/srt/2025/elts/srt-roles-2025.xsd": "bundle/documents/db485cc9353e3bbb11db16f3cd95f5906c5cbeecfa328c2be06040314c556a4e.xml",
+    "https://xbrl.fasb.org/us-gaap/2025/elts/us-roles-2025.xsd": "bundle/documents/5d3c7df850d5b5b753f99007b3326f2273ae556080a8831f5ac113ee031110f2.xml",
+    "https://xbrl.sec.gov/stpr/2025/stpr-2025.xsd": "bundle/documents/f72b24f3a5003087e8692545ffbf92545e84bf26acb160fcb5f1b5e9a59a5461.xml",
+    "https://xbrl.sec.gov/ecd/2025/ecd-sub-2025.xsd": "bundle/documents/c1bf4bda50c4ec7b6e9973880245309f3c5366e6bea604e534c82d1aecfac88c.xml",
+    "https://xbrl.sec.gov/dei/2025/dei-2025.xsd": "bundle/documents/d6f84278744794000dea74d93eb49bf19483271d037a6b65c53697bc0caa18fe.xml",
+    "https://www.xbrl.org/2023/calculation-1.1.xsd": "bundle/documents/a41557cdbf0d05f8b726ebe07865042696ae590477bfb80fb4ffac9c22d3cfe8.xml",
+    "http://www.xbrl.org/lrr/arcrole/esma-arcrole-2018-11-21.xsd": "bundle/documents/52640b1d3568f6fd497e9037abc1734612a30037e1c38fa89447a8878632aceb.xml",
+    "http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd": "bundle/documents/b6b3fdd3bb93dad157f13586b5b9f14998b4940875c78af3f29d28116cc0092a.xml"
+  },
+  "fact_count": 504,
+  "fact_validation_states": {
+    "4": 492,
+    "2": 12
+  },
+  "context_count": 71,
+  "unit_count": 5,
+  "diagnostic_counts": {
+    "ix11.11.1.2:invalidTransformation": 8,
+    "ix11.10.1.2:invalidTransformation": 4,
+    "arelle:duplicateFacts": 78
+  },
+  "errors": [
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:DocumentQuarterlyReport has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_ad827eae-b174-4257-8646-3dd51ef498d5",
+          "sourceLine": 20,
+          "objectId": "__582",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "20"
+            ],
+            [
+              "label",
+              "Document Quarterly Report"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "DocumentQuarterlyReport"
+            ],
+            [
+              "QName",
+              "dei:DocumentQuarterlyReport"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:DocumentTransitionReport has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_9e156374-be15-4012-917d-c2b8b1e5eaa3",
+          "sourceLine": 30,
+          "objectId": "__609",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "30"
+            ],
+            [
+              "label",
+              "Document Transition Report"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "DocumentTransitionReport"
+            ],
+            [
+              "QName",
+              "dei:DocumentTransitionReport"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:EntityIncorporationStateCountryCode has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_6125bbdd-cbf6-4865-9a67-994081842efe",
+          "sourceLine": 49,
+          "objectId": "__656",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "49"
+            ],
+            [
+              "label",
+              "Entity Incorporation, State or Country Code"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "EntityIncorporationStateCountryCode"
+            ],
+            [
+              "QName",
+              "dei:EntityIncorporationStateCountryCode"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:EntityAddressStateOrProvince has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_8a408e5d-ee02-402f-8afd-190f9cc6345e",
+          "sourceLine": 71,
+          "objectId": "__709",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "71"
+            ],
+            [
+              "label",
+              "Entity Address, State or Province"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "EntityAddressStateOrProvince"
+            ],
+            [
+              "QName",
+              "dei:EntityAddressStateOrProvince"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:SecurityExchangeName has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_64951bff-e06e-4c33-870d-1db38fece104",
+          "sourceLine": 95,
+          "objectId": "__775",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "95"
+            ],
+            [
+              "label",
+              "Security Exchange Name"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "SecurityExchangeName"
+            ],
+            [
+              "QName",
+              "dei:SecurityExchangeName"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:EntityFilerCategory has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_978fe09c-28ec-4780-a154-7bd61f0a787a",
+          "sourceLine": 115,
+          "objectId": "__821",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "115"
+            ],
+            [
+              "label",
+              "Entity Filer Category"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "EntityFilerCategory"
+            ],
+            [
+              "QName",
+              "dei:EntityFilerCategory"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:EntitySmallBusiness has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_fbf3c856-e886-41af-a962-e097cac95c36",
+          "sourceLine": 130,
+          "objectId": "__858",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "130"
+            ],
+            [
+              "label",
+              "Entity Small Business"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "EntitySmallBusiness"
+            ],
+            [
+              "QName",
+              "dei:EntitySmallBusiness"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.11.1.2:invalidTransformation",
+      "msg": "Fact dei:EntityEmergingGrowthCompany has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_1e485a83-cb84-40b9-b17f-b65a106e48c2",
+          "sourceLine": 142,
+          "objectId": "__886",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "142"
+            ],
+            [
+              "label",
+              "Entity Emerging Growth Company"
+            ],
+            [
+              "namespace",
+              "http://xbrl.sec.gov/dei/2025"
+            ],
+            [
+              "name",
+              "EntityEmergingGrowthCompany"
+            ],
+            [
+              "QName",
+              "dei:EntityEmergingGrowthCompany"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "None"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.10.1.2:invalidTransformation",
+      "msg": "Fact us-gaap:NumberOfOperatingSegments has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_72cf521e-5f66-4ad0-86ba-60110438c251",
+          "sourceLine": 2729,
+          "objectId": "__8046",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "2729"
+            ],
+            [
+              "label",
+              "Number of Operating Segments"
+            ],
+            [
+              "namespace",
+              "http://fasb.org/us-gaap/2025"
+            ],
+            [
+              "name",
+              "NumberOfOperatingSegments"
+            ],
+            [
+              "QName",
+              "us-gaap:NumberOfOperatingSegments"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "unitRef",
+              "U_Segment (Segment)",
+              [
+                [
+                  "measure",
+                  "odfl:Segment"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "INF"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ],
+            [
+              "format",
+              "ixt-sec:numwordsen"
+            ],
+            [
+              "scale",
+              "None"
+            ],
+            [
+              "html value",
+              "one"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.10.1.2:invalidTransformation",
+      "msg": "Fact us-gaap:NumberOfReportableSegments has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_7d1b4054-15e7-4f4b-8a23-67aa2d9095ab",
+          "sourceLine": 2729,
+          "objectId": "__8047",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "2729"
+            ],
+            [
+              "label",
+              "Number of Reportable Segments"
+            ],
+            [
+              "namespace",
+              "http://fasb.org/us-gaap/2025"
+            ],
+            [
+              "name",
+              "NumberOfReportableSegments"
+            ],
+            [
+              "QName",
+              "us-gaap:NumberOfReportableSegments"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "unitRef",
+              "U_Segment (Segment)",
+              [
+                [
+                  "measure",
+                  "odfl:Segment"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "INF"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ],
+            [
+              "format",
+              "ixt-sec:numwordsen"
+            ],
+            [
+              "scale",
+              "None"
+            ],
+            [
+              "html value",
+              "one"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.10.1.2:invalidTransformation",
+      "msg": "Fact us-gaap:NumberOfOperatingSegments has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_99c15f29-8112-43fa-9d88-af4ec88296a0",
+          "sourceLine": 3040,
+          "objectId": "__9045",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "3040"
+            ],
+            [
+              "label",
+              "Number of Operating Segments"
+            ],
+            [
+              "namespace",
+              "http://fasb.org/us-gaap/2025"
+            ],
+            [
+              "name",
+              "NumberOfOperatingSegments"
+            ],
+            [
+              "QName",
+              "us-gaap:NumberOfOperatingSegments"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "unitRef",
+              "U_Segment (Segment)",
+              [
+                [
+                  "measure",
+                  "odfl:Segment"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "INF"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ],
+            [
+              "format",
+              "ixt-sec:numwordsen"
+            ],
+            [
+              "scale",
+              "None"
+            ],
+            [
+              "html value",
+              "one"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    },
+    {
+      "levelname": "ERROR",
+      "messageCode": "ix11.10.1.2:invalidTransformation",
+      "msg": "Fact us-gaap:NumberOfReportableSegments has unrecognized transformation namespace http://www.sec.gov/inlineXBRL/transformation/2015-08-31",
+      "refs": [
+        {
+          "href": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm#F_0950315d-b15f-4f60-949b-638175e1317a",
+          "sourceLine": 3040,
+          "objectId": "__9046",
+          "properties": [
+            [
+              "file",
+              "odfl-20250630.htm"
+            ],
+            [
+              "line",
+              "3040"
+            ],
+            [
+              "label",
+              "Number of Reportable Segments"
+            ],
+            [
+              "namespace",
+              "http://fasb.org/us-gaap/2025"
+            ],
+            [
+              "name",
+              "NumberOfReportableSegments"
+            ],
+            [
+              "QName",
+              "us-gaap:NumberOfReportableSegments"
+            ],
+            [
+              "contextRef",
+              "C_a2a18474-4922-4f44-a1a7-bf8b2a6fc3e7",
+              [
+                [
+                  "entity",
+                  "0000878927",
+                  [
+                    [
+                      "scheme",
+                      "http://www.sec.gov/CIK"
+                    ]
+                  ]
+                ],
+                [
+                  "startDate",
+                  "2025-01-01"
+                ],
+                [
+                  "endDate",
+                  "2025-06-30"
+                ]
+              ]
+            ],
+            [
+              "unitRef",
+              "U_Segment (Segment)",
+              [
+                [
+                  "measure",
+                  "odfl:Segment"
+                ]
+              ]
+            ],
+            [
+              "decimals",
+              "INF"
+            ],
+            [
+              "precision",
+              "None"
+            ],
+            [
+              "xsi:nil",
+              "false"
+            ],
+            [
+              "value",
+              "ixt function not available"
+            ],
+            [
+              "format",
+              "ixt-sec:numwordsen"
+            ],
+            [
+              "scale",
+              "None"
+            ],
+            [
+              "html value",
+              "one"
+            ]
+          ]
+        }
+      ],
+      "args": {}
+    }
+  ],
+  "accepted": false,
+  "claim": "Exploratory package load; not a production extraction or accepted financial fact sidecar"
+}
