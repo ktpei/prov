@@ -1,0 +1,15 @@
+{
+  "result_sha256": "de91337c268f58797095d931eceee55db99fa2f1bcd7522cdf47d499f79a445b",
+  "independent_reproduction_sha256": "de91337c268f58797095d931eceee55db99fa2f1bcd7522cdf47d499f79a445b",
+  "review": "independent read-only same-model-family coding-agent review; not human financial validation",
+  "case_count": 14,
+  "accepted_cases": 5,
+  "rejected_cases": 9,
+  "model_documents_per_case": 9,
+  "optional_tests": 7,
+  "core_tests": 399,
+  "lint": "passed",
+  "test_code_sha256": "59eeb281e9413cf11bd051a469bfe63e34a0fa28111ad19377645583b0dacc37",
+  "binding_review": "parent snapshot and final recheck; every child baseline/driver/manifest matches parent; mismatch and between-child mutation regression tests pass",
+  "scope": "one synthetic closed segment hypercube; not general financial extraction"
+}

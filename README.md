@@ -146,7 +146,9 @@ timezone mismatch and preserves duplicate conflicts; 15 optional tests pass. A
 reproduces those synthetic behaviors while holding other package versions fixed.
 A [dimensional scope fixture](eval/spikes/arelle/dimensions/README.md) additionally
 preserves explicit/typed members and residual scenario content; six optional tests
-pass. Default-member and hypercube applicability checks remain pending.
+pass. A separate [14-case applicability matrix](eval/spikes/arelle/applicability/README.md)
+now distinguishes usable defaults, domain membership and closed-cube container scope;
+seven additional tests pass. Integration into a general adapter remains pending.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select

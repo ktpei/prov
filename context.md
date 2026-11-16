@@ -84,8 +84,10 @@ all scenario semantics. Independent and retained runs match the 15 tests/10 scen
 promotion or timezone repair is claimed.
 A [dimensional context observation](eval/spikes/arelle/dimensions/README.md) now
 checks explicit and simple typed dimensions, residual scenario content and namespace
-alias equality across 13 occurrences/10 contexts. Six optional tests pass. Defaults,
-hypercube applicability and integration with the guarded adapter remain pending.
+alias equality across 13 occurrences/10 contexts. Six optional tests pass. A separate
+[applicability matrix](eval/spikes/arelle/applicability/README.md) checks 14 default/domain/
+closed-cube cases: five pass and nine reject despite API success and schema-valid
+facts. Seven optional tests pass. Integration with the guarded adapter remains pending.
 
 ## Context-priority challenger — 2026-11-16
 

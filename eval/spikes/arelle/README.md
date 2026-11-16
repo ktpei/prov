@@ -111,6 +111,10 @@ in 10 contexts and verifies explicit/typed members, residual scenario content an
 namespace-alias equality. Six optional tests pass under denied-network execution.
 It has no hypercubes or default relationships, so this is context identity coverage,
 not taxonomy applicability or general extraction.
+A [separate applicability matrix](applicability/README.md) now checks default and
+closed-cube relationships with 14 cases, including nine expected validation
+rejections despite schema-valid facts. Seven optional tests pass. These fixtures
+remain separate from the guarded extraction path.
 
 ## Remaining acceptance work
 
