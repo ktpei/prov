@@ -6,15 +6,18 @@ were generated and committed at `5b016f4` before dispatch. Dispatch-time input a
 output hash verification passed. All 378 tests and lint pass, including five packet
 allowlist/integrity tests.
 
-Two fresh-context independent Astra reviewers are interpreting all six literal
-questions. Their permitted inputs exclude old rubrics, reference answers, source
+Two fresh-context independent Astra reviewers completed all six literal question
+interpretations, locked verbatim at `4fbd9ce`. Both disclosed no outside access.
+The third fresh reviewer completed all-six reconciliation, locked at `0398148`
+before evidence. [Interpretation report](interpretation-report.md) records 16
+interpretations: two cases judged well-defined, two conditional and two
+underspecified. These are coding-agent judgments, not financial validation. Their permitted inputs exclude old rubrics, reference answers, source
 evidence, retrieval ranks, policy names and outcomes. [Access record](access.json)
 tracks dispatch and later disclosures. Root is an outcome-aware custodian, not a
 blinded judge. Workflow restrictions are not filesystem security isolation.
 
-Initial reviews will be locked verbatim. A third fresh reviewer must reconcile
-all six cases under the [fixed instructions](reconciliation-instructions.md) before
-any evidence is supplied. Future masked evidence review uses the predeclared pool
+Initial reviews and reconciliation are locked under the [fixed instructions](reconciliation-instructions.md).
+No evidence has been supplied yet. Future masked evidence review uses the predeclared pool
 and uniform review-only page context. No adjudicated new alternatives or changed
 scores exist. Historical evidence packets/results and reserved validation remain
 unchanged and closed respectively.

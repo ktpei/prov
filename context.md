@@ -41,7 +41,12 @@ passes; no promotion or validation-content access. A [validation reservation](ev
 is complete. Its post-selection audit found two prior-issuer overlaps (Amazon and
 Microsoft), retained without replacement; all six selected documents remain closed. The [annotation-validity review](eval/incomplete-judgments-research-2026-11-16.md)
 proposes a separate blinded audit without changing historical scores.
-All 373 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
+A [blinded evidence audit](eval/assessments/financebench-evidence-audit-v1/progress.md)
+has locked question-only interpretations from two fresh reviewers and all-six
+third-reviewer reconciliation: 16 interpretations, with two cases judged
+well-defined, two conditional and two underspecified. Evidence review has not
+started; these coding-agent judgments change no scores.
+All 378 tests and lint pass. Four prior TAT-QA issuer identities remain unresolved, so global cross-suite
 issuer disjointness is not claimed. No availability-based replacements are allowed.
 
 ## Context-priority challenger — 2026-11-16

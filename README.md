@@ -121,7 +121,10 @@ separates two cases with short label-assisted window witnesses from four whose
 pools lack frozen locations; it is an evaluator diagnostic, not a retrieval policy. A [metadata-only validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
 keeps six slots closed; Amazon and Microsoft have prior issuer exposure and remain
 explicitly flagged without replacement. The separate [annotation-validity research](eval/incomplete-judgments-research-2026-11-16.md)
-proposes blinded alternative-evidence review without rewriting frozen scores.
+supports a [staged blinded audit](eval/assessments/financebench-evidence-audit-v1/progress.md)
+has completed and locked independent question-only interpretation and reconciliation
+before evidence or outcomes are shown. Six cases retain 16 explicit interpretations;
+evidence assessment is still pending. Frozen scores remain unchanged.
 
 Source ingestion now includes an independent native HTML geometry sidecar,
 FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
