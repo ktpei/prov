@@ -34,6 +34,7 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
   const [window, setWindow] = useState<SourceWindow | null>(null);
   const [error, setError] = useState<string | null>(null);
   const target = useRef<HTMLLIElement>(null);
+  const box = useRef<HTMLDivElement>(null);
   const range = citation ? lineRange(citation.locator) : null;
 
   useEffect(() => {
@@ -52,7 +53,9 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
   }, [corpus.id, citation?.source_id, citation?.locator]);
 
   useEffect(() => {
-    target.current?.scrollIntoView({ block: "center" });
+    if (box.current && target.current) {
+      box.current.scrollTop = Math.max(0, target.current.offsetTop - box.current.clientHeight / 3);
+    }
   }, [window]);
 
   if (!citation || !range) {
@@ -119,7 +122,7 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
           </p>
         )}
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto bg-chrome p-4">
+      <div ref={box} className="relative min-h-0 flex-1 overflow-y-auto bg-chrome p-4">
         <ol className="mx-auto max-w-[760px] rounded-sm border border-paper-rule bg-paper py-3 font-serif text-[14.5px] leading-[1.6] shadow-[0_1px_0_#d3d9e0]">
           {window.lines.map((line) => {
             const isCited = line.line >= range[0] && line.line <= range[1];

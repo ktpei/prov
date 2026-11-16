@@ -58,6 +58,9 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
     );
   }
 
+  const figures = answer.claims.filter((claim) => typeof claim.value === "number" || claim.value.length <= 32);
+  const notes = answer.claims.filter((claim) => !figures.includes(claim));
+
   return (
     <div className={`rounded-lg border bg-surface px-4 py-3 ${answer.answerable ? "border-rule" : "border-ink-faint/40"}`}>
       <div className="mb-1.5 flex flex-wrap items-center gap-2 text-xs">
@@ -73,7 +76,7 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
       </div>
       <p className="max-w-[72ch] whitespace-pre-wrap">{answer.answer}</p>
 
-      {answer.claims.length > 0 && (
+      {figures.length > 0 && (
         <div className="mt-3 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -85,9 +88,9 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
               </tr>
             </thead>
             <tbody>
-              {answer.claims.map((claim) => (
+              {figures.map((claim) => (
                 <tr key={claim.key} className="border-b border-rule/60 align-top last:border-0">
-                  <td className="py-1.5 pr-3">{humanizeKey(claim.key)}</td>
+                  <td className="min-w-[9rem] py-1.5 pr-3">{humanizeKey(claim.key)}</td>
                   <td className="tabular py-1.5 pr-3 text-right font-medium whitespace-nowrap">
                     {formatValue(claim.value, claim.unit)}
                     {formatUnit(claim.unit) && (
@@ -113,6 +116,19 @@ export function AnswerCard({ turn, titles, selection, onCite, onShowActivity, on
             </tbody>
           </table>
         </div>
+      )}
+      {notes.length > 0 && (
+        <ul className="mt-3 space-y-1.5 text-sm">
+          {notes.map((claim) => (
+            <li key={claim.key} className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+              <span className="text-ink-soft">{String(claim.value)}</span>
+              <span className="tabular text-xs text-ink-faint">{claim.period}</span>
+              {claim.citations.map((citation, index) => (
+                <CitationChip key={index} citation={citation} titles={titles} active={active(citation)} onOpen={onCite} />
+              ))}
+            </li>
+          ))}
+        </ul>
       )}
 
       {turn.proposal_ids.length > 0 && (

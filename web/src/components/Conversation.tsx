@@ -36,7 +36,9 @@ export function Conversation(props: Props) {
   const end = useRef<HTMLDivElement>(null);
   const lastTurn = session.turns.at(-1);
   useEffect(() => {
-    end.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    // Scroll only the conversation pane; scrollIntoView would also move the page.
+    const box = end.current?.closest<HTMLElement>("[data-scroll]");
+    box?.scrollTo({ top: box.scrollHeight, behavior: "smooth" });
   }, [session.turns.length, lastTurn?.status]);
 
   if (session.turns.length === 0) {

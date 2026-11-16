@@ -37,6 +37,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+@media (min-width: 1024px) {
+  body {
+    overflow: hidden;
+  }
+}
+
 .tabular {
   font-variant-numeric: tabular-nums;
 }
