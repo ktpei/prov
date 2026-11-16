@@ -1,5 +1,12 @@
 # Working context — 2026-11-16
 
+[Recent finance harness research](eval/finance-harness-research-2026-11-16.md)
+maps external designs to proposed evidence-linked arithmetic, model-input
+receipts, typed-evidence integration, and prospective full-agent evaluation.
+These are recommendations only; no runtime policy or benchmark score changed.
+Its research-exposure addendum records incidental external examples, including
+additional Microsoft exposure, without changing the six frozen reservations.
+
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all
 420 mapped fact occurrences across 412 cells; 84 facts have no mapped cell. This
