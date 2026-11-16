@@ -66,7 +66,7 @@ referenced pages, with no adjacent-page expansion. Semantic caveats remain expli
 for 3M, Coca-Cola and Verizon. Comparison remains unexecuted and must keep policies/budget fixed; it cannot
 retune from these cases. This preparation is not a benchmark score.
 
-All 320 tests and lint pass. Six bodies have been byte-verified and natively
+All 329 tests and lint pass. Six bodies have been byte-verified and natively
 extracted; selected task/reference records were prepared by code. All six packets
 were independently reviewed and frozen before retrieval; this is not human finance
 validation. No retrieval/context run, paid call or holdout run has occurred. Spending
@@ -75,3 +75,15 @@ remains $0.4814193.
 Independent metadata-only review verified the 394-path non-truncated tree, all six
 ordered blob entries, exact sizes, source links and response/selection hashes.
 That review performed no network requests or financial-content inspection.
+
+## Comparison implementation
+
+The [runner](compare.py) and [plan](comparison-plan.md) are independently reviewed.
+The reviewed driver SHA-256 is
+`7a6a0e1f62586418cd5bd0eab20fe167b74f4fef5071d1846b7e74f56db70d53`.
+Nine synthetic tests cover label-free collection, byte-exact replay before packet
+parsing, identical histories, empty searches, failed read slots, durable search/read
+interruption, blocked contexts, post-replay tampering and policy divergence. All
+329 repository tests and lint pass. No real cohort search has run; freeze the exact
+protocol before execution. Historical policy code and production defaults are
+unchanged.
