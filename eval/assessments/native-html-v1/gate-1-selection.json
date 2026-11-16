@@ -1,0 +1,15 @@
+{
+  "schema_version": "native-html-assessment-gate-v1",
+  "assessment_id": "native-html-v1",
+  "stage": 1,
+  "previous_gate_sha256": "93898882dc472661582f4441d71d23b5b65d2f44c59386f924a241eb21aa168b",
+  "implementation_revision": "2b00126c7c74c3ad79792edc8731006a682bf5aa",
+  "runtime_sha256": "534b35235b84aaa825bde0aebe955a2f1458639d60ac1670dfd1e7f0e263118f",
+  "selection_file": "selected-cohort.json",
+  "selection_sha256": "d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4",
+  "selection_count": 6,
+  "issuer_count": 3,
+  "replacement_policy": "No replacements. Preserve every acquisition and eligibility failure.",
+  "metadata_exposure": "Proposal metadata was inspected before gate0; final selection identities are unchanged. This is not blinded issuer selection.",
+  "acquisition_command": "uv run python -m eval.scripts.acquire_native_html --selection eval/assessments/native-html-v1/selected-cohort.json --sha256 d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4 --output runs/native-html-v1-acquisition"
+}
