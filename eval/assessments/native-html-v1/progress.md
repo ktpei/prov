@@ -106,3 +106,12 @@ metadata and documented archive paths. No submission bodies were requested.
 A future attempt requires a separate freeze, transport/framing checks, exact
 primary-member selection and dual container/member provenance. Access and byte
 equivalence remain unverified. This metadata record is not an acquisition policy.
+
+## Submission capture prepared
+
+A bounded [container capture condition](submission-capture-notes.md) is implemented
+for the four remaining official routes. It retains six cohort dispositions and
+never declares primary extraction, identity verification or corpus eligibility.
+The 32 MiB cap covers all four index-advertised sizes, including the two Ameren
+containers above 20 MB. A separate gate must freeze the implementation and request
+policy before any body requests.
