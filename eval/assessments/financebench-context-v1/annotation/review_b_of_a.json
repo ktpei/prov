@@ -1,0 +1,220 @@
+{
+  "version": "financebench-context-independent-annotation-review-v1",
+  "reviewer": "review_b_of_a",
+  "review_type": "independent coding-agent source-location review; not human finance adjudication",
+  "primary_cases_sha256": "6013b34990a024205465688cd50b97b7c3ad9bbe7db3949d62380d9e777ef65d",
+  "primary_notes_sha256": "b146bb5fb5b9525cbb2e930e4a9c1b34644e883cdae68422202f68eb89a597bf",
+  "frozen_input_bindings": {
+    "preparation_plan_sha256": "361f80ce6cf1074e90b2469c016d12e1eb2d95d23762b7685713f1a61f20c851",
+    "prepared_tasks_file_sha256": "2b05a8d6bbeeaaa807e8ea1437d81b84ca70bb94d84ac563b73c9c9b8ff52a09",
+    "corpus_manifest_sha256": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4"
+  },
+  "scope": {
+    "task_ids": [
+      "financebench_id_04209",
+      "financebench_id_04254"
+    ],
+    "authorized_and_inspected_physical_pages": {
+      "COSTCO_2021_10K": [
+        38
+      ],
+      "AMERICANWATERWORKS_2021_10K": [
+        86,
+        88
+      ]
+    },
+    "adjacent_pages_inspected": [],
+    "full_page_renders_inspected": true,
+    "render_dpi": 150,
+    "render_tool_version": "pdftoppm 26.02.0",
+    "retrieval_or_context_results_accessed": false,
+    "other_cases_accessed_in_this_review": false,
+    "network_or_provider_calls": false
+  },
+  "source_and_render_identities_verified": true,
+  "render_bindings": [
+    {
+      "source_id": "COSTCO_2021_10K",
+      "physical_page": 38,
+      "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/COSTCO_2021_10K-physical-38.png",
+      "sha256": "5886c733e5ce13526e160b61423070b480211f98609143ea6cda02172fa34612"
+    },
+    {
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "physical_page": 86,
+      "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/AMERICANWATERWORKS_2021_10K-physical-86.png",
+      "sha256": "a748f426be866d8522c9137cb6dc6e9c9f0e2be9559fe1922065d3f2fbe508dc"
+    },
+    {
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "physical_page": 88,
+      "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/AMERICANWATERWORKS_2021_10K-physical-88.png",
+      "sha256": "68777edaf1470b7ad8f4932e1e8163e4ae539c11aaf6c404258f455fe839758e"
+    }
+  ],
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "decision": "accept",
+      "required_fixes": [],
+      "disposition_review": "mapped is appropriate for the exact locations under the explicitly recorded FY/currency assumptions; no semantic-validity claim.",
+      "span_checks": [
+        {
+          "role": "balance_entity_and_statement",
+          "spans": [
+            [
+              1186,
+              1187
+            ]
+          ],
+          "finding": "Correct corporation and consolidated balance-sheet title; no redundant contents/footer."
+        },
+        {
+          "role": "balance_scale",
+          "spans": [
+            [
+              1188,
+              1188
+            ]
+          ],
+          "finding": "Millions scale is necessary; par/share exception does not alter total assets."
+        },
+        {
+          "role": "balance_date_columns",
+          "spans": [
+            [
+              1189,
+              1189
+            ]
+          ],
+          "finding": "August29,2021 versus August30,2020 columns retained in native line and clearly aligned visually."
+        },
+        {
+          "role": "total_assets_label_and_value",
+          "spans": [
+            [
+              1202,
+              1202
+            ]
+          ],
+          "finding": "Direct total assets59268, positive dollars in millions, left2021 column; comparative55556 correctly distinguished."
+        }
+      ],
+      "minimality_and_sufficiency": "All four roles are necessary interpretation context or requested direct fact. No extra component sums, generic notes sentence, or total-liabilities substitute is needed. One complete alternative is sufficient within the inspected scope.",
+      "calculation_review": {
+        "operation": "direct lookup",
+        "total_assets_millions": 59268,
+        "benchmark_claim_agrees_under_recorded_assumptions": true
+      },
+      "qualifications_and_ambiguity": "No target-row footnote or material qualification appears on physical38. The page shows dollar symbols, not an explicit USD code, and the balance date rather than a separate fiscal-year definition. Primary notes disclose both assumptions, consistent with a question confined to the balance sheet.",
+      "visual_native_alignment": "Relevant table entity/title, millions scale, date columns, metric label and positive amount agree. Native collapsing of date whitespace does not omit dates. Physical and printed page38 agree."
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "decision": "accept",
+      "required_fixes": [],
+      "disposition_review": "mapped is appropriate for question-defined arithmetic and exact source-provenance roles; it is not a company-adjusted-EBITDA validation.",
+      "span_checks": [
+        {
+          "role": "operations_entity_and_statement",
+          "spans": [
+            [
+              2888,
+              2889
+            ]
+          ],
+          "finding": "Correct consolidated operations statement and entity."
+        },
+        {
+          "role": "operations_scale",
+          "spans": [
+            [
+              2890,
+              2890
+            ]
+          ],
+          "finding": "Millions scale necessary; per-share exception irrelevant to operating income."
+        },
+        {
+          "role": "operations_period_columns",
+          "spans": [
+            [
+              2891,
+              2892
+            ]
+          ],
+          "finding": "Both year-ended heading and2021/2020/2019 labels needed and correctly mapped."
+        },
+        {
+          "role": "operating_income_label_and_value",
+          "spans": [
+            [
+              2900,
+              2900
+            ]
+          ],
+          "finding": "Positive2021 operating income1196; avoids net income and operating revenues."
+        },
+        {
+          "role": "cashflow_entity_and_statement",
+          "spans": [
+            [
+              2940,
+              2941
+            ]
+          ],
+          "finding": "Necessary to enforce the question's explicit cash-flow provenance for D&A, despite duplicate numeric D&A on operations statement."
+        },
+        {
+          "role": "cashflow_scale",
+          "spans": [
+            [
+              2942,
+              2942
+            ]
+          ],
+          "finding": "Millions scale for the second operand."
+        },
+        {
+          "role": "cashflow_period_columns",
+          "spans": [
+            [
+              2943,
+              2944
+            ]
+          ],
+          "finding": "Matching December31 annual period and2021 column, separate from operations table."
+        },
+        {
+          "role": "cashflow_depreciation_amortization_label_and_value",
+          "spans": [
+            [
+              2948,
+              2948
+            ]
+          ],
+          "finding": "Positive cash-flow D&A636, clearly distinguished from neighboring deferred-tax/amortization line and other adjustments."
+        }
+      ],
+      "minimality_and_sufficiency": "All eight roles carry operand identity or necessary independent statement/year/unit context. Formula is correctly supplied by the question rather than invented as a source component. Excluding operations-only D&A as an alternative is appropriate because the question requires cash-flow D&A.",
+      "calculation_review": {
+        "operation": "1196 + 636",
+        "operating_income_millions": 1196,
+        "cashflow_da_millions": 636,
+        "sum_millions": 1832,
+        "benchmark_claim_agrees_under_recorded_assumptions": true
+      },
+      "qualifications_and_ambiguity": "Footnote(a) is visibly keyed to per-share rows, not these operands; generic accompanying-notes language need not become a required role. No company-defined adjusted metric or ISO-currency proof is inferred. Primary notes correctly preserve the question-defined construction and currency assumption.",
+      "visual_native_alignment": "Physical86/printed84 and physical88/printed86 show matching2021/2020/2019 annual columns. Relevant labels, units, positive values and signs agree with native lines; no material native omission observed."
+    }
+  ],
+  "overall_decision": "accept_both_without_changes",
+  "limitations": [
+    "Review is outcome-blind to retrieval/retention results for these cases.",
+    "All component spans are exact nonempty one-based native lines within the authorized page scope.",
+    "Acceptance concerns source-location annotation and recorded arithmetic/assumptions, not human financial validation or future coverage scores.",
+    "Original benchmark questions/references and Primary A files remain unchanged."
+  ]
+}

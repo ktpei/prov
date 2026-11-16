@@ -14,7 +14,7 @@ Costco, Johnson & Johnson, 3M and American Water Works.
 | Downloaded/verified PDF bodies | 6 |
 | Extracted documents | 6 |
 | Prepared task/reference records | 6 |
-| Annotation-reviewed questions/evidence | 0 |
+| Annotation-reviewed questions/evidence | 6 |
 | Executed retrieval/context cases | 0 |
 
 ## Source-inventory research
@@ -60,13 +60,16 @@ The [frozen acquisition](acquisition-report.md) verifies all six repository bodi
 (10,443,871 bytes) with no failures or retries. The subsequent
 [preparation/extraction](preparation-report.md) is complete under a frozen rubric
 and development reservations: 981 pages, 34,904 emitted lines, five empty-native-text
-pages and zero warnings. Outcome-blind annotation and independent page review are
-next. Comparison remains unexecuted and must keep policies/budget fixed; it cannot
+pages and zero warnings. [Outcome-blind annotation](annotation-report.md) and
+independent page review are complete: six mapped location packets across ten
+referenced pages, with no adjacent-page expansion. Semantic caveats remain explicit
+for 3M, Coca-Cola and Verizon. Comparison remains unexecuted and must keep policies/budget fixed; it cannot
 retune from these cases. This preparation is not a benchmark score.
 
 All 320 tests and lint pass. Six bodies have been byte-verified and natively
-extracted; selected task/reference records were prepared by code. No annotation
-review, retrieval/context run, paid call or holdout run has occurred. Spending
+extracted; selected task/reference records were prepared by code. All six packets
+were independently reviewed and frozen before retrieval; this is not human finance
+validation. No retrieval/context run, paid call or holdout run has occurred. Spending
 remains $0.4814193.
 
 Independent metadata-only review verified the 394-path non-truncated tree, all six

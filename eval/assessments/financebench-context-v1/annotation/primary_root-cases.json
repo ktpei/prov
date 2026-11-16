@@ -1,0 +1,105 @@
+{
+  "cases": [
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "disposition": "mapped",
+      "reason": "Exact locations support the reference organic-sales comparison. Excluding only M&A does not also exclude currency translation; the question/reference interpretation remains ambiguous and is not validated by mapped coverage.",
+      "required_components": [
+        "segment_statement_scope_and_comparison_period",
+        "sales_change_year_and_metric_columns",
+        "other_segments_growth_comparison",
+        "consumer_growth_and_adjustments",
+        "company_growth_and_adjustments"
+      ],
+      "alternatives": [
+        {
+          "segment_statement_scope_and_comparison_period": [
+            [
+              896,
+              897
+            ]
+          ],
+          "sales_change_year_and_metric_columns": [
+            [
+              910,
+              912
+            ]
+          ],
+          "other_segments_growth_comparison": [
+            [
+              913,
+              915
+            ]
+          ],
+          "consumer_growth_and_adjustments": [
+            [
+              916,
+              916
+            ]
+          ],
+          "company_growth_and_adjustments": [
+            [
+              917,
+              917
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "disposition": "mapped",
+      "reason": "Consolidated inventories at both balance-sheet dates and FY2022 cost of products sold mapped with units and period headers. The reference uses cost of products sold divided by mean opening/closing inventory; mapped coverage is not independent financial validation.",
+      "required_components": [
+        "balance_entity_and_statement",
+        "inventory_dates_and_units",
+        "opening_and_closing_inventory",
+        "earnings_entity_and_statement",
+        "earnings_units_and_period_columns",
+        "cost_of_products_sold"
+      ],
+      "alternatives": [
+        {
+          "balance_entity_and_statement": [
+            [
+              1716,
+              1717
+            ]
+          ],
+          "inventory_dates_and_units": [
+            [
+              1718,
+              1720
+            ]
+          ],
+          "opening_and_closing_inventory": [
+            [
+              1726,
+              1726
+            ]
+          ],
+          "earnings_entity_and_statement": [
+            [
+              1763,
+              1764
+            ]
+          ],
+          "earnings_units_and_period_columns": [
+            [
+              1765,
+              1766
+            ]
+          ],
+          "cost_of_products_sold": [
+            [
+              1768,
+              1768
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

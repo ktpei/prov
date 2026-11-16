@@ -1,0 +1,241 @@
+{
+  "version": "financebench-context-primary-annotation-notes-v1",
+  "annotator": "primary_a",
+  "status": "primary_annotation_pending_independent_review",
+  "scope": {
+    "task_ids": [
+      "financebench_id_04209",
+      "financebench_id_04254"
+    ],
+    "authorized_physical_pages": {
+      "COSTCO_2021_10K": [
+        38
+      ],
+      "AMERICANWATERWORKS_2021_10K": [
+        86,
+        88
+      ]
+    },
+    "inspected_physical_pages": {
+      "COSTCO_2021_10K": [
+        38
+      ],
+      "AMERICANWATERWORKS_2021_10K": [
+        86,
+        88
+      ]
+    },
+    "adjacent_pages_inspected": [],
+    "scope_expansion_reason": null,
+    "question_reference_access": "Only the two assigned task rows; full referenced evidence and question/reference fields inspected.",
+    "native_text_access": "Only lines whose source line_locations page equals one of the three assigned physical pages were displayed.",
+    "retrieval_or_policy_results_accessed": false,
+    "other_selected_cases_inspected": false,
+    "network_or_paid_model_calls": false
+  },
+  "bindings": {
+    "preparation_plan_sha256": "361f80ce6cf1074e90b2469c016d12e1eb2d95d23762b7685713f1a61f20c851",
+    "prepared_tasks_file_sha256": "2b05a8d6bbeeaaa807e8ea1437d81b84ca70bb94d84ac563b73c9c9b8ff52a09",
+    "corpus_manifest_sha256": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4"
+  },
+  "rendering": {
+    "tool": "pdftoppm",
+    "version": "26.02.0",
+    "dpi": 150,
+    "format": "png",
+    "full_page": true,
+    "cropping": false,
+    "pages": [
+      {
+        "source_id": "COSTCO_2021_10K",
+        "physical_page": 38,
+        "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/COSTCO_2021_10K-physical-38.png",
+        "sha256": "5886c733e5ce13526e160b61423070b480211f98609143ea6cda02172fa34612",
+        "command": [
+          "pdftoppm",
+          "-f",
+          "38",
+          "-l",
+          "38",
+          "-r",
+          "150",
+          "-png",
+          "-singlefile",
+          "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COSTCO_2021_10K/originals/COSTCO_2021_10K.pdf",
+          "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/COSTCO_2021_10K-physical-38"
+        ]
+      },
+      {
+        "source_id": "AMERICANWATERWORKS_2021_10K",
+        "physical_page": 86,
+        "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/AMERICANWATERWORKS_2021_10K-physical-86.png",
+        "sha256": "a748f426be866d8522c9137cb6dc6e9c9f0e2be9559fe1922065d3f2fbe508dc",
+        "command": [
+          "pdftoppm",
+          "-f",
+          "86",
+          "-l",
+          "86",
+          "-r",
+          "150",
+          "-png",
+          "-singlefile",
+          "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/AMERICANWATERWORKS_2021_10K/originals/AMERICANWATERWORKS_2021_10K.pdf",
+          "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/AMERICANWATERWORKS_2021_10K-physical-86"
+        ]
+      },
+      {
+        "source_id": "AMERICANWATERWORKS_2021_10K",
+        "physical_page": 88,
+        "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/AMERICANWATERWORKS_2021_10K-physical-88.png",
+        "sha256": "68777edaf1470b7ad8f4932e1e8163e4ae539c11aaf6c404258f455fe839758e",
+        "command": [
+          "pdftoppm",
+          "-f",
+          "88",
+          "-l",
+          "88",
+          "-r",
+          "150",
+          "-png",
+          "-singlefile",
+          "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/AMERICANWATERWORKS_2021_10K/originals/AMERICANWATERWORKS_2021_10K.pdf",
+          "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_a/AMERICANWATERWORKS_2021_10K-physical-88"
+        ]
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COSTCO_2021_10K/originals/COSTCO_2021_10K.pdf",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COSTCO_2021_10K/COSTCO_2021_10K.txt",
+      "original_sha256": "29e05b3862cf6ffa6cfda34ac82a9fa0fe76b67338c5924da3325c2ee3b08748",
+      "text_sha256": "85aab77c4243b28c7bb709ea3929fe5836e8969807ea8a6df49bf620153da2f2",
+      "reference_claim_status": "consistent_with_inspected_source_under_recorded_assumptions",
+      "reference_modified": false,
+      "scope_reason": "All necessary statement identities, period columns, scale and requested facts/operands are present on the assigned pages; no adjacent-page inspection needed.",
+      "complete_alternative_count": 1,
+      "qualifications_required": [],
+      "physical_to_printed_pages": {
+        "38": "38"
+      },
+      "native_scope_lines": [
+        [
+          1185,
+          1231
+        ]
+      ],
+      "visual_vs_native": {
+        "entity_statement": "COSTCO WHOLESALE CORPORATION / CONSOLIDATED BALANCE SHEETS, lines 1186-1187, agrees.",
+        "scale": "Amounts in millions except par value/share data, line 1188, agrees. Exception does not apply to total assets.",
+        "columns": "August 29, 2021 left; August 30, 2020 right. Native line 1189 collapses date whitespace but retains dates/order.",
+        "target": "TOTAL ASSETS row: $59,268 for 2021; $55,556 comparative. Positive values and dollar symbols agree at line 1202.",
+        "layout": "Complete page rendered; row/column associations visible, no relevant clipping or ambiguous target values observed."
+      },
+      "calculations": {
+        "operation": "direct lookup",
+        "reported_2021_total_assets_millions": 59268,
+        "reference_claim": "$59268.00",
+        "arithmetic_required": false
+      },
+      "assumptions": [
+        "Question FY2021 mapped to balance-sheet August 29, 2021 column; the date is visible, but this page does not separately define fiscal-year nomenclature.",
+        "Requested USD denomination assumed as stated in question; dollar sign is visible in the required total-assets row, but USD is not spelled out on this page."
+      ],
+      "role_rationale": {
+        "balance_entity_and_statement": "Identifies entity, consolidation and requested balance-sheet scope.",
+        "balance_scale": "Required interpretation of the reported amount, including the irrelevant-to-assets exception.",
+        "balance_date_columns": "Binds the target to 2021 and distinguishes 2020 comparative.",
+        "total_assets_label_and_value": "Contains the requested metric label, dollar symbol and value."
+      },
+      "excluded_evidence": [
+        "Total current assets is not total assets.",
+        "Total liabilities and equity repeats the same amount but is not used as a substitute packet; direct target row is available.",
+        "Individual asset components need not be required alongside an explicit total.",
+        "Generic accompanying-notes sentence is not a material target-specific qualification."
+      ],
+      "source_reference_issues": [
+        "No numerical contradiction observed on the assigned page. Currency-code and FY-name assumptions are recorded rather than asserted as independently proven."
+      ]
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/AMERICANWATERWORKS_2021_10K/originals/AMERICANWATERWORKS_2021_10K.pdf",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/AMERICANWATERWORKS_2021_10K/AMERICANWATERWORKS_2021_10K.txt",
+      "original_sha256": "701528ae6d14a77229468a829ee18f01ed439d5be012d0a915d2683335051029",
+      "text_sha256": "06e954d0e43fb906579d5f1bbdba25e09e7d435e75aa9f08f9e24c8f7cb66629",
+      "reference_claim_status": "consistent_with_inspected_source_under_recorded_assumptions",
+      "reference_modified": false,
+      "scope_reason": "All necessary statement identities, period columns, scale and requested facts/operands are present on the assigned pages; no adjacent-page inspection needed.",
+      "complete_alternative_count": 1,
+      "qualifications_required": [],
+      "physical_to_printed_pages": {
+        "86": "84",
+        "88": "86"
+      },
+      "native_scope_lines": [
+        [
+          2887,
+          2920
+        ],
+        [
+          2939,
+          2989
+        ]
+      ],
+      "visual_vs_native": {
+        "entity_statement": "American Water Works Company, Inc. and Subsidiary Companies; separate consolidated operations and cash-flow titles agree with native lines.",
+        "scale": "Operations: in millions except per share data (2890); cash flows: in millions (2942). Per-share exception does not apply to operating income.",
+        "columns": "Both tables show years ended December 31, with 2021, 2020, 2019 left-to-right (2891-2892 and 2943-2944).",
+        "operating_income": "Operations row 2900 shows positive 1,196 for 2021 (comparatives 1,248 / 1,214).",
+        "cashflow_da": "Cash-flow row 2948 shows positive 636 for 2021 (comparatives 604 / 582).",
+        "layout": "Full rendered pages permit clear row/year alignment. Native spaces preserve relevant rows; no relevant signs or values differ visually."
+      },
+      "calculations": {
+        "operation": "Question explicitly specifies operating income + depreciation and amortization from cash flows.",
+        "operating_income_millions": 1196,
+        "cashflow_depreciation_amortization_millions": 636,
+        "sum_millions": 1832,
+        "reference_claim": "$1832.00",
+        "formula_source": "question",
+        "no_new_source_formula_role": true
+      },
+      "assumptions": [
+        "Use the question-defined unadjusted EBITDA construction only; do not infer a company-defined adjusted EBITDA reconciliation.",
+        "Use the cash-flow-statement depreciation/amortization operand as expressly requested, even though the income statement also reports 636.",
+        "Both operands use the same December 31, 2021 annual period and millions scale.",
+        "USD denomination is supplied by the question/reporting convention; dollar signs on these statements do not independently establish an ISO currency code."
+      ],
+      "role_rationale": {
+        "operations_entity_and_statement": "Binds the operating-income operand to the consolidated operations statement and entity.",
+        "operations_scale": "Interprets the first operand in millions.",
+        "operations_period_columns": "Binds first operand to 2021 annual column.",
+        "operating_income_label_and_value": "Requested unadjusted operating-income operand.",
+        "cashflow_entity_and_statement": "Enforces the explicitly requested cash-flow provenance for D&A.",
+        "cashflow_scale": "Interprets second operand in millions.",
+        "cashflow_period_columns": "Binds second operand to matching annual period.",
+        "cashflow_depreciation_amortization_label_and_value": "Requested D&A operand, not cash from operations or income-statement-only D&A."
+      },
+      "excluded_evidence": [
+        "Operations-statement D&A at line 2896 is not an alternative to the explicitly requested cash-flow-statement operand.",
+        "Footnote (a), amounts may not calculate due to rounding, is keyed to earnings-per-share rows; it is not a material qualification of these two integer-million operands.",
+        "Net income, cash provided by operations and non-operating gains are not requested operands.",
+        "Generic accompanying-notes sentences are not target-specific qualifications."
+      ],
+      "source_reference_issues": [
+        "Question-specified arithmetic 1,196 + 636 = 1,832 agrees with the benchmark claim, under the recorded units/currency assumptions.",
+        "No adjusted/non-GAAP company metric definition or semantic financial validation is claimed."
+      ]
+    }
+  ],
+  "limitations": [
+    "Coding-agent primary annotation, pending independent coding-agent review; not human financial validation.",
+    "Mapped means exact evidence lines were identified, not that line coverage establishes column association or semantic sufficiency.",
+    "The original question/reference values are unchanged.",
+    "The inspected pages use millions and dollar signs but do not spell out USD; USD denomination follows the question and reporting convention rather than an independently observed currency-code declaration.",
+    "No retrieval/context experiment was run or inspected during this annotation."
+  ]
+}

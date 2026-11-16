@@ -90,7 +90,9 @@ experimental: these exposed cases do not justify changing the default policy.
 [Broader validation preparation](eval/assessments/financebench-context-v1/progress.md)
 now fixes six new development source groups and their pinned PDF inventory before
 content inspection. All six bodies are acquired and extracted (981 pages);
-annotation review and evaluation remain pending. Native text quality is unverified,
+all six evidence-location packets are [independently reviewed](eval/assessments/financebench-context-v1/annotation-report.md)
+and frozen before retrieval. Three semantic caveats remain explicit; financial
+answers are not validated. Retrieval/context comparison is still pending. Native text quality outside the ten inspected pages is unverified,
 and failed cases will not be replaced with easier ones.
 
 [PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes

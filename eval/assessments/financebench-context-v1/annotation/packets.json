@@ -1,0 +1,384 @@
+{
+  "version": "pdf-evidence-components-v1",
+  "corpus_manifest_sha256": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4",
+  "sources": {
+    "COSTCO_2021_10K": {
+      "original_sha256": "29e05b3862cf6ffa6cfda34ac82a9fa0fe76b67338c5924da3325c2ee3b08748",
+      "sha256": "85aab77c4243b28c7bb709ea3929fe5836e8969807ea8a6df49bf620153da2f2"
+    },
+    "AMERICANWATERWORKS_2021_10K": {
+      "original_sha256": "701528ae6d14a77229468a829ee18f01ed439d5be012d0a915d2683335051029",
+      "sha256": "06e954d0e43fb906579d5f1bbdba25e09e7d435e75aa9f08f9e24c8f7cb66629"
+    },
+    "VERIZON_2022_10K": {
+      "original_sha256": "403d7346e8a059472863d1789527f16e5127a61c2f6c4429012e6227f27576d7",
+      "sha256": "4353c2de4f08e362f256df5b37cbd98c39ded394eb2b41d485cc5ed09cd311f9"
+    },
+    "COCACOLA_2017_10K": {
+      "original_sha256": "b57c75cf20916904f31c6aa7644d6c110f019adf7c76782c7d0ede7b95c65ac1",
+      "sha256": "78bd6ffb9cd043b54d25bf5dd8062c7614d1bc4bb0a13a10a638c67b64b183d5"
+    },
+    "3M_2022_10K": {
+      "original_sha256": "d5cf549543a24b04228fd2af979ff2ca94cf64fb008a789340cb9117fbcfde5d",
+      "sha256": "1bf21b6df7f23f2031f41fdfd4349c1f22c0811585e5eafb72530d03f720c7c6"
+    },
+    "JOHNSON_JOHNSON_2022_10K": {
+      "original_sha256": "dba7d6cc97734abd6dcbc1a6a34f82b5d228e60d0a1a32425a90404fd4d3e290",
+      "sha256": "78f1f5a613bd576d84b468593efc6d7df8bd16cd64103bcc85bad4b058673e76"
+    }
+  },
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "disposition": "mapped",
+      "reason": "Direct total-assets row, consolidated balance-sheet identity, date columns and millions scale mapped on physical page 38. USD denomination and FY naming follow question context; mapped coverage is not independent financial validation.",
+      "required_components": [
+        "balance_entity_and_statement",
+        "balance_scale",
+        "balance_date_columns",
+        "total_assets_label_and_value"
+      ],
+      "alternatives": [
+        {
+          "balance_entity_and_statement": [
+            [
+              1186,
+              1187
+            ]
+          ],
+          "balance_scale": [
+            [
+              1188,
+              1188
+            ]
+          ],
+          "balance_date_columns": [
+            [
+              1189,
+              1189
+            ]
+          ],
+          "total_assets_label_and_value": [
+            [
+              1202,
+              1202
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "disposition": "mapped",
+      "reason": "Question-specified operands mapped to the consolidated operations statement on physical page 86 and cash-flow statement on physical page 88, with separate identity, period and scale context. USD denomination follows question context; mapped coverage is not independent financial validation.",
+      "required_components": [
+        "operations_entity_and_statement",
+        "operations_scale",
+        "operations_period_columns",
+        "operating_income_label_and_value",
+        "cashflow_entity_and_statement",
+        "cashflow_scale",
+        "cashflow_period_columns",
+        "cashflow_depreciation_amortization_label_and_value"
+      ],
+      "alternatives": [
+        {
+          "operations_entity_and_statement": [
+            [
+              2888,
+              2889
+            ]
+          ],
+          "operations_scale": [
+            [
+              2890,
+              2890
+            ]
+          ],
+          "operations_period_columns": [
+            [
+              2891,
+              2892
+            ]
+          ],
+          "operating_income_label_and_value": [
+            [
+              2900,
+              2900
+            ]
+          ],
+          "cashflow_entity_and_statement": [
+            [
+              2940,
+              2941
+            ]
+          ],
+          "cashflow_scale": [
+            [
+              2942,
+              2942
+            ]
+          ],
+          "cashflow_period_columns": [
+            [
+              2943,
+              2944
+            ]
+          ],
+          "cashflow_depreciation_amortization_label_and_value": [
+            [
+              2948,
+              2948
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "disposition": "mapped",
+      "reason": "Source locations support the benchmark reference's year-end-assets / annual-revenue calculation. Capital-intensive classification depends on an unstated metric convention and threshold; mapping is not semantic validation.",
+      "required_components": [
+        "balance_sheet_entity_and_scope",
+        "assets_date_and_units",
+        "fy2022_total_assets",
+        "revenue_period_and_units",
+        "fy2022_consolidated_operating_revenue"
+      ],
+      "alternatives": [
+        {
+          "balance_sheet_entity_and_scope": [
+            [
+              2532,
+              2533
+            ]
+          ],
+          "assets_date_and_units": [
+            [
+              2534,
+              2535
+            ]
+          ],
+          "fy2022_total_assets": [
+            [
+              2554,
+              2554
+            ]
+          ],
+          "revenue_period_and_units": [
+            [
+              1032,
+              1032
+            ],
+            [
+              1034,
+              1034
+            ]
+          ],
+          "fy2022_consolidated_operating_revenue": [
+            [
+              1040,
+              1040
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "disposition": "mapped",
+      "reason": "Two independently complete alternatives reflect the unspecified net-income basis: attributable to company shareowners (reference convention) or consolidated net income. Both produce 0.01 when the unscaled ratio is rounded to two decimals; mapping does not resolve convention ambiguity.",
+      "required_components": [
+        "income_statement_entity_and_scope",
+        "income_period_and_units",
+        "fy2017_net_income_basis_and_amount",
+        "balance_sheet_entity_and_scope",
+        "assets_periods_and_units",
+        "fy2017_and_fy2016_total_assets"
+      ],
+      "alternatives": [
+        {
+          "income_statement_entity_and_scope": [
+            [
+              2802,
+              2803
+            ]
+          ],
+          "income_period_and_units": [
+            [
+              2804,
+              2805
+            ]
+          ],
+          "fy2017_net_income_basis_and_amount": [
+            [
+              2822,
+              2823
+            ]
+          ],
+          "balance_sheet_entity_and_scope": [
+            [
+              2858,
+              2859
+            ]
+          ],
+          "assets_periods_and_units": [
+            [
+              2860,
+              2861
+            ]
+          ],
+          "fy2017_and_fy2016_total_assets": [
+            [
+              2882,
+              2882
+            ]
+          ]
+        },
+        {
+          "income_statement_entity_and_scope": [
+            [
+              2802,
+              2803
+            ]
+          ],
+          "income_period_and_units": [
+            [
+              2804,
+              2805
+            ]
+          ],
+          "fy2017_net_income_basis_and_amount": [
+            [
+              2820,
+              2820
+            ]
+          ],
+          "balance_sheet_entity_and_scope": [
+            [
+              2858,
+              2859
+            ]
+          ],
+          "assets_periods_and_units": [
+            [
+              2860,
+              2861
+            ]
+          ],
+          "fy2017_and_fy2016_total_assets": [
+            [
+              2882,
+              2882
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "disposition": "mapped",
+      "reason": "Exact locations support the reference organic-sales comparison. Excluding only M&A does not also exclude currency translation; the question/reference interpretation remains ambiguous and is not validated by mapped coverage.",
+      "required_components": [
+        "segment_statement_scope_and_comparison_period",
+        "sales_change_year_and_metric_columns",
+        "other_segments_growth_comparison",
+        "consumer_growth_and_adjustments",
+        "company_growth_and_adjustments"
+      ],
+      "alternatives": [
+        {
+          "segment_statement_scope_and_comparison_period": [
+            [
+              896,
+              897
+            ]
+          ],
+          "sales_change_year_and_metric_columns": [
+            [
+              910,
+              912
+            ]
+          ],
+          "other_segments_growth_comparison": [
+            [
+              913,
+              915
+            ]
+          ],
+          "consumer_growth_and_adjustments": [
+            [
+              916,
+              916
+            ]
+          ],
+          "company_growth_and_adjustments": [
+            [
+              917,
+              917
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "disposition": "mapped",
+      "reason": "Consolidated inventories at both balance-sheet dates and FY2022 cost of products sold mapped with units and period headers. The reference uses cost of products sold divided by mean opening/closing inventory; mapped coverage is not independent financial validation.",
+      "required_components": [
+        "balance_entity_and_statement",
+        "inventory_dates_and_units",
+        "opening_and_closing_inventory",
+        "earnings_entity_and_statement",
+        "earnings_units_and_period_columns",
+        "cost_of_products_sold"
+      ],
+      "alternatives": [
+        {
+          "balance_entity_and_statement": [
+            [
+              1716,
+              1717
+            ]
+          ],
+          "inventory_dates_and_units": [
+            [
+              1718,
+              1720
+            ]
+          ],
+          "opening_and_closing_inventory": [
+            [
+              1726,
+              1726
+            ]
+          ],
+          "earnings_entity_and_statement": [
+            [
+              1763,
+              1764
+            ]
+          ],
+          "earnings_units_and_period_columns": [
+            [
+              1765,
+              1766
+            ]
+          ],
+          "cost_of_products_sold": [
+            [
+              1768,
+              1768
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
