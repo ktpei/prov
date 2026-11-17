@@ -7,7 +7,11 @@ The user explicitly removed application spending caps for this Cloudflare work.
 aggregate/per-task authorization ceilings for these runs. Costs remain recorded;
 time/tool limits and uncertain-billing stops remain. Provider-side limits are
 unchanged. Lint and 525 tests pass, including uncapped accounting and interruption
-coverage. The five spending-stopped questions will be rerun separately.
+coverage. The [uncapped follow-up](eval/reports/cloudflare-live-2026-11-16-uncapped/report.md)
+reran all five spending-stopped questions: four completed (one abstained), three
+mechanical passes, one output-length failure. Cost estimate $0.0848396; no spending
+stops or uncertain-cost flags. The linked report shows exact inputs and full
+outputs for all nine questions, explicitly distinguishing the two batches.
 
 ## Cloudflare live follow-up
 
