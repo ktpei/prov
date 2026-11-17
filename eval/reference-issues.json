@@ -117,6 +117,19 @@
       "category": "fiscal_year_label_convention",
       "note": "Question says FY2023; source annual section says fiscal 2022. Reference explicitly assumes the year-ending convention. Preserve the original reference and require review of the period convention and annual-versus-quarterly evidence.",
       "review": "eval/reports/pdf-visual-quality-2026-11-16/report.md#ulta-period-convention"
+    },
+    {
+      "id": "reference-model-effort-3m-fx",
+      "dataset": "financebench",
+      "subset": "open_source",
+      "source_split": "public",
+      "revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+      "source_sha256": "a5a2aa673e573e55675fc3c0f9aa38c1cf59d2abc91edb077534f71f10a71877",
+      "task_id": "financebench_id_01865",
+      "task_sha256": "5edf33936b37c513678135a45f7e3ddc3af296f0c683ea47e7d581f40b9bb84a",
+      "category": "ambiguous_currency_exclusion",
+      "note": "Gold excludes currency as well as M&A; literal exclusion of M&A retains currency and leaves all four segments declining. Preserve reference; exclude without replacement pending adjudication.",
+      "review": "eval/assessments/model-effort-v1/rubric.json"
     }
   ]
 }

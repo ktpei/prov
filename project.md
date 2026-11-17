@@ -1,5 +1,44 @@
 # Project scope
 
+## Browser UI integration — 2026-11-16
+
+The `feat/web-chatbot-mvp` workstream is integrated into
+`codex/finance-benchmark-loop`, preserving the current evaluation and harness work.
+The browser supports cited chat, follow-ups, workbook range context, and explicit
+approval of edits to a downloadable copy. See [Web app](README.md#web-app) for
+startup and replay instructions. The Office.js add-in remains future work.
+
+H3 begins with a controller-owned
+[typed read session](eval/assessments/typed-read-authorization-v1/report.md): source
+authorization, actual-read receipts, complete reconstruction and independent replay.
+Semantic admission, model visibility and answer-v2/dispatcher integration remain
+required; the existing default agent and H2 ledger are unchanged.
+
+The [first model/effort pilot](eval/assessments/model-effort-v1/pilot-protocol.md)
+freezes a small supplied-evidence comparison after acceptance of the dedicated
+runner (`01983f4`, 500 clean-checkout tests). Three cases are adjudicable; a fourth
+selected case remains excluded for reference ambiguity. This does not replace
+full-agent retrieval evaluation or authorize model promotion. The
+[first live attempt](eval/assessments/model-effort-v1/pilot-report.md) stopped
+after one transport failure, retaining the uncertain reservation and all rows.
+An offline repair preserves safe transport diagnostics in future comparison
+records; it does not recover the old failure cause or change billing/retry rules.
+The separately frozen follow-up returned HTTP 404 and stopped with zero outputs.
+Both uncertain reservations remain counted; no model ranking or promotion exists.
+
+H2's internal arithmetic and trusted-snapshot calculation ledger are implemented
+without a new service or dependency. H3 must supply actual source admission and
+model-visible support before agent integration. The [acceptance report](eval/assessments/evidence-calculations-v1/report.md)
+separates arithmetic/compatibility replay from unmeasured financial effectiveness.
+
+The [next-round harness specification](harness-improvement-spec.md) now defines
+versioned evidence/calculation/answer contracts and benchmark-driven improvement
+within the selected single-agent research scope. Browser and workbook delivery
+remain separate. This is an implementation plan, not a new accuracy result.
+H1's opt-in model-input receipts and checkpoint v3 are now implemented; the
+[acceptance report](eval/assessments/model-input-receipts-v1/report.md) separates
+offline integrity checks from unmeasured financial effectiveness.
+
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all
 420 mapped fact occurrences across 412 cells; 84 facts have no mapped cell. This
@@ -410,8 +449,8 @@ retrievability, not that the evidence logically supports a claim.
 
 ## Explicitly later
 
-XBRL normalization, financial-calculation tools, market data, workbook
-reading/writing and approval UI, full benchmark execution, model/prompt tuning,
+Production XBRL normalization, financial-calculation tools, market data,
+live Excel integration, full benchmark execution, model/prompt tuning,
 deployment, a production UI, and a production financial research service.
 
 ## Decisions — current as of 2026-11-07
@@ -429,8 +468,8 @@ deployment, a production UI, and a production financial research service.
   and do not change the product into a specialist-agent architecture.
 - Keep old custom loop and 25-task corpus as regression baselines; heldout tasks
   remain separate from development and are not run without authorization.
-- Browser chatbot, workbook reading/writing/export, and ownership allocation deferred.
-  Finance accuracy benchmarking takes priority; eventual interface is an Office.js Excel add-in.
+- The earlier browser/workbook deferral is superseded by the integrated browser MVP.
+  Finance accuracy benchmarking continues; the eventual interface is an Office.js Excel add-in.
 - Frozen local packets require no Exa key. Live web discovery is optional/later.
 - Backend file writes are deterministic diagnostics/ingestion, authorized by the
   developer action; model tools remain read-only.
@@ -439,5 +478,5 @@ deployment, a production UI, and a production financial research service.
 
 [spec.md](spec.md) defines the draft product requirements and evidence model.
 [roadmap.md](roadmap.md) maps loose modules and proposed acceptance checks.
-The active milestone is company-context tooling and evaluation. Interface and
-workbook features remain a later backlog.
+Company-context tooling and evaluation continue alongside the integrated browser
+and workbook MVP. Live Excel integration remains a later backlog.

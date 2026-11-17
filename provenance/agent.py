@@ -19,14 +19,16 @@ class Limits:
     max_tool_calls: int = 10
     timeout_seconds: float = 90
     request_timeout_seconds: float = 30
-    budget_usd: float = 0.5
+    budget_usd: float | None = 0.5
 
     def __post_init__(self):
         for name in ("max_model_calls", "max_tool_calls"):
             if type(getattr(self, name)) is not int or getattr(self, name) < 1:
                 raise ValueError(f"{name} must be a positive integer")
-        for name in ("timeout_seconds", "request_timeout_seconds", "budget_usd"):
+        for name in ("timeout_seconds", "request_timeout_seconds"):
             positive(getattr(self, name), name)
+        if self.budget_usd is not None:
+            positive(self.budget_usd, "budget_usd")
 
 
 class Trace:

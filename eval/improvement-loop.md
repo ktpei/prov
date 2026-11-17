@@ -1,10 +1,137 @@
 # Finance harness improvement loop
 
-Active development objective, 2026-11-16: integrate the selected finance evaluation
-suite, improve its trustworthiness, and research/test the source-knowledge pipeline.
-The user authorized autonomous work and subagent/chat coordination. This is a
-persistent goal in the current chat, not a scheduled unattended job or an unbounded
-paid inference authorization. Existing spend limits and the original holdout remain.
+Active objective, 2026-11-16, in **Research finance agent harnesses**: continuously
+improve the research harness through reproducible benchmark-driven cycles under
+the [implementation specification](../harness-improvement-spec.md). The earlier
+**Improve finance evaluation harness** chat remains paused; its draft XBRL assessment
+work is preserved. The user authorized this new goal and subagent/context use.
+This is not a scheduled unattended job or unbounded paid inference authorization.
+Existing spending limits, source reservations and original holdout rules remain.
+
+## H0 — specification and continuity
+
+- Wrote versioned receipt, evidence, calculation, answer and checkpoint contracts.
+- Inspected relevant evaluation, OCR and UI handoff chats; retained ownership and
+  compatibility boundaries rather than resuming another chat's paused drafts.
+- Independent Astra architecture and evaluation reviews supplied acceptance and
+  promotion requirements. Financial semantics remain distinct from delivery.
+- No runtime defaults, frozen scores, reserved selections or paid inference changed.
+- Review corrections define H1 legacy evidence references, explicit checkpoint
+  migration, calculator formulas/bounds, final-attempt visibility, all-required
+  strict success and a failure-inclusive adjudicable denominator.
+- Verification: `yarn lint` and 453 tests passed in the current shared checkout,
+  including the pre-existing untracked assessment tests; SQLite ResourceWarnings
+  remain. Local spec links, code fences and whitespace checks passed. This is
+  documentation verification, not clean-commit experiment acceptance.
+- Next cycle: H1 model-input receipts and checkpoint policy identities. Freeze
+  its bounded implementation/verification plan before changes; use synthetic and
+  saved legacy artifacts without opening heldout content.
+
+## H1 — model-input receipts
+
+Implemented the opt-in `trace-receipts-v1` OpenRouter/LangGraph profile under the
+[frozen protocol](assessments/model-input-receipts-v1/protocol.md). Receipts capture
+canonical, projected, and mapped inputs before dispatch, with replayed inventories
+and policy identities. Checkpoint v3 binds full source metadata and effective policy;
+legacy checkpoints cannot silently migrate. Legacy behavior remains the default.
+
+Independent Astra review reproduced four verifier/configuration gaps; all were
+fixed and added to regression tests. Lint and 470 tests pass in the shared checkout,
+including 13 tests belonging to the paused assessment chat. See the
+[acceptance report](assessments/model-input-receipts-v1/report.md): clean commit
+`3dcd09b` passes lint, validation and 457 tests. No paid inference, heldout
+inspection, or financial accuracy gain.
+
+The [methodology research loop](harness-methodology-research-loop.md) feeds this
+implementation loop. Retain existing no-blind-retry protection; queue its synthetic
+external-success/local-acknowledgement crash test as a separate recovery check.
+Defer Inspect/Temporal migration. Next implementation increment is H2's bounded,
+evidence-linked arithmetic with synthetic financial-scope and replay tests.
+The [reference-contract research](harness-reference-contract-research-2026-11-16.md)
+reinforces Decimal and financial-operand validation. H3 must preserve budget and
+deadline exceptions as controller stops rather than repairable tool errors.
+
+## H2 — numerical component, ledger pending
+
+Frozen [protocol](assessments/evidence-calculations-v1/protocol.md) before code;
+independent numerical/financial-contract reviewers clarified internal bounds,
+exact scaling, structural derived metrics and comparison-period identity. The
+kernel is committed at `3b4f4ca`; 12 focused tests and 482 shared-checkout tests
+pass with lint; clean commit `3b4f4ca` passes 469 tests and the same lint/validation
+checks. Review found ambient Decimal flags/exponent formatting could
+alter records; both are fixed with full-record regression coverage.
+
+This is a required component, not H2 completion. No model-facing calculator,
+financial acceptance or accuracy gain is claimed. Next: immutable admitted-evidence
+snapshot, compatibility checks, calculation references/ancestry and independent
+replay. See the [progress report](assessments/evidence-calculations-v1/progress.md).
+No paid calls or heldout content inspection occurred.
+
+## H2 — trusted-snapshot ledger
+
+Frozen ledger contract `364fe8a`; implementation `03e7342`. Added immutable
+same-run evidence/calculation references, financial compatibility checks, structural
+metric and comparison-period identities, precision-preserving chains, depth/size
+limits, atomic failure and full replay. Fourteen ledger tests and two independent
+read-only reviews pass; shared-checkout lint and 496 tests pass. Clean commit
+`03e7342` passes the same checks with 483 tests. See the
+[acceptance report](assessments/evidence-calculations-v1/report.md) for clean checks
+and the synthetic trusted-admission boundary. H3 still owns real reader admission,
+claim visibility and model-tool budget integration. No paid calls or accuracy gain.
+
+## M1 — model/effort comparison and transport diagnostics
+
+Comparison infrastructure `01983f4` passed 500 clean-checkout tests and lint.
+Protocol `1422bad` froze four selected exposed development cases, with 3M excluded
+without replacement after independent pre-output reference review. Three eligible
+cases were assigned to DeepSeek Flash and GPT-6 Luna at explicit low/high effort.
+The supplied-evidence condition measures interpretation, not retrieval.
+
+The first live request failed before any usage/output returned; all subsequent
+rows stopped. See the [negative result](assessments/model-effort-v1/pilot-report.md)
+and committed accounting `cb8a0ae`. Preserve $0.0132189 uncertain reservation;
+combined conservative authorization accounting is $0.4946382. Unchanged aggregate
+key usage is not proof of zero request cost. No model winner or quality gain.
+
+The next offline repair preserves only the existing transport's exact fixed
+messages and ASCII HTTP status vocabulary through comparison sanitization.
+Arbitrary messages, near matches, headers and URLs remain discarded. Shared
+transport behavior, no-retry policy and uncertain accounting are unchanged.
+Independent Astra review passed all 19 adapter/runner tests, including real
+transport-to-ledger HTTP 400/401/429/500 failures and secret-bearing negative
+fixtures. Full shared-checkout `yarn lint` and 515 tests pass (including the 13
+untracked tests owned by the paused assessment chat). This diagnostic repair
+cannot recover the original failure cause.
+No additional paid call was made. A revised live protocol and explicit treatment
+of the retained uncertain reservation are required before another trial.
+
+## M2 — one deliberate diagnostic follow-up
+
+Independent review and protocol `2109681` authorized one explicitly recorded
+repeat within the existing budget, carrying the prior uncertain charge in full.
+The clean checkout passed 19 focused tests. First request returned HTTP 404;
+diagnostics survived, all later rows stopped, and no successful outputs exist.
+Read-only provider metadata still lists the model/provider; specific rejection
+cause remains unknown. See the [report](assessments/model-effort-v1/followup-report.md).
+Two attempts across both pilots retain $0.0264378 uncertain reservations; combined
+conservative accounting is $0.5078571, remaining $0.4921429. No additional paid
+follow-up this cycle. Continue offline diagnosis and H3 source/visibility integration;
+do not mistake an infrastructure fix or failed transport for measured finance quality.
+
+## H3 — first typed-read authorization component
+
+H3 first component: protocol `6a5970f` freezes controller-owned typed-read
+authorization. FactReadSession now builds its own reader from authorized hashes,
+binds a fixed cutoff/run, records actual responses, reconstructs complete chunks
+and replays against fresh trusted artifacts plus an independently anchored inventory.
+Independent Astra design/implementation review passed eight focused tests. Lint
+and 523 shared-checkout tests pass (including thirteen unrelated untracked tests).
+Concurrent reconstruction reserves at most 256,000 declared payload characters;
+this does not bound total session/history or reader construction memory.
+See the [component report](assessments/typed-read-authorization-v1/report.md).
+No H2 operand admission, model visibility, default graph change, paid call or
+financial accuracy gain is claimed. Remaining H3 semantics/visibility/answer-v2
+and dispatcher integration continue under the original spec.
 
 ## Repeatable cycle
 
@@ -40,17 +167,26 @@ paid inference authorization. Existing spend limits and the original holdout rem
 
 ## Next work queue
 
-1. Harden exact source-set validation and declared task selection before paid runs.
-2. Add tool-free execution for FinEval/FinQA using the existing provider with durable
-   spending reservations; distinguish supplied-context performance from full agent.
-3. Compare source-scoped retrieval and complete table context on the documented
-   cash-flow miss. Preserve native text and old retrieval versions for replay.
-4. Add a typed table-evidence fixture and a structurally scored ingestion experiment.
-   Compare native parsing, Docling without OCR, and selective OCR on the same sources.
-5. Integrate TAT-QA/ConvFinQA using pinned official metrics, shared-document partitions,
-   reference-history versus actual-history conditions, and per-conversation denominators.
-6. Expand custom cases beyond one company; calibrate semantic judgments with blinded
-   finance-literate review before treating strict supported success as established.
+The user authorized choosing/comparing models and reasoning efforts. Prepare the
+[bounded comparison](model-effort-comparison-plan.md) alongside H2/H3, preserving
+historical results and reconciling spending before any trial. No comparison has
+run yet; capability, accounting and aggregate-budget gates precede inference.
+
+1. H1 accepted infrastructure: retain regression coverage; add the separately
+   proposed external-success/local-acknowledgement crash test before recovery changes.
+2. H2 accepted as trusted-snapshot infrastructure; retain numerical/compatibility
+   replay tests while H3 supplies actual source admission and model-tool exposure.
+3. H3: integrate versioned answers and typed discovery/read/claim contracts.
+4. H4: compare requirement-aware context retention and narrow workflow instructions.
+5. H5: run source-accepted, preregistered full-agent development comparisons within
+   reconciled authorization; calibrate semantic review and retain all failures.
+6. H6: select the next measured bottleneck, with fresh confirmation before promotion.
+
+The prior queue's benchmark adapters and tool-free pilots are implemented. Later
+reports in `context.md` also record negative ranking/retention comparisons, compact
+PDF metadata savings without coverage improvement, and exact-ID XBRL delivery.
+None establishes a broad end-to-end accuracy gain. Keep the dated cycles below
+as history rather than rewriting their then-current results.
 
 Perfection is not a measurable stopping criterion. A promotion needs evidence on
 predeclared cases, a clear failure taxonomy, and no regression in critical support,

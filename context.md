@@ -1,5 +1,129 @@
 # Working context — 2026-11-16
 
+## UI branch integration — 2026-11-16
+
+Merged `origin/feat/web-chatbot-mvp` (`02d4038`) into the current
+`codex/finance-benchmark-loop` work, preserving its evaluation/harness changes.
+The merge required no conflict resolution. Repaired missing optional dependency
+entries in `web/package-lock.json`; a clean `npm --prefix web ci` now succeeds.
+Verified on the combined working tree: `yarn lint`, all 582 Python tests via
+`yarn test`, the TypeScript/production build, and all four Playwright replay tests.
+The Python count includes pre-existing untracked XBRL assessment/delivery tests;
+those files remain untracked and are not part of this integration. No live model
+calls were needed for integration verification. The earlier web-workstream report
+below is retained as branch history, not a fresh live acceptance result.
+
+## Web MVP — 2026-11-17
+
+The user decided to show the complete MVP in the browser first (demo 2026-11-17
+20:00). Branch `feat/web-chatbot-mvp` starts from `codex/finance-benchmark-loop`
+(PR #2); `feat/evaluation-agent-foundation` is an earlier draft of the same work and
+was not merged. Scope chosen by the user: cited chat, follow-ups, workbook upload
+and range context, approved edits with download; both evidence sets selectable;
+OpenRouter `deepseek/deepseek-v4.1-flash-1017`; $1.00 live-spend cap for building
+and dogfooding, with a separate allowance for the demo. Design:
+[docs/web-mvp-design.md](docs/web-mvp-design.md); plan:
+[docs/superpowers/plans/2026-11-17-web-chatbot-mvp.md](docs/superpowers/plans/2026-11-17-web-chatbot-mvp.md).
+
+Verified: 497 Python tests and lint pass (57 new web tests); 4 Playwright replay tests
+pass; live browser questions completed with valid citations (single question
+$0.0085, follow-up $0.018, workbook proposal $0.0072). The base runtime is unchanged:
+chat tools extend `Sources` through `ChatSources`. Desktop Excel opening of exports
+is not yet confirmed (AppleScript automation was blocked by an Excel dialog).
+Five dogfood rounds scored 82, 97, 97, 98 and 99 out of 100; every defect found was fixed (log: [docs/dogfood/2026-11-17-web-mvp.md](docs/dogfood/2026-11-17-web-mvp.md)). A fresh code review's Important findings are fixed with tests. Shared demo: Cloudflare quick tunnel to `scripts/demo-server.sh` with an access code; the link lasts while this machine runs it.
+
+
+## Spending preference superseded
+
+The user explicitly removed application spending caps for this Cloudflare work.
+`run` and `experiment` now accept `--no-spend-limit`; this supersedes the earlier
+aggregate/per-task authorization ceilings for these runs. Costs remain recorded;
+time/tool limits and uncertain-billing stops remain. Provider-side limits are
+unchanged. Lint and 525 tests pass, including uncapped accounting and interruption
+coverage. The [uncapped follow-up](eval/reports/cloudflare-live-2026-11-16-uncapped/report.md)
+reran all five spending-stopped questions: four completed (one abstained), three
+mechanical passes, one output-length failure. Cost estimate $0.0848396; no spending
+stops or uncertain-cost flags. The linked report shows exact inputs and full
+outputs for all nine questions, explicitly distinguishing the two batches.
+
+## Cloudflare live follow-up
+
+[Live OpenRouter run](eval/reports/cloudflare-live-2026-11-16-current/report.md):
+all nine development questions attempted; four answers, three mechanical passes,
+five conservative spending-guard stops. Estimated $0.078254, no uncertain billing
+flags in this batch. Local project credential works; environment credential was
+rejected. Prior comparison uncertainty remains counted. Combined authorization
+accounting is $0.5861111, leaving $0.4138889. Defaults unchanged; semantic caveats
+are documented in the report.
+
+## Cloudflare current offline check
+
+[User-requested rerun](eval/reports/cloudflare-current-2026-11-16/report.md) reproduces
+8/8 extraction and 6/8 retrieval anchor coverage across nine development questions.
+Gross-margin and deck-date evidence remain incomplete in returned windows. No model
+calls or answer-accuracy measurement; shared-checkout lint and 523 tests passed.
+
+
+## Active harness improvement goal
+
+The user now explicitly authorizes model and reasoning-effort selection/comparison.
+Historical exact-model settings remain unchanged in saved results. A bounded
+[comparison plan](eval/model-effort-comparison-plan.md) is being prepared; existing
+aggregate spending limits still apply. The comparison adapter/runner is committed
+at `01983f4`, with 500 clean-checkout tests and lint/validation passing. The
+[frozen first pilot](eval/assessments/model-effort-v1/pilot-protocol.md) compares
+two models at low/high effort on three supplied-evidence development cases;
+a fourth selected case is excluded without replacement for reference ambiguity.
+The [first live attempt](eval/assessments/model-effort-v1/pilot-report.md) stopped
+after one transport failure with unknown billing; zero successful outputs.
+The $0.0132189 reservation remains accounted, bringing conservative combined
+spend to $0.4946382. No retry, model winner or accuracy gain is established.
+The subsequent offline diagnostic repair retains allowlisted transport HTTP
+statuses/fixed messages in comparison failures, while stripping arbitrary text.
+Independent review and 19 focused tests pass; the original failed pilot is unchanged.
+One separately frozen follow-up (`2109681`) returned HTTP 404 and stopped after
+its first request. No completed output across either pilot. Both uncertain
+reservations remain counted: combined conservative authorization accounting is
+$0.5078571, remaining $0.4921429. See the
+[follow-up report](eval/assessments/model-effort-v1/followup-report.md).
+Further paid comparison calls are stopped for this cycle; H3 integration remains available.
+H3's first typed-read component now constructs an authorized FactReader per run,
+records actual responses and verifies complete reconstruction and fresh-artifact
+replay. It does not yet admit semantic operands or establish model visibility.
+See the [component report](eval/assessments/typed-read-authorization-v1/report.md).
+
+H2 progress: numerical kernel `3b4f4ca` and calculation ledger `03e7342` are committed.
+The ledger binds trusted admitted evidence, financial compatibility, calculation
+ancestry and full replay. Fourteen ledger tests and twelve numeric tests pass,
+with two independent ledger reviews. H3's actual source admission, semantic/visibility
+boundary and model-tool integration remain pending. See the
+[acceptance report](eval/assessments/evidence-calculations-v1/report.md).
+
+The user requested a thorough implementation spec and a continuous benchmark-driven
+improvement goal in **Research finance agent harnesses**. The goal is active here;
+the earlier **Improve finance evaluation harness** chat remains paused. Its five
+untracked XBRL assessment files are preserved and are not owned by this new cycle.
+The [specification](harness-improvement-spec.md) defines H0–H6, contracts, migration,
+evaluation gates, and budget/holdout boundaries. Two independent Astra reviews
+informed it. H1 now implements opt-in model-input receipts and checkpoint v3
+policy/source identity binding; legacy behavior remains the default. Independent
+review, 470 shared-checkout tests, and 457 clean-commit tests pass. See the
+[H1 acceptance report](eval/assessments/model-input-receipts-v1/report.md) for
+committed-code verification and limitations. No paid inference accompanied H0/H1.
+
+Latest recorded aggregate spending is $0.4814193 against $1.00 historical
+authorization ($0.5185807 nominal remainder). This is not a verified current
+account balance. Reconcile all ledgers and account usage before paid execution;
+the older authorization paragraph below records a prior balance.
+
+[Recent finance harness research](eval/finance-harness-research-2026-11-16.md)
+maps external designs to proposed evidence-linked arithmetic, model-input
+receipts, typed-evidence integration, and prospective full-agent evaluation.
+The recommendations inform H0–H6; H1 receipt infrastructure is implemented, while
+arithmetic and typed-evidence integration remain planned. No benchmark score changed.
+Its research-exposure addendum records incidental external examples, including
+additional Microsoft exposure, without changing the six frozen reservations.
+
 The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
 now measures existing table reads with exact row locations: 139 reads return all
 420 mapped fact occurrences across 412 cells; 84 facts have no mapped cell. This
@@ -339,7 +463,7 @@ Local `yarn lint` and `yarn test` pass, with all 79 tests running. Python 3.13
 reports unclosed SQLite connection ResourceWarnings during tests; passing checks
 do not establish that connection cleanup is complete. No new paid calls were made.
 
-## Active authorization
+## Historical authorization after the frozen November 7 batch
 
 After the frozen batch finished, the user answered the pending budget question
 with “Authorize $0.50 additional.” Total authorized estimated development/evaluation

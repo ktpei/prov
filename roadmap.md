@@ -7,6 +7,13 @@ independent evaluation runner. Finance accuracy benchmarks are the next planning
 priority; workbook-aware research and Excel integration remain later work.
 Read [spec.md](spec.md) for requirements and [context.md](context.md) for verification.
 
+The active next-round sequence is defined in
+[the harness improvement specification](harness-improvement-spec.md): H1 model-input
+receipts, H2 evidence-linked arithmetic, H3 versioned answers and typed tools,
+H4 retention/workflow challengers, then H5 prospective full-agent comparison.
+These are planned increments, not implemented guarantees. The earlier M0–M7
+modules below preserve the broader product roadmap.
+
 ## Current milestone — company-context tooling and evaluation
 
 Selected on 2026-11-07: LangChain + LangGraph, OpenRouter, and Cloudflare 2024
@@ -20,8 +27,10 @@ calendar questions are deferred. The eventual interface remains an Excel add-in.
 The modules below retain the longer-term backlog; browser upload/download is no
 longer the acceptance boundary of the current milestone.
 
-Live acceptance uses the requested DeepSeek model with a $0.50 aggregate cap,
-within the user-configured $1 daily limit. Keep heldout questions untouched.
+Live acceptance retains the requested DeepSeek model and requires reconciliation
+of the latest aggregate spending ledger and account usage. The original $0.50 cap
+predates an additional authorization; consult the improvement spec before paid
+work. Keep heldout questions untouched.
 
 ## M0 — Scope and shared contracts
 
@@ -55,8 +64,12 @@ source, identify its period and units, and reproduce derived answers.
 
 **Owner** — Person A.
 
-**State** — LangChain/OpenRouter, LangGraph, checkpoints, and offline replay exist.
-The browser interface and API are deferred. This module is a later interface backlog.
+**State** — Web MVP implemented 2026-11-17 on `feat/web-chatbot-mvp` for the
+evening demo: FastAPI backend (`provenance/web/`), React + Vite + Tailwind UI (`web/`),
+streamed tool activity, cited answers with an evidence viewer, explicit follow-up
+context, per-turn worker processes for deadlines and isolation, a capped spend ledger,
+and labeled scripted replay. Live development questions verified in the browser.
+Cancellation is not implemented; a running turn finishes or hits its limits.
 
 - Select and configure an exact model and budget when live calls are resumed.
 - Run one development question and inspect tools, evidence, output, and charges.
@@ -106,8 +119,8 @@ Selected on 2026-11-16: follow the [finance accuracy benchmark plan](eval/benchm
 Implement FinEval, FinQA, FinanceBench, and custom prov tasks first; add TAT-QA and
 ConvFinQA next. Finance Agent Benchmark is a later challenge. Excel benchmarking
 is excluded from this milestone. Core adapters, pinned acquisition, offline scoring, and tool-free execution are
-implemented. A ten-task development pilot is measured; full coverage and the
-table/conversation suite remain pending. See [the current workflow](eval/external-benchmarks.md).
+implemented. Core and table/conversation development pilots are measured; broader
+coverage and full-agent evaluation remain pending. See [the current workflow](eval/external-benchmarks.md).
 
 1. Pin dataset versions/licenses and split manifests; verify gold-data isolation.
 2. Implement portable scorers and validate against correct/incorrect fixtures.
@@ -133,7 +146,12 @@ labeled as plumbing checks. They cannot establish model quality.
 
 **Owner** — Person A owns UI/API. Person B owns workbook tools and artifact checks.
 
-**State** — Deferred workbook-exchange option, unimplemented; not required for the active milestone.
+**State** — M5a and M5b implemented for the web MVP (2026-11-17): immutable `.xlsx`
+snapshots, sheet grid, range context, workbook cell citations, cited edit proposals,
+approval-bound separate copies with cell comments and a `Provenance log` sheet,
+idempotent exports, stale-proposal invalidation. Formulas are preserved and Excel
+recalculates on open; the app does not compute them. Opening exports in desktop Excel
+still needs a manual check.
 
 ### M5a — Upload and context
 

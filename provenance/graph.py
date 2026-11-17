@@ -17,6 +17,7 @@ from langgraph.graph import END, START, StateGraph
 from provenance.agent import Limits, Trace
 from provenance.controls import Budget, LimitReached, deadline
 from provenance.model import INSTRUCTIONS, validate_answer
+from provenance.receipts import PROFILE, digest
 from provenance.sources import TOOL_SCHEMAS
 from provenance.transport import ProviderError
 
@@ -57,6 +58,7 @@ def run_graph(
     thread_id=None,
     resume=False,
     pause_after_tools=False,
+    runtime_profile="legacy-v1",
 ):
     """Run research; optional SQLite state supports explicit pause and resume.
 
@@ -65,6 +67,13 @@ def run_graph(
     automatically retried because a provider may already have charged the request.
     """
     limits, trace = limits or Limits(), trace or Trace()
+    if runtime_profile not in {"legacy-v1", PROFILE}:
+        raise ValueError("Unknown runtime profile")
+    receipt_policy = None
+    if runtime_profile == PROFILE:
+        if not callable(getattr(model, "step_with_receipt", None)):
+            raise ValueError("Receipt profile requires the OpenRouter LangGraph adapter")
+        receipt_policy = model.receipt_policy()
     if (resume or pause_after_tools) and not checkpoint_path:
         raise ValueError("Pause/resume requires --checkpoint")
     if checkpoint_path and not thread_id:
@@ -89,6 +98,18 @@ def run_graph(
             "exa_cap": sources.exa_cap,
         },
     }
+    if receipt_policy is not None:
+        identity.update(
+            checkpoint_version="research-checkpoint-v3",
+            runtime_profile=runtime_profile,
+            receipt_policy=receipt_policy,
+            source_metadata_sha256=digest(
+                {
+                    key: {k: v for k, v in doc.items() if k != "text"}
+                    for key, doc in documents.items()
+                }
+            ),
+        )
     current = {}
     started = time.monotonic()
     prior_elapsed = 0
@@ -171,6 +192,8 @@ def run_graph(
                     ),
                 }
             ]
+            if receipt_policy is not None:
+                trace.emit("controller_message", message=state["messages"][-1])
         attempt(state, "model")
         state["model_calls"] += 1
         trace.emit(
@@ -180,7 +203,41 @@ def run_graph(
             final_only=final_only,
         )
         step = final_step if final_only else model.step
-        response = step(state["messages"], min(remaining(), limits.request_timeout_seconds), budget)
+        if receipt_policy is None:
+            response = step(
+                state["messages"], min(remaining(), limits.request_timeout_seconds), budget
+            )
+        else:
+            returned = False
+            observed = {"receipt_created": False, "dispatched": False}
+
+            def emit_receipt(kind, **fields):
+                if kind == "model_input_receipt":
+                    observed["receipt_created"] = True
+                elif kind == "model_dispatch_started":
+                    observed["dispatched"] = True
+                trace.emit(kind, **fields)
+
+            try:
+                if model.receipt_policy() != receipt_policy:
+                    raise ValueError("Receipt policy changed during run")
+                response = model.step_with_receipt(
+                    state["messages"],
+                    min(remaining(), limits.request_timeout_seconds),
+                    budget,
+                    run_id=trace.id,
+                    attempt_id=state["model_calls"],
+                    emit=emit_receipt,
+                    final_only=final_only,
+                )
+                returned = True
+            finally:
+                trace.emit(
+                    "model_attempt_finished",
+                    attempt_id=state["model_calls"],
+                    returned=returned,
+                    **observed,
+                )
         trace.emit(
             "model_response",
             number=state["model_calls"],
@@ -285,6 +342,8 @@ def run_graph(
                     ),
                 }
             ]
+            if receipt_policy is not None:
+                trace.emit("controller_message", message=state["messages"][-1])
             state["phase"] = "answer_repair"
             return
         state.update(status="completed", phase="finished")
@@ -350,6 +409,8 @@ def run_graph(
                         "Uncommitted provider attempt; review billing before starting a new thread"
                     )
             prior_identity = {"read_extraction_version": "full-v1", **initial["identity"]}
+            if prior_identity.get("runtime_profile", "legacy-v1") != runtime_profile:
+                raise ValueError("Unsupported checkpoint profile; start a new run")
             if prior_identity != identity:
                 raise ValueError(
                     "Resume question/model/limits/corpus/read-format differs from checkpoint"
@@ -393,8 +454,8 @@ def run_graph(
                 model=model.name,
                 limits=asdict(limits),
                 source_mode="corpus+web" if sources.exa_key else ("frozen_corpus"),
-                instructions=INSTRUCTIONS,
-                tools=TOOL_SCHEMAS,
+                instructions=model.instructions if receipt_policy else INSTRUCTIONS,
+                tools=model.tool_schemas if receipt_policy else TOOL_SCHEMAS,
                 corpus=identity["corpus"],
                 runtime="langgraph",
                 runtime_policy=RUNTIME_POLICY,
@@ -405,6 +466,15 @@ def run_graph(
                     "output_usd_per_million": getattr(model, "output_rate", None),
                     "exa_max_request_usd": sources.exa_cap,
                 },
+                **(
+                    {
+                        "runtime_profile": runtime_profile,
+                        "receipt_policy": receipt_policy,
+                        "checkpoint_version": "research-checkpoint-v3",
+                    }
+                    if receipt_policy
+                    else {}
+                ),
             )
             initial = ResearchState(
                 run_id=trace.id,
@@ -479,6 +549,7 @@ def run_graph(
         "validation": "Structure, read evidence, and quote presence only; semantic accuracy needs grading.",
         "trace_path": str(trace.directory / "trace.jsonl") if trace.directory else None,
         "events": trace.events,
+        **({"runtime_profile": runtime_profile} if receipt_policy else {}),
     }
     trace.finish(report)
     if checkpoint_path and report["status"] == "completed":

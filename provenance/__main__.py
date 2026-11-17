@@ -29,7 +29,9 @@ def main():
         "--live", action="store_true", help="Required acknowledgement of paid API use"
     )
     live.add_argument("--web", action="store_true", help="Enable paid Exa search/contents")
-    live.add_argument("--budget-usd", type=float, required=True)
+    spending = live.add_mutually_exclusive_group(required=True)
+    spending.add_argument("--budget-usd", type=float)
+    spending.add_argument("--no-spend-limit", action="store_true")
     live.add_argument("--max-model-calls", type=int, default=8)
     live.add_argument("--max-tool-calls", type=int, default=10)
     live.add_argument("--timeout-seconds", type=float, default=90)
@@ -38,6 +40,9 @@ def main():
     live.add_argument("--max-output-tokens", type=int, default=4000)
     for command in (demo, live):
         command.add_argument("--engine", choices=("langgraph", "custom"), default="langgraph")
+        command.add_argument(
+            "--runtime-profile", choices=("legacy-v1", "trace-receipts-v1"), default="legacy-v1"
+        )
         command.add_argument("--corpus", type=Path, default=ROOT / "data/corpus")
         command.add_argument(
             "--read-extraction-version",
@@ -71,6 +76,12 @@ def main():
             result = grade(task, json.loads(args.result.read_text()))
             print(json.dumps(result, indent=2))
             return 0 if result["mechanical_checks_passed"] else 1
+        if args.runtime_profile == "trace-receipts-v1" and (
+            args.command != "run" or args.engine != "langgraph" or args.provider != "openrouter"
+        ):
+            raise ValueError(
+                "Receipt profile requires run --engine langgraph --provider openrouter"
+            )
         if args.command == "demo":
             fixture = json.loads((ROOT / "tests/fixtures/demo.json").read_text())
             question, model = (
@@ -150,6 +161,7 @@ def main():
                 thread_id=args.thread_id,
                 resume=args.resume,
                 pause_after_tools=args.pause_after_tools,
+                runtime_profile=args.runtime_profile,
             )
         else:
             if args.checkpoint or args.resume or args.pause_after_tools:

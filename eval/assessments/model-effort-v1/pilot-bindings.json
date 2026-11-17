@@ -1,0 +1,12 @@
+{
+  "file_sha256": {
+    "runs/model-effort-v1/prepared-reviewed/manifest.json": "437d71d7039d6d6e7243d11fd8e6337f6a43e1ad7858e7387ad8ee7383cccc71",
+    "runs/model-effort-v1/prepared-reviewed/tasks.json": "e262493c98d02f0d540e3aa5044a79e4c69ccf1b288afe75709573fb0109303f",
+    "runs/model-effort-v1/prepared-reviewed/inputs.json": "c378287ce00e9e60b49b0cb36cc618e5c71cfa7942948f22540fbcbd14f54a0b",
+    "eval/assessments/model-effort-v1/rubric.json": "3f0133f398514dd46ceca50a2b58f61025d62cf917b1ae0c64c1b6b35b04a995",
+    "eval/assessments/model-effort-v1/arms.json": "3cec2437b8773025735ce719dc8e82024d3377b9fd4c20ffddd7d2bf81b90563",
+    "eval/assessments/model-effort-v1/capabilities.json": "37065806823788f88858a081240bdab2232f7c8ad5d5d58d85f3db9d28eec21b",
+    "eval/reference-issues.json": "339da5618c693e6ccd446276e6cce7c7758e05d929ae249f3ec5e6a7afb5668e"
+  },
+  "prepared_sha256": "20272c3b0bd31fdc4de4a3a7b713bef8a6088936068c61471897c1a7cfcfd66b"
+}
