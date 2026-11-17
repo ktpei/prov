@@ -35,8 +35,10 @@ Unicode chunks, complete/chunk equivalence, missing/overlapping ranges, hash/env
 drift, source/cutoff authorization, immutable copies, quarantine/nil/zero, overflow,
 and fresh-artifact replay. Independent implementation review passed all eight
 focused tests. Shared-checkout lint and 523 tests passed, including thirteen
-untracked tests owned by the paused assessment chat; clean verification is
-recorded separately after the implementation commit.
+untracked tests owned by the paused assessment chat. Clean implementation commit
+`eeb21b9` passes Ruff check/format, corpus validation and 510 tests. Existing
+SQLite ResourceWarnings remain. The final aggregate test also completes the
+first pending payload and verifies its reservation is released for the second.
 
 This is not completed H3 or financial evidence admission. CalculationLedger stays
 unchanged; no accepted H2 snapshot is emitted. Next: deterministic attribute/support
