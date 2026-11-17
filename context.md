@@ -1,5 +1,13 @@
 # Working context — 2026-11-16
 
+## Cloudflare current offline check
+
+[User-requested rerun](eval/reports/cloudflare-current-2026-11-16/report.md) reproduces
+8/8 extraction and 6/8 retrieval anchor coverage across nine development questions.
+Gross-margin and deck-date evidence remain incomplete in returned windows. No model
+calls or answer-accuracy measurement; shared-checkout lint and 523 tests passed.
+
+
 ## Active harness improvement goal
 
 The user now explicitly authorizes model and reasoning-effort selection/comparison.
