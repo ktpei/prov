@@ -1,4 +1,4 @@
-"""Run from the repository root: python3 -m provenance demo."""
+"""Run from the repository root: uv run python -m provenance demo."""
 
 import argparse
 import json
@@ -34,6 +34,15 @@ def main():
     live.add_argument("--max-tool-calls", type=int, default=10)
     live.add_argument("--timeout-seconds", type=float, default=90)
     live.add_argument("--log-dir", type=Path, help="Explicitly allow writing run logs here")
+    live.add_argument("--provider", choices=("openrouter", "openai"), default="openrouter")
+    live.add_argument("--max-output-tokens", type=int, default=4000)
+    for command in (demo, live):
+        command.add_argument("--engine", choices=("langgraph", "custom"), default="langgraph")
+        command.add_argument("--corpus", type=Path, default=ROOT / "data/corpus")
+        command.add_argument("--checkpoint", type=Path, help="SQLite checkpoint file")
+        command.add_argument("--thread-id", help="Stable ID for checkpointed research")
+        command.add_argument("--resume", action="store_true")
+        command.add_argument("--pause-after-tools", action="store_true")
     commands.add_parser("validate", help="Validate evaluation dataset and source hashes")
     grading = commands.add_parser("grade", help="Mechanical checks on an existing dev run")
     grading.add_argument("--task", required=True)
@@ -58,8 +67,11 @@ def main():
             return 0 if result["mechanical_checks_passed"] else 1
         if args.command == "demo":
             fixture = json.loads((ROOT / "tests/fixtures/demo.json").read_text())
-            question, model = fixture["question"], ReplayModel(fixture["responses"])
-            sources, limits = Sources(ROOT / "data/corpus"), Limits()
+            question, model = (
+                fixture["question"],
+                ReplayModel(fixture["responses"], checkpoint_replay=True),
+            )
+            sources, limits = Sources(args.corpus), Limits()
         else:
             if not args.live:
                 raise ValueError(
@@ -73,11 +85,18 @@ def main():
                 args.timeout_seconds,
                 budget_usd=args.budget_usd,
             )
-            model = OpenAIModel(
-                os.environ.get("OPENAI_API_KEY"),
-                os.environ.get("OPENAI_MODEL"),
-                os.environ.get("OPENAI_INPUT_USD_PER_MILLION"),
-                os.environ.get("OPENAI_OUTPUT_USD_PER_MILLION"),
+            if args.provider == "openrouter":
+                from provenance.langchain_model import OpenRouterModel
+
+                model_class, prefix = OpenRouterModel, "OPENROUTER"
+            else:
+                model_class, prefix = OpenAIModel, "OPENAI"
+            model = model_class(
+                os.environ.get(f"{prefix}_API_KEY"),
+                os.environ.get(f"{prefix}_MODEL"),
+                os.environ.get(f"{prefix}_INPUT_USD_PER_MILLION"),
+                os.environ.get(f"{prefix}_OUTPUT_USD_PER_MILLION"),
+                max_output=args.max_output_tokens,
             )
             question = args.question
             if args.task:
@@ -98,7 +117,7 @@ def main():
             if args.web and not exa_key:
                 raise ValueError("--web requires EXA_API_KEY")
             sources = Sources(
-                ROOT / "data/corpus", exa_key=exa_key, exa_cap=os.environ.get("EXA_MAX_REQUEST_USD")
+                args.corpus, exa_key=exa_key, exa_cap=os.environ.get("EXA_MAX_REQUEST_USD")
             )
             if args.task:
                 sources.documents = {
@@ -106,7 +125,24 @@ def main():
                     for key, source in sources.documents.items()
                     if key in task["source_ids"]
                 }
-        report = run(question, model, sources, limits, Trace(args.log_dir))
+        if args.engine == "langgraph":
+            from provenance.graph import run_graph
+
+            report = run_graph(
+                question,
+                model,
+                sources,
+                limits,
+                Trace(args.log_dir),
+                checkpoint_path=args.checkpoint,
+                thread_id=args.thread_id,
+                resume=args.resume,
+                pause_after_tools=args.pause_after_tools,
+            )
+        else:
+            if args.checkpoint or args.resume or args.pause_after_tools:
+                raise ValueError("Checkpoint/pause/resume requires --engine langgraph")
+            report = run(question, model, sources, limits, Trace(args.log_dir))
         print(json.dumps(report, indent=2, allow_nan=False))
         return 0 if report["status"] == "completed" else 1
     except (ValueError, TypeError, KeyError, OSError) as exc:

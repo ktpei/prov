@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "id": "cloudflare-q3-2024-release",
+      "company": "Cloudflare",
+      "ticker": "NET",
+      "title": "Cloudflare Announces Third Quarter 2024 Financial Results",
+      "published": "2024-11-07",
+      "url": "https://www.cloudflare.net/news/news-details/2024/Cloudflare-Announces-Third-Quarter-2024-Financial-Results/default.aspx",
+      "input_file": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-release.html"
+    },
+    {
+      "id": "cloudflare-q3-2024-filing",
+      "company": "Cloudflare",
+      "ticker": "NET",
+      "title": "Cloudflare Form 10-Q September 30 2024",
+      "published": "2024-11-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000085/cloud-20240930.htm",
+      "input_file": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-filing.html"
+    },
+    {
+      "id": "cloudflare-q3-2024-transcript",
+      "company": "Cloudflare",
+      "ticker": "NET",
+      "title": "Cloudflare Q3 2024 Earnings Call Corrected Transcript",
+      "published": "2024-11-07",
+      "url": "https://www.cloudflare.net/files/doc_financials/2024/q3/CORRECTED-TRANSCRIPT_-Cloudflare-Inc-NET-US-Q3-2024-Earnings-Call-7-November-2024-5_00-PM-ET.pdf",
+      "input_file": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-transcript.pdf"
+    },
+    {
+      "id": "cloudflare-investor-day-2024",
+      "company": "Cloudflare",
+      "ticker": "NET",
+      "title": "Cloudflare Investor Day May 30 2024",
+      "published": "2024-05-30",
+      "url": "https://www.cloudflare.net/files/doc_downloads/Presentations/2024/05/Cloudflare-Investor-Day-2024.pdf",
+      "input_file": "data/cloudflare-2024-q3/originals/cloudflare-investor-day-2024.pdf"
+    }
+  ]
+}

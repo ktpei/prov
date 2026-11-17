@@ -1,0 +1,350 @@
+{
+  "mode": "live_openrouter_development",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "budget_usd": 0.15,
+  "accounted_cost_usd": 0.0863112,
+  "pricing": {
+    "input_usd_per_million": 0.6,
+    "output_usd_per_million": 2.4
+  },
+  "benchmark_version": "cloudflare-fresh-post-freeze-v1",
+  "source_hashes": {
+    "cloudflare-q3-2024-release": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+    "cloudflare-q3-2024-filing": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+    "cloudflare-q3-2024-transcript": "61482e592081541f96ebfb5d569fece6af6b05a3be5a2f9e208c1590fbe0aabb",
+    "cloudflare-investor-day-2024": "b2d384ae06344bf6c82ef4ebd0e9ba720f6e645a4bdaab78382c201b784c381b"
+  },
+  "git_revision": "ce1a2f249dd7d907ac5570d5284dbc371878032a",
+  "working_tree_dirty": false,
+  "attempts": [
+    {
+      "task_id": "fresh-01",
+      "status": "stopped",
+      "reserved_usd": 0.05,
+      "accounted_cost_usd": 0.015397200000000003,
+      "metrics": {
+        "model_calls": 5,
+        "answer_retries": 1,
+        "tool_calls": 4,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 20050,
+        "output_tokens": 1403,
+        "latency_seconds": 7.33215874992311,
+        "accounted_cost_usd": 0.015397200000000003,
+        "cost_uncertain": false
+      },
+      "stop_reason": "spend_limit",
+      "result_file": "fresh-01.json",
+      "grading": {
+        "task_id": "fresh-01",
+        "mode": "live_openrouter_langchain",
+        "trace_and_quote_checks_passed": false,
+        "trace_failures": [
+          "Grading requires a completed frozen-corpus run",
+          "Run did not complete"
+        ],
+        "answerability_passed": false,
+        "numeric_claim_checks": [
+          {
+            "key": "gaap_research_and_development",
+            "passed": false
+          },
+          {
+            "key": "non_gaap_research_and_development",
+            "passed": false
+          }
+        ],
+        "citation_anchor_coverage": [
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "passed": false
+          }
+        ],
+        "mechanical_checks_passed": false,
+        "semantic_answer_quality": "requires_human_review",
+        "rubric": "Return GAAP R&D expense of 110.911 USD million and non-GAAP R&D expense of 70.452 USD million for Q3 2024. Convert the table's thousands to millions, retain separate accounting bases, and cite the three-month 2024 column with its unit header. Do not select the nine-month or 2023 column.",
+        "runtime_metrics": {
+          "model_calls": 5,
+          "answer_retries": 1,
+          "tool_calls": 4,
+          "tool_errors": 0,
+          "tool_error_rate": 0.0,
+          "input_tokens": 20050,
+          "output_tokens": 1403,
+          "latency_seconds": 7.33215874992311,
+          "accounted_cost_usd": 0.015397200000000003,
+          "cost_uncertain": false
+        },
+        "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+      }
+    },
+    {
+      "task_id": "fresh-02",
+      "status": "completed",
+      "reserved_usd": 0.05,
+      "accounted_cost_usd": 0.010072200000000003,
+      "metrics": {
+        "model_calls": 4,
+        "answer_retries": 0,
+        "tool_calls": 5,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 13487,
+        "output_tokens": 825,
+        "latency_seconds": 5.8438392910175025,
+        "accounted_cost_usd": 0.010072200000000003,
+        "cost_uncertain": false
+      },
+      "stop_reason": null,
+      "result_file": "fresh-02.json",
+      "grading": {
+        "task_id": "fresh-02",
+        "mode": "live_openrouter_langchain",
+        "trace_and_quote_checks_passed": true,
+        "trace_failures": [],
+        "answerability_passed": true,
+        "numeric_claim_checks": [
+          {
+            "key": "total_current_assets",
+            "passed": false
+          },
+          {
+            "key": "total_current_liabilities",
+            "passed": false
+          },
+          {
+            "key": "current_assets_less_current_liabilities",
+            "passed": false
+          }
+        ],
+        "citation_anchor_coverage": [
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "passed": true
+          }
+        ],
+        "mechanical_checks_passed": false,
+        "semantic_answer_quality": "requires_human_review",
+        "rubric": "Return total current assets 2163.878, total current liabilities 641.615, and a positive difference of 1522.263 USD million as of September 30, 2024. Show subtraction and conversion from thousands. Cite both underlying rows and the 2024 date/unit header. Do not use total assets/liabilities or December 2023 balances.",
+        "runtime_metrics": {
+          "model_calls": 4,
+          "answer_retries": 0,
+          "tool_calls": 5,
+          "tool_errors": 0,
+          "tool_error_rate": 0.0,
+          "input_tokens": 13487,
+          "output_tokens": 825,
+          "latency_seconds": 5.8438392910175025,
+          "accounted_cost_usd": 0.010072200000000003,
+          "cost_uncertain": false
+        },
+        "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+      }
+    },
+    {
+      "task_id": "fresh-03",
+      "status": "completed",
+      "reserved_usd": 0.05,
+      "accounted_cost_usd": 0.015655199999999998,
+      "metrics": {
+        "model_calls": 5,
+        "answer_retries": 0,
+        "tool_calls": 7,
+        "tool_errors": 1,
+        "tool_error_rate": 0.14285714285714285,
+        "input_tokens": 22184,
+        "output_tokens": 977,
+        "latency_seconds": 6.562797209015116,
+        "accounted_cost_usd": 0.015655199999999998,
+        "cost_uncertain": false
+      },
+      "stop_reason": null,
+      "result_file": "fresh-03.json",
+      "grading": {
+        "task_id": "fresh-03",
+        "mode": "live_openrouter_langchain",
+        "trace_and_quote_checks_passed": true,
+        "trace_failures": [],
+        "answerability_passed": true,
+        "numeric_claim_checks": [
+          {
+            "key": "property_and_equipment_cash_outflow",
+            "passed": false
+          }
+        ],
+        "citation_anchor_coverage": [
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "passed": true
+          }
+        ],
+        "mechanical_checks_passed": false,
+        "semantic_answer_quality": "requires_human_review",
+        "rubric": "Return 111.884 USD million as the positive magnitude of cash spent on property and equipment for the nine months ended September 30, 2024. Cite the purchases row and the nine-month 2024 period and thousands unit headers; convert the table amount to millions. Do not add capitalized software, use the three-month period, or substitute total investing cash flow.",
+        "runtime_metrics": {
+          "model_calls": 5,
+          "answer_retries": 0,
+          "tool_calls": 7,
+          "tool_errors": 1,
+          "tool_error_rate": 0.14285714285714285,
+          "input_tokens": 22184,
+          "output_tokens": 977,
+          "latency_seconds": 6.562797209015116,
+          "accounted_cost_usd": 0.015655199999999998,
+          "cost_uncertain": false
+        },
+        "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+      }
+    },
+    {
+      "task_id": "fresh-04",
+      "status": "completed",
+      "reserved_usd": 0.05,
+      "accounted_cost_usd": 0.026337600000000003,
+      "metrics": {
+        "model_calls": 10,
+        "answer_retries": 0,
+        "tool_calls": 11,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 38328,
+        "output_tokens": 1392,
+        "latency_seconds": 12.01665229187347,
+        "accounted_cost_usd": 0.026337600000000003,
+        "cost_uncertain": false
+      },
+      "stop_reason": null,
+      "result_file": "fresh-04.json",
+      "grading": {
+        "task_id": "fresh-04",
+        "mode": "live_openrouter_langchain",
+        "trace_and_quote_checks_passed": true,
+        "trace_failures": [],
+        "answerability_passed": true,
+        "numeric_claim_checks": [],
+        "citation_anchor_coverage": [
+          {
+            "source_id": "cloudflare-q3-2024-filing",
+            "passed": true
+          }
+        ],
+        "mechanical_checks_passed": true,
+        "semantic_answer_quality": "requires_human_review",
+        "rubric": "State that Cloudflare had never declared or paid cash dividends on its capital stock, intended to retain future earnings to finance operations and expansion, and did not expect dividends for the foreseeable future. Attribute this to the 10-Q as of its date; do not turn the stated intention into a permanent prohibition.",
+        "runtime_metrics": {
+          "model_calls": 10,
+          "answer_retries": 0,
+          "tool_calls": 11,
+          "tool_errors": 0,
+          "tool_error_rate": 0.0,
+          "input_tokens": 38328,
+          "output_tokens": 1392,
+          "latency_seconds": 12.01665229187347,
+          "accounted_cost_usd": 0.026337600000000003,
+          "cost_uncertain": false
+        },
+        "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+      }
+    },
+    {
+      "task_id": "fresh-05",
+      "status": "completed",
+      "reserved_usd": 0.05,
+      "accounted_cost_usd": 0.0071279999999999955,
+      "metrics": {
+        "model_calls": 3,
+        "answer_retries": 0,
+        "tool_calls": 2,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 8180,
+        "output_tokens": 925,
+        "latency_seconds": 9.566240125102922,
+        "accounted_cost_usd": 0.0071279999999999955,
+        "cost_uncertain": false
+      },
+      "stop_reason": null,
+      "result_file": "fresh-05.json",
+      "grading": {
+        "task_id": "fresh-05",
+        "mode": "live_openrouter_langchain",
+        "trace_and_quote_checks_passed": true,
+        "trace_failures": [],
+        "answerability_passed": true,
+        "numeric_claim_checks": [],
+        "citation_anchor_coverage": [
+          {
+            "source_id": "cloudflare-q3-2024-transcript",
+            "passed": true
+          }
+        ],
+        "mechanical_checks_passed": true,
+        "semantic_answer_quality": "requires_human_review",
+        "rubric": "Attribute the explanation to Matthew Prince: R2 lets customers move large datasets to available GPU capacity and training use can lead into more Cloudflare use and inference workloads; D1 is a traditional SQL database with less direct AI influence. Together, database/object-store primitives support full and more complex applications on Workers. Do not assert quantified product performance, adoption, or causal proof beyond management's account.",
+        "runtime_metrics": {
+          "model_calls": 3,
+          "answer_retries": 0,
+          "tool_calls": 2,
+          "tool_errors": 0,
+          "tool_error_rate": 0.0,
+          "input_tokens": 8180,
+          "output_tokens": 925,
+          "latency_seconds": 9.566240125102922,
+          "accounted_cost_usd": 0.0071279999999999955,
+          "cost_uncertain": false
+        },
+        "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+      }
+    },
+    {
+      "task_id": "fresh-06",
+      "status": "completed",
+      "reserved_usd": 0.05,
+      "accounted_cost_usd": 0.011721000000000006,
+      "metrics": {
+        "model_calls": 7,
+        "answer_retries": 0,
+        "tool_calls": 12,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 16711,
+        "output_tokens": 706,
+        "latency_seconds": 9.426568625029176,
+        "accounted_cost_usd": 0.011721000000000006,
+        "cost_uncertain": false
+      },
+      "stop_reason": null,
+      "result_file": "fresh-06.json",
+      "grading": {
+        "task_id": "fresh-06",
+        "mode": "live_openrouter_langchain",
+        "trace_and_quote_checks_passed": false,
+        "trace_failures": [
+          "No evidence was read"
+        ],
+        "answerability_passed": true,
+        "numeric_claim_checks": [],
+        "citation_anchor_coverage": [],
+        "mechanical_checks_passed": false,
+        "semantic_answer_quality": "requires_human_review",
+        "rubric": "Explicitly abstain: the supplied packet does not establish Germany-based employee headcount as of September 30, 2024. Do not substitute worldwide headcount, infer zero from absence, estimate a country allocation, or claim the company has never disclosed it elsewhere. Return no numeric answer claims.",
+        "runtime_metrics": {
+          "model_calls": 7,
+          "answer_retries": 0,
+          "tool_calls": 12,
+          "tool_errors": 0,
+          "tool_error_rate": 0.0,
+          "input_tokens": 16711,
+          "output_tokens": 706,
+          "latency_seconds": 9.426568625029176,
+          "accounted_cost_usd": 0.011721000000000006,
+          "cost_uncertain": false
+        },
+        "review": "Check metric labels, qualitative entailment, complete cross-source support, unsupported additions, and packet-scoped abstention. Mechanical pass is not task success."
+      }
+    }
+  ],
+  "status": "finished",
+  "limitation": "Application-side reservations are estimates, not a provider billing guarantee. Semantic support requires review."
+}

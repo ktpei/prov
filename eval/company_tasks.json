@@ -1,0 +1,331 @@
+{
+  "version": "cloudflare-full-docs-v2",
+  "as_of": "2024-11-07",
+  "split_note": "All tasks are development probes; no heldout model quality claim. Queries and anchors are evaluator-only. Fixed queries contain no expected numeric answer values; all queries were authored during benchmark construction and this remains a development suite.",
+  "source_hashes": {
+    "cloudflare-q3-2024-release": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+    "cloudflare-q3-2024-filing": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+    "cloudflare-q3-2024-transcript": "61482e592081541f96ebfb5d569fece6af6b05a3be5a2f9e208c1590fbe0aabb",
+    "cloudflare-investor-day-2024": "b2d384ae06344bf6c82ef4ebd0e9ba720f6e645a4bdaab78382c201b784c381b"
+  },
+  "tasks": [
+    {
+      "id": "packet-01",
+      "split": "dev",
+      "category": "numerical",
+      "question": "Using the supplied Cloudflare packet, what was total revenue for Q3 2024 ended September 30, 2024, in USD millions? Cite original evidence.",
+      "queries": [
+        "Cloudflare third quarter 2024 total revenue"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "430\\.1",
+            "28%"
+          ]
+        }
+      ],
+      "numeric_claims": [
+        {
+          "key": "revenue",
+          "value": 430.1,
+          "unit": "USD million",
+          "period": "Q3 2024",
+          "tolerance": 0
+        }
+      ],
+      "rubric": "Return 430.1 USD million, Q3 2024 actual revenue. Cite the release with period context; do not use guidance or thousands from the detailed table."
+    },
+    {
+      "id": "packet-02",
+      "split": "dev",
+      "category": "numerical",
+      "question": "Using the Cloudflare Q3 2024 earnings release, report actual GAAP and non-GAAP gross margins in percent. Keep accounting bases separate and cite evidence.",
+      "queries": [
+        "Cloudflare Q3 2024 Gross Profit GAAP non-GAAP gross margin"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "77\\.7%",
+            "78\\.8%"
+          ]
+        }
+      ],
+      "numeric_claims": [
+        {
+          "key": "gaap_gross_margin",
+          "value": 77.7,
+          "unit": "percent",
+          "period": "Q3 2024",
+          "tolerance": 0
+        },
+        {
+          "key": "non_gaap_gross_margin",
+          "value": 78.8,
+          "unit": "percent",
+          "period": "Q3 2024",
+          "tolerance": 0
+        }
+      ],
+      "rubric": "Return GAAP 77.7 and non-GAAP 78.8 percent for Q3 2024, not 2023 comparison or future targets. Each label and number must be grounded."
+    },
+    {
+      "id": "packet-03",
+      "split": "dev",
+      "category": "guidance",
+      "question": "As of November 7, 2024, what were Cloudflare management's lower and upper Q4 2024 revenue guidance endpoints in USD millions? Identify them as forecasts and cite the release and call transcript.",
+      "queries": [
+        "Cloudflare fourth quarter fiscal 2024 expect total revenue",
+        "Cloudflare fourth quarter revenue range"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "451\\.0",
+            "452\\.0"
+          ]
+        },
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "patterns": [
+            "\\$451 million",
+            "\\$452 million"
+          ]
+        }
+      ],
+      "numeric_claims": [
+        {
+          "key": "revenue_guidance_low",
+          "value": 451,
+          "unit": "USD million",
+          "period": "Q4 2024",
+          "tolerance": 0
+        },
+        {
+          "key": "revenue_guidance_high",
+          "value": 452,
+          "unit": "USD million",
+          "period": "Q4 2024",
+          "tolerance": 0
+        }
+      ],
+      "rubric": "Return 451 and 452 USD million for Q4 2024 guidance, supported by both release and transcript. Do not treat as reported actual results."
+    },
+    {
+      "id": "packet-04",
+      "split": "dev",
+      "category": "qualitative",
+      "question": "According to management in Cloudflare's Q3 2024 earnings call, why did dollar-based net retention decline sequentially? Explain the cited drivers and distinguish them from a claim of increased churn.",
+      "queries": [
+        "Cloudflare Q3 2024 dollar-based net retention sequential decline drivers",
+        "Cloudflare Q3 2024 customer churn net retention"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "patterns": [
+            "110%",
+            "slower net expansion",
+            "pool of funds",
+            "anniversarying the price increase",
+            "churn remained consistently low"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "Attribute management's explanation: slower expansion in larger customers, pool-of-funds recognition effects, anniversarying PRO/business PAYGO price increases. Churn remained low. Avoid asserting causal proof or inventing drivers."
+    },
+    {
+      "id": "packet-05",
+      "split": "dev",
+      "category": "cross_source",
+      "question": "Use Cloudflare's Q3 2024 10-Q and call transcript to explain what dollar-based net retention measures, which customers it excludes, and management's explanation for the sequential decline. Cite both documents.",
+      "queries": [
+        "Cloudflare 10-Q dollar-based net retention definition customers excludes",
+        "Cloudflare call transcript Q3 2024 net retention sequential decline"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "patterns": [
+            "Annualized Revenue",
+            "excludes Annualized Revenue from new customers",
+            "free customers that upgrade"
+          ]
+        },
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "patterns": [
+            "slower net expansion",
+            "pool of funds",
+            "anniversarying the price increase"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "Definition compares same paying customer cohort across four quarters, includes expansion net of contraction/attrition, excludes new customers and free-to-paid upgrades. Combine definition with attributed call explanation, not two unrelated citations."
+    },
+    {
+      "id": "packet-06",
+      "split": "dev",
+      "category": "cross_source",
+      "question": "Cloudflare's Q3 2024 call discusses gross margin of 78.8%. Does that contradict the release's 77.7% GAAP gross margin? Use the call's accounting-basis disclosure and the release to explain.",
+      "queries": [
+        "Cloudflare Unless otherwise noted all numbers adjusted non-GAAP",
+        "Cloudflare Gross Profit GAAP non-GAAP gross margin"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "patterns": [
+            "Unless otherwise noted",
+            "adjusted non-GAAP"
+          ]
+        },
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "77\\.7%",
+            "78\\.8%"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "Explain no contradiction: call defaults to adjusted non-GAAP except revenue, while release separates 77.7 GAAP from 78.8 non-GAAP. Cite actual accounting disclosure and release; do not imply the release is wrong."
+    },
+    {
+      "id": "packet-07",
+      "split": "dev",
+      "category": "qualitative",
+      "question": "Using Cloudflare's Q3 2024 release, explain how the company defines free cash flow and one limitation it states for that measure. Cite evidence instead of giving a generic finance definition.",
+      "queries": [
+        "Cloudflare Free Cash Flow definition measure limitation"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "net cash provided by operating activities",
+            "capitalized internal-use software",
+            "future contractual commitments"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "Use operating cash flow less property/equipment purchases and capitalized internal-use software; limitation includes future contractual commitments not reflected, or not equal to total cash balance change. Do not equate FCF with GAAP net income."
+    },
+    {
+      "id": "packet-08",
+      "split": "dev",
+      "category": "unanswerable",
+      "question": "Using only this Cloudflare source packet published through November 7, 2024, what was actual total revenue for full-year 2025 in USD millions? Do not substitute 2024 guidance or make a forecast.",
+      "queries": [
+        "Cloudflare full year 2025 actual revenue",
+        "Cloudflare Financial Outlook full year fiscal 2024"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": false,
+      "evidence": [],
+      "numeric_claims": [],
+      "rubric": "Abstain explicitly with no answer claims: packet ends November 2024 and cannot establish actual full-year 2025 results. Scope absence to packet; do not claim Cloudflare never reported this information."
+    },
+    {
+      "id": "packet-09",
+      "split": "dev",
+      "category": "deck_date",
+      "question": "What is the date printed on the cover of Cloudflare's Investor Day 2024 presentation, and can this deck alone establish actual Q3 2024 financial results? Explain the date boundary and cite the deck cover plus the Q3 release.",
+      "queries": [
+        "Cloudflare INVESTOR DAY 2024 presentation cover date",
+        "Cloudflare Announces Third Quarter 2024 Financial Results publication date"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-investor-day-2024",
+          "patterns": [
+            "May 30, 2024"
+          ]
+        },
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "2024-11-07",
+            "September 30, 2024"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "Identify May 30, 2024 cover date. Deck predates end of Q3 and November 7 release, so cannot itself establish actual Q3 results. Date/forecast distinction must be explicit. This tests text/date retrieval, not chart interpretation."
+    }
+  ],
+  "revisions": [
+    {
+      "version": "cloudflare-full-docs-v2",
+      "change": "Removed expected numeric values, dates, and answer-specific causal terms from fixed queries after construction review. Queries now use question-derived concepts; reran the development diagnostic. No live model received evaluator queries or reference answers."
+    }
+  ]
+}

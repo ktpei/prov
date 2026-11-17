@@ -3,6 +3,7 @@
 import json
 import math
 
+from provenance.context import project_messages, tool_result_chars
 from provenance.controls import LimitReached, positive
 from provenance.sources import TOOL_SCHEMAS
 from provenance.transport import ProviderError, post_json
@@ -21,8 +22,22 @@ Return ONLY a JSON object with these fields:
   "period":"FY2024","citations":[{"source_id":"id","locator":"L4-L6",
   "quote":"exact source text"}]}]}
 Represent each financial number in claims, including inputs to calculations.
+Also represent qualitative findings as claims with a concise string value and
+unit="qualitative"; each finding still needs a supported period and citation.
 For unanswerable questions use answerable=false, claims=[], and explain what
 evidence is missing in answer. Do not give an unsupported numerical guess.
+Research efficiently: answer once the requested facts have sufficient evidence.
+Do not add unrelated figures or keep searching solely to exhaust the tool budget.
+Search is lexical; Boolean operators and quoted phrases have no special syntax.
+Use short, distinctive queries and the returned line ranges; read at most 80 lines.
+Read neighboring lines when a sentence or table context is cut at a boundary.
+When repeated searches do not supply the missing evidence, abstain explicitly.
+Distinguish document publication dates from the requested period; historical
+packets cannot establish actual results that occurred after every source date.
+Copy a SHORT CONTIGUOUS exact quote. Never insert ellipses, paraphrases, or
+punctuation into a quote. Separate citations can support separate facts.
+Use canonical periods (for example Q3 2024, Q4 2024, FY2024) in claim.period;
+put date explanations and actual-versus-guidance qualifications in answer text.
 Tools cannot write files or run code. No tool outside the supplied list exists.
 """
 
@@ -39,6 +54,12 @@ class OpenAIModel:
         self.max_output = max_output
 
     def step(self, messages, timeout, budget):
+        before = tool_result_chars(messages)
+        messages = project_messages(messages)
+        projection = {
+            "tool_result_characters_before": before,
+            "tool_result_characters_after": tool_result_chars(messages),
+        }
         payload = {
             "model": self.name,
             "instructions": INSTRUCTIONS,
@@ -70,6 +91,7 @@ class OpenAIModel:
                 raise ProviderError("Missing or invalid token usage; reservation retained")
             cost = (counts[0] * self.input_rate + counts[1] * self.output_rate) / 1_000_000
             budget.settle(reservation, cost)
+            result["context_projection"] = projection
             return result
         except BaseException:
             budget.uncertain = True
@@ -82,8 +104,17 @@ class ReplayModel:
     mode = "offline_replay"
     name = "scripted-test-double"
 
-    def __init__(self, responses):
-        self.responses = iter(responses)
+    def __init__(self, responses, *, checkpoint_replay=False):
+        self.recorded = list(responses)
+        self.responses = iter(self.recorded)
+        self.checkpoint_replay = checkpoint_replay
+
+    def restore_checkpoint(self, model_calls):
+        """Full-fixture CLI replay resumes at the next unconsumed response."""
+        if self.checkpoint_replay:
+            if not 0 <= model_calls <= len(self.recorded):
+                raise ValueError("Checkpoint exceeds the recorded replay sequence")
+            self.responses = iter(self.recorded[model_calls:])
 
     def step(self, messages, timeout, budget):
         try:

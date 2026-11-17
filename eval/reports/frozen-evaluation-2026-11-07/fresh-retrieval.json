@@ -1,0 +1,361 @@
+{
+  "benchmark_version": "cloudflare-fresh-post-freeze-v1",
+  "mode": "offline_fixed_query_retrieval",
+  "source_hashes": {
+    "cloudflare-q3-2024-release": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+    "cloudflare-q3-2024-filing": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+    "cloudflare-q3-2024-transcript": "61482e592081541f96ebfb5d569fece6af6b05a3be5a2f9e208c1590fbe0aabb",
+    "cloudflare-investor-day-2024": "b2d384ae06344bf6c82ef4ebd0e9ba720f6e645a4bdaab78382c201b784c381b"
+  },
+  "settings": {
+    "top_k": 5,
+    "read_lines": 40,
+    "retrieval_version": "bm25-v2"
+  },
+  "summary": {
+    "tasks": 6,
+    "evidence_tasks": 5,
+    "extraction_anchor_tasks_passed": 5,
+    "retrieval_anchor_tasks_passed": 4,
+    "latency_seconds": 0.13539629196748137,
+    "model_calls": 0,
+    "api_cost_usd": 0,
+    "model_tokens": null
+  },
+  "tasks": [
+    {
+      "task_id": "fresh-01",
+      "category": "numerical",
+      "extraction": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "retrieval": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "extraction_anchors_passed": true,
+      "retrieval_anchors_passed": true,
+      "evidence_windows": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "locator": "L234-L265"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "locator": "L258-L289"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "locator": "L210-L241"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L769-L800"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L937-L968"
+        }
+      ],
+      "tool_result_characters": 48302,
+      "latency_seconds": 0.023111167130991817,
+      "answer_quality": "not_measured_no_model_called",
+      "abstention_quality": null
+    },
+    {
+      "task_id": "fresh-02",
+      "category": "numerical",
+      "extraction": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "retrieval": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "extraction_anchors_passed": true,
+      "retrieval_anchors_passed": true,
+      "evidence_windows": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L121-L152"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "locator": "L114-L145"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "locator": "L138-L169"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L145-L176"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L409-L440"
+        }
+      ],
+      "tool_result_characters": 36340,
+      "latency_seconds": 0.025671500014141202,
+      "answer_quality": "not_measured_no_model_called",
+      "abstention_quality": null
+    },
+    {
+      "task_id": "fresh-03",
+      "category": "numerical",
+      "extraction": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "retrieval": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "anchors_found": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "passed": false
+        }
+      ],
+      "extraction_anchors_passed": true,
+      "retrieval_anchors_passed": false,
+      "evidence_windows": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L481-L512"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L361-L392"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L337-L368"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L457-L488"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L913-L944"
+        }
+      ],
+      "tool_result_characters": 43741,
+      "latency_seconds": 0.02317245793528855,
+      "answer_quality": "not_measured_no_model_called",
+      "abstention_quality": null
+    },
+    {
+      "task_id": "fresh-04",
+      "category": "qualitative",
+      "extraction": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "anchors_found": [
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "retrieval": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "anchors_found": [
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "extraction_anchors_passed": true,
+      "retrieval_anchors_passed": true,
+      "evidence_windows": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L1609-L1640"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L625-L656"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L985-L1016"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L1009-L1040"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L841-L872"
+        }
+      ],
+      "tool_result_characters": 70929,
+      "latency_seconds": 0.02564266580156982,
+      "answer_quality": "not_measured_no_model_called",
+      "abstention_quality": null
+    },
+    {
+      "task_id": "fresh-05",
+      "category": "qualitative",
+      "extraction": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "retrieval": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "anchors_found": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "extraction_anchors_passed": true,
+      "retrieval_anchors_passed": true,
+      "evidence_windows": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "locator": "L701-L732"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "locator": "L677-L700"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "locator": "L136-L167"
+        },
+        {
+          "source_id": "cloudflare-investor-day-2024",
+          "locator": "L893-L907"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "locator": "L315-L346"
+        }
+      ],
+      "tool_result_characters": 34158,
+      "latency_seconds": 0.020701083121821284,
+      "answer_quality": "not_measured_no_model_called",
+      "abstention_quality": null
+    },
+    {
+      "task_id": "fresh-06",
+      "category": "unanswerable",
+      "extraction": [],
+      "retrieval": [],
+      "extraction_anchors_passed": null,
+      "retrieval_anchors_passed": null,
+      "evidence_windows": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L937-L968"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L1177-L1208"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L961-L992"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L649-L680"
+        },
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "locator": "L625-L656"
+        }
+      ],
+      "tool_result_characters": 55830,
+      "latency_seconds": 0.017088124994188547,
+      "answer_quality": "not_measured_no_model_called",
+      "abstention_quality": "requires_model_run_and_semantic_review"
+    }
+  ],
+  "limitations": [
+    "Lexical anchor presence does not establish correct table structure or semantic support.",
+    "Queries are authored retrieval probes, not model-selected searches or heldout evaluation.",
+    "Absence and qualitative reasoning require model execution and human review.",
+    "Tool-result characters measure returned content, not billed model context or tokens."
+  ]
+}

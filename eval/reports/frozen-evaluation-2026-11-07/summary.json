@@ -1,0 +1,282 @@
+{
+  "protocol_revision": "ce1a2f249dd7d907ac5570d5284dbc371878032a",
+  "runtime_baseline_revision": "d9057ed7e1800964ed71838e324b2d4760d2e9d6",
+  "runtime_policy": "research-v2-finalization",
+  "working_tree_dirty_at_start": false,
+  "fresh_task_sha256": "a6b6a78d0da423da3bafa3049adb1b0baca96c90f63f256612a605bc6532ea5d",
+  "protocol_sha256": "1079b935eb5b50bebd80090355a0556de0f09324461a46d63882311e17eeb859",
+  "source_hashes": {
+    "cloudflare-q3-2024-release": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+    "cloudflare-q3-2024-filing": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+    "cloudflare-q3-2024-transcript": "61482e592081541f96ebfb5d569fece6af6b05a3be5a2f9e208c1590fbe0aabb",
+    "cloudflare-investor-day-2024": "b2d384ae06344bf6c82ef4ebd0e9ba720f6e645a4bdaab78382c201b784c381b"
+  },
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "pricing": {
+    "input_usd_per_million": 0.6,
+    "output_usd_per_million": 2.4
+  },
+  "registered_tasks": 6,
+  "attempted_tasks": 6,
+  "not_attempted_task_ids": [],
+  "completed_tasks": 5,
+  "mechanical_pass_tasks": 2,
+  "trace_and_quote_pass_tasks": 4,
+  "totals": {
+    "model_calls": 34,
+    "tool_calls": 41,
+    "tool_errors": 1,
+    "input_tokens": 118940,
+    "output_tokens": 6228,
+    "latency_seconds": 50.7482562919613,
+    "accounted_cost_usd": 0.0863112,
+    "recorded_model_responses": 33
+  },
+  "tool_error_rate": 0.024390243902439025,
+  "latency_seconds_mean": 8.458042715326883,
+  "latency_seconds_median": 8.379363687476143,
+  "estimated_cost_usd_mean": 0.0143852,
+  "prior_estimated_cost_usd": 0.3498927,
+  "combined_estimated_cost_usd": 0.4362039,
+  "cost_uncertain": false,
+  "all_saved_grades_reproduced": true,
+  "human_financial_review_performed": false,
+  "limitations": [
+    "Six public development questions, one previously inspected company corpus; no general accuracy claim.",
+    "No fresh cross-source or deck/chart task, no OCR benchmark, and original heldout remains unrun.",
+    "Exact-string mechanical grading retained; semantic review recorded separately.",
+    "Cost rates are conservative endpoint maxima, not provider invoice charges.",
+    "model_calls counts attempted model steps; a budget rejection can occur before a provider call."
+  ],
+  "tasks": [
+    {
+      "task_id": "fresh-01",
+      "category": "numerical",
+      "status": "stopped",
+      "stop_reason": "spend_limit",
+      "mechanical_checks_passed": false,
+      "trace_and_quote_checks_passed": false,
+      "answerability_passed": false,
+      "numeric_claim_checks": [
+        {
+          "key": "gaap_research_and_development",
+          "passed": false
+        },
+        {
+          "key": "non_gaap_research_and_development",
+          "passed": false
+        }
+      ],
+      "citation_anchor_coverage": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "passed": false
+        }
+      ],
+      "trace_failures": [
+        "Grading requires a completed frozen-corpus run",
+        "Run did not complete"
+      ],
+      "metrics": {
+        "model_calls": 5,
+        "answer_retries": 1,
+        "tool_calls": 4,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 20050,
+        "output_tokens": 1403,
+        "latency_seconds": 7.33215874992311,
+        "accounted_cost_usd": 0.015397200000000003,
+        "cost_uncertain": false
+      },
+      "recorded_model_responses": 4,
+      "result_file": "fresh-run/fresh-01.json",
+      "result_sha256": "471e6d0ba1e99b43668ca4815d72b8196d4367b9499461431b386e0ba83c6b5b"
+    },
+    {
+      "task_id": "fresh-02",
+      "category": "numerical",
+      "status": "completed",
+      "stop_reason": null,
+      "mechanical_checks_passed": false,
+      "trace_and_quote_checks_passed": true,
+      "answerability_passed": true,
+      "numeric_claim_checks": [
+        {
+          "key": "total_current_assets",
+          "passed": false
+        },
+        {
+          "key": "total_current_liabilities",
+          "passed": false
+        },
+        {
+          "key": "current_assets_less_current_liabilities",
+          "passed": false
+        }
+      ],
+      "citation_anchor_coverage": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "passed": true
+        }
+      ],
+      "trace_failures": [],
+      "metrics": {
+        "model_calls": 4,
+        "answer_retries": 0,
+        "tool_calls": 5,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 13487,
+        "output_tokens": 825,
+        "latency_seconds": 5.8438392910175025,
+        "accounted_cost_usd": 0.010072200000000003,
+        "cost_uncertain": false
+      },
+      "recorded_model_responses": 4,
+      "result_file": "fresh-run/fresh-02.json",
+      "result_sha256": "091092549e04358e065e1c2b3b0eb8a6a354217541552df91d194a96b1c631af"
+    },
+    {
+      "task_id": "fresh-03",
+      "category": "numerical",
+      "status": "completed",
+      "stop_reason": null,
+      "mechanical_checks_passed": false,
+      "trace_and_quote_checks_passed": true,
+      "answerability_passed": true,
+      "numeric_claim_checks": [
+        {
+          "key": "property_and_equipment_cash_outflow",
+          "passed": false
+        }
+      ],
+      "citation_anchor_coverage": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "passed": true
+        }
+      ],
+      "trace_failures": [],
+      "metrics": {
+        "model_calls": 5,
+        "answer_retries": 0,
+        "tool_calls": 7,
+        "tool_errors": 1,
+        "tool_error_rate": 0.14285714285714285,
+        "input_tokens": 22184,
+        "output_tokens": 977,
+        "latency_seconds": 6.562797209015116,
+        "accounted_cost_usd": 0.015655199999999998,
+        "cost_uncertain": false
+      },
+      "recorded_model_responses": 5,
+      "result_file": "fresh-run/fresh-03.json",
+      "result_sha256": "7c4db6bb553a14ce7d3fc0cbc0c3dde371ffdc600619d35ffd253af1bbc573b5"
+    },
+    {
+      "task_id": "fresh-04",
+      "category": "qualitative",
+      "status": "completed",
+      "stop_reason": null,
+      "mechanical_checks_passed": true,
+      "trace_and_quote_checks_passed": true,
+      "answerability_passed": true,
+      "numeric_claim_checks": [],
+      "citation_anchor_coverage": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "passed": true
+        }
+      ],
+      "trace_failures": [],
+      "metrics": {
+        "model_calls": 10,
+        "answer_retries": 0,
+        "tool_calls": 11,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 38328,
+        "output_tokens": 1392,
+        "latency_seconds": 12.01665229187347,
+        "accounted_cost_usd": 0.026337600000000003,
+        "cost_uncertain": false
+      },
+      "recorded_model_responses": 10,
+      "result_file": "fresh-run/fresh-04.json",
+      "result_sha256": "765ca25e4529500a8f3dd0fcfb9fa150de53cc52c949d9b682c49d429e864f8b"
+    },
+    {
+      "task_id": "fresh-05",
+      "category": "qualitative",
+      "status": "completed",
+      "stop_reason": null,
+      "mechanical_checks_passed": true,
+      "trace_and_quote_checks_passed": true,
+      "answerability_passed": true,
+      "numeric_claim_checks": [],
+      "citation_anchor_coverage": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "passed": true
+        }
+      ],
+      "trace_failures": [],
+      "metrics": {
+        "model_calls": 3,
+        "answer_retries": 0,
+        "tool_calls": 2,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 8180,
+        "output_tokens": 925,
+        "latency_seconds": 9.566240125102922,
+        "accounted_cost_usd": 0.0071279999999999955,
+        "cost_uncertain": false
+      },
+      "recorded_model_responses": 3,
+      "result_file": "fresh-run/fresh-05.json",
+      "result_sha256": "0d71e39baba392dba16f951e324a6810b4ab20132aa5deb3ff345259c9354d5c"
+    },
+    {
+      "task_id": "fresh-06",
+      "category": "unanswerable",
+      "status": "completed",
+      "stop_reason": null,
+      "mechanical_checks_passed": false,
+      "trace_and_quote_checks_passed": false,
+      "answerability_passed": true,
+      "numeric_claim_checks": [],
+      "citation_anchor_coverage": [],
+      "trace_failures": [
+        "No evidence was read"
+      ],
+      "metrics": {
+        "model_calls": 7,
+        "answer_retries": 0,
+        "tool_calls": 12,
+        "tool_errors": 0,
+        "tool_error_rate": 0.0,
+        "input_tokens": 16711,
+        "output_tokens": 706,
+        "latency_seconds": 9.426568625029176,
+        "accounted_cost_usd": 0.011721000000000006,
+        "cost_uncertain": false
+      },
+      "recorded_model_responses": 7,
+      "result_file": "fresh-run/fresh-06.json",
+      "result_sha256": "04b98716a542efb3d4bc04d412835d8271dd1db5d52adec68ec090a3d4740e04"
+    }
+  ],
+  "coding_agent_review": {
+    "review_type": "independent_coding_agent_textual_review_and_lead_verification",
+    "preregistered_criteria_file": "protocol.md",
+    "human_financial_validation": false,
+    "registered_denominator": 6,
+    "core_response_correct_tasks": 5,
+    "evidence_supported_task_pass_tasks": 4,
+    "full_runtime_instruction_compliance_not_established": true,
+    "review_file": "review.json"
+  }
+}

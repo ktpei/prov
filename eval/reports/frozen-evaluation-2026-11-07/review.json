@@ -1,0 +1,87 @@
+{
+  "review_type": "independent_coding_agent_textual_review_and_lead_verification",
+  "preregistered_criteria_file": "protocol.md",
+  "human_financial_validation": false,
+  "registered_denominator": 6,
+  "core_response_correct_tasks": 5,
+  "evidence_supported_task_pass_tasks": 4,
+  "full_runtime_instruction_compliance_not_established": true,
+  "limitations": [
+    "One company, six public development tasks, no fresh cross-source/chart coverage.",
+    "Separate task-author and reviewer agents are not independent human financial reviewers.",
+    "Supported extra numerical prose can meet preregistered task success while violating structured-number output instructions; fresh-03 is recorded explicitly."
+  ],
+  "tasks": [
+    {
+      "task_id": "fresh-01",
+      "core_response_correct": false,
+      "evidence_supported_task_pass": false,
+      "finding": "No accepted answer. Correct draft amounts do not rescue invalid exact table quotes and subsequent reservation-blocked repair.",
+      "source_locators": [
+        "cloudflare-q3-2024-release:L225-L249"
+      ],
+      "output_contract_defects": [
+        "Rejected table quotes omit actual separators."
+      ],
+      "failure_class": "quote_repair_then_spend_reservation_stop"
+    },
+    {
+      "task_id": "fresh-02",
+      "core_response_correct": true,
+      "evidence_supported_task_pass": true,
+      "finding": "Amounts, conversion, subtraction, and point-in-time meaning correct; cited header and rows supply necessary context.",
+      "source_locators": [
+        "cloudflare-q3-2024-release:L129-L156"
+      ],
+      "output_contract_defects": [],
+      "mechanical_disagreement": "Claim period Q3 2024 is canonical runtime format, but key is September 30, 2024; prose and source header explicitly supply the as-of date."
+    },
+    {
+      "task_id": "fresh-03",
+      "core_response_correct": true,
+      "evidence_supported_task_pass": true,
+      "finding": "111.884 million positive outflow is correct with nine-month 2024 and thousands header evidence.",
+      "source_locators": [
+        "cloudflare-q3-2024-release:L172-L175",
+        "cloudflare-q3-2024-release:L202"
+      ],
+      "output_contract_defects": [
+        "2023 comparison 83,580 thousand is supported in cited context but omitted from structured claims."
+      ],
+      "mechanical_disagreement": "Period differs only in capitalization.",
+      "recovered_tool_error": "Initial 81-line read rejected; subsequent bounded read supplies evidence."
+    },
+    {
+      "task_id": "fresh-04",
+      "core_response_correct": true,
+      "evidence_supported_task_pass": true,
+      "finding": "All three dividend-policy findings and optional stockholder-return statement supported and attributed, preserving foreseeable-future scope.",
+      "source_locators": [
+        "cloudflare-q3-2024-filing:L1620-L1621"
+      ],
+      "output_contract_defects": [],
+      "efficiency_issue": "10 model turns and 11 tools for one short passage."
+    },
+    {
+      "task_id": "fresh-05",
+      "core_response_correct": true,
+      "evidence_supported_task_pass": true,
+      "finding": "R2/D1 distinction and Workers application findings supported and attributed; optional product-primitives discussion supported by continuation.",
+      "source_locators": [
+        "cloudflare-q3-2024-transcript:L697-L712"
+      ],
+      "output_contract_defects": []
+    },
+    {
+      "task_id": "fresh-06",
+      "core_response_correct": true,
+      "evidence_supported_task_pass": false,
+      "finding": "Correct packet-scoped abstention without invented country headcount, but all 12 tools are searches; no evidence was read.",
+      "source_locators": [],
+      "output_contract_defects": [
+        "Search-only final answer violates read-evidence requirement."
+      ],
+      "failure_class": "abstention_without_source_read"
+    }
+  ]
+}

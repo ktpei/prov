@@ -2,7 +2,9 @@
 
 import hashlib
 import json
+import math
 import re
+from collections import Counter
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -28,7 +30,7 @@ def function(name, description, properties):
 TOOL_SCHEMAS = [
     function(
         "search",
-        "Search public financial sources. Returns IDs and metadata; read_source retrieves evidence.",
+        "Search company evidence passages. Returns bounded line ranges; read_source opens evidence.",
         {"query": {"type": "string", "minLength": 1, "maxLength": 500}},
     ),
     function(
@@ -53,12 +55,64 @@ def locator_range(locator):
     return start, end
 
 
+def _bm25(tokens, idf, average_length):
+    """Standard BM25 with fixed k1=1.5, b=.75 and positive Robertson IDF."""
+    frequencies = Counter(tokens)
+    length_factor = 1.5 * (0.25 + 0.75 * len(tokens) / max(average_length, 1))
+    return sum(
+        weight * frequencies[term] * 2.5 / (frequencies[term] + length_factor)
+        for term, weight in idf.items()
+        if frequencies[term]
+    )
+
+
+def _snippet(passage, idf, average_length):
+    """Choose complete source lines by query relevance, never rewrite evidence."""
+    lines = passage["text"].splitlines()
+    best = None
+    for start in range(len(lines)):
+        selected = []
+        size = 0
+        for end in range(start, len(lines)):
+            size += len(lines[end]) + int(bool(selected))
+            if size > 1000:
+                break
+            selected.append(lines[end])
+            text = "\n".join(selected)
+            score = _bm25(re.findall(r"\w+", text.lower()), idf, average_length)
+            candidate = (score, -len(text), -start, -end, text)
+            if best is None or candidate[:4] > best[:4]:
+                best = candidate
+    if best is None:
+        return {
+            "snippet": "",
+            "snippet_locator": f"L{passage['start_line']}",
+            "snippet_note": "Source lines exceed snippet size; use read_source for exact evidence.",
+        }
+    start = passage["start_line"] - best[2]
+    end = passage["start_line"] - best[3]
+    return {"snippet": best[4], "snippet_locator": f"L{start}-L{end}"}
+
+
 class Sources:
-    def __init__(self, directory, *, exa_key=None, exa_cap=None, budget=None, request=post_json):
+    def __init__(
+        self,
+        directory,
+        *,
+        exa_key=None,
+        exa_cap=None,
+        budget=None,
+        request=post_json,
+        retrieval_version="bm25-v2",
+    ):
+        if retrieval_version not in {"passage-v1", "bm25-v2"}:
+            raise ValueError("Unknown retrieval_version")
+        self.retrieval_version = retrieval_version
         self.directory = Path(directory)
         manifest = json.loads((self.directory / "sources.json").read_text())
         self.documents = {}
         self.seen = {}
+        self.passages = []
         self.request = request
         self.exa_key, self.exa_cap, self.budget = exa_key, exa_cap, budget
         if exa_key:
@@ -72,7 +126,38 @@ class Sources:
                 raise ValueError(f"Corpus hash mismatch: {source['id']}")
             if source["id"] in self.documents:
                 raise ValueError("Duplicate source ID")
-            self.documents[source["id"]] = {**source, "text": raw.decode("utf-8")}
+            text = raw.decode("utf-8")
+            locations = source.get("line_locations", [])
+            if locations and len(locations) != len(text.splitlines()):
+                raise ValueError("Line location count does not match text")
+            if source.get("original_file"):
+                original = (self.directory / source["original_file"]).resolve()
+                if not original.is_relative_to(self.directory.resolve()):
+                    raise ValueError("Original path escapes corpus")
+                if hashlib.sha256(original.read_bytes()).hexdigest() != source["original_sha256"]:
+                    raise ValueError(f"Original hash mismatch: {source['id']}")
+            self.documents[source["id"]] = {**source, "text": text}
+            lines = text.splitlines()
+            start = 0
+            while start < len(lines):
+                end = min(start + 32, len(lines))
+                # Original pages/sections delimit evidence context when supplied.
+                if locations:
+                    for offset in range(start + 1, end):
+                        if locations[offset] != locations[start]:
+                            end = offset
+                            break
+                passage = "\n".join(lines[start:end])
+                self.passages.append(
+                    {
+                        "source_id": source["id"],
+                        "start_line": start + 1,
+                        "end_line": end,
+                        "text": passage,
+                        "terms": re.findall(r"\w+", passage.lower()),
+                    }
+                )
+                start = end if end < start + 32 else start + 24
 
     def _exa(self, endpoint, payload, timeout):
         reserved = self.budget.reserve(self.exa_cap)
@@ -94,17 +179,69 @@ class Sources:
             raise
 
     def search(self, query, timeout):
-        terms = set(re.findall(r"\w+", query.lower()))
-        ranked = []
-        for source in self.documents.values():
-            haystack = " ".join(
-                str(source.get(k, "")) for k in ("title", "company", "ticker", "text")
+        stopwords = {"the", "a", "an", "of", "to", "and", "in", "for", "what", "was", "is", "did"}
+        terms = set(re.findall(r"\w+", query.lower())) - stopwords
+        passages = [item for item in self.passages if item["source_id"] in self.documents]
+        if self.retrieval_version == "passage-v1":
+            counts = {term: sum(term in item["terms"] for item in passages) for term in terms}
+            ranked = []
+            for passage in passages:
+                source = self.documents[passage["source_id"]]
+                score = sum(
+                    math.log(1 + len(passages) / (1 + counts[term]))
+                    * min(passage["terms"].count(term), 3)
+                    for term in terms
+                )
+                metadata_terms = set(
+                    re.findall(
+                        r"\w+",
+                        " ".join(
+                            str(source.get(k, "")) for k in ("title", "company", "ticker")
+                        ).lower(),
+                    )
+                )
+                score += 0.2 * len(terms & metadata_terms)
+                if score:
+                    ranked.append((score, passage, source))
+        else:
+            indexed = []
+            for passage in passages:
+                source = self.documents[passage["source_id"]]
+                metadata = " ".join(
+                    str(source.get(key, "")) for key in ("title", "company", "ticker")
+                )
+                tokens = passage["terms"] + re.findall(r"\w+", metadata.lower())
+                indexed.append((passage, source, tokens))
+            average_length = sum(len(tokens) for _, _, tokens in indexed) / max(len(indexed), 1)
+            counts = {term: sum(term in tokens for _, _, tokens in indexed) for term in terms}
+            idf = {
+                term: math.log(1 + (len(indexed) - count + 0.5) / (count + 0.5))
+                for term, count in counts.items()
+            }
+            ranked = []
+            for passage, source, tokens in indexed:
+                score = _bm25(tokens, idf, average_length)
+                if score:
+                    ranked.append((score, passage, source))
+        ranked.sort(key=lambda item: (-item[0], item[2]["id"], item[1]["start_line"]))
+        hits = []
+        for score, passage, source in ranked[:5]:
+            hits.append(
+                {
+                    **self.metadata(source),
+                    "start_line": passage["start_line"],
+                    "end_line": passage["end_line"],
+                    **(
+                        {"snippet": passage["text"][:1000]}
+                        if self.retrieval_version == "passage-v1"
+                        else _snippet(passage, idf, average_length)
+                    ),
+                    "score": round(score, 4),
+                    "original_location": source.get("line_locations", [{}] * passage["start_line"])[
+                        passage["start_line"] - 1
+                    ],
+                }
             )
-            score = len(terms & set(re.findall(r"\w+", haystack.lower())))
-            if score:
-                ranked.append((score, source))
-        ranked.sort(key=lambda item: (-item[0], item[1]["id"]))
-        hits = [self.metadata(source) for _, source in ranked[:5]]
         if self.exa_key:
             result = self._exa("search", {"query": query, "type": "auto", "numResults": 5}, timeout)
             for item in result.get("results", [])[:5]:
@@ -172,7 +309,20 @@ class Sources:
         self.seen.setdefault(source_id, set()).update(range(start, actual_end + 1))
         return {
             **self.metadata(source),
-            "lines": selected,
+            "lines": [
+                {**line, "original_location": source["line_locations"][line["line"] - 1]}
+                if source.get("line_locations")
+                else line
+                for line in selected
+            ],
+            "next_start_line": actual_end + 1 if actual_end < len(lines) else None,
+            "original_sha256": source.get("original_sha256"),
+            "context_complete": False,
+            "context_note": (
+                "Bounded excerpt: headers, units, footnotes or chart geometry may require "
+                "surrounding reads and inspection of the original document."
+            ),
+            "extraction": source.get("extraction"),
             "total_lines": len(lines),
             "locator": f"L{start}-L{actual_end}",
             "sha256": hashlib.sha256(source["text"].encode()).hexdigest(),

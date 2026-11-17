@@ -1,0 +1,323 @@
+{
+  "version": "cloudflare-fresh-post-freeze-v1",
+  "as_of": "2024-11-07",
+  "split_note": "Six public post-freeze development evaluation tasks authored before any live run by a separate task-authoring agent that did not inspect or modify runtime code. Existing benchmark questions were read only to avoid duplicate subject matter. This is author independence from runtime development, not an independent heldout benchmark, secret test, or independent human finance validation. Queries are question-derived and contain no requested numeric answer values. Queries, evidence, numeric_claims, rubric, and evaluator_only_reference are evaluator-only; the runtime must receive only each question and allowed source IDs. Freeze the task file before running fresh-01 through fresh-06 once in ID order; do not tune or retry against these results.",
+  "source_hashes": {
+    "cloudflare-q3-2024-release": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+    "cloudflare-q3-2024-filing": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+    "cloudflare-q3-2024-transcript": "61482e592081541f96ebfb5d569fece6af6b05a3be5a2f9e208c1590fbe0aabb",
+    "cloudflare-investor-day-2024": "b2d384ae06344bf6c82ef4ebd0e9ba720f6e645a4bdaab78382c201b784c381b"
+  },
+  "tasks": [
+    {
+      "id": "fresh-01",
+      "split": "dev",
+      "category": "numerical",
+      "question": "Using Cloudflare's Q3 2024 earnings release, report GAAP and non-GAAP research and development expenses for the three months ended September 30, 2024, in USD millions to three decimal places. Cite the reconciliation and its period and unit headers.",
+      "queries": [
+        "Cloudflare Q3 2024 GAAP non-GAAP research and development expenses reconciliation three months September"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES",
+            "in thousands, except per share amounts",
+            "Three Months Ended September 30,",
+            "GAAP research and development",
+            "110,911",
+            "Non-GAAP research and development",
+            "70,452"
+          ]
+        }
+      ],
+      "numeric_claims": [
+        {
+          "key": "gaap_research_and_development",
+          "value": 110.911,
+          "unit": "USD million",
+          "period": "Q3 2024",
+          "tolerance": 0.0005
+        },
+        {
+          "key": "non_gaap_research_and_development",
+          "value": 70.452,
+          "unit": "USD million",
+          "period": "Q3 2024",
+          "tolerance": 0.0005
+        }
+      ],
+      "rubric": "Return GAAP R&D expense of 110.911 USD million and non-GAAP R&D expense of 70.452 USD million for Q3 2024. Convert the table's thousands to millions, retain separate accounting bases, and cite the three-month 2024 column with its unit header. Do not select the nine-month or 2023 column.",
+      "evaluator_only_reference": {
+        "expected_semantic_answer": "GAAP R&D was $110.911 million; non-GAAP R&D was $70.452 million for the three months ended September 30, 2024.",
+        "locators": [
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "extracted_lines": {
+              "start": 225,
+              "end": 249
+            },
+            "original_location": "HTML: Reconciliation of GAAP to Non-GAAP Financial Measures; three-month 2024 column, research and development rows"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh-02",
+      "split": "dev",
+      "category": "numerical",
+      "question": "Using the balance sheet in Cloudflare's Q3 2024 earnings release, what were total current assets, total current liabilities, and their difference (current assets minus current liabilities) as of September 30, 2024? Report all three in USD millions to three decimal places and cite the date and unit headers.",
+      "queries": [
+        "Cloudflare September 30 2024 balance sheets total current assets total current liabilities"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "CONDENSED CONSOLIDATED BALANCE SHEETS",
+            "in thousands, except par value",
+            "September 30, 2024",
+            "Total current assets",
+            "2,163,878",
+            "Total current liabilities",
+            "641,615"
+          ]
+        }
+      ],
+      "numeric_claims": [
+        {
+          "key": "total_current_assets",
+          "value": 2163.878,
+          "unit": "USD million",
+          "period": "September 30, 2024",
+          "tolerance": 0.0005
+        },
+        {
+          "key": "total_current_liabilities",
+          "value": 641.615,
+          "unit": "USD million",
+          "period": "September 30, 2024",
+          "tolerance": 0.0005
+        },
+        {
+          "key": "current_assets_less_current_liabilities",
+          "value": 1522.263,
+          "unit": "USD million",
+          "period": "September 30, 2024",
+          "tolerance": 0.0005
+        }
+      ],
+      "rubric": "Return total current assets 2163.878, total current liabilities 641.615, and a positive difference of 1522.263 USD million as of September 30, 2024. Show subtraction and conversion from thousands. Cite both underlying rows and the 2024 date/unit header. Do not use total assets/liabilities or December 2023 balances.",
+      "evaluator_only_reference": {
+        "expected_semantic_answer": "$2163.878 million minus $641.615 million equals $1522.263 million at September 30, 2024.",
+        "locators": [
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "extracted_lines": {
+              "start": 129,
+              "end": 156
+            },
+            "original_location": "HTML: Condensed Consolidated Balance Sheets; September 30, 2024 column, total current assets and total current liabilities"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh-03",
+      "split": "dev",
+      "category": "numerical",
+      "question": "According to the cash-flow statement in Cloudflare's Q3 2024 earnings release, how much cash was spent on purchases of property and equipment during the nine months ended September 30, 2024? Give the positive cash-outflow magnitude in USD millions to three decimal places, and cite the period and unit headers.",
+      "queries": [
+        "Cloudflare cash flows purchases of property and equipment nine months ended September 30 2024"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-release",
+          "patterns": [
+            "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+            "in thousands",
+            "Nine Months Ended September 30,",
+            "Purchases of property and equipment",
+            "111,884"
+          ]
+        }
+      ],
+      "numeric_claims": [
+        {
+          "key": "property_and_equipment_cash_outflow",
+          "value": 111.884,
+          "unit": "USD million",
+          "period": "Nine months ended September 30, 2024",
+          "tolerance": 0.0005
+        }
+      ],
+      "rubric": "Return 111.884 USD million as the positive magnitude of cash spent on property and equipment for the nine months ended September 30, 2024. Cite the purchases row and the nine-month 2024 period and thousands unit headers; convert the table amount to millions. Do not add capitalized software, use the three-month period, or substitute total investing cash flow.",
+      "evaluator_only_reference": {
+        "expected_semantic_answer": "Purchases of property and equipment used $111.884 million of cash over the first nine months of 2024; the statement presents (111,884) in thousands.",
+        "locators": [
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "extracted_lines": {
+              "start": 172,
+              "end": 175
+            },
+            "original_location": "HTML: Condensed Consolidated Statements of Cash Flows; unit and nine-month 2024 headers"
+          },
+          {
+            "source_id": "cloudflare-q3-2024-release",
+            "extracted_lines": {
+              "start": 201,
+              "end": 203
+            },
+            "original_location": "HTML: Cash Flows from Investing Activities; purchases of property and equipment row"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh-04",
+      "split": "dev",
+      "category": "qualitative",
+      "question": "What does Cloudflare's September 30, 2024 Form 10-Q say about its history of cash dividends, its dividend plans for the foreseeable future, and the intended use of future earnings? Cite the company's stated policy.",
+      "queries": [
+        "Cloudflare Form 10-Q September 30 2024 cash dividends foreseeable future future earnings"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-filing",
+          "patterns": [
+            "We have never declared nor paid cash dividends",
+            "retain any future earnings to finance the operation and expansion of our business",
+            "we do not expect to declare or pay any dividends in the foreseeable future"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "State that Cloudflare had never declared or paid cash dividends on its capital stock, intended to retain future earnings to finance operations and expansion, and did not expect dividends for the foreseeable future. Attribute this to the 10-Q as of its date; do not turn the stated intention into a permanent prohibition.",
+      "evaluator_only_reference": {
+        "expected_semantic_answer": "Cloudflare had never declared or paid cash dividends, intended to retain future earnings to fund operations and expansion, and did not expect dividends in the foreseeable future.",
+        "locators": [
+          {
+            "source_id": "cloudflare-q3-2024-filing",
+            "extracted_lines": {
+              "start": 1620,
+              "end": 1621
+            },
+            "original_location": "HTML: Risk Factors, We do not intend to pay dividends for the foreseeable future"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh-05",
+      "split": "dev",
+      "category": "qualitative",
+      "question": "In Cloudflare's Q3 2024 earnings-call answer about R2 and D1, how did Matthew Prince distinguish their roles in AI workloads, and how did he say these components help customers build applications on Workers? Cite that answer.",
+      "queries": [
+        "Cloudflare Q3 2024 earnings call Matthew Prince R2 D1 AI workloads applications Workers"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": true,
+      "evidence": [
+        {
+          "source_id": "cloudflare-q3-2024-transcript",
+          "patterns": [
+            "move it to wherever there is excess GPU capacity",
+            "gateway into using the rest of Cloudflare",
+            "traditional SQL database",
+            "building full applications on top of Cloudflare",
+            "much more complicated applications"
+          ]
+        }
+      ],
+      "numeric_claims": [],
+      "rubric": "Attribute the explanation to Matthew Prince: R2 lets customers move large datasets to available GPU capacity and training use can lead into more Cloudflare use and inference workloads; D1 is a traditional SQL database with less direct AI influence. Together, database/object-store primitives support full and more complex applications on Workers. Do not assert quantified product performance, adoption, or causal proof beyond management's account.",
+      "evaluator_only_reference": {
+        "expected_semantic_answer": "Prince described R2 as moving datasets to spare GPU capacity and serving as an entry point from training to other Cloudflare/AI use; D1 was a traditional SQL database with less direct AI influence. These storage/database primitives enable full, more complex applications on Workers.",
+        "locators": [
+          {
+            "source_id": "cloudflare-q3-2024-transcript",
+            "extracted_lines": {
+              "start": 690,
+              "end": 708
+            },
+            "original_location": "PDF: printed pages 16–17, Jonathan Ho question and Matthew Prince answer about R2 and D1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh-06",
+      "split": "dev",
+      "category": "unanswerable",
+      "question": "Using only the supplied Cloudflare packet published through November 7, 2024, how many Cloudflare employees were based in Germany as of September 30, 2024? Do not substitute worldwide headcount or estimate a country allocation.",
+      "queries": [
+        "Cloudflare employees Germany September 30 2024 headcount country"
+      ],
+      "source_ids": [
+        "cloudflare-q3-2024-release",
+        "cloudflare-q3-2024-filing",
+        "cloudflare-q3-2024-transcript",
+        "cloudflare-investor-day-2024"
+      ],
+      "answerable": false,
+      "evidence": [],
+      "numeric_claims": [],
+      "rubric": "Explicitly abstain: the supplied packet does not establish Germany-based employee headcount as of September 30, 2024. Do not substitute worldwide headcount, infer zero from absence, estimate a country allocation, or claim the company has never disclosed it elsewhere. Return no numeric answer claims.",
+      "evaluator_only_reference": {
+        "expected_semantic_answer": "The packet does not provide a Germany-specific employee count for September 30, 2024, so the requested headcount cannot be established from these sources.",
+        "locators": [
+          {
+            "source_id": "cloudflare-q3-2024-filing",
+            "extracted_lines": {
+              "start": 1197,
+              "end": 1197
+            },
+            "original_location": "HTML: Risk Factors, growth discussion reports worldwide headcount only; contextual evidence, not an answer"
+          },
+          {
+            "source_id": "cloudflare-q3-2024-transcript",
+            "extracted_lines": {
+              "start": 228,
+              "end": 231
+            },
+            "original_location": "PDF: printed page 7, operating-expenses discussion gives total head count only; contextual evidence, not an answer"
+          }
+        ]
+      }
+    }
+  ]
+}

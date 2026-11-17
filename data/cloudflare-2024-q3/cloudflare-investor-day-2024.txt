@@ -1,0 +1,1329 @@
+   INVESTOR DAY
+          2024
+May 30, 2024
+Safe Harbor and Other Information
+This presentation has been prepared by Cloudflare, Inc. (“Cloudflare”) for informational purposes only and not for any other purpose. Nothing contained in this presentation is, or should be construed as,
+a recommendation, promise, or representation by the presenter or Cloudflare or any officer, director, employee, agent, or advisor of Cloudflare. This presentation does not purport to be all-inclusive or to
+contain all of the information you may desire. Except as otherwise set forth in this presentation, information provided in this presentation speaks only as of the date set forth on the cover page of this
+presentation.
+This presentation and the accompanying oral commentary contain express and implied “forward-looking” statements within the meaning of the federal securities laws, and these statements involve
+substantial risks, assumptions, and uncertainties. All statements other than statements of historical fact could be deemed forward-looking, including, but not limited to, the current and planned
+development and functionality of our products, demand for our products, our ability to effectively sell our existing and new products, expectations of future operating results or financial performance,
+business strategy and plans, the impact of adverse macroeconomic conditions, such as inflation, changes in interest rates, actual or potential bank failures and recessionary concerns, the impact of the
+Hamas-Israel and Russia-Ukraine conflicts and other areas of geopolitical tension around the world, or any potential worsening or expansion of those conflicts or tensions, market volatility, size and
+growth opportunities, the calculation of certain of our key financial and operating metrics, capital expenditures, plans for future operations, competitive position, rapidly evolving technological
+developments, including advancements in AI, and strategic relationships, as well as assumptions relating to the foregoing. Forward-looking statements are inherently subject to risks and uncertainties,
+some of which cannot be predicted or quantified. In some cases, you can identify forward-looking statements by terminology such as “may,” “will,” “should,” “could,” “expect,” “plan,” “anticipate,”
+“believe,” “estimate,” “predict,” “intend,” “potential,” “would,” “continue,” “ongoing” or the negative of these terms or other comparable terminology. You should not put undue reliance on any
+forward-looking statements. Forward-looking statements should not be read as a guarantee of future performance or results and will not necessarily be accurate indications of the times at, or by, which
+such performance or results will be achieved, if at all.
+Actual results could differ materially from our current expectations as a result of many factors, including those identified in the “Risk Factors” section of our filings made with the Securities and Exchange
+Commission ("SEC"). You can locate these reports on our investor relations website (https://cloudflare.NET) or on the SEC website (www.sec.gov). If the risks or uncertainties ever materialize or the
+assumptions prove incorrect, our results may differ materially from those expressed or implied by such forward-looking statements. Forward-looking statements included in this presentation represent
+our views only as of the date of this presentation, and except as required by law, we assume no obligation and do not intend to update these forward-looking statements or to conform these statements
+to actual results or to changes in our expectations.
+In addition to our results determined in accordance with generally accepted accounting principles (“GAAP”), this presentation includes certain non-GAAP financial measures. These non-GAAP financial
+measures are in addition to, and not as a substitute for or superior to measures of financial performance prepared in accordance with U.S. GAAP. There are a number of limitations related to the use of
+these non-GAAP financial measures versus their nearest GAAP equivalents. For example, other companies may calculate non-GAAP financial measures differently or may use other measures to evaluate
+their performance, all of which could reduce the usefulness of our non-GAAP financial measures as tools for comparison. See the appendix for a reconciliation of those measures to the most directly
+comparable GAAP measures.
+This presentation and the accompanying oral commentary may contain statistical data, estimates, and forecasts that are based on independent industry publications or other publicly available
+information, as well as other information based on our internal sources. This information involves many assumptions and limitations, and you are cautioned not to give undue weight to these estimates.
+We have not independently verified the accuracy or completeness of the data contained in these industry publications and other publicly available information. Accordingly, we make no representations
+as to the accuracy or completeness of that data nor do we undertake to update such data after the date of this presentation.
+By attending or receiving this presentation you acknowledge that you will be solely responsible for your own assessment of the market and our market position and that you will conduct your own
+analysis and be solely responsible for forming your own view of the potential future performance of our business and products.
+The trademarks included herein are the property of the owners thereof and are used for reference purposes only. Such use should not be construed as an endorsement of the network and products of
+Cloudflare.                                                                                                                                                                                                                                                     2
+Welcome
+                       Phil Winslow
+                       Vice President of Strategic
+                       Finance, Treasury,
+                       & Investor Relations
+                                                                          3
+OUR MISSION
+We are helping build
+a better Internet
+                                                                           4
+                                      Physical                                   Virtualized                              Multi-Tenant
+                                     Hardware                                     Function                                    Cloud
+Compute & Storage                   Server ⋅ Disk                               Virtualization           2006         Developer-friendly
+      Infrastructure                                                              platform                            application services
+            Security              FW ⋅ Proxy ⋅ MTA                                 Virtual               2017              Zero Trust
+      Infrastructure                                                              appliance                            security services
+            Network             Router ⋅ VPN ⋅ MPLS                           Software-defined           2022           Internet-native
+      Infrastructure                                                          WAN & perimeter                          network services
+                               Cloudflare is built for what’s next
+                                                                                                                                               5
+6
+7
+8
+9
+              Application Security                                    Zero Trust &                                           Developer
+              & Performance                                           Network Services                                       Services
+   NEW    LEADER in KuppingerCole Leadership              NEW    NICHE PROVIDER in Gartner Magic                 NEW    LEADER in Forrester Wave for
+          Compass for WAF (2024)                                 Quadrant for SSE (2024)                                Edge Development Platforms (2023)
+   NEW    LEADER & OUTPERFORMER in GigaOm                 NEW    STRONG PERFORMER in Forrester                   NEW    OUTPERFORMER & CHALLENGER in
+          Radar for CDN (2024)                                   Wave for SSE (2024)                                    GigaOm Radar for Alternatives to S3
+   NEW    CUSTOMER’S CHOICE in Gartner Peer               NEW    CUSTOMER’S CHOICE in Gartner Peer                      (2023)
+          Insights ‘Voice of the Customer’ DDoS                  Insights ‘Voice of the Customer’ ZTNA                  LEADER in Forrester New Wave for
+          Mitigation Solutions (2023)                            (2024)                                                 Edge Development Platforms (2021)
+   NEW    LEADER in GigaOm Radar for                      NEW    LEADER in IDC MarketScape for                          STRONG PERFORMER in Forrester
+          Application & API (2023)                               ZTNA (2023)                                            New Wave for FaaS (2020)
+          LEADER in Gartner Magic Quadrant for            NEW    LEADER in IDC MarketScape for
+          WAAP (2022)                                            NESaaS (2023)
+          LEADER in Forrester Wave for Web                NEW    LEADER in Forrester Wave for Email
+          Application Firewalls (2022)                           Security (2023)
+          LEADER in IDC MarketScape for CDN               NEW    STRONG PERFORMER in Forrester
+          (2022)                                                 Wave for Zero Trust Platforms (2023)
+          STRONG PERFORMER in Forrester                          LEADER in KuppingerCole Leadership
+          Wave for Bot Management (2022)                         Compass for SASE (2023)
+          LEADER in Forrester Wave for DDOS
+          Mitigation Solutions (2021)
+                              Recognized in 35 reports                                Recognized in 24 reports                                       Recognized in 20 reports
+Note: As of May 2024.                                                                                                                                                                                                           10
+With Cloudflare,
+customers can:
+● Connect users, networks, applications,
+  and clouds globally
+● Protect data, applications,
+  infrastructure, and users everywhere
+● Accelerate application performance
+  and user experiences on any
+  device, anywhere
+● Build full-stack applications
+  on a modern cloud platform
+  with no vendor lock-in
+                                                                                                                                11
+                                                           Phil Winslow
+10:15 am - 10:20 am          Opening Remarks               Vice President of Strategic Finance, Treasury,
+                                                           & Investor Relations
+10:20 am - 10:40 am          Network-as-a-Service          Annika Garbers
+                                                           Director of Product
+10:40 am - 11:00 am          AI                            Rita Kozlov
+                                                           Vice President of Product
+11:00 am - 11:20 am          Go-To-Market                  Mark Anderson
+                                                           President of Revenue
+11:20 am - 11:40 am          Financials                    Thomas Seifert
+                                                           Chief Financial Officer
+                                                           Matthew Prince
+                                                           Co-founder & Chief Executive Officer
+                                                           Michelle Zatlyn
+11:40 am - 12:15 pm          Q&A                           Co-founder, President, & Chief Operating Officer
+                                                           Thomas Seifert
+                                                           Chief Financial Officer
+                                                           Mark Anderson
+                                                           President of Revenue
+                                                                                                                                                                                  12
+Network-as-a-Service
+                     Annika Garbers
+                     Director of Product for
+                     Network Services
+                                                                 13
+ Current network & security infrastructure
+ is not architected for the digital future
+                               Transform customer &                                          Transform workforce
+                               developer experience                                                experience
+                    ●  New revenue           ● Remote dev teams                 ● Improve productivity  ● Everyone works hybrid
+                       streams               ● Reduce threat                    ● Faster onboarding     ● Reduce attack surface
+  Business          ●  Faster innovation       exposure                         ● Easy M&A              ● Lower CapEx/OpEx
+     drivers        ●  Reduce data risk      ● Improve compliance
+                    ● Cloud migration       ● Shadow IT visibility              ● Consolidate clouds    ● Standardize network
+                    ●  Reduce BW costs      ● Remediate SaaS config             ● Consistent visibility ● Amazing UX
+IT priorities       ●  Agile branch access  ● Simplify remote access            ● Consistent policy     ● Simplified operations
+                                                  The network must adapt                                                                       14
+                                                                                                                                                  14
+But, why?
+— A brief history of networking
+                                                                                         15
+WHERE WE WERE: NETWORK PERIMETER
+Centralized networking & security in castle-and-moat architecture
+                                                                        Employees, apps and data
+                                                                        within a walled castle
+                                                                        Dedicated connectivity
+                                                                        defined private network
+                                                                        Security enforced
+                                                                        at the perimeter
+                                                                                                         16
+WHERE WE ARE NOW: HYBRID OVERLAY
+Users, data, and applications are distributed anywhere…
+                                                                       Storage and compute
+                                                                       migrating to cloud
+                                                                       Remote/hybrid work
+                                                                       as the new norm
+                                                                       Network and security
+                                                                       …were an afterthought
+                                                                                                       17
+WHERE WE ARE NOW: HYBRID OVERLAY
+…Causing an explosion of point solutions
+                                                                           Disparate solutions
+                                                                           address specific problems
+                                                                           but don’t integrate well
+                                                                           Sprawl creates gaps
+                                                                           in security and visibility
+                                                                           Costly overhead
+                                                                           in deploying and managing
+                                                                           patchwork of new and
+                                                                           legacy
+                                                                                                             18
+WHERE WE ARE GOING: INTERNET-NATIVE
+The Internet is replacing the corporate network
+                                Transform customer &                                              Transform workforce
+                                developer experience                                                    experience
+                              Business drivers impact how data is stored and transmitted over your network
+                            IT priorities demand changes to both network connectivity and network security
+                                          Shift 1                                                           Shift 2
+                                    Virtualize the network                                              Enable Internet to
+                                   with Internet breakouts                                               be your network
+                                  Shift security to the cloud                                          Modernize security          Internet-Native
+    Centralized model               and bolt onto network                 Hybrid Overlay                   to one cloud
+       MPLS ⋅ VPN ⋅ FW                                               MPLS ⋅ VPN ⋅ FW ⋅ SD-WAN                                   & Security-as-a-ServiceComplete Network-
+         SWG ⋅ DNS                                                 SWG ⋅ DNS ⋅ CASB ⋅ ZTNA ⋅ RBI                                                           19
+ How would you design the
+network if you were starting
+        from scratch?
+                                             20
+Core principles in building a global network platform
+for a distributed world
+                                   Single user interface & API                  End-to-end visibility
+   Control Plane                       for configuration and management  &      for every traffic flow
+                                    Comprehensive on-ramps                      Consistent security controls
+     Data Plane            for devices, branches, data centers, and clouds&     across everything that’s connected
+                                                   Be everywhere                Be interconnected
+   Infrastructure            because users, applications, and data are too&     so traffic gets where it’s going quickly and reliably
+                                                                                                                                      21
+   INFRASTRUCTUREINFRASTRUCTUREBe everywhere  &  Be interconnected
+A single network that delivers local capabilities with global scale
+         320+ cities
+          in 120+ countries, including mainland China
+         ~50 ms
+         from ~95% of the world’s Internet-connected
+         population
+          ~13,000 networks
+          directly connect to Cloudflare, including ISPs, cloud
+          providers, and large enterprises
+          280 Tbps
+          of network capacity and growing                                                                                         Cloudflare city
+                                                                                                                                  (as of Q1 2024)
+                                                                                                                                  Cloudflare backbone
+ Note: Figures as of March 31, 2024, except for network capacity, which is as of April 30, 2024.                                  (as of Q1 2024)
+                                                                                                                                                                            22
+   INFRASTRUCTUREINFRASTRUCTUREBe everywhere  &  Be interconnected
+Anycast routing to secure close to the source and accelerate
+to the destination
+                           Other Vendors                                                               Cloudflare
+    Unicast routing, in which a single IP address is                          Anycast enables Cloudflare to announce the IP
+    associated with a single server, data center, and/or Network 2            addresses of our services from every data center
+                                Network 3                                     worldwide. Traffic is routed to the closest data center
+    application, means requests to access that application
+    may have very different routing experiences                               — with no backhauling or performance tradeoffs
+                                                                                                                                                  23
+   INFRASTRUCTUREINFRASTRUCTUREBe everywhere  &  Be interconnected
+A global backbone for private + public traffic transport to steer
+around problems on the public Internet
+                                                               Other Vendors                                                             Cloudflare
+                                                Latency           Packet loss          Jitter                       Latency            Packet loss           Jitter
+    Public Network/Cloud                                                                  Public                                                             Public
+    with vendor’s connector                                                            destination                                                        destination
+                                                                                                                                                                     Optional Cloud
+                                                                                                                                 Best path selection                 Interconnection
+                                                                                                                                    (10x more peers &          or    @ IXP
+    Middle Mile over                            Closest DC         Only peersOnly peers  All other DCs            Closest DC to     global backbone)     All other DCs
+    Public Internet                              to source        (public & private (public & private in the network source                             in the network
+    inherently not resilient                                     interconnections)interconnections)
+    or performant by default                                                                                                                                   or
+                                                       How                                                     320+           Optional Private                       Optional Private
+                                                       many                                                    Cities         Network or Cloud                       Interconnection
+                                                       cities?                                                                Interconnection @ IXP                  @ IXP
+                                                                                                                        or
+    Private Network/Cloud                         Private                                Private                     Private                                Private
+    with vendor’s clientless, client,             source                               destination                   source                               destination
+    app, or WAN connector
+                                                                                                                                                                                          24
+    DATA PLANE    Comprehensive on-ramps  &  Consistent security controls
+Comprehensive on-ramps to connect and secure users, branches,
+clouds, data centers, applications, and/or IoT to any resource
+●   Connecting “any-to-any”
+    is not enough
+●   The future of networking
+    is one “end-to-end”
+    architecture – connecting
+    any source to
+    any destination from
+    anywhere with commodity
+    Internet as the underlay
+                                                                                                            25
+      DATA PLANE           Comprehensive on-ramps  &  Consistent security controls
+Every service built to run on every server
+in every data center
+     Every
+   Cloudflare          Built to run over
+    service            every Cloudflare
+                            server                       In every Cloudflare
+                                                             data center
+                                                                                                                      Across 320+ cities  .
+                                                                                                                      in 120+ countries
+Note: Figures as of March 31, 2024.                                                                                                                               26
+   CONTROL PLANE        Single user interface & API  &  End-to-end visibility
+A unified control plane minimizes complexity, lowers IT overhead, and
+improves performance
+                         Other Vendors                                                              Cloudflare
+  Locations only run a subset of services – leading to Network 2         Single control plane with single-pass inspection
+  management and integration complexity while also Network 3             simplifies management and integration while also
+  constraining performance                                               minimizing any impact to performance
+                                                                                                                                             27
+   CONTROL PLANE    Single user interface & API  &  End-to-end visibility
+Visualize and manage every traffic flow with one user interface,
+one API, and one policy
+●   With visibility across the
+    entire IT infrastructure,
+    Cloudflare can aggregate
+    signals from various sources
+    — including users, devices,
+    applications, and networks
+●   On the frontend for
+    administrators, each service
+    is managed from one
+    interface with one policy for
+    ease of operations
+                                                                                                                   28
+What’s possible with these principles applied?
+— Cloudflare is built for what’s next
+   Your Customers                                                                                                                 Your Apps
+                                                                                                           App Security
+                                                                                                           & Performance                Customer
+                                                                                                                                        Facing Apps
+     Legitimate Traffic
+                                                                   Control Plane                                                        Clouds
+                               Inbound                                                                     Zero Trust and
+                               Traffic                                                                     Network Security             Data Center
+                                                                                                           & Performance
+     Malicious Traffic                                                                                                                  Self-Hosted Apps
+                                                                     Data Plane
+                                                                                                                                  Your People
+   Apps You Use                                                                                            Zero Trust
+                                                                                                           Security &                   Offices
+                               Outbound Traffic                                                            Performance
+          SaaS Apps                                                                                                                     Employees
+                                                                   Infrastructure
+         Internet Apps                                                                                                                  Contractors
+                                                                                                                                                            29
+What’s possible with these principles applied?
+— Cloudflare is built for what’s next
+    Your Customers                                                                                                                               Your Apps
+                                                                       LB+Routing                                      App Security
+                                                                                                                       & Performance                    Customer
+                                                                                                                                                        Facing Apps
+      Legitimate Traffic                                               DNS+CDN+Traffic Acceleration
+                                                                       WAF+API+Bot Protection                                                           Clouds
+                                  Inbound                                                                              Zero Trust and
+                                  Traffic                                                                              Network Security                 Data Center
+                                                                                                                       & Performance
+                                                                       Zero Trust Network Access
+     Malicious Traffic                                                                                                                                  Self-Hosted Apps
+                                                                      L3/4 DDoS Protection
+                                                                                                                                                 Your People
+    Apps You Use                                                       Secure Web Gateway                              Zero Trust
+                                                                                                                       Security &                       Offices
+                                  Outbound Traffic                     Remote Browser Isolation                        Performance
+           SaaS Apps                                                                                                                                    Employees
+                                                                       Firewall as a Service
+          Internet Apps                                                                                                                                 Contractors
+                                                                                                                                                                              30
+What’s possible with these principles applied?
+— Cloudflare is built for what’s next
+    Your Customers                                                                                                                               Your Apps
+                                                                       LB+Routing                                       App Security
+                                                                                                                        & Performance                   Customer
+                                                                                                                                                        Facing Apps
+      Legitimate Traffic                                               DNS+CDN+Traffic Acceleration
+                                                                       WAF+API+Bot Protection                                                           Clouds
+                                  Inbound                                                                               Zero Trust and
+                                  Traffic                                                                               Network Security                Data Center
+                                                                                                                        & Performance
+                                                                       Zero Trust Network Access
+     Malicious Traffic                                                                                                                                  Self-Hosted Apps
+                                                                      L3/4 DDoS Protection
+                                                                                                                                                 Your People
+    Apps You Use                                                       Secure Web Gateway                               Zero Trust
+                                                                                                                        Security &                      Offices
+                                  Outbound Traffic                     Remote Browser Isolation                         Performance
+           SaaS Apps                                                                                                                                    Employees
+                                                                       Firewall as a Service
+           Internet Apps                                                                                                                                Contractors
+                                                                                                                                                                               31
+Bringing it all together
+                                         Network Perimeter                                    Hybrid Overlay                                       Internet-Native
+     Configuration                By MSP through service request                        Simplified orchestration and                    Automated orchestration via single
+                                                                                  management via centralized controller                               dashboard
+       Last-mile                       Covered by MPLS SLAs                            Best-path selection available                   Minimal on-premises deployment to
+     traffic control                                                                        in SD-WAN appliance                            control local decision making
+      Middle-mile                                                                        “Tunnel Spaghetti” and still                   Integrated traffic management and
+     traffic control                   Covered by MPLS SLAs                           no control over the middle mile                      private backbone controls in a
+                                                                                                                                                  unified dashboard
+   Cloud integration                    Centralized breakout                               Decentralized breakout                          Native connectivity with Cloud
+                                                                                                                                            Network Interconnect (CNI)
+        Security                  Patchwork of hardware controls                           Patchwork of hardware                         Native integration with user, data,
+                                                                                          and/or software controls                     application, & network security tools
+                                     High cost for hardware and                        Optimized connectivity costs                   Decreased hardware and connectivity
+          Cost                        connectivity (e.g., MPLS)                         at the expense of increased                           costs for maximized ROI
+                                                                                       hardware and software costs
+                                                                                                                                                                                      32
+Competitors lack our underlying architecture advantages
+                                   Strong         Moderate       Weak                             33
+     Cloudflare is built to solve
+the problems of a distributed world
+      — now and for the future
+                                                     34
+AI
+                           Rita Kozlov
+                           Vice President of Product for
+                           Cloudflare Developer
+                           Platform
+                                                                                       35
+Cloudflare’s vision for developers
+To help build a better Internet with a modern cloud platform that accelerates
+developer velocity and drives better end user experiences
+                                       ✔
+                                       X
+     Ecosystem of                   Automate                  Reliable, scalable,            No surprise bills,
+      foundational               decision making              & secure by default            predictable costs
+      technology
+                                                                                                                 36
+Building blocks to create a full-stack application
+2018
+Serverless Compute                            Workers                              Lambda / Lambda at Edge/                           Functions                               Cloud Functions
+                                                                                      Cloudfront Functions
+Object Storage                                                                               S3                                     Blob Storage                               Cloud Storage
+Web Development                                                                            Amplify                                   App Service                                  Firebase
+Queue                                                                                       SQS                                        Queues                                   Cloud Tasks
+Durable Execution                                                                       Step Function                             Durable Functions                              Workflows
+Relational Database                                                                          RDS                                 Azure SQL Database                          Google Cloud SQL
+Database Proxy                                                                            RDS Proxy                              Azure SQL Gateway                         Cloud SQL Auth Proxy
+NoSQL Database                              Workers KV                       DynamoDB / DocumentDB / Keyspaces                    Azure Cosmos DB                       Bigtable / Firestore / Firebase
+Analytic Database                                                                          Redshift                                 Azure Synapse                                 BigQuery
+Data Streaming                                                                              Kinesis                             Azure Stream Analytics                            Dataflow
+API Gateway                                                                              API Gateway                                 API Gateway                                API Gateway
+Video Streaming                               Stream                                         IVS                                Azure Media Services                           Live Streaming
+                                                                                                                                                                                                            37
+Building blocks to create a full-stack application
+2020
+Serverless Compute                            Workers                              Lambda / Lambda at Edge/                           Functions                               Cloud Functions
+                                                                                      Cloudfront Functions
+Object Storage                                                                               S3                                     Blob Storage                               Cloud Storage
+Web Development                                Pages                                       Amplify                                   App Service                                 Firebase
+Queue                                                                                       SQS                                        Queues                                   Cloud Tasks
+Durable Execution                                                                       Step Function                             Durable Functions                              Workflows
+Relational Database                                                                          RDS                                 Azure SQL Database                          Google Cloud SQL
+Database Proxy                                                                            RDS Proxy                              Azure SQL Gateway                         Cloud SQL Auth Proxy
+NoSQL Database                   Workers KV / Durable Objects                DynamoDB / DocumentDB / Keyspaces                    Azure Cosmos DB                       Bigtable / Firestore / Firebase
+Analytic Database                                                                          Redshift                                 Azure Synapse                                BigQuery
+Data Streaming                                                                              Kinesis                             Azure Stream Analytics                            Dataflow
+API Gateway                                                                              API Gateway                                 API Gateway                                API Gateway
+Video Streaming                               Stream                                         IVS                                Azure Media Services                           Live Streaming
+                                                                                                                                                                                                            38
+Building blocks to create a full-stack application
+2022
+Serverless Compute                            Workers                              Lambda / Lambda at Edge/                          Functions                                Cloud Functions
+                                                                                      Cloudfront Functions
+Object Storage                                   R2                                          S3                                     Blob Storage                              Cloud Storage
+Web Development                                Pages                                       Amplify                                  App Service                                  Firebase
+Queue                                                                                       SQS                                       Queues                                   Cloud Tasks
+Durable Execution                                                                       Step Function                             Durable Functions                             Workflows
+Relational Database                                                                         RDS                                 Azure SQL Database                           Google Cloud SQL
+Database Proxy                                                                            RDS Proxy                              Azure SQL Gateway                         Cloud SQL Auth Proxy
+NoSQL Database                   Workers KV / Durable Objects                DynamoDB / DocumentDB / Keyspaces                    Azure Cosmos DB                       Bigtable / Firestore / Firebase
+Analytic Database                                                                          Redshift                                Azure Synapse                                 BigQuery
+Data Streaming                                                                             Kinesis                              Azure Stream Analytics                           Dataflow
+API Gateway                                API Gateway                                   API Gateway                                API Gateway                                 API Gateway
+Video Streaming                               Stream                                         IVS                                Azure Media Services                          Live Streaming
+                                                                                                                                                                                                            39
+Building blocks to create a full-stack application
+2023
+Serverless Compute                           Workers                               Lambda / Lambda at Edge/                          Functions                               Cloud Functions
+                                                                                     Cloudfront Functions
+Object Storage                                   R2                                          S3                                     Blob Storage                              Cloud Storage
+Web Development                                Pages                                       Amplify                                  App Service                                  Firebase
+Queue                                         Queues                                        SQS                                       Queues                                   Cloud Tasks
+Durable Execution                                                                       Step Function                            Durable Functions                              Workflows
+Relational Database                                                                         RDS                                 Azure SQL Database                          Google Cloud SQL
+Database Proxy                                                                           RDS Proxy                               Azure SQL Gateway                         Cloud SQL Auth Proxy
+NoSQL Database                   Workers KV / Durable Objects                DynamoDB / DocumentDB / Keyspaces                    Azure Cosmos DB                      Bigtable / Firestore / Firebase
+Analytic Database                                                                          Redshift                                Azure Synapse                                 BigQuery
+Data Streaming                                                                             Kinesis                             Azure Stream Analytics                            Dataflow
+API Gateway                                API Gateway                                   API Gateway                                API Gateway                                API Gateway
+Video Streaming                               Stream                                         IVS                                Azure Media Services                          Live Streaming
+                                                                                                                                                                                                           40
+Building blocks to create a full-stack application
+2024
+Serverless Compute                            Workers                             Lambda / Lambda at Edge/                           Functions                               Cloud Functions
+                                                                                     Cloudfront Functions
+Object Storage                                   R2                                          S3                                     Blob Storage                              Cloud Storage
+Web Development                                Pages                                      Amplify                                   App Service                                  Firebase
+Queue                                         Queues                                        SQS                                       Queues                                   Cloud Tasks
+Durable Execution                           Workflows                                   Step Function                            Durable Functions                              Workflows
+Relational Database                              D1                                         RDS                                 Azure SQL Database                          Google Cloud SQL
+Database Proxy                              Hyperdrive                                   RDS Proxy                              Azure SQL Gateway                         Cloud SQL Auth Proxy
+NoSQL Database                   Workers KV / Durable Objects               DynamoDB / DocumentDB / Keyspaces                     Azure Cosmos DB                      Bigtable / Firestore / Firebase
+Analytic Database                         Analytic Engine                                 Redshift                                 Azure Synapse                                 BigQuery
+Data Streaming                               Pipelines                                     Kinesis                             Azure Stream Analytics                            Dataflow
+API Gateway                                API Gateway                                  API Gateway                                 API Gateway                                API Gateway
+Video Streaming                               Stream                                        IVS                                Azure Media Services                           Live Streaming
+                                                                                                                                                                                                           41
+2 MILLION
+developers  building  on  the
+Cloudflare Workers platform
+                                42
+AI is the next paradigm shift in the way applications
+are built
+            Cloud                                    Social
+               2000                                      2010
+                                     2007                                        2022
+                                                                                   +
+                                 Mobile                                          AI
+        “The ability to build a generative AI business without needing to invest significant
+        dollars developing sophisticated models…significantly reduces (and even eliminates)
+        the upfront costs previously associated with building an AI business.”
+Source: Base10
+“                                                                                                                  43
+AI is reshaping how organizations work, and the shift is
+already in motion
+Today…                                                   By 2026…                                                By 2030…
+            44%                                                 >80%                                                        50%
+of developers are currently using AI                     of enterprises will be using                            of your knowledge workers’ tasks
+in their development process1                            GenAI-enabled APIs, models,                             will be augmented with GenAI to
+                                                         and/or apps deployed in production                      boost productivity or raise average
+                                                         environments (up from 5% today)2                        quality of work (up from <1%
+                                                                                                                 today)3
+1. Stack Overflow survey (May 2023), 90K respondents
+2. Source: "A CTO’s Guide to the Generative AI Technology Landscape", Gartner, Arun Chandrasekaran, Radu Miclaus, Eric Goodness, 09/18/2023
+3. Source: "Emerging Tech: The Key Technology Approaches That Define Generative AI", Gartner, Alfonso Velosa, Annette Jump, Ray Valdes, Radu Miclaus, Eric Goodness, Anthony Bradley, 09/06/202344
+When we say “AI,” what are the workloads involved in making
+that happen?
+                 Train                                     Infer
+                                                                                    45
+When we say “AI,” what are the workloads involved in making
+that happen?
+         Where the focus of AI
+              has been…
+                 Train                                  Infer
+                                                                                        46
+Unlock the best prices across cloud providers                                           Train
+with R2
+                                                                                        Store training data in
+                                                                                        R2 to move between
+                                                                                        clouds with zero egress
+                                                                                        fees
+                                                                                        Eliminate the need for
+                                                                                        complex data transfers
+                                                                                        or duplication of data
+                                                                                        sets
+                                                                                        Do more with your data
+                                                                                        through Cloudflare’s
+                                                                                        partnerships
+                                                                                                                   47
+When we say “AI,” what are the workloads involved in making
+that happen?
+                                                       Where the focus of AI
+                                                             is going…
+                            Train                             Infer
+                                                                                         48
+Inference is the biggest AI opportunity
+— But, where should it happen?
+                      User’s device                       Centralized cloud
+                                                                                               49
+Inference on centralized clouds has problems…
+                          User’s device                              Centralized cloud
+                                                                ●    Cost vs. reliability
+                                                                     trade-off
+                                                                ●    Too far from user
+                                                                ●    Data locality concerns
+                                                                                                                 50
+…But, so too do end user devices
+                           User’s device                                  Centralized cloud
+                   ●    Close to user                               ●    Cost vs. reliability
+                   ●    Not powerful enough                              trade-off
+                   ●    Some models are too                         ●    Too far from user
+                        large/complex                               ●    Data locality concerns
+                                                                                                                         51
+A globally distributed network helps developers scale
+AI inference, while staying close to the end user
+                                       Distributed network
+         User’s device                                                         Centralized cloud
+                                                                                                     52
+Cloudflare is in the “Goldilocks Zone” for AI inferencing
+                                                                                            53
+Run inference tasks on Workers AI, the first                                           Infer
+serverless AI inference platform
+                                                                                       Use built-in models
+                                                                                       from Workers AI to
+                                                                                       generate embeddings
+                                               ●    Don’t need to worry about          Store embeddings in
+                                                    managing GPUs                      Vectorize
+                                               ●    Pay only for what you use          Transform each query
+                                               ●    Automatically scale as you         into an embedding with
+                                                    grow                               Workers AI
+                                                                                       Query Vectorize for
+                                                                                       similar vectors
+                                                                                       Retrieve source content
+                                                                                       from R2 or KV
+                                                                                                                 54
+AI fits seamlessly into our developer platform
+                                           Application                                                  AI
+                                                                                                 Run inference for
+                                                                                               generative AI models
+                                                                                                       Developers choose
+                                                                                                       these tools based on…
+          Compute                             Storage                           Network                                     Developer Experience
+     Power the logic of an               Provide contextual                  Send information                              Allows for focus on application
+          application                        information                     to/from different                                     differentiation
+                                                                                 locations
+                                                                                                                                                                 55
+Leading AI companies already rely on Cloudflare
+                                             Top 50 generative AI Web products, by unique monthly visits
+Source: Top 50 Generative AI Web Products based on a16z Consumer report as of March 2024. This includes generative AI Web products only and does not include mobile apps. Cloudflare customers as of April 2024. 56
+There’s more to inference than running models
+                                                                   Run AI on region: Earth
+            Train                              Infer                         Comply                            Secure                         Optimize
+   Data storage                      Serverless                      Data localization                 Web application,                 Monitoring &
+   Store your training data          development                     Control where data is             API, & DDoS                      controls
+   on R2 to avoid paying             Run and deploy models           inspected with Regional           protection                       Connect your AI app to
+   egress fees and retain            through Workers AI,             Services and Data                 Protect AI services from         AI Gateway for better
+   flexibility for multi-cloud       powered by our newly            Localization Suite                bad actors with easy to          observability with
+   architectures                     deployed GPUs                                                     configure security               analytics and controlled
+                                                                                                       without performance              scalability via caching
+                                     Vector database                                                   impacts with Firewall for        and rate limiting
+                                     Store and query your                                              AI
+                                     embeddings for faster
+                                     (and cheaper!) vector
+                                     lookups with Vectorize
+                                                                                                                                                                        57
+Control where data is stored and inspected with                                     Comply
+a private-by-default approach
+                                                                                    Control where data is
+                                                                                    stored and inspected
+                                                                                    with Regional Services
+                                                                                    and Data Localization
+                                                                                    Suite
+                                                                                    Privacy-first approach
+                                                                                    means that your
+                                                                                    customer data will not
+                                                                                    be used for training
+                                                                                    purposes
+                                                                                                             58
+Secure how AI resources are consumed
+                                                                                         Secure
+                                                                                         Identify abuse and
+                                                                                         attacks before they
+                                                                                         reach and tamper with
+                                                                                         Large Language Models
+                                                                                         (LLMs) with Firewall for
+                                                                                         AI
+                                                                                         Scan every API request
+                                                                                         with an LLM prompt for
+                                                                                         patterns and signatures
+                                                                                         of possible attacks,
+                                                                                         deployed close to the
+                                                                                         end user to protect
+                                                                                         models from abuse
+                                                                                         almost immediately
+                                                                                                                    59
+Observe and control AI applications                                                                  Optimize
+                                                                                                     Observe traffic
+                                                                                                     patterns, usage, logs,
+                                                                                                     and cost with AI
+                                                                                                     Gateway
+                                                                                                     Provide visibility into
+                                                                                                     traffic & malicious
+                                                                                                     actors
+                                                                                                     Alleviate the burden of
+                                                                                                     cost & speed with
+                                                                                                     caching and
+                                                                                                     rate-limiting
+AI Gateway is a full proxy with caching, rate limiting, request retries, analytics, and
+tracking of AI usage to mitigate data loss and AI integrity
+                                                                                                                                   60
+Generative AI use cases on Workers
+                          Text generation                                                                    Code generation
+                          Generative AI models can be employed for                                           Automatically generate code snippets or
+                          text generation tasks, including content                                           entire programs based on natural
+                          creation, automatic text summarization,                                            language descriptions, thereby expediting
+                          and chatbot responses.                                                             software development processes.
+                          Image synthesis                                                                    Drug discovery
+                          Generative Adversarial Networks (GANs)                                             Generative AI can accelerate drug
+                          can create realistic images, contributing to                                       discovery by suggesting novel molecular
+                          applications such as art generation, image                                         structures for drugs compounds, providing
+                          editing, and data augmentation for                                                 researchers with potential candidates for
+                          computer vision tasks.                                                             further exploration.
+                          Music compositions                                                                 Design and creativity
+                          AI models can generate music                                                       Generative AI can assist designers by
+                          compositions based on learned patterns,                                            suggesting new designs for products,
+                          assisting in music production, creating                                            logos, or others creative projects. This
+                          background scores, and inspiring                                                   capability can be particularly useful for
+                          musicians in the creative process.                                                 ideation and rapid prototyping.
+                                                                                                                                                                      61
+Why Cloudflare for AI?
+          Network Scale                                Ease of use                                  No trade-offs
+ One global network                           One control plane                           One programmable architecture
+  ●  Scale and enforce controls as             ●  Simple deployment and                    ●  Layer new security without
+     you consume AI                               policies as you consume AI                  disrupting how you consume AI
+  ●  Accelerate inference, querying            ●  Templates to get onboarded               ●  Built-in privacy and compliance
+     and caching as you build AI                  quickly as you build AI                     as you build AI
+   Experiment with AI securely with partners
+                                                                                                                                  62
+Go-To-Market
+                    Mark Anderson
+                    President of Revenue
+                                                              63
+“Why did I join Cloudflare?”
+    — The market is coming to where
+           Cloudflare is already
+                                                            64
+The C-Suite is navigating an uncertain economic outlook
+and a volatile geopolitical landscape
+             Challenge                                                       Opportunity
+     Ever increasing                                                                         Generate greater
+     operational bills    Continuous                                Save costs               revenues
+                          infrastructure
+                          sprawl
+                                        Vendor fatigue
+                                                                                                           6565
+ WHAT GOT YOU HERE…
+ Legacy networks and products are only adding to the rising
+ complexity and costs
+       No visibility or control of
+       infrastructure sprawl
+       Silos of point network and security
+       solutions
+       Lack of scale and flexibility
+  This complexity and loss of control increase costs, risk, and time to value
+                                                                                                                             66
+…WON’T GET YOU THERE
+Introducing Connectivity Cloud
+A radically different approach for customers to connect, protect, accelerate, and build their businesses – enabling
+everything and everyone to be everywhere, while retaining complete control
+      Businesses gain a competitive edge with:
+           Any-to-any connectivity
+           AI and innovative apps
+           Multi-cloud flexibility
+           Secured workforce
+Powered by a global network at scale
+                                                                                                                                           67
+WHAT WE OFFER
+Cloudflare is the only composable, Internet-native platform…
+…that delivers local capabilities with global scale
+              Cloudflare Platform                      Cloudflare                               Cloudflare                                Cloudflare
+                                                       Zero Trust Services                      Network Services                          Application Services
+       1    Cloudflare One                         Zero Trust Network Access                 WAN-as-a-Service                           WAF with API Protection
+                                                   Secure Web Gateway                        Firewall-as-a-Service                      Rate Limiting
+                                                   Cloud Access Security Broker              L3 & L4 DDoS Protection                    Load Balancing
+                                                   Cloud Email Security                      Network Interconnect                       Bot Management
+                                                   Remote Browser Isolation                  Smart Routing                              L7 DDoS Protection
+                                                   Data Loss Prevention                      IDS/IPS                                    CDN and DNS
+            Cloudflare Developer                   Workers          Pages          R2       Workers KV           Durable Objects           Images          Stream
+            Platform
+            Cloudflare                             Compliance/Privacy: FedRAMP, ISO, SOC, PCI, GDPR compliant, Logs & Analytics, Data Localization Suite
+            Global Network
+                                                                                                                                                                                 68
+WHAT WE OFFER
+Customer                                                                     Current State                                                                Future State
+                                                                    Loss of control, vendor sprawl                                              Cloudflare’s connectivity cloud
+perspective:                                                                     Applications
+simplify and                                                        Akamai  •  F5  •  Fastly  •  Imperva
+consolidate                                                Content Delivery      Web Application            Bot                                 ✔  Content Delivery Network
+                                                               Network               Firewall           Management                              ✔  Web Application Firewall
+on a single,                                                                                                                                    ✔  DDoS Protection (L7-L3)
+                                                                DDoS               API Security             DNS
+                                                              Protection                                                                        ✔  API Security & Management
+unified                                                                                                                                         ✔  Bot Management
+                                                                                                                                                ✔  Cloud Secure Web Gateway                           TCO
+platform                                                                          Employees                                                                                                        Reduction
+                                                                                                                                                ✔  Zero Trust Network Access
+                                                                                                                                                ✔  Cloud Access Security Broker
+                                       Total Cost of           Palo Alto Networks  •  Zscaler  •  Netskope                                      ✔  Data Loss Prevention
+                                        Ownership                                                                                               ✔  Cloud Sandbox & Browser Isolation
+                                                             Secure Web             Zero Trust         Email Security                           ✔  Cloud Firewall & Intrusion Prevention
+                                                               Gateway           Network Access
+                                                                                                                                                ✔  WAN-as-a-Service
+                                                            Cloud Access               DLP               Sandbox &                              ✔  SD-WAN Connector
+                                                            Security Broker                           Browser Isolation                         ✔  Multi-cloud Networking
+                                                                                   Networks
+                                                                  Cisco  •   Fortinet  •  VMware  •  AT&T
+                                                               SD-WAN                 MPLS                Network
+                                                              Appliance                                   Firewall
+                                                                                                                                                                                                              69
+  Accelerating
+GTM Momentum
+                                  70
+Physics 101
+                                         p = m v
+           Momentum, n.                                  Mass, n.                                      Velocity, n.
+           the quantity of motion in a                   the quantity of matter within a given         a quantity that designates speed
+           moving body, expressed as the                 object                                        together with the direction of
+           product of its mass and velocity                                                            movement
+                                                                                                                                             71
+Physics 101…translated to B2B sales
+                  p = m v
+     ACV                 Capacity             Productivity
+                                                               72
+p = m v
+Last year…
+                                                                                Last year,
+                                                                                 we were
+                                                                             performance
+                                                                            constrained and
+                                                                            have focused on
+                                                                              refining our
+                                                                             go-to-market
+                                                                             strategies and
+                                                                             operations to
+                                                                             drive improved
+                                                                              productivity
+                                                                                                 73
+p = m v
+…Now
+             Rolling 4-Quarter ACV per Account Executive (Net)                       We are
+                                                                                encouraged by
+                                                                              the improvement
+                                                                                     in sales
+                                                                              productivity from
+                                                                              the trough of last
+                                                                                  year toward
+                                                                                  productivity
+                                                                               levels previously
+                                                                                    achieved
+                                                                                                      74
+ 2024
+Action Plan
+                              75
+Physics 102…translated to B2B sales
+                 p = m   ∆ x                                              Direction, n.
+                                                 ∆t{                      Pace, n.
+           Momentum, n.            Mass, n.       Velocity, n.
+                                                  quantity that designates the distance moved in a
+                                                  speciﬁc direction divided by the time taken
+                                                                                                      76
+Top 5 action items in 2024
+   Add stage-         Become more            March                 Sell             Power up
+   appropriate         systematic         towards the       the platform,             with
+     talent           and targeted        Enterprise         sell solutions        partners
+                                                                                                   77
+  #1: ADD STAGE-APPROPRIATE TALENT
+  Add stage-appropriate talent across the sales process
+        Lead Gen   Pre-Pipeline       Qualify       Discovery         Solution        Proposal         Negotiate          Close     Onboard /
+                                                                     Design                                                          Renewal
+                                                                     CAM
+                                                                  Sales Ops
+                                                                                        RFx/Contracts
+                                                                                                                      Customer Support
+                                                                                       Deal Desk, Legal
+     SA                                                               SA                               SA                     CSM
+                                                                                SE                                        CSE
+                                                                     Solution Specialist
+    MRK                                                              AE/xAE
+                      BDR .
+                                                       Pre-sales .                                                                         Post-
+                                                                                                                                           sales
+                                     Repeat for continual upsell / expansion opportunities                                                      78
+#2: BECOME MORE SYSTEMATIC AND TARGETED
+Become more systematic and targeted
+                                  Majors
+                                                                                                                High-touch sales model
+  erprise                                                                                                       Field driven
+                                                                                                                System integrators
+  Ent                       Named                                                      Public
+                                                                                       Sector
+                   Territory                                                                          Digital NativMedium-touch sales model
+  et                                                                                   Named                    Field and reseller driven
+                                                                                                                Supported by inside
+  MidmarkCommercial                                                                    Startup        e         Low-touch sales model
+                                                                                                                Inside and reseller driven
+                                                                                                                                                    79
+#3: MARCH TOWARDS THE ENTERPRISE
+360-degree enterprise customer engagements
+                                                                          Focus on the Customer Lifetime Value (CLV) to
+                                                                                      maximize total account penetration
+                                                                            Facilitate high cross-functional coordination
+                                                                                    Build intimate customer relationships
+                                                                                 Increase focus on the customer journey
+                                                                                                                                80
+#3: MARCH TOWARDS THE ENTERPRISE
+Just scratching the surface with enterprise
+accounts
+                                        Number of $1M+ Customers
+                                                                                                                                                        $1M+
+                                                                                                                                                 customers
+                                                                                                                                            represent less
+                                                                                                                                                 than 1% of
+                                                                                                                                                Cloudflare’s
+                                                                                                                                                total paying
+                                                                                                                                                 customers
+Source: Latest company reports, filings, and investor presentations as of May 29, 2024. Cloudflare and ServiceNow are as of March 31, 2024. MongoDB, Okta, Zscaler,
+CrowdStrike, and Splunk are as of January 31, 2024. UiPath is as of April 30, 2024. Atlassian is as of June 30, 2023. Datadog is as of December 31, 2023. Palo Alto
+Networks and Snowflake are as of April 30, 2024. Akamai is as of May 19, 2022.                                                                                                     81
+#4: SELL THE PLATFORM, SELL THE SOLUTIONS
+Engage customers with three sales motions
+   1. Top Down
+   Position the platform, deliver solutions.
+      Customer Strategic Initiatives
+                                                                     Connectivity
+                                                                          Cloud                                Use Case              Use Case
+         Solution              Solution
+                   Products                        2. Solutions Over                                      3. Bottom Up
+                                                   Sell solutions against customer priorities,            Sell use cases that address specific pain points –
+                                                   then expand to selling the platform.                   outages, under attack, etc. – then sell the
+                                                                                                          platform.
+                                                                                                                                                           82
+#4: SELL THE PLATFORM, SELL THE SOLUTIONS
+Top Down: Targeting the right audience with a platform pitch
+for bigger deals
+                                                        $$$             CIO | CTO | CISO | CFO
+                                                                        Problems: Enable, scale, and protect an agile business
+                                                                        in line with CEO strategy
+                                                                        Solutions: Cloudflare platform for Security, Connectivity,
+                                                                        Privacy, Performance, and Agile Development
+                                                         $$             VP Security | VP Networking
+                                                                        Problems: Secure the enterprise; connect users, data and devices
+                                                                        Solutions: Zero Trust, Magic Transit, Magic WAN, Magic Firewall
+                                                           $            Developer | IT Practitioner
+                                                                        Problems: Build and manage applications to execute against the
+                                                                        strategy set by leadership
+                                                                        Solutions: Workers, Application Performance
+                                                                                                                                                 83
+#4: SELL THE PLATFORM, SELL THE SOLUTIONS
+Solutions Over: Unlocking solution/sales play combinations
+based on customer priorities
+                    Customer Priorities                                      Cloudflare’s connectivity cloud services:
+1    Secure Websites, applications, & APIs                                  WAF, API Shield, DNS Firewall, L7 DDoS, Bot Management,
+                                                                            Rate Limiting, Page Shield, Firewall for AI, Spectrum
+2    Protect the network                                                    Magic Transit, Magic Firewall
+3    Build innovative applications &                                        Workers, KV, Durable Objects, Pages, R2, D1, Images, Stream,
+     augmenting with AI                                                     Workers AI, AI Gateway, Vectorize, Data Localization Suite
+4     Accelerate application performance & improve                          CDN, Cache Reserve, DNS, Argo Smart Routing, Images,
+      customer experience                                                   Stream, Load Balancing, China Network
+5     Secure access for your workforce                                      Access, Gateway, RBI, CASB, Area 1, DLP
+6     Modernize WAN & replace MPLS                                          Magic WAN, Magic Cloud Networking, CNI Express, Argo
+                                                                            Smart Routing
+                                                                                        Cloudflare Global Network                              84
+#5: POWER UP WITH PARTNERS
+The power of partnership
+                                                                                                       Partners reach
+                                                                                                       1000s of
+                                                                                                       customers
+                                                                                                       each
+                               PARTNERS                                     CUSTOMERS
+#5: POWER UP WITH PARTNERS
+New PowerUP partner program
+       One Simplified                  Enhanced Partner                   Improved Partner                  Strategic Planning
+       Global Partner                       Profitability                      Experience
+            Program                         Framework                                                           Align benefits and
+                                                                             Improved tools and              requirements with Select
+      Revised tier structure               Partner discounts                processes to simplify            and Elite Tiers vs Focus
+  driving transactional partners        and incentives based on          transacting with Cloudflare                 Partners
+       through distribution                 Reward for Value                                                    Introduce Business
+     Specializations based on               Transparent and                                                          Planning
+  partner type, business model             predictable pricing
+      or product orientation
+                                                                                                                                            86
+The market is coming to where Cloudflare is already, and the
+time is now
+     Data is the            Latency is the          Internet is the         Zero Trust is the       Cloudflare is the
+      new oil               new currency             new highway          new transportation         new fabric for
+                                                      to success                                    digital success
+                                                                                                                          87
+Financials
+                       Thomas Seifert
+                       Chief Financial Officer
+                                                                          88
+                  Growth
+                                                                  The ability to
+                                                                  drive efficient
+                                                                 and productive
+                                                                growth at scale
+                                                                  separates the
+                                                                best technology
+                                                                companies in the
+Efficiency/                        Scale                          world from all
+Productivity                                                           others
+                                                                                      89
+                               Growth
+ Growing large              Expanding product               Extending into
+customer cohort                   portfolio                adjacent markets
+                                                                                    90
+Track record of delivering revenue growth
+                           Total Revenue ($M)                                               Investment in
+                                                                                            enterprise sales
+                                                                $1,297
+                                                                                            Large customer
+                                                                                            momentum
+                                    AGR             $975
+                             46% C                                                          Land and expand
+                                        $656                                                strategy drives growth
+                                                                                            across cohorts
+                            $431
+                 $287                                                                       Increasing penetration
+     $193                                                                                   across the entire
+                                                                                            product portfolio
+     2018        2019       2020        2021        2022        2023
+                                                                                                                     91
+GROWING LARGE CUSTOMER COHORT
+Significant Growth in Large Customer Cohorts
+  $100K+                                                  $500K+                                                   $1M+
+  Customers                           2,756               Customers                            346                 Customers                            118
+                                            35%                                                     56%                                                     39%
+                    AGR   2,042               Y/Y                                                     Y/Y                            AGR     85               Y/Y
+                                                                           AGR      222
+             49% C                                                  70% C                                                     54% C
+               1,416                                                                                                             56
+    828                                                                 121                                           32
+                                                              71
+   2020        2021        2022        2023                2020        2021        2022        2023                2020        2021        2022        2023
+ Note: Large Customer data are as of year end. See the Appendix for how we define Large Customers, which are the same as $100K+ customers.  $500K+ and $1M+ customers are defined in the same manner, except we use $500K+
+ and $1M+, respectively, of Annualized Revenue instead of $100K+.
+                                                                                                                                                                   92
+GROWING LARGE CUSTOMER COHORT
+Rapid enterprise expansion
+                              Revenue ($M) by All Customers
+                                                                                             $5M+:                                ~32% of Fortune 1,000,
+                                                                                             25x*                                 and 7 of the Top 10 are
+                                                                                             $1M-$5M:                             paying customers
+                                                                                             22x
+                                                                                             $500K-$1M:
+                                                                                             23x
+                                                                                             $100K-$500K:                         Large enterprise
+                                                                                             15x                                  go-to-market additions
+                                                                                                                                  Enterprise-grade
+                                                                                             <$100K:                              product portfolio
+                                                                                             4x
+            2018           2019            2020           2021            2022           2023
+  Note: Growth factors (e.g., 4x for <$100K) are calculated as Q4’23 revenue divided by Q1’18 revenue, except for $5M+, which compares Q4’23
+  to Q4’18. Fortune 1,000 figures are as of March 31, 2024.                                                                                                            93
+GROWING LARGE CUSTOMER COHORT
+Increasing enterprise volume + scale
+                                        Minimum ARR Required to be a Top Account
+       Top 10                                       Top 25                                        Top 100
+       Customer                                     Customer                                      Customer
+                             $10.0M                                        $4.0M                                        $1.5M
+          5.6x                                         4.5x                                          4.9x
+            4-year                                       4-year                                       4-year
+           Growth                                       Growth                                        Growth
+                   $4.4M                                        $2.0M
+                                                                                                             $588K
+        $1.8M                                        $893K                                         $303K
+         2019       2021      2023                    2019       2021      2023                     2019      2021       2023
+ Note: See Appendix for definition of Annual Recurring Revenue (ARR).                                                                94
+GROWING LARGE CUSTOMER COHORT
+Increasing enterprise volume + customer
+lifetime
+                      Average Customer Lifetime (Years)
+                        by Revenue Contribution Cohort
+                                                                                                        The average
+                                       70%+                                                         lifetime of $1M+
+                                                                                                        customers is
+                                                                                                     more than 70%
+                                                                                                    higher than that
+                                                                                                          of <$100K
+                                                                                                          customers
+Note: For three months ended December 31, 2023. Average customer lifetime (years) is calculated by 1 / (Churn % + Contraction % + Downgrade %) 95
+for each respective cohort.
+EXPANDING PRODUCT PORTFOLIO
+A platform constantly
+delivering innovation
+Everywhere for everyone
+Connect, protect, accelerate, and build
+Note: Products represented are revenue generating and generally available, with the exception of Vectorize and AI Gateway, which are currently in beta.                9696
+EXTENDING INTO ADJACENT MARKETS
+Consistent TAM expansion                                                                                         $222B              Cloudflare
+                                                                                                                                    Developer Services                               Areas for Potential
+                                                                                              $206B                                                                                 Incremental Growth
+                                                                           $191B                                                    ●    Application Platform
+                                                                                                                                    ●    Object Storage
+                                                       $176B                                                                        Cloudflare
+                                                                                                                                    Network Services                                             AI
+       1     Cloudflare One                                                                                                          ●   Network Firewall
+                                                                                                                                     ●   MPLS
+                                                                                                                                     ●   SD-WAN                                                  Database
+                                                                                                                                     ●   Intrusion Detection & Prevention
+                                                                                                                                     ●   Multicloud Networking
+  Cloudflare                                                                                                                                                                                     Internet of
+  Application                                                                                                                       Cloudflare Zero                                              Things
+  Services                                                                                                                          Trust Services
+  ●   Application                                                                                                                   ●    VPN
+      Delivery Controllers                                                                                                          ●    Content Filtering                                       5G Cellular
+  ●   CDN                          $32B                                                                                             ●    Remote Browser Isolation
+  ●   DDoS                                                                                                                          ●    Data Loss Prevention
+  ●   Web Application                                                                                                               ●    Privileged Access
+      Firewall                                                                                                                           Management                                              Network
+  ●   Bot Management                                                                                                                ●    Network Analytics
+  ●   Anti-Fraud                                                                                                                    ●    Email Security                                          Services
+  ●   Threat Intelligence                                                                                                           ●    CASB
+                                    2018                 2024               2025                2026                2027
+ Note: Graphic is prepared by Cloudflare. Total Addressable Market figures are Cloudflare estimates based on Gartner and IDC market forecasts. Figures reflect the markets addressed by our current product offerings. IDC markets covered include DDoS protection services,
+ CDN, Bot Management, and API Security. All other markets are covered by Gartner forecasts. For full citation details on the Gartner forecasts used in Cloudflare’s estimations, see the Appendix.                       97
+EXPANDING PRODUCT PORTFOLIO
+Land-and-expand strategy drives growth
+                                              Revenue Contribution by Product Attach Rate Cohorts ($M)
+                                                                                                                                                     ‘23 vs. ’19
+                                                                                                                                                         24.5x
+                                                                                                                                                         19.5x
+                                                                                                                                                         16.0x
+                                                                                                                                                         12.5x
+                                                                                                                                                          9.5x
+ Note: Growth factors on the Revenue Contribution chart (e.g., 15.0x for 10+ Products) are calculated as Q4’23 revenue divided by Q4’20 revenue contribution from the respective cohort. Growth factors are rounded to the nearest 0.5x.98
+EXPANDING PRODUCT PORTFOLIO
+Increasing product adoption + customer
+lifetime
+                      Average Customer Lifetime (Years)                                              The average
+                        by Product Attach Rate Cohort                                                  lifetime of
+                                                                                                       customers
+                                      20%+                                                          adopting 10+
+                                                                                                      products is
+                                                                                                  more than 20%
+                                                                                                     higher than
+                                                                                                       customers
+                                                                                                     adopting 4+
+                                                                                                        products
+Note: For three months ended December 31, 2023. Average customer lifetime (years) is calculated by 1 / (Churn % + Contraction % + Downgrade %) 99
+for each respective cohort.
+EXTENDING INTO ADJACENT MARKETS
+There’s a reason we use the
+term “Acts”...                                                                                                                  SD-WAN
+                                                  SSE
+  Cloudflare is uniquely positioned:
+   ●   CIOs, CTOs, CSOs, and production
+       engineers trust us from our Act I
+       products — Application Services
+   ●   Our network infrastructure is already
+       in-place and ready to handle scale
+   ●   We natively developed Act II
+       products — Zero Trust, Magic
+       Transit, WAN-as-a-Service, etc. —
+       on the same infrastructure, platform,                                                                                          Multi-cloud
+       and control plane as our Act I                                                                                                 Networking
+       products                                        Application
+                                                         Security
+                                                                                                                                                  100
+EXTENDING INTO ADJACENT MARKETS
+…Because acts in a play build on each other
+                Annual Contract Value (ACV) by Product Area                                                         Connect and protect
+                                                                                                                     customers’ external,
+                                                                                                                   public-facing systems
+                                                                                                                        and infrastructure
+                                                                                                                                      &
+                                                                                                                    Connect and protect
+                                                                                                                     customers’ internal,
+                                                                                                                     private systems and
+                                                                                                                            infrastructure
+                  Application Security, Zero Trust, & Network Services        Other
+Note: Contribution by product area is calculated based on the annual contract value of contracted customers during the respective fiscal years for the 12
+months ended as of December 31. See the Appendix for how we define Annual Contract Value (ACV) and contracted customers.                                      101
+EXTENDING INTO ADJACENT MARKETS
+A multi-act play…
+                                                       Product Attach Rates by Act in 2023
+                       Act I                                                 Act II                                                 Act III
+                Application                           Zero Trust                             Network                           Developer
+                  Services                              Services                             Services                            Services
+                     90%+                                 25%+                                  15%+                                25%+
+                of Contracted                        of Contracted                        of Contracted                        of Contracted
+                  Customers                            Customers                            Customers                            Customers
+ Note: Attach rates are calculated based on the total installed base of contracted customers. It is defined as the percentage of total contracted customers that purchased the product as of December 31, 2023. See the Appendix for
+ how we define contracted customers.                                                                                                                             102
+EXTENDING INTO ADJACENT MARKETS
+…That is just getting started
+            Annualized Recurring Revenue                                                         Potential Opportunity of Current Products
+                    (ARR) by Product SKU                                                                   within Existing Customer Base
+                                                                                                                                                   $7.0 Billion
+                                                                                                                                                            Total Potential
+                                                                                                                                   $5.6 Billion
+                                                                                                                                   Potential Whitespace
+                                                                                                  $1.4 Billion
+                                                                                                  ARR ending 2023
+Note: Annualized Recurring Revenue by Product SKU as of December 31, 2023 for contracted customers. See the Appendix for how we define Annualized Recurring Revenue (ARR) and contracted customers. Potential Opportunity
+of Current Products within Existing Customer Base is determined as of September 30, 2023. See the Appendix for the methodology we use to determine the Potential Opportunity of Current Products within Existing Customer Base.103
+               Profitability
+   Unit                                 Long-term
+economics                            operating model
+                                                                   104
+Elasticity and leverage in our operating model
+                                            Non-GAAP Operating Expenses & Operating Margin (% of Revenue)
+                 2019                           2020                             2021                           2022                              2023                          2024E*
+                                                                                                                        4%                              9%                              10%
+           22%                             22%          -8%                21%           -1%              22%                              22%
+                        -25%
+           52%                             46%                             45%                            42%                              40%
+                                                                           20%                            19%                              17%
+                                           21%                                                                                             12%
+           27%                                                             15%                            14%
+                                           18%
+           23%
+                                                          COGS                 S&M                 R&D               G&A              Operating Margin
+Note: See the Appendix for GAAP to Non-GAAP reconciliation.
+*2024E is based on full-year mid-point guidance provided by Cloudflare on May 2, 2024. This forward looking guidance speaks only as of such date and the inclusion of such guidance in this presentation should not be interpreted as
+a confirmation or affirmation of such guidance as of any other date. Except as required by law, we assume no obligation and do not intend to update these forward-looking statements or to conform these statements to actual results 105
+or to changes in our expectations.
+Unit economics
+                                      What does it “cost to book” $1 of                                              Unit Economic Margin by Component
+         Cost to Book                 incremental ARR? CTB = Sales &
+              (CTB)                   Marketing cost per dollar of
+                                      incremental ARR
+                                      How much does it “cost to serve”
+        Cost to Serve                 the lifetime revenue? CTS =
+              (CTS)                   Delivery, R&D, Support & G&A cost                                                                                                                   41%
+                                      as % of ARR
+                                                                                                                                                                                            Unit
+                                     What’s the expected lifetime                                                                                                                        Economic
+                                     revenue from $1 ARR? Lifetime                                                                                                                         Margin
+            Attrition                Revenue (LTR) = $1 ARR / attrition
+                                     rate
+       Unit Economic                 What is the economic margin
+             Margin                  created by $1 ARR? Unit Economic
+                                     Margin = [LTR - CTB - (CTS * LTR) ] /
+                                     LTR
+Note: Unit economic margin in this and subsequent slides are calculations based on assumptions derived from Cloudflare’s historical operations regarding unit lifetime revenue and subscription economics, including cost to book, cost to
+serve, and attrition dynamics. Unit economic margin is not operating margin. The calculations charted are as of fourth quarter of the respective years.                                                106
+  UNIT ECONOMICS
+  Cost to book                                                                                                                       Increase sales team
+                                                                                                                                     specialization, focusing on
+                               Pipeline ($M) vs. Rolling 4-Quarter                                                                   different customer segments,
+                                ACV per Account Executive (Net)                                                                      buyer personas, and industries
+                                                                                                                                     Invest in comprehensive sales
+                                                                                                                                     training and ongoing
+                                                                                                                                     enablement programs
+Reaccelearing sales                                                                                                                   Leverage data analytics to make
+         productivity                                                                                                                 informed decisions on resource
+    improves cost to                                                                                                                  allocation and prioritize
+   book – combined                                                                                                                    high-value opportunities
+        with growing
+   pipeline – give us                                                                                                                Emphasize consultative selling
+       confidence to                                                                                                                 and prioritize customer success
+ invest in (1) further                                                                                                               to drive repeat business,
+        performance                                                                                                                  referrals, and upsell
+ improvements and                                                                                                                    opportunities
+(2) expand capacity
+                                                                                                                                      Closely partner with product
+                                                                                                                                      development to better address
+                                                                                                                                      customer needs and close deals
+  Note: See the Appendix for how we define Annual Contract Value (ACV).                                                               more efficiently
+                                                                                                                                                                            107
+UNIT ECONOMICS
+Cost to serve
+                                                                                                                                Gross margin is a
+                                                                                                                                reflection of the efficiency
+                                Cost to Serve by Component                                                                      and elasticity of our
+                                                                                                                                network architecture
+                              2019           2020            2021            2022           2023
+        Non-GAAP
+          Operating            22%            22%             21%             22%            22%                                Continue to prioritize
+          Expenses                                                                                                              product innovation that
+as a % of Revenue                                                                                                               can be monetized across
+                                              21%             20%             19%            17%                                our growing customer
+                               27%                                                                                              base
+                                                              15%             14%            12%
+                                              18%                                            50%
+                              23%                             56%             54%
+                                              61%
+                                                                                                                                Benefit from economies of
+                              72%                                                                                               scale, as well as
+                                                                                                                                opportunities for AI and
+                                                                                                                                automation, in G&A
+                                     COGS                 R&D                 G&A
+ Note: See Appendix for GAAP to Non-GAAP reconciliation. Calculations are based on fiscal year. Percentages may not sum due to rounding.
+ Figures are calculated based upon the respective underlying non-rounded data.                                                                                       108
+                                                                                                                          Unit
+                                                                                                                      economics
+  Long-term operating model                                                                                             support
+                                                                                                                         20%+
+                                                                                                                       long-term
+                                                                                                                       operating
+                                       2021             2022              2023            Q1                            margins                        Long-Term
+                                                                                        2024                                                              Model
+                         Gross                                                                               Leverage efficiency and
+                        Margin          79 %             78 %             78 %           80 %                elasticity of our network and             75% - 77%
+                                                                                                             ingress/egress dynamics
+         Sales & Marketing                                                                                   Scale go-to-market operations
+              (% of revenue)            45 %             42 %             40 %            41 %               with a focus on improving                 27% - 29%
+                                                                                                             productivity
+Research & Development                  20 %             19 %              17 %           16 %               Continue to prioritize                    18% - 20%
+              (% of revenue)                                                                                 product innovation
+General & Administrative                15 %             14 %              12 %           11 %               Benefit from economies of                  8% - 10%
+              (% of revenue)                                                                                 scale and automation
+          Operating Margin              (1)%              4%                9%            11%                                                              20%+
+             Free Cash Flow             (7)%             (4)%               9%             9%                                                             ~25%+
+                        Margin
+  Note: Metrics shown are Non-GAAP. See Appendix for GAAP financial measures and GAAP to Non-GAAP reconciliation.
+  © 2024 Cloudflare, Inc.                                                                                                                                                109
+Cloudflare’s business…
+Short-term                                    Medium-term                                    Long-term
+●    Accelerating our initiatives to           ●    Expanding sales capacity with            ●    Capturing the large and
+     build a world-class                            stage-appropriate talent while                growing market opportunity
+     go-to-market organization —                    also making additional                        that is increasingly moving to
+     people, processes, and                         go-to-market improvements                     where Cloudflare is already
+     systems                                   ●    Investing in great engineering                uniquely positioned
+●    Operating in an uncertain                      and product to deliver                   ●    Enhancing and expanding our
+     macroeconomic and                              incredible value to our                       product portfolio built on a
+     geopolitical landscape                         customers with new and                        single, global cloud platform
+                                                    existing solutions                       ●    Continuing to leverage a
+                                                                                                  highly-efficient business
+                                                                                                  model to disrupt markets and
+                                                                                                  deliver profitable growth at
+                                                                                                  scale
+                                                                                                                                      110
+Q&A
+  Matthew Prince               Michelle Zatlyn              Thomas Seifert               Mark Anderson
+    Co-founder & Chief        Co-founder, President, &      Chief Financial Officer       President of Revenue
+     Executive Officer         Chief Operating Officer
+                                                                                                                                              111
+Appendix
+    GAAP to
+  Non-GAAP
+Reconciliation
+    (Annual)
+ © 2024 Cloudflare, Inc.                                                                   113
+    GAAP to
+  Non-GAAP
+Reconciliation
+  (Quarterly)
+ © 2024 Cloudflare, Inc.                                                                   114
+Appendix
+Definitions & Methodologies
+Paying Customers. We believe our ability to grow the number of paying customers on our network provides a key indicator of growth of our business and our future business opportunities. We define a
+paying customer at the end of the quarter as a person or entity who has generated revenue and has an active contract with us or one of our partners during such quarter, excluding (i) customers that
+were not acquired through ordinary sales channels, (ii) customers using only our registrar product, and (iii) customers using our consumer applications, such as 1.1.1.1 and Warp, which agreements and
+customers together represent an insignificant amount of our revenue. An entity is defined as a company, a government institution, a non-profit organization, or a distinct business unit of a large company.
+An active contract is defined as a customer relationship for which we have provided services during the quarter.
+Paying Customers (> $100,000 Annualized Revenue). While we continue to grow customers across all sizes, over time, our large customers have contributed an increasing share of our revenue. We
+view the number of customers with Annualized Revenue greater than $100,000 as indicative of our penetration within large enterprise accounts. To measure Annualized Revenue at the end of a quarter,
+we take the sum of revenue for each customer in the quarter and multiply that amount by four. For example, if we signed a new customer that generated $1,800 of revenue in a quarter, that customer
+would account for $7,200 of Annualized Revenue for that year. Our Annualized Revenue calculation excludes (i) agreements that were not entered into through ordinary sales channels, (ii) revenue
+generated from customers using only our registrar product, and (iii) customers using our consumer applications, such as 1.1.1.1 and Warp, which agreements and customers together represent an
+insignificant amount of our revenue. Our Annualized Revenue metric also includes any usage charges by a customer during a period, which represents a small portion of our total revenue and may not be
+recurring. As a result, Annualized Revenue may be higher than actual revenue over the course of the year.
+Dollar-Based Net Retention. Our ability to maintain long-term revenue growth and achieve profitability is dependent on our ability to retain and grow revenue generated from our existing paying
+customers. We believe that we will achieve these objectives by continuing to focus on customer loyalty and adding additional products and functionality to our network. Our dollar-based net retention
+rate is a key way we measure our performance in these areas. Dollar-based net retention measures our ability to retain and expand recurring revenue from existing customers. To calculate dollar-based
+net retention for a quarter, we compare the Annualized Revenue from paying customers four quarters prior to the Annualized Revenue from the same set of customers in the most recent quarter. Our
+dollar-based net retention includes expansion and is net of contraction and attrition, but excludes Annualized Revenue from new customers in the current period. Our dollar-based net retention excludes
+the benefit of free customers that upgrade to a paid subscription between the prior and current periods, even though this is an important source of incremental growth. We believe this provides a more
+meaningful representation of our ability to add incremental business from existing paying customers as they renew and expand their contracts.
+Contracted Customers. Our contracted customers, which consist of customers that enter into contracts for our Enterprise subscription plan, have contracts that typically range from one to three years
+and are typically billed on a monthly or annual basis. Our agreements with contracted customers are tailored and priced to meet their varying needs and requirements. Enterprise subscription plan
+agreements for our contracted customers generally include a base subscription and a smaller portion based on usage or per seat.
+© 2024 Cloudflare, Inc.                                                                                                                                                                                                                              115
+Appendix
+Definitions & Methodologies
+Annualized Recurring Revenue (ARR). Annual Recurring Revenue, or ARR, is defined as the annualized value of our customer subscription contracts as of the measurement date, assuming any contract
+that expires during the next 12 months is renewed on its existing terms. ARR is calculated by multiplying the revenue in the fourth quarter of each respective year by four.
+Annual Contract Value (ACV). Annual Contract Value, or ACV, is defined as the subscription revenue that we would contractually expect to recognize over the term of the contract divided by the term of
+the contract in years.
+Total Addressable Market. Total Addressable Market figures are Cloudflare estimates based on Gartner and IDC market forecasts. Figures reflect the markets addressed by our current product offerings.
+IDC markets covered include DDoS protection services, CDN, Bot Management, and API Security. All other markets are covered by Gartner forecasts and include the following Gartner sources: (1)
+Forecast: Information Security and Risk Management, Worldwide, 2022-2028, 1Q24 Update, Shailendra Upadhyay, Christian Canales, et.al., 03/29/2023; (2) Forecast: Enterprise Network Equipment by
+Market Segment, Worldwide, 2022-2028, 1Q24 Update, Christian Canales, Naresh Singh, et.al., 03/27/2024, and (3) Forecast: Enterprise Infrastructure Software, Worldwide, 2022-2028, 1Q24 Update,
+Arunasree Cheparthi, Robin Schumacher, et.al., 03/22/2024.
+Methodology of Potential Opportunity of Current Products within Existing Customer Base. The analysis begins with the reported or estimated revenue of each Cloudflare existing customer on the
+measurement date.  If reported customer revenue is not available, a proxy customer revenue is estimated based on various factors, including the customer’s last outside funding date, amount, and implied
+valuation. An IT spend % of revenue (based on a third party estimate) is then applied to the customer’s reported or estimated revenue based on the customer’s industry and size, followed by a TAM (Total
+Addressable Market) % of Global IT Spend (as obtained from a third party estimate), and SAM (Serviceable Addressable Market) % to TAM  at the country level, to get to the potential opportunity from the
+existing Cloudflare customer. However, if the customer’s current ARR is greater than that number, then the customer’s current ARR with a multiplier of 1.5x or less is used for the potential opportunity from
+that existing customer.
+© 2024 Cloudflare, Inc.                                                                                                                                                                                                                          116
