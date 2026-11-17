@@ -1,0 +1,20 @@
+{
+  "version": "evidence-review-structural-validation-v1",
+  "reviewer": "EB",
+  "counts": {
+    "cases": 6,
+    "interpretations": 16,
+    "requirements": 60,
+    "complete_sets": 5,
+    "citations": 218,
+    "review_only_citations": 51
+  },
+  "financial_sufficiency": "not_validated",
+  "outside_access_disclosed": {
+    "accessed": false,
+    "disclosure": "Read only the assigned instructions and six masked case packets; wrote and verified only reviews/evidence-b.json. No internet, repository search/history, other source files, other reviewer output, original rubrics, reference answers or policy attribution accessed. During initial Q01 schema inspection, packet-embedded source metadata (URL, source SHA256 and original_sha256) was displayed incidentally; it was not visited, used for evidence assessment or used to infer custody/policy. Required input file hashes and source IDs were used for integrity/citation fields."
+  },
+  "review_sha256": "ebc10a43173535bb7746ddad923a94b72326cdafd2e5739fc784e6e0c1cd5778",
+  "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+  "validator_sha256": "502eef87d6a553022f78a51b7341c50211aedeca82b8bf1de6c5795e7f161bff"
+}

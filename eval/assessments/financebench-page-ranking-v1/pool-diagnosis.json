@@ -1,0 +1,357 @@
+{
+  "version": "saved-pool-oracle-diagnosis-v1",
+  "diagnostic_sha256": "796fa3692436f773882d10144dcbc4752e9eb7d1745ba1e889691e3c55e46629",
+  "grade_sha256": "3817c8358fb83b14757b79b1c684bcb81d658649cffe3aa270a40583a98893ef",
+  "protocol_sha256": "59f5e0855aaedbb07bb018c1f73f4c50629a7c84b930fc4a24e326e28a8bde00",
+  "run_inventory": {
+    "receipt": "e21a2df621bd379ffd35e2c8111d861c023a6981fd1e5f3f34f24b845dc908e0",
+    "telemetry": "2e1983555dd19a70a6d09465e2dd1eba192855c2839534bb59d191f293664d3b",
+    "deterministic": {
+      "case-3-challenger.jsonl": "db414cd4135b747198a8e4c95b62970871889dca77b8dd25d29efa0a18abbd7d",
+      "case-2-control.jsonl": "e98fa88d5b4c682279845d9391fe87d93ac7d354130daff537e2b3343e6a3c26",
+      "case-2-challenger.jsonl": "07eeceb74eaa81c313eeaf050841f56a2e55ed2dcf9127601a5b17336f5b9ab0",
+      "case-1-control.jsonl": "264ebc9042ea390446bab7d71d59d13992aecbdf8115c3838aab5c6fa57e7be5",
+      "case-5-control.jsonl": "90ddcd994bdf896616ee256ed1ba7710d7d358bf3fdc484deb1ae5aba0adac2b",
+      "case-4-control.jsonl": "b375aef9262cdd971dab7f9a5e25c33a6094aff0339d34f9ef5922c814d8b726",
+      "case-1-challenger.jsonl": "70c8f8da1c7a07125c85a434f877373ca1adb28977f8efece8fb1e282bb32153",
+      "case-0-control.jsonl": "aeba0aab51e62694b9ec0667d1af5b97b5cbc5330c929b89c1d6728056f3491d",
+      "case-5-challenger.jsonl": "f1cb9cc5816196260fdaa8f345b83e7874e0ebd9693898bc75c7ee6dead601ce",
+      "case-3-control.jsonl": "fdc535a15cf3a3ea12703ff522b48d3b28aa1ebfcf495814a619cc641503c840",
+      "case-0-challenger.jsonl": "7220f4c70ee461bdf0d5ad22cc4fa1a2ff39e70d899df7b3da2053ed5abef1f5",
+      "run.json": "ee877b389cbbfda4354387e73779f2e682a477e0a18ec3fd06963c975a6cd372",
+      "case-4-challenger.jsonl": "b375aef9262cdd971dab7f9a5e25c33a6094aff0339d34f9ef5922c814d8b726"
+    }
+  },
+  "selected_denominator": 6,
+  "max_reads": 5,
+  "tie_rule": "minimum cardinality, then lexicographic original rank tuple, then alternative index",
+  "oracle_uses_evaluator_labels": true,
+  "new_retrieval_or_read_calls": 0,
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "disposition": "mapped",
+      "status": "coverable_within_five",
+      "minimum_windows_within_five": 1,
+      "case_witness": {
+        "alternative": 1,
+        "ranks": [
+          5
+        ]
+      },
+      "alternatives": [
+        {
+          "alternative": 1,
+          "status": "coverable_within_five",
+          "missing_lines": [],
+          "ranks": [
+            5
+          ],
+          "missing_by_role": {
+            "balance_entity_and_statement": [],
+            "balance_scale": [],
+            "balance_date_columns": [],
+            "total_assets_label_and_value": []
+          },
+          "witness_windows": [
+            {
+              "source_id": "COSTCO_2021_10K",
+              "start_line": 1185,
+              "end_line": 1216,
+              "snippet": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "disposition": "mapped",
+      "status": "coverable_within_five",
+      "minimum_windows_within_five": 2,
+      "case_witness": {
+        "alternative": 1,
+        "ranks": [
+          2,
+          7
+        ]
+      },
+      "alternatives": [
+        {
+          "alternative": 1,
+          "status": "coverable_within_five",
+          "missing_lines": [],
+          "ranks": [
+            2,
+            7
+          ],
+          "missing_by_role": {
+            "operations_entity_and_statement": [],
+            "operations_scale": [],
+            "operations_period_columns": [],
+            "operating_income_label_and_value": [],
+            "cashflow_entity_and_statement": [],
+            "cashflow_scale": [],
+            "cashflow_period_columns": [],
+            "cashflow_depreciation_amortization_label_and_value": []
+          },
+          "witness_windows": [
+            {
+              "source_id": "AMERICANWATERWORKS_2021_10K",
+              "start_line": 2939,
+              "end_line": 2970,
+              "snippet": ""
+            },
+            {
+              "source_id": "AMERICANWATERWORKS_2021_10K",
+              "start_line": 2887,
+              "end_line": 2918,
+              "snippet": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "disposition": "mapped",
+      "status": "missing_from_pool",
+      "minimum_windows_within_five": null,
+      "case_witness": null,
+      "alternatives": [
+        {
+          "alternative": 1,
+          "status": "missing_from_pool",
+          "missing_lines": [
+            2532,
+            2533,
+            2534,
+            2535,
+            2554
+          ],
+          "ranks": null,
+          "missing_by_role": {
+            "balance_sheet_entity_and_scope": [
+              2532,
+              2533
+            ],
+            "assets_date_and_units": [
+              2534,
+              2535
+            ],
+            "fy2022_total_assets": [
+              2554
+            ],
+            "revenue_period_and_units": [],
+            "fy2022_consolidated_operating_revenue": []
+          },
+          "witness_windows": []
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "disposition": "mapped",
+      "status": "missing_from_pool",
+      "minimum_windows_within_five": null,
+      "case_witness": null,
+      "alternatives": [
+        {
+          "alternative": 1,
+          "status": "missing_from_pool",
+          "missing_lines": [
+            2802,
+            2803,
+            2804,
+            2805,
+            2822,
+            2823,
+            2858,
+            2859,
+            2860,
+            2861,
+            2882
+          ],
+          "ranks": null,
+          "missing_by_role": {
+            "income_statement_entity_and_scope": [
+              2802,
+              2803
+            ],
+            "income_period_and_units": [
+              2804,
+              2805
+            ],
+            "fy2017_net_income_basis_and_amount": [
+              2822,
+              2823
+            ],
+            "balance_sheet_entity_and_scope": [
+              2858,
+              2859
+            ],
+            "assets_periods_and_units": [
+              2860,
+              2861
+            ],
+            "fy2017_and_fy2016_total_assets": [
+              2882
+            ]
+          },
+          "witness_windows": []
+        },
+        {
+          "alternative": 2,
+          "status": "missing_from_pool",
+          "missing_lines": [
+            2802,
+            2803,
+            2804,
+            2805,
+            2820,
+            2858,
+            2859,
+            2860,
+            2861,
+            2882
+          ],
+          "ranks": null,
+          "missing_by_role": {
+            "income_statement_entity_and_scope": [
+              2802,
+              2803
+            ],
+            "income_period_and_units": [
+              2804,
+              2805
+            ],
+            "fy2017_net_income_basis_and_amount": [
+              2820
+            ],
+            "balance_sheet_entity_and_scope": [
+              2858,
+              2859
+            ],
+            "assets_periods_and_units": [
+              2860,
+              2861
+            ],
+            "fy2017_and_fy2016_total_assets": [
+              2882
+            ]
+          },
+          "witness_windows": []
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "disposition": "mapped",
+      "status": "missing_from_pool",
+      "minimum_windows_within_five": null,
+      "case_witness": null,
+      "alternatives": [
+        {
+          "alternative": 1,
+          "status": "missing_from_pool",
+          "missing_lines": [
+            896,
+            897,
+            910,
+            911,
+            912,
+            913,
+            914,
+            915,
+            916,
+            917
+          ],
+          "ranks": null,
+          "missing_by_role": {
+            "segment_statement_scope_and_comparison_period": [
+              896,
+              897
+            ],
+            "sales_change_year_and_metric_columns": [
+              910,
+              911,
+              912
+            ],
+            "other_segments_growth_comparison": [
+              913,
+              914,
+              915
+            ],
+            "consumer_growth_and_adjustments": [
+              916
+            ],
+            "company_growth_and_adjustments": [
+              917
+            ]
+          },
+          "witness_windows": []
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "disposition": "mapped",
+      "status": "missing_from_pool",
+      "minimum_windows_within_five": null,
+      "case_witness": null,
+      "alternatives": [
+        {
+          "alternative": 1,
+          "status": "missing_from_pool",
+          "missing_lines": [
+            1716,
+            1717,
+            1718,
+            1719,
+            1720,
+            1726,
+            1763,
+            1764,
+            1765,
+            1766,
+            1768
+          ],
+          "ranks": null,
+          "missing_by_role": {
+            "balance_entity_and_statement": [
+              1716,
+              1717
+            ],
+            "inventory_dates_and_units": [
+              1718,
+              1719,
+              1720
+            ],
+            "opening_and_closing_inventory": [
+              1726
+            ],
+            "earnings_entity_and_statement": [
+              1763,
+              1764
+            ],
+            "earnings_units_and_period_columns": [
+              1765,
+              1766
+            ],
+            "cost_of_products_sold": [
+              1768
+            ]
+          },
+          "witness_windows": []
+        }
+      ]
+    }
+  ],
+  "limitation": "Post-hoc exact frozen-location parent opportunity; label-dependent witness is not a deployable selection policy or delivered/retained evidence."
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "financebench_id_06247",
+    "hits": [
+      {
+        "source_id": "WALMART_2018_10K",
+        "start_line": 1927,
+        "end_line": 1958
+      },
+      {
+        "source_id": "WALMART_2018_10K",
+        "start_line": 1531,
+        "end_line": 1562
+      },
+      {
+        "source_id": "WALMART_2018_10K",
+        "start_line": 2734,
+        "end_line": 2765
+      },
+      {
+        "source_id": "WALMART_2018_10K",
+        "start_line": 1722,
+        "end_line": 1753
+      },
+      {
+        "source_id": "WALMART_2018_10K",
+        "start_line": 2399,
+        "end_line": 2430
+      }
+    ]
+  },
+  {
+    "id": "financebench_id_01163",
+    "hits": [
+      {
+        "source_id": "NIKE_2023_10K",
+        "start_line": 2582,
+        "end_line": 2604
+      },
+      {
+        "source_id": "NIKE_2023_10K",
+        "start_line": 2558,
+        "end_line": 2589
+      },
+      {
+        "source_id": "NIKE_2023_10K",
+        "start_line": 2878,
+        "end_line": 2904
+      },
+      {
+        "source_id": "NIKE_2023_10K",
+        "start_line": 2080,
+        "end_line": 2106
+      },
+      {
+        "source_id": "NIKE_2023_10K",
+        "start_line": 542,
+        "end_line": 573
+      }
+    ]
+  },
+  {
+    "id": "financebench_id_00601",
+    "hits": [
+      {
+        "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+        "start_line": 62,
+        "end_line": 84
+      },
+      {
+        "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+        "start_line": 38,
+        "end_line": 69
+      },
+      {
+        "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+        "start_line": 219,
+        "end_line": 242
+      },
+      {
+        "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+        "start_line": 195,
+        "end_line": 226
+      },
+      {
+        "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+        "start_line": 109,
+        "end_line": 124
+      }
+    ]
+  }
+]

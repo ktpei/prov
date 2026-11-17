@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ix="http://www.xbrl.org/2013/inlineXBRL"
+      xmlns:xbrli="http://www.xbrl.org/2003/instance"
+      xmlns:link="http://www.xbrl.org/2003/linkbase"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:s="urn:synthetic:finance" xmlns:alias="urn:synthetic:finance"
+      xmlns:iso4217="http://www.xbrl.org/2003/iso4217">
+  <head><title>Synthetic typed facts</title></head>
+  <body>
+    <div style="display:none"><ix:header>
+      <ix:references><link:schemaRef xlink:type="simple" xlink:href="synthetic.xsd"/></ix:references>
+      <ix:resources>
+        <xbrli:context id="instant">
+          <xbrli:entity><xbrli:identifier scheme="urn:example">synthetic</xbrli:identifier></xbrli:entity>
+          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>
+        </xbrli:context>
+        <xbrli:context id="duration">
+          <xbrli:entity><xbrli:identifier scheme="urn:example">synthetic</xbrli:identifier></xbrli:entity>
+          <xbrli:period><xbrli:startDate>2025-01-01</xbrli:startDate><xbrli:endDate>2025-12-31</xbrli:endDate></xbrli:period>
+        </xbrli:context>
+        <xbrli:unit id="dollars"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>
+        <xbrli:unit id="per-share"><xbrli:divide>
+          <xbrli:unitNumerator><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unitNumerator>
+          <xbrli:unitDenominator><xbrli:measure>xbrli:shares</xbrli:measure></xbrli:unitDenominator>
+        </xbrli:divide></xbrli:unit>
+      </ix:resources>
+    </ix:header></div>
+    <table id="facts">
+      <tr><th>Metric</th><th>Reported amount</th></tr>
+      <tr><td>Assets (thousands)</td><td id="cell-assets"><ix:nonFraction id="assets" name="s:Assets" contextRef="instant" unitRef="dollars" decimals="-3" scale="3" sign="-">12</ix:nonFraction></td></tr>
+      <tr><td>Revenue (millions)</td><td id="cell-revenue"><ix:nonFraction id="revenue" name="alias:Revenue" contextRef="duration" unitRef="dollars" decimals="-4" scale="6">1.25</ix:nonFraction></td></tr>
+      <tr><td>Earnings per share</td><td id="cell-eps"><ix:nonFraction id="eps" name="s:EarningsPerShare" contextRef="duration" unitRef="per-share" decimals="2">2.50</ix:nonFraction></td></tr>
+      <tr><td>Missing amount</td><td id="cell-missing"><ix:nonFraction id="missing" name="s:MissingAmount" contextRef="instant" unitRef="dollars" xsi:nil="true"/></td></tr>
+      <tr><td>Zero amount</td><td id="cell-zero"><ix:nonFraction id="zero" name="s:ZeroAmount" contextRef="instant" unitRef="dollars" decimals="0">0</ix:nonFraction></td></tr>
+    </table>
+  </body>
+</html>

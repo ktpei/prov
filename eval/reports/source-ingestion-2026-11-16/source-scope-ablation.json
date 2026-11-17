@@ -1,0 +1,300 @@
+{
+  "version": "source-scope-development-ablation-v1",
+  "type": "Exploratory development diagnostic after baseline inspection, not preregistered heldout result",
+  "fixed": {
+    "queries": "Original benchmark question only, no reformulation or gold evidence",
+    "retrieval": "bm25-v2",
+    "k": [
+      1,
+      3,
+      5
+    ],
+    "corpus": "same three pinned full documents",
+    "binding": "financebench-full-documents-v2"
+  },
+  "conditions": {
+    "selected_corpus": {
+      "report_sha256": "4390499ed1a23f04ca45f02223454ca70909a6a34b0a3148bfce746b9bb1c23a",
+      "prepared_sha256": "c5d1a1919261243c57b03324750c2b8111a63ceb3be3d8b2fde8e43cc3be3ac6",
+      "binding_sha256": "275c64b7b08bd205a55693222457d10edd50c26ab6ec44696eaa76994f317dca",
+      "summary": {
+        "top_1": {
+          "pooled_expected_page_recall": 0.25,
+          "macro_task_expected_page_recall": 0.3333333333333333,
+          "all_required_pages_task_rate": 0.3333333333333333
+        },
+        "top_3": {
+          "pooled_expected_page_recall": 0.5,
+          "macro_task_expected_page_recall": 0.6666666666666666,
+          "all_required_pages_task_rate": 0.6666666666666666
+        },
+        "top_5": {
+          "pooled_expected_page_recall": 0.5,
+          "macro_task_expected_page_recall": 0.6666666666666666,
+          "all_required_pages_task_rate": 0.6666666666666666
+        }
+      },
+      "tasks": [
+        {
+          "id": "financebench_id_06247",
+          "searched_source_ids": [
+            "NIKE_2023_10K",
+            "ULTABEAUTY_2023Q4_EARNINGS",
+            "WALMART_2018_10K"
+          ],
+          "retrieved_page_order": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                31
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                234
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                273
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                49
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                27
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financebench_id_01163",
+          "searched_source_ids": [
+            "NIKE_2023_10K",
+            "ULTABEAUTY_2023Q4_EARNINGS",
+            "WALMART_2018_10K"
+          ],
+          "retrieved_page_order": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                41
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                62
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                62
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                40
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                62
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financebench_id_00601",
+          "searched_source_ids": [
+            "NIKE_2023_10K",
+            "ULTABEAUTY_2023Q4_EARNINGS",
+            "WALMART_2018_10K"
+          ],
+          "retrieved_page_order": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                174
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                39
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                150
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "declared_document": {
+      "report_sha256": "7e63caba745916bd6b680721b04fa1f4d5626e95836f9114e93a50a585d6b3c9",
+      "prepared_sha256": "c5d1a1919261243c57b03324750c2b8111a63ceb3be3d8b2fde8e43cc3be3ac6",
+      "binding_sha256": "275c64b7b08bd205a55693222457d10edd50c26ab6ec44696eaa76994f317dca",
+      "summary": {
+        "top_1": {
+          "pooled_expected_page_recall": 0.5,
+          "macro_task_expected_page_recall": 0.6666666666666666,
+          "all_required_pages_task_rate": 0.6666666666666666
+        },
+        "top_3": {
+          "pooled_expected_page_recall": 0.5,
+          "macro_task_expected_page_recall": 0.6666666666666666,
+          "all_required_pages_task_rate": 0.6666666666666666
+        },
+        "top_5": {
+          "pooled_expected_page_recall": 0.5,
+          "macro_task_expected_page_recall": 0.6666666666666666,
+          "all_required_pages_task_rate": 0.6666666666666666
+        }
+      },
+      "tasks": [
+        {
+          "id": "financebench_id_06247",
+          "searched_source_ids": [
+            "WALMART_2018_10K"
+          ],
+          "retrieved_page_order": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                49
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                31
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                273
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                234
+              ]
+            },
+            {
+              "source_id": "WALMART_2018_10K",
+              "pages": [
+                174
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financebench_id_01163",
+          "searched_source_ids": [
+            "NIKE_2023_10K"
+          ],
+          "retrieved_page_order": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                62
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                62
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                69
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                48
+              ]
+            },
+            {
+              "source_id": "NIKE_2023_10K",
+              "pages": [
+                14
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financebench_id_00601",
+          "searched_source_ids": [
+            "ULTABEAUTY_2023Q4_EARNINGS"
+          ],
+          "retrieved_page_order": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                6
+              ]
+            },
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                6
+              ]
+            },
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "pages": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "conclusion": "Top-one annotated-page recall improved 1/4 to2/4; top-five remains2/4. Walmart misses both required pages under both scopes. No financial correctness claim."
+}

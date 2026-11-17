@@ -1,0 +1,176 @@
+{
+  "version": "external-pilot-2026-11-16-v1",
+  "mode": "live_development",
+  "aggregate_accounted_cost_usd": 0.0161622,
+  "authorized_remaining_after_pilot_usd": 0.5476339,
+  "batches": [
+    {
+      "name": "fineval-easy",
+      "condition": "model_only",
+      "status": "finished",
+      "selected_count": 3,
+      "passed_count": 3,
+      "pending_review_count": 0,
+      "accuracy": 1.0,
+      "accounted_cost_usd": 0.0008334000000000015,
+      "git_revision": "ff93a7faf9b3a5c182af5aa4886cc6f2efa57775",
+      "working_tree_dirty": false,
+      "submission_sha256": "8147cdaa6b9735319d88132d185bbd5da7e03aa3300b9409737331c885b79492",
+      "score_sha256": "97dd4279d1a12945ee5ecc882dc678aeeccdb1ea89a25fbfbb7fcd0c9de74c6c",
+      "local_submission": "runs/external-pilot-2026-11-16/results/fineval-easy/submission.json",
+      "local_score": "runs/external-pilot-2026-11-16/results/fineval-easy/score.json",
+      "tasks": [
+        {
+          "id": "sha256:7c4a2acccc7df098109f14cc44e0c1831b8d3fc36c1713bb26814c5e68c14644",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.0002555999999999999,
+          "cost_uncertain": false,
+          "input_sha256": "ecf541e4e79d26dc4574ca589fd4e53f9cd0b9845d853904359770ca152c068f"
+        },
+        {
+          "id": "sha256:fb2bb58a3e49a3d34b27dfb656d20a41a534fe06fc03659712a2ff6a164cf421",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.00034739999999999945,
+          "cost_uncertain": false,
+          "input_sha256": "f4d1e1b3aa5fe1ed44ff10ef63434f809d0516c0096d69abcdf7815d23acd9aa"
+        },
+        {
+          "id": "sha256:94da841c52dffa9319681bfb786f4a435b4ddee6f46a63912326b46d704f86c4",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.0002304000000000004,
+          "cost_uncertain": false,
+          "input_sha256": "b03aa51d164ae299dc51d082fccc517e46801c4a304dfcd579b66490802d13d7"
+        }
+      ]
+    },
+    {
+      "name": "fineval-challenge",
+      "condition": "model_only",
+      "status": "finished",
+      "selected_count": 2,
+      "passed_count": 2,
+      "pending_review_count": 0,
+      "accuracy": 1.0,
+      "accounted_cost_usd": 0.0020832000000000003,
+      "git_revision": "ff93a7faf9b3a5c182af5aa4886cc6f2efa57775",
+      "working_tree_dirty": false,
+      "submission_sha256": "8c693026bb43a7334945ad104fd62e68542a9baef6f7273ac04cd295660bc47e",
+      "score_sha256": "e0b38937cb0a22e0dd9a233b6cd8c2c569a21b39eb97379bc3139f1f2859fda1",
+      "local_submission": "runs/external-pilot-2026-11-16/results/fineval-challenge/submission.json",
+      "local_score": "runs/external-pilot-2026-11-16/results/fineval-challenge/score.json",
+      "tasks": [
+        {
+          "id": "sha256:34b7ffcd870bf49a7f1872cf91873b87e5fdcd21072588c8e3d64d2ddb065e7c",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.0013854000000000002,
+          "cost_uncertain": false,
+          "input_sha256": "172836f9f8b3b28a31e212bb6cc6a942c47816363c57ef489897af993376e70d"
+        },
+        {
+          "id": "sha256:fe4e69a76fbd683af2785aefc3825fab555ae3d3e8bd99c3861a75eeb9298858",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.0006978000000000002,
+          "cost_uncertain": false,
+          "input_sha256": "94221fd1a0b0064ffaa1eb8a30188baa88b66c0e442d527375b0bdf2dbbc8c76"
+        }
+      ]
+    },
+    {
+      "name": "finqa",
+      "condition": "supplied_context",
+      "status": "finished",
+      "selected_count": 3,
+      "passed_count": 2,
+      "pending_review_count": 0,
+      "accuracy": 0.6666666666666666,
+      "accounted_cost_usd": 0.0066995999999999965,
+      "git_revision": "ff93a7faf9b3a5c182af5aa4886cc6f2efa57775",
+      "working_tree_dirty": false,
+      "submission_sha256": "e50f9728e1ddb60f1ffe599cd4480f3d6fddba6b5757f45adcb5bda13bbc978e",
+      "score_sha256": "2018ae7d57aecc41525d1bd3911f7eaa8bc79a9d84990da0251e68cf247ed89f",
+      "local_submission": "runs/external-pilot-2026-11-16/results/finqa/submission.json",
+      "local_score": "runs/external-pilot-2026-11-16/results/finqa/score.json",
+      "tasks": [
+        {
+          "id": "MRO/2007/page_149.pdf-1",
+          "status": "failed",
+          "failure": "Model response did not complete: length",
+          "parse_status": null,
+          "accounted_cost_usd": 0.0052104,
+          "cost_uncertain": false,
+          "input_sha256": "9a867f468da30dc7da7995a8de9a6bd38edb526ed4caed64155642bdeb72e79a"
+        },
+        {
+          "id": "RSG/2015/page_142.pdf-1",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.0007638000000000002,
+          "cost_uncertain": false,
+          "input_sha256": "296c91998196f5ca12b7d38ccf89b4d480ad5af1a014d97b71c54d2fad405984"
+        },
+        {
+          "id": "AES/2002/page_46.pdf-1",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "parsed",
+          "accounted_cost_usd": 0.0007253999999999993,
+          "cost_uncertain": false,
+          "input_sha256": "3dfd1412bafcf7aad8a3c011c1044c30affc4d88398697acb22a31e735e275a1"
+        }
+      ]
+    },
+    {
+      "name": "financebench",
+      "condition": "evidence_supplied",
+      "status": "finished",
+      "selected_count": 2,
+      "passed_count": 0,
+      "pending_review_count": 2,
+      "accuracy": null,
+      "accounted_cost_usd": 0.006546000000000003,
+      "git_revision": "ff93a7faf9b3a5c182af5aa4886cc6f2efa57775",
+      "working_tree_dirty": false,
+      "submission_sha256": "94ebe71c0dea4db4e2ce6282df6d67827a038fbf47b983212cee8e6079a8dec1",
+      "score_sha256": "0ec82c60607bd4c2396471b18c9673645fa217e9b554b229641435037b6700a5",
+      "local_submission": "runs/external-pilot-2026-11-16/results/financebench/submission.json",
+      "local_score": "runs/external-pilot-2026-11-16/results/financebench/score.json",
+      "tasks": [
+        {
+          "id": "financebench_id_00591",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "text_for_semantic_review",
+          "accounted_cost_usd": 0.0035814,
+          "cost_uncertain": false,
+          "input_sha256": "a88a18862e688ec6bd506422cd8bdb65120a9f43c13b6b34fbfa770a945c5724"
+        },
+        {
+          "id": "financebench_id_00540",
+          "status": "completed",
+          "failure": null,
+          "parse_status": "text_for_semantic_review",
+          "accounted_cost_usd": 0.0029645999999999995,
+          "cost_uncertain": false,
+          "input_sha256": "3a95752b7f86cae30fd67eced89d7485f72cc3a2b7da2bab16d2893d4f38e02e"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Tiny development integration pilot, not official benchmark accuracy or heldout assessment.",
+    "FinanceBench semantic review is a coding-agent diagnostic, not human finance validation.",
+    "Raw third-party inputs and gold artifacts are retained locally, not redistributed.",
+    "Costs use conservative token rates, not provider invoice totals."
+  ]
+}

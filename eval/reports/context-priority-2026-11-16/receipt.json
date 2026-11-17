@@ -1,0 +1,31 @@
+{
+  "version": "context-priority-run-v1",
+  "protocol_sha256": "2495bab49979d58ae651fcf83314d0ba6dc484e342e4f79c8d114b85297277f5",
+  "status": "complete",
+  "baseline_sha256": "b4b9c26063f436d80e4760c5dc3d0a1f37778ec5ebe0cafaa364812a19037561",
+  "challenger_sha256": "0f1c46fabd2afaecb9987d4bc7985c5dbe841196a5810aa13147324adf0c81f8",
+  "paired": {
+    "top_1": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 3
+    },
+    "top_3": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 3
+    },
+    "top_5": {
+      "wins": 2,
+      "losses": 0,
+      "ties": 1
+    }
+  },
+  "implementation_commit": "2014ea3",
+  "freeze_commit": "6756e7a",
+  "summary_sha256": "8bf44dbf4b835a99fdb37af2882fe31c0dc0c1eff29b1e5f1cc8f1d61db34233",
+  "verification_read_calls": 30,
+  "verification_search_calls": 12,
+  "paid_model_calls": 0,
+  "production_defaults_changed": false
+}

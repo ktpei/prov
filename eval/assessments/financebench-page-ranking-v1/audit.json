@@ -1,0 +1,35 @@
+{
+  "version": "page-ranking-saved-artifact-audit-v1",
+  "status": "passed",
+  "reviewer": "independent coding-agent review",
+  "scope": "Saved artifact identities, counts, compatibility and arithmetic; no additional retrieval/read/grade replay performed by auditor.",
+  "protocol_sha256": "59f5e0855aaedbb07bb018c1f73f4c50629a7c84b930fc4a24e326e28a8bde00",
+  "summary_sha256": "b52e6d28d28b4747e85685a824ef2e7ca0e042de05101eb5af2beb531da57939",
+  "receipt_sha256": "e21a2df621bd379ffd35e2c8111d861c023a6981fd1e5f3f34f24b845dc908e0",
+  "grade_sha256": "3817c8358fb83b14757b79b1c684bcb81d658649cffe3aa270a40583a98893ef",
+  "verified": {
+    "frozen_file_bindings": 35,
+    "cases": 6,
+    "journals": 12,
+    "original_read_attempts": 60,
+    "failed_reads": 0,
+    "truncated_reads": 0,
+    "blocked_projections": 0,
+    "shared_windows_with_identical_responses": 28,
+    "historical_control_exact": true,
+    "context_character_accounting_exact": true,
+    "pool_complete": 2,
+    "control_top5_complete": 1,
+    "challenger_top5_complete": 0,
+    "top5_paired_each_policy": {
+      "wins": 0,
+      "losses": 1,
+      "ties": 5
+    }
+  },
+  "limitations": [
+    "Exact frozen-location coverage, not exhaustive semantic support or financial correctness.",
+    "3M alternative-evidence and metric ambiguity remain.",
+    "Public exposed development sample; no validation content opened."
+  ]
+}

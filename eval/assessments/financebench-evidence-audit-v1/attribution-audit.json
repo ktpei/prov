@@ -1,0 +1,17 @@
+{
+  "version": "masked-evidence-attribution-independent-audit-v1",
+  "reviewer": "/root/masked_packet_review",
+  "protocol_sha256": "7152e2c700093eaed7b8f71193217879a0810152f8e4248a40a01a6c24e55a07",
+  "result_sha256": "411c22b976635d90a5dab00165627850f767f5e25391a468723767a4745ec7c9",
+  "protocol_bindings_verified": 21,
+  "byte_identical_temp_reproduction": true,
+  "independent_retained_snippet_locator_conditions": 72,
+  "interpretation_measure_rows_checked": 384,
+  "complete_set_checks": 120,
+  "complete_sets": 5,
+  "interpretations_with_sets": 5,
+  "cases_with_sets": 2,
+  "covered_set_checks": 0,
+  "financial_sufficiency": "not_rejudged",
+  "result": "passed"
+}

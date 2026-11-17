@@ -1,0 +1,180 @@
+{
+  "version": "exposed-context-markup-inventory-v1",
+  "input_sha256": {
+    "eval/reports/table-template-2026-11-16/compatibility.json": "2957d1c3045fa86e8e5f40ef48c14ad60ceb79625c272722b69a52630c752286",
+    "eval/scripts/inspect_context_markup.py": "ccfafa9012e45ad8975ee430ed0b4e1dd0eb1ab1330b89697ae0ba7cfac2f6a1",
+    "provenance/table_structure.py": "4cd166fec9cfd34865ced4cd4cc9547a825dca424e7a3dee882238e008b6350f",
+    "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-filing.html": "a5152b82107a7a4c578a80931e1d00f5564cc7f2373ffbc77274f1ae1004361f",
+    "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-release.html": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+    "runs/native-html-v1-issuer-acquisition/old-dominion-2025-06-30-10q.html": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0",
+    "runs/native-html-v1-issuer-acquisition/old-dominion-2025-09-30-10q.html": "36189b5d8096fc1112d380c6ace04ef205c5ce79c14c42bf0ae302d23ca9a3ee"
+  },
+  "documents": [
+    {
+      "path": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-filing.html",
+      "original_sha256": "a5152b82107a7a4c578a80931e1d00f5564cc7f2373ffbc77274f1ae1004361f",
+      "lexical_colon_tag_counts": {
+        "ix:continuation": 42,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonfraction": 1016,
+        "ix:nonnumeric": 86,
+        "ix:references": 1,
+        "ix:resources": 1,
+        "link:schemaref": 1,
+        "us-gaap:revenueremainingperformanceobligationexpectedtimingofsatisfactionstartdateaxis.domain": 1,
+        "xbrldi:explicitmember": 610,
+        "xbrldi:typedmember": 1,
+        "xbrli:context": 326,
+        "xbrli:divide": 1,
+        "xbrli:enddate": 168,
+        "xbrli:entity": 326,
+        "xbrli:identifier": 326,
+        "xbrli:instant": 158,
+        "xbrli:measure": 9,
+        "xbrli:period": 326,
+        "xbrli:segment": 314,
+        "xbrli:startdate": 168,
+        "xbrli:unit": 8,
+        "xbrli:unitdenominator": 1,
+        "xbrli:unitnumerator": 1
+      },
+      "tables": {
+        "native-html-tables-v2": {
+          "status": "extracted",
+          "table_count": 55,
+          "cell_count": 8247,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        },
+        "native-html-tables-v3": {
+          "status": "extracted",
+          "table_count": 55,
+          "cell_count": 8247,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        }
+      }
+    },
+    {
+      "path": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-release.html",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "lexical_colon_tag_counts": {},
+      "tables": {
+        "native-html-tables-v2": {
+          "status": "extracted",
+          "table_count": 16,
+          "cell_count": 2682,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        },
+        "native-html-tables-v3": {
+          "status": "rejected",
+          "error": "Unsupported raw-text context for template-aware extraction"
+        }
+      }
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/old-dominion-2025-06-30-10q.html",
+      "original_sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0",
+      "lexical_colon_tag_counts": {
+        "ix:continuation": 6,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonfraction": 452,
+        "ix:nonnumeric": 52,
+        "ix:references": 1,
+        "ix:resources": 1,
+        "link:schemaref": 1,
+        "xbrldi:explicitmember": 67,
+        "xbrli:context": 71,
+        "xbrli:divide": 1,
+        "xbrli:enddate": 38,
+        "xbrli:entity": 71,
+        "xbrli:identifier": 71,
+        "xbrli:instant": 33,
+        "xbrli:measure": 6,
+        "xbrli:period": 71,
+        "xbrli:segment": 60,
+        "xbrli:startdate": 38,
+        "xbrli:unit": 5,
+        "xbrli:unitdenominator": 1,
+        "xbrli:unitnumerator": 1
+      },
+      "tables": {
+        "native-html-tables-v2": {
+          "status": "extracted",
+          "table_count": 24,
+          "cell_count": 4084,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        },
+        "native-html-tables-v3": {
+          "status": "extracted",
+          "table_count": 24,
+          "cell_count": 4084,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        }
+      }
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/old-dominion-2025-09-30-10q.html",
+      "original_sha256": "36189b5d8096fc1112d380c6ace04ef205c5ce79c14c42bf0ae302d23ca9a3ee",
+      "lexical_colon_tag_counts": {
+        "ix:continuation": 6,
+        "ix:header": 1,
+        "ix:hidden": 1,
+        "ix:nonfraction": 452,
+        "ix:nonnumeric": 52,
+        "ix:references": 1,
+        "ix:resources": 1,
+        "link:schemaref": 1,
+        "xbrldi:explicitmember": 67,
+        "xbrli:context": 71,
+        "xbrli:divide": 1,
+        "xbrli:enddate": 38,
+        "xbrli:entity": 71,
+        "xbrli:identifier": 71,
+        "xbrli:instant": 33,
+        "xbrli:measure": 6,
+        "xbrli:period": 71,
+        "xbrli:segment": 60,
+        "xbrli:startdate": 38,
+        "xbrli:unit": 5,
+        "xbrli:unitdenominator": 1,
+        "xbrli:unitnumerator": 1
+      },
+      "tables": {
+        "native-html-tables-v2": {
+          "status": "extracted",
+          "table_count": 24,
+          "cell_count": 4067,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        },
+        "native-html-tables-v3": {
+          "status": "extracted",
+          "table_count": 24,
+          "cell_count": 4067,
+          "th_count": 0,
+          "headers_attribute_count": 0,
+          "scope_counts": {}
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Descriptive development inspection, not a prospective benchmark or representative sample.",
+    "Colon-tag counts are lexical HTMLParser observations, not resolved namespaces, usable facts, visibility or XBRL validation.",
+    "Header counts describe extracted table cells only; absent markup does not mean absent visual headers.",
+    "All four source dispositions are retained; extraction rejection is not financial inaccuracy.",
+    "No new source acquisition, ranking, provider call or validation-content access."
+  ]
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xbrli="http://www.xbrl.org/2003/instance"
+           xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:s="urn:synthetic:finance"
+           targetNamespace="urn:synthetic:finance" elementFormDefault="qualified">
+  <xs:import namespace="http://www.xbrl.org/2003/instance"
+             schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+  <xs:import namespace="http://xbrl.org/2006/xbrldi" schemaLocation="http://www.xbrl.org/2006/xbrldi-2006.xsd"/>
+  <xs:element name="Assets" id="assets" type="xbrli:monetaryItemType"
+              substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true"/>
+  <xs:element name="Revenue" id="revenue" type="xbrli:monetaryItemType"
+              substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true"/>
+  <xs:element name="EarningsPerShare" id="eps" type="xbrli:decimalItemType"
+              substitutionGroup="xbrli:item" xbrli:periodType="duration" nillable="true"/>
+  <xs:element name="MissingAmount" id="missing" type="xbrli:monetaryItemType"
+              substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true"/>
+  <xs:element name="ZeroAmount" id="zero" type="xbrli:monetaryItemType"
+              substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true"/>
+<xs:element name="RegionAxis" id="region" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrldt:dimensionItem" xbrli:periodType="duration"/>
+<xs:element name="North" id="north" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+<xs:element name="South" id="south" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+<xs:element name="AccountAxis" id="account" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrldt:dimensionItem" xbrli:periodType="duration" xbrldt:typedDomainRef="#account-code"/>
+<xs:element name="AccountCode" id="account-code" type="xs:string"/>
+<xs:element name="Basis" id="basis" type="xs:string"/>
+</xs:schema>

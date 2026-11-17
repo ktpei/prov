@@ -1,0 +1,32 @@
+{
+  "version": "financebench-context-extraction-summary-v1",
+  "implementation_commit": "18125ca",
+  "freeze_commit": "2f5199b",
+  "receipt_sha256": "baae62b043bfa8853efeee88590df4c37a5b33168994053677420033a53620f6",
+  "selected_count": 6,
+  "extracted_count": 6,
+  "page_count": 981,
+  "emitted_line_count": 34904,
+  "warning_count": 0,
+  "empty_native_text_pages": {
+    "COSTCO_2021_10K": [
+      1
+    ],
+    "AMERICANWATERWORKS_2021_10K": [
+      151,
+      153,
+      155,
+      157
+    ]
+  },
+  "package_versions": {
+    "pypdf": "6.21.4",
+    "fonttools": null
+  },
+  "applied_reference_issue_ids": [],
+  "annotations_authored": false,
+  "retrieval_executed": false,
+  "text_completeness": "not_verified",
+  "native_line_count": 34899,
+  "empty_page_marker_count": 5
+}

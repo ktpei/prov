@@ -1,0 +1,1831 @@
+{
+  "version": "page-ranking-result-summary-v1",
+  "status": "complete_replayed_not_promoted",
+  "protocol_sha256": "59f5e0855aaedbb07bb018c1f73f4c50629a7c84b930fc4a24e326e28a8bde00",
+  "implementation_commit": "1e52d21",
+  "protocol_commit": "07b10e0",
+  "run_sha256": "ee877b389cbbfda4354387e73779f2e682a477e0a18ec3fd06963c975a6cd372",
+  "receipt_sha256": "e21a2df621bd379ffd35e2c8111d861c023a6981fd1e5f3f34f24b845dc908e0",
+  "telemetry_sha256": "2e1983555dd19a70a6d09465e2dd1eba192855c2839534bb59d191f293664d3b",
+  "grade_sha256": "3817c8358fb83b14757b79b1c684bcb81d658649cffe3aa270a40583a98893ef",
+  "selected_denominator": 6,
+  "mapped_denominator": 6,
+  "replay_verified": true,
+  "semantic_correctness": "not_measured",
+  "pool_25": [
+    {
+      "id": "financebench_id_04209",
+      "disposition": "mapped",
+      "candidate_count": 25,
+      "measure": "candidate_pool_parent_opportunity",
+      "complete": true,
+      "alternatives": [
+        {
+          "components_present": {
+            "balance_entity_and_statement": true,
+            "balance_scale": true,
+            "balance_date_columns": true,
+            "total_assets_label_and_value": true
+          },
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_04254",
+      "disposition": "mapped",
+      "candidate_count": 25,
+      "measure": "candidate_pool_parent_opportunity",
+      "complete": true,
+      "alternatives": [
+        {
+          "components_present": {
+            "operations_entity_and_statement": true,
+            "operations_scale": true,
+            "operations_period_columns": true,
+            "operating_income_label_and_value": true,
+            "cashflow_entity_and_statement": true,
+            "cashflow_scale": true,
+            "cashflow_period_columns": true,
+            "cashflow_depreciation_amortization_label_and_value": true
+          },
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00215",
+      "disposition": "mapped",
+      "candidate_count": 25,
+      "measure": "candidate_pool_parent_opportunity",
+      "complete": false,
+      "alternatives": [
+        {
+          "components_present": {
+            "balance_sheet_entity_and_scope": false,
+            "assets_date_and_units": false,
+            "fy2022_total_assets": false,
+            "revenue_period_and_units": true,
+            "fy2022_consolidated_operating_revenue": true
+          },
+          "complete": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_03473",
+      "disposition": "mapped",
+      "candidate_count": 25,
+      "measure": "candidate_pool_parent_opportunity",
+      "complete": false,
+      "alternatives": [
+        {
+          "components_present": {
+            "income_statement_entity_and_scope": false,
+            "income_period_and_units": false,
+            "fy2017_net_income_basis_and_amount": false,
+            "balance_sheet_entity_and_scope": false,
+            "assets_periods_and_units": false,
+            "fy2017_and_fy2016_total_assets": false
+          },
+          "complete": false
+        },
+        {
+          "components_present": {
+            "income_statement_entity_and_scope": false,
+            "income_period_and_units": false,
+            "fy2017_net_income_basis_and_amount": false,
+            "balance_sheet_entity_and_scope": false,
+            "assets_periods_and_units": false,
+            "fy2017_and_fy2016_total_assets": false
+          },
+          "complete": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01865",
+      "disposition": "mapped",
+      "candidate_count": 25,
+      "measure": "candidate_pool_parent_opportunity",
+      "complete": false,
+      "alternatives": [
+        {
+          "components_present": {
+            "segment_statement_scope_and_comparison_period": false,
+            "sales_change_year_and_metric_columns": false,
+            "other_segments_growth_comparison": false,
+            "consumer_growth_and_adjustments": false,
+            "company_growth_and_adjustments": false
+          },
+          "complete": false
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00711",
+      "disposition": "mapped",
+      "candidate_count": 25,
+      "measure": "candidate_pool_parent_opportunity",
+      "complete": false,
+      "alternatives": [
+        {
+          "components_present": {
+            "balance_entity_and_statement": false,
+            "inventory_dates_and_units": false,
+            "opening_and_closing_inventory": false,
+            "earnings_entity_and_statement": false,
+            "earnings_units_and_period_columns": false,
+            "cost_of_products_sold": false
+          },
+          "complete": false
+        }
+      ]
+    }
+  ],
+  "pool_complete_count": 2,
+  "operations": {
+    "shared_passage_scoring_passes": 6,
+    "shared_page_scoring_passes": 6,
+    "derived_search_responses": 12,
+    "eligible_passages_scored": 1715,
+    "physical_pages_scored": 981,
+    "replay_shared_passage_scoring_passes": 6,
+    "replay_shared_page_scoring_passes": 6
+  },
+  "paired": {
+    "production-newest-first": {
+      "top_1": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_3": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_5": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 5
+      }
+    },
+    "earlier-optional-results-first-v1": {
+      "top_1": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_3": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 6
+      },
+      "top_5": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 5
+      }
+    }
+  },
+  "branches": {
+    "control": {
+      "operations": {
+        "read_attempts": 30,
+        "replay_read_attempts": 30,
+        "failed_reads": 0,
+        "truncated_reads": 0
+      },
+      "delivery": {
+        "search": {
+          "parent_passage_opportunity": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 1
+          },
+          "returned_snippets": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 0
+          }
+        },
+        "read": {
+          "parent_passage_opportunity": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 1
+          },
+          "returned_snippets": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 1
+          }
+        }
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": true,
+                      "cashflow_scale": true,
+                      "cashflow_period_columns": true,
+                      "cashflow_depreciation_amortization_label_and_value": true
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": true,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_5": {
+            "complete_count": 1,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": true,
+                "single_hit_complete": true,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": true,
+                      "balance_scale": true,
+                      "balance_date_columns": true,
+                      "total_assets_label_and_value": true
+                    },
+                    "complete": true
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": true,
+                      "cashflow_scale": true,
+                      "cashflow_period_columns": true,
+                      "cashflow_depreciation_amortization_label_and_value": true
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_5": {
+            "complete_count": 1,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": true,
+                "single_hit_complete": true,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": true,
+                      "balance_scale": true,
+                      "balance_date_columns": true,
+                      "total_assets_label_and_value": true
+                    },
+                    "complete": true
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "search_output_characters": 32850,
+      "successful_read_output_characters": 250316
+    },
+    "challenger": {
+      "operations": {
+        "read_attempts": 30,
+        "replay_read_attempts": 30,
+        "failed_reads": 0,
+        "truncated_reads": 0
+      },
+      "delivery": {
+        "search": {
+          "parent_passage_opportunity": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 0
+          },
+          "returned_snippets": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 0
+          }
+        },
+        "read": {
+          "parent_passage_opportunity": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 0
+          },
+          "returned_snippets": {
+            "top_1": 0,
+            "top_3": 0,
+            "top_5": 0
+          }
+        }
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": true,
+                      "cashflow_scale": true,
+                      "cashflow_period_columns": true,
+                      "cashflow_depreciation_amortization_label_and_value": true
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": true,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_5": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_3": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": true,
+                      "cashflow_scale": true,
+                      "cashflow_period_columns": true,
+                      "cashflow_depreciation_amortization_label_and_value": true
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": false,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          },
+          "top_5": {
+            "complete_count": 0,
+            "blocked_count": 0,
+            "cases": [
+              {
+                "id": "financebench_id_04209",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "balance_scale": false,
+                      "balance_date_columns": false,
+                      "total_assets_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_04254",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "operations_entity_and_statement": false,
+                      "operations_scale": false,
+                      "operations_period_columns": false,
+                      "operating_income_label_and_value": false,
+                      "cashflow_entity_and_statement": false,
+                      "cashflow_scale": false,
+                      "cashflow_period_columns": false,
+                      "cashflow_depreciation_amortization_label_and_value": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00215",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_date_and_units": false,
+                      "fy2022_total_assets": false,
+                      "revenue_period_and_units": true,
+                      "fy2022_consolidated_operating_revenue": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_03473",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  },
+                  {
+                    "components_present": {
+                      "income_statement_entity_and_scope": false,
+                      "income_period_and_units": false,
+                      "fy2017_net_income_basis_and_amount": false,
+                      "balance_sheet_entity_and_scope": false,
+                      "assets_periods_and_units": false,
+                      "fy2017_and_fy2016_total_assets": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_01865",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "segment_statement_scope_and_comparison_period": false,
+                      "sales_change_year_and_metric_columns": false,
+                      "other_segments_growth_comparison": false,
+                      "consumer_growth_and_adjustments": false,
+                      "company_growth_and_adjustments": false
+                    },
+                    "complete": false
+                  }
+                ]
+              },
+              {
+                "id": "financebench_id_00711",
+                "complete": false,
+                "single_hit_complete": false,
+                "alternatives": [
+                  {
+                    "components_present": {
+                      "balance_entity_and_statement": false,
+                      "inventory_dates_and_units": false,
+                      "opening_and_closing_inventory": false,
+                      "earnings_entity_and_statement": false,
+                      "earnings_units_and_period_columns": false,
+                      "cost_of_products_sold": false
+                    },
+                    "complete": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "search_output_characters": 32689,
+      "successful_read_output_characters": 245094
+    }
+  },
+  "changed_hit_sets": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "common_reads": 4,
+      "control_only": [
+        [
+          "COSTCO_2021_10K",
+          1185,
+          1216
+        ]
+      ],
+      "challenger_only": [
+        [
+          "COSTCO_2021_10K",
+          1484,
+          1497
+        ]
+      ]
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "common_reads": 4,
+      "control_only": [
+        [
+          "AMERICANWATERWORKS_2021_10K",
+          4646,
+          4677
+        ]
+      ],
+      "challenger_only": [
+        [
+          "AMERICANWATERWORKS_2021_10K",
+          2243,
+          2274
+        ]
+      ]
+    },
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "common_reads": 5,
+      "control_only": [],
+      "challenger_only": []
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "common_reads": 5,
+      "control_only": [],
+      "challenger_only": []
+    },
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "common_reads": 5,
+      "control_only": [],
+      "challenger_only": []
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "common_reads": 5,
+      "control_only": [],
+      "challenger_only": []
+    }
+  ],
+  "timing_seconds": {
+    "shared_ranking": 0.3021850837394595,
+    "reads": {
+      "control": 0.5969341255258769,
+      "challenger": 0.5911815839353949
+    }
+  },
+  "paid_provider_calls": 0,
+  "validation_content_opened": false
+}

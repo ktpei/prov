@@ -1,0 +1,15 @@
+{
+  "version": "blinded-interpretation-preparation-v1",
+  "inputs": {
+    "inputs": "72b290d243e917b232e91114217f3997cf444a4e000c57f9b433f1d28072556f",
+    "builder": "814ea7e3ba0ac125ed25dd87ced85a6d2b9d586799c42ce99dd1f063834268b7",
+    "plan": "d76a02e2d64c398d05a58f56c9686b7dc03c5fbc9fd5b41b54ece4c79557abeb",
+    "instructions": "975a7ffd681da5ff4718e971b652458079f6642360abd08f61fda6ee4b6cc9b3"
+  },
+  "outputs": {
+    "questions.json": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+    "custodian.json": "2890083bfe2fde72e42279302ac620147fb7b1b7ccc5512c0043cd545201486d"
+  },
+  "cases": 6,
+  "reference_or_retrieval_fields_in_reviewer_packet": false
+}

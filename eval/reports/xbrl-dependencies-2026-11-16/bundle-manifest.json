@@ -1,0 +1,107 @@
+{
+  "entrypoint": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm",
+  "bundle_sha256": "ade3c023038770e773e0bc0f891df772b8b397897d115384335a6df072deb51f",
+  "documents": {
+    "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.xsd": {
+      "member": "bundle/documents/36a992b6fea7bc0e1648a0971ed0d7eafdc705edfa0930552086a4d87f77f08e.xml",
+      "sha256": "36a992b6fea7bc0e1648a0971ed0d7eafdc705edfa0930552086a4d87f77f08e"
+    },
+    "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": {
+      "member": "bundle/documents/5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827.xml",
+      "sha256": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827"
+    },
+    "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": {
+      "member": "bundle/documents/f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca.xml",
+      "sha256": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca"
+    },
+    "http://www.xbrl.org/2005/xbrldt-2005.xsd": {
+      "member": "bundle/documents/caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7.xml",
+      "sha256": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7"
+    },
+    "https://xbrl.sec.gov/ecd/2025/ecd-2025.xsd": {
+      "member": "bundle/documents/730691096fe90e516b6434594e7c050bcd71458b0823be01e4f121267f2bfe1d.xml",
+      "sha256": "730691096fe90e516b6434594e7c050bcd71458b0823be01e4f121267f2bfe1d"
+    },
+    "https://xbrl.fasb.org/us-gaap/2025/elts/us-gaap-2025.xsd": {
+      "member": "bundle/documents/4639263ec38aaa5d531cb7d0afb33f9582c2d602fb4623d4921e47e365b6ac9f.xml",
+      "sha256": "4639263ec38aaa5d531cb7d0afb33f9582c2d602fb4623d4921e47e365b6ac9f"
+    },
+    "https://www.xbrl.org/2020/extensible-enumerations-2.0.xsd": {
+      "member": "bundle/documents/17a021e3e3fd5ca2ff0cde05988c78f12a6cadd71077347e0ae4376a78b586e8.xml",
+      "sha256": "17a021e3e3fd5ca2ff0cde05988c78f12a6cadd71077347e0ae4376a78b586e8"
+    },
+    "https://www.xbrl.org/dtr/type/2024-01-31/types.xsd": {
+      "member": "bundle/documents/1fdffdb8629c8de20e33d47a0ff1fbdd84abea44f9e8c36e57a3c9e132c9ca35.xml",
+      "sha256": "1fdffdb8629c8de20e33d47a0ff1fbdd84abea44f9e8c36e57a3c9e132c9ca35"
+    },
+    "https://xbrl.fasb.org/srt/2025/elts/srt-2025.xsd": {
+      "member": "bundle/documents/ac913af701a6cb5b15c6fff85383270d6ab65c86b3da0f6bcef389cd9a23235a.xml",
+      "sha256": "ac913af701a6cb5b15c6fff85383270d6ab65c86b3da0f6bcef389cd9a23235a"
+    },
+    "https://xbrl.sec.gov/ecd/2025/ecd-sub-2025.xsd": {
+      "member": "bundle/documents/c1bf4bda50c4ec7b6e9973880245309f3c5366e6bea604e534c82d1aecfac88c.xml",
+      "sha256": "c1bf4bda50c4ec7b6e9973880245309f3c5366e6bea604e534c82d1aecfac88c"
+    },
+    "https://xbrl.sec.gov/dei/2025/dei-2025.xsd": {
+      "member": "bundle/documents/d6f84278744794000dea74d93eb49bf19483271d037a6b65c53697bc0caa18fe.xml",
+      "sha256": "d6f84278744794000dea74d93eb49bf19483271d037a6b65c53697bc0caa18fe"
+    },
+    "https://www.xbrl.org/2023/calculation-1.1.xsd": {
+      "member": "bundle/documents/a41557cdbf0d05f8b726ebe07865042696ae590477bfb80fb4ffac9c22d3cfe8.xml",
+      "sha256": "a41557cdbf0d05f8b726ebe07865042696ae590477bfb80fb4ffac9c22d3cfe8"
+    },
+    "http://www.xbrl.org/lrr/arcrole/esma-arcrole-2018-11-21.xsd": {
+      "member": "bundle/documents/52640b1d3568f6fd497e9037abc1734612a30037e1c38fa89447a8878632aceb.xml",
+      "sha256": "52640b1d3568f6fd497e9037abc1734612a30037e1c38fa89447a8878632aceb"
+    },
+    "https://xbrl.fasb.org/srt/2025/elts/srt-roles-2025.xsd": {
+      "member": "bundle/documents/db485cc9353e3bbb11db16f3cd95f5906c5cbeecfa328c2be06040314c556a4e.xml",
+      "sha256": "db485cc9353e3bbb11db16f3cd95f5906c5cbeecfa328c2be06040314c556a4e"
+    },
+    "http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd": {
+      "member": "bundle/documents/b6b3fdd3bb93dad157f13586b5b9f14998b4940875c78af3f29d28116cc0092a.xml",
+      "sha256": "b6b3fdd3bb93dad157f13586b5b9f14998b4940875c78af3f29d28116cc0092a"
+    },
+    "http://www.xbrl.org/2003/xl-2003-12-31.xsd": {
+      "member": "bundle/documents/e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818.xml",
+      "sha256": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818"
+    },
+    "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": {
+      "member": "bundle/documents/5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971.xml",
+      "sha256": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971"
+    },
+    "http://www.xbrl.org/2006/ref-2006-02-27.xsd": {
+      "member": "bundle/documents/fae0144a41edf741c3b74c866988f64d24714dba4ca822258dea8b490b7904b7.xml",
+      "sha256": "fae0144a41edf741c3b74c866988f64d24714dba4ca822258dea8b490b7904b7"
+    },
+    "https://xbrl.fasb.org/us-gaap/2025/elts/us-types-2025.xsd": {
+      "member": "bundle/documents/fd4fe8b98867fce2c54735b9f9fe71275f491aeee4bd01e506cb194775a2673b.xml",
+      "sha256": "fd4fe8b98867fce2c54735b9f9fe71275f491aeee4bd01e506cb194775a2673b"
+    },
+    "https://xbrl.fasb.org/srt/2025/elts/srt-types-2025.xsd": {
+      "member": "bundle/documents/7c1d7b6e0c7595c3c3fba42d327be55acaf3ba0c4df9ebcd1a132ab601dfb144.xml",
+      "sha256": "7c1d7b6e0c7595c3c3fba42d327be55acaf3ba0c4df9ebcd1a132ab601dfb144"
+    },
+    "https://xbrl.sec.gov/country/2025/country-2025.xsd": {
+      "member": "bundle/documents/dad858d60293b4a7d89934a33a3950950a3b0066af7998c3ad6570399cc80599.xml",
+      "sha256": "dad858d60293b4a7d89934a33a3950950a3b0066af7998c3ad6570399cc80599"
+    },
+    "https://xbrl.fasb.org/us-gaap/2025/elts/us-roles-2025.xsd": {
+      "member": "bundle/documents/5d3c7df850d5b5b753f99007b3326f2273ae556080a8831f5ac113ee031110f2.xml",
+      "sha256": "5d3c7df850d5b5b753f99007b3326f2273ae556080a8831f5ac113ee031110f2"
+    },
+    "https://xbrl.sec.gov/stpr/2025/stpr-2025.xsd": {
+      "member": "bundle/documents/f72b24f3a5003087e8692545ffbf92545e84bf26acb160fcb5f1b5e9a59a5461.xml",
+      "sha256": "f72b24f3a5003087e8692545ffbf92545e84bf26acb160fcb5f1b5e9a59a5461"
+    },
+    "https://www.xbrl.org/dtr/type/2020-01-21/types.xsd": {
+      "member": "bundle/documents/a62f1f3635bc6b6cddd1422ab2c9ba00ebbe73cefc3500e207fa0e9c12ee0293.xml",
+      "sha256": "a62f1f3635bc6b6cddd1422ab2c9ba00ebbe73cefc3500e207fa0e9c12ee0293"
+    },
+    "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm": {
+      "member": "bundle/filing/odfl-20250630.htm",
+      "sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0"
+    }
+  },
+  "acquisition_receipt_sha256": "44dd4f53cbcb187310c6a91dcfa147a4baa49b07df3f99d97eeaafe259f28721"
+}

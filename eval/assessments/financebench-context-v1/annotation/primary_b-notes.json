@@ -1,0 +1,314 @@
+{
+  "version": "primary-evidence-annotation-notes-v1",
+  "annotator_role": "independent coding-agent primary annotation; no human finance adjudication",
+  "outcome_blind": true,
+  "retrieval_search_read_retention_results_accessed": false,
+  "other_cases_inspected": false,
+  "input_bindings": {
+    "preparation_plan_path": "/Users/kevinpei/provenanceXL/eval/assessments/financebench-context-v1/preparation-plan.md",
+    "preparation_plan_sha256": "361f80ce6cf1074e90b2469c016d12e1eb2d95d23762b7685713f1a61f20c851",
+    "prepared_tasks_sha256": "2b05a8d6bbeeaaa807e8ea1437d81b84ca70bb94d84ac563b73c9c9b8ff52a09",
+    "corpus_manifest_sha256": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4",
+    "corpus_binding_sha256": "a2bedcdcc91728ae23626aa5dc25c5e5d9521172bb1253e956c90965594b1286",
+    "selected_task_canonical_sha256": {
+      "financebench_id_00215": "d7c1f6333d698be7fae1d1a75c8fb0fc8cbfd3e0d3e51ae75cd9f1a97f74b43b",
+      "financebench_id_03473": "0c3031a33a74cbccd4dc46a4f1e0bdd42f6797eeeb86ae1395ed412b07bcc86b"
+    }
+  },
+  "renderer": {
+    "tool": "pdftoppm",
+    "version": "pdftoppm version 26.02.0",
+    "arguments": [
+      "-f",
+      "PHYSICAL_PAGE",
+      "-l",
+      "PHYSICAL_PAGE",
+      "-r",
+      "150",
+      "-singlefile",
+      "-png"
+    ],
+    "full_page_inspection": true
+  },
+  "scope": [
+    {
+      "source_id": "VERIZON_2022_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/VERIZON_2022_10K/originals/VERIZON_2022_10K.pdf",
+      "original_sha256": "403d7346e8a059472863d1789527f16e5127a61c2f6c4429012e6227f27576d7",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/VERIZON_2022_10K/VERIZON_2022_10K.txt",
+      "text_sha256": "4353c2de4f08e362f256df5b37cbd98c39ded394eb2b41d485cc5ed09cd311f9",
+      "pinned_source_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/VERIZON_2022_10K.pdf",
+      "original_metadata_url": "https://www.verizon.com/about/sites/default/files/2022-Annual-Report-on-Form-10K.pdf",
+      "physical_pages_authorized_and_inspected": [
+        23,
+        56
+      ],
+      "adjacent_pages_inspected": [],
+      "scope_reason": "Both supplied evidence pages contain the complete operand rows and their period/unit/entity labels; no adjacent page needed.",
+      "renders": [
+        {
+          "physical_page": 23,
+          "printed_page": 23,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/VERIZON_2022_10K-physical-23.png",
+          "sha256": "fd30535b68bf5d9587f55c63c411c3eb31cdc2e00791855952c3d9de16f959bb",
+          "dpi": 150,
+          "complete_page_visually_inspected": true
+        },
+        {
+          "physical_page": 56,
+          "printed_page": 56,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/VERIZON_2022_10K-physical-56.png",
+          "sha256": "826504add17874a4dcf239ae9f6268910f8ee3f69f4a30a80e58bba4f37fceab",
+          "dpi": 150,
+          "complete_page_visually_inspected": true
+        }
+      ],
+      "extraction_parser": "pypdf-layout"
+    },
+    {
+      "source_id": "COCACOLA_2017_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COCACOLA_2017_10K/originals/COCACOLA_2017_10K.pdf",
+      "original_sha256": "b57c75cf20916904f31c6aa7644d6c110f019adf7c76782c7d0ede7b95c65ac1",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COCACOLA_2017_10K/COCACOLA_2017_10K.txt",
+      "text_sha256": "78bd6ffb9cd043b54d25bf5dd8062c7614d1bc4bb0a13a10a638c67b64b183d5",
+      "pinned_source_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/COCACOLA_2017_10K.pdf",
+      "original_metadata_url": "https://investors.coca-colacompany.com/filings-reports/annual-filings-10-k/content/0000021344-18-000008/0000021344-18-000008.pdf",
+      "physical_pages_authorized_and_inspected": [
+        74,
+        76
+      ],
+      "adjacent_pages_inspected": [],
+      "scope_reason": "Both supplied evidence pages contain the complete operand rows and their period/unit/entity labels; no adjacent page needed.",
+      "renders": [
+        {
+          "physical_page": 74,
+          "printed_page": 72,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/COCACOLA_2017_10K-physical-74.png",
+          "sha256": "13431ddce7310e228c2838124f0da197cb7881a918e294ac67dcac26e5fb5587",
+          "dpi": 150,
+          "complete_page_visually_inspected": true
+        },
+        {
+          "physical_page": 76,
+          "printed_page": 74,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/COCACOLA_2017_10K-physical-76.png",
+          "sha256": "ae8e80aca00ff257913e5d1d3a92057f0983139ca5ea061f43605b4ad3d75066",
+          "dpi": 150,
+          "complete_page_visually_inspected": true
+        }
+      ],
+      "extraction_parser": "pypdf-layout"
+    }
+  ],
+  "component_line_bindings": {
+    "financebench_id_00215": [
+      {
+        "start_line": 1032,
+        "end_line": 1032,
+        "physical_pages": [
+          23
+        ],
+        "slice_sha256": "fbf405c87d9298371cc31373d1e7e1da09242c5b8eee309549ef968ce8291acb"
+      },
+      {
+        "start_line": 1034,
+        "end_line": 1034,
+        "physical_pages": [
+          23
+        ],
+        "slice_sha256": "e68d2174074b4513d7564ab0d05aad3e373c59c4cb0310d12ec9a52c7449e621"
+      },
+      {
+        "start_line": 1040,
+        "end_line": 1040,
+        "physical_pages": [
+          23
+        ],
+        "slice_sha256": "e0fa950144decb39e9e9b943b66aca39bcbd955e2420ceaedef85cc3c3b3d14e"
+      },
+      {
+        "start_line": 2532,
+        "end_line": 2533,
+        "physical_pages": [
+          56
+        ],
+        "slice_sha256": "d2c217139d1c60d72d40de3470411b626cd35d439b7316b08a7fdb6933a42932"
+      },
+      {
+        "start_line": 2534,
+        "end_line": 2535,
+        "physical_pages": [
+          56
+        ],
+        "slice_sha256": "86c35df2201614d1dd7d78911e548a5ed640a7e4bcfbb3be3dbd01c1df3005d8"
+      },
+      {
+        "start_line": 2554,
+        "end_line": 2554,
+        "physical_pages": [
+          56
+        ],
+        "slice_sha256": "6cb9e7b68ccdbbbce790a20cd137bbf37e2ea9e2dde9acd99daaaf0dc2ca3579"
+      }
+    ],
+    "financebench_id_03473": [
+      {
+        "start_line": 2802,
+        "end_line": 2803,
+        "physical_pages": [
+          74
+        ],
+        "slice_sha256": "0597ba33fbd993b65f5c876a2eb2fd56bba7c8747a27565238a8a67fd8b047d7"
+      },
+      {
+        "start_line": 2804,
+        "end_line": 2805,
+        "physical_pages": [
+          74
+        ],
+        "slice_sha256": "b6be230fa2ed600f1343f164985ad67307c75f0923a5e8b3318f12ef911789df"
+      },
+      {
+        "start_line": 2820,
+        "end_line": 2820,
+        "physical_pages": [
+          74
+        ],
+        "slice_sha256": "8238c799b1e162ef5fbb4f7ba0e91759101265ed95a51a221ce3bad0bf0a13ff"
+      },
+      {
+        "start_line": 2822,
+        "end_line": 2823,
+        "physical_pages": [
+          74
+        ],
+        "slice_sha256": "08ec55c30cf02c572f00f40c51c5978bb150ab2dcbb60b0dd1a79f4bf01600f5"
+      },
+      {
+        "start_line": 2858,
+        "end_line": 2859,
+        "physical_pages": [
+          76
+        ],
+        "slice_sha256": "557e82528298066ac4178063a5e378dc650b16150461bade9ec5665ae448a075"
+      },
+      {
+        "start_line": 2860,
+        "end_line": 2861,
+        "physical_pages": [
+          76
+        ],
+        "slice_sha256": "701a914d3c361a6fceb4b47ddc0fbe8a408fabede8a26538ac0870e417901074"
+      },
+      {
+        "start_line": 2882,
+        "end_line": 2882,
+        "physical_pages": [
+          76
+        ],
+        "slice_sha256": "30b2e43ba96476f05a44cbce3ba499a5207c03c3aaccd719ffe487097fb8c42e"
+      }
+    ]
+  },
+  "case_notes": [
+    {
+      "id": "financebench_id_00215",
+      "reference_assessment": "Arithmetic consistent with source operands; qualitative classification requires an unstated convention/threshold. No incorrect numerical reference established.",
+      "calculations": [
+        {
+          "method": "year-end total assets divided by annual consolidated operating revenue",
+          "numerator_million_usd": "379680",
+          "denominator_million_usd": "136835",
+          "ratio": "2.774728687835714546716848759",
+          "interpretation": "About 2.77 dollars of year-end assets per dollar of annual revenue under the reference convention."
+        }
+      ],
+      "reference_issues": [
+        {
+          "category": "metric_definition_and_qualitative_threshold_underspecified",
+          "detail": "Question does not define capital intensity or a quantitative threshold. Reference uses closing total assets / annual revenue. Those inputs are supported, but no universal classification cutoff is established on the inspected pages; do not treat complete line coverage as validation of the yes/no conclusion."
+        }
+      ],
+      "assumptions": [
+        "Use December 31, 2022 total assets, not average assets, matching the reference justification.",
+        "Use full-year consolidated operating revenue; both operands are USD millions.",
+        "Only a location mapping for the reference calculation is provided, not an exhaustive enumeration of every qualitative or alternative capital-intensity argument."
+      ],
+      "visual_vs_native": [
+        "Physical56/printed56 visually confirms total assets 379680 and 366596 with 2022/2021 headers; native L2532-L2554 preserves the required scope, units and 2022 operand.",
+        "Physical23/printed23 visually confirms annual revenues 136835 (2022), 133613 (2021). Native L1032-L1042 interleave the table with nearby network narrative/section heading. L1032 still contains dollars-in-millions, L1034 contains year-ended and 2022/2021 column labels, and L1040 contains the correct labeled consolidated row.",
+        "No sign/number/unit loss observed in the required spans. Mapping whole native lines necessarily includes collateral prose; line coverage alone cannot establish column association or restore table geometry."
+      ],
+      "nonrequired_context": [
+        "The inspected page23 also reports wireless/fiber investment and FY2022 capital expenditure23.1 billion, including6.2 billion C-Band, at L1010-L1013. This corroborates capital investment but is not a required operand of the reference assets/revenue calculation.",
+        "Generic notes cross-references and unrelated balance-sheet rows are not required; no material qualification attached to the selected total-assets or revenue rows was found on the inspected pages."
+      ]
+    },
+    {
+      "id": "financebench_id_03473",
+      "reference_assessment": "Reference explicitly uses net income attributable to shareowners1248. The prompt itself says net income without selecting this versus consolidated1283. Both source-supported ratios round to0.01 as an unscaled decimal; the ambiguity is retained.",
+      "calculations": [
+        {
+          "method": "arithmetic mean of closing total assets2017 and2016",
+          "values_million": "87896,87270",
+          "average_million": "87583"
+        },
+        {
+          "method": "reference shareowner-income basis",
+          "net_income_million": "1248",
+          "ratio": "0.01424934062546384572348515123",
+          "two_decimal_ratio": "0.01",
+          "percentage": "1.424934062546384572348515123"
+        },
+        {
+          "method": "alternative consolidated-income basis",
+          "net_income_million": "1283",
+          "ratio": "0.01464896155646643755066622518",
+          "two_decimal_ratio": "0.01",
+          "percentage": "1.464896155646643755066622518"
+        }
+      ],
+      "reference_issues": [
+        {
+          "category": "net_income_basis_and_ratio_display_convention",
+          "detail": "Consolidated net income1283 includes35 attributable to noncontrolling interests; shareowner income1248 is the explicit reference basis. The question leaves this choice implicit. Gold0.01 is a decimal ratio, not a request to return1.42 or1.46 percent. No reference overwrite or accuracy score is authorized."
+        }
+      ],
+      "assumptions": [
+        "FY2017 is year ended December31,2017. Assets are closing December31,2017 and2016 balances.",
+        "Net-income and asset amounts are in millions; units cancel.",
+        "The formula is supplied by the question and is not a source-line component.",
+        "Two alternatives share the same period/unit/entity and asset roles; neither may borrow its numerator from the other alternative."
+      ],
+      "visual_vs_native": [
+        "Physical74/printed72 confirms shareowner-income row spans two label lines; native L2822-L2823 preserves its full label and1248. L2820 separately preserves consolidated net income1283; L2821 shows35 noncontrolling interest but is not needed when each chosen numerator is already explicitly labeled.",
+        "Physical76/printed74 confirms total assets87896 and87270 beneath2017/2016 columns; native L2858-L2861 andL2882 preserve entity/scope/date/units/operands.",
+        "Relevant values are positive and legible; no numeric/sign/unit omission identified. The source EPS footnotes apply to per-share measures and are not relevant to this ROA numerator."
+      ],
+      "alternative_definitions": [
+        {
+          "index": 0,
+          "basis": "net income attributable to company shareowners; reference convention",
+          "numerator_span": [
+            2822,
+            2823
+          ]
+        },
+        {
+          "index": 1,
+          "basis": "consolidated net income; reasonable interpretation of unspecified net income",
+          "numerator_span": [
+            2820,
+            2820
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Mapped means exact nonempty native source locations identified, not semantic or numerical answer validation.",
+    "Primary annotations require independent review before packet freeze.",
+    "No retrieval, read-policy, or context-retention outputs were consulted.",
+    "No new policy scores were computed and original benchmark references remain unchanged."
+  ]
+}

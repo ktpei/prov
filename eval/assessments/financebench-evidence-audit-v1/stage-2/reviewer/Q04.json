@@ -1,0 +1,2409 @@
+{
+  "stage": "masked_evidence_review",
+  "case_id": "Q04",
+  "question": "If we exclude the impact of M&A, which segment has dragged down 3M's overall growth in 2022?",
+  "source": {
+    "id": "3M_2022_10K",
+    "title": "3M_2022_10K",
+    "company": "3M",
+    "url": "https://investors.3m.com/financials/sec-filings/content/0000066740-23-000014/0000066740-23-000014.pdf",
+    "sha256": "1bf21b6df7f23f2031f41fdfd4349c1f22c0811585e5eafb72530d03f720c7c6",
+    "original_sha256": "d5cf549543a24b04228fd2af979ff2ca94cf64fb008a789340cb9117fbcfde5d"
+  },
+  "interpretations": [
+    {
+      "id": "I01",
+      "description": "Identify segment(s) with negative absolute contribution to company sales growth on a M&A-only adjusted basis.",
+      "assumptions": [
+        "Growth is sales growth for full-year 2022 versus the preceding full year.",
+        "Use a comparable segment reporting structure across the two periods.",
+        "Exclude acquisitions and divestitures; retain currency and other non-M&A effects unless reclassified explicitly.",
+        "Drag means contraction that contributes negatively to overall sales change; a negative segment rate alone needs a valid positive-base aggregation link."
+      ],
+      "unresolved_ambiguities": [
+        "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+        "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+        "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+        "Contraction is not interchangeable with underperforming the aggregate or being the largest adverse contributor.",
+        "M&A-only adjustment is not automatically currency-neutral or organic."
+      ],
+      "required_facts": [
+        {
+          "id": "R01",
+          "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+          "basis": "explicit_assumption",
+          "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+        },
+        {
+          "id": "R02",
+          "description": "Comparable segment sales growth and identified acquisition/divestiture effects or an explicitly equivalent growth measure excluding those effects.",
+          "basis": "explicit_assumption",
+          "rationale": "This establishes the selected adjustment basis without substituting another convention."
+        },
+        {
+          "id": "R03",
+          "description": "A negative adjusted segment contribution, or negative adjusted growth together with a positive comparable base and aggregation relationship to company sales change.",
+          "basis": "explicit_assumption",
+          "rationale": "This supports the claimed direction of drag; exact weights and an independently reported company rate are not mandatory if the sign and relationship are otherwise established."
+        }
+      ]
+    },
+    {
+      "id": "I02",
+      "description": "Identify segment(s) with negative absolute contribution to company sales growth on a reported organic basis.",
+      "assumptions": [
+        "Growth is sales growth for full-year 2022 versus the preceding full year.",
+        "Use a comparable segment reporting structure across the two periods.",
+        "Excluding M&A is explicitly interpreted as shorthand for a reported organic sales-growth definition, including any additional exclusions it actually specifies.",
+        "Drag means contraction that contributes negatively to overall sales change; a negative segment rate alone needs a valid positive-base aggregation link."
+      ],
+      "unresolved_ambiguities": [
+        "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+        "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+        "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+        "Contraction is not interchangeable with underperforming the aggregate or being the largest adverse contributor.",
+        "Organic treatment may remove currency or other effects beyond M&A and can change identification."
+      ],
+      "required_facts": [
+        {
+          "id": "R04",
+          "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+          "basis": "explicit_assumption",
+          "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+        },
+        {
+          "id": "R05",
+          "description": "The exact organic-growth definition and comparable segment growth rates on that basis.",
+          "basis": "explicit_assumption",
+          "rationale": "This establishes the selected adjustment basis without substituting another convention."
+        },
+        {
+          "id": "R06",
+          "description": "A negative adjusted segment contribution, or negative adjusted growth together with a positive comparable base and aggregation relationship to company sales change.",
+          "basis": "explicit_assumption",
+          "rationale": "This supports the claimed direction of drag; exact weights and an independently reported company rate are not mandatory if the sign and relationship are otherwise established."
+        }
+      ]
+    },
+    {
+      "id": "I03",
+      "description": "Identify segment(s) with growth below the company overall rate on a M&A-only adjusted basis.",
+      "assumptions": [
+        "Growth is sales growth for full-year 2022 versus the preceding full year.",
+        "Use a comparable segment reporting structure across the two periods.",
+        "Exclude acquisitions and divestitures; retain currency and other non-M&A effects unless reclassified explicitly.",
+        "Drag means below-company growth, which can occur with positive segment growth."
+      ],
+      "unresolved_ambiguities": [
+        "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+        "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+        "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+        "The question does not choose any below-average segment versus the lowest rate. Greatest weighted drag is a separate criterion retained in I05.",
+        "M&A-only adjustment is not automatically currency-neutral or organic."
+      ],
+      "required_facts": [
+        {
+          "id": "R07",
+          "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+          "basis": "explicit_assumption",
+          "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+        },
+        {
+          "id": "R08",
+          "description": "Comparable segment sales growth and identified acquisition/divestiture effects or an explicitly equivalent growth measure excluding those effects.",
+          "basis": "explicit_assumption",
+          "rationale": "This establishes the selected adjustment basis without substituting another convention."
+        },
+        {
+          "id": "R09",
+          "description": "Company sales-growth rate on the same adjustment and period basis.",
+          "basis": "explicit_assumption",
+          "rationale": "Below-company growth cannot be established from segment rates alone."
+        },
+        {
+          "id": "R10",
+          "description": "Positive segment aggregation bases or contribution information and any material reconciliation to company growth.",
+          "basis": "explicit_assumption",
+          "rationale": "These connect relative segment performance to the aggregate; exact weights are needed if quantifying or ranking weighted impact, not merely identifying a below-average rate."
+        }
+      ]
+    },
+    {
+      "id": "I04",
+      "description": "Identify segment(s) with growth below the company overall rate on a reported organic basis.",
+      "assumptions": [
+        "Growth is sales growth for full-year 2022 versus the preceding full year.",
+        "Use a comparable segment reporting structure across the two periods.",
+        "Excluding M&A is explicitly interpreted as shorthand for a reported organic sales-growth definition, including any additional exclusions it actually specifies.",
+        "Drag means below-company growth, which can occur with positive segment growth."
+      ],
+      "unresolved_ambiguities": [
+        "Sales and full-year prior-year comparison are selected assumptions; profit, volume or another period are not resolved by the question.",
+        "The literal phrase M&A does not settle divestiture treatment; excluding only acquisitions/mergers would require a separately stated scope and may change results.",
+        "More than one segment may qualify; there is no supplied uniqueness or tie-breaking rule.",
+        "The question does not choose any below-average segment versus the lowest rate. Greatest weighted drag is a separate criterion retained in I05.",
+        "Organic treatment may remove currency or other effects beyond M&A and can change identification."
+      ],
+      "required_facts": [
+        {
+          "id": "R11",
+          "description": "Segment identities and comparable current/prior-year reporting scopes for the selected sales-growth period.",
+          "basis": "explicit_assumption",
+          "rationale": "The sales metric, year-over-year period and comparable segmentation are explicit assumptions needed to evaluate all candidate segments."
+        },
+        {
+          "id": "R12",
+          "description": "The exact organic-growth definition and comparable segment growth rates on that basis.",
+          "basis": "explicit_assumption",
+          "rationale": "This establishes the selected adjustment basis without substituting another convention."
+        },
+        {
+          "id": "R13",
+          "description": "Company sales-growth rate on the same adjustment and period basis.",
+          "basis": "explicit_assumption",
+          "rationale": "Below-company growth cannot be established from segment rates alone."
+        },
+        {
+          "id": "R14",
+          "description": "Positive segment aggregation bases or contribution information and any material reconciliation to company growth.",
+          "basis": "explicit_assumption",
+          "rationale": "These connect relative segment performance to the aggregate; exact weights are needed if quantifying or ranking weighted impact, not merely identifying a below-average rate."
+        }
+      ]
+    },
+    {
+      "id": "I05",
+      "description": "Identify the segment with the greatest adverse weighted effect on overall sales growth, under an explicitly selected adjustment basis and drag benchmark.",
+      "assumptions": [
+        "Growth is sales growth for full-year 2022 versus the preceding full year.",
+        "Use a comparable segment reporting structure across the two periods.",
+        "Largest drag is an explicit ranking interpretation of which segment; it is not implied solely by singular grammar.",
+        "Before applying this interpretation select M&A-only or an exactly defined organic adjustment, and absolute contribution versus a stated relative-growth counterfactual. These alternatives remain conditional and are not equivalent."
+      ],
+      "unresolved_ambiguities": [
+        "The question supplies neither greatest-impact wording nor a counterfactual baseline; this reading is defensible only when the chosen ranking convention is stated.",
+        "Largest absolute adverse contribution, largest below-benchmark weighted shortfall and lowest growth rate may identify different segments.",
+        "Tie handling, divestiture treatment and additional organic exclusions remain unspecified."
+      ],
+      "required_facts": [
+        {
+          "id": "R15",
+          "description": "Comparable segment identities, sales bases and adjusted growth rates for full-year 2022 versus the preceding year, or equivalent contribution data.",
+          "basis": "explicit_assumption",
+          "rationale": "Weighted ranking needs both magnitude and scale, not only a sign or rate ranking."
+        },
+        {
+          "id": "R16",
+          "description": "The selected M&A-only or organic adjustment definition and data sufficient to apply it consistently.",
+          "basis": "explicit_assumption",
+          "rationale": "The adjustment must be fixed before contribution comparison."
+        },
+        {
+          "id": "R17",
+          "description": "For a relative-drag ranking, the explicitly selected benchmark growth rate and its comparison basis; for absolute contribution, no invented relative benchmark.",
+          "basis": "explicit_assumption",
+          "rationale": "The ranking relationship changes with the chosen counterfactual; no benchmark is given in the question."
+        },
+        {
+          "id": "R18",
+          "description": "The aggregation relationship and any material reconciliation between segment contributions and company sales growth.",
+          "basis": "explicit_assumption",
+          "rationale": "This establishes that the ranked effects actually relate to overall growth."
+        }
+      ]
+    }
+  ],
+  "excerpts": [
+    {
+      "evidence_id": "E001",
+      "start_line": 916,
+      "end_line": 916,
+      "lines": [
+        {
+          "line": 916,
+          "page": 25,
+          "text": "Consumer                                                                                 (0.9)                       —                            (0.4)                       (2.6)                       (3.9)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E002",
+      "start_line": 917,
+      "end_line": 917,
+      "lines": [
+        {
+          "line": 917,
+          "page": 25,
+          "text": "Total Company                                                                             1.2                        —                            (0.5)                       (3.9)                       (3.2)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E003",
+      "start_line": 1118,
+      "end_line": 1149,
+      "lines": [
+        {
+          "line": 1118,
+          "page": 31,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1119,
+          "page": 31,
+          "text": "Transportation and Electronics Business (26.0% of consolidated sales):"
+        },
+        {
+          "line": 1120,
+          "page": 31,
+          "text": "                                                                                                                                                                2022                                2021"
+        },
+        {
+          "line": 1121,
+          "page": 31,
+          "text": "Sales (millions)                                                                                                                                  $                        8,902       $                      9,262"
+        },
+        {
+          "line": 1122,
+          "page": 31,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1123,
+          "page": 31,
+          "text": "    Organic sales                                                                                                                                                       1.2      %                         8.7      %"
+        },
+        {
+          "line": 1124,
+          "page": 31,
+          "text": "    Divestitures                                                                                                                                                      (0.5)                                 —"
+        },
+        {
+          "line": 1125,
+          "page": 31,
+          "text": "    Translation                                                                                                                                                       (4.6)                                1.5"
+        },
+        {
+          "line": 1126,
+          "page": 31,
+          "text": "   Total sales change                                                                                                                                                 (3.9)      %                       10.2       %"
+        },
+        {
+          "line": 1127,
+          "page": 31,
+          "text": "Business segment operating income (millions)                                                                                                      $                        1,012       $                      1,880"
+        },
+        {
+          "line": 1128,
+          "page": 31,
+          "text": "   Percent change                                                                                                                                                    (46.2)      %                       10.6       %"
+        },
+        {
+          "line": 1129,
+          "page": 31,
+          "text": "   Percent of sales                                                                                                                                                        11.4 %                             20.3 %"
+        },
+        {
+          "line": 1130,
+          "page": 31,
+          "text": "Adjusted business segment operating income (millions) (non-GAAP measure)                                                                          $                        1,812       $                      1,880"
+        },
+        {
+          "line": 1131,
+          "page": 31,
+          "text": "   Percent change                                                                                                                                                         (3.6) %                             10.6 %"
+        },
+        {
+          "line": 1132,
+          "page": 31,
+          "text": "   Percent of sales                                                                                                                                                        20.4 %                             20.3 %"
+        },
+        {
+          "line": 1133,
+          "page": 31,
+          "text": "The preceding table also displays business segment operating income (loss) information adjusted for special items. For Transportation and Electronics these adjustments include"
+        },
+        {
+          "line": 1134,
+          "page": 31,
+          "text": "PFAS manufacturing exit costs. Refer to the Certain amounts adjusted for special items - (non-GAAP measures) section for additional details."
+        },
+        {
+          "line": 1135,
+          "page": 31,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1136,
+          "page": 31,
+          "text": "Sales in Transportation and Electronics were down 3.9 percent in U.S. dollars."
+        },
+        {
+          "line": 1137,
+          "page": 31,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1138,
+          "page": 31,
+          "text": "     •     Sales increased in automotive and aerospace, commercial solutions and advanced materials, and decreased in transportation safety and electronics."
+        },
+        {
+          "line": 1139,
+          "page": 31,
+          "text": "     •     Growth was held back by weaker consumer electronics end-market demand and ongoing impacts of semiconductor supply chain constraints on automotive markets."
+        },
+        {
+          "line": 1140,
+          "page": 31,
+          "text": "Divestitures:"
+        },
+        {
+          "line": 1141,
+          "page": 31,
+          "text": "     •     Divestiture impact relates to lost Transportation and Electronics sales year-on-year from deconsolidation of the Aearo Entities in July 2022."
+        },
+        {
+          "line": 1142,
+          "page": 31,
+          "text": "Business segment operating income margins decreased year-on-year due to special item charges for PFAS manufacturing exit costs related to asset impairments (discussed in"
+        },
+        {
+          "line": 1143,
+          "page": 31,
+          "text": "Note 15) resulting in a 2022 fourth quarter pre-tax charge of $0.8 billion. Margins were also impacted by increased raw materials and logistics costs, manufacturing productivity"
+        },
+        {
+          "line": 1144,
+          "page": 31,
+          "text": "headwinds which were further magnified by the shutdown of certain operations in Belgium and investments in auto electrification, partially offset by selling price actions,"
+        },
+        {
+          "line": 1145,
+          "page": 31,
+          "text": "strong spending discipline and restructuring actions. Adjusting for special item PFAS manufacturing exit costs (non-GAAP measure), business segment operating income"
+        },
+        {
+          "line": 1146,
+          "page": 31,
+          "text": "margins increased year-on-year as displayed above."
+        },
+        {
+          "line": 1147,
+          "page": 31,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1148,
+          "page": 31,
+          "text": "Sales in Transportation and Electronics were up 10.2 percent in U.S. dollars."
+        },
+        {
+          "line": 1149,
+          "page": 31,
+          "text": "On an organic sales basis:"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E004",
+      "start_line": 1077,
+      "end_line": 1108,
+      "lines": [
+        {
+          "line": 1077,
+          "page": 30,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1078,
+          "page": 30,
+          "text": "Safety and Industrial Business (33.9% of consolidated sales):"
+        },
+        {
+          "line": 1079,
+          "page": 30,
+          "text": "                                                                                                                                                               2022                                  2021"
+        },
+        {
+          "line": 1080,
+          "page": 30,
+          "text": "Sales (millions)                                                                                                                                $                        11,604        $                      11,981"
+        },
+        {
+          "line": 1081,
+          "page": 30,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1082,
+          "page": 30,
+          "text": "    Organic sales                                                                                                                                                     1.0 %                                7.3 %"
+        },
+        {
+          "line": 1083,
+          "page": 30,
+          "text": "    Translation                                                                                                                                                     (4.2)                                  1.9"
+        },
+        {
+          "line": 1084,
+          "page": 30,
+          "text": "Total sales change                                                                                                                                                  (3.2 %)                                9.2 %"
+        },
+        {
+          "line": 1085,
+          "page": 30,
+          "text": "Business segment operating income (loss) (millions)                                                                                             $                          1,199       $                        2,466"
+        },
+        {
+          "line": 1086,
+          "page": 30,
+          "text": "    Percent change                                                                                                                                                 (51.4 %)                               (4.7 %)"
+        },
+        {
+          "line": 1087,
+          "page": 30,
+          "text": "    Percent of sales                                                                                                                                                       10.3 %                               20.6 %"
+        },
+        {
+          "line": 1088,
+          "page": 30,
+          "text": "Adjusted business segment operating income (millions) (non-GAAP measure)                                                                        $                          2,613       $                        2,715"
+        },
+        {
+          "line": 1089,
+          "page": 30,
+          "text": "    Percent change                                                                                                                                                        (3.7) %                               (2.8) %"
+        },
+        {
+          "line": 1090,
+          "page": 30,
+          "text": "    Percent of sales                                                                                                                                                       22.5 %                               22.7 %"
+        },
+        {
+          "line": 1091,
+          "page": 30,
+          "text": "The preceding table also displays business segment operating income (loss) information adjusted for special items. For Safety and Industrial these adjustments include net costs"
+        },
+        {
+          "line": 1092,
+          "page": 30,
+          "text": "for respirator mask/asbestos (Aearo-related and non-Aearo related) and Combat Arms Earplugs litigation matters. During the Aearo chapter 11 bankruptcy period (which began"
+        },
+        {
+          "line": 1093,
+          "page": 30,
+          "text": "in July 2022 — see Note 16), net costs related to Combat Arms Earplugs and Aearo-respirator mask/asbestos matters are reflected as corporate special items in Corporate and"
+        },
+        {
+          "line": 1094,
+          "page": 30,
+          "text": "Unallocated while those associated with non-Aearo respirator mask/asbestos matters continue to be reflected as special items in the Safety and Industrial business segment."
+        },
+        {
+          "line": 1095,
+          "page": 30,
+          "text": "Refer to the Certain amounts adjusted for special items - (non-GAAP measures) section for additional details."
+        },
+        {
+          "line": 1096,
+          "page": 30,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1097,
+          "page": 30,
+          "text": "Sales in Safety and Industrial were down 3.2 percent in U.S. dollars."
+        },
+        {
+          "line": 1098,
+          "page": 30,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1099,
+          "page": 30,
+          "text": "     •     Sales increased in electrical markets, abrasives, automotive aftermarket, roofing granules, closure and masking systems, and industrial adhesives and tapes and decreased"
+        },
+        {
+          "line": 1100,
+          "page": 30,
+          "text": "           in personal safety."
+        },
+        {
+          "line": 1101,
+          "page": 30,
+          "text": "     •     Growth from continued improving general industrial manufacturing activity and other end-market demand was partially offset by the disposable respirator sales decline"
+        },
+        {
+          "line": 1102,
+          "page": 30,
+          "text": "           within personal safety, which negatively impacted year-on-year organic growth by 4.5 percentage points."
+        },
+        {
+          "line": 1103,
+          "page": 30,
+          "text": "Business segment operating income margins decreased year-on-year due to special item costs for significant litigation primarily related to steps toward resolving Combat Arms"
+        },
+        {
+          "line": 1104,
+          "page": 30,
+          "text": "Earplugs litigation (discussed in Note 16) resulting in a 2022 second quarter pre-tax charge of approximately $1.2 billion. Margins were also impacted by increased raw"
+        },
+        {
+          "line": 1105,
+          "page": 30,
+          "text": "materials and logistics costs, manufacturing productivity headwinds, partially offset by selling price actions, spending discipline and restructuring actions. Adjusting for special"
+        },
+        {
+          "line": 1106,
+          "page": 30,
+          "text": "item costs for significant litigation (non-GAAP measure), business segment operating income margins decreased year-on-year as displayed above."
+        },
+        {
+          "line": 1107,
+          "page": 30,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1108,
+          "page": 30,
+          "text": "Sales in Safety and Industrial were up 9.2 percent in U.S. dollars."
+        }
+      ]
+    },
+    {
+      "evidence_id": "E005",
+      "start_line": 1158,
+      "end_line": 1189,
+      "lines": [
+        {
+          "line": 1158,
+          "page": 32,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1159,
+          "page": 32,
+          "text": "Health Care Business (24.6% of consolidated sales):"
+        },
+        {
+          "line": 1160,
+          "page": 32,
+          "text": "                                                                                                                                                                  2022                                2021"
+        },
+        {
+          "line": 1161,
+          "page": 32,
+          "text": "Sales (millions)                                                                                                                                    $                        8,421      $                        8,597"
+        },
+        {
+          "line": 1162,
+          "page": 32,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1163,
+          "page": 32,
+          "text": "     Organic sales                                                                                                                                                       3.2      %                         10.2       %"
+        },
+        {
+          "line": 1164,
+          "page": 32,
+          "text": "     Divestitures                                                                                                                                                       (1.4)                               (2.0)"
+        },
+        {
+          "line": 1165,
+          "page": 32,
+          "text": "     Translation                                                                                                                                                        (3.8)                                1.6"
+        },
+        {
+          "line": 1166,
+          "page": 32,
+          "text": "   Total sales change                                                                                                                                                   (2.0)     %                          9.8       %"
+        },
+        {
+          "line": 1167,
+          "page": 32,
+          "text": "Business segment operating income (millions)                                                                                                        $                        1,815      $                        2,037"
+        },
+        {
+          "line": 1168,
+          "page": 32,
+          "text": "   Percent change                                                                                                                                                     (10.9)      %                         22.5       %"
+        },
+        {
+          "line": 1169,
+          "page": 32,
+          "text": "   Percent of sales                                                                                                                                                     21.6       %                        23.7       %"
+        },
+        {
+          "line": 1170,
+          "page": 32,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1171,
+          "page": 32,
+          "text": "Sales in Health Care were down 2.0 percent in U.S. dollars."
+        },
+        {
+          "line": 1172,
+          "page": 32,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1173,
+          "page": 32,
+          "text": "     •     Sales increased in separation and purification, health information systems, food safety and medical solutions, and was flat in oral care."
+        },
+        {
+          "line": 1174,
+          "page": 32,
+          "text": "     •     Growth continues to be impacted by COVID-related trends on elective procedure volumes and ongoing inflationary pressures."
+        },
+        {
+          "line": 1175,
+          "page": 32,
+          "text": "Divestitures:"
+        },
+        {
+          "line": 1176,
+          "page": 32,
+          "text": "     •     Divestiture impact relates to the lost sales year-on-year from the divestiture from the Food Safety Division split-off transaction and combination with Neogen completed"
+        },
+        {
+          "line": 1177,
+          "page": 32,
+          "text": "           in the third quarter of 2022."
+        },
+        {
+          "line": 1178,
+          "page": 32,
+          "text": "Business segment operating income margins decreased year-on-year due to increased raw materials and logistics costs along with manufacturing productivity headwinds,"
+        },
+        {
+          "line": 1179,
+          "page": 32,
+          "text": "investments in the business and transaction-related costs associated with the announced divestiture of the food safety business (see Note 3), partially offset by sales growth"
+        },
+        {
+          "line": 1180,
+          "page": 32,
+          "text": "(including selling price actions), strong spending discipline and restructuring actions."
+        },
+        {
+          "line": 1181,
+          "page": 32,
+          "text": "As discussed in Note 3, in July 2022, 3M announced its intention to spin off the Health Care business as a separate public company. 3M expects to initially retain a 19.9%"
+        },
+        {
+          "line": 1182,
+          "page": 32,
+          "text": "ownership position in the Health Care business."
+        },
+        {
+          "line": 1183,
+          "page": 32,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1184,
+          "page": 32,
+          "text": "Sales in Health Care were up 9.8 percent in U.S. dollars."
+        },
+        {
+          "line": 1185,
+          "page": 32,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1186,
+          "page": 32,
+          "text": "     •     Sales increased in oral care, separation and purification, food safety, health information systems and medical solutions."
+        },
+        {
+          "line": 1187,
+          "page": 32,
+          "text": "     •     Growth benefited from higher year-on-year dental procedures, continued high demand for biopharma filtration solutions for COVID-related vaccine and therapeutic"
+        },
+        {
+          "line": 1188,
+          "page": 32,
+          "text": "           development and manufacturing, rising elective procedure volumes in the first six months of 2021 and due to improving hospital information technology investments."
+        },
+        {
+          "line": 1189,
+          "page": 32,
+          "text": "Divestitures:"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E006",
+      "start_line": 913,
+      "end_line": 915,
+      "lines": [
+        {
+          "line": 913,
+          "page": 25,
+          "text": "Safety and Industrial                                                                     1.0  %                     —       %                      —     %                   (4.2)    %                  (3.2) %"
+        },
+        {
+          "line": 914,
+          "page": 25,
+          "text": "Transportation and Electronics                                                            1.2                        —                            (0.5)                       (4.6)                       (3.9)"
+        },
+        {
+          "line": 915,
+          "page": 25,
+          "text": "Health Care                                                                               3.2                        —                            (1.4)                       (3.8)                       (2.0)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E007",
+      "start_line": 896,
+      "end_line": 897,
+      "lines": [
+        {
+          "line": 896,
+          "page": 25,
+          "text": "Sales and operating income (loss) by business segment:"
+        },
+        {
+          "line": 897,
+          "page": 25,
+          "text": "The following tables contain sales and operating income (loss) results by business segment for the years ended December 31, 2022 and 2021. Refer to the section entitled"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E008",
+      "start_line": 369,
+      "end_line": 400,
+      "lines": [
+        {
+          "line": 369,
+          "page": 10,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 370,
+          "page": 10,
+          "text": "Item 1A. Risk Factors."
+        },
+        {
+          "line": 371,
+          "page": 10,
+          "text": "Provided below is a cautionary discussion of what we believe to be the most important risk factors applicable to the Company. Discussion of these factors is incorporated by"
+        },
+        {
+          "line": 372,
+          "page": 10,
+          "text": "reference into and considered an integral part of Part II, Item 7, “Management’s Discussion and Analysis of Financial Conditions and Results of Operations.”"
+        },
+        {
+          "line": 373,
+          "page": 10,
+          "text": "Risks Related to the Global Economy and Public Health Crises"
+        },
+        {
+          "line": 374,
+          "page": 10,
+          "text": "* The Company’s results are impacted by the effects of, and changes in, worldwide economic, political, regulatory, international trade, geopolitical, and other external"
+        },
+        {
+          "line": 375,
+          "page": 10,
+          "text": "conditions."
+        },
+        {
+          "line": 376,
+          "page": 10,
+          "text": "The Company operates in more than 70 countries and derives approximately 60 percent of its revenues from outside the United States, and, accordingly, the Company’s"
+        },
+        {
+          "line": 377,
+          "page": 10,
+          "text": "operations and the execution of its business strategies and plans are subject to global competition and economic and geopolitical risks that are beyond its control, such as,"
+        },
+        {
+          "line": 378,
+          "page": 10,
+          "text": "among other things, disruptions in financial markets, economic downturns, military conflicts, public health emergencies such as COVID-19, political changes and trends such as"
+        },
+        {
+          "line": 379,
+          "page": 10,
+          "text": "protectionism, economic nationalism resulting in government actions impacting international trade agreements or imposing trade restrictions such as tariffs and retaliatory"
+        },
+        {
+          "line": 380,
+          "page": 10,
+          "text": "counter measures, and government deficit reduction and other austerity measures in locations or industries in which the Company operates. Further escalation of specific trade"
+        },
+        {
+          "line": 381,
+          "page": 10,
+          "text": "tensions, including those between the U.S. and China, or more broadly in global trade conflict, could adversely impact the Company's business and operations around the world."
+        },
+        {
+          "line": 382,
+          "page": 10,
+          "text": "The Company's business is also impacted by social, political, and labor conditions in locations in which the Company or its suppliers or customers operate; adverse changes in"
+        },
+        {
+          "line": 383,
+          "page": 10,
+          "text": "the availability and cost of capital; monetary policy; interest rates; inflation; recession; commodity prices; currency volatility or exchange control; ability to expatriate earnings;"
+        },
+        {
+          "line": 384,
+          "page": 10,
+          "text": "and other laws and regulations in the jurisdictions in which the Company or its suppliers or customers operate. For example, changes in local economic condition or outlooks,"
+        },
+        {
+          "line": 385,
+          "page": 10,
+          "text": "such as lower economic growth rates in China, Europe, or other key markets, impact the demand or profitability of the Company's products."
+        },
+        {
+          "line": 386,
+          "page": 10,
+          "text": "The global economy has been impacted by the military conflict between Russia and Ukraine. The U.S. and other governments have imposed export controls on certain products"
+        },
+        {
+          "line": 387,
+          "page": 10,
+          "text": "and financial and economic sanctions on certain industry sectors and parties in Russia. 3M suspended operations of its subsidiaries in Russia in March 2022 and, in September"
+        },
+        {
+          "line": 388,
+          "page": 10,
+          "text": "2022, committed to a plan to exit the related net assets through an intended sale of the subsidiaries. 3M also has other operations that source certain raw materials from"
+        },
+        {
+          "line": 389,
+          "page": 10,
+          "text": "suppliers in Russia and has experienced related supply disruption due to the conflict. These geopolitical tensions could result in, among other things, cyberattacks, further"
+        },
+        {
+          "line": 390,
+          "page": 10,
+          "text": "supply chain disruptions impacting downstream customers, higher energy costs, lower consumer demand, and changes to foreign exchange rates and financial markets, any of"
+        },
+        {
+          "line": 391,
+          "page": 10,
+          "text": "which may adversely affect the Company's business and supply chain."
+        },
+        {
+          "line": 392,
+          "page": 10,
+          "text": "Climate change, as well as related environmental and social regulations, may negatively impact the Company or its customers and suppliers, in terms of availability and cost of"
+        },
+        {
+          "line": 393,
+          "page": 10,
+          "text": "natural resources, sources and supply of energy, product demand and manufacturing, and the health and well-being of individuals and communities in which we or our suppliers"
+        },
+        {
+          "line": 394,
+          "page": 10,
+          "text": "or customers operate."
+        },
+        {
+          "line": 395,
+          "page": 10,
+          "text": "* Unexpected events, such as those related to the coronavirus (COVID-19) public health crisis, may increase the Company's cost of doing business and disrupt the Company's"
+        },
+        {
+          "line": 396,
+          "page": 10,
+          "text": "operations."
+        },
+        {
+          "line": 397,
+          "page": 10,
+          "text": "3M, as a global company, is impacted by unexpected events, including war, acts of terrorism, public health crises (such as the COVID-19 pandemic), civil unrest, natural"
+        },
+        {
+          "line": 398,
+          "page": 10,
+          "text": "disasters, and severe weather in the locations in which the Company or its suppliers or customers operate, and these events have adversely affected, and could in the future"
+        },
+        {
+          "line": 399,
+          "page": 10,
+          "text": "adversely affect, the Company's operations and financial performance. For example, the global pandemic associated with COVID-19, including related evolving governmental"
+        },
+        {
+          "line": 400,
+          "page": 10,
+          "text": "responses to the pandemic, has significantly increased economic and demand uncertainty, and has impacted and will continue to impact 3M’s operations, including its supply"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E009",
+      "start_line": 910,
+      "end_line": 912,
+      "lines": [
+        {
+          "line": 910,
+          "page": 25,
+          "text": "                                                                                                                              Year ended December 31, 2022"
+        },
+        {
+          "line": 911,
+          "page": 25,
+          "text": "Worldwide Sales Change"
+        },
+        {
+          "line": 912,
+          "page": 25,
+          "text": "By Business Segment                                                            Organic sales               Acquisitions                  Divestitures                 Translation            Total sales change"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E010",
+      "start_line": 1195,
+      "end_line": 1226,
+      "lines": [
+        {
+          "line": 1195,
+          "page": 33,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1196,
+          "page": 33,
+          "text": "Consumer Business (15.5% of consolidated sales):"
+        },
+        {
+          "line": 1197,
+          "page": 33,
+          "text": "                                                                                                                                                               2022                                2021"
+        },
+        {
+          "line": 1198,
+          "page": 33,
+          "text": "Sales (millions)                                                                                                                                 $                        5,298       $                       5,513"
+        },
+        {
+          "line": 1199,
+          "page": 33,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1200,
+          "page": 33,
+          "text": "     Organic sales                                                                                                                                                   (0.9)      %                         9.8       %"
+        },
+        {
+          "line": 1201,
+          "page": 33,
+          "text": "     Divestitures                                                                                                                                                    (0.4)                                 —"
+        },
+        {
+          "line": 1202,
+          "page": 33,
+          "text": "     Translation                                                                                                                                                     (2.6)                                1.0"
+        },
+        {
+          "line": 1203,
+          "page": 33,
+          "text": "   Total sales change                                                                                                                                                (3.9)      %                       10.8        %"
+        },
+        {
+          "line": 1204,
+          "page": 33,
+          "text": "Business segment operating income (millions)                                                                                                     $                          994       $                       1,162"
+        },
+        {
+          "line": 1205,
+          "page": 33,
+          "text": "   Percent change                                                                                                                                                   (14.4)      %                         3.8       %"
+        },
+        {
+          "line": 1206,
+          "page": 33,
+          "text": "   Percent of sales                                                                                                                                                  18.8       %                       21.1        %"
+        },
+        {
+          "line": 1207,
+          "page": 33,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1208,
+          "page": 33,
+          "text": "Sales in Consumer were down 3.9 percent in U.S. dollars."
+        },
+        {
+          "line": 1209,
+          "page": 33,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1210,
+          "page": 33,
+          "text": "     •     Sales increased in stationery and office and home care, was flat in consumer health and safety, and decreased in home improvement."
+        },
+        {
+          "line": 1211,
+          "page": 33,
+          "text": "     •     Growth was impacted by softening trends in the Consumer retail business as consumers pulled back on discretionary spending and retailers took actions to reduce their"
+        },
+        {
+          "line": 1212,
+          "page": 33,
+          "text": "           inventories. These impacts were partially offset by demand for Scotch BlueTM painter’s tape, Scotch-BriteTM, and Post-it®-solutions."
+        },
+        {
+          "line": 1213,
+          "page": 33,
+          "text": "Business segment operating income margins decreased year-on-year as a result of increased raw materials, logistics and outsourced hardgoods manufacturing costs along with"
+        },
+        {
+          "line": 1214,
+          "page": 33,
+          "text": "manufacturing productivity headwinds and investments in the business, partially offset by sales growth (including selling price actions), strong spending discipline and"
+        },
+        {
+          "line": 1215,
+          "page": 33,
+          "text": "restructuring actions."
+        },
+        {
+          "line": 1216,
+          "page": 33,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1217,
+          "page": 33,
+          "text": "Sales in Consumer were up 10.8 percent in U.S. dollars."
+        },
+        {
+          "line": 1218,
+          "page": 33,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1219,
+          "page": 33,
+          "text": "     •     Sales increased in stationery and office, home improvement, consumer health and safety and home care."
+        },
+        {
+          "line": 1220,
+          "page": 33,
+          "text": "     •     Growth driven by continued strength in the market with strong demand for CommandTM adhesives, FiltreteTM air quality solutions, MeguiarsTM auto care and Scotch"
+        },
+        {
+          "line": 1221,
+          "page": 33,
+          "text": "           BlueTM painter’s tape and from ongoing strength in demand for packaging and shipping products, Post-it®-solutions and Scotch® brand office tapes as the business laps"
+        },
+        {
+          "line": 1222,
+          "page": 33,
+          "text": "           last year’s COVID-related comparisons."
+        },
+        {
+          "line": 1223,
+          "page": 33,
+          "text": "Business segment operating income margins decreased year-on-year as a result of increases in raw materials, logistics, and outsourced hardgoods manufacturing costs,"
+        },
+        {
+          "line": 1224,
+          "page": 33,
+          "text": "manufacturing productivity impacts, and increased compensation and benefit costs that more than offset leverage from sales growth and benefits from restructuring actions and"
+        },
+        {
+          "line": 1225,
+          "page": 33,
+          "text": "lower related charges."
+        },
+        {
+          "line": 1226,
+          "page": 33,
+          "text": "PERFORMANCE BY GEOGRAPHIC AREA"
+        }
+      ]
+    }
+  ],
+  "review_only_pages": [
+    {
+      "page": 10,
+      "review_only": true,
+      "start_line": 369,
+      "end_line": 408,
+      "lines": [
+        {
+          "line": 369,
+          "page": 10,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 370,
+          "page": 10,
+          "text": "Item 1A. Risk Factors."
+        },
+        {
+          "line": 371,
+          "page": 10,
+          "text": "Provided below is a cautionary discussion of what we believe to be the most important risk factors applicable to the Company. Discussion of these factors is incorporated by"
+        },
+        {
+          "line": 372,
+          "page": 10,
+          "text": "reference into and considered an integral part of Part II, Item 7, “Management’s Discussion and Analysis of Financial Conditions and Results of Operations.”"
+        },
+        {
+          "line": 373,
+          "page": 10,
+          "text": "Risks Related to the Global Economy and Public Health Crises"
+        },
+        {
+          "line": 374,
+          "page": 10,
+          "text": "* The Company’s results are impacted by the effects of, and changes in, worldwide economic, political, regulatory, international trade, geopolitical, and other external"
+        },
+        {
+          "line": 375,
+          "page": 10,
+          "text": "conditions."
+        },
+        {
+          "line": 376,
+          "page": 10,
+          "text": "The Company operates in more than 70 countries and derives approximately 60 percent of its revenues from outside the United States, and, accordingly, the Company’s"
+        },
+        {
+          "line": 377,
+          "page": 10,
+          "text": "operations and the execution of its business strategies and plans are subject to global competition and economic and geopolitical risks that are beyond its control, such as,"
+        },
+        {
+          "line": 378,
+          "page": 10,
+          "text": "among other things, disruptions in financial markets, economic downturns, military conflicts, public health emergencies such as COVID-19, political changes and trends such as"
+        },
+        {
+          "line": 379,
+          "page": 10,
+          "text": "protectionism, economic nationalism resulting in government actions impacting international trade agreements or imposing trade restrictions such as tariffs and retaliatory"
+        },
+        {
+          "line": 380,
+          "page": 10,
+          "text": "counter measures, and government deficit reduction and other austerity measures in locations or industries in which the Company operates. Further escalation of specific trade"
+        },
+        {
+          "line": 381,
+          "page": 10,
+          "text": "tensions, including those between the U.S. and China, or more broadly in global trade conflict, could adversely impact the Company's business and operations around the world."
+        },
+        {
+          "line": 382,
+          "page": 10,
+          "text": "The Company's business is also impacted by social, political, and labor conditions in locations in which the Company or its suppliers or customers operate; adverse changes in"
+        },
+        {
+          "line": 383,
+          "page": 10,
+          "text": "the availability and cost of capital; monetary policy; interest rates; inflation; recession; commodity prices; currency volatility or exchange control; ability to expatriate earnings;"
+        },
+        {
+          "line": 384,
+          "page": 10,
+          "text": "and other laws and regulations in the jurisdictions in which the Company or its suppliers or customers operate. For example, changes in local economic condition or outlooks,"
+        },
+        {
+          "line": 385,
+          "page": 10,
+          "text": "such as lower economic growth rates in China, Europe, or other key markets, impact the demand or profitability of the Company's products."
+        },
+        {
+          "line": 386,
+          "page": 10,
+          "text": "The global economy has been impacted by the military conflict between Russia and Ukraine. The U.S. and other governments have imposed export controls on certain products"
+        },
+        {
+          "line": 387,
+          "page": 10,
+          "text": "and financial and economic sanctions on certain industry sectors and parties in Russia. 3M suspended operations of its subsidiaries in Russia in March 2022 and, in September"
+        },
+        {
+          "line": 388,
+          "page": 10,
+          "text": "2022, committed to a plan to exit the related net assets through an intended sale of the subsidiaries. 3M also has other operations that source certain raw materials from"
+        },
+        {
+          "line": 389,
+          "page": 10,
+          "text": "suppliers in Russia and has experienced related supply disruption due to the conflict. These geopolitical tensions could result in, among other things, cyberattacks, further"
+        },
+        {
+          "line": 390,
+          "page": 10,
+          "text": "supply chain disruptions impacting downstream customers, higher energy costs, lower consumer demand, and changes to foreign exchange rates and financial markets, any of"
+        },
+        {
+          "line": 391,
+          "page": 10,
+          "text": "which may adversely affect the Company's business and supply chain."
+        },
+        {
+          "line": 392,
+          "page": 10,
+          "text": "Climate change, as well as related environmental and social regulations, may negatively impact the Company or its customers and suppliers, in terms of availability and cost of"
+        },
+        {
+          "line": 393,
+          "page": 10,
+          "text": "natural resources, sources and supply of energy, product demand and manufacturing, and the health and well-being of individuals and communities in which we or our suppliers"
+        },
+        {
+          "line": 394,
+          "page": 10,
+          "text": "or customers operate."
+        },
+        {
+          "line": 395,
+          "page": 10,
+          "text": "* Unexpected events, such as those related to the coronavirus (COVID-19) public health crisis, may increase the Company's cost of doing business and disrupt the Company's"
+        },
+        {
+          "line": 396,
+          "page": 10,
+          "text": "operations."
+        },
+        {
+          "line": 397,
+          "page": 10,
+          "text": "3M, as a global company, is impacted by unexpected events, including war, acts of terrorism, public health crises (such as the COVID-19 pandemic), civil unrest, natural"
+        },
+        {
+          "line": 398,
+          "page": 10,
+          "text": "disasters, and severe weather in the locations in which the Company or its suppliers or customers operate, and these events have adversely affected, and could in the future"
+        },
+        {
+          "line": 399,
+          "page": 10,
+          "text": "adversely affect, the Company's operations and financial performance. For example, the global pandemic associated with COVID-19, including related evolving governmental"
+        },
+        {
+          "line": 400,
+          "page": 10,
+          "text": "responses to the pandemic, has significantly increased economic and demand uncertainty, and has impacted and will continue to impact 3M’s operations, including its supply"
+        },
+        {
+          "line": 401,
+          "page": 10,
+          "text": "chain and its manufacturing and distribution capabilities. Although COVID-19 increased demand for certain 3M products, it also resulted in decreased demand from certain end"
+        },
+        {
+          "line": 402,
+          "page": 10,
+          "text": "markets, made it more difficult for 3M to serve customers, and resulted in conditions that had the potential to damage 3M's reputation, including third-party price gouging,"
+        },
+        {
+          "line": 403,
+          "page": 10,
+          "text": "counterfeiting, and other illegal or fraudulent activities involving 3M's products. Furthermore, COVID-19 has impacted and may further impact the broader economies of"
+        },
+        {
+          "line": 404,
+          "page": 10,
+          "text": "affected countries, including negatively impacting economic growth, the proper functioning of financial and capital markets, foreign currency exchange rates, and interest rates."
+        },
+        {
+          "line": 405,
+          "page": 10,
+          "text": "As the pandemic evolves, demand for personal protection products such as disposable respirators has experienced a decline from prior levels. 3M is not able to predict the"
+        },
+        {
+          "line": 406,
+          "page": 10,
+          "text": "impact of unexpected events, such as the COVID-19 pandemic, and unexpected events may have a material adverse effect on 3M's consolidated results of operations or"
+        },
+        {
+          "line": 407,
+          "page": 10,
+          "text": "financial condition."
+        },
+        {
+          "line": 408,
+          "page": 10,
+          "text": "                                                                                                         10"
+        }
+      ]
+    },
+    {
+      "page": 25,
+      "review_only": true,
+      "start_line": 895,
+      "end_line": 941,
+      "lines": [
+        {
+          "line": 895,
+          "page": 25,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 896,
+          "page": 25,
+          "text": "Sales and operating income (loss) by business segment:"
+        },
+        {
+          "line": 897,
+          "page": 25,
+          "text": "The following tables contain sales and operating income (loss) results by business segment for the years ended December 31, 2022 and 2021. Refer to the section entitled"
+        },
+        {
+          "line": 898,
+          "page": 25,
+          "text": "“Performance by Business Segment” later in MD&A for additional discussion concerning 2022 versus 2021 results, including Corporate and Unallocated. Refer to Note 19 for"
+        },
+        {
+          "line": 899,
+          "page": 25,
+          "text": "additional information on business segments."
+        },
+        {
+          "line": 900,
+          "page": 25,
+          "text": "                                                                              2022                                                        2021                                            % change"
+        },
+        {
+          "line": 901,
+          "page": 25,
+          "text": "                                                                                               Operating                                                   Operating                           Operating Income"
+        },
+        {
+          "line": 902,
+          "page": 25,
+          "text": "(Dollars in millions)                                 Net Sales          % of Total          Income (Loss)          Net Sales          % of Total        Income (Loss)         Net Sales              (Loss)"
+        },
+        {
+          "line": 903,
+          "page": 25,
+          "text": "Business Segments"
+        },
+        {
+          "line": 904,
+          "page": 25,
+          "text": "Safety and Industrial                              $       11,604               33.9 %     $            1,199   $       11,981               33.9 %     $         2,466             (3.2)%               (51.4) %"
+        },
+        {
+          "line": 905,
+          "page": 25,
+          "text": "Transportation and Electronics                               8,902              26.0                    1,012             9,262              26.2                 1,880             (3.9)                (46.2)"
+        },
+        {
+          "line": 906,
+          "page": 25,
+          "text": "Health Care                                                  8,421              24.6                    1,815             8,597              24.3                 2,037             (2.0)                (10.9)"
+        },
+        {
+          "line": 907,
+          "page": 25,
+          "text": "Consumer                                                     5,298              15.5                      994             5,513              15.6                 1,162             (3.9)                (14.4)"
+        },
+        {
+          "line": 908,
+          "page": 25,
+          "text": "Corporate and Unallocated                                         4               —                     1,519                  2                —                 (176)"
+        },
+        {
+          "line": 909,
+          "page": 25,
+          "text": "Total Company                                      $      34,229              100.0 %      $            6,539   $       35,355              100.0 %     $        7,369              (3.2)%               (11.3) %"
+        },
+        {
+          "line": 910,
+          "page": 25,
+          "text": "                                                                                                                              Year ended December 31, 2022"
+        },
+        {
+          "line": 911,
+          "page": 25,
+          "text": "Worldwide Sales Change"
+        },
+        {
+          "line": 912,
+          "page": 25,
+          "text": "By Business Segment                                                            Organic sales               Acquisitions                  Divestitures                 Translation            Total sales change"
+        },
+        {
+          "line": 913,
+          "page": 25,
+          "text": "Safety and Industrial                                                                     1.0  %                     —       %                      —     %                   (4.2)    %                  (3.2) %"
+        },
+        {
+          "line": 914,
+          "page": 25,
+          "text": "Transportation and Electronics                                                            1.2                        —                            (0.5)                       (4.6)                       (3.9)"
+        },
+        {
+          "line": 915,
+          "page": 25,
+          "text": "Health Care                                                                               3.2                        —                            (1.4)                       (3.8)                       (2.0)"
+        },
+        {
+          "line": 916,
+          "page": 25,
+          "text": "Consumer                                                                                 (0.9)                       —                            (0.4)                       (2.6)                       (3.9)"
+        },
+        {
+          "line": 917,
+          "page": 25,
+          "text": "Total Company                                                                             1.2                        —                            (0.5)                       (3.9)                       (3.2)"
+        },
+        {
+          "line": 918,
+          "page": 25,
+          "text": "Sales by geographic area:"
+        },
+        {
+          "line": 919,
+          "page": 25,
+          "text": "Percent change information compares the years ended December 31, 2022 and 2021 with the same prior year period, unless otherwise indicated. Additional discussion of"
+        },
+        {
+          "line": 920,
+          "page": 25,
+          "text": "business segment results is provided in the Performance by Business Segment section."
+        },
+        {
+          "line": 921,
+          "page": 25,
+          "text": "                                                                                                                               Year ended December 31, 2022"
+        },
+        {
+          "line": 922,
+          "page": 25,
+          "text": "                                                                                                                                      Europe, Middle East"
+        },
+        {
+          "line": 923,
+          "page": 25,
+          "text": "                                                                                     Americas                  Asia Pacific                 & Africa              Other Unallocated              Worldwide"
+        },
+        {
+          "line": 924,
+          "page": 25,
+          "text": "Net sales (millions)                                                         $            18,400         $             9,901        $             5,928        $                   —      $            34,229"
+        },
+        {
+          "line": 925,
+          "page": 25,
+          "text": "   % of worldwide sales                                                                      53.8  %                    28.9  %                     17.3  %                                             100.0  %"
+        },
+        {
+          "line": 926,
+          "page": 25,
+          "text": "Components of net sales change:"
+        },
+        {
+          "line": 927,
+          "page": 25,
+          "text": "  Organic sales                                                                                2.6                        0.3                       (0.6)                                                  1.2"
+        },
+        {
+          "line": 928,
+          "page": 25,
+          "text": "  Divestitures                                                                               (0.6)                       (0.4)                      (0.6)                                                 (0.5)"
+        },
+        {
+          "line": 929,
+          "page": 25,
+          "text": "  Translation                                                                                (0.3)                       (6.5)                      (9.8)                                                 (3.9)"
+        },
+        {
+          "line": 930,
+          "page": 25,
+          "text": "Total sales change                                                                             1.7  %                    (6.6) %                   (11.0) %                                               (3.2) %"
+        },
+        {
+          "line": 931,
+          "page": 25,
+          "text": "                                                                                                                               Year ended December 31, 2021"
+        },
+        {
+          "line": 932,
+          "page": 25,
+          "text": "                                                                                                                                      Europe, Middle East"
+        },
+        {
+          "line": 933,
+          "page": 25,
+          "text": "                                                                                     Americas                  Asia Pacific                 & Africa              Other Unallocated              Worldwide"
+        },
+        {
+          "line": 934,
+          "page": 25,
+          "text": "Net sales (millions)                                                         $            18,097         $           10,600         $             6,660        $                    (2)   $            35,355"
+        },
+        {
+          "line": 935,
+          "page": 25,
+          "text": "   % of worldwide sales                                                                      51.2   %                   30.0    %                   18.8   %                                            100.0    %"
+        },
+        {
+          "line": 936,
+          "page": 25,
+          "text": "Components of net sales change:"
+        },
+        {
+          "line": 937,
+          "page": 25,
+          "text": "  Organic sales                                                                               9.8                         8.5                        6.3                                                   8.8"
+        },
+        {
+          "line": 938,
+          "page": 25,
+          "text": "  Divestitures                                                                               (0.6)                         —                        (1.1)                                                 (0.5)"
+        },
+        {
+          "line": 939,
+          "page": 25,
+          "text": "  Translation                                                                                 0.3                         2.3                        3.8                                                   1.6"
+        },
+        {
+          "line": 940,
+          "page": 25,
+          "text": "Total sales change                                                                            9.5   %                   10.8    %                    9.0   %                                               9.9   %"
+        },
+        {
+          "line": 941,
+          "page": 25,
+          "text": "                                                                                                      25"
+        }
+      ]
+    },
+    {
+      "page": 30,
+      "review_only": true,
+      "start_line": 1077,
+      "end_line": 1117,
+      "lines": [
+        {
+          "line": 1077,
+          "page": 30,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1078,
+          "page": 30,
+          "text": "Safety and Industrial Business (33.9% of consolidated sales):"
+        },
+        {
+          "line": 1079,
+          "page": 30,
+          "text": "                                                                                                                                                               2022                                  2021"
+        },
+        {
+          "line": 1080,
+          "page": 30,
+          "text": "Sales (millions)                                                                                                                                $                        11,604        $                      11,981"
+        },
+        {
+          "line": 1081,
+          "page": 30,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1082,
+          "page": 30,
+          "text": "    Organic sales                                                                                                                                                     1.0 %                                7.3 %"
+        },
+        {
+          "line": 1083,
+          "page": 30,
+          "text": "    Translation                                                                                                                                                     (4.2)                                  1.9"
+        },
+        {
+          "line": 1084,
+          "page": 30,
+          "text": "Total sales change                                                                                                                                                  (3.2 %)                                9.2 %"
+        },
+        {
+          "line": 1085,
+          "page": 30,
+          "text": "Business segment operating income (loss) (millions)                                                                                             $                          1,199       $                        2,466"
+        },
+        {
+          "line": 1086,
+          "page": 30,
+          "text": "    Percent change                                                                                                                                                 (51.4 %)                               (4.7 %)"
+        },
+        {
+          "line": 1087,
+          "page": 30,
+          "text": "    Percent of sales                                                                                                                                                       10.3 %                               20.6 %"
+        },
+        {
+          "line": 1088,
+          "page": 30,
+          "text": "Adjusted business segment operating income (millions) (non-GAAP measure)                                                                        $                          2,613       $                        2,715"
+        },
+        {
+          "line": 1089,
+          "page": 30,
+          "text": "    Percent change                                                                                                                                                        (3.7) %                               (2.8) %"
+        },
+        {
+          "line": 1090,
+          "page": 30,
+          "text": "    Percent of sales                                                                                                                                                       22.5 %                               22.7 %"
+        },
+        {
+          "line": 1091,
+          "page": 30,
+          "text": "The preceding table also displays business segment operating income (loss) information adjusted for special items. For Safety and Industrial these adjustments include net costs"
+        },
+        {
+          "line": 1092,
+          "page": 30,
+          "text": "for respirator mask/asbestos (Aearo-related and non-Aearo related) and Combat Arms Earplugs litigation matters. During the Aearo chapter 11 bankruptcy period (which began"
+        },
+        {
+          "line": 1093,
+          "page": 30,
+          "text": "in July 2022 — see Note 16), net costs related to Combat Arms Earplugs and Aearo-respirator mask/asbestos matters are reflected as corporate special items in Corporate and"
+        },
+        {
+          "line": 1094,
+          "page": 30,
+          "text": "Unallocated while those associated with non-Aearo respirator mask/asbestos matters continue to be reflected as special items in the Safety and Industrial business segment."
+        },
+        {
+          "line": 1095,
+          "page": 30,
+          "text": "Refer to the Certain amounts adjusted for special items - (non-GAAP measures) section for additional details."
+        },
+        {
+          "line": 1096,
+          "page": 30,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1097,
+          "page": 30,
+          "text": "Sales in Safety and Industrial were down 3.2 percent in U.S. dollars."
+        },
+        {
+          "line": 1098,
+          "page": 30,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1099,
+          "page": 30,
+          "text": "     •     Sales increased in electrical markets, abrasives, automotive aftermarket, roofing granules, closure and masking systems, and industrial adhesives and tapes and decreased"
+        },
+        {
+          "line": 1100,
+          "page": 30,
+          "text": "           in personal safety."
+        },
+        {
+          "line": 1101,
+          "page": 30,
+          "text": "     •     Growth from continued improving general industrial manufacturing activity and other end-market demand was partially offset by the disposable respirator sales decline"
+        },
+        {
+          "line": 1102,
+          "page": 30,
+          "text": "           within personal safety, which negatively impacted year-on-year organic growth by 4.5 percentage points."
+        },
+        {
+          "line": 1103,
+          "page": 30,
+          "text": "Business segment operating income margins decreased year-on-year due to special item costs for significant litigation primarily related to steps toward resolving Combat Arms"
+        },
+        {
+          "line": 1104,
+          "page": 30,
+          "text": "Earplugs litigation (discussed in Note 16) resulting in a 2022 second quarter pre-tax charge of approximately $1.2 billion. Margins were also impacted by increased raw"
+        },
+        {
+          "line": 1105,
+          "page": 30,
+          "text": "materials and logistics costs, manufacturing productivity headwinds, partially offset by selling price actions, spending discipline and restructuring actions. Adjusting for special"
+        },
+        {
+          "line": 1106,
+          "page": 30,
+          "text": "item costs for significant litigation (non-GAAP measure), business segment operating income margins decreased year-on-year as displayed above."
+        },
+        {
+          "line": 1107,
+          "page": 30,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1108,
+          "page": 30,
+          "text": "Sales in Safety and Industrial were up 9.2 percent in U.S. dollars."
+        },
+        {
+          "line": 1109,
+          "page": 30,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1110,
+          "page": 30,
+          "text": "     •     Sales increased in abrasives, industrial adhesives and tapes, automotive aftermarket, electrical markets, roofing granules, and closure and masking systems and decreased"
+        },
+        {
+          "line": 1111,
+          "page": 30,
+          "text": "           in personal safety."
+        },
+        {
+          "line": 1112,
+          "page": 30,
+          "text": "     •     Growth was driven by improving general industrial manufacturing activity and other end-market demand partially offset by prior-year strong pandemic-related respirator"
+        },
+        {
+          "line": 1113,
+          "page": 30,
+          "text": "           mask demand."
+        },
+        {
+          "line": 1114,
+          "page": 30,
+          "text": "Business segment operating income margins decreased year-on-year due to increases in raw materials, logistics and special item costs for significant litigation; lower gain on"
+        },
+        {
+          "line": 1115,
+          "page": 30,
+          "text": "sale of properties; and manufacturing productivity impacts that were partially offset by sales growth leverage, and benefits from restructuring actions and lower related charges."
+        },
+        {
+          "line": 1116,
+          "page": 30,
+          "text": "Adjusting for special item costs for significant litigation (non-GAAP measure), business segment operating income margins decreased year-on-year as displayed above."
+        },
+        {
+          "line": 1117,
+          "page": 30,
+          "text": "                                                                                                        30"
+        }
+      ]
+    },
+    {
+      "page": 31,
+      "review_only": true,
+      "start_line": 1118,
+      "end_line": 1157,
+      "lines": [
+        {
+          "line": 1118,
+          "page": 31,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1119,
+          "page": 31,
+          "text": "Transportation and Electronics Business (26.0% of consolidated sales):"
+        },
+        {
+          "line": 1120,
+          "page": 31,
+          "text": "                                                                                                                                                                2022                                2021"
+        },
+        {
+          "line": 1121,
+          "page": 31,
+          "text": "Sales (millions)                                                                                                                                  $                        8,902       $                      9,262"
+        },
+        {
+          "line": 1122,
+          "page": 31,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1123,
+          "page": 31,
+          "text": "    Organic sales                                                                                                                                                       1.2      %                         8.7      %"
+        },
+        {
+          "line": 1124,
+          "page": 31,
+          "text": "    Divestitures                                                                                                                                                      (0.5)                                 —"
+        },
+        {
+          "line": 1125,
+          "page": 31,
+          "text": "    Translation                                                                                                                                                       (4.6)                                1.5"
+        },
+        {
+          "line": 1126,
+          "page": 31,
+          "text": "   Total sales change                                                                                                                                                 (3.9)      %                       10.2       %"
+        },
+        {
+          "line": 1127,
+          "page": 31,
+          "text": "Business segment operating income (millions)                                                                                                      $                        1,012       $                      1,880"
+        },
+        {
+          "line": 1128,
+          "page": 31,
+          "text": "   Percent change                                                                                                                                                    (46.2)      %                       10.6       %"
+        },
+        {
+          "line": 1129,
+          "page": 31,
+          "text": "   Percent of sales                                                                                                                                                        11.4 %                             20.3 %"
+        },
+        {
+          "line": 1130,
+          "page": 31,
+          "text": "Adjusted business segment operating income (millions) (non-GAAP measure)                                                                          $                        1,812       $                      1,880"
+        },
+        {
+          "line": 1131,
+          "page": 31,
+          "text": "   Percent change                                                                                                                                                         (3.6) %                             10.6 %"
+        },
+        {
+          "line": 1132,
+          "page": 31,
+          "text": "   Percent of sales                                                                                                                                                        20.4 %                             20.3 %"
+        },
+        {
+          "line": 1133,
+          "page": 31,
+          "text": "The preceding table also displays business segment operating income (loss) information adjusted for special items. For Transportation and Electronics these adjustments include"
+        },
+        {
+          "line": 1134,
+          "page": 31,
+          "text": "PFAS manufacturing exit costs. Refer to the Certain amounts adjusted for special items - (non-GAAP measures) section for additional details."
+        },
+        {
+          "line": 1135,
+          "page": 31,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1136,
+          "page": 31,
+          "text": "Sales in Transportation and Electronics were down 3.9 percent in U.S. dollars."
+        },
+        {
+          "line": 1137,
+          "page": 31,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1138,
+          "page": 31,
+          "text": "     •     Sales increased in automotive and aerospace, commercial solutions and advanced materials, and decreased in transportation safety and electronics."
+        },
+        {
+          "line": 1139,
+          "page": 31,
+          "text": "     •     Growth was held back by weaker consumer electronics end-market demand and ongoing impacts of semiconductor supply chain constraints on automotive markets."
+        },
+        {
+          "line": 1140,
+          "page": 31,
+          "text": "Divestitures:"
+        },
+        {
+          "line": 1141,
+          "page": 31,
+          "text": "     •     Divestiture impact relates to lost Transportation and Electronics sales year-on-year from deconsolidation of the Aearo Entities in July 2022."
+        },
+        {
+          "line": 1142,
+          "page": 31,
+          "text": "Business segment operating income margins decreased year-on-year due to special item charges for PFAS manufacturing exit costs related to asset impairments (discussed in"
+        },
+        {
+          "line": 1143,
+          "page": 31,
+          "text": "Note 15) resulting in a 2022 fourth quarter pre-tax charge of $0.8 billion. Margins were also impacted by increased raw materials and logistics costs, manufacturing productivity"
+        },
+        {
+          "line": 1144,
+          "page": 31,
+          "text": "headwinds which were further magnified by the shutdown of certain operations in Belgium and investments in auto electrification, partially offset by selling price actions,"
+        },
+        {
+          "line": 1145,
+          "page": 31,
+          "text": "strong spending discipline and restructuring actions. Adjusting for special item PFAS manufacturing exit costs (non-GAAP measure), business segment operating income"
+        },
+        {
+          "line": 1146,
+          "page": 31,
+          "text": "margins increased year-on-year as displayed above."
+        },
+        {
+          "line": 1147,
+          "page": 31,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1148,
+          "page": 31,
+          "text": "Sales in Transportation and Electronics were up 10.2 percent in U.S. dollars."
+        },
+        {
+          "line": 1149,
+          "page": 31,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1150,
+          "page": 31,
+          "text": "     •     Sales increased in advanced materials, commercial solutions, automotive and aerospace, electronics and transportation safety."
+        },
+        {
+          "line": 1151,
+          "page": 31,
+          "text": "     •     Growth benefited from improving automotive-end market activity such as increases in car and light truck builds, strong demand in data center, semiconductor,"
+        },
+        {
+          "line": 1152,
+          "page": 31,
+          "text": "           interconnect and consumer electronics markets and increased advertising spend and return to workplace trends partially offset by impacts from semiconductor supply"
+        },
+        {
+          "line": 1153,
+          "page": 31,
+          "text": "           chain constraints."
+        },
+        {
+          "line": 1154,
+          "page": 31,
+          "text": "Business segment operating income margins increased year-on-year due to sales growth leverage, benefits from restructuring actions and lower related charges, and COVID"
+        },
+        {
+          "line": 1155,
+          "page": 31,
+          "text": "impacts recognized on certain assets in 2020 that were partially offset by increases in raw materials and logistic costs, manufacturing productivity impacts, and increased"
+        },
+        {
+          "line": 1156,
+          "page": 31,
+          "text": "compensation and benefit costs."
+        },
+        {
+          "line": 1157,
+          "page": 31,
+          "text": "                                                                                                        31"
+        }
+      ]
+    },
+    {
+      "page": 32,
+      "review_only": true,
+      "start_line": 1158,
+      "end_line": 1194,
+      "lines": [
+        {
+          "line": 1158,
+          "page": 32,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1159,
+          "page": 32,
+          "text": "Health Care Business (24.6% of consolidated sales):"
+        },
+        {
+          "line": 1160,
+          "page": 32,
+          "text": "                                                                                                                                                                  2022                                2021"
+        },
+        {
+          "line": 1161,
+          "page": 32,
+          "text": "Sales (millions)                                                                                                                                    $                        8,421      $                        8,597"
+        },
+        {
+          "line": 1162,
+          "page": 32,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1163,
+          "page": 32,
+          "text": "     Organic sales                                                                                                                                                       3.2      %                         10.2       %"
+        },
+        {
+          "line": 1164,
+          "page": 32,
+          "text": "     Divestitures                                                                                                                                                       (1.4)                               (2.0)"
+        },
+        {
+          "line": 1165,
+          "page": 32,
+          "text": "     Translation                                                                                                                                                        (3.8)                                1.6"
+        },
+        {
+          "line": 1166,
+          "page": 32,
+          "text": "   Total sales change                                                                                                                                                   (2.0)     %                          9.8       %"
+        },
+        {
+          "line": 1167,
+          "page": 32,
+          "text": "Business segment operating income (millions)                                                                                                        $                        1,815      $                        2,037"
+        },
+        {
+          "line": 1168,
+          "page": 32,
+          "text": "   Percent change                                                                                                                                                     (10.9)      %                         22.5       %"
+        },
+        {
+          "line": 1169,
+          "page": 32,
+          "text": "   Percent of sales                                                                                                                                                     21.6       %                        23.7       %"
+        },
+        {
+          "line": 1170,
+          "page": 32,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1171,
+          "page": 32,
+          "text": "Sales in Health Care were down 2.0 percent in U.S. dollars."
+        },
+        {
+          "line": 1172,
+          "page": 32,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1173,
+          "page": 32,
+          "text": "     •     Sales increased in separation and purification, health information systems, food safety and medical solutions, and was flat in oral care."
+        },
+        {
+          "line": 1174,
+          "page": 32,
+          "text": "     •     Growth continues to be impacted by COVID-related trends on elective procedure volumes and ongoing inflationary pressures."
+        },
+        {
+          "line": 1175,
+          "page": 32,
+          "text": "Divestitures:"
+        },
+        {
+          "line": 1176,
+          "page": 32,
+          "text": "     •     Divestiture impact relates to the lost sales year-on-year from the divestiture from the Food Safety Division split-off transaction and combination with Neogen completed"
+        },
+        {
+          "line": 1177,
+          "page": 32,
+          "text": "           in the third quarter of 2022."
+        },
+        {
+          "line": 1178,
+          "page": 32,
+          "text": "Business segment operating income margins decreased year-on-year due to increased raw materials and logistics costs along with manufacturing productivity headwinds,"
+        },
+        {
+          "line": 1179,
+          "page": 32,
+          "text": "investments in the business and transaction-related costs associated with the announced divestiture of the food safety business (see Note 3), partially offset by sales growth"
+        },
+        {
+          "line": 1180,
+          "page": 32,
+          "text": "(including selling price actions), strong spending discipline and restructuring actions."
+        },
+        {
+          "line": 1181,
+          "page": 32,
+          "text": "As discussed in Note 3, in July 2022, 3M announced its intention to spin off the Health Care business as a separate public company. 3M expects to initially retain a 19.9%"
+        },
+        {
+          "line": 1182,
+          "page": 32,
+          "text": "ownership position in the Health Care business."
+        },
+        {
+          "line": 1183,
+          "page": 32,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1184,
+          "page": 32,
+          "text": "Sales in Health Care were up 9.8 percent in U.S. dollars."
+        },
+        {
+          "line": 1185,
+          "page": 32,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1186,
+          "page": 32,
+          "text": "     •     Sales increased in oral care, separation and purification, food safety, health information systems and medical solutions."
+        },
+        {
+          "line": 1187,
+          "page": 32,
+          "text": "     •     Growth benefited from higher year-on-year dental procedures, continued high demand for biopharma filtration solutions for COVID-related vaccine and therapeutic"
+        },
+        {
+          "line": 1188,
+          "page": 32,
+          "text": "           development and manufacturing, rising elective procedure volumes in the first six months of 2021 and due to improving hospital information technology investments."
+        },
+        {
+          "line": 1189,
+          "page": 32,
+          "text": "Divestitures:"
+        },
+        {
+          "line": 1190,
+          "page": 32,
+          "text": "     •     In May 2020, 3M completed the sale of substantially all of its drug delivery business."
+        },
+        {
+          "line": 1191,
+          "page": 32,
+          "text": "Business segment operating income margins increased year-on-year due to sales growth leverage and benefits from restructuring actions and lower related charges that were"
+        },
+        {
+          "line": 1192,
+          "page": 32,
+          "text": "partially offset by supply chain disruptions, increases in raw materials and logistics costs, deal-related costs associated with the announced divestiture of the food safety business"
+        },
+        {
+          "line": 1193,
+          "page": 32,
+          "text": "(see Note 3), manufacturing productivity impacts, increased compensation and benefit costs, and increased investments in growth."
+        },
+        {
+          "line": 1194,
+          "page": 32,
+          "text": "                                                                                                         32"
+        }
+      ]
+    },
+    {
+      "page": 33,
+      "review_only": true,
+      "start_line": 1195,
+      "end_line": 1233,
+      "lines": [
+        {
+          "line": 1195,
+          "page": 33,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1196,
+          "page": 33,
+          "text": "Consumer Business (15.5% of consolidated sales):"
+        },
+        {
+          "line": 1197,
+          "page": 33,
+          "text": "                                                                                                                                                               2022                                2021"
+        },
+        {
+          "line": 1198,
+          "page": 33,
+          "text": "Sales (millions)                                                                                                                                 $                        5,298       $                       5,513"
+        },
+        {
+          "line": 1199,
+          "page": 33,
+          "text": "   Sales change analysis:"
+        },
+        {
+          "line": 1200,
+          "page": 33,
+          "text": "     Organic sales                                                                                                                                                   (0.9)      %                         9.8       %"
+        },
+        {
+          "line": 1201,
+          "page": 33,
+          "text": "     Divestitures                                                                                                                                                    (0.4)                                 —"
+        },
+        {
+          "line": 1202,
+          "page": 33,
+          "text": "     Translation                                                                                                                                                     (2.6)                                1.0"
+        },
+        {
+          "line": 1203,
+          "page": 33,
+          "text": "   Total sales change                                                                                                                                                (3.9)      %                       10.8        %"
+        },
+        {
+          "line": 1204,
+          "page": 33,
+          "text": "Business segment operating income (millions)                                                                                                     $                          994       $                       1,162"
+        },
+        {
+          "line": 1205,
+          "page": 33,
+          "text": "   Percent change                                                                                                                                                   (14.4)      %                         3.8       %"
+        },
+        {
+          "line": 1206,
+          "page": 33,
+          "text": "   Percent of sales                                                                                                                                                  18.8       %                       21.1        %"
+        },
+        {
+          "line": 1207,
+          "page": 33,
+          "text": "Year 2022 results:"
+        },
+        {
+          "line": 1208,
+          "page": 33,
+          "text": "Sales in Consumer were down 3.9 percent in U.S. dollars."
+        },
+        {
+          "line": 1209,
+          "page": 33,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1210,
+          "page": 33,
+          "text": "     •     Sales increased in stationery and office and home care, was flat in consumer health and safety, and decreased in home improvement."
+        },
+        {
+          "line": 1211,
+          "page": 33,
+          "text": "     •     Growth was impacted by softening trends in the Consumer retail business as consumers pulled back on discretionary spending and retailers took actions to reduce their"
+        },
+        {
+          "line": 1212,
+          "page": 33,
+          "text": "           inventories. These impacts were partially offset by demand for Scotch BlueTM painter’s tape, Scotch-BriteTM, and Post-it®-solutions."
+        },
+        {
+          "line": 1213,
+          "page": 33,
+          "text": "Business segment operating income margins decreased year-on-year as a result of increased raw materials, logistics and outsourced hardgoods manufacturing costs along with"
+        },
+        {
+          "line": 1214,
+          "page": 33,
+          "text": "manufacturing productivity headwinds and investments in the business, partially offset by sales growth (including selling price actions), strong spending discipline and"
+        },
+        {
+          "line": 1215,
+          "page": 33,
+          "text": "restructuring actions."
+        },
+        {
+          "line": 1216,
+          "page": 33,
+          "text": "Year 2021 results:"
+        },
+        {
+          "line": 1217,
+          "page": 33,
+          "text": "Sales in Consumer were up 10.8 percent in U.S. dollars."
+        },
+        {
+          "line": 1218,
+          "page": 33,
+          "text": "On an organic sales basis:"
+        },
+        {
+          "line": 1219,
+          "page": 33,
+          "text": "     •     Sales increased in stationery and office, home improvement, consumer health and safety and home care."
+        },
+        {
+          "line": 1220,
+          "page": 33,
+          "text": "     •     Growth driven by continued strength in the market with strong demand for CommandTM adhesives, FiltreteTM air quality solutions, MeguiarsTM auto care and Scotch"
+        },
+        {
+          "line": 1221,
+          "page": 33,
+          "text": "           BlueTM painter’s tape and from ongoing strength in demand for packaging and shipping products, Post-it®-solutions and Scotch® brand office tapes as the business laps"
+        },
+        {
+          "line": 1222,
+          "page": 33,
+          "text": "           last year’s COVID-related comparisons."
+        },
+        {
+          "line": 1223,
+          "page": 33,
+          "text": "Business segment operating income margins decreased year-on-year as a result of increases in raw materials, logistics, and outsourced hardgoods manufacturing costs,"
+        },
+        {
+          "line": 1224,
+          "page": 33,
+          "text": "manufacturing productivity impacts, and increased compensation and benefit costs that more than offset leverage from sales growth and benefits from restructuring actions and"
+        },
+        {
+          "line": 1225,
+          "page": 33,
+          "text": "lower related charges."
+        },
+        {
+          "line": 1226,
+          "page": 33,
+          "text": "PERFORMANCE BY GEOGRAPHIC AREA"
+        },
+        {
+          "line": 1227,
+          "page": 33,
+          "text": "While 3M manages its businesses globally and believes its business segment results are the most relevant measure of performance, the Company also utilizes geographic area"
+        },
+        {
+          "line": 1228,
+          "page": 33,
+          "text": "data as a secondary performance measure. Export sales are generally reported within the geographic area where the final sales to 3M customers are made. A portion of the"
+        },
+        {
+          "line": 1229,
+          "page": 33,
+          "text": "products or components sold by 3M’s operations to its customers are exported by these customers to different geographic areas. As customers move their operations from one"
+        },
+        {
+          "line": 1230,
+          "page": 33,
+          "text": "geographic area to another, 3M’s results will follow. Thus, net sales in a particular geographic area are not indicative of end-user consumption in that geographic area. Financial"
+        },
+        {
+          "line": 1231,
+          "page": 33,
+          "text": "information related to 3M operations in various geographic areas is provided in Note 2 and Note 19."
+        },
+        {
+          "line": 1232,
+          "page": 33,
+          "text": "Refer to the “Overview” section for a summary of net sales by geographic area and business segment."
+        },
+        {
+          "line": 1233,
+          "page": 33,
+          "text": "                                                                                                       33"
+        }
+      ]
+    }
+  ],
+  "scope_note": "Excerpt origins and outcomes are masked. Full native pages are review-only context, never delivered-evidence credit. Extraction is not independently visually validated; do not assume exhaustive support or correct table alignment."
+}

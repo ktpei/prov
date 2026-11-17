@@ -1,0 +1,14 @@
+{
+  "version": "context-retention-protocol-v1",
+  "limit": 32000,
+  "analysis_sha256": "894f21ebc66be52759fd037efabb241a268dfcd56336e546e04e1cd3aa2e8916",
+  "runtime_sha256": "46e934c36c802e2a73ff9ca66663de22276728d7b095e183c7e565cd57c4b7f9",
+  "read_protocol_sha256": "9d2c5da85ea51a2cf4a23cc1f86382b9ad7a422a012e013533de76b6957ad27a",
+  "run_sha256": "4fbf686caa250ca071b3eac31afc4808966484e30e1d81ea9fd1e68ef9a8297b",
+  "journals": {
+    "case-0.jsonl": "0bf99cf3b172e2d30c9c6edf08b043ffc57112124bf04e4c0734bae0e00e8432",
+    "case-1.jsonl": "83f04b662f4fbf5009232e3a7995f550f0d541ad34b8f32e3b3d99b6e26c53f2",
+    "case-2.jsonl": "77699ac00c31270ab295ba4e12adffae87ad15515176684e8958a72740e8b849"
+  },
+  "packets_sha256": "af6e595ea0dfada57d17d3977f9fe92d6cdc8f62835d0572de1ac9bf9f8f9a18"
+}

@@ -1,0 +1,103 @@
+{
+  "version": "financebench-context-pdf-inventory-v1",
+  "revision": "cc39aeb4afdf33909ee1412188bf89035950c2eb",
+  "selection_sha256": "5d263a7dc8bd41ed980bbebc5bc45755cf496b3cc173e5317167f1af72d4d1d3",
+  "tree_api_url": "https://api.github.com/repos/patronus-ai/financebench/git/trees/dd439a15cd136001f70afba8b77ac534bd83ce8e?recursive=1",
+  "tree_response_sha256": "dd67e7b43b4d6d797c66985daa282422bf2f02d83a08bd6a44d834642eace247",
+  "tree_sha": "dd439a15cd136001f70afba8b77ac534bd83ce8e",
+  "tree_truncated": false,
+  "selected_count": 6,
+  "total_expected_bytes": 10443871,
+  "sources": [
+    {
+      "task_id": "financebench_id_00215",
+      "doc_name": "VERIZON_2022_10K",
+      "original_metadata_url": "https://www.verizon.com/about/sites/default/files/2022-Annual-Report-on-Form-10K.pdf",
+      "tree_entry": {
+        "path": "pdfs/VERIZON_2022_10K.pdf",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92473150ab26a2f8419989bcd2d825c760424f8c",
+        "size": 2315268,
+        "url": "https://api.github.com/repos/patronus-ai/financebench/git/blobs/92473150ab26a2f8419989bcd2d825c760424f8c"
+      },
+      "download_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/VERIZON_2022_10K.pdf"
+    },
+    {
+      "task_id": "financebench_id_03473",
+      "doc_name": "COCACOLA_2017_10K",
+      "original_metadata_url": "https://investors.coca-colacompany.com/filings-reports/annual-filings-10-k/content/0000021344-18-000008/0000021344-18-000008.pdf",
+      "tree_entry": {
+        "path": "pdfs/COCACOLA_2017_10K.pdf",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "340399e1fd68b05f4efbdba60985302d23c6689e",
+        "size": 1790599,
+        "url": "https://api.github.com/repos/patronus-ai/financebench/git/blobs/340399e1fd68b05f4efbdba60985302d23c6689e"
+      },
+      "download_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/COCACOLA_2017_10K.pdf"
+    },
+    {
+      "task_id": "financebench_id_04209",
+      "doc_name": "COSTCO_2021_10K",
+      "original_metadata_url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0000909832/534964a5-44c9-47b3-b3c0-7620830fad6c.pdf",
+      "tree_entry": {
+        "path": "pdfs/COSTCO_2021_10K.pdf",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8969f7a2601c92a9a1a65fcd137b94a868074e29",
+        "size": 765319,
+        "url": "https://api.github.com/repos/patronus-ai/financebench/git/blobs/8969f7a2601c92a9a1a65fcd137b94a868074e29"
+      },
+      "download_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/COSTCO_2021_10K.pdf"
+    },
+    {
+      "task_id": "financebench_id_00711",
+      "doc_name": "JOHNSON_JOHNSON_2022_10K",
+      "original_metadata_url": "https://johnsonandjohnson.gcs-web.com/static-files/9b012500-471a-4df9-93fc-6cee2b420678",
+      "tree_entry": {
+        "path": "pdfs/JOHNSON_JOHNSON_2022_10K.pdf",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "eba313ca98f81a2cabc19c7dd931c92c3def3a66",
+        "size": 1941368,
+        "url": "https://api.github.com/repos/patronus-ai/financebench/git/blobs/eba313ca98f81a2cabc19c7dd931c92c3def3a66"
+      },
+      "download_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/JOHNSON_JOHNSON_2022_10K.pdf"
+    },
+    {
+      "task_id": "financebench_id_01865",
+      "doc_name": "3M_2022_10K",
+      "original_metadata_url": "https://investors.3m.com/financials/sec-filings/content/0000066740-23-000014/0000066740-23-000014.pdf",
+      "tree_entry": {
+        "path": "pdfs/3M_2022_10K.pdf",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ac32e3076d5fc0378b5123b204eece5fc5d39dac",
+        "size": 1655681,
+        "url": "https://api.github.com/repos/patronus-ai/financebench/git/blobs/ac32e3076d5fc0378b5123b204eece5fc5d39dac"
+      },
+      "download_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/3M_2022_10K.pdf"
+    },
+    {
+      "task_id": "financebench_id_04254",
+      "doc_name": "AMERICANWATERWORKS_2021_10K",
+      "original_metadata_url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001410636/1228947b-ee48-4079-984b-7741727bbcea.pdf",
+      "tree_entry": {
+        "path": "pdfs/AMERICANWATERWORKS_2021_10K.pdf",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b716b0e0aece594ccb45d0006b183e49e24a1595",
+        "size": 1975636,
+        "url": "https://api.github.com/repos/patronus-ai/financebench/git/blobs/b716b0e0aece594ccb45d0006b183e49e24a1595"
+      },
+      "download_url": "https://raw.githubusercontent.com/patronus-ai/financebench/cc39aeb4afdf33909ee1412188bf89035950c2eb/pdfs/AMERICANWATERWORKS_2021_10K.pdf"
+    }
+  ],
+  "pdf_bytes_downloaded": false,
+  "limitations": [
+    "Git tree metadata does not validate PDF content, current issuer byte-equivalence, publication availability, or extraction quality."
+  ],
+  "commit_api_url": "https://api.github.com/repos/patronus-ai/financebench/git/commits/cc39aeb4afdf33909ee1412188bf89035950c2eb",
+  "commit_response_sha256": "a3c908303d0fe571a9f3dbe24afc97cb9639adb23b00b0a008087459e1f7a4e8"
+}

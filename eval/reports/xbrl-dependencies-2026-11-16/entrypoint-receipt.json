@@ -1,0 +1,17 @@
+{
+  "version": "single-dependency-acquisition-v1",
+  "requested_url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0000950170-25-103916/odfl-20250630.xsd",
+  "canonical_url": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.xsd",
+  "source_receipt_sha256": "8607775d0b72c3d4707a8ab0ba620226236a477448356828b1586cf9c5fbc0f2",
+  "requested_at": "2026-11-16T19:30:18.123685+00:00",
+  "redirects": "disabled",
+  "retry_count": 0,
+  "http_status": 200,
+  "final_url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0000950170-25-103916/odfl-20250630.xsd",
+  "content_type": "application/octet-stream",
+  "response_bytes": 601965,
+  "response_sha256": "36a992b6fea7bc0e1648a0971ed0d7eafdc705edfa0930552086a4d87f77f08e",
+  "status": "downloaded_unvalidated",
+  "local_file": "odfl-20250630.xsd",
+  "finished_at": "2026-11-16T19:30:19.063808+00:00"
+}

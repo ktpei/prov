@@ -5,6 +5,7 @@ never retries it automatically. Gold answers are used only after the agent run.
 """
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
@@ -36,12 +37,21 @@ def main():
     args = parser.parse_args()
     positive(args.budget_usd, "aggregate budget")
     positive(args.per_task_usd, "task budget")
-    benchmark = json.loads(args.benchmark.read_text())
-    tasks = {task["id"]: task for task in benchmark["tasks"]}
+    benchmark_content = args.benchmark.read_bytes()
+    benchmark = json.loads(benchmark_content)
+    task_rows = benchmark["tasks"]
+    benchmark_task_ids = [task["id"] for task in task_rows]
+    if len(set(benchmark_task_ids)) != len(benchmark_task_ids):
+        parser.error("Benchmark task IDs must be unique")
+    tasks = {task["id"]: task for task in task_rows}
     if len(set(args.tasks)) != len(args.tasks) or not set(args.tasks) <= tasks.keys():
         parser.error("Select unique known development task IDs")
-    if any(tasks[key].get("split", "dev") != "dev" for key in args.tasks):
-        parser.error("Only development tasks may be run")
+    if any(tasks[key].get("split") != "dev" for key in args.tasks):
+        parser.error("Paid experiment preflight requires explicit development task labels")
+    sources = Sources(args.corpus)
+    corpus_hashes = {source_id: source["sha256"] for source_id, source in sources.documents.items()}
+    if not benchmark["source_hashes"] or benchmark["source_hashes"] != corpus_hashes:
+        raise ValueError("Benchmark/corpus hash mismatch")
     # Fail closed on an existing experiment, including any pending reservation.
     args.output.mkdir(parents=True, exist_ok=False)
     model = OpenRouterModel(
@@ -51,11 +61,6 @@ def main():
         os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
         max_output=4000,
     )
-    sources = Sources(args.corpus)
-    if {key: sources.documents[key]["sha256"] for key in benchmark["source_hashes"]} != benchmark[
-        "source_hashes"
-    ]:
-        raise ValueError("Benchmark/corpus hash mismatch")
     ledger_path = args.output / "experiment.json"
     ledger = {
         "mode": "live_openrouter_development",
@@ -67,7 +72,14 @@ def main():
             "output_usd_per_million": model.output_rate,
         },
         "benchmark_version": benchmark["version"],
+        "benchmark_content_sha256": hashlib.sha256(benchmark_content).hexdigest(),
         "source_hashes": benchmark["source_hashes"],
+        "selection_metadata": {
+            "selected_task_ids": list(args.tasks),
+            "selection_status": [
+                {"task_id": task_id, "status": "not_started"} for task_id in args.tasks
+            ],
+        },
         "git_revision": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         "working_tree_dirty": bool(
             subprocess.check_output(["git", "status", "--porcelain"], text=True)
@@ -77,10 +89,20 @@ def main():
         "limitation": "Application-side reservations are estimates, not a provider billing guarantee. Semantic support requires review.",
     }
     write_json(ledger_path, ledger)
+    selection_status = {
+        item["task_id"]: item for item in ledger["selection_metadata"]["selection_status"]
+    }
+
+    def skip_not_started_tasks():
+        for item in selection_status.values():
+            if item["status"] == "not_started":
+                item["status"] = "skipped"
+
     for task_id in args.tasks:
         remaining = args.budget_usd - ledger["accounted_cost_usd"]
         if remaining <= 1e-9:
             ledger["status"] = "aggregate_budget_exhausted"
+            skip_not_started_tasks()
             break
         reservation = min(args.per_task_usd, remaining)
         attempt = {
@@ -91,6 +113,7 @@ def main():
         }
         ledger["attempts"].append(attempt)
         ledger["accounted_cost_usd"] += reservation
+        selection_status[task_id]["status"] = "pending"
         write_json(ledger_path, ledger)  # Persist before any potentially paid request.
         print(
             json.dumps({"task_id": task_id, "status": "starting", "reserved_usd": reservation}),
@@ -122,6 +145,7 @@ def main():
             stop_reason=report["stop_reason"],
             result_file=result_path.name,
         )
+        selection_status[task_id]["status"] = report["status"]
         write_json(ledger_path, ledger)
         grading = grade_packet_answer(task, report, directory=args.corpus)
         attempt["grading"] = grading
@@ -140,6 +164,7 @@ def main():
         )
         if report["metrics"]["cost_uncertain"] or ledger["accounted_cost_usd"] > args.budget_usd:
             ledger["status"] = "stopped_for_billing_review"
+            skip_not_started_tasks()
             break
     if ledger["status"] == "running":
         ledger["status"] = "finished"

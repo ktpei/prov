@@ -1,0 +1,175 @@
+{
+  "version": "pdf-evidence-components-v1",
+  "corpus_manifest_sha256": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+  "sources": {
+    "NIKE_2023_10K": {
+      "original_sha256": "51f5a0fc6ede20de4f5cfdeae8791a57bdd65c95db2ceb263eb120696ff90172",
+      "sha256": "6eda66aaebd41093c2e747c9589959fcf6b117e04a9190c284c8a5cb98b31c7d"
+    },
+    "ULTABEAUTY_2023Q4_EARNINGS": {
+      "original_sha256": "c7df6210a627042e231c9579982648a43f3ff8b630b4020540330c2a85e0d781",
+      "sha256": "247570850559924741f6395318efd960adfb3a23e378522093faad3e01b07269"
+    },
+    "WALMART_2018_10K": {
+      "original_sha256": "661512df698c895a4a5ab3d4ab879fd8ffc8f17a9038e27bcb208401982b6c15",
+      "sha256": "923deef38fead717880b0a36577da5764f47678987e8398b007113a7422eba70"
+    }
+  },
+  "cases": [
+    {
+      "id": "financebench_id_06247",
+      "source_id": "WALMART_2018_10K",
+      "disposition": "mapped",
+      "reason": "",
+      "required_components": [
+        "income_statement_identity",
+        "income_period_and_units",
+        "cost_of_sales",
+        "balance_statement_identity",
+        "balance_dates_and_units",
+        "current_and_prior_inventories",
+        "current_and_prior_accounts_payable"
+      ],
+      "alternatives": [
+        {
+          "income_statement_identity": [
+            [
+              2171,
+              2172
+            ]
+          ],
+          "income_period_and_units": [
+            [
+              2173,
+              2174
+            ]
+          ],
+          "cost_of_sales": [
+            [
+              2180,
+              2180
+            ]
+          ],
+          "balance_statement_identity": [
+            [
+              2224,
+              2225
+            ]
+          ],
+          "balance_dates_and_units": [
+            [
+              2226,
+              2227
+            ]
+          ],
+          "current_and_prior_inventories": [
+            [
+              2232,
+              2232
+            ]
+          ],
+          "current_and_prior_accounts_payable": [
+            [
+              2249,
+              2249
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_01163",
+      "source_id": "NIKE_2023_10K",
+      "disposition": "mapped",
+      "reason": "",
+      "required_components": [
+        "entity_and_cashflow_statement",
+        "cashflow_period_scale_columns",
+        "operations_total",
+        "investing_total",
+        "financing_total"
+      ],
+      "alternatives": [
+        {
+          "entity_and_cashflow_statement": [
+            [
+              2558,
+              2559
+            ]
+          ],
+          "cashflow_period_scale_columns": [
+            [
+              2560,
+              2561
+            ]
+          ],
+          "operations_total": [
+            [
+              2577,
+              2577
+            ]
+          ],
+          "investing_total": [
+            [
+              2584,
+              2584
+            ]
+          ],
+          "financing_total": [
+            [
+              2592,
+              2592
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_00601",
+      "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+      "disposition": "mapped",
+      "reason": "Mapped source lines do not resolve reference-d00daa9a06589412: question FY2023 versus company fiscal2022 convention.",
+      "required_components": [
+        "annual_period_heading",
+        "absolute_vs_relative_sga",
+        "sga_percentage_and_comparison",
+        "primary_drivers",
+        "offsets_and_causes"
+      ],
+      "alternatives": [
+        {
+          "annual_period_heading": [
+            [
+              63,
+              63
+            ]
+          ],
+          "absolute_vs_relative_sga": [
+            [
+              75,
+              76
+            ]
+          ],
+          "sga_percentage_and_comparison": [
+            [
+              76,
+              77
+            ]
+          ],
+          "primary_drivers": [
+            [
+              77,
+              78
+            ]
+          ],
+          "offsets_and_causes": [
+            [
+              78,
+              80
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

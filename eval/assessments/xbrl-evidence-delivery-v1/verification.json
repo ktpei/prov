@@ -1,0 +1,14 @@
+{
+  "audit_sha256": "b68ec275a824af7bbd8672f9298bbb80180bdb341a442b7573f8eaa7b3ab2639",
+  "independent_reproduction": "byte_identical",
+  "reviewer": "masked_packet_review",
+  "facts": 504,
+  "mapped_occurrences": 420,
+  "distinct_mapped_cells": 412,
+  "unique_reads": 139,
+  "max_response_characters": 7989,
+  "core_tests": 431,
+  "lint": "passed",
+  "case_plan": "proposal_not_final_grading_labels",
+  "accuracy_claim": null
+}

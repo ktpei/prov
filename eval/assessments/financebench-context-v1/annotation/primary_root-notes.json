@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "original_sha256": "d5cf549543a24b04228fd2af979ff2ca94cf64fb008a789340cb9117fbcfde5d",
+      "text_sha256": "1bf21b6df7f23f2031f41fdfd4349c1f22c0811585e5eafb72530d03f720c7c6",
+      "physical_pages": [
+        25
+      ],
+      "adjacent_pages": [],
+      "scope_reason": "Full referenced physical pages only; no expansion required for exact operand and comparison mapping.",
+      "renders": [
+        {
+          "physical_page": 25,
+          "path": "runs/financebench-context-v1-annotation/primary_root/3M_2022_10K-p25.png",
+          "sha256": "6f0f42a2a44dba3fecb4d65e8877cf353becaf05348093e060f0b2725ec6f097",
+          "command": "pdftoppm -f 25 -l 25 -scale-to 2000 -singlefile -png runs/financebench-context-v1-preparation/corpus/parts/3M_2022_10K/originals/3M_2022_10K.pdf runs/financebench-context-v1-annotation/primary_root/3M_2022_10K-p25"
+        }
+      ],
+      "reviewer": "root primary annotator",
+      "visual_native_comparison": "Full-page renders and native text inspected. Required table headers, years, labels, numbers and negative parentheses agree. Extraction success is not a completeness claim for uninspected pages.",
+      "outcome_blind": true,
+      "reference_issues": [
+        {
+          "kind": "question_reference_metric_ambiguity",
+          "detail": "Reference consumer -0.9% uses organic sales, which excludes both portfolio changes and currency translation. Excluding acquisitions/divestitures alone leaves currency effects: all four segments have negative growth (organic plus translation: -3.2%, -3.4%, -0.6%, -3.5%). Consumer is uniquely negative only under organic-sales interpretation. Gold preserved; no semantic validation."
+        }
+      ],
+      "assumptions": [
+        "Company identity comes from the hash-bound 3M document; the page itself supplies segment/statement scope.",
+        "Organic sales is the reference metric, not an asserted equivalence to M&A-only exclusion."
+      ],
+      "calculation": {
+        "organic_segment_growth_percent": [
+          1.0,
+          1.2,
+          3.2,
+          -0.9
+        ],
+        "organic_company_growth_percent": 1.2
+      },
+      "excluded_roles": [
+        "Geographic-area table and operating-income results are not needed for the reference organic-sales claim."
+      ]
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "original_sha256": "dba7d6cc97734abd6dcbc1a6a34f82b5d228e60d0a1a32425a90404fd4d3e290",
+      "text_sha256": "78f1f5a613bd576d84b468593efc6d7df8bd16cd64103bcc85bad4b058673e76",
+      "physical_pages": [
+        46,
+        47
+      ],
+      "adjacent_pages": [],
+      "scope_reason": "Full referenced physical pages only; no expansion required for exact operand and comparison mapping.",
+      "renders": [
+        {
+          "physical_page": 46,
+          "path": "runs/financebench-context-v1-annotation/primary_root/JOHNSON_JOHNSON_2022_10K-p46.png",
+          "sha256": "5f4a8c60a20b94e0fe9704b49e9976025d9cda2b1e32c21875ec9d4eec605da0",
+          "command": "pdftoppm -f 46 -l 46 -scale-to 2000 -singlefile -png runs/financebench-context-v1-preparation/corpus/parts/JOHNSON_JOHNSON_2022_10K/originals/JOHNSON_JOHNSON_2022_10K.pdf runs/financebench-context-v1-annotation/primary_root/JOHNSON_JOHNSON_2022_10K-p46"
+        },
+        {
+          "physical_page": 47,
+          "path": "runs/financebench-context-v1-annotation/primary_root/JOHNSON_JOHNSON_2022_10K-p47.png",
+          "sha256": "93023bdf48ab1f41d0e0e5b5bb440da2c9522b5550631baae513da690ad7aeec",
+          "command": "pdftoppm -f 47 -l 47 -scale-to 2000 -singlefile -png runs/financebench-context-v1-preparation/corpus/parts/JOHNSON_JOHNSON_2022_10K/originals/JOHNSON_JOHNSON_2022_10K.pdf runs/financebench-context-v1-annotation/primary_root/JOHNSON_JOHNSON_2022_10K-p47"
+        }
+      ],
+      "reviewer": "root primary annotator",
+      "visual_native_comparison": "Full-page renders and native text inspected. Required table headers, years, labels, numbers and negative parentheses agree. Extraction success is not a completeness claim for uninspected pages.",
+      "outcome_blind": true,
+      "reference_issues": [],
+      "assumptions": [
+        "Use cost of products sold divided by arithmetic mean of opening and closing inventory, consistent with benchmark justification. The formula is not claimed to be printed in the source.",
+        "The 2022 earnings column and balance-sheet 2022/2021 columns identify the fiscal period; January 1, 2023 is the fiscal 2022 closing balance date.",
+        "Reported material inventories and cost of products sold support applicability of the requested inventory calculation; no claim of physical sales-unit count."
+      ],
+      "calculation": {
+        "cost_of_products_sold": 31089,
+        "closing_inventory": 12483,
+        "opening_inventory": 10387,
+        "average_inventory": 11435,
+        "ratio": 2.718758198513336,
+        "rounded_one_decimal": 2.7
+      },
+      "excluded_roles": [
+        "Sales revenue is not the numerator under the reference inventory-turnover convention."
+      ]
+    }
+  ],
+  "limitations": [
+    "Coding-agent annotation, not human financial validation.",
+    "No retrieval, ranked reads or retention outputs on this cohort were computed or inspected."
+  ]
+}

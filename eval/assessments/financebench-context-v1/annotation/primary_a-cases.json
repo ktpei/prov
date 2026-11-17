@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "disposition": "mapped",
+      "reason": "Direct total-assets row, consolidated balance-sheet identity, date columns and millions scale mapped on physical page 38. USD denomination and FY naming follow question context; mapped coverage is not independent financial validation.",
+      "required_components": [
+        "balance_entity_and_statement",
+        "balance_scale",
+        "balance_date_columns",
+        "total_assets_label_and_value"
+      ],
+      "alternatives": [
+        {
+          "balance_entity_and_statement": [
+            [
+              1186,
+              1187
+            ]
+          ],
+          "balance_scale": [
+            [
+              1188,
+              1188
+            ]
+          ],
+          "balance_date_columns": [
+            [
+              1189,
+              1189
+            ]
+          ],
+          "total_assets_label_and_value": [
+            [
+              1202,
+              1202
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "disposition": "mapped",
+      "reason": "Question-specified operands mapped to the consolidated operations statement on physical page 86 and cash-flow statement on physical page 88, with separate identity, period and scale context. USD denomination follows question context; mapped coverage is not independent financial validation.",
+      "required_components": [
+        "operations_entity_and_statement",
+        "operations_scale",
+        "operations_period_columns",
+        "operating_income_label_and_value",
+        "cashflow_entity_and_statement",
+        "cashflow_scale",
+        "cashflow_period_columns",
+        "cashflow_depreciation_amortization_label_and_value"
+      ],
+      "alternatives": [
+        {
+          "operations_entity_and_statement": [
+            [
+              2888,
+              2889
+            ]
+          ],
+          "operations_scale": [
+            [
+              2890,
+              2890
+            ]
+          ],
+          "operations_period_columns": [
+            [
+              2891,
+              2892
+            ]
+          ],
+          "operating_income_label_and_value": [
+            [
+              2900,
+              2900
+            ]
+          ],
+          "cashflow_entity_and_statement": [
+            [
+              2940,
+              2941
+            ]
+          ],
+          "cashflow_scale": [
+            [
+              2942,
+              2942
+            ]
+          ],
+          "cashflow_period_columns": [
+            [
+              2943,
+              2944
+            ]
+          ],
+          "cashflow_depreciation_amortization_label_and_value": [
+            [
+              2948,
+              2948
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

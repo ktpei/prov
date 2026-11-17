@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ix="http://www.xbrl.org/2013/inlineXBRL"
+ xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+ xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:s="urn:synthetic:applicability" xmlns:iso4217="http://www.xbrl.org/2003/iso4217">
+ <head><title>Synthetic default and applicability fixture</title></head><body>
+ <div style="display:none"><ix:header>
+ <ix:references><link:schemaRef xlink:type="simple" xlink:href="taxonomy.xsd"/></ix:references>
+ <ix:resources><xbrli:context id="scope">
+ <xbrli:entity><xbrli:identifier scheme="urn:example">synthetic</xbrli:identifier></xbrli:entity>
+ <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>
+ </xbrli:context><xbrli:unit id="usd"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>
+ </ix:resources></ix:header></div>
+ <table><tr><td>Assets</td><td id="cell-assets"><ix:nonFraction id="assets" name="s:Assets"
+ contextRef="scope" unitRef="usd" decimals="0">100</ix:nonFraction></td></tr></table>
+ </body></html>

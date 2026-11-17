@@ -1,0 +1,130 @@
+{
+  "version": "validation-reservation-exposure-audit-v1",
+  "reservation_sha256": "547060f9b42463b7b05ef3c4933a5b39c658996f08f464a068867c00336b33ce",
+  "selection_freeze_commit": "768ea06",
+  "scope": "Metadata-only post-selection issuer audit; no questions, references or source text opened. Original selection unchanged.",
+  "manifests": {
+    "data/corpus/sources.json": {
+      "sha256": "908e22c857c0d922fbd5c2b51eccf17e204248ea7d7576bc3af8479acc5f255b",
+      "metadata": [
+        {
+          "id": "aapl-fy2024",
+          "company": "Apple",
+          "title": "Apple FY2024 Q4 consolidated financial statements"
+        },
+        {
+          "id": "msft-fy2025-q1",
+          "company": "Microsoft",
+          "title": "Microsoft Cloud Strength Drives First Quarter Results"
+        },
+        {
+          "id": "nvda-fy2025-q3",
+          "company": "NVIDIA",
+          "title": "NVIDIA Announces Financial Results for Third Quarter Fiscal 2025"
+        },
+        {
+          "id": "amzn-2024-q3",
+          "company": "Amazon",
+          "title": "Amazon.com Announces Third Quarter Results"
+        },
+        {
+          "id": "meta-2024-q3",
+          "company": "Meta",
+          "title": "Meta Reports Third Quarter 2024 Results"
+        }
+      ]
+    },
+    "data/cloudflare-2024-q3/sources.json": {
+      "sha256": "6ff288ffbd6daf12d19dfb1b23ca5edb2dd5bd4d6439621250b3896796502f07",
+      "metadata": [
+        {
+          "id": "cloudflare-q3-2024-release",
+          "company": "Cloudflare",
+          "title": "Cloudflare Announces Third Quarter 2024 Financial Results"
+        },
+        {
+          "id": "cloudflare-q3-2024-filing",
+          "company": "Cloudflare",
+          "title": "Cloudflare Form 10-Q September 30 2024"
+        },
+        {
+          "id": "cloudflare-q3-2024-transcript",
+          "company": "Cloudflare",
+          "title": "Cloudflare Q3 2024 Earnings Call Corrected Transcript"
+        },
+        {
+          "id": "cloudflare-investor-day-2024",
+          "company": "Cloudflare",
+          "title": "Cloudflare Investor Day May 30 2024"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "task_id": "financebench_id_03718",
+      "doc_name": "LOCKHEEDMARTIN_2022_10K",
+      "company": "Lockheed Martin",
+      "document_content_access": "not_opened",
+      "issuer_disposition": "no_known_overlap_in_checked_records",
+      "prior_sources": []
+    },
+    {
+      "task_id": "financebench_id_01351",
+      "doc_name": "AMERICANEXPRESS_2022_10K",
+      "company": "American Express",
+      "document_content_access": "not_opened",
+      "issuer_disposition": "no_known_overlap_in_checked_records",
+      "prior_sources": []
+    },
+    {
+      "task_id": "financebench_id_08135",
+      "doc_name": "AMAZON_2017_10K",
+      "company": "Amazon",
+      "document_content_access": "not_opened",
+      "issuer_disposition": "known_prior_issuer_exposure",
+      "prior_sources": [
+        {
+          "manifest": "data/corpus/sources.json",
+          "source_id": "amzn-2024-q3"
+        }
+      ]
+    },
+    {
+      "task_id": "financebench_id_04700",
+      "doc_name": "MICROSOFT_2016_10K",
+      "company": "Microsoft",
+      "document_content_access": "not_opened",
+      "issuer_disposition": "known_prior_issuer_exposure",
+      "prior_sources": [
+        {
+          "manifest": "data/corpus/sources.json",
+          "source_id": "msft-fy2025-q1"
+        }
+      ]
+    },
+    {
+      "task_id": "financebench_id_01279",
+      "doc_name": "AMD_2022_10K",
+      "company": "AMD",
+      "document_content_access": "not_opened",
+      "issuer_disposition": "no_known_overlap_in_checked_records",
+      "prior_sources": []
+    },
+    {
+      "task_id": "financebench_id_03838",
+      "doc_name": "BLOCK_2020_10K",
+      "company": "Block",
+      "document_content_access": "not_opened",
+      "issuer_disposition": "no_known_overlap_in_checked_records",
+      "prior_sources": []
+    }
+  ],
+  "limitations": [
+    "The development exposure registry did not include original harness or Cloudflare corpus issuer metadata.",
+    "Four TAT-QA issuer identities remain unresolved.",
+    "Public data does not establish model non-exposure.",
+    "These six slots cannot be described as six previously unseen issuers."
+  ],
+  "replacement_policy": "Retain all six; no substitutions or selector rewrite."
+}

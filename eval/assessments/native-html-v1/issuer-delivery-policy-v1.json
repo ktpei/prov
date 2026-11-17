@@ -1,0 +1,48 @@
+{
+  "version": "issuer-html-delivery-policy-v1",
+  "selection_sha256": "d4aaf65b6d9c5efe0461d561bad84fdcb35f57a567c1ee6121b2b08f8a7dc2e4",
+  "previous_receipt_sha256": "3c59e8ba7153d2676ba92e8477c7b6befde1fc187a0f31b4b53de6166d8a21dd",
+  "permitted_hosts": [
+    "investor.caseys.com",
+    "ir.odfl.com",
+    "d18rn0p25nwr6d.cloudfront.net"
+  ],
+  "routes": [
+    {
+      "source_id": "caseys-2025-07-31-10q",
+      "url": "https://investor.caseys.com/node/17011/html",
+      "metadata_url": "https://investor.caseys.com/financials/sec-filings?field_nir_sec_form_group_target_id=496&field_nir_sec_date_filed_value=2025",
+      "link_kind": "official_opaque_html_link"
+    },
+    {
+      "source_id": "caseys-2025-10-31-10q",
+      "url": "https://investor.caseys.com/node/17101/html",
+      "metadata_url": "https://investor.caseys.com/financials/sec-filings?field_nir_sec_form_group_target_id=496&field_nir_sec_date_filed_value=2025",
+      "link_kind": "official_opaque_html_link"
+    },
+    {
+      "source_id": "old-dominion-2025-06-30-10q",
+      "url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0000950170-25-103916/odfl-20250630.htm",
+      "metadata_url": "https://ir.odfl.com/sec-filings/quarterly-reports",
+      "link_kind": "accession_filename_path"
+    },
+    {
+      "source_id": "old-dominion-2025-09-30-10q",
+      "url": "https://ir.odfl.com/sec-filings/all-sec-filings/content/0001193125-25-268415/odfl-20250930.htm",
+      "metadata_url": "https://ir.odfl.com/sec-filings/quarterly-reports",
+      "link_kind": "accession_filename_path"
+    },
+    {
+      "source_id": "ameren-2025-06-30-10q",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001002910/f56a6a97-9d4b-4432-89ef-0ca04599d6f1.html",
+      "metadata_url": "https://www.amereninvestors.com/investors/sec-filings/sec-filings-details/default.aspx?FilingId=18660741",
+      "link_kind": "official_opaque_html_link"
+    },
+    {
+      "source_id": "ameren-2025-09-30-10q",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001002910/936b0b05-a20c-4105-b1c4-c700e98245a8.html",
+      "metadata_url": "https://www.amereninvestors.com/investors/sec-filings/sec-filings-details/default.aspx?FilingId=18898713",
+      "link_kind": "official_opaque_html_link"
+    }
+  ]
+}

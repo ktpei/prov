@@ -1,0 +1,713 @@
+{
+  "run_sha256": "c754a2a7d191c4dd276c66d15ac74e7fb7651ec94f9bdaaca48fd28dd35f1aac",
+  "method": "Arithmetic decomposition of saved responses only; no searches, reads, projector calls, or changed policies",
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "search_cost": 4936,
+      "page_count": 76,
+      "identical_extraction_across_five_reads": true,
+      "reads": [
+        {
+          "rank": 1,
+          "line_count": 32,
+          "literal_text_chars": 3429,
+          "source_whitespace_chars": 543,
+          "source_text_escaping_chars": 18,
+          "line_structure_chars": 2315,
+          "extraction_field_chars": 13132,
+          "pages_value_chars": 12522,
+          "other_root_fields_and_container_chars": 730,
+          "full_read_cost": 19624,
+          "json_response_chars": 18301,
+          "outer_serialization_added_chars": 1323,
+          "extraction_sha256": "6f2e57d66f6837773fa5bbb76cf3d09b70da0d80feeeaad201850f9569e73eba",
+          "json_formatting_whitespace_chars": 1189
+        },
+        {
+          "rank": 2,
+          "line_count": 32,
+          "literal_text_chars": 4014,
+          "source_whitespace_chars": 1077,
+          "source_text_escaping_chars": 24,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 13132,
+          "pages_value_chars": 12522,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 20250,
+          "json_response_chars": 18926,
+          "outer_serialization_added_chars": 1324,
+          "extraction_sha256": "6f2e57d66f6837773fa5bbb76cf3d09b70da0d80feeeaad201850f9569e73eba",
+          "json_formatting_whitespace_chars": 1189
+        },
+        {
+          "rank": 3,
+          "line_count": 32,
+          "literal_text_chars": 3743,
+          "source_whitespace_chars": 1317,
+          "source_text_escaping_chars": 18,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 13132,
+          "pages_value_chars": 12522,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 19973,
+          "json_response_chars": 18650,
+          "outer_serialization_added_chars": 1323,
+          "extraction_sha256": "6f2e57d66f6837773fa5bbb76cf3d09b70da0d80feeeaad201850f9569e73eba",
+          "json_formatting_whitespace_chars": 1189
+        },
+        {
+          "rank": 4,
+          "line_count": 32,
+          "literal_text_chars": 4145,
+          "source_whitespace_chars": 1306,
+          "source_text_escaping_chars": 12,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 13132,
+          "pages_value_chars": 12522,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 20369,
+          "json_response_chars": 19047,
+          "outer_serialization_added_chars": 1322,
+          "extraction_sha256": "6f2e57d66f6837773fa5bbb76cf3d09b70da0d80feeeaad201850f9569e73eba",
+          "json_formatting_whitespace_chars": 1189
+        },
+        {
+          "rank": 5,
+          "line_count": 32,
+          "literal_text_chars": 4283,
+          "source_whitespace_chars": 3363,
+          "source_text_escaping_chars": 0,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 13132,
+          "pages_value_chars": 12522,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 20495,
+          "json_response_chars": 19175,
+          "outer_serialization_added_chars": 1320,
+          "extraction_sha256": "6f2e57d66f6837773fa5bbb76cf3d09b70da0d80feeeaad201850f9569e73eba",
+          "json_formatting_whitespace_chars": 1189
+        }
+      ],
+      "prefix_minimum_costs": {
+        "1": {
+          "required_search_latest_read_and_notices": 24560,
+          "omission_notice_chars": 0,
+          "saved_status": "projected"
+        },
+        "3": {
+          "required_search_latest_read_and_notices": 25299,
+          "omission_notice_chars": 390,
+          "saved_status": "projected"
+        },
+        "5": {
+          "required_search_latest_read_and_notices": 26213,
+          "omission_notice_chars": 782,
+          "saved_status": "projected"
+        }
+      },
+      "overlap": {
+        "returned_line_instances": 160,
+        "unique_line_numbers": 160,
+        "repeated_line_instances": 0,
+        "repeated_literal_text_chars": 0,
+        "search_literal_snippet_chars": 3098,
+        "search_formatting_whitespace_chars": 107
+      },
+      "per_document_pages_value_repeated_five_times_chars": 62610
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "search_cost": 5881,
+      "page_count": 181,
+      "identical_extraction_across_five_reads": true,
+      "reads": [
+        {
+          "rank": 1,
+          "line_count": 32,
+          "literal_text_chars": 5774,
+          "source_whitespace_chars": 2745,
+          "source_text_escaping_chars": 66,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 30659,
+          "pages_value_chars": 30014,
+          "other_root_fields_and_container_chars": 757,
+          "full_read_cost": 39603,
+          "json_response_chars": 37012,
+          "outer_serialization_added_chars": 2591,
+          "extraction_sha256": "802883eb6d07f6514c62f4fbec24f6f3b60316a49cb34d24b3625890830b268b",
+          "json_formatting_whitespace_chars": 2452
+        },
+        {
+          "rank": 2,
+          "line_count": 32,
+          "literal_text_chars": 6669,
+          "source_whitespace_chars": 5349,
+          "source_text_escaping_chars": 12,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 30659,
+          "pages_value_chars": 30014,
+          "other_root_fields_and_container_chars": 757,
+          "full_read_cost": 40444,
+          "json_response_chars": 37862,
+          "outer_serialization_added_chars": 2582,
+          "extraction_sha256": "802883eb6d07f6514c62f4fbec24f6f3b60316a49cb34d24b3625890830b268b",
+          "json_formatting_whitespace_chars": 2452
+        },
+        {
+          "rank": 3,
+          "line_count": 9,
+          "literal_text_chars": 1438,
+          "source_whitespace_chars": 337,
+          "source_text_escaping_chars": 0,
+          "line_structure_chars": 668,
+          "extraction_field_chars": 30659,
+          "pages_value_chars": 30014,
+          "other_root_fields_and_container_chars": 757,
+          "full_read_cost": 33522,
+          "json_response_chars": 31172,
+          "outer_serialization_added_chars": 2350,
+          "extraction_sha256": "802883eb6d07f6514c62f4fbec24f6f3b60316a49cb34d24b3625890830b268b",
+          "json_formatting_whitespace_chars": 2291
+        },
+        {
+          "rank": 4,
+          "line_count": 32,
+          "literal_text_chars": 5905,
+          "source_whitespace_chars": 5011,
+          "source_text_escaping_chars": 6,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 30659,
+          "pages_value_chars": 30014,
+          "other_root_fields_and_container_chars": 757,
+          "full_read_cost": 39674,
+          "json_response_chars": 37093,
+          "outer_serialization_added_chars": 2581,
+          "extraction_sha256": "802883eb6d07f6514c62f4fbec24f6f3b60316a49cb34d24b3625890830b268b",
+          "json_formatting_whitespace_chars": 2452
+        },
+        {
+          "rank": 5,
+          "line_count": 32,
+          "literal_text_chars": 6795,
+          "source_whitespace_chars": 5534,
+          "source_text_escaping_chars": 0,
+          "line_structure_chars": 2379,
+          "extraction_field_chars": 30659,
+          "pages_value_chars": 30014,
+          "other_root_fields_and_container_chars": 757,
+          "full_read_cost": 40590,
+          "json_response_chars": 38010,
+          "outer_serialization_added_chars": 2580,
+          "extraction_sha256": "802883eb6d07f6514c62f4fbec24f6f3b60316a49cb34d24b3625890830b268b",
+          "json_formatting_whitespace_chars": 2452
+        }
+      ],
+      "prefix_minimum_costs": {
+        "1": {
+          "required_search_latest_read_and_notices": 45484,
+          "omission_notice_chars": 0,
+          "saved_status": "blocked"
+        },
+        "3": {
+          "required_search_latest_read_and_notices": 39819,
+          "omission_notice_chars": 416,
+          "saved_status": "blocked"
+        },
+        "5": {
+          "required_search_latest_read_and_notices": 47303,
+          "omission_notice_chars": 832,
+          "saved_status": "blocked"
+        }
+      },
+      "overlap": {
+        "returned_line_instances": 137,
+        "unique_line_numbers": 129,
+        "repeated_line_instances": 8,
+        "repeated_literal_text_chars": 1311,
+        "search_literal_snippet_chars": 3936,
+        "search_formatting_whitespace_chars": 107
+      },
+      "per_document_pages_value_repeated_five_times_chars": 150070
+    },
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "search_cost": 5083,
+      "page_count": 124,
+      "identical_extraction_across_five_reads": true,
+      "reads": [
+        {
+          "rank": 1,
+          "line_count": 24,
+          "literal_text_chars": 2941,
+          "source_whitespace_chars": 564,
+          "source_text_escaping_chars": 24,
+          "line_structure_chars": 1739,
+          "extraction_field_chars": 21110,
+          "pages_value_chars": 20536,
+          "other_root_fields_and_container_chars": 723,
+          "full_read_cost": 26537,
+          "json_response_chars": 24719,
+          "outer_serialization_added_chars": 1818,
+          "extraction_sha256": "fd3617689c03a06a964f3a8bd33aea32eeb1b8699851106d3ca289fe0fd798ab",
+          "json_formatting_whitespace_chars": 1708
+        },
+        {
+          "rank": 2,
+          "line_count": 32,
+          "literal_text_chars": 8707,
+          "source_whitespace_chars": 5649,
+          "source_text_escaping_chars": 30,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 21110,
+          "pages_value_chars": 20536,
+          "other_root_fields_and_container_chars": 726,
+          "full_read_cost": 32920,
+          "json_response_chars": 31012,
+          "outer_serialization_added_chars": 1908,
+          "extraction_sha256": "fd3617689c03a06a964f3a8bd33aea32eeb1b8699851106d3ca289fe0fd798ab",
+          "json_formatting_whitespace_chars": 1764
+        },
+        {
+          "rank": 3,
+          "line_count": 32,
+          "literal_text_chars": 3817,
+          "source_whitespace_chars": 907,
+          "source_text_escaping_chars": 36,
+          "line_structure_chars": 2315,
+          "extraction_field_chars": 21110,
+          "pages_value_chars": 20536,
+          "other_root_fields_and_container_chars": 723,
+          "full_read_cost": 28001,
+          "json_response_chars": 26098,
+          "outer_serialization_added_chars": 1903,
+          "extraction_sha256": "fd3617689c03a06a964f3a8bd33aea32eeb1b8699851106d3ca289fe0fd798ab",
+          "json_formatting_whitespace_chars": 1764
+        },
+        {
+          "rank": 4,
+          "line_count": 17,
+          "literal_text_chars": 3241,
+          "source_whitespace_chars": 1668,
+          "source_text_escaping_chars": 0,
+          "line_structure_chars": 1252,
+          "extraction_field_chars": 21110,
+          "pages_value_chars": 20536,
+          "other_root_fields_and_container_chars": 726,
+          "full_read_cost": 26329,
+          "json_response_chars": 24585,
+          "outer_serialization_added_chars": 1744,
+          "extraction_sha256": "fd3617689c03a06a964f3a8bd33aea32eeb1b8699851106d3ca289fe0fd798ab",
+          "json_formatting_whitespace_chars": 1659
+        },
+        {
+          "rank": 5,
+          "line_count": 32,
+          "literal_text_chars": 5846,
+          "source_whitespace_chars": 3204,
+          "source_text_escaping_chars": 30,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 21110,
+          "pages_value_chars": 20536,
+          "other_root_fields_and_container_chars": 726,
+          "full_read_cost": 30059,
+          "json_response_chars": 28148,
+          "outer_serialization_added_chars": 1911,
+          "extraction_sha256": "fd3617689c03a06a964f3a8bd33aea32eeb1b8699851106d3ca289fe0fd798ab",
+          "json_formatting_whitespace_chars": 1764
+        }
+      ],
+      "prefix_minimum_costs": {
+        "1": {
+          "required_search_latest_read_and_notices": 31620,
+          "omission_notice_chars": 0,
+          "saved_status": "projected"
+        },
+        "3": {
+          "required_search_latest_read_and_notices": 33476,
+          "omission_notice_chars": 392,
+          "saved_status": "blocked"
+        },
+        "5": {
+          "required_search_latest_read_and_notices": 35926,
+          "omission_notice_chars": 784,
+          "saved_status": "blocked"
+        }
+      },
+      "overlap": {
+        "returned_line_instances": 137,
+        "unique_line_numbers": 137,
+        "repeated_line_instances": 0,
+        "repeated_literal_text_chars": 0,
+        "search_literal_snippet_chars": 3285,
+        "search_formatting_whitespace_chars": 107
+      },
+      "per_document_pages_value_repeated_five_times_chars": 102680
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "search_cost": 5247,
+      "page_count": 197,
+      "identical_extraction_across_five_reads": true,
+      "reads": [
+        {
+          "rank": 1,
+          "line_count": 32,
+          "literal_text_chars": 3243,
+          "source_whitespace_chars": 1538,
+          "source_text_escaping_chars": 48,
+          "line_structure_chars": 2379,
+          "extraction_field_chars": 33284,
+          "pages_value_chars": 32710,
+          "other_root_fields_and_container_chars": 772,
+          "full_read_cost": 39726,
+          "json_response_chars": 36948,
+          "outer_serialization_added_chars": 2778,
+          "extraction_sha256": "1036fa7cb2f29c8b0315178529f499b772c8844e0bd8163006b67bee0460be28",
+          "json_formatting_whitespace_chars": 2640
+        },
+        {
+          "rank": 2,
+          "line_count": 32,
+          "literal_text_chars": 3417,
+          "source_whitespace_chars": 1494,
+          "source_text_escaping_chars": 42,
+          "line_structure_chars": 2379,
+          "extraction_field_chars": 33284,
+          "pages_value_chars": 32710,
+          "other_root_fields_and_container_chars": 772,
+          "full_read_cost": 39894,
+          "json_response_chars": 37117,
+          "outer_serialization_added_chars": 2777,
+          "extraction_sha256": "1036fa7cb2f29c8b0315178529f499b772c8844e0bd8163006b67bee0460be28",
+          "json_formatting_whitespace_chars": 2640
+        },
+        {
+          "rank": 3,
+          "line_count": 17,
+          "literal_text_chars": 2674,
+          "source_whitespace_chars": 498,
+          "source_text_escaping_chars": 18,
+          "line_structure_chars": 1269,
+          "extraction_field_chars": 33284,
+          "pages_value_chars": 32710,
+          "other_root_fields_and_container_chars": 772,
+          "full_read_cost": 38017,
+          "json_response_chars": 35388,
+          "outer_serialization_added_chars": 2629,
+          "extraction_sha256": "1036fa7cb2f29c8b0315178529f499b772c8844e0bd8163006b67bee0460be28",
+          "json_formatting_whitespace_chars": 2535
+        },
+        {
+          "rank": 4,
+          "line_count": 32,
+          "literal_text_chars": 5549,
+          "source_whitespace_chars": 2035,
+          "source_text_escaping_chars": 36,
+          "line_structure_chars": 2379,
+          "extraction_field_chars": 33284,
+          "pages_value_chars": 32710,
+          "other_root_fields_and_container_chars": 772,
+          "full_read_cost": 42020,
+          "json_response_chars": 39238,
+          "outer_serialization_added_chars": 2782,
+          "extraction_sha256": "1036fa7cb2f29c8b0315178529f499b772c8844e0bd8163006b67bee0460be28",
+          "json_formatting_whitespace_chars": 2640
+        },
+        {
+          "rank": 5,
+          "line_count": 18,
+          "literal_text_chars": 2583,
+          "source_whitespace_chars": 474,
+          "source_text_escaping_chars": 0,
+          "line_structure_chars": 1325,
+          "extraction_field_chars": 33284,
+          "pages_value_chars": 32710,
+          "other_root_fields_and_container_chars": 772,
+          "full_read_cost": 37964,
+          "json_response_chars": 35334,
+          "outer_serialization_added_chars": 2630,
+          "extraction_sha256": "1036fa7cb2f29c8b0315178529f499b772c8844e0bd8163006b67bee0460be28",
+          "json_formatting_whitespace_chars": 2542
+        }
+      ],
+      "prefix_minimum_costs": {
+        "1": {
+          "required_search_latest_read_and_notices": 44973,
+          "omission_notice_chars": 0,
+          "saved_status": "blocked"
+        },
+        "3": {
+          "required_search_latest_read_and_notices": 43660,
+          "omission_notice_chars": 396,
+          "saved_status": "blocked"
+        },
+        "5": {
+          "required_search_latest_read_and_notices": 44003,
+          "omission_notice_chars": 792,
+          "saved_status": "blocked"
+        }
+      },
+      "overlap": {
+        "returned_line_instances": 131,
+        "unique_line_numbers": 123,
+        "repeated_line_instances": 8,
+        "repeated_literal_text_chars": 1239,
+        "search_literal_snippet_chars": 3156,
+        "search_formatting_whitespace_chars": 107
+      },
+      "per_document_pages_value_repeated_five_times_chars": 163550
+    },
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "search_cost": 6307,
+      "page_count": 252,
+      "identical_extraction_across_five_reads": true,
+      "reads": [
+        {
+          "rank": 1,
+          "line_count": 32,
+          "literal_text_chars": 4406,
+          "source_whitespace_chars": 2441,
+          "source_text_escaping_chars": 24,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 42481,
+          "pages_value_chars": 41907,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 49991,
+          "json_response_chars": 46557,
+          "outer_serialization_added_chars": 3434,
+          "extraction_sha256": "504a631802ac12512298ab1c6d3cd6eaa023d3ea37c1d23a11472f9898148524",
+          "json_formatting_whitespace_chars": 3300
+        },
+        {
+          "rank": 2,
+          "line_count": 32,
+          "literal_text_chars": 3851,
+          "source_whitespace_chars": 2007,
+          "source_text_escaping_chars": 30,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 42481,
+          "pages_value_chars": 41907,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 49442,
+          "json_response_chars": 46007,
+          "outer_serialization_added_chars": 3435,
+          "extraction_sha256": "504a631802ac12512298ab1c6d3cd6eaa023d3ea37c1d23a11472f9898148524",
+          "json_formatting_whitespace_chars": 3300
+        },
+        {
+          "rank": 3,
+          "line_count": 32,
+          "literal_text_chars": 4573,
+          "source_whitespace_chars": 2306,
+          "source_text_escaping_chars": 18,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 42481,
+          "pages_value_chars": 41907,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 50152,
+          "json_response_chars": 46719,
+          "outer_serialization_added_chars": 3433,
+          "extraction_sha256": "504a631802ac12512298ab1c6d3cd6eaa023d3ea37c1d23a11472f9898148524",
+          "json_formatting_whitespace_chars": 3300
+        },
+        {
+          "rank": 4,
+          "line_count": 32,
+          "literal_text_chars": 3887,
+          "source_whitespace_chars": 1988,
+          "source_text_escaping_chars": 66,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 42481,
+          "pages_value_chars": 41907,
+          "other_root_fields_and_container_chars": 733,
+          "full_read_cost": 49514,
+          "json_response_chars": 46073,
+          "outer_serialization_added_chars": 3441,
+          "extraction_sha256": "504a631802ac12512298ab1c6d3cd6eaa023d3ea37c1d23a11472f9898148524",
+          "json_formatting_whitespace_chars": 3300
+        },
+        {
+          "rank": 5,
+          "line_count": 32,
+          "literal_text_chars": 4449,
+          "source_whitespace_chars": 624,
+          "source_text_escaping_chars": 36,
+          "line_structure_chars": 2315,
+          "extraction_field_chars": 42481,
+          "pages_value_chars": 41907,
+          "other_root_fields_and_container_chars": 730,
+          "full_read_cost": 50011,
+          "json_response_chars": 46575,
+          "outer_serialization_added_chars": 3436,
+          "extraction_sha256": "504a631802ac12512298ab1c6d3cd6eaa023d3ea37c1d23a11472f9898148524",
+          "json_formatting_whitespace_chars": 3300
+        }
+      ],
+      "prefix_minimum_costs": {
+        "1": {
+          "required_search_latest_read_and_notices": 56298,
+          "omission_notice_chars": 0,
+          "saved_status": "blocked"
+        },
+        "3": {
+          "required_search_latest_read_and_notices": 56843,
+          "omission_notice_chars": 384,
+          "saved_status": "blocked"
+        },
+        "5": {
+          "required_search_latest_read_and_notices": 57086,
+          "omission_notice_chars": 768,
+          "saved_status": "blocked"
+        }
+      },
+      "overlap": {
+        "returned_line_instances": 160,
+        "unique_line_numbers": 160,
+        "repeated_line_instances": 0,
+        "repeated_literal_text_chars": 0,
+        "search_literal_snippet_chars": 4374,
+        "search_formatting_whitespace_chars": 107
+      },
+      "per_document_pages_value_repeated_five_times_chars": 209535
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "search_cost": 5396,
+      "page_count": 151,
+      "identical_extraction_across_five_reads": true,
+      "reads": [
+        {
+          "rank": 1,
+          "line_count": 24,
+          "literal_text_chars": 2357,
+          "source_whitespace_chars": 619,
+          "source_text_escaping_chars": 72,
+          "line_structure_chars": 1763,
+          "extraction_field_chars": 25603,
+          "pages_value_chars": 25029,
+          "other_root_fields_and_container_chars": 745,
+          "full_read_cost": 30540,
+          "json_response_chars": 28390,
+          "outer_serialization_added_chars": 2150,
+          "extraction_sha256": "a3bacdd6dcc6b69a5e1b4f396d5b04dcebfc9bbdb72d96d4fa1a2fb03156b101",
+          "json_formatting_whitespace_chars": 2032
+        },
+        {
+          "rank": 2,
+          "line_count": 21,
+          "literal_text_chars": 2852,
+          "source_whitespace_chars": 579,
+          "source_text_escaping_chars": 12,
+          "line_structure_chars": 1544,
+          "extraction_field_chars": 25603,
+          "pages_value_chars": 25029,
+          "other_root_fields_and_container_chars": 745,
+          "full_read_cost": 30756,
+          "json_response_chars": 28646,
+          "outer_serialization_added_chars": 2110,
+          "extraction_sha256": "a3bacdd6dcc6b69a5e1b4f396d5b04dcebfc9bbdb72d96d4fa1a2fb03156b101",
+          "json_formatting_whitespace_chars": 2011
+        },
+        {
+          "rank": 3,
+          "line_count": 32,
+          "literal_text_chars": 4637,
+          "source_whitespace_chars": 736,
+          "source_text_escaping_chars": 42,
+          "line_structure_chars": 2379,
+          "extraction_field_chars": 25603,
+          "pages_value_chars": 25029,
+          "other_root_fields_and_container_chars": 745,
+          "full_read_cost": 33406,
+          "json_response_chars": 31181,
+          "outer_serialization_added_chars": 2225,
+          "extraction_sha256": "a3bacdd6dcc6b69a5e1b4f396d5b04dcebfc9bbdb72d96d4fa1a2fb03156b101",
+          "json_formatting_whitespace_chars": 2088
+        },
+        {
+          "rank": 4,
+          "line_count": 32,
+          "literal_text_chars": 4140,
+          "source_whitespace_chars": 1483,
+          "source_text_escaping_chars": 42,
+          "line_structure_chars": 2347,
+          "extraction_field_chars": 25603,
+          "pages_value_chars": 25029,
+          "other_root_fields_and_container_chars": 745,
+          "full_read_cost": 32877,
+          "json_response_chars": 30652,
+          "outer_serialization_added_chars": 2225,
+          "extraction_sha256": "a3bacdd6dcc6b69a5e1b4f396d5b04dcebfc9bbdb72d96d4fa1a2fb03156b101",
+          "json_formatting_whitespace_chars": 2088
+        },
+        {
+          "rank": 5,
+          "line_count": 32,
+          "literal_text_chars": 3867,
+          "source_whitespace_chars": 625,
+          "source_text_escaping_chars": 78,
+          "line_structure_chars": 2315,
+          "extraction_field_chars": 25603,
+          "pages_value_chars": 25029,
+          "other_root_fields_and_container_chars": 742,
+          "full_read_cost": 32605,
+          "json_response_chars": 30374,
+          "outer_serialization_added_chars": 2231,
+          "extraction_sha256": "a3bacdd6dcc6b69a5e1b4f396d5b04dcebfc9bbdb72d96d4fa1a2fb03156b101",
+          "json_formatting_whitespace_chars": 2088
+        }
+      ],
+      "prefix_minimum_costs": {
+        "1": {
+          "required_search_latest_read_and_notices": 35936,
+          "omission_notice_chars": 0,
+          "saved_status": "blocked"
+        },
+        "3": {
+          "required_search_latest_read_and_notices": 39212,
+          "omission_notice_chars": 410,
+          "saved_status": "blocked"
+        },
+        "5": {
+          "required_search_latest_read_and_notices": 38821,
+          "omission_notice_chars": 820,
+          "saved_status": "blocked"
+        }
+      },
+      "overlap": {
+        "returned_line_instances": 141,
+        "unique_line_numbers": 141,
+        "repeated_line_instances": 0,
+        "repeated_literal_text_chars": 0,
+        "search_literal_snippet_chars": 3470,
+        "search_formatting_whitespace_chars": 107
+      },
+      "per_document_pages_value_repeated_five_times_chars": 125145
+    }
+  ],
+  "aggregate": {
+    "literal_text_chars": 127232,
+    "source_whitespace_chars": 58021,
+    "source_text_escaping_chars": 840,
+    "line_structure_chars": 63573,
+    "extraction_field_chars": 831345,
+    "pages_value_chars": 813590,
+    "other_root_fields_and_container_chars": 22315,
+    "full_read_cost": 1045305,
+    "outer_serialization_added_chars": 70296,
+    "json_formatting_whitespace_chars": 66507
+  },
+  "code_sha256": {
+    "provenance/context.py": "b97f0e64848d6f7c62081d6bf7b9dfcbfd0d77bb459321e20afc902d50acfc7c",
+    "provenance/sources.py": "049249eaec71bdd723a14dc75ff62be89160c04c0730d220b67d0f596cc036fa",
+    "eval/reports/context-retention-2026-11-16/analyze.py": "894f21ebc66be52759fd037efabb241a268dfcd56336e546e04e1cd3aa2e8916"
+  }
+}

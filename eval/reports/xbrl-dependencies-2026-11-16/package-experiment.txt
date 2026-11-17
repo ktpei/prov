@@ -1,0 +1,16 @@
+from pathlib import Path
+from xml.etree import ElementTree as E
+import json,hashlib,zipfile
+p=Path('/Users/kevinpei/provenanceXL/runs/xbrl-dependency-acquisition-v1'); closure=p/'closure';r=json.loads((closure/'receipt.json').read_text());assert r['status']=='reference_graph_acquired'
+filing=Path('/Users/kevinpei/provenanceXL/runs/native-html-v1-issuer-acquisition/old-dominion-2025-06-30-10q.html');raw=filing.read_bytes();assert hashlib.sha256(raw).hexdigest()=='7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0'
+url='https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm'
+records={d['canonical_url']:{'member':'bundle/'+d['local_file'],'sha256':d['response_sha256']} for d in r['documents']}
+records[url]={'member':'bundle/filing/odfl-20250630.htm','sha256':hashlib.sha256(raw).hexdigest()}
+cat=E.Element('catalog',xmlns='urn:oasis:names:tc:entity:xmlns:xml:catalog')
+for uri,record in sorted(records.items()): E.SubElement(cat,'rewriteURI',uriStartString=uri,rewritePrefix='../'+record['member'].removeprefix('bundle/'))
+meta=b'''<taxonomyPackage xmlns="http://xbrl.org/2016/taxonomy-package" xml:lang="en"><identifier>urn:provenance:odfl:20250630:development</identifier><name>Old Dominion local development dependency bundle</name><version>1</version><entryPoints><entryPoint><name>Issuer schema</name><entryPointDocument href="https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.xsd"/></entryPoint></entryPoints></taxonomyPackage>'''
+with zipfile.ZipFile(p/'bundle.zip','x',compression=zipfile.ZIP_DEFLATED) as z:
+ z.writestr('bundle/META-INF/taxonomyPackage.xml',meta); z.writestr('bundle/META-INF/catalog.xml',E.tostring(cat)); z.writestr(records[url]['member'],raw)
+ for d in r['documents']:
+  content=(closure/d['local_file']).read_bytes();assert hashlib.sha256(content).hexdigest()==d['response_sha256'];z.writestr(records[d['canonical_url']]['member'],content)
+(p/'bundle-manifest.json').write_text(json.dumps({'entrypoint':url,'bundle_sha256':hashlib.sha256((p/'bundle.zip').read_bytes()).hexdigest(),'documents':records,'acquisition_receipt_sha256':hashlib.sha256((closure/'receipt.json').read_bytes()).hexdigest()},indent=2)+'\n')

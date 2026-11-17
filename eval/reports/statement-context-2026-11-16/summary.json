@@ -1,0 +1,1600 @@
+{
+  "version": "statement-context-development-summary-v1",
+  "protocol_sha256": "df8fe2159f2b331dd0e92f585f28d31b34218a485ee337bb2cc251f83295435e",
+  "freeze_commit": "9a0cc40",
+  "baseline_exact_replay": true,
+  "baseline_query_count": 7,
+  "challenger_query_count": 7,
+  "task_denominator": 3,
+  "expected_page_denominator": 4,
+  "baseline": {
+    "top_1": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    },
+    "top_3": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    },
+    "top_5": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    }
+  },
+  "challenger": {
+    "top_1": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    },
+    "top_3": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    },
+    "top_5": {
+      "pooled_expected_page_recall": 0.5,
+      "macro_task_expected_page_recall": 0.6666666666666666,
+      "all_required_pages_task_rate": 0.6666666666666666
+    }
+  },
+  "top5_paired_wins": 0,
+  "top5_paired_losses": 0,
+  "top5_paired_ties": 3,
+  "tasks": [
+    {
+      "id": "financebench_id_06247",
+      "expected_pages": [
+        {
+          "source_id": "WALMART_2018_10K",
+          "page": 57
+        },
+        {
+          "source_id": "WALMART_2018_10K",
+          "page": 59
+        }
+      ],
+      "conditions": {
+        "baseline": {
+          "retrieval": {
+            "top_1": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 49
+                }
+              ],
+              "expected_pages_retrieved": [],
+              "expected_page_recall": 0.0,
+              "all_required_pages_retrieved": false
+            },
+            "top_3": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 40
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 49
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 72
+                }
+              ],
+              "expected_pages_retrieved": [],
+              "expected_page_recall": 0.0,
+              "all_required_pages_retrieved": false
+            },
+            "top_5": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 40
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 44
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 49
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 64
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 72
+                }
+              ],
+              "expected_pages_retrieved": [],
+              "expected_page_recall": 0.0,
+              "all_required_pages_retrieved": false
+            }
+          },
+          "candidate_pool_expected_pages": [
+            {
+              "source_id": "WALMART_2018_10K",
+              "page": 59
+            }
+          ],
+          "queries": [
+            {
+              "query": "What is FY2018 days payable outstanding (DPO) for Walmart? DPO is defined as: 365 * (average accounts payable between FY2017 and FY2018) / (FY2018 COGS + change in inventory between FY2017 and FY2018). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the statement of financial position and the P&L statement.",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1927,
+                  "end_line": 1958,
+                  "pages": [
+                    49
+                  ],
+                  "score": 22.9629
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1168,
+                  "end_line": 1199,
+                  "pages": [
+                    31
+                  ],
+                  "score": 22.6734
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 8962,
+                  "end_line": 8985,
+                  "pages": [
+                    273
+                  ],
+                  "score": 20.5392
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 7874,
+                  "end_line": 7902,
+                  "pages": [
+                    234
+                  ],
+                  "score": 20.4885
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 6220,
+                  "end_line": 6251,
+                  "pages": [
+                    174
+                  ],
+                  "score": 19.9114
+                }
+              ]
+            },
+            {
+              "query": "accounts payable trade payables 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1531,
+                  "end_line": 1562,
+                  "pages": [
+                    40
+                  ],
+                  "score": 10.2235
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1301,
+                  "end_line": 1326,
+                  "pages": [
+                    34
+                  ],
+                  "score": 8.7717
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2734,
+                  "end_line": 2765,
+                  "pages": [
+                    72
+                  ],
+                  "score": 8.3025
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1555,
+                  "end_line": 1579,
+                  "pages": [
+                    40
+                  ],
+                  "score": 8.2383
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2224,
+                  "end_line": 2255,
+                  "pages": [
+                    59
+                  ],
+                  "score": 8.0096
+                }
+              ]
+            },
+            {
+              "query": "purchases credit purchases 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2734,
+                  "end_line": 2765,
+                  "pages": [
+                    72
+                  ],
+                  "score": 10.3398
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 465,
+                  "end_line": 496,
+                  "pages": [
+                    12
+                  ],
+                  "score": 9.7104
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1854,
+                  "end_line": 1885,
+                  "pages": [
+                    47
+                  ],
+                  "score": 9.3307
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1258,
+                  "end_line": 1289,
+                  "pages": [
+                    33
+                  ],
+                  "score": 8.8364
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2513,
+                  "end_line": 2532,
+                  "pages": [
+                    66
+                  ],
+                  "score": 8.6738
+                }
+              ]
+            },
+            {
+              "query": "cost of sales cost of goods sold 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1722,
+                  "end_line": 1753,
+                  "pages": [
+                    44
+                  ],
+                  "score": 15.4544
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2533,
+                  "end_line": 2564,
+                  "pages": [
+                    67
+                  ],
+                  "score": 13.9302
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 331,
+                  "end_line": 362,
+                  "pages": [
+                    9
+                  ],
+                  "score": 13.5443
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 893,
+                  "end_line": 909,
+                  "pages": [
+                    22
+                  ],
+                  "score": 13.0702
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 3260,
+                  "end_line": 3291,
+                  "pages": [
+                    85
+                  ],
+                  "score": 11.3685
+                }
+              ]
+            },
+            {
+              "query": "inventory inventories 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2399,
+                  "end_line": 2430,
+                  "pages": [
+                    64
+                  ],
+                  "score": 17.7821
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1951,
+                  "end_line": 1969,
+                  "pages": [
+                    49
+                  ],
+                  "score": 15.0227
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1927,
+                  "end_line": 1958,
+                  "pages": [
+                    49
+                  ],
+                  "score": 11.9533
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 3045,
+                  "end_line": 3062,
+                  "pages": [
+                    79
+                  ],
+                  "score": 9.2916
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1722,
+                  "end_line": 1753,
+                  "pages": [
+                    44
+                  ],
+                  "score": 8.944
+                }
+              ]
+            }
+          ],
+          "selected_hits": [
+            {
+              "rank": 1,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 1927,
+              "end_line": 1958,
+              "passage_pages": [
+                49
+              ],
+              "score": 22.9629
+            },
+            {
+              "rank": 2,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 1531,
+              "end_line": 1562,
+              "passage_pages": [
+                40
+              ],
+              "score": 10.2235
+            },
+            {
+              "rank": 3,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 2734,
+              "end_line": 2765,
+              "passage_pages": [
+                72
+              ],
+              "score": 10.3398
+            },
+            {
+              "rank": 4,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 1722,
+              "end_line": 1753,
+              "passage_pages": [
+                44
+              ],
+              "score": 15.4544
+            },
+            {
+              "rank": 5,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 2399,
+              "end_line": 2430,
+              "passage_pages": [
+                64
+              ],
+              "score": 17.7821
+            }
+          ]
+        },
+        "challenger": {
+          "retrieval": {
+            "top_1": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 49
+                }
+              ],
+              "expected_pages_retrieved": [],
+              "expected_page_recall": 0.0,
+              "all_required_pages_retrieved": false
+            },
+            "top_3": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 40
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 49
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 72
+                }
+              ],
+              "expected_pages_retrieved": [],
+              "expected_page_recall": 0.0,
+              "all_required_pages_retrieved": false
+            },
+            "top_5": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 40
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 49
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 64
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 67
+                },
+                {
+                  "source_id": "WALMART_2018_10K",
+                  "page": 72
+                }
+              ],
+              "expected_pages_retrieved": [],
+              "expected_page_recall": 0.0,
+              "all_required_pages_retrieved": false
+            }
+          },
+          "candidate_pool_expected_pages": [],
+          "queries": [
+            {
+              "query": "What is FY2018 days payable outstanding (DPO) for Walmart? DPO is defined as: 365 * (average accounts payable between FY2017 and FY2018) / (FY2018 COGS + change in inventory between FY2017 and FY2018). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the statement of financial position and the P&L statement.",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1927,
+                  "end_line": 1958,
+                  "pages": [
+                    49
+                  ],
+                  "score": 22.9629
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1168,
+                  "end_line": 1199,
+                  "pages": [
+                    31
+                  ],
+                  "score": 22.6734
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 8962,
+                  "end_line": 8985,
+                  "pages": [
+                    273
+                  ],
+                  "score": 20.5392
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 7874,
+                  "end_line": 7902,
+                  "pages": [
+                    234
+                  ],
+                  "score": 20.4885
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 6220,
+                  "end_line": 6251,
+                  "pages": [
+                    174
+                  ],
+                  "score": 19.9114
+                }
+              ]
+            },
+            {
+              "query": "accounts payable trade payables balance sheet sheets statement statements financial position 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1531,
+                  "end_line": 1562,
+                  "pages": [
+                    40
+                  ],
+                  "score": 20.4083
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2576,
+                  "end_line": 2606,
+                  "pages": [
+                    68
+                  ],
+                  "score": 19.5092
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1555,
+                  "end_line": 1579,
+                  "pages": [
+                    40
+                  ],
+                  "score": 19.1777
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2109,
+                  "end_line": 2134,
+                  "pages": [
+                    55
+                  ],
+                  "score": 18.878
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2076,
+                  "end_line": 2091,
+                  "pages": [
+                    53
+                  ],
+                  "score": 17.3962
+                }
+              ]
+            },
+            {
+              "query": "purchases credit purchases 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2734,
+                  "end_line": 2765,
+                  "pages": [
+                    72
+                  ],
+                  "score": 10.3398
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 465,
+                  "end_line": 496,
+                  "pages": [
+                    12
+                  ],
+                  "score": 9.7104
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1854,
+                  "end_line": 1885,
+                  "pages": [
+                    47
+                  ],
+                  "score": 9.3307
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1258,
+                  "end_line": 1289,
+                  "pages": [
+                    33
+                  ],
+                  "score": 8.8364
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2513,
+                  "end_line": 2532,
+                  "pages": [
+                    66
+                  ],
+                  "score": 8.6738
+                }
+              ]
+            },
+            {
+              "query": "cost of sales cost of goods sold income statement statements operations profit loss 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2533,
+                  "end_line": 2564,
+                  "pages": [
+                    67
+                  ],
+                  "score": 25.5133
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1722,
+                  "end_line": 1753,
+                  "pages": [
+                    44
+                  ],
+                  "score": 24.5413
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 893,
+                  "end_line": 909,
+                  "pages": [
+                    22
+                  ],
+                  "score": 22.2671
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2576,
+                  "end_line": 2606,
+                  "pages": [
+                    68
+                  ],
+                  "score": 19.3749
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1629,
+                  "end_line": 1660,
+                  "pages": [
+                    42
+                  ],
+                  "score": 19.2197
+                }
+              ]
+            },
+            {
+              "query": "inventory inventories balance sheet sheets statement statements financial position 2018 2017",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2399,
+                  "end_line": 2430,
+                  "pages": [
+                    64
+                  ],
+                  "score": 25.6333
+                },
+                {
+                  "rank": 2,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1927,
+                  "end_line": 1958,
+                  "pages": [
+                    49
+                  ],
+                  "score": 19.9863
+                },
+                {
+                  "rank": 3,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2576,
+                  "end_line": 2606,
+                  "pages": [
+                    68
+                  ],
+                  "score": 19.5092
+                },
+                {
+                  "rank": 4,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 1910,
+                  "end_line": 1926,
+                  "pages": [
+                    48
+                  ],
+                  "score": 18.9004
+                },
+                {
+                  "rank": 5,
+                  "source_id": "WALMART_2018_10K",
+                  "start_line": 2109,
+                  "end_line": 2134,
+                  "pages": [
+                    55
+                  ],
+                  "score": 18.878
+                }
+              ]
+            }
+          ],
+          "selected_hits": [
+            {
+              "rank": 1,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 1927,
+              "end_line": 1958,
+              "passage_pages": [
+                49
+              ],
+              "score": 22.9629
+            },
+            {
+              "rank": 2,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 1531,
+              "end_line": 1562,
+              "passage_pages": [
+                40
+              ],
+              "score": 20.4083
+            },
+            {
+              "rank": 3,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 2734,
+              "end_line": 2765,
+              "passage_pages": [
+                72
+              ],
+              "score": 10.3398
+            },
+            {
+              "rank": 4,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 2533,
+              "end_line": 2564,
+              "passage_pages": [
+                67
+              ],
+              "score": 25.5133
+            },
+            {
+              "rank": 5,
+              "source_id": "WALMART_2018_10K",
+              "start_line": 2399,
+              "end_line": 2430,
+              "passage_pages": [
+                64
+              ],
+              "score": 25.6333
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "financebench_id_01163",
+      "expected_pages": [
+        {
+          "source_id": "NIKE_2023_10K",
+          "page": 62
+        }
+      ],
+      "conditions": {
+        "baseline": {
+          "retrieval": {
+            "top_1": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_3": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 69
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_5": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 14
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 48
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 69
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            }
+          },
+          "candidate_pool_expected_pages": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 62
+            }
+          ],
+          "queries": [
+            {
+              "query": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2582,
+                  "end_line": 2604,
+                  "pages": [
+                    62
+                  ],
+                  "score": 20.8411
+                },
+                {
+                  "rank": 2,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2558,
+                  "end_line": 2589,
+                  "pages": [
+                    62
+                  ],
+                  "score": 17.2453
+                },
+                {
+                  "rank": 3,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2878,
+                  "end_line": 2904,
+                  "pages": [
+                    69
+                  ],
+                  "score": 13.4126
+                },
+                {
+                  "rank": 4,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2080,
+                  "end_line": 2106,
+                  "pages": [
+                    48
+                  ],
+                  "score": 12.2446
+                },
+                {
+                  "rank": 5,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 542,
+                  "end_line": 573,
+                  "pages": [
+                    14
+                  ],
+                  "score": 12.2378
+                }
+              ]
+            }
+          ],
+          "selected_hits": [
+            {
+              "rank": 1,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2582,
+              "end_line": 2604,
+              "passage_pages": [
+                62
+              ],
+              "score": 20.8411
+            },
+            {
+              "rank": 2,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2558,
+              "end_line": 2589,
+              "passage_pages": [
+                62
+              ],
+              "score": 17.2453
+            },
+            {
+              "rank": 3,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2878,
+              "end_line": 2904,
+              "passage_pages": [
+                69
+              ],
+              "score": 13.4126
+            },
+            {
+              "rank": 4,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2080,
+              "end_line": 2106,
+              "passage_pages": [
+                48
+              ],
+              "score": 12.2446
+            },
+            {
+              "rank": 5,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 542,
+              "end_line": 573,
+              "passage_pages": [
+                14
+              ],
+              "score": 12.2378
+            }
+          ]
+        },
+        "challenger": {
+          "retrieval": {
+            "top_1": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_3": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 69
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_5": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 14
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 48
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                },
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 69
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "NIKE_2023_10K",
+                  "page": 62
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            }
+          },
+          "candidate_pool_expected_pages": [
+            {
+              "source_id": "NIKE_2023_10K",
+              "page": 62
+            }
+          ],
+          "queries": [
+            {
+              "query": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2582,
+                  "end_line": 2604,
+                  "pages": [
+                    62
+                  ],
+                  "score": 20.8411
+                },
+                {
+                  "rank": 2,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2558,
+                  "end_line": 2589,
+                  "pages": [
+                    62
+                  ],
+                  "score": 17.2453
+                },
+                {
+                  "rank": 3,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2878,
+                  "end_line": 2904,
+                  "pages": [
+                    69
+                  ],
+                  "score": 13.4126
+                },
+                {
+                  "rank": 4,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 2080,
+                  "end_line": 2106,
+                  "pages": [
+                    48
+                  ],
+                  "score": 12.2446
+                },
+                {
+                  "rank": 5,
+                  "source_id": "NIKE_2023_10K",
+                  "start_line": 542,
+                  "end_line": 573,
+                  "pages": [
+                    14
+                  ],
+                  "score": 12.2378
+                }
+              ]
+            }
+          ],
+          "selected_hits": [
+            {
+              "rank": 1,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2582,
+              "end_line": 2604,
+              "passage_pages": [
+                62
+              ],
+              "score": 20.8411
+            },
+            {
+              "rank": 2,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2558,
+              "end_line": 2589,
+              "passage_pages": [
+                62
+              ],
+              "score": 17.2453
+            },
+            {
+              "rank": 3,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2878,
+              "end_line": 2904,
+              "passage_pages": [
+                69
+              ],
+              "score": 13.4126
+            },
+            {
+              "rank": 4,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 2080,
+              "end_line": 2106,
+              "passage_pages": [
+                48
+              ],
+              "score": 12.2446
+            },
+            {
+              "rank": 5,
+              "source_id": "NIKE_2023_10K",
+              "start_line": 542,
+              "end_line": 573,
+              "passage_pages": [
+                14
+              ],
+              "score": 12.2378
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "financebench_id_00601",
+      "expected_pages": [
+        {
+          "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+          "page": 2
+        }
+      ],
+      "conditions": {
+        "baseline": {
+          "retrieval": {
+            "top_1": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_3": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                },
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 6
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_5": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                },
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 3
+                },
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 6
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            }
+          },
+          "candidate_pool_expected_pages": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            }
+          ],
+          "queries": [
+            {
+              "query": "What drove the reduction in SG&A expense as a percent of net sales in FY2023?",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 62,
+                  "end_line": 84,
+                  "pages": [
+                    2
+                  ],
+                  "score": 5.3167
+                },
+                {
+                  "rank": 2,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 38,
+                  "end_line": 69,
+                  "pages": [
+                    2
+                  ],
+                  "score": 4.8281
+                },
+                {
+                  "rank": 3,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 219,
+                  "end_line": 242,
+                  "pages": [
+                    6
+                  ],
+                  "score": 3.6406
+                },
+                {
+                  "rank": 4,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 195,
+                  "end_line": 226,
+                  "pages": [
+                    6
+                  ],
+                  "score": 3.5513
+                },
+                {
+                  "rank": 5,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 109,
+                  "end_line": 124,
+                  "pages": [
+                    3
+                  ],
+                  "score": 3.3801
+                }
+              ]
+            }
+          ],
+          "selected_hits": [
+            {
+              "rank": 1,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 62,
+              "end_line": 84,
+              "passage_pages": [
+                2
+              ],
+              "score": 5.3167
+            },
+            {
+              "rank": 2,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 38,
+              "end_line": 69,
+              "passage_pages": [
+                2
+              ],
+              "score": 4.8281
+            },
+            {
+              "rank": 3,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 219,
+              "end_line": 242,
+              "passage_pages": [
+                6
+              ],
+              "score": 3.6406
+            },
+            {
+              "rank": 4,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 195,
+              "end_line": 226,
+              "passage_pages": [
+                6
+              ],
+              "score": 3.5513
+            },
+            {
+              "rank": 5,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 109,
+              "end_line": 124,
+              "passage_pages": [
+                3
+              ],
+              "score": 3.3801
+            }
+          ]
+        },
+        "challenger": {
+          "retrieval": {
+            "top_1": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_3": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                },
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 6
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            },
+            "top_5": {
+              "retrieved_distinct_page_keys": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                },
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 3
+                },
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 6
+                }
+              ],
+              "expected_pages_retrieved": [
+                {
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "page": 2
+                }
+              ],
+              "expected_page_recall": 1.0,
+              "all_required_pages_retrieved": true
+            }
+          },
+          "candidate_pool_expected_pages": [
+            {
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "page": 2
+            }
+          ],
+          "queries": [
+            {
+              "query": "What drove the reduction in SG&A expense as a percent of net sales in FY2023?",
+              "hits": [
+                {
+                  "rank": 1,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 62,
+                  "end_line": 84,
+                  "pages": [
+                    2
+                  ],
+                  "score": 5.3167
+                },
+                {
+                  "rank": 2,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 38,
+                  "end_line": 69,
+                  "pages": [
+                    2
+                  ],
+                  "score": 4.8281
+                },
+                {
+                  "rank": 3,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 219,
+                  "end_line": 242,
+                  "pages": [
+                    6
+                  ],
+                  "score": 3.6406
+                },
+                {
+                  "rank": 4,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 195,
+                  "end_line": 226,
+                  "pages": [
+                    6
+                  ],
+                  "score": 3.5513
+                },
+                {
+                  "rank": 5,
+                  "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+                  "start_line": 109,
+                  "end_line": 124,
+                  "pages": [
+                    3
+                  ],
+                  "score": 3.3801
+                }
+              ]
+            }
+          ],
+          "selected_hits": [
+            {
+              "rank": 1,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 62,
+              "end_line": 84,
+              "passage_pages": [
+                2
+              ],
+              "score": 5.3167
+            },
+            {
+              "rank": 2,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 38,
+              "end_line": 69,
+              "passage_pages": [
+                2
+              ],
+              "score": 4.8281
+            },
+            {
+              "rank": 3,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 219,
+              "end_line": 242,
+              "passage_pages": [
+                6
+              ],
+              "score": 3.6406
+            },
+            {
+              "rank": 4,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 195,
+              "end_line": 226,
+              "passage_pages": [
+                6
+              ],
+              "score": 3.5513
+            },
+            {
+              "rank": 5,
+              "source_id": "ULTABEAUTY_2023Q4_EARNINGS",
+              "start_line": 109,
+              "end_line": 124,
+              "passage_pages": [
+                3
+              ],
+              "score": 3.3801
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "model_calls": 0,
+  "default_promoted": false,
+  "known_reference_issue": "Frozen bundle predates Ulta reference-d00daa9a06589412; period convention remains unresolved and original gold is unchanged."
+}

@@ -1,0 +1,29 @@
+{
+  "stage": "interpretation",
+  "cases": [
+    {
+      "case_id": "Q01",
+      "question": "Basing your judgments off of the cash flow statement and the income statement, what is American Water Works's FY2021 unadjusted operating income + depreciation and amortization from the cash flow statement (unadjusted EBITDA) in USD millions?"
+    },
+    {
+      "case_id": "Q02",
+      "question": "What is the FY2017 return on assets (ROA) for Coca Cola? ROA is defined as: FY2017 net income / (average total assets between FY2016 and FY2017). Round your answer to two decimal places. Give a response to the question by relying on the details shown in the balance sheet and the P&L statement."
+    },
+    {
+      "case_id": "Q03",
+      "question": "Using only the information within the balance sheet, how much total assets did Costco have at the end of FY2021? Answer in USD millions."
+    },
+    {
+      "case_id": "Q04",
+      "question": "If we exclude the impact of M&A, which segment has dragged down 3M's overall growth in 2022?"
+    },
+    {
+      "case_id": "Q05",
+      "question": "Roughly how many times has JnJ sold its inventory in FY2022? Calculate inventory turnover ratio for FY2022; if conventional inventory management is not meaningful for the company then state that and explain why."
+    },
+    {
+      "case_id": "Q06",
+      "question": "Is Verizon a capital intensive business based on FY 2022 data?"
+    }
+  ]
+}

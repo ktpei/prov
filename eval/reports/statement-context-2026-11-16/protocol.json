@@ -1,0 +1,43 @@
+{
+  "version": "statement-context-development-protocol-v1",
+  "implementation_revision": "b8cff7f38d94089fc9538663bbbb12a0135d5a67",
+  "runtime_sha256": "063285c5aa73aeceda0641afff05bccf1339c5437fc3713fb7500fb9e74fb2ab",
+  "files": {
+    "runs/benchmark-prepared/financebench-full-docs-v1/manifest.json": "c36fee4071eca7bb2d1db3e3484afea49e3343c155694748daaf8431dfcbe800",
+    "runs/benchmark-prepared/financebench-full-docs-v1/tasks.json": "b3dfdb462914f18656742e2e0183d225102cdabe47e1661982b623950b6086a5",
+    "runs/benchmark-prepared/financebench-full-docs-v1/inputs.json": "7b8b322a2f0ea04d8bf64e680b1c14e856c607445217047700cb629eee156eca",
+    "runs/financebench-full-docs-v2/sources.json": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+    "runs/financebench-full-docs-v2/benchmark_binding.json": "52a01ef7f469f4113f6701c2967c90e91ecad91dc78ff44d6ccd99bab90c0905",
+    "eval/reports/statement-context-2026-11-16/plan.md": "c171a87be41d6e3fe47161bd40b2dc48c436d7ca9e9a6eb481ecc387a497e4fa",
+    "eval/reports/statement-context-2026-11-16/length-diagnostic.json": "d4e5607a3513a810f271af1deff3adcfcfaa201aecf6a8ef9d5be1e36d5cd6a5"
+  },
+  "source_scope": "declared_document",
+  "baseline_policy": "dpo-component-round-robin-v1",
+  "challenger_policy": "dpo-statement-context-round-robin-v1",
+  "baseline_query_count": 7,
+  "challenger_query_count": 7,
+  "max_results_per_query": 5,
+  "final_result_limit": 5,
+  "task_denominator": 3,
+  "expected_page_denominator": 4,
+  "automatic_retries": false,
+  "default_promotion": false,
+  "model_calls": 0,
+  "planned_queries": {
+    "financebench_id_06247": [
+      "What is FY2018 days payable outstanding (DPO) for Walmart? DPO is defined as: 365 * (average accounts payable between FY2017 and FY2018) / (FY2018 COGS + change in inventory between FY2017 and FY2018). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the statement of financial position and the P&L statement.",
+      "accounts payable trade payables balance sheet sheets statement statements financial position 2018 2017",
+      "purchases credit purchases 2018 2017",
+      "cost of sales cost of goods sold income statement statements operations profit loss 2018 2017",
+      "inventory inventories balance sheet sheets statement statements financial position 2018 2017"
+    ],
+    "financebench_id_01163": [
+      "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?"
+    ],
+    "financebench_id_00601": [
+      "What drove the reduction in SG&A expense as a percent of net sales in FY2023?"
+    ]
+  },
+  "baseline_report_sha256": "6364505d556643c8c76e1ab32a510e297d411db9f66981e3168a186fdb28b0e6",
+  "exposure": "Targeted second experiment on the same previously inspected development tasks; no unseen generalization claim."
+}

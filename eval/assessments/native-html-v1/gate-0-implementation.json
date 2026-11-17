@@ -1,0 +1,262 @@
+{
+  "schema_version": "native-html-assessment-gate-v1",
+  "assessment_id": "native-html-v1",
+  "stage": 0,
+  "previous_gate_sha256": null,
+  "implementation_revision": "2b00126c7c74c3ad79792edc8731006a682bf5aa",
+  "runtime_sha256": "534b35235b84aaa825bde0aebe955a2f1458639d60ac1670dfd1e7f0e263118f",
+  "runtime_inventory": [
+    {
+      "path": "eval/scripts/acquire_native_html.py",
+      "bytes": 9360,
+      "sha256": "78013c3de3f2ed3734c3399542408900af2f860eefb583de899be8c329aa2bdc"
+    },
+    {
+      "path": "eval/scripts/table_assessment_run.py",
+      "bytes": 15746,
+      "sha256": "bb478bf374a44e3a192dde06722613987ee4f1419138eb94011197323a4b487c"
+    },
+    {
+      "path": "eval/scripts/table_runtime_probe.py",
+      "bytes": 6475,
+      "sha256": "d4aeb667e24fc2000c9bac349c45d132735e3eed5d410c9509ffdeb2117a6040"
+    },
+    {
+      "path": "provenance/__init__.py",
+      "bytes": 86,
+      "sha256": "e75298d899710e6d8ca3b1b5956ffe946946ccd16b25656ec9a6fec3b14fa7ea"
+    },
+    {
+      "path": "provenance/__main__.py",
+      "bytes": 7254,
+      "sha256": "a162119712d0ea3bad7ab8817ac7de6b530797c4d2fe32e0f4e3d8015fd9cd94"
+    },
+    {
+      "path": "provenance/_vendor/__init__.py",
+      "bytes": 54,
+      "sha256": "0f21aa432e45dfced59dfca1dd35a540ee37dfd21be7795f64c61ff81f1b7192"
+    },
+    {
+      "path": "provenance/_vendor/tatqa/__init__.py",
+      "bytes": 83,
+      "sha256": "7d72f33a0a4f4d6da6a5ce6d87d60787b5a9b30a6fdc1e89ee4877db8872f53f"
+    },
+    {
+      "path": "provenance/_vendor/tatqa/tatqa_metric.py",
+      "bytes": 14130,
+      "sha256": "28b62d8554697def525f10ba4a50b44bbe1f8c11392568b126212856485f2fb5"
+    },
+    {
+      "path": "provenance/_vendor/tatqa/tatqa_utils.py",
+      "bytes": 3807,
+      "sha256": "a84bb2f960737cf0a53733637a674cc4b20ef030a2be6a4b21dc2c4356f415ec"
+    },
+    {
+      "path": "provenance/agent.py",
+      "bytes": 7810,
+      "sha256": "fdb3d94e4301e5ca1deccf3aab5dc8250e383929fac6573951622685e4d90ed6"
+    },
+    {
+      "path": "provenance/benchmark_adapters.py",
+      "bytes": 9520,
+      "sha256": "97c96269290c2f0654a10db74ffd8874d11d5cb9f654925d4783863061d4bbab"
+    },
+    {
+      "path": "provenance/benchmark_data.py",
+      "bytes": 3148,
+      "sha256": "e74b8f14c861f36f7fbdb072e802e70f17137e9566f3df6a24b31dca1d867665"
+    },
+    {
+      "path": "provenance/benchmark_run.py",
+      "bytes": 9499,
+      "sha256": "d383fc67f381a7e3ed872972a5310e4231f9b3e214c88aec7f27a848b18958a1"
+    },
+    {
+      "path": "provenance/benchmarks.py",
+      "bytes": 19939,
+      "sha256": "306e03483eda6a3bc24af33596d96479d2afd770fb7215010eab314472168220"
+    },
+    {
+      "path": "provenance/context.py",
+      "bytes": 3114,
+      "sha256": "b97f0e64848d6f7c62081d6bf7b9dfcbfd0d77bb459321e20afc902d50acfc7c"
+    },
+    {
+      "path": "provenance/controls.py",
+      "bytes": 2207,
+      "sha256": "fc057612f1976a2cb501df1269d9751c3a45d53368c58459fa8db410d47d551f"
+    },
+    {
+      "path": "provenance/conversation_eval.py",
+      "bytes": 1851,
+      "sha256": "2c9572b3351b7a4f1b492dbc82a84fe5634ff75c3352ecf29cf6dcd4c8317ff0"
+    },
+    {
+      "path": "provenance/conversation_run.py",
+      "bytes": 12092,
+      "sha256": "616d66cdf4a449f167981ffff1d6ed1b291f8550eb89d701ed858f3ff813816f"
+    },
+    {
+      "path": "provenance/evaluation.py",
+      "bytes": 19817,
+      "sha256": "0c4e2e90647daa229a2d6a422e2d79242230aad0e63399f80ef7679e44f097eb"
+    },
+    {
+      "path": "provenance/experiment.py",
+      "bytes": 7460,
+      "sha256": "aedfee9959a19706db4cae25db781706077a5764b6b146061ad4d22369e0bc45"
+    },
+    {
+      "path": "provenance/financebench_corpus.py",
+      "bytes": 5113,
+      "sha256": "d532ec7637238dd55ddd330c54add1d69668296577e20eb6129dae8bf3e9b984"
+    },
+    {
+      "path": "provenance/graph.py",
+      "bytes": 20208,
+      "sha256": "f339a02924a49181c9b971d3c7302590c4b2b15955995cde09f2cbf7219fd29b"
+    },
+    {
+      "path": "provenance/html_text.py",
+      "bytes": 4839,
+      "sha256": "a9b051a03e03e4ca42707f190819d4447763c4b896f579f545327a9a9bea9607"
+    },
+    {
+      "path": "provenance/ingestion.py",
+      "bytes": 10290,
+      "sha256": "3c1da35263225f40b013e4156c9744420af7b1645df9a527b5fda421bc94e30f"
+    },
+    {
+      "path": "provenance/langchain_model.py",
+      "bytes": 8814,
+      "sha256": "28a4f01284fd6fe95a5d11e70ed7737f82f2432c087419fb16b91d514eb48a1c"
+    },
+    {
+      "path": "provenance/model.py",
+      "bytes": 7759,
+      "sha256": "980da1da883c57f223a736e309676547b9b28006adc4b27668442f410f921fe2"
+    },
+    {
+      "path": "provenance/official_metrics.py",
+      "bytes": 2895,
+      "sha256": "66117343a1551e1b2b842ec0856261017f94937eca60704dc0d6f36fb2e00a5d"
+    },
+    {
+      "path": "provenance/reference_issues.py",
+      "bytes": 5748,
+      "sha256": "e531732649f7e564e1914124e1602dfaaa739cc4566e67f5e7198b97f9604917"
+    },
+    {
+      "path": "provenance/source_availability.py",
+      "bytes": 2489,
+      "sha256": "efaccc032a3e18c551e6d07ce2724196233f11bc747ee11a70e044e93b5b22ea"
+    },
+    {
+      "path": "provenance/source_quality.py",
+      "bytes": 13365,
+      "sha256": "282651d13ab2b5c96c8283fe28ff55f3b4113e3e61f42bc8877173a6eb7683b4"
+    },
+    {
+      "path": "provenance/sources.py",
+      "bytes": 15942,
+      "sha256": "049249eaec71bdd723a14dc75ff62be89160c04c0730d220b67d0f596cc036fa"
+    },
+    {
+      "path": "provenance/table_assessment.py",
+      "bytes": 20312,
+      "sha256": "b1aeebae8d0ac62d0d72e054204cdbd0b86163b26e022c97fac9b57a35b388a0"
+    },
+    {
+      "path": "provenance/table_conversation_adapters.py",
+      "bytes": 15415,
+      "sha256": "dec26e59ff4e260603ea19eedea00dfc1ba8b24ef5bb748008825aebeeb3a913"
+    },
+    {
+      "path": "provenance/table_evaluation.py",
+      "bytes": 7964,
+      "sha256": "ff407cfb225e2c8ef909b5a4befaa415460ecb300f81296de06960c381848ff5"
+    },
+    {
+      "path": "provenance/table_structure.py",
+      "bytes": 13896,
+      "sha256": "c8c190d5b7747be81ca4f131b8a04aba52404de349d9e5a65960cbefe2c508db"
+    },
+    {
+      "path": "provenance/table_tools.py",
+      "bytes": 15562,
+      "sha256": "a1936b406389b6894979f4dc753d8f729c86c8b8ff2460b4d9768428c9e56997"
+    },
+    {
+      "path": "provenance/transport.py",
+      "bytes": 1428,
+      "sha256": "8f741ee5ba580ed6181426cfaa6eee87e8740c3e884c365b52df26753240cbbc"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 656,
+      "sha256": "3aad130f9fcb76d2053b31f4ade71ae83374bfd572690cdfa50d0c90c755e1b1"
+    },
+    {
+      "path": "uv.lock",
+      "bytes": 443155,
+      "sha256": "5a3112d0c9384f58448382111d1c75285aac17722a7001b3de5dedddda254777"
+    }
+  ],
+  "plan_sha256": "6fc1ce7a6c90045355fa3d1922cc8e9246100baac1e8dea83dca8b2a28509939",
+  "versions": {
+    "html_text": "native-html-text-v2",
+    "sidecar": "native-html-tables-v2",
+    "run_protocol": "table-assessment-run-protocol-v3",
+    "questions": "table-assessment-questions-v2",
+    "annotations": "table-assessment-annotations-v2",
+    "search_conditions": [
+      "source-scoped-visible-row-bm25-v1",
+      "source-scoped-visible-row-bm25-v2",
+      "source-scoped-visible-row-bm25-v3"
+    ]
+  },
+  "fixed_protocol": "Exact original question and declared source; top table, first three returned rows, one read;12000 compact JSON characters; no rewrite/retry/repair. Availability controls use zero calls when blocked.",
+  "selection_counts": {
+    "documents": 6,
+    "issuers": 3,
+    "questions_planned": 24,
+    "positive_slots": 21,
+    "availability_controls": 3
+  },
+  "question_strata": {
+    "direct_statement": 6,
+    "period_sign_scale": 6,
+    "two_operands_same_table": 6,
+    "table_plus_qualification": 3,
+    "selected_filing_availability": 3
+  },
+  "assignment": "Each document gets direct, period/sign/scale, and two-operand slots. Older document per issuer gets qualification; newer gets prior-calendar-day availability. Older direct uses balance-sheet instant; newer direct uses duration income statement. Older period/sign uses signed cash flow; newer uses per-share scale.",
+  "metrics": [
+    "table_hit_at_1_3_5",
+    "per_alternative_component_coverage",
+    "single_read_complete_context",
+    "errors_nohits_overflows",
+    "response_characters_bytes",
+    "paired_wins_losses",
+    "availability_control_state_and_access"
+  ],
+  "promotion": "Diagnostic baseline only; no automatic default promotion or population-generalization claim.",
+  "failure_accounting": "All six selected documents and24plannedslots retained. Acquisition, identity, text and sidecar failures are separate, never replaced by easier sources. Real question/annotation denominators freeze at latergates; no accuracy claim before then.",
+  "actors": [
+    {
+      "context": "01a1e409-ea16-7fe0-bef7-63951e284570",
+      "role": "lead implementation and selection",
+      "exposure": "Filing-index metadata and existing development fixtures; no new cohort financial tables/questions/labels/outputs."
+    },
+    {
+      "context": "01a1c30c-3a5d-7811-85bd-725b022bed8a",
+      "role": "metadata cohort research",
+      "exposure": "Filing-index metadata only for new cohort; proposal preceded code freeze and is disclosed."
+    }
+  ],
+  "limitations": [
+    "Hashes establish identity, not secret isolation or human annotation correctness.",
+    "Question authors may inspect originals after this freeze; separate annotators receive frozen questions without author answers or retrieval traces.",
+    "No benchmark or original holdout inference authorized by this gate."
+  ]
+}

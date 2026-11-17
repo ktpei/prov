@@ -1,0 +1,16 @@
+{
+  "reconstruction_sha256": "5ddad7e76a9290fdf776cef0cc102ec560fabfb0192df4a06efa4f8866e86495",
+  "independent_reproduction": "byte_identical",
+  "reviewer": "masked_packet_review",
+  "verified_input_hashes": 8,
+  "core_tests": 440,
+  "new_reader_tests": 9,
+  "lint": "passed",
+  "negative_controls": [
+    "missing_fragments",
+    "missing_continuations",
+    "empty_interval",
+    "wrong_node_substitution"
+  ],
+  "financial_question_execution": false
+}

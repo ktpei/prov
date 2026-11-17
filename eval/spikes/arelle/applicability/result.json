@@ -1,0 +1,875 @@
+{
+  "version": "synthetic-dimensional-applicability-v1",
+  "arelle_version": "2.47.5",
+  "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+  "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+  "cases": [
+    {
+      "case": "omitted_default",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": true,
+      "diagnostics": [],
+      "model_errors": [],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "343489d92c30649193f999a9bf96220685fb85940a6b1897544ca68098cf8075",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {},
+      "reported_locations": {},
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": []
+    },
+    {
+      "case": "north",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": true,
+      "diagnostics": [],
+      "model_errors": [],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "f8e4b4b3d70204d3a546941ae73434cca2275fcbc90a432e4621a81340f94fd7",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}North"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "segment"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": []
+    },
+    {
+      "case": "explicit_default",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:DefaultValueUsedInInstanceError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:DefaultValueUsedInInstanceError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "2b86065bec6fdfa0eac4878c3c353e96771ac7c75fc723a51da4069029fbfa45",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "segment"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:DefaultValueUsedInInstanceError",
+          "references": [
+            {
+              "href": "omitted.xhtml#element(scope/1/2/1)",
+              "source_line": 6
+            },
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "unusable_south",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "a8ed9b03939286dd4f5c7f1f4efe3be571a6de85cac539bfe3c6d9e3321147cc",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}South"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "segment"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "undefined_member",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:ExplicitMemberUndefinedQNameError"
+        ],
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:ExplicitMemberUndefinedQNameError",
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "92b304ce00a21c808eb54de0f08f2793c0aff3ebde8a3d950d435dc2c7d2030f",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}Undeclared"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "segment"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        },
+        {
+          "code": "xbrldie:ExplicitMemberUndefinedQNameError",
+          "references": [
+            {
+              "href": "omitted.xhtml#element(scope/1/2/1)",
+              "source_line": 6
+            },
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "north_in_scenario",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": true,
+      "diagnostics": [],
+      "model_errors": [],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "651016834976c31933ab429aff4a0f30841a5c2fef49bf502325db919c2ffd83",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}North"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "scenario"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": []
+    },
+    {
+      "case": "extra_segment_axis",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "6bf29d829b8e2b5aea3eb36d66c5aef520848993136aeb1d01dea42d051375ba",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}North",
+        "{urn:synthetic:applicability}ExtraAxis": "{urn:synthetic:applicability}North"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "segment",
+        "{urn:synthetic:applicability}ExtraAxis": "segment"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_default",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "11e1b86efb91470352c620a5419bb083fd0eab1b6ead07dbd39f6374efa4729d",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "343489d92c30649193f999a9bf96220685fb85940a6b1897544ca68098cf8075",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {},
+      "reported_locations": {},
+      "taxonomy_defaults": {},
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "default_outside_domain",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "5afe81d82f065fd802204c92a08f0930decc2faa19a4d1f1421a6d64de360a8d",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "343489d92c30649193f999a9bf96220685fb85940a6b1897544ca68098cf8075",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {},
+      "reported_locations": {},
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "scenario_without_default",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "11e1b86efb91470352c620a5419bb083fd0eab1b6ead07dbd39f6374efa4729d",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "651016834976c31933ab429aff4a0f30841a5c2fef49bf502325db919c2ffd83",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}North"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "scenario"
+      },
+      "taxonomy_defaults": {},
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "declared_outside_domain",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "ee6401deec84f6ac57f56349dc35d21de32b3b07aa95892fa080bdea45fde64d",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}East"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}RegionAxis": "segment"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "extra_scenario_axis",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": true,
+      "diagnostics": [],
+      "model_errors": [],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "dc236437721af6bf8af128dde2cc0e277890dec0b9620613ef30ba56c3e0e88d",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {
+        "{urn:synthetic:applicability}ExtraAxis": "{urn:synthetic:applicability}North"
+      },
+      "reported_locations": {
+        "{urn:synthetic:applicability}ExtraAxis": "scenario"
+      },
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": []
+    },
+    {
+      "case": "residual_segment",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": false,
+      "diagnostics": [
+        [
+          "ERROR",
+          "xbrldie:PrimaryItemDimensionallyInvalidError"
+        ]
+      ],
+      "model_errors": [
+        "xbrldie:PrimaryItemDimensionallyInvalidError"
+      ],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "f9f51a247ab8d3a1246c378f8e434c062cb0bced7b04167def7e9d038de58437",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {},
+      "reported_locations": {},
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": [
+        {
+          "code": "xbrldie:PrimaryItemDimensionallyInvalidError",
+          "references": [
+            {
+              "href": "omitted.xhtml#assets",
+              "source_line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "residual_scenario",
+      "baseline_document_sha256": {
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+        "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+      },
+      "driver_sha256": "8ddbf8361ce33a0bb15c525f2fc0aaeb8dc308dc6452957a5cfcbc325ef14a2c",
+      "manifest_sha256": "ff1fe472a19866bbfbacc167306a0fc4da32175a845e14da7e3e2bebc97bae0b",
+      "api_success": true,
+      "accepted": true,
+      "diagnostics": [],
+      "model_errors": [],
+      "candidate_document_sha256": {
+        "definition.xml": "485dc54c95871f3fdf2dd2f4e311ba8ed46fd2f92eb13c9fd02529b3e15cfe0b",
+        "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+        "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+        "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+        "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+        "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+        "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+        "omitted.xhtml": "67f4bfe7882d9e45482548cbb69c76ab56fb4bf1940f6eec80fec859b4b2ec29",
+        "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93"
+      },
+      "reported_dimensions": {},
+      "reported_locations": {},
+      "taxonomy_defaults": {
+        "{urn:synthetic:applicability}RegionAxis": "{urn:synthetic:applicability}AllRegions"
+      },
+      "fact_count": 1,
+      "facts": [
+        {
+          "id": "assets",
+          "context_id": "scope",
+          "concept": "{urn:synthetic:applicability}Assets",
+          "value": "100",
+          "schema_validation_state": 4
+        }
+      ],
+      "diagnostic_references": []
+    }
+  ]
+}

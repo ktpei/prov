@@ -1,0 +1,101 @@
+{
+  "version": "passage-length-diagnostic-v1",
+  "source_id": "WALMART_2018_10K",
+  "source_text_sha256": "923deef38fead717880b0a36577da5764f47678987e8398b007113a7422eba70",
+  "manifest_sha256": "65297fb088f2bfd089974e866056bd96a1845e34a3d71fda0dc589d2c60d7e50",
+  "indexed_passage_count": 458,
+  "mean_indexed_tokens": 379.44323144104806,
+  "passages": [
+    {
+      "role": "saved_query_1_rank1",
+      "start_line": 1531,
+      "end_line": 1562,
+      "page": 40,
+      "body_tokens": 237,
+      "digit_only_tokens": 97,
+      "indexed_tokens": 239,
+      "single_occurrence_length_multiplier": 1.1998441034620009
+    },
+    {
+      "role": "saved_query_3_rank1",
+      "start_line": 1722,
+      "end_line": 1753,
+      "page": 44,
+      "body_tokens": 672,
+      "digit_only_tokens": 69,
+      "indexed_tokens": 674,
+      "single_occurrence_length_multiplier": 0.7411090686444359
+    },
+    {
+      "role": "saved_query_0_rank1",
+      "start_line": 1927,
+      "end_line": 1958,
+      "page": 49,
+      "body_tokens": 684,
+      "digit_only_tokens": 9,
+      "indexed_tokens": 686,
+      "single_occurrence_length_multiplier": 0.7333741689484604
+    },
+    {
+      "role": "required_income_main",
+      "start_line": 2171,
+      "end_line": 2202,
+      "page": 57,
+      "body_tokens": 236,
+      "digit_only_tokens": 118,
+      "indexed_tokens": 238,
+      "single_occurrence_length_multiplier": 1.2015538580087401
+    },
+    {
+      "role": "income_tail",
+      "start_line": 2195,
+      "end_line": 2202,
+      "page": 57,
+      "body_tokens": 64,
+      "digit_only_tokens": 31,
+      "indexed_tokens": 66,
+      "single_occurrence_length_multiplier": 1.591665838556533
+    },
+    {
+      "role": "required_balance_main",
+      "start_line": 2224,
+      "end_line": 2255,
+      "page": 59,
+      "body_tokens": 198,
+      "digit_only_tokens": 87,
+      "indexed_tokens": 200,
+      "single_occurrence_length_multiplier": 1.270341936415287
+    },
+    {
+      "role": "balance_continuation",
+      "start_line": 2248,
+      "end_line": 2269,
+      "page": 59,
+      "body_tokens": 144,
+      "digit_only_tokens": 67,
+      "indexed_tokens": 146,
+      "single_occurrence_length_multiplier": 1.382841969613841
+    },
+    {
+      "role": "saved_query_4_rank1",
+      "start_line": 2399,
+      "end_line": 2430,
+      "page": 64,
+      "body_tokens": 483,
+      "digit_only_tokens": 43,
+      "indexed_tokens": 485,
+      "single_occurrence_length_multiplier": 0.8887428547319541
+    },
+    {
+      "role": "saved_query_2_rank1",
+      "start_line": 2734,
+      "end_line": 2765,
+      "page": 72,
+      "body_tokens": 435,
+      "digit_only_tokens": 123,
+      "indexed_tokens": 437,
+      "single_occurrence_length_multiplier": 0.9361022734220157
+    }
+  ],
+  "interpretation": "Target main statement passages are shorter than most saved top-ranked hits; observed length normalization does not establish a disadvantage. Main target passages retain required context; continuation windows may omit headers. No searches or policy trials performed."
+}

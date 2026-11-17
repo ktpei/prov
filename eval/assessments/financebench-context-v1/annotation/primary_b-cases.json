@@ -1,0 +1,147 @@
+{
+  "cases": [
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "disposition": "mapped",
+      "reason": "Source locations support the benchmark reference's year-end-assets / annual-revenue calculation. Capital-intensive classification depends on an unstated metric convention and threshold; mapping is not semantic validation.",
+      "required_components": [
+        "balance_sheet_entity_and_scope",
+        "assets_date_and_units",
+        "fy2022_total_assets",
+        "revenue_period_and_units",
+        "fy2022_consolidated_operating_revenue"
+      ],
+      "alternatives": [
+        {
+          "balance_sheet_entity_and_scope": [
+            [
+              2532,
+              2533
+            ]
+          ],
+          "assets_date_and_units": [
+            [
+              2534,
+              2535
+            ]
+          ],
+          "fy2022_total_assets": [
+            [
+              2554,
+              2554
+            ]
+          ],
+          "revenue_period_and_units": [
+            [
+              1032,
+              1032
+            ],
+            [
+              1034,
+              1034
+            ]
+          ],
+          "fy2022_consolidated_operating_revenue": [
+            [
+              1040,
+              1040
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "disposition": "mapped",
+      "reason": "Two independently complete alternatives reflect the unspecified net-income basis: attributable to company shareowners (reference convention) or consolidated net income. Both produce 0.01 when the unscaled ratio is rounded to two decimals; mapping does not resolve convention ambiguity.",
+      "required_components": [
+        "income_statement_entity_and_scope",
+        "income_period_and_units",
+        "fy2017_net_income_basis_and_amount",
+        "balance_sheet_entity_and_scope",
+        "assets_periods_and_units",
+        "fy2017_and_fy2016_total_assets"
+      ],
+      "alternatives": [
+        {
+          "income_statement_entity_and_scope": [
+            [
+              2802,
+              2803
+            ]
+          ],
+          "income_period_and_units": [
+            [
+              2804,
+              2805
+            ]
+          ],
+          "fy2017_net_income_basis_and_amount": [
+            [
+              2822,
+              2823
+            ]
+          ],
+          "balance_sheet_entity_and_scope": [
+            [
+              2858,
+              2859
+            ]
+          ],
+          "assets_periods_and_units": [
+            [
+              2860,
+              2861
+            ]
+          ],
+          "fy2017_and_fy2016_total_assets": [
+            [
+              2882,
+              2882
+            ]
+          ]
+        },
+        {
+          "income_statement_entity_and_scope": [
+            [
+              2802,
+              2803
+            ]
+          ],
+          "income_period_and_units": [
+            [
+              2804,
+              2805
+            ]
+          ],
+          "fy2017_net_income_basis_and_amount": [
+            [
+              2820,
+              2820
+            ]
+          ],
+          "balance_sheet_entity_and_scope": [
+            [
+              2858,
+              2859
+            ]
+          ],
+          "assets_periods_and_units": [
+            [
+              2860,
+              2861
+            ]
+          ],
+          "fy2017_and_fy2016_total_assets": [
+            [
+              2882,
+              2882
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

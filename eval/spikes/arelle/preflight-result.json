@@ -1,0 +1,56 @@
+{
+  "version": "arelle-missing-schema-preflight-v1",
+  "python": "3.13.2",
+  "packages": {
+    "arelle-release": "2.47.2",
+    "attrs": "26.1.0",
+    "bottle": "0.13.4",
+    "certifi": "2026.10.23",
+    "et_xmlfile": "2.0.0",
+    "filelock": "4.2.10",
+    "isodate": "0.7.2",
+    "jaconv": "0.5.0",
+    "jsonschema": "4.26.0",
+    "jsonschema-specifications": "2025.9.1",
+    "lxml": "6.1.3",
+    "numpy": "2.5.5",
+    "openpyxl": "3.1.5",
+    "pillow": "13.0.0",
+    "pyparsing": "3.3.3",
+    "python-dateutil": "2.9.0.post0",
+    "referencing": "0.37.0",
+    "regex": "2026.11.15",
+    "rpds-py": "2026.9.1",
+    "six": "1.17.0",
+    "truststore": "0.10.5",
+    "typing_extensions": "4.16.0"
+  },
+  "fixture_sha256": "48e9ed3b31fe50e269c7dbbb0e3cff0bd54c52fc4962ebd3e91a6b90e81bddbe",
+  "driver_sha256": "4d75b5ff58b028c66a4d27bbc511a8de5c2bb52b79c8d955b9c7a605d4ab040f",
+  "network_control": "macOS sandbox-exec (version 1)(allow default)(deny network*)",
+  "loopback_connect_errno": 1,
+  "api_success": true,
+  "parsed_fact_occurrences": 1,
+  "validation_error_codes": [
+    "IOerror",
+    "ix11.12.1.2:missingReferences"
+  ],
+  "error_diagnostics": [
+    [
+      "ERROR",
+      "IOerror"
+    ],
+    [
+      "ERROR",
+      "ix11.12.1.2:missingReferences"
+    ]
+  ],
+  "disposition": "dependency_incomplete_rejected",
+  "accepted_fact_occurrences": 0,
+  "limitations": [
+    "Only a synthetic missing-schema negative path; successful typed extraction is untested.",
+    "The network-denial profile is OS-enforced; the loopback probe checks one observed path, not all possible transports.",
+    "Packages are version-recorded, not a complete hashed loaded-dependency manifest.",
+    "No issuer document, full taxonomy, transformation or visible-cell provenance acceptance yet."
+  ]
+}

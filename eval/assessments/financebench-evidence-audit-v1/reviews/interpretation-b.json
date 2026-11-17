@@ -1,0 +1,305 @@
+{
+  "stage": "interpretation",
+  "reviewer": "B",
+  "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+  "cases": [
+    {
+      "case_id": "Q01",
+      "literal_request": "Add American Water Works FY2021 unadjusted operating income from the income statement to FY2021 depreciation and amortization from the cash flow statement, and report the question-defined unadjusted EBITDA.",
+      "output_contract": "One monetary amount in USD millions. No rounding precision is specified. The requested metric is the stated sum, not an independently chosen EBITDA definition.",
+      "interpretations": [
+        {
+          "id": "Q01-I1",
+          "description": "Use the two reported statement amounts named in the question without management adjustments, and add them after expressing both in USD millions.",
+          "required_facts": [
+            "American Water Works FY2021 operating income as reported on the income statement, including its sign and reporting scope.",
+            "FY2021 depreciation and amortization as reported on the cash flow statement, including whether the requested amount is one combined line or separately identified components.",
+            "The units, currency and fiscal-period coverage of both statement amounts.",
+            "Any statement presentation detail needed to identify the named operating-income and depreciation-and-amortization amounts unambiguously."
+          ],
+          "assumptions": [
+            "Interpret unadjusted as retaining the reported amounts, without adding back other expenses or using an adjusted EBITDA reconciliation.",
+            "Use the question-defined sum even if a different EBITDA convention would use other inputs."
+          ],
+          "ambiguities": [
+            "No output rounding precision is given.",
+            "If either statement offers multiple differently scoped amounts with the requested label, the question does not specify a preference among them. Do not silently normalize continuing-operations or other scope differences."
+          ]
+        }
+      ],
+      "well_defined": "yes",
+      "reason": "The question supplies the period, two input concepts, source statements, operation and output units. Any statement-specific scope ambiguity must be disclosed if encountered; it does not license changing the explicitly defined metric.",
+      "recognition_or_prior_knowledge": "General familiarity with operating income, cash flow statements and EBITDA terminology. No specific question or benchmark reference answer recalled; no company-specific numerical answer used."
+    },
+    {
+      "case_id": "Q02",
+      "literal_request": "Compute Coca Cola FY2017 ROA as FY2017 net income divided by the average of FY2016 and FY2017 total assets, using the balance sheet and P&L statement.",
+      "output_contract": "A dimensionless ROA rounded to two decimal places. The question does not explicitly choose a decimal ratio or percentage presentation; that choice changes what two-decimal rounding means.",
+      "interpretations": [
+        {
+          "id": "Q02-I1",
+          "description": "Use consolidated FY2017 net income and the simple arithmetic mean of consolidated total assets at the FY2016 and FY2017 balance-sheet dates.",
+          "required_facts": [
+            "FY2017 consolidated net income from the P&L statement.",
+            "Consolidated total assets at the end of FY2016 from the balance sheet.",
+            "Consolidated total assets at the end of FY2017 from the balance sheet.",
+            "The currency, units, reporting entity and period labels of all three amounts so the numerator and denominator are comparable.",
+            "Whether the final ratio is to be represented as a decimal or percentage before rounding."
+          ],
+          "assumptions": [
+            "Interpret average total assets between the two fiscal years as the simple mean of the two fiscal-year-end balances, not a daily or other time-weighted average.",
+            "Interpret net income as the consolidated total, before any separate attribution to noncontrolling interests."
+          ],
+          "ambiguities": [
+            "The question does not explicitly resolve consolidated net income versus net income attributable to the parent or its shareholders if both appear.",
+            "The requested two decimal places do not establish whether to round a decimal ratio or a percentage.",
+            "The year-end two-point arithmetic average is the natural reading of the supplied formula, but its averaging method is not spelled out."
+          ]
+        },
+        {
+          "id": "Q02-I2",
+          "description": "Read FY2017 net income as net income attributable to Coca Cola or its shareholders, while retaining the specified average-total-assets denominator.",
+          "required_facts": [
+            "FY2017 net income attributable to the parent or its shareholders, with the P&L statement label establishing that attribution.",
+            "Total assets at the FY2016 and FY2017 balance-sheet dates.",
+            "Currency, units, reporting scope and period labels needed to compare the inputs.",
+            "The intended decimal-ratio or percentage presentation before two-decimal rounding."
+          ],
+          "assumptions": [
+            "Interpret the company-specific phrase net income as the attributable income measure rather than consolidated net income.",
+            "Use a simple arithmetic mean of the two fiscal-year-end asset balances."
+          ],
+          "ambiguities": [
+            "This numerator choice is not expressly selected by the question and may differ from consolidated net income.",
+            "An attributable-income numerator and consolidated-asset denominator have different scopes; the question does not authorize substituting a different asset measure to remedy that.",
+            "Decimal ratio versus percentage presentation remains unspecified."
+          ]
+        }
+      ],
+      "well_defined": "conditional",
+      "reason": "The formula and fiscal years substantially constrain the calculation, but net-income attribution and the representation to which two-decimal rounding applies must be identified explicitly.",
+      "recognition_or_prior_knowledge": "General familiarity with ROA and financial-statement attribution conventions. No specific question or benchmark reference answer recalled; no Coca Cola financial values recalled or used."
+    },
+    {
+      "case_id": "Q03",
+      "literal_request": "Read Costco total assets at the end of FY2021 from the balance sheet only.",
+      "output_contract": "One monetary amount in USD millions. No rounding precision is specified.",
+      "interpretations": [
+        {
+          "id": "Q03-I1",
+          "description": "Identify the total-assets balance in the balance-sheet column corresponding to Costco FY2021 fiscal year-end and express it in USD millions.",
+          "required_facts": [
+            "The balance-sheet reporting entity and the date or column corresponding to the end of Costco FY2021.",
+            "The total-assets amount in that column.",
+            "The balance-sheet currency and unit scale required to express the amount in USD millions."
+          ],
+          "assumptions": [
+            "Read Costco company-level total assets as the total reported in its consolidated balance sheet.",
+            "Use the company fiscal-year-end date, not an assumed calendar-year-end date."
+          ],
+          "ambiguities": [
+            "No rounding precision is specified; preserve the available reported precision when converting units.",
+            "If the balance sheet does not provide a USD amount or a sufficient conversion basis, the balance-sheet-only restriction does not permit silently introducing an external exchange rate."
+          ]
+        }
+      ],
+      "well_defined": "yes",
+      "reason": "The question specifies a single balance-sheet concept, fiscal endpoint, exclusive evidence source and output units.",
+      "recognition_or_prior_knowledge": "General familiarity with balance sheets and fiscal-year reporting. No specific question or benchmark reference answer recalled; no Costco asset amount recalled or used."
+    },
+    {
+      "case_id": "Q04",
+      "literal_request": "Identify which 3M segment reduced overall growth in 2022 after excluding the impact of mergers and acquisitions.",
+      "output_contract": "A segment identification with support for the claimed growth drag. The question uses the singular but does not establish that exactly one segment qualifies. No growth metric, units, threshold or precision is specified.",
+      "interpretations": [
+        {
+          "id": "Q04-I1",
+          "description": "Interpret growth as sales growth and dragged down as a negative contribution to the company sales change, after removing M&A effects but retaining other effects.",
+          "required_facts": [
+            "The segment structure and comparable 2022 and preceding-period segment sales measures.",
+            "The sales effects attributed to M&A for each segment and the company, including the defined treatment of acquisitions and divestitures.",
+            "The adjustment method that removes M&A effects while keeping comparison periods and segment scopes comparable.",
+            "Each segment contribution to the company sales change, or the bases and weights needed to establish that contribution.",
+            "The definition of the comparison period for 2022 growth."
+          ],
+          "assumptions": [
+            "Choose sales as the growth metric.",
+            "Read growth in 2022 as full-year growth relative to the preceding year.",
+            "Treat dragged down as a negative absolute contribution, rather than merely slower positive growth.",
+            "Exclude the defined M&A effects without automatically excluding foreign exchange or other effects."
+          ],
+          "ambiguities": [
+            "Growth could refer to sales, profit, volume or another measure.",
+            "M&A exclusion does not itself define whether divestitures, currency changes or classification changes are removed.",
+            "More than one segment could have a negative contribution; the question supplies no tie-breaking rule."
+          ]
+        },
+        {
+          "id": "Q04-I2",
+          "description": "Interpret growth as sales growth and dragged down as underperforming the company overall growth rate after M&A effects are removed, even if the segment itself grew.",
+          "required_facts": [
+            "Comparable segment and company sales growth rates for 2022 using the same M&A-exclusion method.",
+            "The comparison period, segment definitions and M&A adjustment scope.",
+            "Segment sales weights or contributions needed to substantiate the effect on overall growth rather than only rank growth rates."
+          ],
+          "assumptions": [
+            "Choose full-year sales growth versus the preceding year as the metric and period.",
+            "Define drag relative to the overall growth rate instead of requiring outright contraction.",
+            "Use a consistent, explicitly described M&A-exclusion basis across segments and the company."
+          ],
+          "ambiguities": [
+            "Several segments can fall below the overall rate.",
+            "The lowest growth rate and the largest adverse weighted effect need not identify the same segment.",
+            "The question does not select relative underperformance over negative absolute contribution."
+          ]
+        },
+        {
+          "id": "Q04-I3",
+          "description": "Interpret the request as referring to a reported organic-growth measure that excludes M&A and possibly other effects, then identify a segment that reduced that measure.",
+          "required_facts": [
+            "The exact definition of the reported organic-growth measure, including effects excluded beyond M&A.",
+            "Comparable company and segment organic-growth figures and their comparison period.",
+            "Segment weights or contribution information relevant to the chosen meaning of dragged down.",
+            "An explicit choice between contraction, below-company growth and largest adverse contribution as the criterion."
+          ],
+          "assumptions": [
+            "Treat the phrase exclude the impact of M&A as shorthand for the specified organic-growth measure only if that interpretation is explicitly selected.",
+            "Do not assume an organic measure and an M&A-only adjustment are equivalent."
+          ],
+          "ambiguities": [
+            "The literal question does not request currency-neutral growth or define organic growth.",
+            "The additional exclusions in a reported organic measure can change the segment identification.",
+            "The underlying growth metric and meaning of drag still require definition."
+          ]
+        }
+      ],
+      "well_defined": "no",
+      "reason": "A unique segment is not determined by the wording because growth, the M&A adjustment and the criterion for drag are unspecified. The interpretations above are alternatives, not silently selected definitions.",
+      "recognition_or_prior_knowledge": "General familiarity with segment reporting, acquisition effects and organic-growth terminology. No specific question or benchmark reference answer recalled; no 3M segment performance recalled or used."
+    },
+    {
+      "case_id": "Q05",
+      "literal_request": "Estimate how often JnJ turned over its inventory in FY2022 by calculating inventory turnover, unless conventional inventory management is not meaningful, in which case state that and explain why.",
+      "output_contract": "An approximate inventory turnover ratio in times per fiscal year, or a supported statement of non-applicability with an explanation. No exact precision is specified.",
+      "interpretations": [
+        {
+          "id": "Q05-I1",
+          "description": "Use cost of goods sold or an equivalent inventory-related cost-of-sales measure divided by average inventory for FY2022.",
+          "required_facts": [
+            "The reporting entity intended by JnJ and the dates and scope of its FY2022.",
+            "FY2022 cost of goods sold or the corresponding cost measure, with its relationship to the reported inventory explained.",
+            "Inventory at the beginning and end of FY2022 if a two-point average is selected, or observations supporting another explicitly selected average.",
+            "Comparable currency, units, entity scope and accounting basis across the numerator and inventory balances.",
+            "Business and inventory context sufficient to decide whether inventory turnover meaningfully describes the company operations."
+          ],
+          "assumptions": [
+            "Interpret JnJ as Johnson & Johnson.",
+            "Choose the cost-based inventory-turnover convention.",
+            "If only two fiscal-year-end balances are used, explicitly choose their arithmetic mean as the approximation to average inventory.",
+            "Interpret times sold as accounting turnover, not a literal count of physical sales of the same inventory items."
+          ],
+          "ambiguities": [
+            "The question does not give a formula or specify how to average inventory.",
+            "A reported cost-of-revenue line may include costs not associated with inventory, so its suitability cannot be assumed solely from its label.",
+            "The question gives no numerical threshold for deciding that inventory management is not meaningful.",
+            "Roughly does not prescribe a number of decimal places."
+          ]
+        },
+        {
+          "id": "Q05-I2",
+          "description": "Use revenue divided by average inventory as a sales-based interpretation of how many times inventory was sold.",
+          "required_facts": [
+            "The reporting entity, fiscal-year coverage and FY2022 revenue measure selected.",
+            "Inventory observations needed for an explicitly selected FY2022 average.",
+            "Comparable currency, units and reporting scope of revenue and inventory.",
+            "Context establishing whether the revenue measure corresponds sufficiently to inventory-bearing operations to make this ratio meaningful."
+          ],
+          "assumptions": [
+            "Interpret JnJ as Johnson & Johnson.",
+            "Select a sales-based ratio explicitly; do not present it as interchangeable with cost-based inventory turnover.",
+            "If beginning and ending inventory are averaged, choose the arithmetic mean explicitly."
+          ],
+          "ambiguities": [
+            "The informal wording about selling inventory may suggest revenue, while the named inventory-turnover ratio commonly points to a cost-based calculation.",
+            "Revenue and inventory are measured on different valuation bases.",
+            "The question does not select this alternative formula or an averaging method."
+          ]
+        },
+        {
+          "id": "Q05-I3",
+          "description": "Apply the expressly permitted non-applicability branch if business and accounting facts establish that conventional inventory management does not meaningfully describe the company.",
+          "required_facts": [
+            "The nature of the company operations and the role of inventory in generating its revenue.",
+            "Whether material inventory and a meaningfully related cost measure are present in FY2022 reporting.",
+            "Any reporting or business-scope limitation that makes a company-wide inventory-turnover measure uninformative.",
+            "The reason connecting those facts to a conclusion of non-applicability."
+          ],
+          "assumptions": [
+            "Interpret JnJ as Johnson & Johnson.",
+            "Use this branch only when supported by company facts; missing inputs alone do not establish that inventory management is meaningless.",
+            "Do not invent a numerical materiality cutoff for meaningfulness."
+          ],
+          "ambiguities": [
+            "Meaningful is qualitative and has no explicit decision standard.",
+            "A ratio may be meaningful for some business segments but limited at the consolidated level; the question does not prescribe how to handle that mixed case."
+          ]
+        }
+      ],
+      "well_defined": "conditional",
+      "reason": "The intended metric and alternative response are clear, but a formula, averaging method and supported meaningfulness judgment must be made explicit. The conventional cost-based interpretation is plausible without being a supplied formula.",
+      "recognition_or_prior_knowledge": "Recognize JnJ as a common abbreviation for Johnson & Johnson and know general inventory-turnover conventions. No specific question or benchmark reference answer recalled; no FY2022 inventory or turnover value recalled or used."
+    },
+    {
+      "case_id": "Q06",
+      "literal_request": "Judge whether Verizon is a capital-intensive business using FY2022 data.",
+      "output_contract": "A qualitative yes/no judgment, or a qualified conclusion if the criterion is unresolved, supported by FY2022 evidence. No numerical metric, cutoff, units or precision is specified.",
+      "interpretations": [
+        {
+          "id": "Q06-I1",
+          "description": "Judge capital intensity from the size of the operating capital or fixed-asset base relative to the business scale.",
+          "required_facts": [
+            "FY2022 assets representing the operating capital base under an explicit definition, including the treatment of property, plant and equipment, leases and intangible operating assets.",
+            "A comparably scoped FY2022 scale measure, such as revenue or total assets, appropriate to the explicitly selected metric.",
+            "Reporting dates, units and gross-versus-net valuation basis of the chosen inputs.",
+            "An explicit qualitative standard or comparison basis supporting the classification of the resulting asset dependence as capital intensive."
+          ],
+          "assumptions": [
+            "Select an asset-base meaning of capital intensity.",
+            "Specify which asset categories count as operating capital and whether year-end or average balances are used.",
+            "Do not assume a universal numerical threshold."
+          ],
+          "ambiguities": [
+            "Capital intensity can refer to physical fixed assets, broader operating assets or total invested capital.",
+            "Gross assets, net assets and asset categories can yield different impressions.",
+            "The question supplies no comparison group or decision standard."
+          ]
+        },
+        {
+          "id": "Q06-I2",
+          "description": "Judge capital intensity from FY2022 investment spending relative to the company operating scale or cash generation.",
+          "required_facts": [
+            "FY2022 capital expenditures under an explicit definition, with treatment of asset purchases, leases and intangible investment identified.",
+            "A comparably scoped FY2022 revenue or operating-cash-flow measure if used as the denominator.",
+            "Currency, units and fiscal-period coverage of the selected amounts.",
+            "An explicit standard or relevant comparison basis for judging the investment burden.",
+            "FY2022 context needed to distinguish recurring investment requirements from any exceptional spending when making a business-level judgment."
+          ],
+          "assumptions": [
+            "Select an investment-flow meaning of capital intensity.",
+            "Define capital expenditures and the denominator before making the judgment.",
+            "Do not automatically treat one year of unusually high or low spending as the permanent business characteristic."
+          ],
+          "ambiguities": [
+            "The question does not choose expenditure-to-revenue, expenditure-to-cash-flow or another measure.",
+            "One fiscal year may reflect timing effects and may not establish ongoing investment needs.",
+            "No cutoff or industry comparison is specified."
+          ]
+        }
+      ],
+      "well_defined": "no",
+      "reason": "The requested qualitative judgment has no specified definition or decision criterion. FY2022 evidence can support an explicitly reasoned assessment, but the wording alone does not prescribe a unique test or threshold.",
+      "recognition_or_prior_knowledge": "Recognize Verizon as a telecommunications company and have general familiarity with capital-intensity concepts. This prior industry recognition does not establish the requested FY2022 judgment. No specific question or benchmark reference answer recalled; no FY2022 financial values recalled or used."
+    }
+  ],
+  "outside_access": []
+}

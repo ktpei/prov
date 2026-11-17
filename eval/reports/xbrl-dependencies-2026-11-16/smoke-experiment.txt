@@ -1,0 +1,16 @@
+from pathlib import Path
+from collections import Counter
+import json,tempfile,socket,errno,hashlib,zipfile
+from arelle.api.Session import Session
+from arelle.RuntimeOptions import RuntimeOptions
+p=Path('/Users/kevinpei/provenanceXL/runs/xbrl-dependency-acquisition-v1');m=json.loads((p/'bundle-manifest.json').read_text())
+with socket.socket() as s: assert s.connect_ex(('127.0.0.1',9))==errno.EPERM
+assert hashlib.sha256((p/'bundle.zip').read_bytes()).hexdigest()==m['bundle_sha256']
+with tempfile.TemporaryDirectory() as cache,Session() as session:
+ success=session.run(RuntimeOptions(entrypointFile=m['entrypoint'],packages=[str(p/'bundle.zip')],internetConnectivity='offline',disablePersistentConfig=True,cacheDirectory=cache,keepOpen=True,validate=True,requireInlineXbrl=True,skipDTS=False,formulaAction='none',validateDuplicateFacts='all',logFile='logToStructuredMessage'))
+ models=session.get_models();logs=[x for x in session.get_log_messages() if x['levelname'] in {'WARNING','ERROR','CRITICAL'}]
+ result={'api_success':success,'model_count':len(models),'diagnostics':logs}
+ if models:
+  model=models[0]; result.update(model_errors=model.errors,entrypoint_uri=model.modelDocument.uri,loaded_documents={u:d.filepath for u,d in model.urlDocs.items()},fact_count=len(model.facts),fact_validation_states=dict(Counter(str(f.xValid) for f in model.facts)),context_count=len(model.contexts),unit_count=len(model.units))
+ (p/'exploratory-smoke.json').write_text(json.dumps(result,indent=2,default=str)+'\n')
+ print(json.dumps({k:v for k,v in result.items() if k not in {'diagnostics','loaded_documents'}}));print('diagnostics',[(x['levelname'],x['messageCode']) for x in logs])

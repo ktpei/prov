@@ -1,0 +1,733 @@
+{
+  "version": "financebench-context-comparison-summary-v1",
+  "protocol_sha256": "9c65970ae428b9b11205801a43817b2da610b799562fef819f9cbcf620e7240d",
+  "run_path": "runs/financebench-context-v1-comparison/run.json",
+  "run_sha256": "c754a2a7d191c4dd276c66d15ac74e7fb7651ec94f9bdaaca48fd28dd35f1aac",
+  "grade_path": "runs/financebench-context-v1-comparison-grade.json",
+  "grade_sha256": "57395fe829ce49c9cbd847c9487548d752824270ac9179d4fe3f0abf819eab9b",
+  "journal_sha256": {
+    "case-0.jsonl": "bd175df61054d7eededecc2975ef0dc2b058af9239ce2ef6fc428ae309eaa60f",
+    "case-1.jsonl": "0647878e45b23601d15802a5d4def3e88be8cf39dc1b77f9d82f8bc2438815a4",
+    "case-2.jsonl": "bf75376d0898b1858c8ce7c2ca294d2dc2454948629e410af5fbdb293e4756ef",
+    "case-3.jsonl": "582e474a226d467576ce7942fa445d204dc1eeddfa1c1cbd0c8feee182fdfbad",
+    "case-4.jsonl": "5bd93f6a355ada5293466b8efab3640313c4ccb46e7c3ba78f298d8b24e7edc7",
+    "case-5.jsonl": "15e9ab8624def69952d521e51dd2f28259fb0ce6dcf10edbf7944cc44ccb70d1"
+  },
+  "selected_denominator": 6,
+  "mapped_location_denominator": 6,
+  "semantic_correctness": "not_measured",
+  "operations": {
+    "completed_cases": 6,
+    "search_calls": 6,
+    "read_attempts": 30,
+    "failed_reads": 0,
+    "truncated_reads": 0,
+    "replay_search_calls": 6,
+    "replay_read_attempts": 30
+  },
+  "paired": {
+    "top_1": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 6
+    },
+    "top_3": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 6
+    },
+    "top_5": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 6
+    }
+  },
+  "summary": {
+    "parent_passage_opportunity": {
+      "top_1_complete_count": 0,
+      "top_3_complete_count": 0,
+      "top_5_complete_count": 1
+    },
+    "returned_snippets": {
+      "top_1_complete_count": 0,
+      "top_3_complete_count": 0,
+      "top_5_complete_count": 0
+    },
+    "returned_reads": {
+      "top_1_complete_count": 0,
+      "top_3_complete_count": 0,
+      "top_5_complete_count": 1
+    },
+    "production-newest-first": {
+      "top_1": {
+        "complete_count": 0,
+        "blocked_count": 4
+      },
+      "top_3": {
+        "complete_count": 0,
+        "blocked_count": 5
+      },
+      "top_5": {
+        "complete_count": 1,
+        "blocked_count": 5
+      }
+    },
+    "earlier-optional-results-first-v1": {
+      "top_1": {
+        "complete_count": 0,
+        "blocked_count": 4
+      },
+      "top_3": {
+        "complete_count": 0,
+        "blocked_count": 5
+      },
+      "top_5": {
+        "complete_count": 1,
+        "blocked_count": 5
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "status": "complete",
+      "read_complete": {
+        "top_1": false,
+        "top_3": false,
+        "top_5": true
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "status": "projected",
+            "characters_before": 24560,
+            "characters_after": 24560,
+            "retained_read_ranks": [
+              1
+            ],
+            "omitted_read_ranks": [],
+            "failed_read_ranks": [],
+            "canonical_sha256": "e8396ed04e508c3e514fedb7edd430cde509ad1890d3116f22815bffd8840628",
+            "projected_sha256": "e8396ed04e508c3e514fedb7edd430cde509ad1890d3116f22815bffd8840628",
+            "complete": false
+          },
+          "top_3": {
+            "status": "projected",
+            "characters_before": 64783,
+            "characters_after": 25299,
+            "retained_read_ranks": [
+              3
+            ],
+            "omitted_read_ranks": [
+              1,
+              2
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "1253f3667c4125ad3fd65b5f0ef7b7120cdc1b7eef0b835bfaa640f1f22d859a",
+            "projected_sha256": "1c83a1cae06d739a9e8610c8ed734d87c94dcf8749ff6d07a3a8c5667639a2fb",
+            "complete": false
+          },
+          "top_5": {
+            "status": "projected",
+            "characters_before": 105647,
+            "characters_after": 26213,
+            "retained_read_ranks": [
+              5
+            ],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "12f292e425bde5b4f270f609973bc031f98a0297d42bac819160adc1fea968f9",
+            "projected_sha256": "1618bc6d4e4367d6c3a48b3a1ed784cd0fa8bbdc3624d8ca71f395bc42bc69bc",
+            "complete": true
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "status": "projected",
+            "characters_before": 24560,
+            "characters_after": 24560,
+            "retained_read_ranks": [
+              1
+            ],
+            "omitted_read_ranks": [],
+            "failed_read_ranks": [],
+            "canonical_sha256": "e8396ed04e508c3e514fedb7edd430cde509ad1890d3116f22815bffd8840628",
+            "projected_sha256": "e8396ed04e508c3e514fedb7edd430cde509ad1890d3116f22815bffd8840628",
+            "complete": false
+          },
+          "top_3": {
+            "status": "projected",
+            "characters_before": 64783,
+            "characters_after": 25299,
+            "retained_read_ranks": [
+              3
+            ],
+            "omitted_read_ranks": [
+              1,
+              2
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "1253f3667c4125ad3fd65b5f0ef7b7120cdc1b7eef0b835bfaa640f1f22d859a",
+            "projected_sha256": "1c83a1cae06d739a9e8610c8ed734d87c94dcf8749ff6d07a3a8c5667639a2fb",
+            "complete": false
+          },
+          "top_5": {
+            "status": "projected",
+            "characters_before": 105647,
+            "characters_after": 26213,
+            "retained_read_ranks": [
+              5
+            ],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "12f292e425bde5b4f270f609973bc031f98a0297d42bac819160adc1fea968f9",
+            "projected_sha256": "1618bc6d4e4367d6c3a48b3a1ed784cd0fa8bbdc3624d8ca71f395bc42bc69bc",
+            "complete": true
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "status": "complete",
+      "read_complete": {
+        "top_1": false,
+        "top_3": false,
+        "top_5": false
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 45484,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "ba9e21d3ab0b78454f287a292172d740cd5e4c2159747e5c04ac5536708e89f0",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 119450,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "74786746c8ba8fca9fb7a741325ae29e3e3d57e73695935a37189c1fc6cc6cf0",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 199714,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "c61d8c2cff2f259d2d5bd1f9a55c6f974bb37f82237ac3d527f923ef79838321",
+            "projected_sha256": null,
+            "complete": false
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 45484,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "ba9e21d3ab0b78454f287a292172d740cd5e4c2159747e5c04ac5536708e89f0",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 119450,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "74786746c8ba8fca9fb7a741325ae29e3e3d57e73695935a37189c1fc6cc6cf0",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 199714,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "c61d8c2cff2f259d2d5bd1f9a55c6f974bb37f82237ac3d527f923ef79838321",
+            "projected_sha256": null,
+            "complete": false
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "status": "complete",
+      "read_complete": {
+        "top_1": false,
+        "top_3": false,
+        "top_5": false
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "status": "projected",
+            "characters_before": 31620,
+            "characters_after": 31620,
+            "retained_read_ranks": [
+              1
+            ],
+            "omitted_read_ranks": [],
+            "failed_read_ranks": [],
+            "canonical_sha256": "cf6abc33897ec1fe1018ab3ab3d785f21280d59baf51cf628ef169398458314e",
+            "projected_sha256": "cf6abc33897ec1fe1018ab3ab3d785f21280d59baf51cf628ef169398458314e",
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 92541,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "7321be812b742bf822805250e440b963b7b2d21274852f6fbd3b976ebf71222e",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 148929,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "0ea351a88a82c8f0a1dc8be6148094a4716bd1b50fd68356c552a4f06258d189",
+            "projected_sha256": null,
+            "complete": false
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "status": "projected",
+            "characters_before": 31620,
+            "characters_after": 31620,
+            "retained_read_ranks": [
+              1
+            ],
+            "omitted_read_ranks": [],
+            "failed_read_ranks": [],
+            "canonical_sha256": "cf6abc33897ec1fe1018ab3ab3d785f21280d59baf51cf628ef169398458314e",
+            "projected_sha256": "cf6abc33897ec1fe1018ab3ab3d785f21280d59baf51cf628ef169398458314e",
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 92541,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "7321be812b742bf822805250e440b963b7b2d21274852f6fbd3b976ebf71222e",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 148929,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "0ea351a88a82c8f0a1dc8be6148094a4716bd1b50fd68356c552a4f06258d189",
+            "projected_sha256": null,
+            "complete": false
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "status": "complete",
+      "read_complete": {
+        "top_1": false,
+        "top_3": false,
+        "top_5": false
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 44973,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "d03d75e98e44a665d1009a32dbb801b542e9463343323baf8306ae250b9e3317",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 122884,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "e2fff91ef817f88fb45d2fb6b61fd848c0ad615935970d909f1660b746985d34",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 202868,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "9f83fffdd22558d629bd0abee030608d4eab1c47a0a4ef2bdc61dd88612a1b1a",
+            "projected_sha256": null,
+            "complete": false
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 44973,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "d03d75e98e44a665d1009a32dbb801b542e9463343323baf8306ae250b9e3317",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 122884,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "e2fff91ef817f88fb45d2fb6b61fd848c0ad615935970d909f1660b746985d34",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 202868,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "9f83fffdd22558d629bd0abee030608d4eab1c47a0a4ef2bdc61dd88612a1b1a",
+            "projected_sha256": null,
+            "complete": false
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "status": "complete",
+      "read_complete": {
+        "top_1": false,
+        "top_3": false,
+        "top_5": false
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 56298,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "004b681427c35218e88c4e1265cacb69ad36dda545258bf2b6957b4934477a0f",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 155892,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "cb418d394a62e0e483f1a0a5c440c420900745b76e2b27d44d703d09f1f85c66",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 255417,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "213cfda4f4337c8677f2f6536ea9f0711c23320126db0e2ae9a12b3f5908d5e5",
+            "projected_sha256": null,
+            "complete": false
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 56298,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "004b681427c35218e88c4e1265cacb69ad36dda545258bf2b6957b4934477a0f",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 155892,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "cb418d394a62e0e483f1a0a5c440c420900745b76e2b27d44d703d09f1f85c66",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 255417,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "213cfda4f4337c8677f2f6536ea9f0711c23320126db0e2ae9a12b3f5908d5e5",
+            "projected_sha256": null,
+            "complete": false
+          }
+        }
+      }
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "status": "complete",
+      "read_complete": {
+        "top_1": false,
+        "top_3": false,
+        "top_5": false
+      },
+      "conditions": {
+        "production-newest-first": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 35936,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "e2ecf07195dc00db875318684b1875236e8c8365568441b0aab259a8382ee4d6",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 100098,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "198a0077271a307c0b2c0e61adc408ba672b30bd2c3b4c045fcac80afe92c44a",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 165580,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "ba06b0adc301c75394a222955b62520cf039b31ce3d4e8891260ee43e0bae938",
+            "projected_sha256": null,
+            "complete": false
+          }
+        },
+        "earlier-optional-results-first-v1": {
+          "top_1": {
+            "status": "blocked",
+            "characters_before": 35936,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "e2ecf07195dc00db875318684b1875236e8c8365568441b0aab259a8382ee4d6",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_3": {
+            "status": "blocked",
+            "characters_before": 100098,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "198a0077271a307c0b2c0e61adc408ba672b30bd2c3b4c045fcac80afe92c44a",
+            "projected_sha256": null,
+            "complete": false
+          },
+          "top_5": {
+            "status": "blocked",
+            "characters_before": 165580,
+            "characters_after": null,
+            "retained_read_ranks": [],
+            "omitted_read_ranks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "failed_read_ranks": [],
+            "canonical_sha256": "ba06b0adc301c75394a222955b62520cf039b31ce3d4e8891260ee43e0bae938",
+            "projected_sha256": null,
+            "complete": false
+          }
+        }
+      }
+    }
+  ],
+  "launch_note": "First direct-script launch failed at import before protocol validation, output creation, search or read: adjacent select.py shadowed Python select. Reinvoked with python -P and PYTHONPATH=. to use the project root safely; frozen files unchanged. This was not a search/read retry."
+}

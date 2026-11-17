@@ -1,0 +1,11 @@
+{
+  "version": "financebench-pdf-acquisition-v1",
+  "script_sha256": "7a9f1881d146dc64dec85e6cfd9a6148c26804e82b7778f2ebc3d41475c0c63d",
+  "plan_sha256": "bf630f9fefb29ecd05a1a99fe2689160c4ff3567c08b7ad67b8fae31392e5474",
+  "runtime_sha256": "46e934c36c802e2a73ff9ca66663de22276728d7b095e183c7e565cd57c4b7f9",
+  "selection_sha256": "5d263a7dc8bd41ed980bbebc5bc45755cf496b3cc173e5317167f1af72d4d1d3",
+  "inventory_sha256": "f13a8f817cf57abc65dce1c263c42209bc11cbb79478c2745ba726efe7da4ca3",
+  "max_bytes": 33554432,
+  "socket_timeout_seconds": 20,
+  "elapsed_check_seconds": 120
+}

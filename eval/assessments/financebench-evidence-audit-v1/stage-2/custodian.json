@@ -1,0 +1,1081 @@
+{
+  "cases": [
+    {
+      "case_id": "Q01",
+      "task_id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "excerpts": [
+        {
+          "evidence_id": "E001",
+          "start_line": 2939,
+          "end_line": 2970,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 2
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "evidence_id": "E002",
+          "start_line": 2900,
+          "end_line": 2900,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "operating_income_label_and_value"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E003",
+          "start_line": 2321,
+          "end_line": 2352,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 1
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "evidence_id": "E004",
+          "start_line": 2134,
+          "end_line": 2165,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 4
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E005",
+          "start_line": 2243,
+          "end_line": 2274,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "evidence_id": "E006",
+          "start_line": 2890,
+          "end_line": 2890,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "operations_scale"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E007",
+          "start_line": 2888,
+          "end_line": 2889,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "operations_entity_and_statement"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E008",
+          "start_line": 2942,
+          "end_line": 2942,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "cashflow_scale"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E009",
+          "start_line": 4646,
+          "end_line": 4677,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E010",
+          "start_line": 2940,
+          "end_line": 2941,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "cashflow_entity_and_statement"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E011",
+          "start_line": 2891,
+          "end_line": 2892,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "operations_period_columns"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E012",
+          "start_line": 2345,
+          "end_line": 2353,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 3
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "evidence_id": "E013",
+          "start_line": 2943,
+          "end_line": 2944,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "cashflow_period_columns"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E014",
+          "start_line": 2948,
+          "end_line": 2948,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "cashflow_depreciation_amortization_label_and_value"
+            }
+          ]
+        }
+      ],
+      "failed_reads": [],
+      "review_only_pages": [
+        64,
+        67,
+        69,
+        86,
+        88,
+        137
+      ]
+    },
+    {
+      "case_id": "Q02",
+      "task_id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "excerpts": [
+        {
+          "evidence_id": "E001",
+          "start_line": 2858,
+          "end_line": 2859,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "balance_sheet_entity_and_scope"
+            },
+            {
+              "kind": "annotation_control",
+              "alternative": 2,
+              "role": "balance_sheet_entity_and_scope"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E002",
+          "start_line": 2822,
+          "end_line": 2823,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "fy2017_net_income_basis_and_amount"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E003",
+          "start_line": 2860,
+          "end_line": 2861,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "assets_periods_and_units"
+            },
+            {
+              "kind": "annotation_control",
+              "alternative": 2,
+              "role": "assets_periods_and_units"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E004",
+          "start_line": 6447,
+          "end_line": 6478,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 2
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "evidence_id": "E005",
+          "start_line": 6507,
+          "end_line": 6538,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 1
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "evidence_id": "E006",
+          "start_line": 2820,
+          "end_line": 2820,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 2,
+              "role": "fy2017_net_income_basis_and_amount"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E007",
+          "start_line": 4907,
+          "end_line": 4923,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 3
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "evidence_id": "E008",
+          "start_line": 2882,
+          "end_line": 2882,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "fy2017_and_fy2016_total_assets"
+            },
+            {
+              "kind": "annotation_control",
+              "alternative": 2,
+              "role": "fy2017_and_fy2016_total_assets"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E009",
+          "start_line": 2497,
+          "end_line": 2514,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 5
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "evidence_id": "E010",
+          "start_line": 2804,
+          "end_line": 2805,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "income_period_and_units"
+            },
+            {
+              "kind": "annotation_control",
+              "alternative": 2,
+              "role": "income_period_and_units"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E011",
+          "start_line": 4883,
+          "end_line": 4914,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 4
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E012",
+          "start_line": 2802,
+          "end_line": 2803,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "income_statement_entity_and_scope"
+            },
+            {
+              "kind": "annotation_control",
+              "alternative": 2,
+              "role": "income_statement_entity_and_scope"
+            }
+          ]
+        }
+      ],
+      "failed_reads": [],
+      "review_only_pages": [
+        64,
+        74,
+        76,
+        125,
+        167,
+        169
+      ]
+    },
+    {
+      "case_id": "Q03",
+      "task_id": "financebench_id_04209",
+      "source_id": "COSTCO_2021_10K",
+      "excerpts": [
+        {
+          "evidence_id": "E001",
+          "start_line": 1186,
+          "end_line": 1187,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "balance_entity_and_statement"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E002",
+          "start_line": 1189,
+          "end_line": 1189,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "balance_date_columns"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E003",
+          "start_line": 1460,
+          "end_line": 1491,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 2
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "evidence_id": "E004",
+          "start_line": 1185,
+          "end_line": 1216,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E005",
+          "start_line": 1685,
+          "end_line": 1716,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 3
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "evidence_id": "E006",
+          "start_line": 1385,
+          "end_line": 1416,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 4
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "evidence_id": "E007",
+          "start_line": 1202,
+          "end_line": 1202,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "total_assets_label_and_value"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E008",
+          "start_line": 956,
+          "end_line": 987,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 1
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "evidence_id": "E009",
+          "start_line": 1484,
+          "end_line": 1497,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E010",
+          "start_line": 1188,
+          "end_line": 1188,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "balance_scale"
+            }
+          ]
+        }
+      ],
+      "failed_reads": [],
+      "review_only_pages": [
+        30,
+        38,
+        43,
+        45,
+        51
+      ]
+    },
+    {
+      "case_id": "Q04",
+      "task_id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "excerpts": [
+        {
+          "evidence_id": "E001",
+          "start_line": 916,
+          "end_line": 916,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "consumer_growth_and_adjustments"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E002",
+          "start_line": 917,
+          "end_line": 917,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "company_growth_and_adjustments"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E003",
+          "start_line": 1118,
+          "end_line": 1149,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 1
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "evidence_id": "E004",
+          "start_line": 1077,
+          "end_line": 1108,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 3
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "evidence_id": "E005",
+          "start_line": 1158,
+          "end_line": 1189,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 2
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "evidence_id": "E006",
+          "start_line": 913,
+          "end_line": 915,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "other_segments_growth_comparison"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E007",
+          "start_line": 896,
+          "end_line": 897,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "segment_statement_scope_and_comparison_period"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E008",
+          "start_line": 369,
+          "end_line": 400,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 5
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E009",
+          "start_line": 910,
+          "end_line": 912,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "sales_change_year_and_metric_columns"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E010",
+          "start_line": 1195,
+          "end_line": 1226,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 4
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 4
+            }
+          ]
+        }
+      ],
+      "failed_reads": [],
+      "review_only_pages": [
+        10,
+        25,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    {
+      "case_id": "Q05",
+      "task_id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "excerpts": [
+        {
+          "evidence_id": "E001",
+          "start_line": 1768,
+          "end_line": 1768,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "cost_of_products_sold"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E002",
+          "start_line": 1716,
+          "end_line": 1717,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "balance_entity_and_statement"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E003",
+          "start_line": 1322,
+          "end_line": 1345,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 1
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E004",
+          "start_line": 4097,
+          "end_line": 4128,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 3
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "evidence_id": "E005",
+          "start_line": 418,
+          "end_line": 449,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 5
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "evidence_id": "E006",
+          "start_line": 1718,
+          "end_line": 1720,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "inventory_dates_and_units"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E007",
+          "start_line": 1505,
+          "end_line": 1525,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 2
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "evidence_id": "E008",
+          "start_line": 1765,
+          "end_line": 1766,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "earnings_units_and_period_columns"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E009",
+          "start_line": 1726,
+          "end_line": 1726,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "opening_and_closing_inventory"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E010",
+          "start_line": 1763,
+          "end_line": 1764,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "earnings_entity_and_statement"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E011",
+          "start_line": 2805,
+          "end_line": 2836,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 4
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 1
+            }
+          ]
+        }
+      ],
+      "failed_reads": [],
+      "review_only_pages": [
+        12,
+        36,
+        40,
+        46,
+        47,
+        75,
+        105
+      ]
+    },
+    {
+      "case_id": "Q06",
+      "task_id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "excerpts": [
+        {
+          "evidence_id": "E001",
+          "start_line": 3853,
+          "end_line": 3884,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 5
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "evidence_id": "E002",
+          "start_line": 2532,
+          "end_line": 2533,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "balance_sheet_entity_and_scope"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E003",
+          "start_line": 2554,
+          "end_line": 2554,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "fy2022_total_assets"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E004",
+          "start_line": 2534,
+          "end_line": 2535,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "assets_date_and_units"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E005",
+          "start_line": 1003,
+          "end_line": 1034,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 2
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "evidence_id": "E006",
+          "start_line": 1032,
+          "end_line": 1032,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "revenue_period_and_units"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E007",
+          "start_line": 1034,
+          "end_line": 1034,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "revenue_period_and_units"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E008",
+          "start_line": 4378,
+          "end_line": 4394,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 4
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "evidence_id": "E009",
+          "start_line": 1040,
+          "end_line": 1040,
+          "attribution": [
+            {
+              "kind": "annotation_control",
+              "alternative": 1,
+              "role": "fy2022_consolidated_operating_revenue"
+            }
+          ]
+        },
+        {
+          "evidence_id": "E010",
+          "start_line": 933,
+          "end_line": 956,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 1
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "evidence_id": "E011",
+          "start_line": 546,
+          "end_line": 577,
+          "attribution": [
+            {
+              "kind": "saved_read",
+              "branch": "control",
+              "rank": 3
+            },
+            {
+              "kind": "saved_read",
+              "branch": "challenger",
+              "rank": 3
+            }
+          ]
+        }
+      ],
+      "failed_reads": [],
+      "review_only_pages": [
+        12,
+        21,
+        23,
+        56,
+        84,
+        96
+      ]
+    }
+  ]
+}

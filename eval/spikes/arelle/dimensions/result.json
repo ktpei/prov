@@ -1,0 +1,560 @@
+{
+  "version": "synthetic-dimensional-context-observation-v1",
+  "arelle_version": "2.47.5",
+  "driver_sha256": "a9c35c681bc863f26a6a3206658eba5a6ebcded418532bb5af876c833b8df778",
+  "manifest_sha256": "bbe88a4fdf0f61c4e6ec8bef652e419400b6ffadb22dc8cdc0dd607a8bb7972f",
+  "loaded_document_sha256": {
+    "dimensions.xhtml": "bfc79684d067836807b1848b00375b025f1bdb2f48ad840f5e81e48b66707343",
+    "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+    "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+    "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+    "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+    "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+    "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+    "synthetic.xsd": "1b48ac8ce8f0a3d5ad8da1dc0f148ba766d47f9fcd55d4815bd2345f2c56f9cf"
+  },
+  "diagnostics": [
+    [
+      "WARNING",
+      "arelle:duplicateFacts"
+    ]
+  ],
+  "contexts": {
+    "duration": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[2]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"duration\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier></xbrli:entity>\n          <xbrli:period><xbrli:startDate>2025-01-01</xbrli:startDate><xbrli:endDate>2025-12-31</xbrli:endDate></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "instant": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[1]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"instant\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "north": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[3]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"north\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier><xbrli:segment><xbrldi:explicitMember dimension=\"s:RegionAxis\">s:North</xbrldi:explicitMember></xbrli:segment></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [
+        {
+          "dimension": "{urn:synthetic:finance}RegionAxis",
+          "kind": "explicit",
+          "location": "segment",
+          "source": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[3]/xbrli:entity/xbrli:segment/xbrldi:explicitMember",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<xbrldi:explicitMember xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" dimension=\"s:RegionAxis\">s:North</xbrldi:explicitMember>"
+          },
+          "member": "{urn:synthetic:finance}North"
+        }
+      ],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "north-alias": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[7]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"north-alias\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier><xbrli:segment><xbrldi:explicitMember dimension=\"alias:RegionAxis\">alias:North</xbrldi:explicitMember></xbrli:segment></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [
+        {
+          "dimension": "{urn:synthetic:finance}RegionAxis",
+          "kind": "explicit",
+          "location": "segment",
+          "source": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[7]/xbrli:entity/xbrli:segment/xbrldi:explicitMember",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<xbrldi:explicitMember xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" dimension=\"alias:RegionAxis\">alias:North</xbrldi:explicitMember>"
+          },
+          "member": "{urn:synthetic:finance}North"
+        }
+      ],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "residual": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[6]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"residual\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        <xbrli:scenario><s:Basis>budget</s:Basis></xbrli:scenario></xbrli:context>"
+      },
+      "reported_dimensions": [],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": [
+          {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[6]/xbrli:scenario/s:Basis",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<s:Basis xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">budget</s:Basis>"
+          }
+        ]
+      }
+    },
+    "residual-other": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[10]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"residual-other\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        <xbrli:scenario><s:Basis>actual</s:Basis></xbrli:scenario></xbrli:context>"
+      },
+      "reported_dimensions": [],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": [
+          {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[10]/xbrli:scenario/s:Basis",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<s:Basis xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">actual</s:Basis>"
+          }
+        ]
+      }
+    },
+    "south": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[4]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"south\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier><xbrli:segment><xbrldi:explicitMember dimension=\"s:RegionAxis\">s:South</xbrldi:explicitMember></xbrli:segment></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [
+        {
+          "dimension": "{urn:synthetic:finance}RegionAxis",
+          "kind": "explicit",
+          "location": "segment",
+          "source": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[4]/xbrli:entity/xbrli:segment/xbrldi:explicitMember",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<xbrldi:explicitMember xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" dimension=\"s:RegionAxis\">s:South</xbrldi:explicitMember>"
+          },
+          "member": "{urn:synthetic:finance}South"
+        }
+      ],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "typed": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[5]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"typed\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier><xbrli:segment><xbrldi:typedMember dimension=\"s:AccountAxis\"><s:AccountCode>A001</s:AccountCode></xbrldi:typedMember></xbrli:segment></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [
+        {
+          "dimension": "{urn:synthetic:finance}AccountAxis",
+          "kind": "typed",
+          "location": "segment",
+          "source": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[5]/xbrli:entity/xbrli:segment/xbrldi:typedMember",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<xbrldi:typedMember xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" dimension=\"s:AccountAxis\"><s:AccountCode>A001</s:AccountCode></xbrldi:typedMember>"
+          },
+          "typed_member": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[5]/xbrli:entity/xbrli:segment/xbrldi:typedMember/s:AccountCode",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<s:AccountCode xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">A001</s:AccountCode>"
+          },
+          "typed_member_name": "{urn:synthetic:finance}AccountCode",
+          "typed_value": "A001"
+        }
+      ],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "typed-other": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[9]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"typed-other\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier><xbrli:segment><xbrldi:typedMember dimension=\"s:AccountAxis\"><s:AccountCode>A002</s:AccountCode></xbrldi:typedMember></xbrli:segment></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [
+        {
+          "dimension": "{urn:synthetic:finance}AccountAxis",
+          "kind": "typed",
+          "location": "segment",
+          "source": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[9]/xbrli:entity/xbrli:segment/xbrldi:typedMember",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<xbrldi:typedMember xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" dimension=\"s:AccountAxis\"><s:AccountCode>A002</s:AccountCode></xbrldi:typedMember>"
+          },
+          "typed_member": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[9]/xbrli:entity/xbrli:segment/xbrldi:typedMember/s:AccountCode",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<s:AccountCode xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">A002</s:AccountCode>"
+          },
+          "typed_member_name": "{urn:synthetic:finance}AccountCode",
+          "typed_value": "A002"
+        }
+      ],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    },
+    "typed-same": {
+      "source": {
+        "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[8]",
+        "namespaces": {
+          "xbrldi": "http://xbrl.org/2006/xbrldi",
+          "ix": "http://www.xbrl.org/2013/inlineXBRL",
+          "xbrli": "http://www.xbrl.org/2003/instance",
+          "link": "http://www.xbrl.org/2003/linkbase",
+          "xlink": "http://www.w3.org/1999/xlink",
+          "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+          "s": "urn:synthetic:finance",
+          "alias": "urn:synthetic:finance",
+          "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "canonical_xml": "<xbrli:context xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"typed-same\">\n          <xbrli:entity><xbrli:identifier scheme=\"urn:example\">synthetic</xbrli:identifier><xbrli:segment><xbrldi:typedMember dimension=\"s:AccountAxis\"><s:AccountCode>A001</s:AccountCode></xbrldi:typedMember></xbrli:segment></xbrli:entity>\n          <xbrli:period><xbrli:instant>2025-12-31</xbrli:instant></xbrli:period>\n        </xbrli:context>"
+      },
+      "reported_dimensions": [
+        {
+          "dimension": "{urn:synthetic:finance}AccountAxis",
+          "kind": "typed",
+          "location": "segment",
+          "source": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[8]/xbrli:entity/xbrli:segment/xbrldi:typedMember",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<xbrldi:typedMember xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" dimension=\"s:AccountAxis\"><s:AccountCode>A001</s:AccountCode></xbrldi:typedMember>"
+          },
+          "typed_member": {
+            "xpath": "/*/*[2]/*[1]/ix:header/ix:resources/xbrli:context[8]/xbrli:entity/xbrli:segment/xbrldi:typedMember/s:AccountCode",
+            "namespaces": {
+              "xbrldi": "http://xbrl.org/2006/xbrldi",
+              "ix": "http://www.xbrl.org/2013/inlineXBRL",
+              "xbrli": "http://www.xbrl.org/2003/instance",
+              "link": "http://www.xbrl.org/2003/linkbase",
+              "xlink": "http://www.w3.org/1999/xlink",
+              "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "s": "urn:synthetic:finance",
+              "alias": "urn:synthetic:finance",
+              "iso4217": "http://www.xbrl.org/2003/iso4217"
+            },
+            "canonical_xml": "<s:AccountCode xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:alias=\"urn:synthetic:finance\" xmlns:iso4217=\"http://www.xbrl.org/2003/iso4217\" xmlns:ix=\"http://www.xbrl.org/2013/inlineXBRL\" xmlns:link=\"http://www.xbrl.org/2003/linkbase\" xmlns:s=\"urn:synthetic:finance\" xmlns:xbrldi=\"http://xbrl.org/2006/xbrldi\" xmlns:xbrli=\"http://www.xbrl.org/2003/instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">A001</s:AccountCode>"
+          },
+          "typed_member_name": "{urn:synthetic:finance}AccountCode",
+          "typed_value": "A001"
+        }
+      ],
+      "non_dimensional_content": {
+        "segment": [],
+        "scenario": []
+      }
+    }
+  },
+  "taxonomy_dimension_defaults": {},
+  "facts": [
+    {
+      "id": "assets",
+      "context_id": "instant",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "eps",
+      "context_id": "duration",
+      "concept": "{urn:synthetic:finance}EarningsPerShare",
+      "value": "2.50",
+      "validation_state": 4
+    },
+    {
+      "id": "missing",
+      "context_id": "instant",
+      "concept": "{urn:synthetic:finance}MissingAmount",
+      "value": null,
+      "validation_state": 4
+    },
+    {
+      "id": "north-alias-fact",
+      "context_id": "north-alias",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "north-fact",
+      "context_id": "north",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "residual-fact",
+      "context_id": "residual",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "residual-other-fact",
+      "context_id": "residual-other",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "revenue",
+      "context_id": "duration",
+      "concept": "{urn:synthetic:finance}Revenue",
+      "value": "1250000",
+      "validation_state": 4
+    },
+    {
+      "id": "south-fact",
+      "context_id": "south",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "typed-fact",
+      "context_id": "typed",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "typed-other-fact",
+      "context_id": "typed-other",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "typed-same-fact",
+      "context_id": "typed-same",
+      "concept": "{urn:synthetic:finance}Assets",
+      "value": "-12000",
+      "validation_state": 4
+    },
+    {
+      "id": "zero",
+      "context_id": "instant",
+      "concept": "{urn:synthetic:finance}ZeroAmount",
+      "value": "0",
+      "validation_state": 4
+    }
+  ],
+  "duplicate_groups": [
+    [
+      "north-alias-fact",
+      "north-fact"
+    ],
+    [
+      "typed-fact",
+      "typed-same-fact"
+    ]
+  ]
+}

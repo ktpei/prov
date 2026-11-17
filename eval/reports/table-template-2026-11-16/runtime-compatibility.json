@@ -1,0 +1,28 @@
+{
+  "version": "sidecar-version-integration-replay-v1",
+  "comparisons": [
+    {
+      "report": "runs/table-runtime-2026-11-16/report.json",
+      "search_version": "source-scoped-visible-row-bm25-v1",
+      "sidecar_version": "native-html-tables-v2",
+      "exact_response_replays": 12,
+      "report_sha256": "5d3485d01fcaf25e4c8b322fe038b9100c717f11c7de7e37dc926e121b6675e6"
+    },
+    {
+      "report": "runs/table-runtime-prefix-candidates-v2/report.json",
+      "search_version": "source-scoped-visible-row-bm25-v2",
+      "sidecar_version": "native-html-tables-v2",
+      "exact_response_replays": 12,
+      "report_sha256": "b6c6a7df7451e17d1f770e4a8b86833d04680be131570034629ea904c6839255"
+    },
+    {
+      "report": "runs/table-runtime-soft-prefix-v3/report.json",
+      "search_version": "source-scoped-visible-row-bm25-v3",
+      "sidecar_version": "native-html-tables-v2",
+      "exact_response_replays": 12,
+      "report_sha256": "0e570767e9dfb59c8b8185c55765c4153d0f38b8dea18276d95fc77154d21790"
+    }
+  ],
+  "model_calls": 0,
+  "runtime_sha256": "8b1d78c23db7e049d354dcd1a87d5ae3489ce62f652e81a2583230d44dadd225"
+}

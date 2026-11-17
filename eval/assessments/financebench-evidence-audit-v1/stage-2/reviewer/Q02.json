@@ -1,0 +1,2147 @@
+{
+  "stage": "masked_evidence_review",
+  "case_id": "Q02",
+  "question": "What is the FY2017 return on assets (ROA) for Coca Cola? ROA is defined as: FY2017 net income / (average total assets between FY2016 and FY2017). Round your answer to two decimal places. Give a response to the question by relying on the details shown in the balance sheet and the P&L statement.",
+  "source": {
+    "id": "COCACOLA_2017_10K",
+    "title": "COCACOLA_2017_10K",
+    "company": "Coca-Cola",
+    "url": "https://investors.coca-colacompany.com/filings-reports/annual-filings-10-k/content/0000021344-18-000008/0000021344-18-000008.pdf",
+    "sha256": "78bd6ffb9cd043b54d25bf5dd8062c7614d1bc4bb0a13a10a638c67b64b183d5",
+    "original_sha256": "b57c75cf20916904f31c6aa7644d6c110f019adf7c76782c7d0ede7b95c65ac1"
+  },
+  "interpretations": [
+    {
+      "id": "I01",
+      "description": "Calculate ROA using FY2017 consolidated net income and the arithmetic mean of consolidated FY2016 and FY2017 year-end total assets.",
+      "assumptions": [
+        "Coca Cola means The Coca-Cola Company at consolidated company scope.",
+        "Average total assets is the simple arithmetic mean of the two fiscal-year-end balances.",
+        "Net income is the consolidated total before allocation to noncontrolling interests.",
+        "The answer must identify whether it displays a decimal ratio or a percentage, then round that representation to two decimal places."
+      ],
+      "unresolved_ambiguities": [
+        "The question does not select consolidated versus parent-attributable net income; these interpretations coincide only if the attribution distinction is immaterial or absent.",
+        "Decimal ratio versus percentage display is unspecified; neither is silently made the exclusive acceptable form."
+      ],
+      "required_facts": [
+        {
+          "id": "R01",
+          "description": "FY2017 consolidated net income from the P&L, with labels establishing its attribution.",
+          "basis": "explicit_assumption",
+          "rationale": "The income input is explicit; its attribution is the assumption distinguishing this interpretation."
+        },
+        {
+          "id": "R02",
+          "description": "Consolidated total assets at the FY2016 fiscal-year end from the balance sheet.",
+          "basis": "stated_convention",
+          "rationale": "The stated two-point averaging convention requires the first endpoint."
+        },
+        {
+          "id": "R03",
+          "description": "Consolidated total assets at the FY2017 fiscal-year end from the balance sheet.",
+          "basis": "stated_convention",
+          "rationale": "The stated two-point averaging convention requires the second endpoint."
+        },
+        {
+          "id": "R04",
+          "description": "Reporting entity, fiscal dates, currency and scale of the three inputs.",
+          "basis": "wording",
+          "rationale": "These establish that the specified numerator and denominator refer to the requested periods and comparable units."
+        }
+      ]
+    },
+    {
+      "id": "I02",
+      "description": "Calculate ROA using FY2017 parent-attributable net income and the arithmetic mean of consolidated FY2016 and FY2017 year-end total assets.",
+      "assumptions": [
+        "Coca Cola means The Coca-Cola Company at consolidated company scope.",
+        "Average total assets is the simple arithmetic mean of the two fiscal-year-end balances.",
+        "Net income is income attributable to the parent; retain the consolidated total-assets denominator despite the attribution difference.",
+        "The answer must identify whether it displays a decimal ratio or a percentage, then round that representation to two decimal places."
+      ],
+      "unresolved_ambiguities": [
+        "The question does not select consolidated versus parent-attributable net income; these interpretations coincide only if the attribution distinction is immaterial or absent.",
+        "Decimal ratio versus percentage display is unspecified; neither is silently made the exclusive acceptable form."
+      ],
+      "required_facts": [
+        {
+          "id": "R05",
+          "description": "FY2017 parent-attributable net income from the P&L, with labels establishing its attribution.",
+          "basis": "explicit_assumption",
+          "rationale": "The income input is explicit; its attribution is the assumption distinguishing this interpretation."
+        },
+        {
+          "id": "R06",
+          "description": "Consolidated total assets at the FY2016 fiscal-year end from the balance sheet.",
+          "basis": "stated_convention",
+          "rationale": "The stated two-point averaging convention requires the first endpoint."
+        },
+        {
+          "id": "R07",
+          "description": "Consolidated total assets at the FY2017 fiscal-year end from the balance sheet.",
+          "basis": "stated_convention",
+          "rationale": "The stated two-point averaging convention requires the second endpoint."
+        },
+        {
+          "id": "R08",
+          "description": "Reporting entity, fiscal dates, currency and scale of the three inputs.",
+          "basis": "wording",
+          "rationale": "These establish that the specified numerator and denominator refer to the requested periods and comparable units."
+        }
+      ]
+    }
+  ],
+  "excerpts": [
+    {
+      "evidence_id": "E001",
+      "start_line": 2858,
+      "end_line": 2859,
+      "lines": [
+        {
+          "line": 2858,
+          "page": 76,
+          "text": "                                                             THE COCA-COLA COMPANY AND SUBSIDIARIES"
+        },
+        {
+          "line": 2859,
+          "page": 76,
+          "text": "                                                                      CONSOLIDATED BALANCE SHEETS"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E002",
+      "start_line": 2822,
+      "end_line": 2823,
+      "lines": [
+        {
+          "line": 2822,
+          "page": 74,
+          "text": "   NET INCOME ATTRIBUTABLE TO SHAREOWNERS OF"
+        },
+        {
+          "line": 2823,
+          "page": 74,
+          "text": "      THE COCA-COLA COMPANY                                                                                           $             1,248      $            6,527      $            7,351"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E003",
+      "start_line": 2860,
+      "end_line": 2861,
+      "lines": [
+        {
+          "line": 2860,
+          "page": 76,
+          "text": "December 31,                                                                                                                                                2017                2016"
+        },
+        {
+          "line": 2861,
+          "page": 76,
+          "text": "(In millions except par value)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E004",
+      "start_line": 6447,
+      "end_line": 6478,
+      "lines": [
+        {
+          "line": 6447,
+          "page": 167,
+          "text": "                                                                                                                                                             Exhibit 10.53"
+        },
+        {
+          "line": 6448,
+          "page": 167,
+          "text": "                                                                               ATLANTA, GEORGIACOCA-COLA PLAZA"
+        },
+        {
+          "line": 6449,
+          "page": 167,
+          "text": "                 JAMES R. QUINCEY                                                                                                                     ADDRESS REPLY TO:"
+        },
+        {
+          "line": 6450,
+          "page": 167,
+          "text": "          PRESIDENT & CHIEF EXECUTIVE OFFICER                                                                                                            P.O. BOX 1734"
+        },
+        {
+          "line": 6451,
+          "page": 167,
+          "text": "               THE COCA-COLA COMPANY                                                                                                                   ATLANTA, GA 30301"
+        },
+        {
+          "line": 6452,
+          "page": 167,
+          "text": "                                                                                                                                                          -----------"
+        },
+        {
+          "line": 6453,
+          "page": 167,
+          "text": "                                                                                                                                                           +1-404 676-9980"
+        },
+        {
+          "line": 6454,
+          "page": 167,
+          "text": "                                                                                                                                                      FAX: +1-404 598-9980"
+        },
+        {
+          "line": 6455,
+          "page": 167,
+          "text": "October 23, 2017"
+        },
+        {
+          "line": 6456,
+          "page": 167,
+          "text": "Mr. James Dinkins"
+        },
+        {
+          "line": 6457,
+          "page": 167,
+          "text": "Atlanta, Georgia"
+        },
+        {
+          "line": 6458,
+          "page": 167,
+          "text": "Dear James,"
+        },
+        {
+          "line": 6459,
+          "page": 167,
+          "text": "We are delighted to confirm your new position as President, Coca-Cola North America, Grade 22, with an effective date of January 1,"
+        },
+        {
+          "line": 6460,
+          "page": 167,
+          "text": "2018. You will report to me. The information contained in this letter provides details of your new position."
+        },
+        {
+          "line": 6461,
+          "page": 167,
+          "text": "•   Your principal place of assignment will be Atlanta,"
+        },
+        {
+          "line": 6462,
+          "page": 167,
+          "text": "         Georgia."
+        },
+        {
+          "line": 6463,
+          "page": 167,
+          "text": "•   Your   annual   base   salary   for   your   new   position   will   be"
+        },
+        {
+          "line": 6464,
+          "page": 167,
+          "text": "    $550,000."
+        },
+        {
+          "line": 6465,
+          "page": 167,
+          "text": "•   You will continue to be eligible to participate in the annual Performance Incentive Plan. The target annual incentive for a Job Grade"
+        },
+        {
+          "line": 6466,
+          "page": 167,
+          "text": "    22G is 125% of annual base salary. The actual amount of an incentive award may vary and is based on individual performance and the"
+        },
+        {
+          "line": 6467,
+          "page": 167,
+          "text": "    financial performance of the Company. Awards are made at the discretion of the Compensation Committee of the Board of Directors"
+        },
+        {
+          "line": 6468,
+          "page": 167,
+          "text": "    based upon recommendations by Senior Management.  The plan may be modified from time to time."
+        },
+        {
+          "line": 6469,
+          "page": 167,
+          "text": "•   You will continue to be eligible to participate in The Coca-Cola Company’s Long-Term Incentive program. Awards are made at the"
+        },
+        {
+          "line": 6470,
+          "page": 167,
+          "text": "    discretion of the Compensation Committee of the Board of Directors based upon recommendations by Senior Management. You will"
+        },
+        {
+          "line": 6471,
+          "page": 167,
+          "text": "    be eligible to receive long-term incentive awards within guidelines for the job grade assigned to your position and based upon your"
+        },
+        {
+          "line": 6472,
+          "page": 167,
+          "text": "    personal performance, Company performance, and leadership potential to add value to the Company in the future. As a discretionary"
+        },
+        {
+          "line": 6473,
+          "page": 167,
+          "text": "    program, the award timing, frequency, size and mix of award vehicles are variable."
+        },
+        {
+          "line": 6474,
+          "page": 167,
+          "text": "•   You are expected to continue to maintain share ownership pursuant to the Company’s share ownership guidelines at a level equal to"
+        },
+        {
+          "line": 6475,
+          "page": 167,
+          "text": "    four times your base salary. Because this represents an increase from your prior target level, you will have an additional two years, or"
+        },
+        {
+          "line": 6476,
+          "page": 167,
+          "text": "    until December 31, 2021, to meet your requirement. You will be asked to provide information in December each year on your progress"
+        },
+        {
+          "line": 6477,
+          "page": 167,
+          "text": "    toward your ownership goal, and that information will be reviewed with the Compensation Committee of the Board of Directors the"
+        },
+        {
+          "line": 6478,
+          "page": 167,
+          "text": "    following February."
+        }
+      ]
+    },
+    {
+      "evidence_id": "E005",
+      "start_line": 6507,
+      "end_line": 6538,
+      "lines": [
+        {
+          "line": 6507,
+          "page": 169,
+          "text": "                                                                                                                                                           Exhibit 10.46.1"
+        },
+        {
+          "line": 6508,
+          "page": 169,
+          "text": "                                                                                ATLANTA, GEORGIACOCA-COLA PLAZA"
+        },
+        {
+          "line": 6509,
+          "page": 169,
+          "text": "                 JAMES R. QUINCEY                                                                                                                       ADDRESS REPLY TO:"
+        },
+        {
+          "line": 6510,
+          "page": 169,
+          "text": "          PRESIDENT & CHIEF EXECUTIVE OFFICER                                                                                                             P.O. BOX 1734"
+        },
+        {
+          "line": 6511,
+          "page": 169,
+          "text": "               THE COCA-COLA COMPANY                                                                                                                    ATLANTA, GA 30301"
+        },
+        {
+          "line": 6512,
+          "page": 169,
+          "text": "                                                                                                                                                           -----------"
+        },
+        {
+          "line": 6513,
+          "page": 169,
+          "text": "                                                                                                                                                            +1-404 676-9980"
+        },
+        {
+          "line": 6514,
+          "page": 169,
+          "text": "                                                                                                                                                        FAX: +1-404 598-9980"
+        },
+        {
+          "line": 6515,
+          "page": 169,
+          "text": "                                                                           December 12, 2017"
+        },
+        {
+          "line": 6516,
+          "page": 169,
+          "text": "John Murphy"
+        },
+        {
+          "line": 6517,
+          "page": 169,
+          "text": "Singapore"
+        },
+        {
+          "line": 6518,
+          "page": 169,
+          "text": "Dear John,"
+        },
+        {
+          "line": 6519,
+          "page": 169,
+          "text": "We are delighted to confirm your promotion to Job Grade 22G, with an effective date of January 1, 2018. You will continue to report to me."
+        },
+        {
+          "line": 6520,
+          "page": 169,
+          "text": "The information contained in this letter provides details of your promotion."
+        },
+        {
+          "line": 6521,
+          "page": 169,
+          "text": "•   Your title will remain President, Pacific"
+        },
+        {
+          "line": 6522,
+          "page": 169,
+          "text": "         Group."
+        },
+        {
+          "line": 6523,
+          "page": 169,
+          "text": "•   You will assume responsibility for the Bottling Investments"
+        },
+        {
+          "line": 6524,
+          "page": 169,
+          "text": "         Group."
+        },
+        {
+          "line": 6525,
+          "page": 169,
+          "text": "•   Your principal place of assignment will remain in Singapore. Your employer in Singapore will continue to be Pacific Refreshments Pte."
+        },
+        {
+          "line": 6526,
+          "page": 169,
+          "text": "         Ltd."
+        },
+        {
+          "line": 6527,
+          "page": 169,
+          "text": "•   Your annual base salary for your new position will be"
+        },
+        {
+          "line": 6528,
+          "page": 169,
+          "text": "         $550,000."
+        },
+        {
+          "line": 6529,
+          "page": 169,
+          "text": "•   You will continue to be eligible to participate in the annual Performance Incentive Plan. This is an important, variable element of your"
+        },
+        {
+          "line": 6530,
+          "page": 169,
+          "text": "         total compensation. Your incentive opportunity is between 0% and 250% (maximum) of your annual base salary. Any payment will"
+        },
+        {
+          "line": 6531,
+          "page": 169,
+          "text": "         depend on both the business performance and your personal contributions. Awards are made at the discretion of the Compensation"
+        },
+        {
+          "line": 6532,
+          "page": 169,
+          "text": "         Committee of the Board of Directors based upon recommendations by Senior Management.  As a discretionary program, the"
+        },
+        {
+          "line": 6533,
+          "page": 169,
+          "text": "         performance factors, eligibility criteria, payment frequency, award opportunity levels and other provisions are variable. The plan may"
+        },
+        {
+          "line": 6534,
+          "page": 169,
+          "text": "         be modified from time to time."
+        },
+        {
+          "line": 6535,
+          "page": 169,
+          "text": "•   You will continue to be eligible to participate in The Coca-Cola Company’s Long-Term Incentive (LTI) program. Awards are made at"
+        },
+        {
+          "line": 6536,
+          "page": 169,
+          "text": "    the discretion of the Compensation Committee of the Board of Directors based upon recommendations by Senior Management. You"
+        },
+        {
+          "line": 6537,
+          "page": 169,
+          "text": "    will be eligible to receive LTI awards within guidelines for the job grade assigned to your position, and based upon your leadership"
+        },
+        {
+          "line": 6538,
+          "page": 169,
+          "text": "    potential to impact the Company’s future growth. As a discretionary program, eligibility criteria, award opportunity levels, the award"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E006",
+      "start_line": 2820,
+      "end_line": 2820,
+      "lines": [
+        {
+          "line": 2820,
+          "page": 74,
+          "text": "   CONSOLIDATED NET INCOME                                                                                                          1,283                   6,550                   7,366"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E007",
+      "start_line": 4907,
+      "end_line": 4923,
+      "lines": [
+        {
+          "line": 4907,
+          "page": 125,
+          "text": "complexities of the Tax Reform Act, we are still finalizing our calculation of the total accumulated post-1986 prescribed E&P for the applicable foreign entities. Further, the"
+        },
+        {
+          "line": 4908,
+          "page": 125,
+          "text": "transition tax is based in part on the amount of those earnings held in cash and other specified assets. This amount may change when we finalize the calculation of accumulated"
+        },
+        {
+          "line": 4909,
+          "page": 125,
+          "text": "post-1986 prescribed foreign E&P and finalize the amounts held in cash or other specified assets. No additional income taxes have been provided for any additional outside"
+        },
+        {
+          "line": 4910,
+          "page": 125,
+          "text": "basis differences inherent in these entities, as these amounts continue to be provisionally indefinitely reinvested in foreign operations. Determining the amount of unrecognized"
+        },
+        {
+          "line": 4911,
+          "page": 125,
+          "text": "deferred tax liability related to any additional outside basis differences in these entities (i.e., basis differences in excess of that subject to the one-time transition tax) is not"
+        },
+        {
+          "line": 4912,
+          "page": 125,
+          "text": "practicable. We also remeasured and adjusted certain deferred tax assets and liabilities based on the rates at which they are expected to reverse in the future, which is generally"
+        },
+        {
+          "line": 4913,
+          "page": 125,
+          "text": "21.0 percent."
+        },
+        {
+          "line": 4914,
+          "page": 125,
+          "text": "On December 22, 2017, Staff Accounting Bulletin No. 118 (\"SAB 118\") was issued to address the application of U.S. GAAP in situations when a registrant does not have the"
+        },
+        {
+          "line": 4915,
+          "page": 125,
+          "text": "necessary information available, prepared, or analyzed (including computations) in reasonable detail to finalize the calculations for certain income tax effects of the Tax Reform"
+        },
+        {
+          "line": 4916,
+          "page": 125,
+          "text": "Act. In accordance with SAB 118, the Company has determined that the net tax charge of $3.6 billion recorded in connection with the tax effect of the Tax Reform Act is a"
+        },
+        {
+          "line": 4917,
+          "page": 125,
+          "text": "provisional amount and a reasonable estimate as of December 31, 2017. Additional work is necessary to finalize the calculation for certain income tax effects of the Tax Reform"
+        },
+        {
+          "line": 4918,
+          "page": 125,
+          "text": "Act. Additionally, certain of our equity method investees are impacted by the Tax Reform Act and have recorded provisional tax amounts. To the extent their provisional"
+        },
+        {
+          "line": 4919,
+          "page": 125,
+          "text": "amounts are refined in 2018, we will record our proportionate share in the line item equity income (loss) — net in our consolidated statement of income."
+        },
+        {
+          "line": 4920,
+          "page": 125,
+          "text": "The Global Intangible Low-Taxed Income (\"GILTI\") provisions of the Tax Reform Act require the Company to include in its U.S. income tax return foreign subsidiary earnings"
+        },
+        {
+          "line": 4921,
+          "page": 125,
+          "text": "in excess of an allowable return on the foreign subsidiary's tangible assets. The Company has not yet elected an accounting policy related to how it will account for GILTI and"
+        },
+        {
+          "line": 4922,
+          "page": 125,
+          "text": "therefore has not provided any deferred tax impacts of GILTI in its consolidated financial statements for the year ended December 31, 2017."
+        },
+        {
+          "line": 4923,
+          "page": 125,
+          "text": "                                                                                                           123"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E008",
+      "start_line": 2882,
+      "end_line": 2882,
+      "lines": [
+        {
+          "line": 2882,
+          "page": 76,
+          "text": "          TOTAL ASSETS                                                                                                                           $        87,896     $        87,270"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E009",
+      "start_line": 2497,
+      "end_line": 2514,
+      "lines": [
+        {
+          "line": 2497,
+          "page": 64,
+          "text": "aggregation methodology and has different thresholds for the various financial ratios. These thresholds are not necessarily permanent, nor are they always fully disclosed to our"
+        },
+        {
+          "line": 2498,
+          "page": 64,
+          "text": "Company."
+        },
+        {
+          "line": 2499,
+          "page": 64,
+          "text": "Our global presence and strong capital position give us access to key financial markets around the world, enabling us to raise funds at a low effective cost. This posture, coupled"
+        },
+        {
+          "line": 2500,
+          "page": 64,
+          "text": "with active management of our mix of short-term and long-term debt and our mix of fixed-rate and variable-rate debt, results in a lower overall cost of borrowing. Our debt"
+        },
+        {
+          "line": 2501,
+          "page": 64,
+          "text": "management policies, in conjunction with our share repurchase program and investment activity, can result in current liabilities exceeding current assets."
+        },
+        {
+          "line": 2502,
+          "page": 64,
+          "text": "Issuances and payments of debt included both short-term and long-term financing activities. In 2017, the Company had issuances of debt of $29,857 million, which included net"
+        },
+        {
+          "line": 2503,
+          "page": 64,
+          "text": "issuances of $26,218 million of commercial paper and short-term debt with maturities greater than 90 days and long-term debt issuances of $3,639 million, net of related"
+        },
+        {
+          "line": 2504,
+          "page": 64,
+          "text": "discounts and issuance costs."
+        },
+        {
+          "line": 2505,
+          "page": 64,
+          "text": "During 2017, the Company made payments of debt of $28,768 million, which included $636 million of payments related to commercial paper and short-term debt with"
+        },
+        {
+          "line": 2506,
+          "page": 64,
+          "text": "maturities of 90 days or less and $24,156 of payments related to commercial paper and short-term debt with maturities greater than 90 days. The Company's total payments of"
+        },
+        {
+          "line": 2507,
+          "page": 64,
+          "text": "long-term debt were $3,976 million. The long-term debt payments included the early extinguishment of long-term debt with a carrying value of $417 million, a portion of which"
+        },
+        {
+          "line": 2508,
+          "page": 64,
+          "text": "was assumed in connection with our acquisition of Old CCE's former North America business. This resulted in a net charge of $38 million that was recorded in the line item"
+        },
+        {
+          "line": 2509,
+          "page": 64,
+          "text": "interest expense in our consolidated statement of income. This net charge included the difference between the reacquisition price and the net carrying amount of the debt"
+        },
+        {
+          "line": 2510,
+          "page": 64,
+          "text": "extinguished, including fair value adjustments recorded as part of purchase accounting."
+        },
+        {
+          "line": 2511,
+          "page": 64,
+          "text": "In 2016, the Company had issuances of debt of $27,281 million, which included net issuances of $773 million of commercial paper and short-term debt with maturities of 90"
+        },
+        {
+          "line": 2512,
+          "page": 64,
+          "text": "days or less and $21,525 million of commercial paper and short-term debt with maturities greater than 90 days. The Company's total issuances of debt also included long-term"
+        },
+        {
+          "line": 2513,
+          "page": 64,
+          "text": "debt issuances of $4,983 million, net of related discounts and issuance costs. Refer below for additional details on our long-term debt issuances."
+        },
+        {
+          "line": 2514,
+          "page": 64,
+          "text": "                                                                                                          62"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E010",
+      "start_line": 2804,
+      "end_line": 2805,
+      "lines": [
+        {
+          "line": 2804,
+          "page": 74,
+          "text": "   Year Ended December 31,                                                                                                            2017                    2016                   2015"
+        },
+        {
+          "line": 2805,
+          "page": 74,
+          "text": "   (In millions except per share data)"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E011",
+      "start_line": 4883,
+      "end_line": 4914,
+      "lines": [
+        {
+          "line": 4883,
+          "page": 125,
+          "text": "A reconciliation of the changes in the gross amount of unrecognized tax benefits is as follows (in millions):"
+        },
+        {
+          "line": 4884,
+          "page": 125,
+          "text": "Year Ended December 31,                                                                                                                               2017                           2016                           2015"
+        },
+        {
+          "line": 4885,
+          "page": 125,
+          "text": "Beginning balance of unrecognized tax benefits                                                                                      $                  302         $                  168         $                 211"
+        },
+        {
+          "line": 4886,
+          "page": 125,
+          "text": "Increase related to prior period tax positions                                                                                                           18                           163     1                        4"
+        },
+        {
+          "line": 4887,
+          "page": 125,
+          "text": "Decrease related to prior period tax positions                                                                                                          (13)                           —                              (9)"
+        },
+        {
+          "line": 4888,
+          "page": 125,
+          "text": "Increase related to current period tax positions                                                                                                         13                            17                              5"
+        },
+        {
+          "line": 4889,
+          "page": 125,
+          "text": "Decrease related to settlements with taxing authorities                                                                                                  —                            (40)    1                       (5)"
+        },
+        {
+          "line": 4890,
+          "page": 125,
+          "text": "Decrease due to lapse of the applicable statute of limitations                                                                                           —                             —                             (23)"
+        },
+        {
+          "line": 4891,
+          "page": 125,
+          "text": "Increase (decrease) due to effect of foreign currency exchange rate changes                                                                              11                             (6)                          (15)"
+        },
+        {
+          "line": 4892,
+          "page": 125,
+          "text": "Ending balance of unrecognized tax benefits                                                                                         $                  331         $                  302         $                 168"
+        },
+        {
+          "line": 4893,
+          "page": 125,
+          "text": " 1 The increase is primarily related to a change in judgment about one of the Company's tax positions as a result of receiving notification of a preliminary settlement of a Competent Authority"
+        },
+        {
+          "line": 4894,
+          "page": 125,
+          "text": "   matter with a foreign jurisdiction, a portion of which became certain later in the year. This change in position did not have a material impact on the Company's consolidated statement of"
+        },
+        {
+          "line": 4895,
+          "page": 125,
+          "text": "   income during the year ended December 31, 2016, as it was partially offset by refunds to be received from the foreign jurisdiction."
+        },
+        {
+          "line": 4896,
+          "page": 125,
+          "text": "The Company recognizes accrued interest and penalties related to unrecognized tax benefits in income tax expense. The Company had $177 million, $142 million and $111"
+        },
+        {
+          "line": 4897,
+          "page": 125,
+          "text": "million in interest and penalties related to unrecognized tax benefits accrued as of December 31, 2017, 2016 and 2015, respectively. Of these amounts, $35 million and $31"
+        },
+        {
+          "line": 4898,
+          "page": 125,
+          "text": "million of expense were recognized through income tax expense in 2017 and 2016, respectively. An insignificant amount of interest and penalties was recognized through"
+        },
+        {
+          "line": 4899,
+          "page": 125,
+          "text": "income tax expense for the year ended December 31, 2015. If the Company were to prevail on all uncertain tax positions, the reversal of this accrual would also be a benefit to"
+        },
+        {
+          "line": 4900,
+          "page": 125,
+          "text": "the Company's effective tax rate."
+        },
+        {
+          "line": 4901,
+          "page": 125,
+          "text": "It is expected that the amount of unrecognized tax benefits will change in the next 12 months; however, we do not expect the change to have a significant impact on our"
+        },
+        {
+          "line": 4902,
+          "page": 125,
+          "text": "consolidated statement of income or consolidated balance sheet. These changes may be the result of settlements of ongoing audits, statute of limitations expiring or final"
+        },
+        {
+          "line": 4903,
+          "page": 125,
+          "text": "settlements in transfer pricing matters that are the subject of litigation. At this time, an estimate of the range of the reasonably possible outcomes cannot be made."
+        },
+        {
+          "line": 4904,
+          "page": 125,
+          "text": "The one-time transition tax is based on our total accumulated post-1986 prescribed foreign earnings and profits (\"E&P\") estimated to be $42 billion, the majority of which was"
+        },
+        {
+          "line": 4905,
+          "page": 125,
+          "text": "previously considered to be indefinitely reinvested and, accordingly, no U.S. federal and state income taxes were provided. We recorded a provisional tax amount of $4.6 billion"
+        },
+        {
+          "line": 4906,
+          "page": 125,
+          "text": "as a reasonable estimate for our one-time transition tax liability and a $0.6 billion provisional deferred tax of related withholding taxes and state income taxes. Because of the"
+        },
+        {
+          "line": 4907,
+          "page": 125,
+          "text": "complexities of the Tax Reform Act, we are still finalizing our calculation of the total accumulated post-1986 prescribed E&P for the applicable foreign entities. Further, the"
+        },
+        {
+          "line": 4908,
+          "page": 125,
+          "text": "transition tax is based in part on the amount of those earnings held in cash and other specified assets. This amount may change when we finalize the calculation of accumulated"
+        },
+        {
+          "line": 4909,
+          "page": 125,
+          "text": "post-1986 prescribed foreign E&P and finalize the amounts held in cash or other specified assets. No additional income taxes have been provided for any additional outside"
+        },
+        {
+          "line": 4910,
+          "page": 125,
+          "text": "basis differences inherent in these entities, as these amounts continue to be provisionally indefinitely reinvested in foreign operations. Determining the amount of unrecognized"
+        },
+        {
+          "line": 4911,
+          "page": 125,
+          "text": "deferred tax liability related to any additional outside basis differences in these entities (i.e., basis differences in excess of that subject to the one-time transition tax) is not"
+        },
+        {
+          "line": 4912,
+          "page": 125,
+          "text": "practicable. We also remeasured and adjusted certain deferred tax assets and liabilities based on the rates at which they are expected to reverse in the future, which is generally"
+        },
+        {
+          "line": 4913,
+          "page": 125,
+          "text": "21.0 percent."
+        },
+        {
+          "line": 4914,
+          "page": 125,
+          "text": "On December 22, 2017, Staff Accounting Bulletin No. 118 (\"SAB 118\") was issued to address the application of U.S. GAAP in situations when a registrant does not have the"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E012",
+      "start_line": 2802,
+      "end_line": 2803,
+      "lines": [
+        {
+          "line": 2802,
+          "page": 74,
+          "text": "                                                                THE COCA-COLA COMPANY AND SUBSIDIARIES"
+        },
+        {
+          "line": 2803,
+          "page": 74,
+          "text": "                                                                   CONSOLIDATED STATEMENTS OF INCOME"
+        }
+      ]
+    }
+  ],
+  "review_only_pages": [
+    {
+      "page": 64,
+      "review_only": true,
+      "start_line": 2473,
+      "end_line": 2514,
+      "lines": [
+        {
+          "line": 2473,
+          "page": 64,
+          "text": "Cash Flows from Financing Activities"
+        },
+        {
+          "line": 2474,
+          "page": 64,
+          "text": "Net cash provided by (used in) financing activities is summarized as follows (in millions):"
+        },
+        {
+          "line": 2475,
+          "page": 64,
+          "text": "Year Ended December 31,                                                                                                                             2017                           2016                          2015"
+        },
+        {
+          "line": 2476,
+          "page": 64,
+          "text": "Issuances of debt                                                                                                               $                29,857        $               27,281        $                40,434"
+        },
+        {
+          "line": 2477,
+          "page": 64,
+          "text": "Payments of debt                                                                                                                                (28,768)                      (25,615   )                   (37,738   )"
+        },
+        {
+          "line": 2478,
+          "page": 64,
+          "text": "Issuances of stock                                                                                                                                 1,595                         1,434                         1,245"
+        },
+        {
+          "line": 2479,
+          "page": 64,
+          "text": "Purchases of stock for treasury                                                                                                                  (3,682   )                     (3,681  )                     (3,564  )"
+        },
+        {
+          "line": 2480,
+          "page": 64,
+          "text": "Dividends                                                                                                                                        (6,320   )                     (6,043  )                     (5,741  )"
+        },
+        {
+          "line": 2481,
+          "page": 64,
+          "text": "Other financing activities                                                                                                                           (91)                            79                          251"
+        },
+        {
+          "line": 2482,
+          "page": 64,
+          "text": "Net cash provided by (used in) financing activities                                                                             $                 (7,409)      $                (6,545)      $                (5,113  )"
+        },
+        {
+          "line": 2483,
+          "page": 64,
+          "text": "Debt Financing"
+        },
+        {
+          "line": 2484,
+          "page": 64,
+          "text": "Our Company maintains debt levels we consider prudent based on our cash flows, interest coverage ratio and percentage of debt to capital. We use debt financing to lower our"
+        },
+        {
+          "line": 2485,
+          "page": 64,
+          "text": "overall cost of capital, which increases our return on shareowners' equity. This exposes us to adverse changes in interest rates. Our interest expense may also be affected by our"
+        },
+        {
+          "line": 2486,
+          "page": 64,
+          "text": "credit ratings."
+        },
+        {
+          "line": 2487,
+          "page": 64,
+          "text": "As of December 31, 2017, our long-term debt was rated \"AA-\" by Standard & Poor's and \"Aa3\" by Moody's. Our commercial paper program was rated \"A-1+\" by Standard &"
+        },
+        {
+          "line": 2488,
+          "page": 64,
+          "text": "Poor's and \"P-1\" by Moody's. In assessing our credit strength, both agencies consider our capital structure (including the amount and maturity dates of our debt) and financial"
+        },
+        {
+          "line": 2489,
+          "page": 64,
+          "text": "policies as well as the aggregated balance sheet and other financial information of the Company. In addition, some rating agencies also consider the financial information of"
+        },
+        {
+          "line": 2490,
+          "page": 64,
+          "text": "certain bottlers, including CCEP, Coca-Cola Amatil Limited, Coca-Cola Bottling Co. Consolidated, Coca-Cola FEMSA and Coca-Cola Hellenic. While the Company has no"
+        },
+        {
+          "line": 2491,
+          "page": 64,
+          "text": "legal obligation for the debt of these bottlers, the rating agencies believe the strategic importance of the bottlers to the Company's business model provides the Company with an"
+        },
+        {
+          "line": 2492,
+          "page": 64,
+          "text": "incentive to keep these bottlers viable. It is our expectation that the credit rating agencies will continue using this methodology. If our credit ratings were to be downgraded as a"
+        },
+        {
+          "line": 2493,
+          "page": 64,
+          "text": "result of changes in our capital structure, our major bottlers' financial performance, changes in the credit rating agencies' methodology in assessing our credit strength, or for"
+        },
+        {
+          "line": 2494,
+          "page": 64,
+          "text": "any other reason, our cost of borrowing could increase. Additionally, if certain bottlers' credit ratings were to decline, the Company's equity income could be reduced as a result"
+        },
+        {
+          "line": 2495,
+          "page": 64,
+          "text": "of the potential increase in interest expense for those bottlers."
+        },
+        {
+          "line": 2496,
+          "page": 64,
+          "text": "We monitor our financial ratios and, as indicated above, the rating agencies consider these ratios in assessing our credit ratings. Each rating agency employs a different"
+        },
+        {
+          "line": 2497,
+          "page": 64,
+          "text": "aggregation methodology and has different thresholds for the various financial ratios. These thresholds are not necessarily permanent, nor are they always fully disclosed to our"
+        },
+        {
+          "line": 2498,
+          "page": 64,
+          "text": "Company."
+        },
+        {
+          "line": 2499,
+          "page": 64,
+          "text": "Our global presence and strong capital position give us access to key financial markets around the world, enabling us to raise funds at a low effective cost. This posture, coupled"
+        },
+        {
+          "line": 2500,
+          "page": 64,
+          "text": "with active management of our mix of short-term and long-term debt and our mix of fixed-rate and variable-rate debt, results in a lower overall cost of borrowing. Our debt"
+        },
+        {
+          "line": 2501,
+          "page": 64,
+          "text": "management policies, in conjunction with our share repurchase program and investment activity, can result in current liabilities exceeding current assets."
+        },
+        {
+          "line": 2502,
+          "page": 64,
+          "text": "Issuances and payments of debt included both short-term and long-term financing activities. In 2017, the Company had issuances of debt of $29,857 million, which included net"
+        },
+        {
+          "line": 2503,
+          "page": 64,
+          "text": "issuances of $26,218 million of commercial paper and short-term debt with maturities greater than 90 days and long-term debt issuances of $3,639 million, net of related"
+        },
+        {
+          "line": 2504,
+          "page": 64,
+          "text": "discounts and issuance costs."
+        },
+        {
+          "line": 2505,
+          "page": 64,
+          "text": "During 2017, the Company made payments of debt of $28,768 million, which included $636 million of payments related to commercial paper and short-term debt with"
+        },
+        {
+          "line": 2506,
+          "page": 64,
+          "text": "maturities of 90 days or less and $24,156 of payments related to commercial paper and short-term debt with maturities greater than 90 days. The Company's total payments of"
+        },
+        {
+          "line": 2507,
+          "page": 64,
+          "text": "long-term debt were $3,976 million. The long-term debt payments included the early extinguishment of long-term debt with a carrying value of $417 million, a portion of which"
+        },
+        {
+          "line": 2508,
+          "page": 64,
+          "text": "was assumed in connection with our acquisition of Old CCE's former North America business. This resulted in a net charge of $38 million that was recorded in the line item"
+        },
+        {
+          "line": 2509,
+          "page": 64,
+          "text": "interest expense in our consolidated statement of income. This net charge included the difference between the reacquisition price and the net carrying amount of the debt"
+        },
+        {
+          "line": 2510,
+          "page": 64,
+          "text": "extinguished, including fair value adjustments recorded as part of purchase accounting."
+        },
+        {
+          "line": 2511,
+          "page": 64,
+          "text": "In 2016, the Company had issuances of debt of $27,281 million, which included net issuances of $773 million of commercial paper and short-term debt with maturities of 90"
+        },
+        {
+          "line": 2512,
+          "page": 64,
+          "text": "days or less and $21,525 million of commercial paper and short-term debt with maturities greater than 90 days. The Company's total issuances of debt also included long-term"
+        },
+        {
+          "line": 2513,
+          "page": 64,
+          "text": "debt issuances of $4,983 million, net of related discounts and issuance costs. Refer below for additional details on our long-term debt issuances."
+        },
+        {
+          "line": 2514,
+          "page": 64,
+          "text": "                                                                                                          62"
+        }
+      ]
+    },
+    {
+      "page": 74,
+      "review_only": true,
+      "start_line": 2802,
+      "end_line": 2841,
+      "lines": [
+        {
+          "line": 2802,
+          "page": 74,
+          "text": "                                                                THE COCA-COLA COMPANY AND SUBSIDIARIES"
+        },
+        {
+          "line": 2803,
+          "page": 74,
+          "text": "                                                                   CONSOLIDATED STATEMENTS OF INCOME"
+        },
+        {
+          "line": 2804,
+          "page": 74,
+          "text": "   Year Ended December 31,                                                                                                            2017                    2016                   2015"
+        },
+        {
+          "line": 2805,
+          "page": 74,
+          "text": "   (In millions except per share data)"
+        },
+        {
+          "line": 2806,
+          "page": 74,
+          "text": "   NET OPERATING REVENUES                                                                                             $            35,410      $           41,863      $           44,294"
+        },
+        {
+          "line": 2807,
+          "page": 74,
+          "text": "   Cost of goods sold                                                                                                              13,256                  16,465                  17,482"
+        },
+        {
+          "line": 2808,
+          "page": 74,
+          "text": "   GROSS PROFIT                                                                                                                    22,154                  25,398                  26,812"
+        },
+        {
+          "line": 2809,
+          "page": 74,
+          "text": "   Selling, general and administrative expenses                                                                                    12,496                  15,262                  16,427"
+        },
+        {
+          "line": 2810,
+          "page": 74,
+          "text": "   Other operating charges                                                                                                          2,157                   1,510                   1,657"
+        },
+        {
+          "line": 2811,
+          "page": 74,
+          "text": "   OPERATING INCOME                                                                                                                 7,501                   8,626                   8,728"
+        },
+        {
+          "line": 2812,
+          "page": 74,
+          "text": "   Interest income                                                                                                                    677                     642                     613"
+        },
+        {
+          "line": 2813,
+          "page": 74,
+          "text": "   Interest expense                                                                                                                   841                     733                     856"
+        },
+        {
+          "line": 2814,
+          "page": 74,
+          "text": "   Equity income (loss) — net                                                                                                       1,071                     835                     489"
+        },
+        {
+          "line": 2815,
+          "page": 74,
+          "text": "   Other income (loss) — net                                                                                                       (1,666)                 (1,234)                    631"
+        },
+        {
+          "line": 2816,
+          "page": 74,
+          "text": "   INCOME FROM CONTINUING OPERATIONS BEFORE INCOME TAXES                                                                            6,742                   8,136                   9,605"
+        },
+        {
+          "line": 2817,
+          "page": 74,
+          "text": "   Income taxes from continuing operations                                                                                          5,560                   1,586                   2,239"
+        },
+        {
+          "line": 2818,
+          "page": 74,
+          "text": "   NET INCOME FROM CONTINUING OPERATIONS                                                                                            1,182                   6,550                   7,366"
+        },
+        {
+          "line": 2819,
+          "page": 74,
+          "text": "   Income from discontinued operations (net of income taxes of $47, $0 and $0, respectively)                                          101                       —                      —"
+        },
+        {
+          "line": 2820,
+          "page": 74,
+          "text": "   CONSOLIDATED NET INCOME                                                                                                          1,283                   6,550                   7,366"
+        },
+        {
+          "line": 2821,
+          "page": 74,
+          "text": "   Less: Net income attributable to noncontrolling interests                                                                           35                       23                     15"
+        },
+        {
+          "line": 2822,
+          "page": 74,
+          "text": "   NET INCOME ATTRIBUTABLE TO SHAREOWNERS OF"
+        },
+        {
+          "line": 2823,
+          "page": 74,
+          "text": "      THE COCA-COLA COMPANY                                                                                           $             1,248      $            6,527      $            7,351"
+        },
+        {
+          "line": 2824,
+          "page": 74,
+          "text": "   Basic net income per share from continuing operations1                                                             $              0.28      $              1.51     $             1.69"
+        },
+        {
+          "line": 2825,
+          "page": 74,
+          "text": "   Basic net income per share from discontinued operations2                                                                          0.02                       —                      —"
+        },
+        {
+          "line": 2826,
+          "page": 74,
+          "text": "   BASIC NET INCOME PER SHARE                                                                                         $              0.29    3 $              1.51     $             1.69"
+        },
+        {
+          "line": 2827,
+          "page": 74,
+          "text": "   Diluted net income per share from continuing operations1                                                           $              0.27      $              1.49     $             1.67"
+        },
+        {
+          "line": 2828,
+          "page": 74,
+          "text": "   Diluted net income per share from discontinued operations2"
+        },
+        {
+          "line": 2829,
+          "page": 74,
+          "text": "                                                                                                                                     0.02                       —                      —"
+        },
+        {
+          "line": 2830,
+          "page": 74,
+          "text": "   DILUTED NET INCOME PER SHARE                                                                                       $              0.29      $              1.49     $             1.67"
+        },
+        {
+          "line": 2831,
+          "page": 74,
+          "text": "   AVERAGE SHARES OUTSTANDING — BASIC                                                                                               4,272                   4,317                   4,352"
+        },
+        {
+          "line": 2832,
+          "page": 74,
+          "text": "   Effect of dilutive securities                                                                                                       52                       50                     53"
+        },
+        {
+          "line": 2833,
+          "page": 74,
+          "text": "   AVERAGE SHARES OUTSTANDING — DILUTED                                                                                             4,324                   4,367                   4,405"
+        },
+        {
+          "line": 2834,
+          "page": 74,
+          "text": " 1 Calculated based on net income from continuing operations less net income from continuing operations attributable to noncontrolling"
+        },
+        {
+          "line": 2835,
+          "page": 74,
+          "text": "  interests."
+        },
+        {
+          "line": 2836,
+          "page": 74,
+          "text": " 2 Calculated based on net income from discontinued operations less net income from discontinued operations attributable to noncontrolling"
+        },
+        {
+          "line": 2837,
+          "page": 74,
+          "text": "  interests."
+        },
+        {
+          "line": 2838,
+          "page": 74,
+          "text": " 3 Per share amounts do not add due to"
+        },
+        {
+          "line": 2839,
+          "page": 74,
+          "text": "  rounding."
+        },
+        {
+          "line": 2840,
+          "page": 74,
+          "text": "Refer to Notes to Consolidated Financial Statements."
+        },
+        {
+          "line": 2841,
+          "page": 74,
+          "text": "                                                                                              72"
+        }
+      ]
+    },
+    {
+      "page": 76,
+      "review_only": true,
+      "start_line": 2858,
+      "end_line": 2907,
+      "lines": [
+        {
+          "line": 2858,
+          "page": 76,
+          "text": "                                                             THE COCA-COLA COMPANY AND SUBSIDIARIES"
+        },
+        {
+          "line": 2859,
+          "page": 76,
+          "text": "                                                                      CONSOLIDATED BALANCE SHEETS"
+        },
+        {
+          "line": 2860,
+          "page": 76,
+          "text": "December 31,                                                                                                                                                2017                2016"
+        },
+        {
+          "line": 2861,
+          "page": 76,
+          "text": "(In millions except par value)"
+        },
+        {
+          "line": 2862,
+          "page": 76,
+          "text": "ASSETS"
+        },
+        {
+          "line": 2863,
+          "page": 76,
+          "text": "    CURRENT ASSETS"
+        },
+        {
+          "line": 2864,
+          "page": 76,
+          "text": "       Cash and cash equivalents                                                                                                                 $         6,006     $         8,555"
+        },
+        {
+          "line": 2865,
+          "page": 76,
+          "text": "       Short-term investments                                                                                                                              9,352               9,595"
+        },
+        {
+          "line": 2866,
+          "page": 76,
+          "text": "    TOTAL CASH, CASH EQUIVALENTS AND SHORT-TERM INVESTMENTS                                                                                               15,358              18,150"
+        },
+        {
+          "line": 2867,
+          "page": 76,
+          "text": "       Marketable securities                                                                                                                               5,317               4,051"
+        },
+        {
+          "line": 2868,
+          "page": 76,
+          "text": "       Trade accounts receivable, less allowances of $477 and $466, respectively                                                                           3,667               3,856"
+        },
+        {
+          "line": 2869,
+          "page": 76,
+          "text": "       Inventories                                                                                                                                         2,655               2,675"
+        },
+        {
+          "line": 2870,
+          "page": 76,
+          "text": "       Prepaid expenses and other assets                                                                                                                   2,000               2,481"
+        },
+        {
+          "line": 2871,
+          "page": 76,
+          "text": "       Assets held for sale                                                                                                                                  219               2,797"
+        },
+        {
+          "line": 2872,
+          "page": 76,
+          "text": "       Assets held for sale — discontinued operations                                                                                                      7,329                  —"
+        },
+        {
+          "line": 2873,
+          "page": 76,
+          "text": "    TOTAL CURRENT ASSETS                                                                                                                                  36,545              34,010"
+        },
+        {
+          "line": 2874,
+          "page": 76,
+          "text": "    EQUITY METHOD INVESTMENTS                                                                                                                             20,856              16,260"
+        },
+        {
+          "line": 2875,
+          "page": 76,
+          "text": "    OTHER INVESTMENTS                                                                                                                                      1,096                 989"
+        },
+        {
+          "line": 2876,
+          "page": 76,
+          "text": "    OTHER ASSETS                                                                                                                                           4,560               4,248"
+        },
+        {
+          "line": 2877,
+          "page": 76,
+          "text": "    PROPERTY, PLANT AND EQUIPMENT — net                                                                                                                    8,203              10,635"
+        },
+        {
+          "line": 2878,
+          "page": 76,
+          "text": "    TRADEMARKS WITH INDEFINITE LIVES                                                                                                                       6,729               6,097"
+        },
+        {
+          "line": 2879,
+          "page": 76,
+          "text": "    BOTTLERS' FRANCHISE RIGHTS WITH INDEFINITE LIVES                                                                                                         138               3,676"
+        },
+        {
+          "line": 2880,
+          "page": 76,
+          "text": "    GOODWILL                                                                                                                                               9,401              10,629"
+        },
+        {
+          "line": 2881,
+          "page": 76,
+          "text": "    OTHER INTANGIBLE ASSETS                                                                                                                                  368                 726"
+        },
+        {
+          "line": 2882,
+          "page": 76,
+          "text": "          TOTAL ASSETS                                                                                                                           $        87,896     $        87,270"
+        },
+        {
+          "line": 2883,
+          "page": 76,
+          "text": "LIABILITIES AND EQUITY"
+        },
+        {
+          "line": 2884,
+          "page": 76,
+          "text": "    CURRENT LIABILITIES"
+        },
+        {
+          "line": 2885,
+          "page": 76,
+          "text": "       Accounts payable and accrued expenses                                                                                                     $         8,748     $         9,490"
+        },
+        {
+          "line": 2886,
+          "page": 76,
+          "text": "       Loans and notes payable                                                                                                                            13,205              12,498"
+        },
+        {
+          "line": 2887,
+          "page": 76,
+          "text": "       Current maturities of long-term debt                                                                                                                3,298               3,527"
+        },
+        {
+          "line": 2888,
+          "page": 76,
+          "text": "       Accrued income taxes                                                                                                                                  410                 307"
+        },
+        {
+          "line": 2889,
+          "page": 76,
+          "text": "       Liabilities held for sale                                                                                                                              37                 710"
+        },
+        {
+          "line": 2890,
+          "page": 76,
+          "text": "         Liabilities held for sale — discontinued operations                                                                                               1,496                  —"
+        },
+        {
+          "line": 2891,
+          "page": 76,
+          "text": "    TOTAL CURRENT LIABILITIES                                                                                                                             27,194              26,532"
+        },
+        {
+          "line": 2892,
+          "page": 76,
+          "text": "    LONG-TERM DEBT                                                                                                                                        31,182              29,684"
+        },
+        {
+          "line": 2893,
+          "page": 76,
+          "text": "    OTHER LIABILITIES                                                                                                                                      8,021               4,081"
+        },
+        {
+          "line": 2894,
+          "page": 76,
+          "text": "    DEFERRED INCOME TAXES                                                                                                                                  2,522               3,753"
+        },
+        {
+          "line": 2895,
+          "page": 76,
+          "text": "    THE COCA-COLA COMPANY SHAREOWNERS' EQUITY"
+        },
+        {
+          "line": 2896,
+          "page": 76,
+          "text": "          Common stock, $0.25 par value; Authorized — 11,200 shares;"
+        },
+        {
+          "line": 2897,
+          "page": 76,
+          "text": "               Issued — 7,040 and 7,040 shares, respectively                                                                                               1,760               1,760"
+        },
+        {
+          "line": 2898,
+          "page": 76,
+          "text": "       Capital surplus                                                                                                                                    15,864              14,993"
+        },
+        {
+          "line": 2899,
+          "page": 76,
+          "text": "       Reinvested earnings                                                                                                                                60,430              65,502"
+        },
+        {
+          "line": 2900,
+          "page": 76,
+          "text": "       Accumulated other comprehensive income (loss)                                                                                                     (10,305)            (11,205)"
+        },
+        {
+          "line": 2901,
+          "page": 76,
+          "text": "       Treasury stock, at cost — 2,781 and 2,752 shares, respectively                                                                                    (50,677)            (47,988)"
+        },
+        {
+          "line": 2902,
+          "page": 76,
+          "text": "    EQUITY ATTRIBUTABLE TO SHAREOWNERS OF THE COCA-COLA COMPANY                                                                                           17,072              23,062"
+        },
+        {
+          "line": 2903,
+          "page": 76,
+          "text": "    EQUITY ATTRIBUTABLE TO NONCONTROLLING INTERESTS                                                                                                        1,905                 158"
+        },
+        {
+          "line": 2904,
+          "page": 76,
+          "text": "    TOTAL EQUITY                                                                                                                                          18,977              23,220"
+        },
+        {
+          "line": 2905,
+          "page": 76,
+          "text": "          TOTAL LIABILITIES AND EQUITY                                                                                                           $        87,896     $        87,270"
+        },
+        {
+          "line": 2906,
+          "page": 76,
+          "text": "Refer to Notes to Consolidated Financial Statements."
+        },
+        {
+          "line": 2907,
+          "page": 76,
+          "text": "                                                                                          74"
+        }
+      ]
+    },
+    {
+      "page": 125,
+      "review_only": true,
+      "start_line": 4883,
+      "end_line": 4923,
+      "lines": [
+        {
+          "line": 4883,
+          "page": 125,
+          "text": "A reconciliation of the changes in the gross amount of unrecognized tax benefits is as follows (in millions):"
+        },
+        {
+          "line": 4884,
+          "page": 125,
+          "text": "Year Ended December 31,                                                                                                                               2017                           2016                           2015"
+        },
+        {
+          "line": 4885,
+          "page": 125,
+          "text": "Beginning balance of unrecognized tax benefits                                                                                      $                  302         $                  168         $                 211"
+        },
+        {
+          "line": 4886,
+          "page": 125,
+          "text": "Increase related to prior period tax positions                                                                                                           18                           163     1                        4"
+        },
+        {
+          "line": 4887,
+          "page": 125,
+          "text": "Decrease related to prior period tax positions                                                                                                          (13)                           —                              (9)"
+        },
+        {
+          "line": 4888,
+          "page": 125,
+          "text": "Increase related to current period tax positions                                                                                                         13                            17                              5"
+        },
+        {
+          "line": 4889,
+          "page": 125,
+          "text": "Decrease related to settlements with taxing authorities                                                                                                  —                            (40)    1                       (5)"
+        },
+        {
+          "line": 4890,
+          "page": 125,
+          "text": "Decrease due to lapse of the applicable statute of limitations                                                                                           —                             —                             (23)"
+        },
+        {
+          "line": 4891,
+          "page": 125,
+          "text": "Increase (decrease) due to effect of foreign currency exchange rate changes                                                                              11                             (6)                          (15)"
+        },
+        {
+          "line": 4892,
+          "page": 125,
+          "text": "Ending balance of unrecognized tax benefits                                                                                         $                  331         $                  302         $                 168"
+        },
+        {
+          "line": 4893,
+          "page": 125,
+          "text": " 1 The increase is primarily related to a change in judgment about one of the Company's tax positions as a result of receiving notification of a preliminary settlement of a Competent Authority"
+        },
+        {
+          "line": 4894,
+          "page": 125,
+          "text": "   matter with a foreign jurisdiction, a portion of which became certain later in the year. This change in position did not have a material impact on the Company's consolidated statement of"
+        },
+        {
+          "line": 4895,
+          "page": 125,
+          "text": "   income during the year ended December 31, 2016, as it was partially offset by refunds to be received from the foreign jurisdiction."
+        },
+        {
+          "line": 4896,
+          "page": 125,
+          "text": "The Company recognizes accrued interest and penalties related to unrecognized tax benefits in income tax expense. The Company had $177 million, $142 million and $111"
+        },
+        {
+          "line": 4897,
+          "page": 125,
+          "text": "million in interest and penalties related to unrecognized tax benefits accrued as of December 31, 2017, 2016 and 2015, respectively. Of these amounts, $35 million and $31"
+        },
+        {
+          "line": 4898,
+          "page": 125,
+          "text": "million of expense were recognized through income tax expense in 2017 and 2016, respectively. An insignificant amount of interest and penalties was recognized through"
+        },
+        {
+          "line": 4899,
+          "page": 125,
+          "text": "income tax expense for the year ended December 31, 2015. If the Company were to prevail on all uncertain tax positions, the reversal of this accrual would also be a benefit to"
+        },
+        {
+          "line": 4900,
+          "page": 125,
+          "text": "the Company's effective tax rate."
+        },
+        {
+          "line": 4901,
+          "page": 125,
+          "text": "It is expected that the amount of unrecognized tax benefits will change in the next 12 months; however, we do not expect the change to have a significant impact on our"
+        },
+        {
+          "line": 4902,
+          "page": 125,
+          "text": "consolidated statement of income or consolidated balance sheet. These changes may be the result of settlements of ongoing audits, statute of limitations expiring or final"
+        },
+        {
+          "line": 4903,
+          "page": 125,
+          "text": "settlements in transfer pricing matters that are the subject of litigation. At this time, an estimate of the range of the reasonably possible outcomes cannot be made."
+        },
+        {
+          "line": 4904,
+          "page": 125,
+          "text": "The one-time transition tax is based on our total accumulated post-1986 prescribed foreign earnings and profits (\"E&P\") estimated to be $42 billion, the majority of which was"
+        },
+        {
+          "line": 4905,
+          "page": 125,
+          "text": "previously considered to be indefinitely reinvested and, accordingly, no U.S. federal and state income taxes were provided. We recorded a provisional tax amount of $4.6 billion"
+        },
+        {
+          "line": 4906,
+          "page": 125,
+          "text": "as a reasonable estimate for our one-time transition tax liability and a $0.6 billion provisional deferred tax of related withholding taxes and state income taxes. Because of the"
+        },
+        {
+          "line": 4907,
+          "page": 125,
+          "text": "complexities of the Tax Reform Act, we are still finalizing our calculation of the total accumulated post-1986 prescribed E&P for the applicable foreign entities. Further, the"
+        },
+        {
+          "line": 4908,
+          "page": 125,
+          "text": "transition tax is based in part on the amount of those earnings held in cash and other specified assets. This amount may change when we finalize the calculation of accumulated"
+        },
+        {
+          "line": 4909,
+          "page": 125,
+          "text": "post-1986 prescribed foreign E&P and finalize the amounts held in cash or other specified assets. No additional income taxes have been provided for any additional outside"
+        },
+        {
+          "line": 4910,
+          "page": 125,
+          "text": "basis differences inherent in these entities, as these amounts continue to be provisionally indefinitely reinvested in foreign operations. Determining the amount of unrecognized"
+        },
+        {
+          "line": 4911,
+          "page": 125,
+          "text": "deferred tax liability related to any additional outside basis differences in these entities (i.e., basis differences in excess of that subject to the one-time transition tax) is not"
+        },
+        {
+          "line": 4912,
+          "page": 125,
+          "text": "practicable. We also remeasured and adjusted certain deferred tax assets and liabilities based on the rates at which they are expected to reverse in the future, which is generally"
+        },
+        {
+          "line": 4913,
+          "page": 125,
+          "text": "21.0 percent."
+        },
+        {
+          "line": 4914,
+          "page": 125,
+          "text": "On December 22, 2017, Staff Accounting Bulletin No. 118 (\"SAB 118\") was issued to address the application of U.S. GAAP in situations when a registrant does not have the"
+        },
+        {
+          "line": 4915,
+          "page": 125,
+          "text": "necessary information available, prepared, or analyzed (including computations) in reasonable detail to finalize the calculations for certain income tax effects of the Tax Reform"
+        },
+        {
+          "line": 4916,
+          "page": 125,
+          "text": "Act. In accordance with SAB 118, the Company has determined that the net tax charge of $3.6 billion recorded in connection with the tax effect of the Tax Reform Act is a"
+        },
+        {
+          "line": 4917,
+          "page": 125,
+          "text": "provisional amount and a reasonable estimate as of December 31, 2017. Additional work is necessary to finalize the calculation for certain income tax effects of the Tax Reform"
+        },
+        {
+          "line": 4918,
+          "page": 125,
+          "text": "Act. Additionally, certain of our equity method investees are impacted by the Tax Reform Act and have recorded provisional tax amounts. To the extent their provisional"
+        },
+        {
+          "line": 4919,
+          "page": 125,
+          "text": "amounts are refined in 2018, we will record our proportionate share in the line item equity income (loss) — net in our consolidated statement of income."
+        },
+        {
+          "line": 4920,
+          "page": 125,
+          "text": "The Global Intangible Low-Taxed Income (\"GILTI\") provisions of the Tax Reform Act require the Company to include in its U.S. income tax return foreign subsidiary earnings"
+        },
+        {
+          "line": 4921,
+          "page": 125,
+          "text": "in excess of an allowable return on the foreign subsidiary's tangible assets. The Company has not yet elected an accounting policy related to how it will account for GILTI and"
+        },
+        {
+          "line": 4922,
+          "page": 125,
+          "text": "therefore has not provided any deferred tax impacts of GILTI in its consolidated financial statements for the year ended December 31, 2017."
+        },
+        {
+          "line": 4923,
+          "page": 125,
+          "text": "                                                                                                           123"
+        }
+      ]
+    },
+    {
+      "page": 167,
+      "review_only": true,
+      "start_line": 6447,
+      "end_line": 6480,
+      "lines": [
+        {
+          "line": 6447,
+          "page": 167,
+          "text": "                                                                                                                                                             Exhibit 10.53"
+        },
+        {
+          "line": 6448,
+          "page": 167,
+          "text": "                                                                               ATLANTA, GEORGIACOCA-COLA PLAZA"
+        },
+        {
+          "line": 6449,
+          "page": 167,
+          "text": "                 JAMES R. QUINCEY                                                                                                                     ADDRESS REPLY TO:"
+        },
+        {
+          "line": 6450,
+          "page": 167,
+          "text": "          PRESIDENT & CHIEF EXECUTIVE OFFICER                                                                                                            P.O. BOX 1734"
+        },
+        {
+          "line": 6451,
+          "page": 167,
+          "text": "               THE COCA-COLA COMPANY                                                                                                                   ATLANTA, GA 30301"
+        },
+        {
+          "line": 6452,
+          "page": 167,
+          "text": "                                                                                                                                                          -----------"
+        },
+        {
+          "line": 6453,
+          "page": 167,
+          "text": "                                                                                                                                                           +1-404 676-9980"
+        },
+        {
+          "line": 6454,
+          "page": 167,
+          "text": "                                                                                                                                                      FAX: +1-404 598-9980"
+        },
+        {
+          "line": 6455,
+          "page": 167,
+          "text": "October 23, 2017"
+        },
+        {
+          "line": 6456,
+          "page": 167,
+          "text": "Mr. James Dinkins"
+        },
+        {
+          "line": 6457,
+          "page": 167,
+          "text": "Atlanta, Georgia"
+        },
+        {
+          "line": 6458,
+          "page": 167,
+          "text": "Dear James,"
+        },
+        {
+          "line": 6459,
+          "page": 167,
+          "text": "We are delighted to confirm your new position as President, Coca-Cola North America, Grade 22, with an effective date of January 1,"
+        },
+        {
+          "line": 6460,
+          "page": 167,
+          "text": "2018. You will report to me. The information contained in this letter provides details of your new position."
+        },
+        {
+          "line": 6461,
+          "page": 167,
+          "text": "•   Your principal place of assignment will be Atlanta,"
+        },
+        {
+          "line": 6462,
+          "page": 167,
+          "text": "         Georgia."
+        },
+        {
+          "line": 6463,
+          "page": 167,
+          "text": "•   Your   annual   base   salary   for   your   new   position   will   be"
+        },
+        {
+          "line": 6464,
+          "page": 167,
+          "text": "    $550,000."
+        },
+        {
+          "line": 6465,
+          "page": 167,
+          "text": "•   You will continue to be eligible to participate in the annual Performance Incentive Plan. The target annual incentive for a Job Grade"
+        },
+        {
+          "line": 6466,
+          "page": 167,
+          "text": "    22G is 125% of annual base salary. The actual amount of an incentive award may vary and is based on individual performance and the"
+        },
+        {
+          "line": 6467,
+          "page": 167,
+          "text": "    financial performance of the Company. Awards are made at the discretion of the Compensation Committee of the Board of Directors"
+        },
+        {
+          "line": 6468,
+          "page": 167,
+          "text": "    based upon recommendations by Senior Management.  The plan may be modified from time to time."
+        },
+        {
+          "line": 6469,
+          "page": 167,
+          "text": "•   You will continue to be eligible to participate in The Coca-Cola Company’s Long-Term Incentive program. Awards are made at the"
+        },
+        {
+          "line": 6470,
+          "page": 167,
+          "text": "    discretion of the Compensation Committee of the Board of Directors based upon recommendations by Senior Management. You will"
+        },
+        {
+          "line": 6471,
+          "page": 167,
+          "text": "    be eligible to receive long-term incentive awards within guidelines for the job grade assigned to your position and based upon your"
+        },
+        {
+          "line": 6472,
+          "page": 167,
+          "text": "    personal performance, Company performance, and leadership potential to add value to the Company in the future. As a discretionary"
+        },
+        {
+          "line": 6473,
+          "page": 167,
+          "text": "    program, the award timing, frequency, size and mix of award vehicles are variable."
+        },
+        {
+          "line": 6474,
+          "page": 167,
+          "text": "•   You are expected to continue to maintain share ownership pursuant to the Company’s share ownership guidelines at a level equal to"
+        },
+        {
+          "line": 6475,
+          "page": 167,
+          "text": "    four times your base salary. Because this represents an increase from your prior target level, you will have an additional two years, or"
+        },
+        {
+          "line": 6476,
+          "page": 167,
+          "text": "    until December 31, 2021, to meet your requirement. You will be asked to provide information in December each year on your progress"
+        },
+        {
+          "line": 6477,
+          "page": 167,
+          "text": "    toward your ownership goal, and that information will be reviewed with the Compensation Committee of the Board of Directors the"
+        },
+        {
+          "line": 6478,
+          "page": 167,
+          "text": "    following February."
+        },
+        {
+          "line": 6479,
+          "page": 167,
+          "text": "•   You will be eligible for the Company’s Financial Planning program which provides reimbursement of certain financial planning services,"
+        },
+        {
+          "line": 6480,
+          "page": 167,
+          "text": "    up to $10,000 at Job Grade 22 annually, subject to taxes and withholding."
+        }
+      ]
+    },
+    {
+      "page": 169,
+      "review_only": true,
+      "start_line": 6507,
+      "end_line": 6539,
+      "lines": [
+        {
+          "line": 6507,
+          "page": 169,
+          "text": "                                                                                                                                                           Exhibit 10.46.1"
+        },
+        {
+          "line": 6508,
+          "page": 169,
+          "text": "                                                                                ATLANTA, GEORGIACOCA-COLA PLAZA"
+        },
+        {
+          "line": 6509,
+          "page": 169,
+          "text": "                 JAMES R. QUINCEY                                                                                                                       ADDRESS REPLY TO:"
+        },
+        {
+          "line": 6510,
+          "page": 169,
+          "text": "          PRESIDENT & CHIEF EXECUTIVE OFFICER                                                                                                             P.O. BOX 1734"
+        },
+        {
+          "line": 6511,
+          "page": 169,
+          "text": "               THE COCA-COLA COMPANY                                                                                                                    ATLANTA, GA 30301"
+        },
+        {
+          "line": 6512,
+          "page": 169,
+          "text": "                                                                                                                                                           -----------"
+        },
+        {
+          "line": 6513,
+          "page": 169,
+          "text": "                                                                                                                                                            +1-404 676-9980"
+        },
+        {
+          "line": 6514,
+          "page": 169,
+          "text": "                                                                                                                                                        FAX: +1-404 598-9980"
+        },
+        {
+          "line": 6515,
+          "page": 169,
+          "text": "                                                                           December 12, 2017"
+        },
+        {
+          "line": 6516,
+          "page": 169,
+          "text": "John Murphy"
+        },
+        {
+          "line": 6517,
+          "page": 169,
+          "text": "Singapore"
+        },
+        {
+          "line": 6518,
+          "page": 169,
+          "text": "Dear John,"
+        },
+        {
+          "line": 6519,
+          "page": 169,
+          "text": "We are delighted to confirm your promotion to Job Grade 22G, with an effective date of January 1, 2018. You will continue to report to me."
+        },
+        {
+          "line": 6520,
+          "page": 169,
+          "text": "The information contained in this letter provides details of your promotion."
+        },
+        {
+          "line": 6521,
+          "page": 169,
+          "text": "•   Your title will remain President, Pacific"
+        },
+        {
+          "line": 6522,
+          "page": 169,
+          "text": "         Group."
+        },
+        {
+          "line": 6523,
+          "page": 169,
+          "text": "•   You will assume responsibility for the Bottling Investments"
+        },
+        {
+          "line": 6524,
+          "page": 169,
+          "text": "         Group."
+        },
+        {
+          "line": 6525,
+          "page": 169,
+          "text": "•   Your principal place of assignment will remain in Singapore. Your employer in Singapore will continue to be Pacific Refreshments Pte."
+        },
+        {
+          "line": 6526,
+          "page": 169,
+          "text": "         Ltd."
+        },
+        {
+          "line": 6527,
+          "page": 169,
+          "text": "•   Your annual base salary for your new position will be"
+        },
+        {
+          "line": 6528,
+          "page": 169,
+          "text": "         $550,000."
+        },
+        {
+          "line": 6529,
+          "page": 169,
+          "text": "•   You will continue to be eligible to participate in the annual Performance Incentive Plan. This is an important, variable element of your"
+        },
+        {
+          "line": 6530,
+          "page": 169,
+          "text": "         total compensation. Your incentive opportunity is between 0% and 250% (maximum) of your annual base salary. Any payment will"
+        },
+        {
+          "line": 6531,
+          "page": 169,
+          "text": "         depend on both the business performance and your personal contributions. Awards are made at the discretion of the Compensation"
+        },
+        {
+          "line": 6532,
+          "page": 169,
+          "text": "         Committee of the Board of Directors based upon recommendations by Senior Management.  As a discretionary program, the"
+        },
+        {
+          "line": 6533,
+          "page": 169,
+          "text": "         performance factors, eligibility criteria, payment frequency, award opportunity levels and other provisions are variable. The plan may"
+        },
+        {
+          "line": 6534,
+          "page": 169,
+          "text": "         be modified from time to time."
+        },
+        {
+          "line": 6535,
+          "page": 169,
+          "text": "•   You will continue to be eligible to participate in The Coca-Cola Company’s Long-Term Incentive (LTI) program. Awards are made at"
+        },
+        {
+          "line": 6536,
+          "page": 169,
+          "text": "    the discretion of the Compensation Committee of the Board of Directors based upon recommendations by Senior Management. You"
+        },
+        {
+          "line": 6537,
+          "page": 169,
+          "text": "    will be eligible to receive LTI awards within guidelines for the job grade assigned to your position, and based upon your leadership"
+        },
+        {
+          "line": 6538,
+          "page": 169,
+          "text": "    potential to impact the Company’s future growth. As a discretionary program, eligibility criteria, award opportunity levels, the award"
+        },
+        {
+          "line": 6539,
+          "page": 169,
+          "text": "    timing, frequency, size and mix of award vehicles are variable"
+        }
+      ]
+    }
+  ],
+  "scope_note": "Excerpt origins and outcomes are masked. Full native pages are review-only context, never delivered-evidence credit. Extraction is not independently visually validated; do not assume exhaustive support or correct table alignment."
+}

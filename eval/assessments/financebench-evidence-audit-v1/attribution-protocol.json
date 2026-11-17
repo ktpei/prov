@@ -1,0 +1,26 @@
+{
+  "version": "masked-evidence-attribution-protocol-v1",
+  "files": {
+    "eval/assessments/financebench-evidence-audit-v1/attribute_evidence.py": "70c7bdada92d0014d104f8b3e4f7ac9139a1c221663e93a60792b8bbe95df77e",
+    "eval/assessments/financebench-evidence-audit-v1/attribution-plan.md": "e9ae560ececd39fda3e7b00a08cf1b55f182366b83e530805652cf9a2e9d7d85",
+    "eval/assessments/financebench-evidence-audit-v1/validate_evidence_review.py": "502eef87d6a553022f78a51b7341c50211aedeca82b8bf1de6c5795e7f161bff",
+    "eval/assessments/financebench-evidence-audit-v1/prepare_evidence.py": "b454e4e5504ba49bb0fe54e6d7ce0b7462005f05456fa471f2805fecdc31ff0a",
+    "eval/assessments/financebench-evidence-audit-v1/evidence-review-instructions.md": "1d11cdcb24e7241e1bd9a97bf17c528a0fe3b54a841070116eebea2543aead58",
+    "eval/assessments/financebench-evidence-audit-v1/stage-1/custodian.json": "2890083bfe2fde72e42279302ac620147fb7b1b7ccc5512c0043cd545201486d",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/receipt.json": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+    "eval/assessments/financebench-evidence-audit-v1/reviews/stage-2-lock.json": "6c5cfeae65d5a34ed70daba951eb751f992e04c5ce100d23f45146d0dff9eebf",
+    "eval/assessments/financebench-evidence-audit-v1/reviews/evidence-adjudicated.json": "4d4c3d4389f9f7ec50df387eabf1aa5806854a577624af4e09deb7f462516fa5",
+    "eval/assessments/financebench-evidence-audit-v1/reviews/evidence-adjudication-notes.json": "cc9b4bb4d596484cec5e2c451b6471e16b428340b25adde7ab10217c7ae86e32",
+    "eval/assessments/financebench-evidence-audit-v1/reviews/evidence-adjudicated-validation.json": "64d968d3cc67cf23ca07cef1673226be9e25d7858f4c2aac370d1504058a3e99",
+    "eval/assessments/financebench-evidence-audit-v1/reviews/evidence-adjudication-notes-validation.json": "ada3e194830a818d2ebef42b02ae23945a3ed7df7b27daace97c6b4e2b49ecef",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/reviewer/Q01.json": "000b9b6493bdfa838ecf27638b1ea5c5684277c8ce09dc5cebb82b5192c9c6a5",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/reviewer/Q02.json": "2dc2aa81435ddb4166118d0abe0d265cde57a93b2ca5431c4c414f6c116f9bce",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/reviewer/Q03.json": "f851e0d113742082f44a741d5e1be19f0dd1a794ec736e35cdd581e2cb2516ab",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/reviewer/Q04.json": "d3c6cca921995eeacab85f18fd23c9f7a8ed322d9be4d6927072845955d44e79",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/reviewer/Q05.json": "b87f1f30e2393fcee0df1c25afdd32ad0962c325d480e4d21077ece158d175a9",
+    "eval/assessments/financebench-evidence-audit-v1/stage-2/reviewer/Q06.json": "3a156da8e8e2a65f74899b7c7f60231b63ea4acbbca6acff071e888e55320d33",
+    "tests/test_evidence_attribution.py": "26202a75541efbf3350d4ff50ae7d1f6bd416e2543edc0e939648681275fb37f",
+    "runs/financebench-page-ranking-v1/deterministic/run.json": "ee877b389cbbfda4354387e73779f2e682a477e0a18ec3fd06963c975a6cd372",
+    "runs/financebench-page-ranking-v1-grade.json": "3817c8358fb83b14757b79b1c684bcb81d658649cffe3aa270a40583a98893ef"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": "dependency-acquisition-verification-v1",
+  "initial_receipt_sha256": "44dd4f53cbcb187310c6a91dcfa147a4baa49b07df3f99d97eeaafe259f28721",
+  "replay_receipt_file": "runs/xbrl-dependency-acquisition-v1/replay-v2/receipt.json",
+  "replay_receipt_sha256": "b34c31b7ebd5ed33fbcd2d3a772262fc0b63ff5c4c6962b8da88dacc3e37fea2",
+  "replay_driver_sha256": "dc57eba8d789251d4f210e3989e99e62f5f5309d0c6b2914a70b9d9abf1cdbc4",
+  "reference_parser_sha256": "1f9697dbc5b338cc63d107c4435ff8448e3f609dd9cd202fc39e76cf34007348",
+  "ordered_document_identity_hash_namespace_matches": 24,
+  "complete_reference_edge_records_match": 2417,
+  "initial_driver_source_sha256": "b6dc4d2d5c1a6e74f654e56e7b39f34aa0639943511dc8beafaf598111b5fec6",
+  "new_core_tests": 13,
+  "core_tests": 412,
+  "lint": "passed",
+  "review_scope": "independent same-model-family coding-agent artifact verification, not financial validation",
+  "smoke_accepted": false,
+  "independent_replay_receipt_sha256": "b34c31b7ebd5ed33fbcd2d3a772262fc0b63ff5c4c6962b8da88dacc3e37fea2",
+  "review_disposition": "Acquisition scope accepted after malformed XML, code binding and local read budget fixes"
+}

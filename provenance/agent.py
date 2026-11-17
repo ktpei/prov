@@ -72,6 +72,7 @@ def run(question, model, sources, limits=None, trace=None):
         limits=asdict(limits),
         source_mode="corpus+web" if sources.exa_key else "frozen_corpus",
         retrieval_version=getattr(sources, "retrieval_version", "passage-v1"),
+        read_extraction_version=getattr(sources, "read_extraction_version", "full-v1"),
         instructions=INSTRUCTIONS,
         tools=TOOL_SCHEMAS,
         corpus={key: source.get("sha256") for key, source in sources.documents.items()},

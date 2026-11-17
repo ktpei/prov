@@ -1,0 +1,21 @@
+{
+  "version": "guarded-matrix-verification-v1",
+  "implementation_commit": "30aa9e8",
+  "result_sha256": "e0eccacbf50de378434840f0c3ef744945097273de747cd7b7ef5a72af1a9e2a",
+  "bound_inputs": 8,
+  "independent_implementation_reviewer": "/root/masked_packet_review",
+  "independent_optional_tests": 15,
+  "root_matrix_byte_reproduction": true,
+  "core_tests": 399,
+  "lint": "passed",
+  "scenario_count": 10,
+  "rejected_scenarios": [
+    "negative_fractional",
+    "negative_zero_fractional",
+    "nonnillable_nil"
+  ],
+  "conflicting_occurrences_preserved_and_quarantined": 2,
+  "changed_baseline_rejection_probe": "passed_before_scenario_execution",
+  "original_v1_bindings": "unchanged",
+  "financial_accuracy": "not_measured"
+}

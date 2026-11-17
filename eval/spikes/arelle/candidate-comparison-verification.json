@@ -1,0 +1,32 @@
+{
+  "version": "arelle-candidate-independent-verification-v1",
+  "implementation_commit": "1f90d90",
+  "result_sha256": "101b9449588e3d52e57878a960976ec05c7b8efc0fe869a11665dbd23d09cfa4",
+  "independent_reviewer": "/root/masked_packet_review",
+  "root_result_matches_independent_temp_result_bytes": true,
+  "isolated_distribution_count": 22,
+  "version_changes": {
+    "arelle-release": [
+      "2.47.2",
+      "2.47.5"
+    ]
+  },
+  "temporary_guard_amendments": 2,
+  "optional_tests_passed": 15,
+  "case_records_matched": 10,
+  "comparison_exclusion": "only cases[].result.adapter_code_sha256, independently checked against amended source",
+  "uncontrolled_environment_negative_check": "rejected",
+  "comparison_mutation_checks": [
+    "changed warning detected",
+    "changed ordering detected",
+    "adapter hashes alone excluded"
+  ],
+  "core_tests": 399,
+  "lint": "passed",
+  "default_promotion": false,
+  "limits": [
+    "Parsed candidate JSON preserved, not the original matrix file bytes.",
+    "Setup errors/timeouts may raise before failure artifact publication.",
+    "Not a complete runtime-byte manifest or issuer/financial accuracy evaluation."
+  ]
+}

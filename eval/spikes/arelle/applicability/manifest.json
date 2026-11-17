@@ -1,0 +1,11 @@
+{
+  "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd": "5dbad94cecf42918b976449a8e1cb800d57e96442a9d0f5c00ca77e4da831827",
+  "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd": "f906cd30bc47a81bd1c97e24447f4917b21eb3d8a8b4fc520129ce2534ac5bca",
+  "http://www.xbrl.org/2003/xl-2003-12-31.xsd": "e28b0965d34f4879833b433a62d0d1e86e8b1f22e6b7642bab861983f5bb5818",
+  "http://www.xbrl.org/2003/xlink-2003-12-31.xsd": "5ffa8cb747ccd11e0d6420cf5668b60e3b7a64e20915d0e1774e5559d3343971",
+  "http://www.xbrl.org/2005/xbrldt-2005.xsd": "caf850f08d74c087c7946e6ea6d9fb5c0e9f8edf63bf639ccb9143e77e3390c7",
+  "http://www.xbrl.org/2006/xbrldi-2006.xsd": "03bbb0a8df76c9b6c309991c7a898ff67ae5356d12c74ca824f5c2ddc93f1045",
+  "omitted.xhtml": "62d2c8a761bd849a97db14cfdf158450351786b5358f78c830f55af9f846da79",
+  "taxonomy.xsd": "50e7ea34eb45a8d2546ede4dc461c97dd8fbb703b5a3ae5551a02ef41dfb9c93",
+  "definition.xml": "a4d49ca79f1b5f491016380c534b59c614eb93e620191bc6298790f9b478598a"
+}

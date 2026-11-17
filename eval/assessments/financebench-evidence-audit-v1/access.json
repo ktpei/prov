@@ -1,0 +1,156 @@
+{
+  "version": "blinded-evidence-audit-access-v1",
+  "stage": "adjudication_locked_then_read_attribution_complete",
+  "packet_commit": "5b016f4",
+  "plan_commit": "948ee11",
+  "questions_sha256": "b0c455033aab8efc32100db85d86326fa773ba9f617aa660b034ee28cf09d243",
+  "dispatch_time_utc": "2026-11-16 17:43:32 UTC",
+  "dispatch_hash_verification": "passed",
+  "reviewers": [
+    {
+      "role": "A",
+      "agent": "/root/interpretation_a",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "allowed_inputs": [
+        "reviewer-instructions.md",
+        "stage-1/questions.json"
+      ],
+      "exclusive_output": "reviews/interpretation-a.json",
+      "output_sha256": "1bbe3ed0bd6a829aca6c7507e2a3116e6e796facb4841a33a50f1791d2f9b85d",
+      "outside_access_disclosed": []
+    },
+    {
+      "role": "B",
+      "agent": "/root/interpretation_b",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "allowed_inputs": [
+        "reviewer-instructions.md",
+        "stage-1/questions.json"
+      ],
+      "exclusive_output": "reviews/interpretation-b.json",
+      "output_sha256": "d785c4a1fe3752cc0bcea6c3f5314658506ce73f52d5523477c3b6c532e40820",
+      "outside_access_disclosed": []
+    },
+    {
+      "role": "C",
+      "agent": "/root/interpretation_c",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "stage": "interpretation_reconciliation",
+      "initial_reviews_commit": "4fbd9ce",
+      "allowed_inputs": [
+        "reconciliation-instructions.md",
+        "stage-1/questions.json",
+        "reviews/interpretation-a.json",
+        "reviews/interpretation-b.json"
+      ],
+      "exclusive_output": "reviews/reconciliation-c.json",
+      "output_sha256": "605c928421163c82e3a33b47bb1b54cd46db77a2021e44b0037ab1b8185ba9fc",
+      "outside_access_disclosed": []
+    },
+    {
+      "role": "EA",
+      "agent": "/root/evidence_a",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "stage": "masked_evidence_review",
+      "packet_commit": "4919a52",
+      "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+      "allowed_inputs": [
+        "evidence-review-instructions.md",
+        "stage-2/reviewer/Q01.json",
+        "stage-2/reviewer/Q02.json",
+        "stage-2/reviewer/Q03.json",
+        "stage-2/reviewer/Q04.json",
+        "stage-2/reviewer/Q05.json",
+        "stage-2/reviewer/Q06.json"
+      ],
+      "exclusive_output": "reviews/evidence-a.json",
+      "output_sha256": "ef4d083a5d54240f99d2735fb7d35822e421ac72b8c05b5c3158c3d9b713c584",
+      "outside_access_disclosed": "No internet, repository search/history, source documents outside the six assigned packets, other reviewer outputs, original rubrics/reference answers, or separate custody metadata accessed. Only the assigned instructions and six packets were read; this assigned output was written/read for validation.",
+      "structural_validation": "passed; not financial validation"
+    },
+    {
+      "role": "EB",
+      "agent": "/root/evidence_b",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "stage": "masked_evidence_review",
+      "packet_commit": "4919a52",
+      "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+      "allowed_inputs": [
+        "evidence-review-instructions.md",
+        "stage-2/reviewer/Q01.json",
+        "stage-2/reviewer/Q02.json",
+        "stage-2/reviewer/Q03.json",
+        "stage-2/reviewer/Q04.json",
+        "stage-2/reviewer/Q05.json",
+        "stage-2/reviewer/Q06.json"
+      ],
+      "exclusive_output": "reviews/evidence-b.json",
+      "output_sha256": "ebc10a43173535bb7746ddad923a94b72326cdafd2e5739fc784e6e0c1cd5778",
+      "outside_access_disclosed": {
+        "accessed": false,
+        "disclosure": "Read only the assigned instructions and six masked case packets; wrote and verified only reviews/evidence-b.json. No internet, repository search/history, other source files, other reviewer output, original rubrics, reference answers or policy attribution accessed. During initial Q01 schema inspection, packet-embedded source metadata (URL, source SHA256 and original_sha256) was displayed incidentally; it was not visited, used for evidence assessment or used to infer custody/policy. Required input file hashes and source IDs were used for integrity/citation fields."
+      },
+      "structural_validation": "passed; not financial validation"
+    },
+    {
+      "role": "EC",
+      "agent": "/root/evidence_c",
+      "context": "fresh_no_parent_history",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning": "high",
+      "status": "completed",
+      "stage": "masked_evidence_adjudication",
+      "initial_reviews_commit": "92a4a80",
+      "instructions_commit": "ee5bae3",
+      "allowed_inputs": [
+        "evidence-adjudication-instructions.md",
+        "evidence-review-instructions.md",
+        "stage-2/reviewer/Q01.json",
+        "stage-2/reviewer/Q02.json",
+        "stage-2/reviewer/Q03.json",
+        "stage-2/reviewer/Q04.json",
+        "stage-2/reviewer/Q05.json",
+        "stage-2/reviewer/Q06.json",
+        "reviews/evidence-a.json",
+        "reviews/evidence-b.json"
+      ],
+      "exclusive_outputs": [
+        "reviews/evidence-adjudicated.json",
+        "reviews/evidence-adjudication-notes.json"
+      ],
+      "output_sha256": {
+        "evidence-adjudicated.json": "4d4c3d4389f9f7ec50df387eabf1aa5806854a577624af4e09deb7f462516fa5",
+        "evidence-adjudication-notes.json": "cc9b4bb4d596484cec5e2c451b6471e16b428340b25adde7ab10217c7ae86e32"
+      },
+      "outside_access_disclosed": {
+        "accessed": false,
+        "disclosure": "Read only the two assigned instructions, six masked case packets and two locked initial reviews; wrote and validated only the two assigned EC outputs. No internet, repository searches/history, external source documents, reference answers, retrieval attribution, separate custody metadata or communication with initial reviewers was used. During initial Q01 inspection, packet-embedded source URL and source/original hashes were incidentally rendered; they were not followed or used to infer custody, method or outcomes. Input hashes and source IDs were used only for integrity and citation."
+      },
+      "structural_validation": "passed; not financial validation"
+    }
+  ],
+  "custodian": "root; outcome-aware, not a blinded judge",
+  "isolation": "Fresh-context workflow restrictions, not filesystem security isolation. Per-reviewer access and recognition disclosures are preserved verbatim; no model-training non-exposure claim.",
+  "attribution": {
+    "custodian": "root; outcome-aware",
+    "judgments_locked_commit": "78b5735",
+    "protocol_commit": "a84580a",
+    "result_sha256": "411c22b976635d90a5dab00165627850f767f5e25391a468723767a4745ec7c9",
+    "independent_mechanical_audit": "passed"
+  }
+}

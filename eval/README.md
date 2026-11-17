@@ -1,5 +1,11 @@
 # Finance evaluation corpus v1
 
+Expansion: the [finance accuracy benchmark plan](benchmark-plan.md) records
+the user-selected external suite and custom tasks (2026-11-16). That suite is
+partially integrated through [pinned preparation and offline scoring](external-benchmarks.md).
+External live runs remain pending; the existing corpus and measured results below
+remain unchanged.
+
 This development benchmark contains 25 grounded questions: 10 development tasks and 15 heldout tasks, covering Apple, Microsoft, NVIDIA, Amazon, and Meta. There are 13 extraction, 5 management-guidance, 4 cross-company comparison, and 3 explicitly unanswerable tasks. It tests answers within a fixed, small public-document corpus, not investment recommendations.
 
 ## Source and date boundaries

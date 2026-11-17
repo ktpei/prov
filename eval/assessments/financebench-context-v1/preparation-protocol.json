@@ -1,0 +1,24 @@
+{
+  "version": "financebench-context-preparation-v1",
+  "runtime_sha256": "46e934c36c802e2a73ff9ca66663de22276728d7b095e183c7e565cd57c4b7f9",
+  "files_sha256": {
+    "eval/assessments/financebench-context-v1/prepare_corpus.py": "8978db3e5fd28f7e8c408a8a1bd2de9b129f4260b81233f88481fe14e1d412cf",
+    "eval/assessments/financebench-context-v1/preparation-plan.md": "361f80ce6cf1074e90b2469c016d12e1eb2d95d23762b7685713f1a61f20c851",
+    "eval/assessments/financebench-context-v1/selection.json": "5d263a7dc8bd41ed980bbebc5bc45755cf496b3cc173e5317167f1af72d4d1d3",
+    "eval/assessments/financebench-context-v1/acquisition-result.json": "5d82f7e143b89f6984acd3d69686717bf601f25b1f7a00b36293cdc20de5b7e9",
+    "eval/development-exposures.json": "1b76800699112dc829a7878ff6cbcde4ed1d0c3c3ea0618c3661f46f25ccd32e",
+    "eval/reference-issues.json": "b5bfdbbc9b685a070a675ea3d993a42b991dae813a5a2ff5eadc9e4fa922a494",
+    "runs/benchmark-data/financebench-public-v2/source.json": "06ae85f9d757538110989b01374cf6d0399e601d0e44d21de9cccdfd944575c1",
+    "runs/benchmark-data/financebench-public-v2/financebench-public.jsonl": "a5a2aa673e573e55675fc3c0f9aa38c1cf59d2abc91edb077534f71f10a71877",
+    "runs/financebench-context-v1-acquisition/VERIZON_2022_10K.pdf": "403d7346e8a059472863d1789527f16e5127a61c2f6c4429012e6227f27576d7",
+    "runs/financebench-context-v1-acquisition/COCACOLA_2017_10K.pdf": "b57c75cf20916904f31c6aa7644d6c110f019adf7c76782c7d0ede7b95c65ac1",
+    "runs/financebench-context-v1-acquisition/COSTCO_2021_10K.pdf": "29e05b3862cf6ffa6cfda34ac82a9fa0fe76b67338c5924da3325c2ee3b08748",
+    "runs/financebench-context-v1-acquisition/JOHNSON_JOHNSON_2022_10K.pdf": "dba7d6cc97734abd6dcbc1a6a34f82b5d228e60d0a1a32425a90404fd4d3e290",
+    "runs/financebench-context-v1-acquisition/3M_2022_10K.pdf": "d5cf549543a24b04228fd2af979ff2ca94cf64fb008a789340cb9117fbcfde5d",
+    "runs/financebench-context-v1-acquisition/AMERICANWATERWORKS_2021_10K.pdf": "701528ae6d14a77229468a829ee18f01ed439d5be012d0a915d2683335051029"
+  },
+  "package_versions": {
+    "pypdf": "6.21.4",
+    "fonttools": null
+  }
+}

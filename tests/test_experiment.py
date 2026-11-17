@@ -1,32 +1,42 @@
 """Cross-task money controls must survive interruption without automatic retries."""
 
+import hashlib
 import json
 import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from provenance.experiment import main
 
 
 class ExperimentTests(unittest.TestCase):
-    def invoke(self, directory, execute, *, grading_error=False):
+    def invoke(
+        self,
+        directory,
+        execute,
+        *,
+        grading_error=False,
+        benchmark_data=None,
+        documents=None,
+        task_ids=("one", "two"),
+        model_constructor=None,
+    ):
         directory = Path(directory)
         benchmark = directory / "benchmark.json"
-        benchmark.write_text(
-            json.dumps(
-                {
-                    "version": "test",
-                    "source_hashes": {"s": "hash"},
-                    "tasks": [
-                        {"id": "one", "question": "question without gold", "split": "dev"},
-                        {"id": "two", "question": "another question", "split": "dev"},
-                    ],
-                }
-            )
-        )
+        benchmark_data = benchmark_data or {
+            "version": "test",
+            "source_hashes": {"s": "hash"},
+            "tasks": [
+                {"id": "one", "question": "question without gold", "split": "dev"},
+                {"id": "two", "question": "another question", "split": "dev"},
+            ],
+        }
+        benchmark.write_text(json.dumps(benchmark_data))
+        documents = documents or {"s": {"sha256": "hash"}}
         model = SimpleNamespace(name="fake", input_rate=1, output_rate=1)
+        model_constructor = model_constructor or Mock(return_value=model)
         argv = [
             "experiment",
             "--live",
@@ -35,8 +45,7 @@ class ExperimentTests(unittest.TestCase):
             "--benchmark",
             str(benchmark),
             "--tasks",
-            "one",
-            "two",
+            *task_ids,
             "--budget-usd",
             "0.05",
             "--per-task-usd",
@@ -46,10 +55,10 @@ class ExperimentTests(unittest.TestCase):
         ]
         with (
             patch("sys.argv", argv),
-            patch("provenance.experiment.OpenRouterModel", return_value=model),
+            patch("provenance.experiment.OpenRouterModel", model_constructor),
             patch(
                 "provenance.experiment.Sources",
-                return_value=SimpleNamespace(documents={"s": {"sha256": "hash"}}),
+                return_value=SimpleNamespace(documents=documents),
             ),
             patch("provenance.experiment.subprocess.check_output", side_effect=["revision", ""]),
             patch(
@@ -61,6 +70,7 @@ class ExperimentTests(unittest.TestCase):
             patch("builtins.print"),
         ):
             main()
+        return model_constructor
 
     def test_reservation_survives_crash_and_output_cannot_be_reused(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -96,6 +106,15 @@ class ExperimentTests(unittest.TestCase):
             self.assertEqual(calls, ["question without gold"])
             self.assertEqual(ledger["status"], "stopped_for_billing_review")
             self.assertAlmostEqual(ledger["accounted_cost_usd"], 0.02)
+            self.assertEqual(
+                ledger["benchmark_content_sha256"],
+                hashlib.sha256((Path(tmp) / "benchmark.json").read_bytes()).hexdigest(),
+            )
+            self.assertEqual(ledger["selection_metadata"]["selected_task_ids"], ["one", "two"])
+            self.assertEqual(
+                ledger["selection_metadata"]["selection_status"],
+                [{"task_id": "one", "status": "failed"}, {"task_id": "two", "status": "skipped"}],
+            )
 
     def test_remaining_budget_limits_next_task(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -131,3 +150,70 @@ class ExperimentTests(unittest.TestCase):
             ledger = json.loads((Path(tmp) / "experiment" / "experiment.json").read_text())
             self.assertAlmostEqual(ledger["accounted_cost_usd"], 0.04)
             self.assertAlmostEqual(ledger["attempts"][0]["accounted_cost_usd"], 0.04)
+
+    def test_preflight_rejects_duplicate_benchmark_task_ids_without_constructing_model(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            benchmark = {
+                "version": "test",
+                "source_hashes": {"s": "hash"},
+                "tasks": [
+                    {"id": "one", "question": "first", "split": "dev"},
+                    {"id": "one", "question": "second", "split": "dev"},
+                ],
+            }
+            model_constructor = Mock()
+            with self.assertRaises(SystemExit):
+                self.invoke(
+                    tmp,
+                    lambda *_: None,
+                    benchmark_data=benchmark,
+                    task_ids=("one",),
+                    model_constructor=model_constructor,
+                )
+            model_constructor.assert_not_called()
+            self.assertFalse((Path(tmp) / "experiment").exists())
+
+    def test_preflight_requires_explicit_development_split_without_constructing_model(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            benchmark = {
+                "version": "test",
+                "source_hashes": {"s": "hash"},
+                "tasks": [{"id": "one", "question": "question without gold"}],
+            }
+            model_constructor = Mock()
+            with self.assertRaises(SystemExit):
+                self.invoke(
+                    tmp,
+                    lambda *_: None,
+                    benchmark_data=benchmark,
+                    task_ids=("one",),
+                    model_constructor=model_constructor,
+                )
+            model_constructor.assert_not_called()
+            self.assertFalse((Path(tmp) / "experiment").exists())
+
+    def test_preflight_rejects_missing_or_extra_corpus_hashes_before_model_construction(self):
+        cases = (
+            ("missing", {"s": {"sha256": "hash"}}, {"missing": "hash"}),
+            ("extra", {"s": {"sha256": "hash"}, "extra": {"sha256": "also-hash"}}, {"s": "hash"}),
+            ("mismatch", {"s": {"sha256": "wrong"}}, {"s": "hash"}),
+        )
+        for name, documents, source_hashes in cases:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as tmp:
+                benchmark = {
+                    "version": "test",
+                    "source_hashes": source_hashes,
+                    "tasks": [{"id": "one", "question": "question", "split": "dev"}],
+                }
+                model_constructor = Mock()
+                with self.assertRaisesRegex(ValueError, "Benchmark/corpus hash mismatch"):
+                    self.invoke(
+                        tmp,
+                        lambda *_: None,
+                        benchmark_data=benchmark,
+                        documents=documents,
+                        task_ids=("one",),
+                        model_constructor=model_constructor,
+                    )
+                model_constructor.assert_not_called()
+                self.assertFalse((Path(tmp) / "experiment").exists())

@@ -8,10 +8,12 @@ Native extraction is not OCR: charts, scans and complex PDF tables need review.
 import argparse
 import hashlib
 import json
+import logging
 import re
 import shutil
 from datetime import date
 from html.parser import HTMLParser
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
 
@@ -77,39 +79,123 @@ class DocumentHTML(HTMLParser):
             self.parts.append(data)
 
 
-def extract(path):
-    """Return complete native text and one location per line; never silently OCR."""
+class PDFDiagnostics(logging.Handler):
+    """Bounded page-specific diagnostics; captured warnings do not prove completeness."""
+
+    def __init__(self):
+        super().__init__(logging.WARNING)
+        self.page = None
+        self.records = []
+        self.total = 0
+
+    def emit(self, record):
+        self.total += 1
+        message = record.getMessage()
+        # Font dictionaries are huge and include process-specific object addresses.
+        if message.startswith("fontTools is required"):
+            message = "fontTools is required to parse a CFF Type1 font; fontTools is not installed."
+        message = message[:300]
+        for entry in self.records:
+            if entry["page"] == self.page and entry["message"] == message:
+                entry["count"] += 1
+                return
+        if len(self.records) < 20:
+            self.records.append({"page": self.page, "message": message, "count": 1})
+
+
+def _package_version(name):
+    try:
+        return version(name)
+    except PackageNotFoundError:
+        return None
+
+
+def extract(path, *, html_text_version="stdlib-html-v1"):
+    """Return extracted native text and line locations; never silently OCR."""
+    if html_text_version not in {"stdlib-html-v1", "native-html-text-v2"}:
+        raise ValueError("Unknown HTML text extraction version")
     path = Path(path)
     if path.suffix.lower() == ".pdf":
         from pypdf import PdfReader
 
-        reader = PdfReader(path)
-        lines, locations, empty = [], [], []
-        for number, page in enumerate(reader.pages, 1):
-            text = (
-                page.extract_text(extraction_mode="layout", layout_mode_strip_rotated=False) or ""
-            )
-            page_lines = [line.rstrip() for line in text.splitlines() if line.strip()]
-            if not page_lines:
-                empty.append(number)
-                page_lines = ["[No native text extracted; inspect original page or run OCR.]"]
-            lines.extend(page_lines)
-            locations.extend({"page": number} for _ in page_lines)
+        diagnostics = PDFDiagnostics()
+        logger = logging.getLogger("pypdf")
+        logger.addHandler(diagnostics)
+        try:
+            reader = PdfReader(path)
+            lines, locations, empty, page_diagnostics = [], [], [], []
+            for number, page in enumerate(reader.pages, 1):
+                diagnostics.page = number
+                warnings_before = diagnostics.total
+                text = (
+                    page.extract_text(extraction_mode="layout", layout_mode_strip_rotated=False)
+                    or ""
+                )
+                page_lines = [line.rstrip() for line in text.splitlines() if line.strip()]
+                native_line_count = len(page_lines)
+                if not page_lines:
+                    empty.append(number)
+                    page_lines = ["[No native text extracted; inspect original page or run OCR.]"]
+                page_diagnostics.append(
+                    {
+                        "page": number,
+                        "native_line_count": native_line_count,
+                        "native_nonwhitespace_characters": sum(not char.isspace() for char in text),
+                        "emitted_line_start": len(lines) + 1,
+                        "emitted_line_end": len(lines) + len(page_lines),
+                        "warning_count": diagnostics.total - warnings_before,
+                    }
+                )
+                lines.extend(page_lines)
+                locations.extend({"page": number} for _ in page_lines)
+        finally:
+            logger.removeHandler(diagnostics)
         return (
             lines,
             locations,
             {
                 "parser": "pypdf-layout",
+                "diagnostics_version": "pdf-extraction-diagnostics-v2",
+                "package_versions": {
+                    name: _package_version(name) for name in ("pypdf", "fonttools")
+                },
+                "warning_count": diagnostics.total,
+                "warning_samples": diagnostics.records,
+                "warning_samples_truncated": diagnostics.total
+                > sum(item["count"] for item in diagnostics.records),
                 "text_completeness": "not_verified",
                 "ocr_performed": False,
                 "page_count": len(reader.pages),
+                "empty_native_text_pages": empty,
+                "pages": page_diagnostics,
                 "warnings": [
                     "Native PDF text does not establish chart semantics or table alignment.",
+                    "Page text counts do not distinguish genuinely blank pages from extraction failures.",
                     *([f"Pages without native text: {empty}"] if empty else []),
                 ],
             },
         )
     if path.suffix.lower() in {".html", ".htm"}:
+        if html_text_version == "native-html-text-v2":
+            from provenance.html_text import VERSION, DocumentHTMLV2
+
+            parser = DocumentHTMLV2()
+            parser.feed(path.read_text(encoding="utf-8", errors="strict"))
+            parser.close()
+            return (
+                parser.lines,
+                parser.locations,
+                {
+                    "parser": VERSION,
+                    "text_completeness": "not_verified",
+                    "visibility": "explicit_hiding_suppressed_not_computed_css",
+                    "warnings": [
+                        "External CSS, conflicting declarations and descendant visibility overrides are unresolved.",
+                        "Conservative hidden-markup rejection can reject browser-renderable documents.",
+                        "Text separators do not establish table geometry or financial header associations.",
+                    ],
+                },
+            )
         parser = DocumentHTML()
         parser.feed(path.read_text(encoding="utf-8", errors="strict"))
         parser.flush()
@@ -129,8 +215,10 @@ def extract(path):
     raise ValueError("Supported input formats: PDF, HTML, TXT, MD")
 
 
-def ingest(packet, output):
+def ingest(packet, output, *, html_text_version="stdlib-html-v1"):
     """Ingest local originals atomically at manifest level; source IDs are immutable."""
+    if html_text_version not in {"stdlib-html-v1", "native-html-text-v2"}:
+        raise ValueError("Unknown HTML text extraction version")
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     if (output / "sources.json").exists():
@@ -144,7 +232,7 @@ def ingest(packet, output):
             raise ValueError("Duplicate source ID")
         original = Path(spec["input_file"])
         raw = original.read_bytes()
-        lines, locations, extraction = extract(original)
+        lines, locations, extraction = extract(original, html_text_version=html_text_version)
         if not lines:
             raise ValueError(f"No content extracted from {source_id}")
         original_file = f"originals/{source_id}{original.suffix.lower()}"
@@ -175,8 +263,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("packet", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument(
+        "--html-text-version",
+        choices=("stdlib-html-v1", "native-html-text-v2"),
+        default="stdlib-html-v1",
+    )
     args = parser.parse_args()
-    manifest = ingest(json.loads(args.packet.read_text()), args.output)
+    manifest = ingest(
+        json.loads(args.packet.read_text()), args.output, html_text_version=args.html_text_version
+    )
     print(json.dumps({"sources": len(manifest["sources"]), "output": str(args.output)}))
 
 

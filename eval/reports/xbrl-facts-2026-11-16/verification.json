@@ -1,0 +1,10 @@
+{
+  "result_sha256": "11462530f838361ad867201079ea6252f9c02703f9d4e20ec37a080220ee7986",
+  "independent_reproduction": "byte_identical",
+  "reviewer": "masked_packet_review",
+  "core_tests": 431,
+  "optional_tests": 7,
+  "financial_acceptance": "unverified",
+  "rendered_visibility": "unverified",
+  "quarantine_test": "mocked_group_classification_not_detection"
+}

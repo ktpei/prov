@@ -1,0 +1,1130 @@
+{
+  "version": "saved-retrieval-gap-diagnosis-v1",
+  "status": "posthoc_exposed_development_diagnosis_not_validation",
+  "input_sha256": {
+    "full_run": "5763ae88787cb2114361254a37006e44a64de05fe4b1c0eba6abedd48c82b41b",
+    "compact_run": "36678f6c463203363929845691570f6483ee79babeaf816044437ec90754ac1b",
+    "full_grade": "d99c175326676785853c8cc0b22177f1982288b49ddaee477a37a84d6adfc616",
+    "compact_grade": "6f0fd2b5db2fd03a56ba3bbb53ca22c4c04d5c0dfc0a792f09b18f98cb3cd1b9",
+    "packets": "3ef0fac6fc61e9a7a0dddfaf4182aac3cc1325064ab3b7ec5be3f6c92535ee02",
+    "inputs": "72b290d243e917b232e91114217f3997cf444a4e000c57f9b433f1d28072556f",
+    "retrieval_code": "4103ba2d37266ec373aeb790c90851d99d50699ccb0c59cedf0179e15b001229"
+  },
+  "scope": "Saved run responses, grades, original questions, frozen packets and retrieval code only; no new search, reranking, read, projector call or packet change. Missing native target text was not reopened.",
+  "cases": [
+    {
+      "id": "financebench_id_04254",
+      "source_id": "AMERICANWATERWORKS_2021_10K",
+      "question": "Basing your judgments off of the cash flow statement and the income statement, what is American Water Works's FY2021 unadjusted operating income + depreciation and amortization from the cash flow statement (unadjusted EBITDA) in USD millions?",
+      "annotation_caveat": "Question-specified operands mapped to the consolidated operations statement on physical page 86 and cash-flow statement on physical page 88, with separate identity, period and scale context. USD denomination follows question context; mapped coverage is not independent financial validation.",
+      "selected_windows": [
+        {
+          "rank": 1,
+          "returned_locator": "L2321-L2352",
+          "physical_pages": [
+            69
+          ],
+          "search_score": 21.5086
+        },
+        {
+          "rank": 2,
+          "returned_locator": "L2939-L2970",
+          "physical_pages": [
+            88
+          ],
+          "search_score": 17.8661
+        },
+        {
+          "rank": 3,
+          "returned_locator": "L2345-L2353",
+          "physical_pages": [
+            69
+          ],
+          "search_score": 17.1362
+        },
+        {
+          "rank": 4,
+          "returned_locator": "L2134-L2165",
+          "physical_pages": [
+            64
+          ],
+          "search_score": 15.9936
+        },
+        {
+          "rank": 5,
+          "returned_locator": "L4646-L4677",
+          "physical_pages": [
+            137
+          ],
+          "search_score": 15.5636
+        }
+      ],
+      "required_role_audit": [
+        {
+          "operations_entity_and_statement": {
+            "required_spans": [
+              [
+                2888,
+                2889
+              ]
+            ],
+            "required_physical_pages": [
+              86
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2888,
+                2889
+              ]
+            ]
+          },
+          "operations_scale": {
+            "required_spans": [
+              [
+                2890,
+                2890
+              ]
+            ],
+            "required_physical_pages": [
+              86
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2890,
+                2890
+              ]
+            ]
+          },
+          "operations_period_columns": {
+            "required_spans": [
+              [
+                2891,
+                2892
+              ]
+            ],
+            "required_physical_pages": [
+              86
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2891,
+                2892
+              ]
+            ]
+          },
+          "operating_income_label_and_value": {
+            "required_spans": [
+              [
+                2900,
+                2900
+              ]
+            ],
+            "required_physical_pages": [
+              86
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2900,
+                2900
+              ]
+            ]
+          },
+          "cashflow_entity_and_statement": {
+            "required_spans": [
+              [
+                2940,
+                2941
+              ]
+            ],
+            "required_physical_pages": [
+              88
+            ],
+            "present_top5": true,
+            "covered_spans": [
+              [
+                2940,
+                2941
+              ]
+            ],
+            "missing_spans": []
+          },
+          "cashflow_scale": {
+            "required_spans": [
+              [
+                2942,
+                2942
+              ]
+            ],
+            "required_physical_pages": [
+              88
+            ],
+            "present_top5": true,
+            "covered_spans": [
+              [
+                2942,
+                2942
+              ]
+            ],
+            "missing_spans": []
+          },
+          "cashflow_period_columns": {
+            "required_spans": [
+              [
+                2943,
+                2944
+              ]
+            ],
+            "required_physical_pages": [
+              88
+            ],
+            "present_top5": true,
+            "covered_spans": [
+              [
+                2943,
+                2944
+              ]
+            ],
+            "missing_spans": []
+          },
+          "cashflow_depreciation_amortization_label_and_value": {
+            "required_spans": [
+              [
+                2948,
+                2948
+              ]
+            ],
+            "required_physical_pages": [
+              88
+            ],
+            "present_top5": true,
+            "covered_spans": [
+              [
+                2948,
+                2948
+              ]
+            ],
+            "missing_spans": []
+          }
+        }
+      ],
+      "saved_parent_complete_at_1_3_5": [
+        false,
+        false,
+        false
+      ],
+      "diagnosis": "Entire required operations-statement page absent; required cash-flow packet is present in rank 2. This is an operand-and-context miss, not merely a missing header.",
+      "observations": [
+        {
+          "locator": "L2939-L2970 / physical page 88 / rank 2",
+          "fact": "Contains all four frozen cash-flow roles, including L2948 depreciation and amortization."
+        },
+        {
+          "locator": "L2321-L2352 and L2345-L2353 / page 69 / ranks 1 and 3",
+          "fact": "Overlapping cash-flow narrative windows repeat eight line positions; neither includes the required operations statement."
+        },
+        {
+          "locator": "L2135-L2138 / page 64 / rank 4",
+          "fact": "Visible scope is Regulated Businesses Segment, with 2021/2020/2019 columns; this does not substitute for the frozen consolidated operations packet."
+        },
+        {
+          "locator": "L4647-L4661 / page 137 / rank 5",
+          "fact": "Selected financial-note portion visibly contains 2020 and business-segment columns; do not substitute it for the FY2021 consolidated operations operand."
+        }
+      ],
+      "lexical_observations": [
+        "The original question explicitly asks for both statements and both operands, and repeats cash flow statement. It calls the other statement income statement; the frozen role names identify an operations statement. This is a role-level alias observation; missing native lines were not reopened."
+      ],
+      "hypotheses": [
+        "Repeated cash-flow/depreciation wording may favor one side of the two-statement request; independently balanced operand retrieval is an untested hypothesis.",
+        "Overlapping narrative windows may consume candidate capacity without adding the missing operations page. No causal contribution or alternate ranking was computed."
+      ]
+    },
+    {
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "question": "Is Verizon a capital intensive business based on FY 2022 data?",
+      "annotation_caveat": "Source locations support the benchmark reference's year-end-assets / annual-revenue calculation. Capital-intensive classification depends on an unstated metric convention and threshold; mapping is not semantic validation.",
+      "selected_windows": [
+        {
+          "rank": 1,
+          "returned_locator": "L933-L956",
+          "physical_pages": [
+            21
+          ],
+          "search_score": 7.1425
+        },
+        {
+          "rank": 2,
+          "returned_locator": "L1003-L1034",
+          "physical_pages": [
+            23
+          ],
+          "search_score": 7.0686
+        },
+        {
+          "rank": 3,
+          "returned_locator": "L546-L577",
+          "physical_pages": [
+            12
+          ],
+          "search_score": 6.8742
+        },
+        {
+          "rank": 4,
+          "returned_locator": "L4378-L4394",
+          "physical_pages": [
+            96
+          ],
+          "search_score": 6.6578
+        },
+        {
+          "rank": 5,
+          "returned_locator": "L3853-L3884",
+          "physical_pages": [
+            84
+          ],
+          "search_score": 6.6203
+        }
+      ],
+      "required_role_audit": [
+        {
+          "balance_sheet_entity_and_scope": {
+            "required_spans": [
+              [
+                2532,
+                2533
+              ]
+            ],
+            "required_physical_pages": [
+              56
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2532,
+                2533
+              ]
+            ]
+          },
+          "assets_date_and_units": {
+            "required_spans": [
+              [
+                2534,
+                2535
+              ]
+            ],
+            "required_physical_pages": [
+              56
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2534,
+                2535
+              ]
+            ]
+          },
+          "fy2022_total_assets": {
+            "required_spans": [
+              [
+                2554,
+                2554
+              ]
+            ],
+            "required_physical_pages": [
+              56
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2554,
+                2554
+              ]
+            ]
+          },
+          "revenue_period_and_units": {
+            "required_spans": [
+              [
+                1032,
+                1032
+              ],
+              [
+                1034,
+                1034
+              ]
+            ],
+            "required_physical_pages": [
+              23
+            ],
+            "present_top5": true,
+            "covered_spans": [
+              [
+                1032,
+                1032
+              ],
+              [
+                1034,
+                1034
+              ]
+            ],
+            "missing_spans": []
+          },
+          "fy2022_consolidated_operating_revenue": {
+            "required_spans": [
+              [
+                1040,
+                1040
+              ]
+            ],
+            "required_physical_pages": [
+              23
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1040,
+                1040
+              ]
+            ]
+          }
+        }
+      ],
+      "saved_parent_complete_at_1_3_5": [
+        false,
+        false,
+        false
+      ],
+      "diagnosis": "Entire required balance-sheet page absent. Required revenue period/units are present in rank 2, but its exact revenue operand L1040 lies six line numbers after that window ends at L1034.",
+      "observations": [
+        {
+          "locator": "L1003-L1034 / physical page 23 / rank 2",
+          "fact": "Includes annotated units L1032 and period L1034, but not revenue L1040; native saved lines interleave table content with narrative on the same line."
+        },
+        {
+          "locator": "L933-L956 / page 21 / rank 1",
+          "fact": "Business overview discusses significant capital investments, relevant to the broad question but outside the frozen assets/revenue packet."
+        },
+        {
+          "locator": "pages 12, 96 and 84 / ranks 3, 4 and 5",
+          "fact": "Saved windows discuss human capital, investment valuations, and customer credit; none includes the frozen balance-sheet packet."
+        }
+      ],
+      "lexical_observations": [
+        "Question uses capital intensive business and FY 2022, without specifying assets or revenue. The frozen packet operationalizes the reference as assets/revenue; this metric convention and threshold remain unstated in the question.",
+        "Human capital and venture capital appear in selected saved windows, so capital is not an unambiguous statement or operand cue."
+      ],
+      "hypotheses": [
+        "Metric decomposition might target the annotated operands, but would introduce a convention absent from the question unless explicitly handled.",
+        "The revenue miss is consistent with a parent-window boundary issue; no continuation or expanded read has been tested."
+      ]
+    },
+    {
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "question": "What is the FY2017 return on assets (ROA) for Coca Cola? ROA is defined as: FY2017 net income / (average total assets between FY2016 and FY2017). Round your answer to two decimal places. Give a response to the question by relying on the details shown in the balance sheet and the P&L statement.",
+      "annotation_caveat": "Two independently complete alternatives reflect the unspecified net-income basis: attributable to company shareowners (reference convention) or consolidated net income. Both produce 0.01 when the unscaled ratio is rounded to two decimals; mapping does not resolve convention ambiguity.",
+      "selected_windows": [
+        {
+          "rank": 1,
+          "returned_locator": "L6507-L6538",
+          "physical_pages": [
+            169
+          ],
+          "search_score": 23.0223
+        },
+        {
+          "rank": 2,
+          "returned_locator": "L6447-L6478",
+          "physical_pages": [
+            167
+          ],
+          "search_score": 21.6895
+        },
+        {
+          "rank": 3,
+          "returned_locator": "L4907-L4923",
+          "physical_pages": [
+            125
+          ],
+          "search_score": 17.1986
+        },
+        {
+          "rank": 4,
+          "returned_locator": "L4883-L4914",
+          "physical_pages": [
+            125
+          ],
+          "search_score": 16.9801
+        },
+        {
+          "rank": 5,
+          "returned_locator": "L2497-L2514",
+          "physical_pages": [
+            64
+          ],
+          "search_score": 16.9554
+        }
+      ],
+      "required_role_audit": [
+        {
+          "income_statement_entity_and_scope": {
+            "required_spans": [
+              [
+                2802,
+                2803
+              ]
+            ],
+            "required_physical_pages": [
+              74
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2802,
+                2803
+              ]
+            ]
+          },
+          "income_period_and_units": {
+            "required_spans": [
+              [
+                2804,
+                2805
+              ]
+            ],
+            "required_physical_pages": [
+              74
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2804,
+                2805
+              ]
+            ]
+          },
+          "fy2017_net_income_basis_and_amount": {
+            "required_spans": [
+              [
+                2822,
+                2823
+              ]
+            ],
+            "required_physical_pages": [
+              74
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2822,
+                2823
+              ]
+            ]
+          },
+          "balance_sheet_entity_and_scope": {
+            "required_spans": [
+              [
+                2858,
+                2859
+              ]
+            ],
+            "required_physical_pages": [
+              76
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2858,
+                2859
+              ]
+            ]
+          },
+          "assets_periods_and_units": {
+            "required_spans": [
+              [
+                2860,
+                2861
+              ]
+            ],
+            "required_physical_pages": [
+              76
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2860,
+                2861
+              ]
+            ]
+          },
+          "fy2017_and_fy2016_total_assets": {
+            "required_spans": [
+              [
+                2882,
+                2882
+              ]
+            ],
+            "required_physical_pages": [
+              76
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2882,
+                2882
+              ]
+            ]
+          }
+        },
+        {
+          "income_statement_entity_and_scope": {
+            "required_spans": [
+              [
+                2802,
+                2803
+              ]
+            ],
+            "required_physical_pages": [
+              74
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2802,
+                2803
+              ]
+            ]
+          },
+          "income_period_and_units": {
+            "required_spans": [
+              [
+                2804,
+                2805
+              ]
+            ],
+            "required_physical_pages": [
+              74
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2804,
+                2805
+              ]
+            ]
+          },
+          "fy2017_net_income_basis_and_amount": {
+            "required_spans": [
+              [
+                2820,
+                2820
+              ]
+            ],
+            "required_physical_pages": [
+              74
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2820,
+                2820
+              ]
+            ]
+          },
+          "balance_sheet_entity_and_scope": {
+            "required_spans": [
+              [
+                2858,
+                2859
+              ]
+            ],
+            "required_physical_pages": [
+              76
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2858,
+                2859
+              ]
+            ]
+          },
+          "assets_periods_and_units": {
+            "required_spans": [
+              [
+                2860,
+                2861
+              ]
+            ],
+            "required_physical_pages": [
+              76
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2860,
+                2861
+              ]
+            ]
+          },
+          "fy2017_and_fy2016_total_assets": {
+            "required_spans": [
+              [
+                2882,
+                2882
+              ]
+            ],
+            "required_physical_pages": [
+              76
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                2882,
+                2882
+              ]
+            ]
+          }
+        }
+      ],
+      "saved_parent_complete_at_1_3_5": [
+        false,
+        false,
+        false
+      ],
+      "diagnosis": "Both required statement pages absent, including both alternatives for the net-income operand and all headers/assets operands. Neither frozen alternative is partially covered.",
+      "observations": [
+        {
+          "locator": "L6519-L6537 / page 169 / rank 1; L6459-L6477 / page 167 / rank 2",
+          "fact": "Employment/promotion letters repeatedly use your and details, words also present in the question instructions; these are not financial-statement pages."
+        },
+        {
+          "locator": "L4883-L4923 / page 125 / ranks 3 and 4",
+          "fact": "Tax-note passages mention consolidated statements and contain overlapping windows; those statement mentions do not contain the frozen statement operands."
+        },
+        {
+          "locator": "L2497-L2514 / page 64 / rank 5",
+          "fact": "Debt discussion mentions financial ratios and the consolidated income statement but misses the frozen statement pages."
+        }
+      ],
+      "lexical_observations": [
+        "Question supplies net income, average total assets, balance sheet and P&L statement explicitly. Native frozen role names use income statement; the literal P&L tokenization produces p and l in current code.",
+        "FY2017/FY2016 remain joined tokens under current lexical tokenization, while saved statement-note/letter dates visibly use separate year tokens.",
+        "your and details survive the small stopword set in Sources.search; their presence in top-ranked letters is observed, not a quantified scoring explanation."
+      ],
+      "hypotheses": [
+        "Instruction-word matches and unnormalized fiscal-year/statement aliases may dilute the specified financial intent. No score attribution, alternate query or ranking was run."
+      ],
+      "semantic_caveat": "Net income attributable to shareowners versus consolidated net income remains unresolved; both frozen alternatives must remain unchanged."
+    },
+    {
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "question": "If we exclude the impact of M&A, which segment has dragged down 3M's overall growth in 2022?",
+      "annotation_caveat": "Exact locations support the reference organic-sales comparison. Excluding only M&A does not also exclude currency translation; the question/reference interpretation remains ambiguous and is not validated by mapped coverage.",
+      "selected_windows": [
+        {
+          "rank": 1,
+          "returned_locator": "L1118-L1149",
+          "physical_pages": [
+            31
+          ],
+          "search_score": 16.186
+        },
+        {
+          "rank": 2,
+          "returned_locator": "L1158-L1189",
+          "physical_pages": [
+            32
+          ],
+          "search_score": 16.1148
+        },
+        {
+          "rank": 3,
+          "returned_locator": "L1077-L1108",
+          "physical_pages": [
+            30
+          ],
+          "search_score": 15.0172
+        },
+        {
+          "rank": 4,
+          "returned_locator": "L1195-L1226",
+          "physical_pages": [
+            33
+          ],
+          "search_score": 14.7605
+        },
+        {
+          "rank": 5,
+          "returned_locator": "L369-L400",
+          "physical_pages": [
+            10
+          ],
+          "search_score": 13.6036
+        }
+      ],
+      "required_role_audit": [
+        {
+          "segment_statement_scope_and_comparison_period": {
+            "required_spans": [
+              [
+                896,
+                897
+              ]
+            ],
+            "required_physical_pages": [
+              25
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                896,
+                897
+              ]
+            ]
+          },
+          "sales_change_year_and_metric_columns": {
+            "required_spans": [
+              [
+                910,
+                912
+              ]
+            ],
+            "required_physical_pages": [
+              25
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                910,
+                912
+              ]
+            ]
+          },
+          "other_segments_growth_comparison": {
+            "required_spans": [
+              [
+                913,
+                915
+              ]
+            ],
+            "required_physical_pages": [
+              25
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                913,
+                915
+              ]
+            ]
+          },
+          "consumer_growth_and_adjustments": {
+            "required_spans": [
+              [
+                916,
+                916
+              ]
+            ],
+            "required_physical_pages": [
+              25
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                916,
+                916
+              ]
+            ]
+          },
+          "company_growth_and_adjustments": {
+            "required_spans": [
+              [
+                917,
+                917
+              ]
+            ],
+            "required_physical_pages": [
+              25
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                917,
+                917
+              ]
+            ]
+          }
+        }
+      ],
+      "saved_parent_complete_at_1_3_5": [
+        false,
+        false,
+        false
+      ],
+      "diagnosis": "The entire frozen overview comparison-table packet is absent. However, four selected segment tables contain relevant period, organic-sales, divestiture and translation information outside the annotated locations; zero frozen-role coverage is not zero relevant evidence.",
+      "observations": [
+        {
+          "locator": "L1078-L1084 / page 30 / rank 3",
+          "fact": "Safety and Industrial segment header, 2022/2021 columns, organic sales, translation and total sales-change rows are visible."
+        },
+        {
+          "locator": "L1119-L1126 / page 31 / rank 1",
+          "fact": "Transportation and Electronics header, 2022/2021 columns, organic sales, divestitures, translation and total change rows are visible."
+        },
+        {
+          "locator": "L1159-L1166 / page 32 / rank 2",
+          "fact": "Health Care header, 2022/2021 columns, organic sales, divestitures, translation and total change rows are visible."
+        },
+        {
+          "locator": "L1196-L1203 / page 33 / rank 4",
+          "fact": "Consumer header, 2022/2021 columns, organic sales, divestitures, translation and total change rows are visible."
+        },
+        {
+          "locator": "L896-L917 / physical page 25 / frozen packet",
+          "fact": "No selected parent intersects the frozen comparison-table header, segment rows or company-level row L917."
+        }
+      ],
+      "lexical_observations": [
+        "Question says exclude impact of M&A and overall growth; selected segment tables distinguish organic sales, divestitures, translation and total sales change. Those are distinct adjustments.",
+        "The frozen reference-oriented packet concerns an organic-sales comparison; excluding M&A alone does not also exclude translation."
+      ],
+      "hypotheses": [
+        "A separate, independently justified distributed-evidence annotation might recognize some selected segment information, but sufficiency and company-level comparison are unverified. Do not modify this frozen packet or retrospectively count a success."
+      ],
+      "semantic_caveat": "Question/reference mismatch remains. Neither current coverage nor relevant segment tables validate the reference convention."
+    },
+    {
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "question": "Roughly how many times has JnJ sold its inventory in FY2022? Calculate inventory turnover ratio for FY2022; if conventional inventory management is not meaningful for the company then state that and explain why.",
+      "annotation_caveat": "Consolidated inventories at both balance-sheet dates and FY2022 cost of products sold mapped with units and period headers. The reference uses cost of products sold divided by mean opening/closing inventory; mapped coverage is not independent financial validation.",
+      "selected_windows": [
+        {
+          "rank": 1,
+          "returned_locator": "L1322-L1345",
+          "physical_pages": [
+            36
+          ],
+          "search_score": 14.0374
+        },
+        {
+          "rank": 2,
+          "returned_locator": "L1505-L1525",
+          "physical_pages": [
+            40
+          ],
+          "search_score": 13.9964
+        },
+        {
+          "rank": 3,
+          "returned_locator": "L4097-L4128",
+          "physical_pages": [
+            105
+          ],
+          "search_score": 13.9201
+        },
+        {
+          "rank": 4,
+          "returned_locator": "L2805-L2836",
+          "physical_pages": [
+            75
+          ],
+          "search_score": 12.848
+        },
+        {
+          "rank": 5,
+          "returned_locator": "L418-L449",
+          "physical_pages": [
+            12
+          ],
+          "search_score": 12.4707
+        }
+      ],
+      "required_role_audit": [
+        {
+          "balance_entity_and_statement": {
+            "required_spans": [
+              [
+                1716,
+                1717
+              ]
+            ],
+            "required_physical_pages": [
+              46
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1716,
+                1717
+              ]
+            ]
+          },
+          "inventory_dates_and_units": {
+            "required_spans": [
+              [
+                1718,
+                1720
+              ]
+            ],
+            "required_physical_pages": [
+              46
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1718,
+                1720
+              ]
+            ]
+          },
+          "opening_and_closing_inventory": {
+            "required_spans": [
+              [
+                1726,
+                1726
+              ]
+            ],
+            "required_physical_pages": [
+              46
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1726,
+                1726
+              ]
+            ]
+          },
+          "earnings_entity_and_statement": {
+            "required_spans": [
+              [
+                1763,
+                1764
+              ]
+            ],
+            "required_physical_pages": [
+              47
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1763,
+                1764
+              ]
+            ]
+          },
+          "earnings_units_and_period_columns": {
+            "required_spans": [
+              [
+                1765,
+                1766
+              ]
+            ],
+            "required_physical_pages": [
+              47
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1765,
+                1766
+              ]
+            ]
+          },
+          "cost_of_products_sold": {
+            "required_spans": [
+              [
+                1768,
+                1768
+              ]
+            ],
+            "required_physical_pages": [
+              47
+            ],
+            "present_top5": false,
+            "covered_spans": [],
+            "missing_spans": [
+              [
+                1768,
+                1768
+              ]
+            ]
+          }
+        }
+      ],
+      "saved_parent_complete_at_1_3_5": [
+        false,
+        false,
+        false
+      ],
+      "diagnosis": "Both required balance-sheet and earnings-statement pages absent: all inventory stocks, cost-of-products-sold flow and their entity/period/unit context are missing from frozen locations.",
+      "observations": [
+        {
+          "locator": "L1344 / page 36 / rank 1",
+          "fact": "Inventory appears in COVID-19 manufacturing-exit costs, not the frozen inventory balance row."
+        },
+        {
+          "locator": "L1509 / page 40 / rank 2",
+          "fact": "Inventory appears in a product-return policy discussion, not the frozen balance-sheet operand."
+        },
+        {
+          "locator": "L2807-L2808 / page 75 / rank 4",
+          "fact": "Ratio concerns pension-plan active employees versus retirees."
+        },
+        {
+          "locator": "L426 / page 12 / rank 5",
+          "fact": "Turnover refers to employee voluntary turnover, not inventory turnover."
+        },
+        {
+          "locator": "L4097-L4128 / page 105 / rank 3",
+          "fact": "Saved passage concerns litigation and products sold, outside the frozen financial-statement packet."
+        }
+      ],
+      "lexical_observations": [
+        "Question says inventory turnover and sold its inventory but does not explicitly name cost of products sold or mean opening/closing inventory. Those are operands in the frozen reference convention.",
+        "The code retains FY2022 as one token and does not singularize inventories to inventory. This is a tokenizer limitation, not a measured rank contribution.",
+        "Visible inventory, ratio, sold and turnover matches have different meanings in the selected passages."
+      ],
+      "hypotheses": [
+        "Compound financial-intent preservation and explicit question-derived operand retrieval might reduce ambiguous single-word matches, but formula/period conventions must remain explicit and no alternative query has been tested."
+      ]
+    }
+  ]
+}

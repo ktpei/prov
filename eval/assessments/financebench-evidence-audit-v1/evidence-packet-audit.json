@@ -1,0 +1,27 @@
+{
+  "version": "masked-evidence-preparation-audit-v1",
+  "status": "passed",
+  "reviewer": "independent coding-agent integrity review; not a blinded financial judge",
+  "builder_commit": "dcb5aa7",
+  "receipt_sha256": "6b7c397a9df2b69938584a999216e1d88273fc08a4387dad081c93aab71d62da",
+  "verified": {
+    "input_bindings": 11,
+    "output_bindings_excluding_receipt": 7,
+    "cases": 6,
+    "locked_interpretations": 16,
+    "deduplicated_excerpts": 68,
+    "full_review_only_pages": 36,
+    "page_lines": 1469,
+    "failed_saved_reads": 0,
+    "literal_slice_and_page_identity": true,
+    "in_memory_reconstruction_exact": true,
+    "reviewer_metadata_allowlist_passed": true
+  },
+  "limitations": [
+    "Excerpt length/granularity may hint at provenance.",
+    "Public questions and source identities may be recognizable.",
+    "Extraction geometry and financial sufficiency were not assessed.",
+    "Full page availability does not earn delivered-evidence credit.",
+    "Workflow blinding is not filesystem security isolation."
+  ]
+}

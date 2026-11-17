@@ -1,0 +1,114 @@
+{
+  "basis": "Independent read-only reviewer derived all expectations from original HTML and pinned official transform functions without inspecting runtime outputs; numeric Python class intentionally not inferred.",
+  "original_sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0",
+  "facts": [
+    {
+      "id": "F_ad827eae-b174-4257-8646-3dd51ef498d5",
+      "concept": "{http://xbrl.sec.gov/dei/2025}DocumentQuarterlyReport",
+      "source_text": "☒",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}boolballotbox",
+      "expected_value": "True",
+      "expected_kind": "boolean",
+      "continued_at": null
+    },
+    {
+      "id": "F_9e156374-be15-4012-917d-c2b8b1e5eaa3",
+      "concept": "{http://xbrl.sec.gov/dei/2025}DocumentTransitionReport",
+      "source_text": "☐",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}boolballotbox",
+      "expected_value": "False",
+      "expected_kind": "boolean",
+      "continued_at": null
+    },
+    {
+      "id": "F_6125bbdd-cbf6-4865-9a67-994081842efe",
+      "concept": "{http://xbrl.sec.gov/dei/2025}EntityIncorporationStateCountryCode",
+      "source_text": "Virginia",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}stateprovnameen",
+      "expected_value": "VA",
+      "expected_kind": "string",
+      "continued_at": null
+    },
+    {
+      "id": "F_8a408e5d-ee02-402f-8afd-190f9cc6345e",
+      "concept": "{http://xbrl.sec.gov/dei/2025}EntityAddressStateOrProvince",
+      "source_text": "North Carolina",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}stateprovnameen",
+      "expected_value": "NC",
+      "expected_kind": "string",
+      "continued_at": null
+    },
+    {
+      "id": "F_64951bff-e06e-4c33-870d-1db38fece104",
+      "concept": "{http://xbrl.sec.gov/dei/2025}SecurityExchangeName",
+      "source_text": "The Nasdaq Stock Market LLC",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}exchnameen",
+      "expected_value": "NASDAQ",
+      "expected_kind": "string",
+      "continued_at": null
+    },
+    {
+      "id": "F_978fe09c-28ec-4780-a154-7bd61f0a787a",
+      "concept": "{http://xbrl.sec.gov/dei/2025}EntityFilerCategory",
+      "source_text": "Large accelerated filer",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}entityfilercategoryen",
+      "expected_value": "Large Accelerated Filer",
+      "expected_kind": "string",
+      "continued_at": null
+    },
+    {
+      "id": "F_fbf3c856-e886-41af-a962-e097cac95c36",
+      "concept": "{http://xbrl.sec.gov/dei/2025}EntitySmallBusiness",
+      "source_text": "☐",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}boolballotbox",
+      "expected_value": "False",
+      "expected_kind": "boolean",
+      "continued_at": null
+    },
+    {
+      "id": "F_1e485a83-cb84-40b9-b17f-b65a106e48c2",
+      "concept": "{http://xbrl.sec.gov/dei/2025}EntityEmergingGrowthCompany",
+      "source_text": "☐",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}boolballotbox",
+      "expected_value": "False",
+      "expected_kind": "boolean",
+      "continued_at": null
+    },
+    {
+      "id": "F_72cf521e-5f66-4ad0-86ba-60110438c251",
+      "concept": "{http://fasb.org/us-gaap/2025}NumberOfOperatingSegments",
+      "source_text": "one",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}numwordsen",
+      "expected_value": "1",
+      "expected_kind": "integer-valued numeric",
+      "continued_at": null
+    },
+    {
+      "id": "F_7d1b4054-15e7-4f4b-8a23-67aa2d9095ab",
+      "concept": "{http://fasb.org/us-gaap/2025}NumberOfReportableSegments",
+      "source_text": "one",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}numwordsen",
+      "expected_value": "1",
+      "expected_kind": "integer-valued numeric",
+      "continued_at": null
+    },
+    {
+      "id": "F_99c15f29-8112-43fa-9d88-af4ec88296a0",
+      "concept": "{http://fasb.org/us-gaap/2025}NumberOfOperatingSegments",
+      "source_text": "one",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}numwordsen",
+      "expected_value": "1",
+      "expected_kind": "integer-valued numeric",
+      "continued_at": null
+    },
+    {
+      "id": "F_0950315d-b15f-4f60-949b-638175e1317a",
+      "concept": "{http://fasb.org/us-gaap/2025}NumberOfReportableSegments",
+      "source_text": "one",
+      "format": "{http://www.sec.gov/inlineXBRL/transformation/2015-08-31}numwordsen",
+      "expected_value": "1",
+      "expected_kind": "integer-valued numeric",
+      "continued_at": null
+    }
+  ]
+}

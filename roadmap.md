@@ -1,9 +1,10 @@
 # Finance agent roadmap
 
-Module roadmap · updated 2026-11-07
+Module roadmap · updated 2026-11-16
 
 The immediate workflow is company research through search/read tooling and an
-independent evaluation runner. Workbook-aware research and Excel integration follow.
+independent evaluation runner. Finance accuracy benchmarks are the next planning
+priority; workbook-aware research and Excel integration remain later work.
 Read [spec.md](spec.md) for requirements and [context.md](context.md) for verification.
 
 ## Current milestone — company-context tooling and evaluation
@@ -100,6 +101,19 @@ sponsor's 5–7-tool target. Exact tool grouping remains a design decision.
 **State** — Frozen full-document retrieval diagnostics, per-answer pre-grading,
 and explicit paid development batch execution exist. Semantic review and broader
 independent evaluation remain necessary.
+
+Selected on 2026-11-16: follow the [finance accuracy benchmark plan](eval/benchmark-plan.md).
+Implement FinEval, FinQA, FinanceBench, and custom prov tasks first; add TAT-QA and
+ConvFinQA next. Finance Agent Benchmark is a later challenge. Excel benchmarking
+is excluded from this milestone. Core adapters, pinned acquisition, offline scoring, and tool-free execution are
+implemented. A ten-task development pilot is measured; full coverage and the
+table/conversation suite remain pending. See [the current workflow](eval/external-benchmarks.md).
+
+1. Pin dataset versions/licenses and split manifests; verify gold-data isolation.
+2. Implement portable scorers and validate against correct/incorrect fixtures.
+3. Run a budgeted core development pilot with separate model/evidence/agent conditions.
+4. Expand table/conversation coverage and calibrate semantic grading with human review.
+5. Freeze a final protocol before untouched evaluation; preserve original holdout rules.
 
 - Consume existing result/trace artifacts before requesting runtime changes.
 - Add repeatable dev runs and aggregate results with explicit denominators.

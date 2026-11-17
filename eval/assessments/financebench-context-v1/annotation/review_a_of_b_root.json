@@ -1,0 +1,383 @@
+{
+  "version": "financebench-context-independent-packet-review-v1",
+  "reviewer": "benchmark_research / primary_a reviewing primary_b and primary_root",
+  "review_scope": "Source-location packet review only; not independent human financial validation.",
+  "outcome_blind": true,
+  "scope": {
+    "task_ids": [
+      "financebench_id_00215",
+      "financebench_id_00711",
+      "financebench_id_01865",
+      "financebench_id_03473"
+    ],
+    "physical_pages": {
+      "VERIZON_2022_10K": [
+        23,
+        56
+      ],
+      "COCACOLA_2017_10K": [
+        74,
+        76
+      ],
+      "3M_2022_10K": [
+        25
+      ],
+      "JOHNSON_JOHNSON_2022_10K": [
+        46,
+        47
+      ]
+    },
+    "adjacent_pages_inspected": [],
+    "question_reference_fields_inspected": [
+      "question",
+      "reference.answer",
+      "reference.justification"
+    ],
+    "reference_full_page_blobs_displayed": false,
+    "retrieval_context_results_computed_or_accessed": false,
+    "new_network_model_or_search_calls": false,
+    "prior_project_policy_context_known": true,
+    "new_files_authorized": [
+      "runs/financebench-context-v1-annotation/review_a_of_b_root.json"
+    ]
+  },
+  "input_hashes": {
+    "preparation_plan": "361f80ce6cf1074e90b2469c016d12e1eb2d95d23762b7685713f1a61f20c851",
+    "prepared_tasks": "2b05a8d6bbeeaaa807e8ea1437d81b84ca70bb94d84ac563b73c9c9b8ff52a09",
+    "corpus_sources": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4",
+    "primary_b/cases.json": "39dbb870c9856c384fe32fae2fd99088a5d3b1d09819158b8bbe3f4558ea4560",
+    "primary_b/notes.json": "eeb7b39d4545070b8b5b60fb1897becd6ddd4053d797aa9bfebbf0111126f98a",
+    "primary_root/cases.json": "4a4e461dba604f30efb441ff9ee6011441eb120ad6989f53f14819fe2ebdc4f0",
+    "primary_root/notes.json": "d4fcd379c0c5f6b1de95d36d74783ef32227186896e7caa98439a212d4e350df"
+  },
+  "source_render_bindings": [
+    {
+      "source_id": "VERIZON_2022_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/VERIZON_2022_10K/originals/VERIZON_2022_10K.pdf",
+      "original_sha256": "403d7346e8a059472863d1789527f16e5127a61c2f6c4429012e6227f27576d7",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/VERIZON_2022_10K/VERIZON_2022_10K.txt",
+      "text_sha256": "4353c2de4f08e362f256df5b37cbd98c39ded394eb2b41d485cc5ed09cd311f9",
+      "renders": [
+        {
+          "physical_page": 23,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/VERIZON_2022_10K-physical-23.png",
+          "sha256": "fd30535b68bf5d9587f55c63c411c3eb31cdc2e00791855952c3d9de16f959bb",
+          "full_page_visually_inspected": true
+        },
+        {
+          "physical_page": 56,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/VERIZON_2022_10K-physical-56.png",
+          "sha256": "826504add17874a4dcf239ae9f6268910f8ee3f69f4a30a80e58bba4f37fceab",
+          "full_page_visually_inspected": true
+        }
+      ]
+    },
+    {
+      "source_id": "COCACOLA_2017_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COCACOLA_2017_10K/originals/COCACOLA_2017_10K.pdf",
+      "original_sha256": "b57c75cf20916904f31c6aa7644d6c110f019adf7c76782c7d0ede7b95c65ac1",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/COCACOLA_2017_10K/COCACOLA_2017_10K.txt",
+      "text_sha256": "78bd6ffb9cd043b54d25bf5dd8062c7614d1bc4bb0a13a10a638c67b64b183d5",
+      "renders": [
+        {
+          "physical_page": 74,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/COCACOLA_2017_10K-physical-74.png",
+          "sha256": "13431ddce7310e228c2838124f0da197cb7881a918e294ac67dcac26e5fb5587",
+          "full_page_visually_inspected": true
+        },
+        {
+          "physical_page": 76,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_b/COCACOLA_2017_10K-physical-76.png",
+          "sha256": "ae8e80aca00ff257913e5d1d3a92057f0983139ca5ea061f43605b4ad3d75066",
+          "full_page_visually_inspected": true
+        }
+      ]
+    },
+    {
+      "source_id": "3M_2022_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/3M_2022_10K/originals/3M_2022_10K.pdf",
+      "original_sha256": "d5cf549543a24b04228fd2af979ff2ca94cf64fb008a789340cb9117fbcfde5d",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/3M_2022_10K/3M_2022_10K.txt",
+      "text_sha256": "1bf21b6df7f23f2031f41fdfd4349c1f22c0811585e5eafb72530d03f720c7c6",
+      "renders": [
+        {
+          "physical_page": 25,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_root/3M_2022_10K-p25.png",
+          "sha256": "6f0f42a2a44dba3fecb4d65e8877cf353becaf05348093e060f0b2725ec6f097",
+          "full_page_visually_inspected": true
+        }
+      ]
+    },
+    {
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "original_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/JOHNSON_JOHNSON_2022_10K/originals/JOHNSON_JOHNSON_2022_10K.pdf",
+      "original_sha256": "dba7d6cc97734abd6dcbc1a6a34f82b5d228e60d0a1a32425a90404fd4d3e290",
+      "text_path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-preparation/corpus/parts/JOHNSON_JOHNSON_2022_10K/JOHNSON_JOHNSON_2022_10K.txt",
+      "text_sha256": "78f1f5a613bd576d84b468593efc6d7df8bd16cd64103bcc85bad4b058673e76",
+      "renders": [
+        {
+          "physical_page": 46,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_root/JOHNSON_JOHNSON_2022_10K-p46.png",
+          "sha256": "5f4a8c60a20b94e0fe9704b49e9976025d9cda2b1e32c21875ec9d4eec605da0",
+          "full_page_visually_inspected": true
+        },
+        {
+          "physical_page": 47,
+          "path": "/Users/kevinpei/provenanceXL/runs/financebench-context-v1-annotation/primary_root/JOHNSON_JOHNSON_2022_10K-p47.png",
+          "sha256": "93023bdf48ab1f41d0e0e5b5bb440da2c9522b5550631baae513da690ad7aeec",
+          "full_page_visually_inspected": true
+        }
+      ]
+    }
+  ],
+  "mechanical_checks": {
+    "exact_nonempty_one_based_spans": true,
+    "all_spans_within_assigned_pages": true,
+    "every_alternative_has_all_required_roles": true,
+    "original_and_native_text_hashes_match": true,
+    "all_seven_render_hashes_match": true,
+    "primary_b_slice_hashes_match": true,
+    "new_source_extraction_or_rendering_performed": false
+  },
+  "cases": [
+    {
+      "decision": "accept",
+      "acceptance_scope": "Exact source-location packet and minimal role coverage; semantic answer validity is not granted.",
+      "required_fixes": [],
+      "source_line_changes_required": false,
+      "original_answer_unchanged": true,
+      "id": "financebench_id_00215",
+      "source_id": "VERIZON_2022_10K",
+      "annotator": "primary_b",
+      "complete_alternatives": 1,
+      "role_assessment": "Five roles provide consolidated entity/scope, 2022 closing date and millions scale, total assets, annual revenue period/scale and consolidated revenue. No irrelevant balance-sheet components or capex requirement is needed for the reference assets/revenue convention.",
+      "exact_spans_confirmed": [
+        [
+          2532,
+          2533
+        ],
+        [
+          2534,
+          2535
+        ],
+        [
+          2554,
+          2554
+        ],
+        [
+          1032,
+          1032
+        ],
+        [
+          1034,
+          1034
+        ],
+        [
+          1040,
+          1040
+        ]
+      ],
+      "visual_alignment": "Physical page 56 confirms 2022 assets 379,680 versus 366,596; page 23 confirms 2022 consolidated operating revenue 136,835 versus 133,613. Native page-23 lines interleave revenue table and unrelated narrative but preserve target labels, columns and units; whole-line collateral prose is unavoidable without changing extraction.",
+      "arithmetic_check": {
+        "expression": "379680 / 136835",
+        "value": 2.7747286878357147
+      },
+      "reference_status": "Calculation convention and qualitative capital-intensive threshold remain underspecified. No numerical contradiction found under closing-assets/annual-revenue convention.",
+      "interpretation_limits": [
+        "A ratio near 2.774729 is a computed reference convention, not a source-printed capital-intensity threshold.",
+        "Alternative substantive arguments for capital intensity are not exhaustively represented.",
+        "Inspected units say dollars; an explicit ISO-USD declaration is not established here, and the ratio cancels common currency units."
+      ],
+      "selected_task_canonical_sha256": "d7c1f6333d698be7fae1d1a75c8fb0fc8cbfd3e0d3e51ae75cd9f1a97f74b43b"
+    },
+    {
+      "decision": "accept",
+      "acceptance_scope": "Exact source-location packet and minimal role coverage; semantic answer validity is not granted.",
+      "required_fixes": [],
+      "source_line_changes_required": false,
+      "original_answer_unchanged": true,
+      "id": "financebench_id_03473",
+      "source_id": "COCACOLA_2017_10K",
+      "annotator": "primary_b",
+      "complete_alternatives": 2,
+      "role_assessment": "Both alternatives independently include income entity/scope, annual period/millions, a fully labeled numerator, balance-sheet entity/scope, both closing asset dates/millions, and both total-asset values. First numerator requires BOTH 2822 and 2823 because the label wraps. Consolidated numerator is separately complete on 2820.",
+      "exact_spans_confirmed": [
+        [
+          2802,
+          2803
+        ],
+        [
+          2804,
+          2805
+        ],
+        [
+          2822,
+          2823
+        ],
+        [
+          2820,
+          2820
+        ],
+        [
+          2858,
+          2859
+        ],
+        [
+          2860,
+          2861
+        ],
+        [
+          2882,
+          2882
+        ]
+      ],
+      "visual_alignment": "Physical page 74 (printed 72) distinguishes consolidated net income 1,283, noncontrolling interests 35 and shareowner income 1,248. Page 76 (printed 74) shows 2017/2016 assets 87,896 and 87,270. Labels, signs, scale and columns agree with native spans.",
+      "arithmetic_check": {
+        "average_assets": 87583.0,
+        "shareowner_ratio": 0.014249340625463845,
+        "consolidated_ratio": 0.014648961556466437,
+        "shareowner_decimal_rounded_2": 0.01,
+        "consolidated_decimal_rounded_2": 0.01
+      },
+      "reference_status": "Accept two explicitly different interpretation alternatives for the prompt unspecified net-income basis. Reference justification selects shareowner income; consolidated net income remains a plausible prompt reading. Convention ambiguity is unresolved.",
+      "interpretation_limits": [
+        "Numerators are not interchangeable metrics. The shared rounded answer 0.01 is NOT the reason the second packet is accepted; the distinct consolidated-net-income label and the prompt omission justify recording the alternative.",
+        "Report which complete alternative is covered if discussing results; do not infer that consolidated coverage validates the reference shareowner basis.",
+        "Do not mix partial alternatives. Both are unscaled decimal ratios; 1.42% and 1.46% are different display conventions.",
+        "Continuing-operations net income 1,182 is not added as a third alternative because the question does not request that restricted basis."
+      ],
+      "selected_task_canonical_sha256": "0c3031a33a74cbccd4dc46a4f1e0bdd42f6797eeeb86ae1395ed412b07bcc86b"
+    },
+    {
+      "decision": "accept",
+      "acceptance_scope": "Exact source-location packet and minimal role coverage; semantic answer validity is not granted.",
+      "required_fixes": [],
+      "source_line_changes_required": false,
+      "original_answer_unchanged": true,
+      "id": "financebench_id_01865",
+      "source_id": "3M_2022_10K",
+      "annotator": "primary_root",
+      "complete_alternatives": 1,
+      "role_assessment": "The packet contains table scope/comparison periods, complete growth-column labels, every segment comparison row and total-company row. These expose BOTH the organic comparison and the portfolio/currency distinction. Percentage signs occur in the first segment row and align with the table columns. No geographic or operating-income table is needed.",
+      "exact_spans_confirmed": [
+        [
+          896,
+          897
+        ],
+        [
+          910,
+          912
+        ],
+        [
+          913,
+          915
+        ],
+        [
+          916,
+          916
+        ],
+        [
+          917,
+          917
+        ]
+      ],
+      "visual_alignment": "Physical/printed page 25 clearly separates Organic sales, Acquisitions, Divestitures, Translation and Total sales change. Organic changes 1.0, 1.2, 3.2, -0.9 and company 1.2 agree with native parentheses and labels.",
+      "arithmetic_check": {
+        "organic_segment_percent": [
+          1.0,
+          1.2,
+          3.2,
+          -0.9
+        ],
+        "translation_segment_percent": [
+          -4.2,
+          -4.6,
+          -3.8,
+          -2.6
+        ],
+        "organic_plus_translation_percent": [
+          -3.2,
+          -3.4,
+          -0.6,
+          -3.5
+        ],
+        "basis": "Illustrative exclusion of acquisition/divestiture components from rounded disclosed growth decomposition; not a new validated segment-contribution measure."
+      },
+      "reference_status": "Question/reference interpretation remains unresolved. M&A-only exclusion does not imply currency exclusion. Consumer is uniquely negative under organic growth; all four segments are negative under the disclosed organic-plus-translation comparison.",
+      "interpretation_limits": [
+        "Do not report the reference -0.9% as the M&A-only-adjusted growth rate.",
+        "The question phrase dragged down does not unambiguously specify unique negative growth, worst rate, or weighted contribution. Consumer being most negative in one rate comparison does not independently establish the largest contribution to total-company decline.",
+        "The available packet is accepted as complete location evidence for discussing this ambiguity, not as validation of the original claim.",
+        "Company identity is inherited from the verified source document; the page itself supplies segment/statement scope. No hidden company-title line is invented."
+      ],
+      "selected_task_canonical_sha256": "5edf33936b37c513678135a45f7e3ddc3af296f0c683ea47e7d581f40b9bb84a"
+    },
+    {
+      "decision": "accept",
+      "acceptance_scope": "Exact source-location packet and minimal role coverage; semantic answer validity is not granted.",
+      "required_fixes": [],
+      "source_line_changes_required": false,
+      "original_answer_unchanged": true,
+      "id": "financebench_id_00711",
+      "source_id": "JOHNSON_JOHNSON_2022_10K",
+      "annotator": "primary_root",
+      "complete_alternatives": 1,
+      "role_assessment": "Six roles provide each statement identity, balance-sheet dates including fiscal labels, common millions scale, both inventory balances, earnings-year columns and cost of products sold. Inventories/products sold support use of this conventional monetary turnover calculation; no physical inventory-unit count is asserted.",
+      "exact_spans_confirmed": [
+        [
+          1716,
+          1717
+        ],
+        [
+          1718,
+          1720
+        ],
+        [
+          1726,
+          1726
+        ],
+        [
+          1763,
+          1764
+        ],
+        [
+          1765,
+          1766
+        ],
+        [
+          1768,
+          1768
+        ]
+      ],
+      "visual_alignment": "Physical pages 46/47 (printed 40/41) confirm fiscal columns 2022/2021, balance dates January 1 2023 / January 2 2022, inventories 12,483 / 10,387 and 2022 cost of products sold 31,089. Values, labels and units agree; 2023 calendar date is correctly treated as fiscal-2022 closing balance.",
+      "arithmetic_check": {
+        "average_inventory": 11435.0,
+        "turnover": 2.718758198513336,
+        "rounded_one_decimal": 2.7
+      },
+      "reference_status": "No source/reference numerical conflict found under stated COGS / mean opening-and-closing inventory convention.",
+      "interpretation_limits": [
+        "The calculation convention is external to the printed statement, documented in reference justification; do not invent a source-line formula requirement.",
+        "The approximation does not establish actual number of physical units sold or detailed intra-year inventory behavior.",
+        "Generic notes references are preserved in native operand/header lines but do not require opening additional pages for this bounded location annotation."
+      ],
+      "selected_task_canonical_sha256": "30080bdf79577224f187d74c3f144f1df1b68ec657d73d64dcf01e692d7d4e5f"
+    }
+  ],
+  "summary": {
+    "accepted_source_location_packets": 4,
+    "required_fixes": 0,
+    "reference_semantically_validated": 0,
+    "notes": "Accept all four as source-location annotations with the recorded unresolved reference/convention caveats. No original reference change."
+  },
+  "rendering_notes": [
+    "Reused seven original full-page renders and verified recorded hashes; no new render files written.",
+    "Primary_b renders use 150 dpi. Primary_root renders use scale-to 2000; frozen preparation-plan specifies complete-page visual inspection, not a fixed resolution. Relevant headers and operands were legible."
+  ],
+  "limitations": [
+    "No human finance adjudication.",
+    "No cohort retrieval/search/read-retention outcomes were accessed or computed.",
+    "Only the four assigned question/reference answer/justification fields and seven assigned source pages were inspected.",
+    "Acceptance does not remove recorded reference ambiguity or authorize changing benchmark answers."
+  ]
+}

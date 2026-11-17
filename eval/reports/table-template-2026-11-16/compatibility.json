@@ -1,0 +1,31 @@
+{
+  "version": "table-template-compatibility-v1",
+  "baseline_revision": "72d1fbaf0a6a27d0ac60d31d81ec5aa6cafcf73c",
+  "comparison": "Exact parsed sidecar equality with baseline module; default and explicit v2 remain available. No v3 assessment or financial task execution.",
+  "documents": [
+    {
+      "path": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-filing.html",
+      "original_sha256": "a5152b82107a7a4c578a80931e1d00f5564cc7f2373ffbc77274f1ae1004361f",
+      "v2_canonical_sidecar_sha256": "d9b3be0d3ff8b165dc284431f656970f5991fce58e96babc732f0ef8fec24d0f",
+      "v2_exact_replay": true
+    },
+    {
+      "path": "data/cloudflare-2024-q3/originals/cloudflare-q3-2024-release.html",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "v2_canonical_sidecar_sha256": "bb4d6acb40c49d01652a43f2123f2fa2cead117b581ae4a1bf3739e5214189c0",
+      "v2_exact_replay": true
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/old-dominion-2025-06-30-10q.html",
+      "original_sha256": "7ba28f8a0327378bb816e536b8f7861c233e394f9a041cce8e1d3101374c77b0",
+      "v2_canonical_sidecar_sha256": "dc09b556c16f71a949fd04998acb619b25ac6e40c67f8f4fd5ba6f550109dcd3",
+      "v2_exact_replay": true
+    },
+    {
+      "path": "runs/native-html-v1-issuer-acquisition/old-dominion-2025-09-30-10q.html",
+      "original_sha256": "36189b5d8096fc1112d380c6ace04ef205c5ce79c14c42bf0ae302d23ca9a3ee",
+      "v2_canonical_sidecar_sha256": "2f16331bbd245fc3486b5a70999b96ae96195fdb4d56bfa1c2483533d9cf5284",
+      "v2_exact_replay": true
+    }
+  ]
+}

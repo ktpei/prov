@@ -1,0 +1,752 @@
+{
+  "version": "table-runtime-probe-v1",
+  "protocol_sha256": "0a39518891964fdede4f3529930a2ff81fa283dc356820bfd7bf1adf4a66fe75",
+  "fixture_file_sha256": "c702abc92e0b72d101da1814ccd2b0bfc2b683844d114535ae21b782238b65fc",
+  "git_revision": "e7c3e94e0eab9c0641fc2a73fe40fe6a4ffb8714",
+  "working_tree_dirty": false,
+  "model_calls": 0,
+  "raw_report_sha256": "5d3485d01fcaf25e4c8b322fe038b9100c717f11c7de7e37dc926e121b6675e6",
+  "conditions": {
+    "window_oracle": {
+      "task_denominator": 4,
+      "required_context_present_count": 4,
+      "association_correctness": "not_measured",
+      "typed_answer_correctness": "not_measured",
+      "agent_selection_quality": "not_measured",
+      "tasks": [
+        {
+          "id": "fresh-03",
+          "expected_table_present_at_k": null,
+          "grading": {
+            "fixture_id": "fresh-03",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_duration": true,
+              "period_year": true,
+              "section": true,
+              "metric": true,
+              "value_sign": true
+            },
+            "required_context_present": true,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 3087
+          },
+          "calls": [
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-8",
+                "row_indices": [
+                  31
+                ]
+              },
+              "response_characters": 3087,
+              "response_utf8_bytes": 3087,
+              "response_sha256": "9b1b851ed2413ac00f6761e707dd3c6a1316e9f3dc5a0f2b9812b9a01f9b5622",
+              "latency_seconds": 0.00027941702865064144,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        },
+        {
+          "id": "fresh-01",
+          "expected_table_present_at_k": null,
+          "grading": {
+            "fixture_id": "fresh-01",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_duration": true,
+              "period_year": true,
+              "gaap_metric": true,
+              "gaap_value": true,
+              "non_gaap_metric": true,
+              "non_gaap_value": true
+            },
+            "required_context_present": true,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 9668
+          },
+          "calls": [
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-9",
+                "row_indices": [
+                  23,
+                  25
+                ]
+              },
+              "response_characters": 9668,
+              "response_utf8_bytes": 9668,
+              "response_sha256": "cc3e4165b82410e442434de2f1c6c459132f561c236e29ff231ef12587e54d25",
+              "latency_seconds": 0.00046200002543628216,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        },
+        {
+          "id": "fresh-02",
+          "expected_table_present_at_k": null,
+          "grading": {
+            "fixture_id": "fresh-02",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_instant": true,
+              "assets_metric": true,
+              "assets_value": true,
+              "liabilities_metric": true,
+              "liabilities_value": true
+            },
+            "required_context_present": true,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 4312
+          },
+          "calls": [
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-7",
+                "row_indices": [
+                  12,
+                  28
+                ]
+              },
+              "response_characters": 4312,
+              "response_utf8_bytes": 4312,
+              "response_sha256": "6d34ee45cd1ec62097f752b7365fbaf18176894551c8af3f371ec201b17ce820",
+              "latency_seconds": 0.0001724578905850649,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        },
+        {
+          "id": "per-share-scale",
+          "expected_table_present_at_k": null,
+          "grading": {
+            "fixture_id": "per-share-scale",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_duration": true,
+              "period_year": true,
+              "metric": true,
+              "value_sign": true,
+              "currency_symbol": true
+            },
+            "required_context_present": true,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 5073
+          },
+          "calls": [
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-10",
+                "row_indices": [
+                  28
+                ]
+              },
+              "response_characters": 5073,
+              "response_utf8_bytes": 5073,
+              "response_sha256": "68ddf0078df7b0c864fb23a5a544d4558467c4b71205c7dbbe1a79428030f2a5",
+              "latency_seconds": 0.00019958289340138435,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        }
+      ]
+    },
+    "question_search_top1": {
+      "task_denominator": 4,
+      "required_context_present_count": 1,
+      "association_correctness": "not_measured",
+      "typed_answer_correctness": "not_measured",
+      "agent_selection_quality": "not_measured",
+      "tasks": [
+        {
+          "id": "fresh-03",
+          "expected_table_present_at_k": {
+            "1": false,
+            "3": true,
+            "5": true
+          },
+          "grading": {
+            "fixture_id": "fresh-03",
+            "status": "scored_raw_context",
+            "identity_valid": false,
+            "within_size_limit": true,
+            "cell_provenance_valid": false,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": false,
+              "period_duration": false,
+              "period_year": false,
+              "section": false,
+              "metric": false,
+              "value_sign": false
+            },
+            "required_context_present": false,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 9701
+          },
+          "calls": [
+            {
+              "tool": "search_tables",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "query": "According to the cash-flow statement in Cloudflare's Q3 2024 earnings release, how much cash was spent on purchases of property and equipment during the nine months ended September 30, 2024? Give the positive cash-outflow magnitude in USD millions to three decimal places, and cite the period and unit headers."
+              },
+              "response_characters": 5020,
+              "response_utf8_bytes": 5056,
+              "response_sha256": "ca4461aa63133b448630f90be8ca79f22fec003d1d3f370346c0bd8f463e3c62",
+              "latency_seconds": 0.0029648339841514826,
+              "error": null,
+              "search_candidates": [
+                {
+                  "table_id": "table-12",
+                  "matched_row_indices": [
+                    3,
+                    13,
+                    7,
+                    5,
+                    1,
+                    15,
+                    9,
+                    4
+                  ],
+                  "score": 57.0192
+                },
+                {
+                  "table_id": "table-8",
+                  "matched_row_indices": [
+                    3,
+                    31,
+                    50,
+                    51,
+                    1,
+                    49,
+                    7,
+                    18
+                  ],
+                  "score": 51.2404
+                },
+                {
+                  "table_id": "table-10",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    9,
+                    4,
+                    12,
+                    10,
+                    11,
+                    24
+                  ],
+                  "score": 43.0214
+                },
+                {
+                  "table_id": "table-9",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    31,
+                    5,
+                    10,
+                    17,
+                    28
+                  ],
+                  "score": 42.5367
+                },
+                {
+                  "table_id": "table-1",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    17,
+                    24,
+                    23,
+                    13,
+                    10
+                  ],
+                  "score": 40.9102
+                }
+              ]
+            },
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-12",
+                "row_indices": [
+                  3,
+                  13,
+                  7
+                ]
+              },
+              "response_characters": 9701,
+              "response_utf8_bytes": 9701,
+              "response_sha256": "515fd964d5865b41194fb272e3965613acf79c5d62061a3ea300e5859d2769a4",
+              "latency_seconds": 0.00025420798920094967,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        },
+        {
+          "id": "fresh-01",
+          "expected_table_present_at_k": {
+            "1": true,
+            "3": true,
+            "5": true
+          },
+          "grading": {
+            "fixture_id": "fresh-01",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_duration": true,
+              "period_year": true,
+              "gaap_metric": false,
+              "gaap_value": false,
+              "non_gaap_metric": true,
+              "non_gaap_value": true
+            },
+            "required_context_present": false,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 6107
+          },
+          "calls": [
+            {
+              "tool": "search_tables",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "query": "Using Cloudflare's Q3 2024 earnings release, report GAAP and non-GAAP research and development expenses for the three months ended September 30, 2024, in USD millions to three decimal places. Cite the reconciliation and its period and unit headers."
+              },
+              "response_characters": 5125,
+              "response_utf8_bytes": 5137,
+              "response_sha256": "b51104364607f4bf262c051677e36ac08e2895701fd2ba676146e547b4bc4fae",
+              "latency_seconds": 0.0017967920284718275,
+              "error": null,
+              "search_candidates": [
+                {
+                  "table_id": "table-9",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    25,
+                    23,
+                    17,
+                    4,
+                    22,
+                    29
+                  ],
+                  "score": 51.8059
+                },
+                {
+                  "table_id": "table-10",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    13,
+                    16,
+                    42,
+                    33,
+                    4,
+                    21
+                  ],
+                  "score": 46.9984
+                },
+                {
+                  "table_id": "table-12",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    10,
+                    11,
+                    13,
+                    7
+                  ],
+                  "score": 44.983
+                },
+                {
+                  "table_id": "table-1",
+                  "matched_row_indices": [
+                    3,
+                    10,
+                    4,
+                    1,
+                    8,
+                    24,
+                    23,
+                    14
+                  ],
+                  "score": 39.8671
+                },
+                {
+                  "table_id": "table-8",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    50,
+                    51,
+                    45,
+                    4,
+                    22,
+                    25
+                  ],
+                  "score": 30.1969
+                }
+              ]
+            },
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-9",
+                "row_indices": [
+                  3,
+                  1,
+                  25
+                ]
+              },
+              "response_characters": 6107,
+              "response_utf8_bytes": 6107,
+              "response_sha256": "74968bfe47de97bf2ad488a47b40e5d9ff9d7628c2987cf31c89ef98d73bcb7e",
+              "latency_seconds": 0.00015070801600813866,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        },
+        {
+          "id": "fresh-02",
+          "expected_table_present_at_k": {
+            "1": true,
+            "3": true,
+            "5": true
+          },
+          "grading": {
+            "fixture_id": "fresh-02",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_instant": true,
+              "assets_metric": false,
+              "assets_value": false,
+              "liabilities_metric": true,
+              "liabilities_value": true
+            },
+            "required_context_present": false,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 4894
+          },
+          "calls": [
+            {
+              "tool": "search_tables",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "query": "Using the balance sheet in Cloudflare's Q3 2024 earnings release, what were total current assets, total current liabilities, and their difference (current assets minus current liabilities) as of September 30, 2024? Report all three in USD millions to three decimal places and cite the date and unit headers."
+              },
+              "response_characters": 5516,
+              "response_utf8_bytes": 5518,
+              "response_sha256": "e60d52db05540d04f90af38f7ee8946eb837c845d6e5f2d007785e73cb602b68",
+              "latency_seconds": 0.001939541893079877,
+              "error": null,
+              "search_candidates": [
+                {
+                  "table_id": "table-7",
+                  "matched_row_indices": [
+                    36,
+                    35,
+                    28,
+                    3,
+                    22,
+                    1,
+                    5,
+                    12
+                  ],
+                  "score": 36.6383
+                },
+                {
+                  "table_id": "table-8",
+                  "matched_row_indices": [
+                    18,
+                    25,
+                    22,
+                    3,
+                    1,
+                    43,
+                    4,
+                    42
+                  ],
+                  "score": 29.4468
+                },
+                {
+                  "table_id": "table-9",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    20,
+                    8,
+                    13,
+                    33,
+                    31
+                  ],
+                  "score": 27.996
+                },
+                {
+                  "table_id": "table-10",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    41,
+                    20,
+                    32,
+                    42,
+                    17
+                  ],
+                  "score": 27.996
+                },
+                {
+                  "table_id": "table-12",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    13,
+                    7,
+                    10,
+                    11,
+                    14
+                  ],
+                  "score": 27.996
+                }
+              ]
+            },
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-7",
+                "row_indices": [
+                  36,
+                  35,
+                  28
+                ]
+              },
+              "response_characters": 4894,
+              "response_utf8_bytes": 4896,
+              "response_sha256": "20974d1c40bae5410616b1e75c83ba0cd9d9bedb09ee1212d40d2f420bced937",
+              "latency_seconds": 0.00012700003571808338,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        },
+        {
+          "id": "per-share-scale",
+          "expected_table_present_at_k": {
+            "1": true,
+            "3": true,
+            "5": true
+          },
+          "grading": {
+            "fixture_id": "per-share-scale",
+            "status": "scored_raw_context",
+            "identity_valid": true,
+            "within_size_limit": true,
+            "cell_provenance_valid": true,
+            "caption_provenance_valid": true,
+            "manifest_identity_valid": true,
+            "required_cell_presence": {
+              "table_title_scale": true,
+              "period_duration": true,
+              "period_year": true,
+              "metric": true,
+              "value_sign": true,
+              "currency_symbol": true
+            },
+            "required_context_present": true,
+            "association_correctness": "not_measured",
+            "typed_answer_correctness": "not_measured",
+            "agent_selection_quality": "not_measured",
+            "execution_provenance": "Actual tool execution or replay must be established separately.",
+            "response_characters": 7131
+          },
+          "calls": [
+            {
+              "tool": "search_tables",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "query": "Using Cloudflare's Q3 2024 earnings release, what was GAAP net loss per share, basic, for the three months ended September 30, 2024? Cite the period and unit exception, and preserve the loss sign."
+              },
+              "response_characters": 5509,
+              "response_utf8_bytes": 5515,
+              "response_sha256": "4433261982aaabdf62cf6b35638f79fdc97736974d8b55b49e98737aa629554d",
+              "latency_seconds": 0.0016015421133488417,
+              "error": null,
+              "search_candidates": [
+                {
+                  "table_id": "table-10",
+                  "matched_row_indices": [
+                    3,
+                    28,
+                    17,
+                    30,
+                    41,
+                    1,
+                    39,
+                    42
+                  ],
+                  "score": 53.3954
+                },
+                {
+                  "table_id": "table-1",
+                  "matched_row_indices": [
+                    3,
+                    23,
+                    24,
+                    1,
+                    4,
+                    13,
+                    22,
+                    17
+                  ],
+                  "score": 47.2332
+                },
+                {
+                  "table_id": "table-9",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    31,
+                    4,
+                    18,
+                    23,
+                    26,
+                    22
+                  ],
+                  "score": 42.0464
+                },
+                {
+                  "table_id": "table-12",
+                  "matched_row_indices": [
+                    3,
+                    1,
+                    4,
+                    12,
+                    6,
+                    10,
+                    11,
+                    13
+                  ],
+                  "score": 40.5197
+                },
+                {
+                  "table_id": "table-8",
+                  "matched_row_indices": [
+                    3,
+                    6,
+                    13,
+                    50,
+                    51,
+                    45,
+                    4,
+                    7
+                  ],
+                  "score": 30.0913
+                }
+              ]
+            },
+            {
+              "tool": "read_table",
+              "arguments": {
+                "source_id": "cloudflare-q3-2024-release",
+                "table_id": "table-10",
+                "row_indices": [
+                  3,
+                  28,
+                  17
+                ]
+              },
+              "response_characters": 7131,
+              "response_utf8_bytes": 7131,
+              "response_sha256": "caa3aedfc4b8e5adb990f48a44625b378801af7429d68569018d2c6a37bc0357",
+              "latency_seconds": 0.00017150002531707287,
+              "error": null,
+              "search_candidates": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

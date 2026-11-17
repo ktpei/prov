@@ -1,0 +1,2031 @@
+{
+  "stage": "masked_evidence_review",
+  "case_id": "Q03",
+  "question": "Using only the information within the balance sheet, how much total assets did Costco have at the end of FY2021? Answer in USD millions.",
+  "source": {
+    "id": "COSTCO_2021_10K",
+    "title": "COSTCO_2021_10K",
+    "company": "Costco",
+    "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0000909832/534964a5-44c9-47b3-b3c0-7620830fad6c.pdf",
+    "sha256": "85aab77c4243b28c7bb709ea3929fe5836e8969807ea8a6df49bf620153da2f2",
+    "original_sha256": "29e05b3862cf6ffa6cfda34ac82a9fa0fe76b67338c5924da3325c2ee3b08748"
+  },
+  "interpretations": [
+    {
+      "id": "I01",
+      "description": "Read consolidated Costco FY2021 closing total assets solely from the balance sheet and express the reported balance in USD millions.",
+      "assumptions": [
+        "Costco means Costco Wholesale Corporation at consolidated company level.",
+        "End of FY2021 means the company fiscal closing date."
+      ],
+      "unresolved_ambiguities": [
+        "No rounding precision is specified; preserving reported precision after conversion is an output choice."
+      ],
+      "required_facts": [
+        {
+          "id": "R01",
+          "description": "The balance-sheet entity and column/date identifying the FY2021 fiscal closing balance.",
+          "basis": "wording",
+          "rationale": "This selects the requested company and endpoint."
+        },
+        {
+          "id": "R02",
+          "description": "Total assets in that FY2021 closing column.",
+          "basis": "wording",
+          "rationale": "This is the expressly requested balance."
+        },
+        {
+          "id": "R03",
+          "description": "Balance-sheet currency, unit scale and, only if conversion is necessary, a sufficient conversion basis within the balance sheet.",
+          "basis": "wording",
+          "rationale": "These permit USD-million reporting while respecting the exclusive source restriction; outside conversion evidence is not allowed."
+        }
+      ]
+    }
+  ],
+  "excerpts": [
+    {
+      "evidence_id": "E001",
+      "start_line": 1186,
+      "end_line": 1187,
+      "lines": [
+        {
+          "line": 1186,
+          "page": 38,
+          "text": "                                                              COSTCO WHOLESALE CORPORATION"
+        },
+        {
+          "line": 1187,
+          "page": 38,
+          "text": "                                                                CONSOLIDATED BALANCE SHEETS"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E002",
+      "start_line": 1189,
+      "end_line": 1189,
+      "lines": [
+        {
+          "line": 1189,
+          "page": 38,
+          "text": "                                                                                                                       August 29,2021                    August 30,2020"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E003",
+      "start_line": 1460,
+      "end_line": 1491,
+      "lines": [
+        {
+          "line": 1460,
+          "page": 45,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1461,
+          "page": 45,
+          "text": "Some leases include free-rent periods and step-rent provisions, which are recognized on a straight-line basis over the original term of the lease"
+        },
+        {
+          "line": 1462,
+          "page": 45,
+          "text": "and any extension options that the Company is reasonably certain to exercise from the date the Company has control of the property. Certain"
+        },
+        {
+          "line": 1463,
+          "page": 45,
+          "text": "leases provide for periodic rent increases based on price indices or the greater of minimum guaranteed amounts or sales volume. Our leases do"
+        },
+        {
+          "line": 1464,
+          "page": 45,
+          "text": "not contain any material residual value guarantees or material restrictive covenants."
+        },
+        {
+          "line": 1465,
+          "page": 45,
+          "text": "The Company determines at inception whether a contract is or contains a lease. The Company initially records right-of-use (ROU) assets and"
+        },
+        {
+          "line": 1466,
+          "page": 45,
+          "text": "lease obligations for its finance and operating leases based on the discounted future minimum lease payments over the term. The lease term is"
+        },
+        {
+          "line": 1467,
+          "page": 45,
+          "text": "defined as the noncancelable period of the lease plus any options to extend when it is reasonably certain that the Company will exercise the"
+        },
+        {
+          "line": 1468,
+          "page": 45,
+          "text": "option. As the rate implicit in the Company's leases is not easily determinable, the present value of the sum of the lease payments is calculated"
+        },
+        {
+          "line": 1469,
+          "page": 45,
+          "text": "using the Company's incremental borrowing rate. The rate is determined using a portfolio approach based on the rate of interest the Company"
+        },
+        {
+          "line": 1470,
+          "page": 45,
+          "text": "would pay to borrow an amount equal to the lease payments on a collateralized basis over a similar term. The Company uses quoted interest"
+        },
+        {
+          "line": 1471,
+          "page": 45,
+          "text": "rates from financial institutions to derive the incremental borrowing rate. Impairment of ROU assets is evaluated in a similar manner as described"
+        },
+        {
+          "line": 1472,
+          "page": 45,
+          "text": "in Property and Equipment, net above."
+        },
+        {
+          "line": 1473,
+          "page": 45,
+          "text": "The Company's asset retirement obligations (ARO) primarily relate to leasehold improvements that at the end of a lease must be removed."
+        },
+        {
+          "line": 1474,
+          "page": 45,
+          "text": "These obligations are generally recorded as a discounted liability, with an offsetting asset at the inception of the lease term based upon the"
+        },
+        {
+          "line": 1475,
+          "page": 45,
+          "text": "estimated  fair  value  of  the  costs  to  remove  the  improvements.  These  liabilities  are  accreted  over  time  to  the  projected  future  value  of  the"
+        },
+        {
+          "line": 1476,
+          "page": 45,
+          "text": "obligation. The ARO assets are depreciated using the same depreciation method as the leasehold improvement assets and are included with"
+        },
+        {
+          "line": 1477,
+          "page": 45,
+          "text": "buildings  and  improvements.  Estimated  ARO  liabilities  associated  with  these  leases  are  included  in  other  liabilities  in  the  accompanying"
+        },
+        {
+          "line": 1478,
+          "page": 45,
+          "text": "consolidated balance sheet."
+        },
+        {
+          "line": 1479,
+          "page": 45,
+          "text": "Goodwill and Acquired Intangible Assets"
+        },
+        {
+          "line": 1480,
+          "page": 45,
+          "text": "Goodwill represents the excess of acquisition cost over the fair value of the net assets acquired and is not subject to amortization. The Company"
+        },
+        {
+          "line": 1481,
+          "page": 45,
+          "text": "reviews goodwill annually in the fourth quarter for impairment or when circumstances indicate carrying value may exceed the fair value. This"
+        },
+        {
+          "line": 1482,
+          "page": 45,
+          "text": "evaluation is performed at the reporting unit level. If a qualitative assessment indicates that it is more likely than not that the fair value is less"
+        },
+        {
+          "line": 1483,
+          "page": 45,
+          "text": "than carrying value, a quantitative analysis is completed using either the income or market approach, or a combination of both. The income"
+        },
+        {
+          "line": 1484,
+          "page": 45,
+          "text": "approach estimates fair value based on expected discounted future cash flows, while the market approach uses comparable public companies"
+        },
+        {
+          "line": 1485,
+          "page": 45,
+          "text": "and transactions to develop metrics to be applied to historical and expected future operating results."
+        },
+        {
+          "line": 1486,
+          "page": 45,
+          "text": "Goodwill  is  included  in  other  long-term  assets  in  the  consolidated  balance  sheets.  The  following  table  summarizes  goodwill  by  reportable"
+        },
+        {
+          "line": 1487,
+          "page": 45,
+          "text": "segment:"
+        },
+        {
+          "line": 1488,
+          "page": 45,
+          "text": "                                                                                         United StatesOperations  OperationsCanadian  Other InternationalOperations  Total"
+        },
+        {
+          "line": 1489,
+          "page": 45,
+          "text": "Balance at September 1, 2019                                                          $                13     $                27     $                13     $               53"
+        },
+        {
+          "line": 1490,
+          "page": 45,
+          "text": "     Changes in currency translation                                                                   —                       —                         1                      1"
+        },
+        {
+          "line": 1491,
+          "page": 45,
+          "text": "     Acquisition                                                                                      934                      —                       —                     934"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E004",
+      "start_line": 1185,
+      "end_line": 1216,
+      "lines": [
+        {
+          "line": 1185,
+          "page": 38,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1186,
+          "page": 38,
+          "text": "                                                              COSTCO WHOLESALE CORPORATION"
+        },
+        {
+          "line": 1187,
+          "page": 38,
+          "text": "                                                                CONSOLIDATED BALANCE SHEETS"
+        },
+        {
+          "line": 1188,
+          "page": 38,
+          "text": "                                                    (amounts in millions, except par value and share data)"
+        },
+        {
+          "line": 1189,
+          "page": 38,
+          "text": "                                                                                                                       August 29,2021                    August 30,2020"
+        },
+        {
+          "line": 1190,
+          "page": 38,
+          "text": "                                                 ASSETS"
+        },
+        {
+          "line": 1191,
+          "page": 38,
+          "text": "CURRENT ASSETS"
+        },
+        {
+          "line": 1192,
+          "page": 38,
+          "text": "     Cash and cash equivalents                                                                               $                      11,258      $                      12,277"
+        },
+        {
+          "line": 1193,
+          "page": 38,
+          "text": "     Short-term investments                                                                                                             917                             1,028"
+        },
+        {
+          "line": 1194,
+          "page": 38,
+          "text": "     Receivables, net                                                                                                                1,803                              1,550"
+        },
+        {
+          "line": 1195,
+          "page": 38,
+          "text": "     Merchandise inventories                                                                                                        14,215                             12,242"
+        },
+        {
+          "line": 1196,
+          "page": 38,
+          "text": "     Other current assets                                                                                                            1,312                              1,023"
+        },
+        {
+          "line": 1197,
+          "page": 38,
+          "text": "          Total current assets                                                                                                      29,505                             28,120"
+        },
+        {
+          "line": 1198,
+          "page": 38,
+          "text": "OTHER ASSETS"
+        },
+        {
+          "line": 1199,
+          "page": 38,
+          "text": "     Property and equipment, net                                                                                                    23,492                             21,807"
+        },
+        {
+          "line": 1200,
+          "page": 38,
+          "text": "     Operating lease right-of-use assets                                                                                             2,890                              2,788"
+        },
+        {
+          "line": 1201,
+          "page": 38,
+          "text": "     Other long-term assets                                                                                                          3,381                              2,841"
+        },
+        {
+          "line": 1202,
+          "page": 38,
+          "text": "          TOTAL ASSETS                                                                                       $                      59,268      $                      55,556"
+        },
+        {
+          "line": 1203,
+          "page": 38,
+          "text": "                                       LIABILITIES AND EQUITY"
+        },
+        {
+          "line": 1204,
+          "page": 38,
+          "text": "CURRENT LIABILITIES"
+        },
+        {
+          "line": 1205,
+          "page": 38,
+          "text": "     Accounts payable                                                                                        $                      16,278      $                      14,172"
+        },
+        {
+          "line": 1206,
+          "page": 38,
+          "text": "     Accrued salaries and benefits                                                                                                   4,090                              3,605"
+        },
+        {
+          "line": 1207,
+          "page": 38,
+          "text": "     Accrued member rewards                                                                                                          1,671                              1,393"
+        },
+        {
+          "line": 1208,
+          "page": 38,
+          "text": "     Deferred membership fees                                                                                                        2,042                              1,851"
+        },
+        {
+          "line": 1209,
+          "page": 38,
+          "text": "     Current portion of long-term debt                                                                                                  799                                 95"
+        },
+        {
+          "line": 1210,
+          "page": 38,
+          "text": "     Other current liabilities                                                                                                       4,561                              3,728"
+        },
+        {
+          "line": 1211,
+          "page": 38,
+          "text": "          Total current liabilities                                                                                                 29,441                             24,844"
+        },
+        {
+          "line": 1212,
+          "page": 38,
+          "text": "OTHER LIABILITIES"
+        },
+        {
+          "line": 1213,
+          "page": 38,
+          "text": "     Long-term debt, excluding current portion                                                                                       6,692                              7,514"
+        },
+        {
+          "line": 1214,
+          "page": 38,
+          "text": "     Long-term operating lease liabilities                                                                                           2,642                              2,558"
+        },
+        {
+          "line": 1215,
+          "page": 38,
+          "text": "     Other long-term liabilities                                                                                                     2,415                              1,935"
+        },
+        {
+          "line": 1216,
+          "page": 38,
+          "text": "          TOTAL LIABILITIES                                                                                                         41,190                             36,851"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E005",
+      "start_line": 1685,
+      "end_line": 1716,
+      "lines": [
+        {
+          "line": 1685,
+          "page": 51,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1686,
+          "page": 51,
+          "text": "Note 4—Fair Value Measurement"
+        },
+        {
+          "line": 1687,
+          "page": 51,
+          "text": "Assets and Liabilities Measured at Fair Value on a Recurring Basis"
+        },
+        {
+          "line": 1688,
+          "page": 51,
+          "text": "The  table  below  presents  information  regarding  the  Company’s  financial  assets  and  financial  liabilities  that  are  measured  at  fair  value  on  a"
+        },
+        {
+          "line": 1689,
+          "page": 51,
+          "text": "recurring basis and indicate the level within the hierarchy reflecting the valuation techniques utilized to determine such fair value."
+        },
+        {
+          "line": 1690,
+          "page": 51,
+          "text": "                                                                                                                                                 Level 2"
+        },
+        {
+          "line": 1691,
+          "page": 51,
+          "text": "                                                                                                                                2021                                 2020"
+        },
+        {
+          "line": 1692,
+          "page": 51,
+          "text": "Investment in government and agency securities(1)                                                                 $                           393     $                            508"
+        },
+        {
+          "line": 1693,
+          "page": 51,
+          "text": "Forward foreign-exchange contracts, in asset position(2)                                                                                        17                                    1"
+        },
+        {
+          "line": 1694,
+          "page": 51,
+          "text": "Forward foreign-exchange contracts, in (liability) position(2)                                                                                  (2)                                (21)"
+        },
+        {
+          "line": 1695,
+          "page": 51,
+          "text": "     Total                                                                                                        $                           408     $                            488"
+        },
+        {
+          "line": 1696,
+          "page": 51,
+          "text": " ____________"
+        },
+        {
+          "line": 1697,
+          "page": 51,
+          "text": " (1)   At August 29, 2021, $12 cash and cash equivalents and $381 short-term investments are included in the accompanying consolidated balance sheets. At August 30, 2020, $60"
+        },
+        {
+          "line": 1698,
+          "page": 51,
+          "text": "       cash and cash equivalents and $448 short-term investments are included in the consolidated balance sheets."
+        },
+        {
+          "line": 1699,
+          "page": 51,
+          "text": " (2)   The asset and the liability values are included in other current assets and other current liabilities, respectively, in the consolidated balance sheets."
+        },
+        {
+          "line": 1700,
+          "page": 51,
+          "text": "At August 29, 2021, and August 30, 2020, the Company did not hold any Level 1 or 3 financial assets or liabilities that were measured at fair"
+        },
+        {
+          "line": 1701,
+          "page": 51,
+          "text": "value on a recurring basis. There were no transfers between levels during 2021 or 2020."
+        },
+        {
+          "line": 1702,
+          "page": 51,
+          "text": "Assets and Liabilities Measured at Fair Value on a Nonrecurring Basis"
+        },
+        {
+          "line": 1703,
+          "page": 51,
+          "text": "Assets  and  liabilities  recognized  and  disclosed  at  fair  value  on  a  nonrecurring  basis  include  items  such  as  financial  assets  measured  at"
+        },
+        {
+          "line": 1704,
+          "page": 51,
+          "text": "amortized cost and long-lived nonfinancial assets. These assets are measured at fair value if determined to be impaired. Fair value adjustments"
+        },
+        {
+          "line": 1705,
+          "page": 51,
+          "text": "to nonfinancial assets during 2021 were immaterial and there were no fair value adjustments to these items during 2020."
+        },
+        {
+          "line": 1706,
+          "page": 51,
+          "text": "Note 5—Debt"
+        },
+        {
+          "line": 1707,
+          "page": 51,
+          "text": "Short-Term Borrowings"
+        },
+        {
+          "line": 1708,
+          "page": 51,
+          "text": "The Company maintains various short-term bank credit facilities, with a borrowing capacity of $1,050 and $967, in 2021 and 2020, respectively."
+        },
+        {
+          "line": 1709,
+          "page": 51,
+          "text": "Borrowings  on  these  short-term  facilities  were  immaterial  during  2021  and  2020.  Short-term  borrowings  outstanding  were  $41  at  the  end  of"
+        },
+        {
+          "line": 1710,
+          "page": 51,
+          "text": "2021. There were no outstanding balances at the end of 2020."
+        },
+        {
+          "line": 1711,
+          "page": 51,
+          "text": "Long-Term Debt"
+        },
+        {
+          "line": 1712,
+          "page": 51,
+          "text": "The Company's long-term debt consists primarily of Senior Notes, described below. The Company at its option may redeem the Senior Notes at"
+        },
+        {
+          "line": 1713,
+          "page": 51,
+          "text": "any time, in whole or in part, at a redemption price plus accrued interest. The redemption price is equal to the greater of 100% of the principal"
+        },
+        {
+          "line": 1714,
+          "page": 51,
+          "text": "amount or the sum of the present value of the remaining scheduled payments of principal and interest to maturity. Additionally, upon certain"
+        },
+        {
+          "line": 1715,
+          "page": 51,
+          "text": "events, the holder has the right to require the Company to purchase this security at a price of 101% of the principal amount plus accrued and"
+        },
+        {
+          "line": 1716,
+          "page": 51,
+          "text": "unpaid interest to the date of the event. Interest on all outstanding long-term debt is payable semi-annually. The estimated fair value of Senior"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E006",
+      "start_line": 1385,
+      "end_line": 1416,
+      "lines": [
+        {
+          "line": 1385,
+          "page": 43,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1386,
+          "page": 43,
+          "text": "value of the individual securities as of the beginning of the reporting period in which the transfer(s) occurred."
+        },
+        {
+          "line": 1387,
+          "page": 43,
+          "text": "Current financial liabilities have fair values that approximate their carrying values. Long-term financial liabilities include the Company's long-term"
+        },
+        {
+          "line": 1388,
+          "page": 43,
+          "text": "debt, which are recorded on the balance sheet at issuance price and adjusted for unamortized discounts or premiums and debt issuance costs,"
+        },
+        {
+          "line": 1389,
+          "page": 43,
+          "text": "and  are  being  amortized  to  interest  expense  over  the  term  of  the  loan. The  estimated  fair  value  of  the  Company's  long-term  debt  is  based"
+        },
+        {
+          "line": 1390,
+          "page": 43,
+          "text": "primarily on reported market values, recently completed market transactions, and estimates based upon interest rates, maturities, and credit."
+        },
+        {
+          "line": 1391,
+          "page": 43,
+          "text": "Receivables, Net"
+        },
+        {
+          "line": 1392,
+          "page": 43,
+          "text": "Receivables  consist  primarily  of  vendor,  reinsurance,  credit  card  incentive,  third-party  pharmacy  and  other  receivables.  Vendor  receivables"
+        },
+        {
+          "line": 1393,
+          "page": 43,
+          "text": "include discounts and volume rebates. Balances are generally presented on a gross basis, separate from any related payable due. In certain"
+        },
+        {
+          "line": 1394,
+          "page": 43,
+          "text": "circumstances, these receivables may be settled against the related payable to that vendor, in which case the receivables are presented on a"
+        },
+        {
+          "line": 1395,
+          "page": 43,
+          "text": "net  basis.  Reinsurance  receivables  are  held  by  the  Company’s  wholly-owned  captive  insurance  subsidiary  and  primarily  represent  amounts"
+        },
+        {
+          "line": 1396,
+          "page": 43,
+          "text": "ceded through reinsurance arrangements gross of the amounts assumed under reinsurance, which are presented within other current liabilities"
+        },
+        {
+          "line": 1397,
+          "page": 43,
+          "text": "in  the  consolidated  balance  sheets.  Credit  card  incentive  receivables  primarily  represent  amounts  earned  under  the  co-branded  credit  card"
+        },
+        {
+          "line": 1398,
+          "page": 43,
+          "text": "arrangement in the U.S. Third-party pharmacy receivables generally relate to amounts due from members’ insurers. Other receivables primarily"
+        },
+        {
+          "line": 1399,
+          "page": 43,
+          "text": "consist of amounts due from governmental entities, mostly tax-related items."
+        },
+        {
+          "line": 1400,
+          "page": 43,
+          "text": "Receivables  are  recorded  net  of  an  allowance  for  credit  losses  which  considers  creditworthiness  of  vendors  and  third  parties,  historical"
+        },
+        {
+          "line": 1401,
+          "page": 43,
+          "text": "experience and current economic trends. Write-offs of receivables were immaterial in 2021, 2020, and 2019."
+        },
+        {
+          "line": 1402,
+          "page": 43,
+          "text": "Merchandise Inventories"
+        },
+        {
+          "line": 1403,
+          "page": 43,
+          "text": "Merchandise inventories consist of the following:"
+        },
+        {
+          "line": 1404,
+          "page": 43,
+          "text": "                                                                                                                              2021                                2020"
+        },
+        {
+          "line": 1405,
+          "page": 43,
+          "text": "United States                                                                                                   $                      10,248      $                         8,871"
+        },
+        {
+          "line": 1406,
+          "page": 43,
+          "text": "Canada                                                                                                                                   1,456                               1,310"
+        },
+        {
+          "line": 1407,
+          "page": 43,
+          "text": "Other International                                                                                                                      2,511                               2,061"
+        },
+        {
+          "line": 1408,
+          "page": 43,
+          "text": "     Merchandise inventories                                                                                    $                      14,215      $                       12,242"
+        },
+        {
+          "line": 1409,
+          "page": 43,
+          "text": "Merchandise inventories are stated at the lower of cost or market. U.S. merchandise inventories are valued by the cost method of accounting,"
+        },
+        {
+          "line": 1410,
+          "page": 43,
+          "text": "using the last-in, first-out (LIFO) basis. The Company believes the LIFO method more fairly presents the results of operations by more closely"
+        },
+        {
+          "line": 1411,
+          "page": 43,
+          "text": "matching current costs with current revenues. The Company records an adjustment each quarter, if necessary, for the projected annual effect of"
+        },
+        {
+          "line": 1412,
+          "page": 43,
+          "text": "inflation  or  deflation,  and  these  estimates  are  adjusted  to  actual  results  determined  at  year-end,  after  actual  inflation  or  deflation  rates  and"
+        },
+        {
+          "line": 1413,
+          "page": 43,
+          "text": "inventory levels have been determined. An immaterial charge was recorded to merchandise costs to increase the cumulative LIFO valuation on"
+        },
+        {
+          "line": 1414,
+          "page": 43,
+          "text": "merchandise inventories at August 29, 2021. As of August 30, 2020, U.S. merchandise inventories valued at LIFO approximated first-in, first-out"
+        },
+        {
+          "line": 1415,
+          "page": 43,
+          "text": "(FIFO)  after  considering  the  lower  of  cost  or  market  principle.  Canadian  and  Other  International  merchandise  inventories  are  predominantly"
+        },
+        {
+          "line": 1416,
+          "page": 43,
+          "text": "valued using the cost and retail inventory methods, respectively, using the FIFO basis."
+        }
+      ]
+    },
+    {
+      "evidence_id": "E007",
+      "start_line": 1202,
+      "end_line": 1202,
+      "lines": [
+        {
+          "line": 1202,
+          "page": 38,
+          "text": "          TOTAL ASSETS                                                                                       $                      59,268      $                      55,556"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E008",
+      "start_line": 956,
+      "end_line": 987,
+      "lines": [
+        {
+          "line": 956,
+          "page": 30,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 957,
+          "page": 30,
+          "text": "Dividends"
+        },
+        {
+          "line": 958,
+          "page": 30,
+          "text": "Cash  dividends  declared  in  2021  totaled  $12.98  per  share,  as  compared  to  $2.70  per  share  in  2020.  Dividends  in  2021  included  a  special"
+        },
+        {
+          "line": 959,
+          "page": 30,
+          "text": "dividend of $10.00 per share, resulting in an aggregate payment of approximately $4,430. In April 2021, the Board of Directors increased our"
+        },
+        {
+          "line": 960,
+          "page": 30,
+          "text": "quarterly cash dividend from $0.70 to $0.79 per share."
+        },
+        {
+          "line": 961,
+          "page": 30,
+          "text": "Bank Credit Facilities and Commercial Paper Programs"
+        },
+        {
+          "line": 962,
+          "page": 30,
+          "text": "We maintain bank credit facilities for working capital and general corporate purposes. At August 29, 2021, we had borrowing capacity under"
+        },
+        {
+          "line": 963,
+          "page": 30,
+          "text": "these facilities of $1,050. Our international operations maintain $574 of the total borrowing capacity under bank credit facilities, of which $201 is"
+        },
+        {
+          "line": 964,
+          "page": 30,
+          "text": "guaranteed by the Company. Short-term borrowings outstanding under the bank credit facilities at the end of 2021 were immaterial, and there"
+        },
+        {
+          "line": 965,
+          "page": 30,
+          "text": "were none outstanding at the end of 2020."
+        },
+        {
+          "line": 966,
+          "page": 30,
+          "text": "The Company has letter of credit facilities, for commercial and standby letters of credit, totaling $235. The outstanding commitments under these"
+        },
+        {
+          "line": 967,
+          "page": 30,
+          "text": "facilities at the end of 2021 totaled $197, most of which were standby letters of credit which do not expire or have expiration dates within one"
+        },
+        {
+          "line": 968,
+          "page": 30,
+          "text": "year. The bank credit facilities have various expiration dates, most of which are within one year, and we generally intend to renew these facilities."
+        },
+        {
+          "line": 969,
+          "page": 30,
+          "text": "The amount of borrowings available at any time under our bank credit facilities is reduced by the amount of standby and commercial letters of"
+        },
+        {
+          "line": 970,
+          "page": 30,
+          "text": "credit outstanding."
+        },
+        {
+          "line": 971,
+          "page": 30,
+          "text": "Off-Balance Sheet Arrangements"
+        },
+        {
+          "line": 972,
+          "page": 30,
+          "text": "In the opinion of management, we have no off-balance sheet arrangements that have had or are reasonably likely to have a material current or"
+        },
+        {
+          "line": 973,
+          "page": 30,
+          "text": "future effect on our financial condition or financial statements."
+        },
+        {
+          "line": 974,
+          "page": 30,
+          "text": "Critical Accounting Estimates"
+        },
+        {
+          "line": 975,
+          "page": 30,
+          "text": "The preparation of our consolidated financial statements in accordance with U.S. generally accepted accounting principles (U.S. GAAP) requires"
+        },
+        {
+          "line": 976,
+          "page": 30,
+          "text": "that we make estimates and assumptions that affect the reported amounts of assets and liabilities and the disclosure of contingent assets and"
+        },
+        {
+          "line": 977,
+          "page": 30,
+          "text": "liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. We base our"
+        },
+        {
+          "line": 978,
+          "page": 30,
+          "text": "estimates  on  historical  experience  and  on  assumptions  that  we  believe  to  be  reasonable,  and  we  continue  to  review  and  evaluate  these"
+        },
+        {
+          "line": 979,
+          "page": 30,
+          "text": "estimates. For further information on significant accounting policies, see discussion in Note 1 to the consolidated financial statements included in"
+        },
+        {
+          "line": 980,
+          "page": 30,
+          "text": "Item 8 of this Report."
+        },
+        {
+          "line": 981,
+          "page": 30,
+          "text": "Insurance/Self-insurance Liabilities"
+        },
+        {
+          "line": 982,
+          "page": 30,
+          "text": "Claims  for  employee  health-care  benefits,  workers’  compensation,  general  liability,  property  damage,  directors’  and  officers’  liability,  vehicle"
+        },
+        {
+          "line": 983,
+          "page": 30,
+          "text": "liability, inventory loss, and other exposures are funded predominantly through self-insurance. Insurance coverage is maintained for certain risks"
+        },
+        {
+          "line": 984,
+          "page": 30,
+          "text": "to  seek  to  limit  exposures  arising  from  very  large  losses.  We  use  different  risk  management  mechanisms,  including  a  wholly-owned  captive"
+        },
+        {
+          "line": 985,
+          "page": 30,
+          "text": "insurance subsidiary, and participate in a reinsurance program. Liabilities associated with the risks that we retain are not discounted and are"
+        },
+        {
+          "line": 986,
+          "page": 30,
+          "text": "estimated by using historical claims experience, demographic factors, severity factors, and other actuarial assumptions. The costs of claims are"
+        },
+        {
+          "line": 987,
+          "page": 30,
+          "text": "highly unpredictable and can fluctuate as a result of inflation rates, regulatory or legal changes, and unforeseen developments in claims over"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E009",
+      "start_line": 1484,
+      "end_line": 1497,
+      "lines": [
+        {
+          "line": 1484,
+          "page": 45,
+          "text": "approach estimates fair value based on expected discounted future cash flows, while the market approach uses comparable public companies"
+        },
+        {
+          "line": 1485,
+          "page": 45,
+          "text": "and transactions to develop metrics to be applied to historical and expected future operating results."
+        },
+        {
+          "line": 1486,
+          "page": 45,
+          "text": "Goodwill  is  included  in  other  long-term  assets  in  the  consolidated  balance  sheets.  The  following  table  summarizes  goodwill  by  reportable"
+        },
+        {
+          "line": 1487,
+          "page": 45,
+          "text": "segment:"
+        },
+        {
+          "line": 1488,
+          "page": 45,
+          "text": "                                                                                         United StatesOperations  OperationsCanadian  Other InternationalOperations  Total"
+        },
+        {
+          "line": 1489,
+          "page": 45,
+          "text": "Balance at September 1, 2019                                                          $                13     $                27     $                13     $               53"
+        },
+        {
+          "line": 1490,
+          "page": 45,
+          "text": "     Changes in currency translation                                                                   —                       —                         1                      1"
+        },
+        {
+          "line": 1491,
+          "page": 45,
+          "text": "     Acquisition                                                                                      934                      —                       —                     934"
+        },
+        {
+          "line": 1492,
+          "page": 45,
+          "text": "Balance at August 30, 2020                                                            $               947     $                27     $                14     $              988"
+        },
+        {
+          "line": 1493,
+          "page": 45,
+          "text": "     Changes in currency translation and other (1)                                                       6                       1                       1                      8"
+        },
+        {
+          "line": 1494,
+          "page": 45,
+          "text": "Balance at August 29, 2021                                                            $               953     $                28     $                15     $              996"
+        },
+        {
+          "line": 1495,
+          "page": 45,
+          "text": "____________"
+        },
+        {
+          "line": 1496,
+          "page": 45,
+          "text": " (1)  Other consists of changes to the purchase price allocation. See Note 2."
+        },
+        {
+          "line": 1497,
+          "page": 45,
+          "text": "                                                                                       45"
+        }
+      ]
+    },
+    {
+      "evidence_id": "E010",
+      "start_line": 1188,
+      "end_line": 1188,
+      "lines": [
+        {
+          "line": 1188,
+          "page": 38,
+          "text": "                                                    (amounts in millions, except par value and share data)"
+        }
+      ]
+    }
+  ],
+  "review_only_pages": [
+    {
+      "page": 30,
+      "review_only": true,
+      "start_line": 956,
+      "end_line": 992,
+      "lines": [
+        {
+          "line": 956,
+          "page": 30,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 957,
+          "page": 30,
+          "text": "Dividends"
+        },
+        {
+          "line": 958,
+          "page": 30,
+          "text": "Cash  dividends  declared  in  2021  totaled  $12.98  per  share,  as  compared  to  $2.70  per  share  in  2020.  Dividends  in  2021  included  a  special"
+        },
+        {
+          "line": 959,
+          "page": 30,
+          "text": "dividend of $10.00 per share, resulting in an aggregate payment of approximately $4,430. In April 2021, the Board of Directors increased our"
+        },
+        {
+          "line": 960,
+          "page": 30,
+          "text": "quarterly cash dividend from $0.70 to $0.79 per share."
+        },
+        {
+          "line": 961,
+          "page": 30,
+          "text": "Bank Credit Facilities and Commercial Paper Programs"
+        },
+        {
+          "line": 962,
+          "page": 30,
+          "text": "We maintain bank credit facilities for working capital and general corporate purposes. At August 29, 2021, we had borrowing capacity under"
+        },
+        {
+          "line": 963,
+          "page": 30,
+          "text": "these facilities of $1,050. Our international operations maintain $574 of the total borrowing capacity under bank credit facilities, of which $201 is"
+        },
+        {
+          "line": 964,
+          "page": 30,
+          "text": "guaranteed by the Company. Short-term borrowings outstanding under the bank credit facilities at the end of 2021 were immaterial, and there"
+        },
+        {
+          "line": 965,
+          "page": 30,
+          "text": "were none outstanding at the end of 2020."
+        },
+        {
+          "line": 966,
+          "page": 30,
+          "text": "The Company has letter of credit facilities, for commercial and standby letters of credit, totaling $235. The outstanding commitments under these"
+        },
+        {
+          "line": 967,
+          "page": 30,
+          "text": "facilities at the end of 2021 totaled $197, most of which were standby letters of credit which do not expire or have expiration dates within one"
+        },
+        {
+          "line": 968,
+          "page": 30,
+          "text": "year. The bank credit facilities have various expiration dates, most of which are within one year, and we generally intend to renew these facilities."
+        },
+        {
+          "line": 969,
+          "page": 30,
+          "text": "The amount of borrowings available at any time under our bank credit facilities is reduced by the amount of standby and commercial letters of"
+        },
+        {
+          "line": 970,
+          "page": 30,
+          "text": "credit outstanding."
+        },
+        {
+          "line": 971,
+          "page": 30,
+          "text": "Off-Balance Sheet Arrangements"
+        },
+        {
+          "line": 972,
+          "page": 30,
+          "text": "In the opinion of management, we have no off-balance sheet arrangements that have had or are reasonably likely to have a material current or"
+        },
+        {
+          "line": 973,
+          "page": 30,
+          "text": "future effect on our financial condition or financial statements."
+        },
+        {
+          "line": 974,
+          "page": 30,
+          "text": "Critical Accounting Estimates"
+        },
+        {
+          "line": 975,
+          "page": 30,
+          "text": "The preparation of our consolidated financial statements in accordance with U.S. generally accepted accounting principles (U.S. GAAP) requires"
+        },
+        {
+          "line": 976,
+          "page": 30,
+          "text": "that we make estimates and assumptions that affect the reported amounts of assets and liabilities and the disclosure of contingent assets and"
+        },
+        {
+          "line": 977,
+          "page": 30,
+          "text": "liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. We base our"
+        },
+        {
+          "line": 978,
+          "page": 30,
+          "text": "estimates  on  historical  experience  and  on  assumptions  that  we  believe  to  be  reasonable,  and  we  continue  to  review  and  evaluate  these"
+        },
+        {
+          "line": 979,
+          "page": 30,
+          "text": "estimates. For further information on significant accounting policies, see discussion in Note 1 to the consolidated financial statements included in"
+        },
+        {
+          "line": 980,
+          "page": 30,
+          "text": "Item 8 of this Report."
+        },
+        {
+          "line": 981,
+          "page": 30,
+          "text": "Insurance/Self-insurance Liabilities"
+        },
+        {
+          "line": 982,
+          "page": 30,
+          "text": "Claims  for  employee  health-care  benefits,  workers’  compensation,  general  liability,  property  damage,  directors’  and  officers’  liability,  vehicle"
+        },
+        {
+          "line": 983,
+          "page": 30,
+          "text": "liability, inventory loss, and other exposures are funded predominantly through self-insurance. Insurance coverage is maintained for certain risks"
+        },
+        {
+          "line": 984,
+          "page": 30,
+          "text": "to  seek  to  limit  exposures  arising  from  very  large  losses.  We  use  different  risk  management  mechanisms,  including  a  wholly-owned  captive"
+        },
+        {
+          "line": 985,
+          "page": 30,
+          "text": "insurance subsidiary, and participate in a reinsurance program. Liabilities associated with the risks that we retain are not discounted and are"
+        },
+        {
+          "line": 986,
+          "page": 30,
+          "text": "estimated by using historical claims experience, demographic factors, severity factors, and other actuarial assumptions. The costs of claims are"
+        },
+        {
+          "line": 987,
+          "page": 30,
+          "text": "highly unpredictable and can fluctuate as a result of inflation rates, regulatory or legal changes, and unforeseen developments in claims over"
+        },
+        {
+          "line": 988,
+          "page": 30,
+          "text": "time. While we believe our estimates are reasonable and provide for a certain degree of coverage to account for these variables, actual claims"
+        },
+        {
+          "line": 989,
+          "page": 30,
+          "text": "and costs could differ significantly from recorded liabilities. Historically, adjustments to our estimates have not been material."
+        },
+        {
+          "line": 990,
+          "page": 30,
+          "text": "Recent Accounting Pronouncements"
+        },
+        {
+          "line": 991,
+          "page": 30,
+          "text": "We do not expect that any recently issued accounting pronouncements will have a material effect on our financial statements."
+        },
+        {
+          "line": 992,
+          "page": 30,
+          "text": "                                                                                        30"
+        }
+      ]
+    },
+    {
+      "page": 38,
+      "review_only": true,
+      "start_line": 1185,
+      "end_line": 1231,
+      "lines": [
+        {
+          "line": 1185,
+          "page": 38,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1186,
+          "page": 38,
+          "text": "                                                              COSTCO WHOLESALE CORPORATION"
+        },
+        {
+          "line": 1187,
+          "page": 38,
+          "text": "                                                                CONSOLIDATED BALANCE SHEETS"
+        },
+        {
+          "line": 1188,
+          "page": 38,
+          "text": "                                                    (amounts in millions, except par value and share data)"
+        },
+        {
+          "line": 1189,
+          "page": 38,
+          "text": "                                                                                                                       August 29,2021                    August 30,2020"
+        },
+        {
+          "line": 1190,
+          "page": 38,
+          "text": "                                                 ASSETS"
+        },
+        {
+          "line": 1191,
+          "page": 38,
+          "text": "CURRENT ASSETS"
+        },
+        {
+          "line": 1192,
+          "page": 38,
+          "text": "     Cash and cash equivalents                                                                               $                      11,258      $                      12,277"
+        },
+        {
+          "line": 1193,
+          "page": 38,
+          "text": "     Short-term investments                                                                                                             917                             1,028"
+        },
+        {
+          "line": 1194,
+          "page": 38,
+          "text": "     Receivables, net                                                                                                                1,803                              1,550"
+        },
+        {
+          "line": 1195,
+          "page": 38,
+          "text": "     Merchandise inventories                                                                                                        14,215                             12,242"
+        },
+        {
+          "line": 1196,
+          "page": 38,
+          "text": "     Other current assets                                                                                                            1,312                              1,023"
+        },
+        {
+          "line": 1197,
+          "page": 38,
+          "text": "          Total current assets                                                                                                      29,505                             28,120"
+        },
+        {
+          "line": 1198,
+          "page": 38,
+          "text": "OTHER ASSETS"
+        },
+        {
+          "line": 1199,
+          "page": 38,
+          "text": "     Property and equipment, net                                                                                                    23,492                             21,807"
+        },
+        {
+          "line": 1200,
+          "page": 38,
+          "text": "     Operating lease right-of-use assets                                                                                             2,890                              2,788"
+        },
+        {
+          "line": 1201,
+          "page": 38,
+          "text": "     Other long-term assets                                                                                                          3,381                              2,841"
+        },
+        {
+          "line": 1202,
+          "page": 38,
+          "text": "          TOTAL ASSETS                                                                                       $                      59,268      $                      55,556"
+        },
+        {
+          "line": 1203,
+          "page": 38,
+          "text": "                                       LIABILITIES AND EQUITY"
+        },
+        {
+          "line": 1204,
+          "page": 38,
+          "text": "CURRENT LIABILITIES"
+        },
+        {
+          "line": 1205,
+          "page": 38,
+          "text": "     Accounts payable                                                                                        $                      16,278      $                      14,172"
+        },
+        {
+          "line": 1206,
+          "page": 38,
+          "text": "     Accrued salaries and benefits                                                                                                   4,090                              3,605"
+        },
+        {
+          "line": 1207,
+          "page": 38,
+          "text": "     Accrued member rewards                                                                                                          1,671                              1,393"
+        },
+        {
+          "line": 1208,
+          "page": 38,
+          "text": "     Deferred membership fees                                                                                                        2,042                              1,851"
+        },
+        {
+          "line": 1209,
+          "page": 38,
+          "text": "     Current portion of long-term debt                                                                                                  799                                 95"
+        },
+        {
+          "line": 1210,
+          "page": 38,
+          "text": "     Other current liabilities                                                                                                       4,561                              3,728"
+        },
+        {
+          "line": 1211,
+          "page": 38,
+          "text": "          Total current liabilities                                                                                                 29,441                             24,844"
+        },
+        {
+          "line": 1212,
+          "page": 38,
+          "text": "OTHER LIABILITIES"
+        },
+        {
+          "line": 1213,
+          "page": 38,
+          "text": "     Long-term debt, excluding current portion                                                                                       6,692                              7,514"
+        },
+        {
+          "line": 1214,
+          "page": 38,
+          "text": "     Long-term operating lease liabilities                                                                                           2,642                              2,558"
+        },
+        {
+          "line": 1215,
+          "page": 38,
+          "text": "     Other long-term liabilities                                                                                                     2,415                              1,935"
+        },
+        {
+          "line": 1216,
+          "page": 38,
+          "text": "          TOTAL LIABILITIES                                                                                                         41,190                             36,851"
+        },
+        {
+          "line": 1217,
+          "page": 38,
+          "text": "COMMITMENTS AND CONTINGENCIES"
+        },
+        {
+          "line": 1218,
+          "page": 38,
+          "text": "EQUITY"
+        },
+        {
+          "line": 1219,
+          "page": 38,
+          "text": "      Preferred stock $0.01 par value; 100,000,000 shares authorized; no shares issued and"
+        },
+        {
+          "line": 1220,
+          "page": 38,
+          "text": "      outstanding                                                                                                                        —                                  —"
+        },
+        {
+          "line": 1221,
+          "page": 38,
+          "text": "      Common stock $0.01 par value; 900,000,000 shares authorized; 441,825,000 and"
+        },
+        {
+          "line": 1222,
+          "page": 38,
+          "text": "      441,255,000 shares issued and outstanding                                                                                            4                                 4"
+        },
+        {
+          "line": 1223,
+          "page": 38,
+          "text": "     Additional paid-in capital                                                                                                      7,031                              6,698"
+        },
+        {
+          "line": 1224,
+          "page": 38,
+          "text": "     Accumulated other comprehensive loss                                                                                           (1,137)                            (1,297)"
+        },
+        {
+          "line": 1225,
+          "page": 38,
+          "text": "     Retained earnings                                                                                                              11,666                             12,879"
+        },
+        {
+          "line": 1226,
+          "page": 38,
+          "text": "          Total Costco stockholders’ equity                                                                                         17,564                             18,284"
+        },
+        {
+          "line": 1227,
+          "page": 38,
+          "text": "     Noncontrolling interests                                                                                                           514                               421"
+        },
+        {
+          "line": 1228,
+          "page": 38,
+          "text": "          TOTAL EQUITY                                                                                                              18,078                             18,705"
+        },
+        {
+          "line": 1229,
+          "page": 38,
+          "text": "          TOTAL LIABILITIES AND EQUITY                                                                       $                      59,268      $                      55,556"
+        },
+        {
+          "line": 1230,
+          "page": 38,
+          "text": "                                  The accompanying notes are an integral part of these consolidated financial statements."
+        },
+        {
+          "line": 1231,
+          "page": 38,
+          "text": "                                                                                      38"
+        }
+      ]
+    },
+    {
+      "page": 43,
+      "review_only": true,
+      "start_line": 1385,
+      "end_line": 1421,
+      "lines": [
+        {
+          "line": 1385,
+          "page": 43,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1386,
+          "page": 43,
+          "text": "value of the individual securities as of the beginning of the reporting period in which the transfer(s) occurred."
+        },
+        {
+          "line": 1387,
+          "page": 43,
+          "text": "Current financial liabilities have fair values that approximate their carrying values. Long-term financial liabilities include the Company's long-term"
+        },
+        {
+          "line": 1388,
+          "page": 43,
+          "text": "debt, which are recorded on the balance sheet at issuance price and adjusted for unamortized discounts or premiums and debt issuance costs,"
+        },
+        {
+          "line": 1389,
+          "page": 43,
+          "text": "and  are  being  amortized  to  interest  expense  over  the  term  of  the  loan. The  estimated  fair  value  of  the  Company's  long-term  debt  is  based"
+        },
+        {
+          "line": 1390,
+          "page": 43,
+          "text": "primarily on reported market values, recently completed market transactions, and estimates based upon interest rates, maturities, and credit."
+        },
+        {
+          "line": 1391,
+          "page": 43,
+          "text": "Receivables, Net"
+        },
+        {
+          "line": 1392,
+          "page": 43,
+          "text": "Receivables  consist  primarily  of  vendor,  reinsurance,  credit  card  incentive,  third-party  pharmacy  and  other  receivables.  Vendor  receivables"
+        },
+        {
+          "line": 1393,
+          "page": 43,
+          "text": "include discounts and volume rebates. Balances are generally presented on a gross basis, separate from any related payable due. In certain"
+        },
+        {
+          "line": 1394,
+          "page": 43,
+          "text": "circumstances, these receivables may be settled against the related payable to that vendor, in which case the receivables are presented on a"
+        },
+        {
+          "line": 1395,
+          "page": 43,
+          "text": "net  basis.  Reinsurance  receivables  are  held  by  the  Company’s  wholly-owned  captive  insurance  subsidiary  and  primarily  represent  amounts"
+        },
+        {
+          "line": 1396,
+          "page": 43,
+          "text": "ceded through reinsurance arrangements gross of the amounts assumed under reinsurance, which are presented within other current liabilities"
+        },
+        {
+          "line": 1397,
+          "page": 43,
+          "text": "in  the  consolidated  balance  sheets.  Credit  card  incentive  receivables  primarily  represent  amounts  earned  under  the  co-branded  credit  card"
+        },
+        {
+          "line": 1398,
+          "page": 43,
+          "text": "arrangement in the U.S. Third-party pharmacy receivables generally relate to amounts due from members’ insurers. Other receivables primarily"
+        },
+        {
+          "line": 1399,
+          "page": 43,
+          "text": "consist of amounts due from governmental entities, mostly tax-related items."
+        },
+        {
+          "line": 1400,
+          "page": 43,
+          "text": "Receivables  are  recorded  net  of  an  allowance  for  credit  losses  which  considers  creditworthiness  of  vendors  and  third  parties,  historical"
+        },
+        {
+          "line": 1401,
+          "page": 43,
+          "text": "experience and current economic trends. Write-offs of receivables were immaterial in 2021, 2020, and 2019."
+        },
+        {
+          "line": 1402,
+          "page": 43,
+          "text": "Merchandise Inventories"
+        },
+        {
+          "line": 1403,
+          "page": 43,
+          "text": "Merchandise inventories consist of the following:"
+        },
+        {
+          "line": 1404,
+          "page": 43,
+          "text": "                                                                                                                              2021                                2020"
+        },
+        {
+          "line": 1405,
+          "page": 43,
+          "text": "United States                                                                                                   $                      10,248      $                         8,871"
+        },
+        {
+          "line": 1406,
+          "page": 43,
+          "text": "Canada                                                                                                                                   1,456                               1,310"
+        },
+        {
+          "line": 1407,
+          "page": 43,
+          "text": "Other International                                                                                                                      2,511                               2,061"
+        },
+        {
+          "line": 1408,
+          "page": 43,
+          "text": "     Merchandise inventories                                                                                    $                      14,215      $                       12,242"
+        },
+        {
+          "line": 1409,
+          "page": 43,
+          "text": "Merchandise inventories are stated at the lower of cost or market. U.S. merchandise inventories are valued by the cost method of accounting,"
+        },
+        {
+          "line": 1410,
+          "page": 43,
+          "text": "using the last-in, first-out (LIFO) basis. The Company believes the LIFO method more fairly presents the results of operations by more closely"
+        },
+        {
+          "line": 1411,
+          "page": 43,
+          "text": "matching current costs with current revenues. The Company records an adjustment each quarter, if necessary, for the projected annual effect of"
+        },
+        {
+          "line": 1412,
+          "page": 43,
+          "text": "inflation  or  deflation,  and  these  estimates  are  adjusted  to  actual  results  determined  at  year-end,  after  actual  inflation  or  deflation  rates  and"
+        },
+        {
+          "line": 1413,
+          "page": 43,
+          "text": "inventory levels have been determined. An immaterial charge was recorded to merchandise costs to increase the cumulative LIFO valuation on"
+        },
+        {
+          "line": 1414,
+          "page": 43,
+          "text": "merchandise inventories at August 29, 2021. As of August 30, 2020, U.S. merchandise inventories valued at LIFO approximated first-in, first-out"
+        },
+        {
+          "line": 1415,
+          "page": 43,
+          "text": "(FIFO)  after  considering  the  lower  of  cost  or  market  principle.  Canadian  and  Other  International  merchandise  inventories  are  predominantly"
+        },
+        {
+          "line": 1416,
+          "page": 43,
+          "text": "valued using the cost and retail inventory methods, respectively, using the FIFO basis."
+        },
+        {
+          "line": 1417,
+          "page": 43,
+          "text": "The Company provides for estimated inventory losses between physical inventory counts using estimates based on experience. The provision is"
+        },
+        {
+          "line": 1418,
+          "page": 43,
+          "text": "adjusted periodically to reflect physical inventory counts, which generally occur in the second and fourth fiscal quarters. Inventory cost, where"
+        },
+        {
+          "line": 1419,
+          "page": 43,
+          "text": "appropriate, is reduced by estimates of vendor rebates when earned or as the Company progresses towards earning those rebates, provided"
+        },
+        {
+          "line": 1420,
+          "page": 43,
+          "text": "that they are probable and reasonably estimable."
+        },
+        {
+          "line": 1421,
+          "page": 43,
+          "text": "                                                                                         43"
+        }
+      ]
+    },
+    {
+      "page": 45,
+      "review_only": true,
+      "start_line": 1460,
+      "end_line": 1497,
+      "lines": [
+        {
+          "line": 1460,
+          "page": 45,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1461,
+          "page": 45,
+          "text": "Some leases include free-rent periods and step-rent provisions, which are recognized on a straight-line basis over the original term of the lease"
+        },
+        {
+          "line": 1462,
+          "page": 45,
+          "text": "and any extension options that the Company is reasonably certain to exercise from the date the Company has control of the property. Certain"
+        },
+        {
+          "line": 1463,
+          "page": 45,
+          "text": "leases provide for periodic rent increases based on price indices or the greater of minimum guaranteed amounts or sales volume. Our leases do"
+        },
+        {
+          "line": 1464,
+          "page": 45,
+          "text": "not contain any material residual value guarantees or material restrictive covenants."
+        },
+        {
+          "line": 1465,
+          "page": 45,
+          "text": "The Company determines at inception whether a contract is or contains a lease. The Company initially records right-of-use (ROU) assets and"
+        },
+        {
+          "line": 1466,
+          "page": 45,
+          "text": "lease obligations for its finance and operating leases based on the discounted future minimum lease payments over the term. The lease term is"
+        },
+        {
+          "line": 1467,
+          "page": 45,
+          "text": "defined as the noncancelable period of the lease plus any options to extend when it is reasonably certain that the Company will exercise the"
+        },
+        {
+          "line": 1468,
+          "page": 45,
+          "text": "option. As the rate implicit in the Company's leases is not easily determinable, the present value of the sum of the lease payments is calculated"
+        },
+        {
+          "line": 1469,
+          "page": 45,
+          "text": "using the Company's incremental borrowing rate. The rate is determined using a portfolio approach based on the rate of interest the Company"
+        },
+        {
+          "line": 1470,
+          "page": 45,
+          "text": "would pay to borrow an amount equal to the lease payments on a collateralized basis over a similar term. The Company uses quoted interest"
+        },
+        {
+          "line": 1471,
+          "page": 45,
+          "text": "rates from financial institutions to derive the incremental borrowing rate. Impairment of ROU assets is evaluated in a similar manner as described"
+        },
+        {
+          "line": 1472,
+          "page": 45,
+          "text": "in Property and Equipment, net above."
+        },
+        {
+          "line": 1473,
+          "page": 45,
+          "text": "The Company's asset retirement obligations (ARO) primarily relate to leasehold improvements that at the end of a lease must be removed."
+        },
+        {
+          "line": 1474,
+          "page": 45,
+          "text": "These obligations are generally recorded as a discounted liability, with an offsetting asset at the inception of the lease term based upon the"
+        },
+        {
+          "line": 1475,
+          "page": 45,
+          "text": "estimated  fair  value  of  the  costs  to  remove  the  improvements.  These  liabilities  are  accreted  over  time  to  the  projected  future  value  of  the"
+        },
+        {
+          "line": 1476,
+          "page": 45,
+          "text": "obligation. The ARO assets are depreciated using the same depreciation method as the leasehold improvement assets and are included with"
+        },
+        {
+          "line": 1477,
+          "page": 45,
+          "text": "buildings  and  improvements.  Estimated  ARO  liabilities  associated  with  these  leases  are  included  in  other  liabilities  in  the  accompanying"
+        },
+        {
+          "line": 1478,
+          "page": 45,
+          "text": "consolidated balance sheet."
+        },
+        {
+          "line": 1479,
+          "page": 45,
+          "text": "Goodwill and Acquired Intangible Assets"
+        },
+        {
+          "line": 1480,
+          "page": 45,
+          "text": "Goodwill represents the excess of acquisition cost over the fair value of the net assets acquired and is not subject to amortization. The Company"
+        },
+        {
+          "line": 1481,
+          "page": 45,
+          "text": "reviews goodwill annually in the fourth quarter for impairment or when circumstances indicate carrying value may exceed the fair value. This"
+        },
+        {
+          "line": 1482,
+          "page": 45,
+          "text": "evaluation is performed at the reporting unit level. If a qualitative assessment indicates that it is more likely than not that the fair value is less"
+        },
+        {
+          "line": 1483,
+          "page": 45,
+          "text": "than carrying value, a quantitative analysis is completed using either the income or market approach, or a combination of both. The income"
+        },
+        {
+          "line": 1484,
+          "page": 45,
+          "text": "approach estimates fair value based on expected discounted future cash flows, while the market approach uses comparable public companies"
+        },
+        {
+          "line": 1485,
+          "page": 45,
+          "text": "and transactions to develop metrics to be applied to historical and expected future operating results."
+        },
+        {
+          "line": 1486,
+          "page": 45,
+          "text": "Goodwill  is  included  in  other  long-term  assets  in  the  consolidated  balance  sheets.  The  following  table  summarizes  goodwill  by  reportable"
+        },
+        {
+          "line": 1487,
+          "page": 45,
+          "text": "segment:"
+        },
+        {
+          "line": 1488,
+          "page": 45,
+          "text": "                                                                                         United StatesOperations  OperationsCanadian  Other InternationalOperations  Total"
+        },
+        {
+          "line": 1489,
+          "page": 45,
+          "text": "Balance at September 1, 2019                                                          $                13     $                27     $                13     $               53"
+        },
+        {
+          "line": 1490,
+          "page": 45,
+          "text": "     Changes in currency translation                                                                   —                       —                         1                      1"
+        },
+        {
+          "line": 1491,
+          "page": 45,
+          "text": "     Acquisition                                                                                      934                      —                       —                     934"
+        },
+        {
+          "line": 1492,
+          "page": 45,
+          "text": "Balance at August 30, 2020                                                            $               947     $                27     $                14     $              988"
+        },
+        {
+          "line": 1493,
+          "page": 45,
+          "text": "     Changes in currency translation and other (1)                                                       6                       1                       1                      8"
+        },
+        {
+          "line": 1494,
+          "page": 45,
+          "text": "Balance at August 29, 2021                                                            $               953     $                28     $                15     $              996"
+        },
+        {
+          "line": 1495,
+          "page": 45,
+          "text": "____________"
+        },
+        {
+          "line": 1496,
+          "page": 45,
+          "text": " (1)  Other consists of changes to the purchase price allocation. See Note 2."
+        },
+        {
+          "line": 1497,
+          "page": 45,
+          "text": "                                                                                       45"
+        }
+      ]
+    },
+    {
+      "page": 51,
+      "review_only": true,
+      "start_line": 1685,
+      "end_line": 1720,
+      "lines": [
+        {
+          "line": 1685,
+          "page": 51,
+          "text": "Table of Contents"
+        },
+        {
+          "line": 1686,
+          "page": 51,
+          "text": "Note 4—Fair Value Measurement"
+        },
+        {
+          "line": 1687,
+          "page": 51,
+          "text": "Assets and Liabilities Measured at Fair Value on a Recurring Basis"
+        },
+        {
+          "line": 1688,
+          "page": 51,
+          "text": "The  table  below  presents  information  regarding  the  Company’s  financial  assets  and  financial  liabilities  that  are  measured  at  fair  value  on  a"
+        },
+        {
+          "line": 1689,
+          "page": 51,
+          "text": "recurring basis and indicate the level within the hierarchy reflecting the valuation techniques utilized to determine such fair value."
+        },
+        {
+          "line": 1690,
+          "page": 51,
+          "text": "                                                                                                                                                 Level 2"
+        },
+        {
+          "line": 1691,
+          "page": 51,
+          "text": "                                                                                                                                2021                                 2020"
+        },
+        {
+          "line": 1692,
+          "page": 51,
+          "text": "Investment in government and agency securities(1)                                                                 $                           393     $                            508"
+        },
+        {
+          "line": 1693,
+          "page": 51,
+          "text": "Forward foreign-exchange contracts, in asset position(2)                                                                                        17                                    1"
+        },
+        {
+          "line": 1694,
+          "page": 51,
+          "text": "Forward foreign-exchange contracts, in (liability) position(2)                                                                                  (2)                                (21)"
+        },
+        {
+          "line": 1695,
+          "page": 51,
+          "text": "     Total                                                                                                        $                           408     $                            488"
+        },
+        {
+          "line": 1696,
+          "page": 51,
+          "text": " ____________"
+        },
+        {
+          "line": 1697,
+          "page": 51,
+          "text": " (1)   At August 29, 2021, $12 cash and cash equivalents and $381 short-term investments are included in the accompanying consolidated balance sheets. At August 30, 2020, $60"
+        },
+        {
+          "line": 1698,
+          "page": 51,
+          "text": "       cash and cash equivalents and $448 short-term investments are included in the consolidated balance sheets."
+        },
+        {
+          "line": 1699,
+          "page": 51,
+          "text": " (2)   The asset and the liability values are included in other current assets and other current liabilities, respectively, in the consolidated balance sheets."
+        },
+        {
+          "line": 1700,
+          "page": 51,
+          "text": "At August 29, 2021, and August 30, 2020, the Company did not hold any Level 1 or 3 financial assets or liabilities that were measured at fair"
+        },
+        {
+          "line": 1701,
+          "page": 51,
+          "text": "value on a recurring basis. There were no transfers between levels during 2021 or 2020."
+        },
+        {
+          "line": 1702,
+          "page": 51,
+          "text": "Assets and Liabilities Measured at Fair Value on a Nonrecurring Basis"
+        },
+        {
+          "line": 1703,
+          "page": 51,
+          "text": "Assets  and  liabilities  recognized  and  disclosed  at  fair  value  on  a  nonrecurring  basis  include  items  such  as  financial  assets  measured  at"
+        },
+        {
+          "line": 1704,
+          "page": 51,
+          "text": "amortized cost and long-lived nonfinancial assets. These assets are measured at fair value if determined to be impaired. Fair value adjustments"
+        },
+        {
+          "line": 1705,
+          "page": 51,
+          "text": "to nonfinancial assets during 2021 were immaterial and there were no fair value adjustments to these items during 2020."
+        },
+        {
+          "line": 1706,
+          "page": 51,
+          "text": "Note 5—Debt"
+        },
+        {
+          "line": 1707,
+          "page": 51,
+          "text": "Short-Term Borrowings"
+        },
+        {
+          "line": 1708,
+          "page": 51,
+          "text": "The Company maintains various short-term bank credit facilities, with a borrowing capacity of $1,050 and $967, in 2021 and 2020, respectively."
+        },
+        {
+          "line": 1709,
+          "page": 51,
+          "text": "Borrowings  on  these  short-term  facilities  were  immaterial  during  2021  and  2020.  Short-term  borrowings  outstanding  were  $41  at  the  end  of"
+        },
+        {
+          "line": 1710,
+          "page": 51,
+          "text": "2021. There were no outstanding balances at the end of 2020."
+        },
+        {
+          "line": 1711,
+          "page": 51,
+          "text": "Long-Term Debt"
+        },
+        {
+          "line": 1712,
+          "page": 51,
+          "text": "The Company's long-term debt consists primarily of Senior Notes, described below. The Company at its option may redeem the Senior Notes at"
+        },
+        {
+          "line": 1713,
+          "page": 51,
+          "text": "any time, in whole or in part, at a redemption price plus accrued interest. The redemption price is equal to the greater of 100% of the principal"
+        },
+        {
+          "line": 1714,
+          "page": 51,
+          "text": "amount or the sum of the present value of the remaining scheduled payments of principal and interest to maturity. Additionally, upon certain"
+        },
+        {
+          "line": 1715,
+          "page": 51,
+          "text": "events, the holder has the right to require the Company to purchase this security at a price of 101% of the principal amount plus accrued and"
+        },
+        {
+          "line": 1716,
+          "page": 51,
+          "text": "unpaid interest to the date of the event. Interest on all outstanding long-term debt is payable semi-annually. The estimated fair value of Senior"
+        },
+        {
+          "line": 1717,
+          "page": 51,
+          "text": "Notes is valued using Level 2 inputs."
+        },
+        {
+          "line": 1718,
+          "page": 51,
+          "text": "Other long-term debt consists of Guaranteed Senior Notes issued by the Company's Japanese subsidiary, valued using Level 3 inputs. In June"
+        },
+        {
+          "line": 1719,
+          "page": 51,
+          "text": "2021, the Japanese subsidiary repaid approximately $94 of its Guaranteed Senior Notes."
+        },
+        {
+          "line": 1720,
+          "page": 51,
+          "text": "                                                                                          51"
+        }
+      ]
+    }
+  ],
+  "scope_note": "Excerpt origins and outcomes are masked. Full native pages are review-only context, never delivered-evidence credit. Extraction is not independently visually validated; do not assume exhaustive support or correct table alignment."
+}

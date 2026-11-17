@@ -1,0 +1,115 @@
+{
+  "version": "finance-development-exposures-v1",
+  "groups": [
+    {
+      "group": "MRO/2007",
+      "reason": "FinQA development pilot output and reference inspected; applies to overlapping ConvFinQA report contexts.",
+      "evidence": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "RSG/2015",
+      "reason": "FinQA development pilot output and reference inspected; applies to overlapping ConvFinQA report contexts.",
+      "evidence": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "AES/2002",
+      "reason": "FinQA development pilot output and reference inspected; applies to overlapping ConvFinQA report contexts.",
+      "evidence": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "fa0d7378-4217-44f1-bfb0-38688f03bdf3",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "8692f92d-668a-452d-be7a-2b491ee27585",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "9b0abd12-8d9e-48ba-9ac2-baacfa92e7eb",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "GS/2017",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "GPN/2009",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/expansion-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "ADOBE_2022_10K",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "AES_2022_10K",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/external-pilot-2026-11-16/review.md"
+    },
+    {
+      "group": "WALMART_2018_10K",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/source-ingestion-2026-11-16/report.md"
+    },
+    {
+      "group": "NIKE_2023_10K",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/source-ingestion-2026-11-16/report.md"
+    },
+    {
+      "group": "ULTABEAUTY_2023Q4_EARNINGS",
+      "reason": "Inspected development pilot or source-quality context; preserve as development across later preparations.",
+      "evidence": "eval/reports/source-ingestion-2026-11-16/report.md"
+    },
+    {
+      "group": "VERIZON_2022_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "COCACOLA_2017_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "COSTCO_2021_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "JOHNSON_JOHNSON_2022_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "3M_2022_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "AMERICANWATERWORKS_2021_10K",
+      "reason": "Reserved for development before broader context preparation, extraction and outcome-blind annotation; original seed-17 development membership was independently verified.",
+      "evidence": "eval/assessments/financebench-context-v1/preparation-plan.md"
+    },
+    {
+      "group": "VERIZON_2021_10K",
+      "reason": "Published FinanceBench question/evidence example incidentally exposed during primary-paper retrieval research; exclude from untouched validation and preserve as development.",
+      "evidence": "eval/retrieval-research-2026-11-16.md#incidental-research-exposure"
+    },
+    {
+      "group": "AMCOR_2020_10K",
+      "reason": "Published FinanceBench question/evidence example incidentally exposed during primary-paper retrieval research; exclude from untouched validation and preserve as development.",
+      "evidence": "eval/retrieval-research-2026-11-16.md#incidental-research-exposure"
+    }
+  ]
+}

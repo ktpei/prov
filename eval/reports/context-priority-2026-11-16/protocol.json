@@ -1,0 +1,10 @@
+{
+  "version": "context-priority-protocol-v1",
+  "policy": "earlier-optional-results-first-v1",
+  "limit": 32000,
+  "analysis_sha256": "80fd1071444a45bd6127f34a33882b02db9a9a8191661fef2d25a26f543d49c2",
+  "runtime_sha256": "46e934c36c802e2a73ff9ca66663de22276728d7b095e183c7e565cd57c4b7f9",
+  "baseline_analysis_sha256": "894f21ebc66be52759fd037efabb241a268dfcd56336e546e04e1cd3aa2e8916",
+  "baseline_protocol_sha256": "7068d56ebe10e9022cc8927b8b86b276535fb6807e558eb5343abacba4e6880f",
+  "baseline_result_sha256": "b4b9c26063f436d80e4760c5dc3d0a1f37778ec5ebe0cafaa364812a19037561"
+}

@@ -1,0 +1,19 @@
+{
+  "version": "typed-values-verification-v1",
+  "implementation_commit": "b06b476",
+  "result_sha256": "4308ed64e294d474c3298feb24692bc8914408e9e5ee0f5a2bc9b0fcd3476e34",
+  "driver_sha256": "f9b13fc32c42def9f1da7d84216c3f3dbadcc3e8e05d6a0d4225b69f2954021f",
+  "manifest_sha256": "6baf010f23a752617e9340e03606d2679178e1a864913f215ccaad521a1704e1",
+  "independent_implementation_reviewer": "/root/masked_packet_review",
+  "independent_optional_tests": 8,
+  "core_tests": 399,
+  "lint": "passed",
+  "root_fresh_process_result_byte_reproduction": true,
+  "loaded_model_documents": 6,
+  "accepted_synthetic_occurrences": 5,
+  "limits": [
+    "Original cell ancestry only; rendered visibility and semantic header association unverified.",
+    "Document manifest is not a complete executable/bundled-resource manifest.",
+    "No issuer loading or financial answer accuracy evaluation."
+  ]
+}

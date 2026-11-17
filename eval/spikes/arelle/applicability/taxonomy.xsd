@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+ xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink"
+ targetNamespace="urn:synthetic:applicability" elementFormDefault="qualified">
+ <xs:annotation><xs:appinfo><link:linkbaseRef xlink:type="simple" xlink:href="definition.xml"
+ xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"
+ xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/></xs:appinfo></xs:annotation>
+ <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+ <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+ <xs:import namespace="http://xbrl.org/2006/xbrldi" schemaLocation="http://www.xbrl.org/2006/xbrldi-2006.xsd"/>
+ <xs:element name="Assets" id="assets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" xbrli:periodType="instant" nillable="true"/>
+ <xs:element name="RegionCube" id="cube" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrldt:hypercubeItem" xbrli:periodType="duration"/>
+ <xs:element name="RegionAxis" id="axis" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrldt:dimensionItem" xbrli:periodType="duration"/>
+ <xs:element name="ExtraAxis" id="extra" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrldt:dimensionItem" xbrli:periodType="duration"/>
+ <xs:element name="RegionDomain" id="domain" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+ <xs:element name="AllRegions" id="all" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+ <xs:element name="North" id="north" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+ <xs:element name="South" id="south" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+ <xs:element name="East" id="east" type="xbrli:stringItemType" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration"/>
+ <xs:element name="Basis" id="basis" type="xs:string"/>
+</xs:schema>

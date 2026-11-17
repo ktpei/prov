@@ -1,0 +1,89 @@
+{
+  "version": "native-html-cohort-selection-v1",
+  "status": "selected_before_acquisition",
+  "metadata_verified_on": "2026-11-16",
+  "selection": "Fixed three issuer CIKs and exact two period ends each; original unamended primary 10-Q HTML accepted by 2025-12-31. Purposefully varied sectors; not random or population representative.",
+  "failure_policy": "No performance-based replacement; preserve parse/acquisition failures against selected document.",
+  "exposure": "Root and research chat inspected filing-index metadata only; no candidate financial tables or answer cells inspected for this assessment. No recorded local accession overlap found by research chat; no universal non-exposure claim.",
+  "documents": [
+    {
+      "source_id": "caseys-2025-07-31-10q",
+      "issuer_id": "caseys",
+      "cik": "0000726958",
+      "form": "10-Q",
+      "period_end": "2025-07-31",
+      "accession": "0000726958-25-000101",
+      "accepted_as_displayed": "2025-09-08 16:28:20",
+      "index_reported_bytes": 501775,
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000101/casy-20250731.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000101/0000726958-25-000101-index.htm",
+      "intended_entity": "caseys"
+    },
+    {
+      "source_id": "caseys-2025-10-31-10q",
+      "issuer_id": "caseys",
+      "cik": "0000726958",
+      "form": "10-Q",
+      "period_end": "2025-10-31",
+      "accession": "0000726958-25-000114",
+      "accepted_as_displayed": "2025-12-09 16:32:06",
+      "index_reported_bytes": 639261,
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000114/casy-20251031.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/726958/000072695825000114/0000726958-25-000114-index.htm",
+      "intended_entity": "caseys"
+    },
+    {
+      "source_id": "old-dominion-2025-06-30-10q",
+      "issuer_id": "old-dominion",
+      "cik": "0000878927",
+      "form": "10-Q",
+      "period_end": "2025-06-30",
+      "accession": "0000950170-25-103916",
+      "accepted_as_displayed": "2025-08-06 15:26:54",
+      "index_reported_bytes": 1762675,
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/odfl-20250630.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/878927/000095017025103916/0000950170-25-103916-index.htm",
+      "intended_entity": "old-dominion"
+    },
+    {
+      "source_id": "old-dominion-2025-09-30-10q",
+      "issuer_id": "old-dominion",
+      "cik": "0000878927",
+      "form": "10-Q",
+      "period_end": "2025-09-30",
+      "accession": "0001193125-25-268415",
+      "accepted_as_displayed": "2025-11-06 10:55:40",
+      "index_reported_bytes": 1760566,
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/878927/000119312525268415/odfl-20250930.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/878927/000119312525268415/0001193125-25-268415-index.htm",
+      "intended_entity": "old-dominion"
+    },
+    {
+      "source_id": "ameren-2025-06-30-10q",
+      "issuer_id": "ameren",
+      "cik": "0001002910",
+      "form": "10-Q",
+      "period_end": "2025-06-30",
+      "accession": "0001002910-25-000112",
+      "accepted_as_displayed": "2025-08-04 14:48:04",
+      "index_reported_bytes": 4615954,
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000112/aee-20250630.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000112/0001002910-25-000112-index.htm",
+      "intended_entity": "Ameren Corporation consolidated"
+    },
+    {
+      "source_id": "ameren-2025-09-30-10q",
+      "issuer_id": "ameren",
+      "cik": "0001002910",
+      "form": "10-Q",
+      "period_end": "2025-09-30",
+      "accession": "0001002910-25-000129",
+      "accepted_as_displayed": "2025-11-06 12:34:19",
+      "index_reported_bytes": 4646188,
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000129/aee-20250930.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1002910/000100291025000129/0001002910-25-000129-index.htm",
+      "intended_entity": "Ameren Corporation consolidated"
+    }
+  ],
+  "selection_basis": "Same six metadata-proposed identities; no original financial tables inspected before selection."
+}

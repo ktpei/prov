@@ -1,0 +1,27 @@
+{
+  "version": "saved-pool-diagnosis-audit-v1",
+  "status": "passed",
+  "reviewer": "independent coding-agent review",
+  "diagnosis_sha256": "f40ee9517395d2b383e482f5b3586dbf1ea3016ac309bd83e9b3c07173edc122",
+  "method": "Exact in-memory diagnostic replay plus independent exhaustive set-union calculation; no retrieval, ranking or read_source calls.",
+  "verified": {
+    "selected_cases": 6,
+    "costco_minimum_windows": 1,
+    "costco_ranks": [
+      5
+    ],
+    "american_water_works_minimum_windows": 2,
+    "american_water_works_ranks": [
+      2,
+      7
+    ],
+    "missing_from_pool_cases": 4,
+    "complete_pool_requiring_more_than_five": 0,
+    "synthetic_tests": 4
+  },
+  "limitations": [
+    "Label-assisted parent-window opportunity only; not delivered or retained evidence.",
+    "Not a deployable selection policy or exhaustive semantic judgment.",
+    "Frozen scores/annotations and reserved validation unchanged."
+  ]
+}

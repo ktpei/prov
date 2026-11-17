@@ -1,0 +1,51 @@
+{
+  "version": "native-html-text-diagnostics-v1",
+  "git_revision": "1424916f45cc59d4a2107c0aa094e4dd97f1e11f",
+  "working_tree_dirty": false,
+  "model_calls": 0,
+  "new_corpus_manifest_sha256": "2a0e260128042542ee3c68cefe9a754be78c3d08cf7cf84e16f37abb530071d6",
+  "existing_corpus_all_files_unchanged": true,
+  "sources": [
+    {
+      "source_id": "cloudflare-q3-2024-release",
+      "original_sha256": "709818e398a09a319ee5bde2411af18affa77503f81cad3c17e40b239800e25e",
+      "old_text_sha256": "f94508d506dbf25cfb00067efebb253fda29bfe28ab1dcc558254f1ec11aa37d",
+      "legacy_replayed_exactly": true,
+      "new_text_sha256": "dbe257bb052f22e6650871f6cf8b8fd1cf27467e441bface55444bcf59b06f1a",
+      "new_line_count": 402,
+      "extraction": {
+        "parser": "native-html-text-v2",
+        "text_completeness": "not_verified",
+        "visibility": "explicit_hiding_suppressed_not_computed_css",
+        "warnings": [
+          "External CSS, conflicting declarations and descendant visibility overrides are unresolved.",
+          "Conservative hidden-markup rejection can reject browser-renderable documents.",
+          "Text separators do not establish table geometry or financial header associations."
+        ]
+      }
+    },
+    {
+      "source_id": "cloudflare-q3-2024-filing",
+      "original_sha256": "a5152b82107a7a4c578a80931e1d00f5564cc7f2373ffbc77274f1ae1004361f",
+      "old_text_sha256": "a52037cef27282abc71c0896f9d0186e91fc77785f92e56f0e0db1cf2ddc36ab",
+      "legacy_replayed_exactly": true,
+      "new_text_sha256": "7de5c3e55b6c0dd83b1c9d2be7d055d5afb115d3dafd926546fad0c761fc97cd",
+      "new_line_count": 1721,
+      "extraction": {
+        "parser": "native-html-text-v2",
+        "text_completeness": "not_verified",
+        "visibility": "explicit_hiding_suppressed_not_computed_css",
+        "warnings": [
+          "External CSS, conflicting declarations and descendant visibility overrides are unresolved.",
+          "Conservative hidden-markup rejection can reject browser-renderable documents.",
+          "Text separators do not establish table geometry or financial header associations."
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Two previously inspected development sources; not new assessment or completeness validation.",
+    "Changed text hashes are expected from visibility/boundary policy; not proof every difference is correct.",
+    "No financial answers, retrieval comparisons or original holdout inference."
+  ]
+}

@@ -1,5 +1,6 @@
 """Small, read-only retrieval tools. Gold answers never enter this module."""
 
+import copy
 import hashlib
 import json
 import math
@@ -55,6 +56,11 @@ def locator_range(locator):
     return start, end
 
 
+def _query_terms(query):
+    stopwords = {"the", "a", "an", "of", "to", "and", "in", "for", "what", "was", "is", "did"}
+    return set(re.findall(r"\w+", query.lower())) - stopwords
+
+
 def _bm25(tokens, idf, average_length):
     """Standard BM25 with fixed k1=1.5, b=.75 and positive Robertson IDF."""
     frequencies = Counter(tokens)
@@ -94,6 +100,68 @@ def _snippet(passage, idf, average_length):
     return {"snippet": best[4], "snippet_locator": f"L{start}-L{end}"}
 
 
+def _read_extraction(source, selected, version):
+    """Project only known PDF page diagnostics; preserve global uncertainty metadata."""
+    extraction = source.get("extraction")
+    if (
+        version == "full-v1"
+        or not isinstance(extraction, dict)
+        or extraction.get("diagnostics_version") != "pdf-extraction-diagnostics-v2"
+    ):
+        return extraction
+    pages, count = extraction.get("pages"), extraction.get("page_count")
+    if (
+        not isinstance(pages, list)
+        or type(count) is not int
+        or count < 1
+        or len(pages) != count
+        or "read_projection" in extraction
+        or any(not isinstance(p, dict) or type(p.get("page")) is not int for p in pages)
+        or {p["page"] for p in pages} != set(range(1, count + 1))
+    ):
+        raise ValueError("Compact PDF diagnostics require complete unique page records")
+    locations = source.get("line_locations", [])
+    if not isinstance(locations, list):
+        raise ValueError("Compact PDF diagnostics require returned-line page mappings")
+    by_page = {p["page"]: p for p in pages}
+    line_count = len(source["text"].splitlines())
+    returned_pages = set()
+    for line in selected:
+        location = locations[line["line"] - 1] if len(locations) >= line["line"] else None
+        if (
+            not isinstance(location, dict)
+            or type(location.get("page")) is not int
+            or not 1 <= location["page"] <= count
+        ):
+            raise ValueError("Compact PDF diagnostics require returned-line page mappings")
+        page = by_page[location["page"]]
+        start, end = page.get("emitted_line_start"), page.get("emitted_line_end")
+        if (
+            type(start) is not int
+            or type(end) is not int
+            or not 1 <= start <= line["line"] <= end <= line_count
+        ):
+            raise ValueError("Compact PDF diagnostics contradict returned-line page bounds")
+        returned_pages.add(location["page"])
+    projected = copy.deepcopy(extraction)
+    projected["pages"] = [p for p in projected["pages"] if p["page"] in returned_pages]
+    projected["read_projection"] = {
+        "version": version,
+        "scope": "Full-page diagnostics for physical pages present in returned lines; not excerpt counts.",
+        "retained_page_count": len(returned_pages),
+        "omitted_page_count": count - len(returned_pages),
+        "full_diagnostics_sha256": hashlib.sha256(
+            json.dumps(extraction, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()
+        ).hexdigest(),
+        "full_diagnostics_location": {
+            "manifest": "sources.json",
+            "source_id": source["id"],
+            "field": "extraction",
+        },
+    }
+    return projected
+
+
 class Sources:
     def __init__(
         self,
@@ -104,9 +172,13 @@ class Sources:
         budget=None,
         request=post_json,
         retrieval_version="bm25-v2",
+        read_extraction_version="full-v1",
     ):
         if retrieval_version not in {"passage-v1", "bm25-v2"}:
             raise ValueError("Unknown retrieval_version")
+        if read_extraction_version not in {"full-v1", "pdf-returned-pages-v1"}:
+            raise ValueError("Unknown read extraction version")
+        self.read_extraction_version = read_extraction_version
         self.retrieval_version = retrieval_version
         self.directory = Path(directory)
         manifest = json.loads((self.directory / "sources.json").read_text())
@@ -178,9 +250,10 @@ class Sources:
             self.budget.uncertain = True
             raise
 
-    def search(self, query, timeout):
-        stopwords = {"the", "a", "an", "of", "to", "and", "in", "for", "what", "was", "is", "did"}
-        terms = set(re.findall(r"\w+", query.lower())) - stopwords
+    def _local_ranking(self, query):
+        """Return local candidates and snippet parameters without dispatching tools."""
+        idf, average_length = None, None
+        terms = _query_terms(query)
         passages = [item for item in self.passages if item["source_id"] in self.documents]
         if self.retrieval_version == "passage-v1":
             counts = {term: sum(term in item["terms"] for item in passages) for term in terms}
@@ -224,8 +297,11 @@ class Sources:
                 if score:
                     ranked.append((score, passage, source))
         ranked.sort(key=lambda item: (-item[0], item[2]["id"], item[1]["start_line"]))
+        return ranked, idf, average_length
+
+    def _passage_hits(self, ranked, idf, average_length):
         hits = []
-        for score, passage, source in ranked[:5]:
+        for score, passage, source in ranked:
             hits.append(
                 {
                     **self.metadata(source),
@@ -242,6 +318,11 @@ class Sources:
                     ],
                 }
             )
+        return hits
+
+    def search(self, query, timeout):
+        ranked, idf, average_length = self._local_ranking(query)
+        hits = self._passage_hits(ranked[:5], idf, average_length)
         if self.exa_key:
             result = self._exa("search", {"query": query, "type": "auto", "numResults": 5}, timeout)
             for item in result.get("results", [])[:5]:
@@ -306,6 +387,7 @@ class Sources:
         if not selected:
             raise ValueError("Source line exceeds result size limit")
         actual_end = selected[-1]["line"]
+        extraction = _read_extraction(source, selected, self.read_extraction_version)
         self.seen.setdefault(source_id, set()).update(range(start, actual_end + 1))
         return {
             **self.metadata(source),
@@ -322,7 +404,7 @@ class Sources:
                 "Bounded excerpt: headers, units, footnotes or chart geometry may require "
                 "surrounding reads and inspection of the original document."
             ),
-            "extraction": source.get("extraction"),
+            "extraction": extraction,
             "total_lines": len(lines),
             "locator": f"L{start}-L{actual_end}",
             "sha256": hashlib.sha256(source["text"].encode()).hexdigest(),

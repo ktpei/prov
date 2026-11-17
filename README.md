@@ -21,9 +21,14 @@ rules, and semester deliverables.
   dependencies, current status, and milestone checks.
 - [Project scope](project.md) records the sponsor brief and implementation boundary.
 - [Working context](context.md) records verified status and decisions still pending.
+- [Finance accuracy benchmark plan](eval/benchmark-plan.md) records the selected
+  datasets, scoring, test conditions, and future implementation stages.
 
-The active milestone is company-context tooling and evaluation. Workbook-aware
-research is next; the eventual product interface is an Excel add-in. Browser UI,
+The active milestone is company-context tooling and evaluation. Finance accuracy
+benchmarking is active: [external benchmark preparation and scoring](eval/external-benchmarks.md)
+now support FinEval, FinQA, FinanceBench, TAT-QA, and ConvFinQA. Two small
+preregistered public development pilots are complete; annotation concerns remain
+separate from automatic scores. The eventual product interface is an Excel add-in. Browser UI,
 workbook operations, and approved exports are deferred.
 
 ## Try it without credentials
@@ -53,7 +58,146 @@ by Git; they contain prompts, public excerpts, and responses, but no API keys.
 
 ## Evaluation
 
-Latest frozen evaluation (2026-11-07): six new public development questions,
+External benchmark pilots (2026-11-16): [core pilot](eval/reports/external-pilot-2026-11-16/report.md)
+and [table/conversation pilot](eval/reports/expansion-pilot-2026-11-16/report.md).
+The latter records TAT-QA 4/4 official matches and ConvFinQA 6/9 turns, 0/2 whole
+conversations in both history conditions. Small-sample, public-data and annotation
+limitations prevent broad accuracy claims. Total recorded conservative spending
+across development is $0.4814193. The original holdout remains unrun.
+
+[A frozen DPO component-search experiment](eval/reports/dpo-retrieval-2026-11-16/report.md)
+used more searches without improving page coverage; it was not promoted. An
+[equal-budget statement-context variant](eval/reports/statement-context-2026-11-16/report.md)
+also failed to improve final coverage and lost a required candidate page.
+
+[Evidence-component diagnostics](eval/reports/evidence-components-2026-11-16/report.md)
+show complete annotated evidence in parent passages for 2/3 exposed tasks, but
+0/3 in returned snippets across all three retrieval conditions. This measures a
+search-to-read gap, not financial answer accuracy.
+
+[Bounded reads](eval/reports/bounded-reading-2026-11-16/report.md) deliver complete
+annotated packets for 2/3 tasks after three reads, with all three retrieval policies
+tied. All 45 original reads succeeded and replayed exactly. A separate
+[context-retention diagnostic](eval/reports/context-retention-2026-11-16/report.md)
+finds that the current policy loses those complete packets after five reads
+(2/3 before projection, 0/3 retained). This is not measured answer accuracy; agent
+defaults are unchanged.
+
+A [same-budget retention challenger](eval/reports/context-priority-2026-11-16/report.md)
+recovers the two inspected losses by prioritizing earlier optional reads. It remains
+experimental: these exposed cases do not justify changing the default policy.
+
+[Broader six-source validation](eval/assessments/financebench-context-v1/progress.md)
+now fixes six new development source groups and their pinned PDF inventory before
+content inspection. All six bodies are acquired and extracted (981 pages);
+all six evidence-location packets are [independently reviewed](eval/assessments/financebench-context-v1/annotation-report.md)
+and frozen before retrieval. Three semantic caveats remain explicit; financial
+answers are not validated. The [frozen comparison](eval/assessments/financebench-context-v1/comparison-report.md)
+finds no challenger improvement: both retain 1/6 complete packets at five reads,
+with five blocked projections. Production remains unchanged. Native text quality outside the ten inspected pages
+is unverified,
+and failed cases will not be replaced with easier ones.
+
+[PDF visual review](eval/reports/pdf-visual-quality-2026-11-16/report.md) distinguishes
+retrieval misses from extraction failure and records a fiscal-year reference ambiguity.
+All 419 native-text pages replay unchanged with structured page diagnostics.
+
+An opt-in [PDF read-metadata projection](eval/read-extraction-design.md) retains
+only returned-page diagnostic entries while preserving global warnings and the
+full diagnostics hash/reference. The [frozen assessment](eval/assessments/financebench-compact-read-v1/report.md)
+removes all blocked projections and cuts read-response characters 76.05%, with
+evidence unchanged. Complete coverage remains 1/6 at five reads; retrieval gaps
+persist, and frozen locations are not exhaustive semantic judgments. Full metadata
+remains the default. Both `demo` and `run` accept
+`--read-extraction-version pdf-returned-pages-v1`; the mode is recorded in traces,
+respected by grading, and must match on checkpoint resume.
+
+A [page-context ranking prototype](eval/retrieval-research-2026-11-16.md) passes
+synthetic checks while preserving default search responses. Its [assessment runner](eval/assessments/financebench-page-ranking-v1/progress.md)
+verifies whole-run replay before labels. The [frozen comparison](eval/assessments/financebench-page-ranking-v1/report.md)
+regressed from 1/6 to 0/6 at five reads, so the challenger is not promoted.
+A [saved-pool diagnosis](eval/assessments/financebench-page-ranking-v1/pool-diagnosis.md)
+separates two cases with short label-assisted window witnesses from four whose
+pools lack frozen locations; it is an evaluator diagnostic, not a retrieval policy. A [metadata-only validation reservation](eval/assessments/financebench-page-validation-v1/progress.md)
+keeps six slots closed; Amazon and Microsoft have prior issuer exposure and remain
+explicitly flagged without replacement. The separate [annotation-validity research](eval/incomplete-judgments-research-2026-11-16.md)
+supports a [staged blinded audit](eval/assessments/financebench-evidence-audit-v1/progress.md)
+that has completed and locked independent question-only interpretation and reconciliation
+before evidence or outcomes are shown. Six cases retain 16 explicit interpretations;
+two independent evidence reviews and fresh all-case adjudication are now locked
+with 60 requirements and five complete sets across interpretations. Mechanical
+checks verify 223 citation occurrences; financial validity is not independently
+established. A separately frozen read-attribution diagnostic finds no accepted set fully covered
+by either branch; only two cases have adjudicated sets, so this is not a six-case
+retrieval-failure rate. Independent reproduction passed. Frozen scores remain unchanged.
+
+A [context-markup inventory](eval/reports/context-markup-2026-11-16/report.md)
+finds no explicit HTML header links in four exposed sources, but numeric Inline
+XBRL tags in three filings. This prioritizes a typed-context extraction investigation;
+lexical tags are not validated facts. The v3 release-page rejection is retained.
+A separate [Arelle negative preflight](eval/spikes/arelle/README.md) verifies that
+missing schemas must reject facts even when its API reports success. Successful
+issuer extraction remains pending. A separate [five-fact synthetic acceptance
+fixture](eval/spikes/arelle/typed-values-report.md) verifies typed values and source-cell
+ancestry; rendered visibility and broader fact types remain unverified. A separate
+[guarded version](eval/spikes/arelle/guarded-values-report.md) rejects a discovered
+timezone mismatch and preserves duplicate conflicts; 15 optional tests pass. A
+[controlled 2.47.5 comparison](eval/spikes/arelle/candidate-comparison-report.md)
+reproduces those synthetic behaviors while holding other package versions fixed.
+A [dimensional scope fixture](eval/spikes/arelle/dimensions/README.md) additionally
+preserves explicit/typed members and residual scenario content; six optional tests
+pass. A separate [14-case applicability matrix](eval/spikes/arelle/applicability/README.md)
+now distinguishes usable defaults, domain membership and closed-cube container scope;
+seven additional tests pass. Integration into a general adapter remains pending.
+A [real-filing offline load](eval/reports/xbrl-dependencies-2026-11-16/report.md) now
+uses 24 acquired dependencies for the existing ODFL June filing. The subsequent
+[pinned SEC transform comparison](eval/spikes/arelle/sec-transforms-report.md) resolves
+its twelve transformation failures while preserving the other 492 records. All 504
+facts pass schema validation; general financial evidence acceptance remains unverified.
+The dependency inventory/acquisition path adds 13 core regression tests.
+The [source-occurrence sidecar](eval/reports/xbrl-occurrences-2026-11-16/report.md)
+accounts for all 504 facts, including 420 exact cell joins and explicit outside-table/
+hidden dispositions. Source locations are bound to the validated runtime; rendered
+visibility and general financial evidence acceptance remain unverified.
+
+
+The [experimental typed fact export](eval/reports/xbrl-facts-2026-11-16/report.md)
+now integrates all 504 exposed ODFL facts with 71 contexts, five units, separate
+provenance-bound taxonomy defaults and rebuilt source geometry. Exact numeric and
+partial-date representations pass independent source expectations. Seven optional
+checks and 431 core tests pass; financial acceptance and rendered visibility remain
+unverified. No default policy or reserved evaluation source changes.
+
+The [typed-fact delivery diagnostic](eval/assessments/xbrl-evidence-delivery-v1/protocol.md)
+now measures existing table reads with exact row locations: 139 reads return all
+420 mapped fact occurrences across 412 cells; 84 facts have no mapped cell. This
+is an exposed-source, location-assisted coverage check, not retrieval or answer
+accuracy. The [opt-in exact-ID reader](eval/reports/xbrl-reader-2026-11-16/report.md) now
+reconstructs every occurrence within bounded responses: 484 immediate and 20
+deferred. Final case manifests and prospective question assessment remain pending.
+
+Source ingestion now includes an independent native HTML geometry sidecar,
+FinanceBench whole-document assembly, and bounded page-level PDF diagnostics. New HTML corpora can explicitly select
+`--html-text-version native-html-text-v2` to suppress explicit hidden content and
+preserve text boundaries; legacy extraction remains the default for replay.
+A standalone opt-in [table sidecar v3](eval/reports/table-template-2026-11-16/report.md)
+also isolates inert templates. Tools and assessment protocol v4 support explicit
+sidecar selection; defaults retain v2, and a real assessment requires a new freeze.
+[Extraction findings](eval/reports/source-ingestion-2026-11-16/report.md) and
+[connected table-evidence protocol](eval/table-evidence-protocol.md) distinguish
+structure, retrieval, and financial meaning. The [raw table tool probe](eval/reports/table-runtime-2026-11-16/report.md)
+measures 4/4 explicit-window controls and 2/4 question-search context coverage,
+without claiming semantic answer success. A separately frozen soft-prefix
+weighting experiment stayed at 2/4 and was not promoted. Full-agent FinanceBench inference
+remains disabled pending source-quality acceptance. A separate
+[locked assessment runner](eval/table-runtime-design.md) now keeps annotation files
+out of retrieval execution, with separate receipt-bound replay grading. Broader
+cohort acquisition and annotation remain incomplete: a frozen issuer-delivery
+attempt verified 2/6 copies, with all four failures retained. See
+[assessment progress](eval/assessments/native-html-v1/progress.md). Versioned publication-cutoff
+controls now enforce conservative source eligibility and are scored separately.
+
+Latest frozen company-research evaluation (2026-11-07): six new public development questions,
 **5/6 completed**, **2/6 unchanged mechanical passes**, and **4/6 evidence-supported
 task passes under coding-agent review**. Two numerical answers are substantively
 correct but fail exact period formatting; a search-only abstention lacks a source

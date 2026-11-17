@@ -1,0 +1,63 @@
+{
+  "version": "page-ranking-assessment-v1",
+  "parameters": {
+    "candidate_limit": 25,
+    "read_limit": 5,
+    "rrf_constant": 60,
+    "context_limit": 32000,
+    "read_extraction_version": "pdf-returned-pages-v1",
+    "retrieval_version": "bm25-v2",
+    "ranking_version": "page-rrf-ablation-v1"
+  },
+  "environment": {
+    "python": "3.13.2",
+    "implementation": "cpython",
+    "hash_seed": "0"
+  },
+  "case_ids": [
+    "financebench_id_04209",
+    "financebench_id_04254",
+    "financebench_id_00215",
+    "financebench_id_03473",
+    "financebench_id_01865",
+    "financebench_id_00711"
+  ],
+  "runtime_sha256": "e2364216d3c82e2ef29cef2c690cca42926408475390232ebf1b79da4fae4fa9",
+  "files": {
+    "driver": "7a6a0e1f62586418cd5bd0eab20fe167b74f4fef5071d1846b7e74f56db70d53",
+    "plan": "866128761ab2905704586ef47c842eb86fc512fd2cdf6d4e4643232fc49312e6",
+    "selection": "5d263a7dc8bd41ed980bbebc5bc45755cf496b3cc173e5317167f1af72d4d1d3",
+    "baseline_analysis": "894f21ebc66be52759fd037efabb241a268dfcd56336e546e04e1cd3aa2e8916",
+    "challenger_analysis": "80fd1071444a45bd6127f34a33882b02db9a9a8191661fef2d25a26f543d49c2",
+    "corpus_manifest": "ce2d859fb583d7a9c138dc35ccf6303db072195316d711a79de38ae1906482a4",
+    "corpus_binding": "a2bedcdcc91728ae23626aa5dc25c5e5d9521172bb1253e956c90965594b1286",
+    "prepared/manifest.json": "2fb590523ea885600d6835cc1639cb6b8856e725070b5d619d3f671baa490a05",
+    "prepared/tasks.json": "2b05a8d6bbeeaaa807e8ea1437d81b84ca70bb94d84ac563b73c9c9b8ff52a09",
+    "prepared/inputs.json": "72b290d243e917b232e91114217f3997cf444a4e000c57f9b433f1d28072556f",
+    "annotation/primary_a-cases.json": "6013b34990a024205465688cd50b97b7c3ad9bbe7db3949d62380d9e777ef65d",
+    "annotation/primary_a-notes.json": "b146bb5fb5b9525cbb2e930e4a9c1b34644e883cdae68422202f68eb89a597bf",
+    "annotation/primary_b-notes.json": "eeb7b39d4545070b8b5b60fb1897becd6ddd4053d797aa9bfebbf0111126f98a",
+    "annotation/primary_b-cases.json": "39dbb870c9856c384fe32fae2fd99088a5d3b1d09819158b8bbe3f4558ea4560",
+    "annotation/primary_root-cases.json": "4a4e461dba604f30efb441ff9ee6011441eb120ad6989f53f14819fe2ebdc4f0",
+    "annotation/packets.json": "3ef0fac6fc61e9a7a0dddfaf4182aac3cc1325064ab3b7ec5be3f6c92535ee02",
+    "annotation/review_a_of_b_root.json": "041eb9193b43fedd95a64bfcb1f744be142e68b23318e2fd85399a2b5721bda5",
+    "annotation/receipt.json": "46fd1fc673a2b969dfc16d36c8f6f10bab828e1d027f59c072666f98704dc902",
+    "annotation/review_b_of_a.json": "544e0055464d1f6e89340bda3d9a4999e77db6108ae0edc48db7dd21b50cf16e",
+    "annotation/primary_root-notes.json": "d4fcd379c0c5f6b1de95d36d74783ef32227186896e7caa98439a212d4e350df",
+    "wrapper": "61a35a6270090cf47e02e33f800fdc774643e34eb0e7174d3629d975749616a3",
+    "experiment_plan": "e3fe6265e5ff61631c2f8bef873b1afd01655c14f0fc063172927e212f74852c",
+    "lock": "5a3112d0c9384f58448382111d1c75285aac17722a7001b3de5dedddda254777",
+    "reservation/plan.md": "16dea249f5c608efb9afc426820f3af8acb7ae003fb696b00d5918e5b307322a",
+    "reservation/reserve.py": "62bebe8344ce5a5f32306664f7789e1fbfa9cbd4691e04308fc7ed716f00b069",
+    "reservation/reservation.json": "547060f9b42463b7b05ef3c4933a5b39c658996f08f464a068867c00336b33ce",
+    "reservation/exposure-audit.json": "9f561fcd9ebf3e444c4c5b864e9d70f72eb2317784f9d6988c4308b62add4174",
+    "reservation/progress.md": "25969d840b9570bd8567a666afeca644f53bc8b5dd3f3029c03174f643ee48fa",
+    "history/case-0.jsonl": "aeba0aab51e62694b9ec0667d1af5b97b5cbc5330c929b89c1d6728056f3491d",
+    "history/case-2.jsonl": "e98fa88d5b4c682279845d9391fe87d93ac7d354130daff537e2b3343e6a3c26",
+    "history/case-4.jsonl": "b375aef9262cdd971dab7f9a5e25c33a6094aff0339d34f9ef5922c814d8b726",
+    "history/case-3.jsonl": "fdc535a15cf3a3ea12703ff522b48d3b28aa1ebfcf495814a619cc641503c840",
+    "history/case-1.jsonl": "264ebc9042ea390446bab7d71d59d13992aecbdf8115c3838aab5c6fa57e7be5",
+    "history/run.json": "36678f6c463203363929845691570f6483ee79babeaf816044437ec90754ac1b",
+    "history/case-5.jsonl": "90ddcd994bdf896616ee256ed1ba7710d7d358bf3fdc484deb1ae5aba0adac2b"
+  }
+}

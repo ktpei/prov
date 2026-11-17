@@ -60,7 +60,7 @@ def run_graph(
 ):
     """Run research; optional SQLite state supports explicit pause and resume.
 
-    Resume requires the same question, model, limits, and corpus hashes. Completed
+    Resume requires the same question, model, limits, corpus hashes, and read format. Completed
     threads are immutable. Failed or unexpectedly interrupted live work is never
     automatically retried because a provider may already have charged the request.
     """
@@ -81,6 +81,7 @@ def run_graph(
         "corpus": {key: value.get("sha256") for key, value in documents.items()},
         "web_enabled": bool(sources.exa_key),
         "retrieval_version": getattr(sources, "retrieval_version", "passage-v1"),
+        "read_extraction_version": getattr(sources, "read_extraction_version", "full-v1"),
         "pricing": {
             "input_rate": getattr(model, "input_rate", None),
             "output_rate": getattr(model, "output_rate", None),
@@ -348,8 +349,11 @@ def run_graph(
                     raise ValueError(
                         "Uncommitted provider attempt; review billing before starting a new thread"
                     )
-            if initial["identity"] != identity:
-                raise ValueError("Resume question/model/limits/corpus differs from checkpoint")
+            prior_identity = {"read_extraction_version": "full-v1", **initial["identity"]}
+            if prior_identity != identity:
+                raise ValueError(
+                    "Resume question/model/limits/corpus/read-format differs from checkpoint"
+                )
             if initial["phase"] not in ("paused", "finished"):
                 raise ValueError(
                     "Unexpected interruption; review provider billing before a new run"
@@ -395,6 +399,7 @@ def run_graph(
                 runtime="langgraph",
                 runtime_policy=RUNTIME_POLICY,
                 retrieval_version=getattr(sources, "retrieval_version", "passage-v1"),
+                read_extraction_version=getattr(sources, "read_extraction_version", "full-v1"),
                 pricing={
                     "input_usd_per_million": getattr(model, "input_rate", None),
                     "output_usd_per_million": getattr(model, "output_rate", None),
