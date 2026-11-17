@@ -1,4 +1,17 @@
-# Working context — 2026-11-17
+# Working context — 2026-11-16
+
+## UI branch integration — 2026-11-16
+
+Merged `origin/feat/web-chatbot-mvp` (`02d4038`) into the current
+`codex/finance-benchmark-loop` work, preserving its evaluation/harness changes.
+The merge required no conflict resolution. Repaired missing optional dependency
+entries in `web/package-lock.json`; a clean `npm --prefix web ci` now succeeds.
+Verified on the combined working tree: `yarn lint`, all 582 Python tests via
+`yarn test`, the TypeScript/production build, and all four Playwright replay tests.
+The Python count includes pre-existing untracked XBRL assessment/delivery tests;
+those files remain untracked and are not part of this integration. No live model
+calls were needed for integration verification. The earlier web-workstream report
+below is retained as branch history, not a fresh live acceptance result.
 
 ## Web MVP — 2026-11-17
 

@@ -1,5 +1,13 @@
 # Project scope
 
+## Browser UI integration — 2026-11-16
+
+The `feat/web-chatbot-mvp` workstream is integrated into
+`codex/finance-benchmark-loop`, preserving the current evaluation and harness work.
+The browser supports cited chat, follow-ups, workbook range context, and explicit
+approval of edits to a downloadable copy. See [Web app](README.md#web-app) for
+startup and replay instructions. The Office.js add-in remains future work.
+
 H3 begins with a controller-owned
 [typed read session](eval/assessments/typed-read-authorization-v1/report.md): source
 authorization, actual-read receipts, complete reconstruction and independent replay.
@@ -441,8 +449,8 @@ retrievability, not that the evidence logically supports a claim.
 
 ## Explicitly later
 
-XBRL normalization, financial-calculation tools, market data, workbook
-reading/writing and approval UI, full benchmark execution, model/prompt tuning,
+Production XBRL normalization, financial-calculation tools, market data,
+live Excel integration, full benchmark execution, model/prompt tuning,
 deployment, a production UI, and a production financial research service.
 
 ## Decisions — current as of 2026-11-07
@@ -460,8 +468,8 @@ deployment, a production UI, and a production financial research service.
   and do not change the product into a specialist-agent architecture.
 - Keep old custom loop and 25-task corpus as regression baselines; heldout tasks
   remain separate from development and are not run without authorization.
-- Browser chatbot, workbook reading/writing/export, and ownership allocation deferred.
-  Finance accuracy benchmarking takes priority; eventual interface is an Office.js Excel add-in.
+- The earlier browser/workbook deferral is superseded by the integrated browser MVP.
+  Finance accuracy benchmarking continues; the eventual interface is an Office.js Excel add-in.
 - Frozen local packets require no Exa key. Live web discovery is optional/later.
 - Backend file writes are deterministic diagnostics/ingestion, authorized by the
   developer action; model tools remain read-only.
@@ -470,5 +478,5 @@ deployment, a production UI, and a production financial research service.
 
 [spec.md](spec.md) defines the draft product requirements and evidence model.
 [roadmap.md](roadmap.md) maps loose modules and proposed acceptance checks.
-The active milestone is company-context tooling and evaluation. Interface and
-workbook features remain a later backlog.
+Company-context tooling and evaluation continue alongside the integrated browser
+and workbook MVP. Live Excel integration remains a later backlog.

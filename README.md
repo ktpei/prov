@@ -106,6 +106,8 @@ progress by polling, because the tunnel buffers event streams.
 Tests: `corepack yarn test` covers the web backend (workbook snapshots and export,
 workbook tools and citations, ledger, worker, API). `corepack yarn web:e2e` runs the
 full browser loop in replay mode with Playwright.
+On a fresh checkout, install the test browser first with
+`npx --prefix web playwright install chromium` after installing web dependencies.
 
 ## Try it without credentials
 
