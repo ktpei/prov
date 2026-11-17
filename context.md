@@ -1,5 +1,15 @@
 # Working context — 2026-11-16
 
+## Cloudflare live follow-up
+
+[Live OpenRouter run](eval/reports/cloudflare-live-2026-11-16-current/report.md):
+all nine development questions attempted; four answers, three mechanical passes,
+five conservative spending-guard stops. Estimated $0.078254, no uncertain billing
+flags in this batch. Local project credential works; environment credential was
+rejected. Prior comparison uncertainty remains counted. Combined authorization
+accounting is $0.5861111, leaving $0.4138889. Defaults unchanged; semantic caveats
+are documented in the report.
+
 ## Cloudflare current offline check
 
 [User-requested rerun](eval/reports/cloudflare-current-2026-11-16/report.md) reproduces
