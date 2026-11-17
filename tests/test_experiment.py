@@ -18,6 +18,7 @@ class ExperimentTests(unittest.TestCase):
         execute,
         *,
         grading_error=False,
+        no_spend_limit=False,
         benchmark_data=None,
         documents=None,
         task_ids=("one", "two"),
@@ -53,6 +54,9 @@ class ExperimentTests(unittest.TestCase):
             "--output",
             str(directory / "experiment"),
         ]
+        if no_spend_limit:
+            start = argv.index("--budget-usd")
+            argv[start : start + 4] = ["--no-spend-limit"]
         with (
             patch("sys.argv", argv),
             patch("provenance.experiment.OpenRouterModel", model_constructor),
@@ -217,3 +221,38 @@ class ExperimentTests(unittest.TestCase):
                     )
                 model_constructor.assert_not_called()
                 self.assertFalse((Path(tmp) / "experiment").exists())
+
+    def test_uncapped_batch_tracks_cost_without_task_or_aggregate_cap(self):
+        from provenance.controls import Budget
+
+        budget = Budget(None)
+        reservation = budget.reserve(100)
+        budget.settle(reservation, 80)
+        self.assertEqual(budget.charged, 80)
+        with tempfile.TemporaryDirectory() as tmp:
+
+            def execute(*args):
+                self.assertIsNone(args[3].budget_usd)
+                return {
+                    "status": "completed",
+                    "stop_reason": None,
+                    "metrics": {"accounted_cost_usd": 80, "cost_uncertain": False},
+                }
+
+            self.invoke(tmp, execute, no_spend_limit=True)
+            ledger = json.loads((Path(tmp) / "experiment" / "experiment.json").read_text())
+            self.assertEqual(ledger["status"], "finished")
+            self.assertIsNone(ledger["budget_usd"])
+            self.assertEqual(ledger["accounted_cost_usd"], 160)
+
+    def test_uncapped_interruption_retains_unknown_cost_marker(self):
+        with tempfile.TemporaryDirectory() as tmp:
+
+            def crash(*args):
+                raise RuntimeError("interrupted")
+
+            with self.assertRaises(RuntimeError):
+                self.invoke(tmp, crash, no_spend_limit=True)
+            ledger = json.loads((Path(tmp) / "experiment" / "experiment.json").read_text())
+            self.assertTrue(ledger["attempts"][0]["cost_uncertain"])
+            self.assertIsNone(ledger["attempts"][0]["reserved_usd"])

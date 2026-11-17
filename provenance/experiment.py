@@ -31,12 +31,19 @@ def main():
     parser.add_argument("--corpus", type=Path, required=True)
     parser.add_argument("--benchmark", type=Path, required=True)
     parser.add_argument("--tasks", nargs="+", required=True)
-    parser.add_argument("--budget-usd", type=float, required=True)
-    parser.add_argument("--per-task-usd", type=float, default=0.05)
+    spending = parser.add_mutually_exclusive_group(required=True)
+    spending.add_argument("--budget-usd", type=float)
+    spending.add_argument("--no-spend-limit", action="store_true")
+    parser.add_argument("--per-task-usd", type=float, default=None)
     parser.add_argument("--output", type=Path, required=True, help="New experiment directory")
     args = parser.parse_args()
-    positive(args.budget_usd, "aggregate budget")
-    positive(args.per_task_usd, "task budget")
+    if args.no_spend_limit:
+        if args.per_task_usd is not None:
+            parser.error("--per-task-usd cannot accompany --no-spend-limit")
+    else:
+        positive(args.budget_usd, "aggregate budget")
+        args.per_task_usd = 0.05 if args.per_task_usd is None else args.per_task_usd
+        positive(args.per_task_usd, "task budget")
     benchmark_content = args.benchmark.read_bytes()
     benchmark = json.loads(benchmark_content)
     task_rows = benchmark["tasks"]
@@ -66,6 +73,7 @@ def main():
         "mode": "live_openrouter_development",
         "model": model.name,
         "budget_usd": args.budget_usd,
+        "spend_limit_enabled": not args.no_spend_limit,
         "accounted_cost_usd": 0,
         "pricing": {
             "input_usd_per_million": model.input_rate,
@@ -99,20 +107,24 @@ def main():
                 item["status"] = "skipped"
 
     for task_id in args.tasks:
-        remaining = args.budget_usd - ledger["accounted_cost_usd"]
-        if remaining <= 1e-9:
+        remaining = (
+            args.budget_usd - ledger["accounted_cost_usd"] if args.budget_usd is not None else None
+        )
+        if remaining is not None and remaining <= 1e-9:
             ledger["status"] = "aggregate_budget_exhausted"
             skip_not_started_tasks()
             break
-        reservation = min(args.per_task_usd, remaining)
+        reservation = min(args.per_task_usd, remaining) if remaining is not None else None
+        reserved_cost = reservation if reservation is not None else 0
         attempt = {
             "task_id": task_id,
             "status": "pending",
             "reserved_usd": reservation,
-            "accounted_cost_usd": reservation,
+            "accounted_cost_usd": reserved_cost,
+            "cost_uncertain": reservation is None,
         }
         ledger["attempts"].append(attempt)
-        ledger["accounted_cost_usd"] += reservation
+        ledger["accounted_cost_usd"] += reserved_cost
         selection_status[task_id]["status"] = "pending"
         write_json(ledger_path, ledger)  # Persist before any potentially paid request.
         print(
@@ -134,7 +146,7 @@ def main():
             Trace(args.output / "runs"),
         )
         actual = report["metrics"]["accounted_cost_usd"]
-        ledger["accounted_cost_usd"] += actual - reservation
+        ledger["accounted_cost_usd"] += actual - reserved_cost
         # Persist known settlement before postprocessing, which can independently fail.
         result_path = args.output / f"{task_id}.json"
         write_json(result_path, report)
@@ -142,6 +154,7 @@ def main():
             status=report["status"],
             accounted_cost_usd=actual,
             metrics=report["metrics"],
+            cost_uncertain=report["metrics"]["cost_uncertain"],
             stop_reason=report["stop_reason"],
             result_file=result_path.name,
         )
@@ -162,7 +175,9 @@ def main():
             ),
             flush=True,
         )
-        if report["metrics"]["cost_uncertain"] or ledger["accounted_cost_usd"] > args.budget_usd:
+        if report["metrics"]["cost_uncertain"] or (
+            args.budget_usd is not None and ledger["accounted_cost_usd"] > args.budget_usd
+        ):
             ledger["status"] = "stopped_for_billing_review"
             skip_not_started_tasks()
             break

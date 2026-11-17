@@ -24,16 +24,17 @@ def positive(value, name):
 
 @dataclass
 class Budget:
-    limit: float
+    limit: float | None
     charged: float = 0.0
     uncertain: bool = False
 
     def __post_init__(self):
-        positive(self.limit, "budget")
+        if self.limit is not None:
+            positive(self.limit, "budget")
 
     def reserve(self, amount):
         amount = positive(amount, "reservation")
-        if self.charged + amount > self.limit + 1e-12:
+        if self.limit is not None and self.charged + amount > self.limit + 1e-12:
             raise LimitReached("spend_limit")
         self.charged += amount
         return amount

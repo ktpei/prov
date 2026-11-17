@@ -29,7 +29,9 @@ def main():
         "--live", action="store_true", help="Required acknowledgement of paid API use"
     )
     live.add_argument("--web", action="store_true", help="Enable paid Exa search/contents")
-    live.add_argument("--budget-usd", type=float, required=True)
+    spending = live.add_mutually_exclusive_group(required=True)
+    spending.add_argument("--budget-usd", type=float)
+    spending.add_argument("--no-spend-limit", action="store_true")
     live.add_argument("--max-model-calls", type=int, default=8)
     live.add_argument("--max-tool-calls", type=int, default=10)
     live.add_argument("--timeout-seconds", type=float, default=90)

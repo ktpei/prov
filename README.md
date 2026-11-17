@@ -402,6 +402,12 @@ uv run python -m provenance.experiment --live --corpus data/cloudflare-2024-q3 \
   --budget-usd 0.10 --per-task-usd 0.03 --output runs/my-development-experiment
 ```
 
+To run without application spending caps, replace `--budget-usd` and
+`--per-task-usd` with `--no-spend-limit`. Single-question `run` also accepts
+`--no-spend-limit` instead of `--budget-usd`. Cost tracking, time/tool limits,
+and stops for uncertain billing remain active. Interrupted uncapped tasks have
+unknown cost until reviewed; they have no finite task reservation.
+
 That ledger caps one experiment. Deduct earlier experiments from any shared
 approval/account budget before invoking another. Full public run reports are
 versioned under `eval/reports/live`; default diagnostic `runs/` remain ignored.

@@ -1,5 +1,14 @@
 # Working context — 2026-11-16
 
+## Spending preference superseded
+
+The user explicitly removed application spending caps for this Cloudflare work.
+`run` and `experiment` now accept `--no-spend-limit`; this supersedes the earlier
+aggregate/per-task authorization ceilings for these runs. Costs remain recorded;
+time/tool limits and uncertain-billing stops remain. Provider-side limits are
+unchanged. Lint and 525 tests pass, including uncapped accounting and interruption
+coverage. The five spending-stopped questions will be rerun separately.
+
 ## Cloudflare live follow-up
 
 [Live OpenRouter run](eval/reports/cloudflare-live-2026-11-16-current/report.md):
