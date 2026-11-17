@@ -8,3 +8,8 @@ __pycache__/
 runs/
 dist/
 *.egg-info/
+web/node_modules/
+web/dist/
+web/test-results/
+web/playwright-report/
+web/tsconfig.tsbuildinfo

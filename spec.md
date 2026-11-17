@@ -53,7 +53,7 @@ single-agent proof of concept.
 | Selected runtime | Python 3.11+, LangChain model integration + LangGraph orchestration |
 | Provider | OpenRouter; requested model `deepseek/deepseek-v4.1-flash-1017` |
 | Evidence | Public data under the sponsor's ground rules |
-| Current interface | Developer runner; browser UI and workbook capabilities deferred |
+| Current interface | Browser web MVP (2026-11-17) with cited chat, follow-ups, `.xlsx` context, and approved edited copies; developer runner kept for evaluation |
 | Proposed web stack | React + TypeScript + Vite, Tailwind CSS, Python + FastAPI |
 | Later Excel integration | Office.js sidebar with live workbook access and approved edits |
 | Source packet and companies | Cloudflare 2024 release, filing, call transcript, investor slides |
@@ -79,10 +79,11 @@ evidence, and a question about an uploaded range. Once export works, also show
 approval, download, and reopening in Excel. Include actual cost, latency, and
 reviewed evaluation outcomes. Label scripted/replay material explicitly.
 
-The developer runner now supports single-question LangGraph research, local SQLite
-checkpoints, full-document ingestion, and independent evaluation. Browser UI/API,
-product conversations, and workbook operations remain unimplemented. The CLI is
-a developer/evaluation interface, not the intended product interface.
+The developer runner supports single-question LangGraph research, local SQLite
+checkpoints, full-document ingestion, and independent evaluation. The browser MVP
+(2026-11-17, `provenance/web/` and `web/`) adds the UI/API, conversations with explicit
+carried context, workbook upload/context, and approved edited copies; see
+[docs/web-mvp-design.md](docs/web-mvp-design.md). The CLI remains the evaluation interface.
 
 ## Later web architecture
 

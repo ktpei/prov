@@ -31,8 +31,81 @@ The active milestone is company-context tooling and evaluation. Finance accuracy
 benchmarking is active: [external benchmark preparation and scoring](eval/external-benchmarks.md)
 now support FinEval, FinQA, FinanceBench, TAT-QA, and ConvFinQA. Two small
 preregistered public development pilots are complete; annotation concerns remain
-separate from automatic scores. The eventual product interface is an Excel add-in. Browser UI,
-workbook operations, and approved exports are deferred.
+separate from automatic scores. The eventual product interface is an Excel add-in.
+
+The **browser MVP** (chatbot workstream) now runs locally: cited chat over the
+frozen evidence sets, live tool activity, follow-up questions, `.xlsx` upload with
+range context, and agent-proposed cell edits that are written only to a separate
+copy after explicit approval. See [Web app](#web-app) and the
+[design](docs/web-mvp-design.md).
+
+## Web app
+
+Requires Python 3.11+, uv, and Node 20+. From the repository root:
+
+```sh
+corepack yarn web          # install web deps, build, serve http://127.0.0.1:8765
+```
+
+Live answers need an OpenRouter key in a local, gitignored `.env` (the server
+loads it at startup; never commit it):
+
+```sh
+OPENROUTER_API_KEY=sk-or-...
+OPENROUTER_MODEL=deepseek/deepseek-v4.1-flash-1017
+OPENROUTER_INPUT_USD_PER_MILLION=0.30
+OPENROUTER_OUTPUT_USD_PER_MILLION=1.20
+```
+
+Without a key, or with `uv run python -m provenance.web --replay`, the app runs
+**scripted replay**: recorded tool calls for two Cloudflare questions (the revenue
+and guidance starter, and the workbook guidance check) run against the real evidence
+and validators, with no model call and no cost. In replay mode the UI shows only those
+scripted questions. Replay is labeled everywhere it appears, including in exported
+workbooks, and cannot answer unscripted questions.
+
+What you can do:
+
+1. Pick an evidence set: the Cloudflare Q3 2024 packet (release, 10-Q, call
+   transcript, investor day deck) or the five-company earnings excerpts.
+2. Ask a question and watch searches, reads, model steps, and running cost stream
+   into the Activity tab.
+3. Click any source tag in the answer to open the exact cited lines, with the quote
+   highlighted, the original page or section, the archived original, and the public URL.
+4. Ask follow-ups. The last three turns (questions, answers, cited locators) are
+   carried as explicit context; the agent must re-read evidence before citing it.
+5. Upload an `.xlsx` (or use the demo Cloudflare model), select a range, and attach
+   it to the next question. Answers can cite workbook cells.
+6. When asked, the agent proposes cell edits with citations. Nothing is written
+   until you approve; approval creates a separate copy with a source comment on
+   each changed cell and a `Provenance log` sheet. Excel recalculates formulas on open.
+
+Limits per question: 8 model steps, 10 tool calls, 120 s, and $0.10. Live spend is
+recorded in `runs/web/cost-log.jsonl` and capped at `WEB_SPEND_CAP_USD` (default
+$1.00); set `WEB_LEDGER` to use a separate ledger, for example for a demo. Each turn
+runs in its own worker process (the runtime's deadlines need a main thread), and
+traces are written to `runs/web/traces/`.
+
+### Share a demo link
+
+To let others use the app running on this machine, set an access code in `.env`
+(`WEB_ACCESS_CODE=...`), then run the demo server and a Cloudflare quick tunnel:
+
+```sh
+scripts/demo-server.sh                                   # port 8780, $0.25 demo ledger
+cloudflared tunnel --no-autoupdate --url http://127.0.0.1:8780
+```
+
+The tunnel prints an `https://….trycloudflare.com` link. Visitors enter the access
+code once (HttpOnly cookie, 12 hours). The demo server keeps a separate ledger
+(`runs/web/demo-ledger.jsonl`) with its own cap (`WEB_SPEND_CAP_USD`, default $0.25 in
+the script). The link lasts while this machine, the server, and the tunnel keep
+running; restarting only the server keeps the same link. The browser follows turn
+progress by polling, because the tunnel buffers event streams.
+
+Tests: `corepack yarn test` covers the web backend (workbook snapshots and export,
+workbook tools and citations, ledger, worker, API). `corepack yarn web:e2e` runs the
+full browser loop in replay mode with Playwright.
 
 ## Try it without credentials
 

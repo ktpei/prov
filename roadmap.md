@@ -64,8 +64,12 @@ source, identify its period and units, and reproduce derived answers.
 
 **Owner** — Person A.
 
-**State** — LangChain/OpenRouter, LangGraph, checkpoints, and offline replay exist.
-The browser interface and API are deferred. This module is a later interface backlog.
+**State** — Web MVP implemented 2026-11-17 on `feat/web-chatbot-mvp` for the
+evening demo: FastAPI backend (`provenance/web/`), React + Vite + Tailwind UI (`web/`),
+streamed tool activity, cited answers with an evidence viewer, explicit follow-up
+context, per-turn worker processes for deadlines and isolation, a capped spend ledger,
+and labeled scripted replay. Live development questions verified in the browser.
+Cancellation is not implemented; a running turn finishes or hits its limits.
 
 - Select and configure an exact model and budget when live calls are resumed.
 - Run one development question and inspect tools, evidence, output, and charges.
@@ -142,7 +146,12 @@ labeled as plumbing checks. They cannot establish model quality.
 
 **Owner** — Person A owns UI/API. Person B owns workbook tools and artifact checks.
 
-**State** — Deferred workbook-exchange option, unimplemented; not required for the active milestone.
+**State** — M5a and M5b implemented for the web MVP (2026-11-17): immutable `.xlsx`
+snapshots, sheet grid, range context, workbook cell citations, cited edit proposals,
+approval-bound separate copies with cell comments and a `Provenance log` sheet,
+idempotent exports, stale-proposal invalidation. Formulas are preserved and Excel
+recalculates on open; the app does not compute them. Opening exports in desktop Excel
+still needs a manual check.
 
 ### M5a — Upload and context
 
