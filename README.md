@@ -15,6 +15,10 @@ rules, and semester deliverables.
 
 ## Planning documents
 
+- [Excel financial agent research](docs/excel-agent-research-2026-11-18.md) compares
+  current products, platform constraints, and proposed live-Excel workflows.
+  Research is complete for an initial planning discussion; implementation choices
+  remain open.
 - [Harness improvement specification](harness-improvement-spec.md) defines the
   next implementation contracts, acceptance gates, and benchmark-driven improvement
   cycle. It is a proposed target; runtime defaults remain unchanged.
