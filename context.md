@@ -1,5 +1,18 @@
 # Working context — 2026-11-16
 
+## Excel planning research — 2026-11-18
+
+Completed an initial primary-source landscape and Office.js constraints review:
+[research memo](docs/excel-agent-research-2026-11-18.md). Competitors already offer
+cell citations, source links and model updates; differentiation needs a measured,
+specific workflow. Proposed first slice: review and update selected model inputs
+against source evidence, with approval, stale-target checks and Excel read-back.
+No add-in implementation or hands-on competitor comparison was performed.
+User/workflow, host and sponsor integration choices await brainstorming. Existing
+evaluation reservations and runtime defaults are unchanged.
+Documentation verification: `yarn lint` and all 582 tests via `yarn test` pass
+in the current working tree, including pre-existing untracked XBRL tests.
+
 ## UI branch integration — 2026-11-16
 
 Merged `origin/feat/web-chatbot-mvp` (`02d4038`) into the current
