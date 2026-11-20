@@ -1,5 +1,27 @@
 # Working context — 2026-11-16
 
+## Browser workbook milestone — 2026-11-20
+
+Implemented the [browser workbook specification](docs/web-workbook-spec.md):
+paged/direct range navigation, keyboard selection, cell inspection with precise
+saved values and formula-cache status, stale-citation protection, and guarded
+input-only proposals/exports. Export reload checks preserve non-target content,
+formulas and comments; audit strings remain text. Complex fidelity-risk workbooks
+are read-only and compressed/expanded uploads are bounded.
+
+The browser still works on immutable uploads. Exported copies request Excel
+recalculation and report calculation pending; formula editing, structural edits,
+server-persistent sessions and Office.js live execution remain later milestones.
+The original model/provider and evaluation policies are unchanged. Verification
+uses offline/synthetic cases and labeled replay, not a new paid model-quality
+assessment or desktop Excel recalculation test.
+
+Verified on the combined working tree: `yarn lint`, all 596 Python tests, the
+frontend production build and six Playwright tests pass. The test count includes
+pre-existing untracked XBRL tests. The rendered workbook inspector was visually
+checked; no paid model batch or desktop Excel recalculation was run for this task.
+
+
 ## Cloudflare benchmark rerun — 2026-11-20
 
 [Fresh nine-question development run](eval/reports/cloudflare-live-2026-11-20/report.md):

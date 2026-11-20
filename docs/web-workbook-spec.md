@@ -1,6 +1,6 @@
 # Browser workbook review milestone
 
-Date: November 20, 2026. Status: implementation specification.
+Date: November 20, 2026. Status: implemented and verified offline.
 
 ## Outcome and stopping point
 
@@ -117,3 +117,12 @@ force; offline tests/replay do not authorize a new paid model batch.
 
 The product direction follows the [industry research](excel-agent-research-2026-11-18.md).
 The underlying evidence harness and evaluation reservations are unchanged.
+
+## Verification result
+
+November 20, 2026: lint, all 596 Python tests in the combined working tree,
+frontend production build, and all six Playwright tests passed. Python totals
+include pre-existing untracked XBRL tests, which are not part of this change.
+The rendered workbook inspector was visually inspected. No paid live-model batch
+or desktop Excel recalculation was performed; those outcomes are not implied by
+these checks.

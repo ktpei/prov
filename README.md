@@ -15,6 +15,9 @@ rules, and semester deliverables.
 
 ## Planning documents
 
+- [Browser workbook milestone](docs/web-workbook-spec.md) defines the implemented
+  input-review workflow and its boundary before formula editing or live Excel.
+
 - [Excel financial agent research](docs/excel-agent-research-2026-11-18.md) compares
   current products, platform constraints, and proposed live-Excel workflows.
   Research is complete for an initial planning discussion; implementation choices
@@ -79,10 +82,21 @@ What you can do:
 4. Ask follow-ups. The last three turns (questions, answers, cited locators) are
    carried as explicit context; the agent must re-read evidence before citing it.
 5. Upload an `.xlsx` (or use the demo Cloudflare model), select a range, and attach
-   it to the next question. Answers can cite workbook cells.
-6. When asked, the agent proposes cell edits with citations. Nothing is written
+   it to the next question. Use Go to range or paging to navigate beyond the first
+   preview; inspect saved values, formulas and calculation status. Answers can cite
+   workbook cells.
+6. When asked, the agent proposes ordinary input-value edits with citations. Nothing is written
    until you approve; approval creates a separate copy with a source comment on
-   each changed cell and a `Provenance log` sheet. Excel recalculates formulas on open.
+   each changed cell and a `Provenance log` sheet. The saved copy is reopened to
+   verify changes and preserved formulas; Excel recalculation is requested on open.
+   Calculation remains pending in the browser. Re-upload the copy to review a new version.
+
+The workbook milestone supports `.xlsx` up to 5 MB compressed, 25 MB expanded,
+and 30 worksheets. Formula, merged, table, protected and hidden-sheet targets are
+read-only; fidelity-risk features such as charts, images, pivots and external links
+block edited-copy export. Original files remain unchanged. Sessions are in memory
+and do not survive server restart. See the [spec](docs/web-workbook-spec.md) for
+acceptance checks and later milestones.
 
 Limits per question: 8 model steps, 10 tool calls, 120 s, and $0.10. Live spend is
 recorded in `runs/web/cost-log.jsonl` and capped at `WEB_SPEND_CAP_USD` (default

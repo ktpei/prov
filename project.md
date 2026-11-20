@@ -1,5 +1,15 @@
 # Project scope
 
+## Browser workbook delivery — 2026-11-20
+
+The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
+navigation, formula/cache inspection, approved ordinary input updates and verified
+separate-copy exports. It stops at the downloaded artifact with calculation
+explicitly pending. Formula generation/recalculation, persistent hosted sessions
+and live Excel execution are subsequent scope decisions. The research harness is
+reused; the evaluation reservations and runtime defaults remain unchanged.
+
+
 ## Excel implementation research — 2026-11-18
 
 The [research memo](docs/excel-agent-research-2026-11-18.md) covers Excel agents,
