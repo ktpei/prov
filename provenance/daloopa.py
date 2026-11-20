@@ -142,6 +142,9 @@ def reference(rows):
     # Do not trust gt_num: the release mixes base units, display units and ratios.
     # Strip Markdown destinations before parsing, and remove question period literals.
     text = re.sub(r"\]\([^)]*\)", "]", row["gt_answer"])
+    text = re.sub(r"\[([^\]]+)\]", r"\1", text)
+    # Preserve signs outside Markdown links/currency symbols, e.g. -[$365 million].
+    text = re.sub(r"([+-])\s*[$€£¥₹]\s*(?=\d)", r"\1", text)
     # Strip only explicit period expressions; a number appearing in the question
     # may also be the answer (e.g. 10 stores). Different stated years need review.
     year_pattern = (

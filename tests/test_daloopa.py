@@ -214,6 +214,15 @@ class DaloopaPreparationTests(unittest.TestCase):
         r["gt_answer"] = "FY2024 revenue: (120) USD million."
         self.assertEqual(reference([r])["value"], "-120000000")
 
+    def test_markdown_currency_does_not_erase_negative_sign(self):
+        r = rows(1)[0]
+        r["gt_answer"] = "FY2024 revenue was -[$365 million](https://issuer.example/123)."
+        self.assertEqual(reference([r])["value"], "-365000000")
+        r["gt_answer"] = "FY2024 revenue was [-$365 million](https://issuer.example/123)."
+        self.assertEqual(reference([r])["value"], "-365000000")
+        r["gt_answer"] = "FY2024 revenue was -[365 USD million](https://issuer.example/123)."
+        self.assertEqual(reference([r])["value"], "-365000000")
+
     def test_reference_periods_do_not_remove_nonperiod_numbers(self):
         r = rows(1)[0]
         r.update(
