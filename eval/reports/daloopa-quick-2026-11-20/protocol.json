@@ -1,0 +1,87 @@
+{
+  "prepared_sha256": "80e5c73ccb542fe4b6a1665c2ab41eb6eec10ac36e712d2d45bd197d2cb9e719",
+  "profile": "quick",
+  "policy": {
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "limits": {
+      "max_model_calls": 6,
+      "max_tool_calls": 8,
+      "timeout_seconds": 90,
+      "request_timeout_seconds": 30,
+      "budget_usd": 0.12
+    },
+    "max_output_tokens": 1800,
+    "instructions_sha256": "f968250e9fd022e5a5d6e753502b1a7e4067b5c449d4d2524392e5c764ba25ef",
+    "tool_schema_sha256": "bfb2d64d983ff3fd39f69fff25bdd601e2025c20f1461beffa197440d5ccf790",
+    "source_access": "corpus_and_web",
+    "corpus_manifest_sha256": "6c3b9f0390341dfd18635526c002291b374ba88078d4f87034c71c820e21474e",
+    "exa_request_cap": 0.03,
+    "implementation_sha256": {
+      "daloopa.py": "c17261ec651b7292bcca2b2c46d435aabf1d397ecd82d5caac34ec0c26a3b683",
+      "daloopa_score.py": "19bdd92d029b9046b437d62725e4caca6d3ee3ef5aa0c7b86194dfecf3c2f298",
+      "daloopa_run.py": "7be2afb187890486ca5e651e63b68e1a445a8abe491ea22c81cedfb1a3512fa9",
+      "exa_sources.py": "88f431c3bc7d913ad9ad9add105ab30f8f988957e81ce8c7d83032ba7ec2f34b",
+      "graph.py": "be7c53f3fd91e49702d33f1ee6e1b8229a510b6dae4d016979d5fc5cfa390bbf",
+      "model.py": "980da1da883c57f223a736e309676547b9b28006adc4b27668442f410f921fe2",
+      "sources.py": "6d967fbbe948c1209ba8f9cfbeb04005e121d8a1fc1f60f37f9889cce60f8c37",
+      "langchain_model.py": "41db9fce205e2f8eef42235da2b366bdd066b061ca97e572e507acbbaa952ccc"
+    }
+  },
+  "policy_sha256": "d8c4700c41067b099c6d56872da63771b07317de1d283df3d8d0825d05558ca4",
+  "git_revision": "a7774a1291d3971329597613a51b1de6d84031f5",
+  "working_tree_dirty": true,
+  "mode": "live_openrouter_langchain",
+  "pricing": {
+    "input": 0.6,
+    "output": 2.4
+  },
+  "budget_usd": 2.0,
+  "selected_ids": [
+    "daloopa-c5da7c809a65b7f6",
+    "daloopa-504aeac42005227a",
+    "daloopa-e9cd112f8be5bb78",
+    "daloopa-08b93f8870ab6195",
+    "daloopa-463b7ceb7c57e34b",
+    "daloopa-f37c12862a295869",
+    "daloopa-4b72db20563795bb",
+    "daloopa-9d9687f9d6f9acad",
+    "daloopa-505a19552b3edba7",
+    "daloopa-52f52af45b410c3a",
+    "daloopa-6e8b44e4f050a04b",
+    "daloopa-0405f6aceb478393",
+    "daloopa-1d64403b498a5a08",
+    "daloopa-cbb53ab188ac4b72",
+    "daloopa-5ccbb93808ab9880",
+    "daloopa-3a115d208aadd8d5",
+    "daloopa-6315f2e0d051d1fa",
+    "daloopa-b06e9de747f68100",
+    "daloopa-fdd56449e44571b9",
+    "daloopa-bd43c62d6ccc0ceb",
+    "daloopa-20c0a1e5557145b2",
+    "daloopa-63dfdda607b653a3",
+    "daloopa-37156b4ceb78e520",
+    "daloopa-59d43b77aa3c674c",
+    "daloopa-cec5af38a6cf1fd9"
+  ],
+  "full_inventory_count": 500,
+  "source": {
+    "dataset": "daloopa",
+    "subset": "financial-retrieval",
+    "source_split": "train",
+    "revision": "af16f65b841cf6a2921de57394127426c6161a13",
+    "url": "https://huggingface.co/datasets/daloopa/financial-retrieval/resolve/af16f65b841cf6a2921de57394127426c6161a13/train.csv",
+    "sha256": "9e2aa220bc51e71e1e19bb63399814dceb06e3e99f11892e4d968837359547cf",
+    "license": "MIT dataset card; underlying company documents retain their rights",
+    "filename": "train.csv",
+    "question_count": 500
+  },
+  "protections": {
+    "eval/assessments/financebench-page-validation-v1/reservation.json": "547060f9b42463b7b05ef3c4933a5b39c658996f08f464a068867c00336b33ce",
+    "eval/assessments/financebench-page-validation-v1/exposure-audit.json": "9f561fcd9ebf3e444c4c5b864e9d70f72eb2317784f9d6988c4308b62add4174",
+    "eval/development-exposures.json": "e23cbe09132ce02d8f69d5af465e9d0f3e7923b57f2597da7b59a256a9012e76",
+    "data/corpus/sources.json": "908e22c857c0d922fbd5c2b51eccf17e204248ea7d7576bc3af8479acc5f255b",
+    "data/cloudflare-2024-q3/sources.json": "6ff288ffbd6daf12d19dfb1b23ca5edb2dd5bd4d6439621250b3896796502f07"
+  },
+  "selection_note": "Fixed 25-question category/difficulty round-robin from parseable publisher references; not an unbiased random estimate or secret holdout.",
+  "execution_started_before_this_protocol_copy": true
+}

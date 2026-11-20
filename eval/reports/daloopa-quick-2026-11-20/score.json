@@ -1,0 +1,528 @@
+{
+  "version": "daloopa-retrieval-v1",
+  "profile": "quick",
+  "prepared_sha256": "80e5c73ccb542fe4b6a1665c2ab41eb6eec10ac36e712d2d45bd197d2cb9e719",
+  "submission_sha256": "7c153fd77e5c1fd2a6b27945d226f27ccd2aeed2eef39b89b2cd475dce528dce",
+  "reviews_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "full_inventory_count": 500,
+  "selected_count": 25,
+  "scorable_count": 25,
+  "numeric_exact_count": 3,
+  "numeric_match_accuracy": 0.12,
+  "full_selection_numeric_accuracy": 0.12,
+  "numeric_match_lower_bound_all_selected": 0.12,
+  "numeric_match_wilson_95": [
+    0.04166817150440358,
+    0.2995579392092732
+  ],
+  "interval_note": "Descriptive fixed-subset interval; not an unbiased estimate of the full population.",
+  "tolerance_accuracy": {
+    "1": 0.24,
+    "5": 0.24
+  },
+  "supported_correct_count": 0,
+  "supported_pending_count": 3,
+  "supported_accuracy": null,
+  "reviewer_kinds": {},
+  "statuses": {
+    "completed": 20,
+    "stopped": 4,
+    "failed": 1
+  },
+  "failure_categories": {
+    "non_answer": 12,
+    "execution_incomplete": 5,
+    "numeric_mismatch_requires_diagnosis": 5
+  },
+  "accounted_cost_usd": 1.2211698,
+  "cost_uncertain": false,
+  "model_calls": 134,
+  "task_latency_seconds": 417.86017220886424,
+  "slices": {
+    "category": {
+      "Adjusted EBITDA": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Asset Base": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Assets Under Management": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 1
+      },
+      "Backlog/Orders": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Balance Sheet/Assets": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 1
+      },
+      "Cash Flow": {
+        "selected": 2,
+        "scorable": 2,
+        "exact": 1
+      },
+      "Cost Analysis": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Credit Risk": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Earnings": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Geographic Segment Performance": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Guidance": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "KPIs/Segment Performance": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Non-GAAP Metrics": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Operating Expenses": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Operational Efficiency": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Operations/Backlog": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Payment/Fintech KPIs": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Premium Metrics": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Product Line Revenue": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Profitability Metrics": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Revenue": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Sales Volume": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Segment Performance": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "Streaming/International Revenue": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      }
+    },
+    "difficulty": {
+      "Easy": {
+        "selected": 21,
+        "scorable": 21,
+        "exact": 2
+      },
+      "Medium": {
+        "selected": 4,
+        "scorable": 4,
+        "exact": 1
+      }
+    },
+    "currency": {
+      "": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "BRL": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "EUR": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 1
+      },
+      "INR": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "JPY": {
+        "selected": 8,
+        "scorable": 8,
+        "exact": 0
+      },
+      "Percent": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 0
+      },
+      "USD": {
+        "selected": 11,
+        "scorable": 11,
+        "exact": 1
+      },
+      "USD (thousands)": {
+        "selected": 1,
+        "scorable": 1,
+        "exact": 1
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "daloopa-c5da7c809a65b7f6",
+      "ticker": "AIG",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-504aeac42005227a",
+      "ticker": "SW.N",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-e9cd112f8be5bb78",
+      "ticker": "3110.T",
+      "status": "stopped",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "execution_incomplete"
+    },
+    {
+      "id": "daloopa-08b93f8870ab6195",
+      "ticker": "4478-JP",
+      "status": "stopped",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "execution_incomplete"
+    },
+    {
+      "id": "daloopa-463b7ceb7c57e34b",
+      "ticker": "DFS",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": true,
+      "supported_correct": false,
+      "failure_category": "numeric_mismatch_requires_diagnosis"
+    },
+    {
+      "id": "daloopa-f37c12862a295869",
+      "ticker": "5105.T",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-4b72db20563795bb",
+      "ticker": "8031.T",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-9d9687f9d6f9acad",
+      "ticker": "4689JP",
+      "status": "stopped",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "execution_incomplete"
+    },
+    {
+      "id": "daloopa-505a19552b3edba7",
+      "ticker": "NSEI:ABFRL",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-52f52af45b410c3a",
+      "ticker": "8473.T",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": true,
+      "supported_correct": false,
+      "failure_category": "numeric_mismatch_requires_diagnosis"
+    },
+    {
+      "id": "daloopa-6e8b44e4f050a04b",
+      "ticker": "ERF:FP",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": true,
+      "tolerance_1pct": true,
+      "tolerance_5pct": true,
+      "quote_valid": true,
+      "supported_correct": null,
+      "failure_category": null
+    },
+    {
+      "id": "daloopa-0405f6aceb478393",
+      "ticker": "AEP",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-1d64403b498a5a08",
+      "ticker": "BLBD",
+      "status": "stopped",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "execution_incomplete"
+    },
+    {
+      "id": "daloopa-cbb53ab188ac4b72",
+      "ticker": "IRTC",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": true,
+      "tolerance_5pct": true,
+      "quote_valid": true,
+      "supported_correct": false,
+      "failure_category": "numeric_mismatch_requires_diagnosis"
+    },
+    {
+      "id": "daloopa-5ccbb93808ab9880",
+      "ticker": "AMBP",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-3a115d208aadd8d5",
+      "ticker": "AMRC",
+      "status": "failed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "execution_incomplete"
+    },
+    {
+      "id": "daloopa-6315f2e0d051d1fa",
+      "ticker": "GMS",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": true,
+      "tolerance_5pct": true,
+      "quote_valid": true,
+      "supported_correct": false,
+      "failure_category": "numeric_mismatch_requires_diagnosis"
+    },
+    {
+      "id": "daloopa-b06e9de747f68100",
+      "ticker": "1808.T",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-fdd56449e44571b9",
+      "ticker": "2809.T",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-bd43c62d6ccc0ceb",
+      "ticker": "EE",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-20c0a1e5557145b2",
+      "ticker": "TMO",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-63dfdda607b653a3",
+      "ticker": "NTRS",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": true,
+      "tolerance_1pct": true,
+      "tolerance_5pct": true,
+      "quote_valid": true,
+      "supported_correct": null,
+      "failure_category": null
+    },
+    {
+      "id": "daloopa-37156b4ceb78e520",
+      "ticker": "LGF",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": false,
+      "tolerance_5pct": false,
+      "quote_valid": false,
+      "supported_correct": false,
+      "failure_category": "non_answer"
+    },
+    {
+      "id": "daloopa-59d43b77aa3c674c",
+      "ticker": "YDUQ3:BZ",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": false,
+      "tolerance_1pct": true,
+      "tolerance_5pct": true,
+      "quote_valid": true,
+      "supported_correct": false,
+      "failure_category": "numeric_mismatch_requires_diagnosis"
+    },
+    {
+      "id": "daloopa-cec5af38a6cf1fd9",
+      "ticker": "BX",
+      "status": "completed",
+      "reference_status": "ready",
+      "numeric_exact": true,
+      "tolerance_1pct": true,
+      "tolerance_5pct": true,
+      "quote_valid": true,
+      "supported_correct": null,
+      "failure_category": null
+    }
+  ],
+  "limitations": [
+    "Public exposed benchmark; neither quick nor full is a secret holdout.",
+    "All cases retained; reserved issuers are skipped and unresolved references stay unscored.",
+    "Numeric matching is not metric/period correctness or citation entailment.",
+    "Publisher reference parsing is provisional until original-source review.",
+    "Adapted API agent evaluation, not a replication of historical web-app scores."
+  ]
+}

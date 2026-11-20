@@ -512,5 +512,8 @@ real Excel host verification remains pending.
 Added [quick/full Daloopa evaluation](eval/daloopa-benchmark.md) alongside existing
 benchmarks: fixed quick25, full500 inventory, bounded research execution, exact
 numeric/tolerance scoring, and separately recorded source-support review.
-Preparation and offline tests are verified; live Daloopa accuracy is not yet
-measured. Full retains one reserved issuer and 72 reference-review cases.
+[Live quick results](eval/reports/daloopa-quick-2026-11-20/report.md): frozen exact
+3/25; diagnostic exact 4/25 after one confirmed reference-sign correction. Twelve
+abstentions and five stops/failures expose source-navigation limits. No human
+validated accuracy is claimed. Full retains one reserved issuer and 73
+reference-review cases.

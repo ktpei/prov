@@ -163,3 +163,11 @@ semantic accuracy score is claimed. Existing unrelated work remains untouched.
 and TAT-QA 4/4 exact match. Nineteen model attempts cost an estimated $0.0240540.
 All four scores reproduced offline. These are small supplied-context/model-only
 samples; no Daloopa retrieval accuracy is inferred from them.
+
+## Daloopa quick retrieval — 2026-11-20
+
+[Live 25-question results](reports/daloopa-quick-2026-11-20/report.md): 8 numerical
+answers, 12 abstentions, 5 stops/failures. Frozen exact matching is 3/25; a separate
+coding-agent diagnostic corrects one reference-sign parser defect to 4/25. Within
+1% is 6/25 frozen, 7/25 diagnostic. Estimated cost $1.2211698. These are small
+public development results, not human-validated or full-suite accuracy.

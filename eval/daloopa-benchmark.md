@@ -2,8 +2,9 @@
 
 Implemented 2026-11-20 alongside the existing external suite. This is an adapted
 API-agent evaluation of Daloopa's public questions, not a replication of its
-historical chatbot web-app leaderboard. No Daloopa model accuracy is established
-by preparation or offline tests.
+historical chatbot web-app leaderboard. Preparation and offline tests alone establish no model accuracy. A separate
+[live quick report](reports/daloopa-quick-2026-11-20/report.md) records the first
+25-question run, the frozen scores, and one post-run reference-sign correction.
 
 ## Prepare once
 
@@ -20,7 +21,7 @@ for every preparation and execution; existing results are never overwritten.
 
 The 3,000 historical answer rows become **500 distinct questions**. Historical
 chatbot answers never enter agent inputs. The entire inventory is preserved:
-427 references currently parse conservatively, 72 require reference review, and
+426 references currently parse conservatively, 73 require reference review, and
 one issuer (AMD) is reserved. The published parsed-number column is inconsistent
 about scale, so it is retained for audit but not used as unquestioned gold.
 Ambiguous sequences, units, periods and conflicting references remain unscored.
@@ -36,7 +37,7 @@ Quick selection uses seeded round-robin sampling across category/difficulty from
 cases with parseable references. It is stable for a given prepared manifest and
 is a subset of full. It is not an unbiased estimate of the full benchmark.
 
-Full executes all 499 nonreserved questions, including the 72 cases awaiting
+Full executes all 499 nonreserved questions, including the 73 cases awaiting
 reference review; their answers are retained but their numerical scores remain
 null. AMD remains an explicit reserved case, not a silent deletion or failure.
 Neither profile opens the six FinanceBench reservation contents. The other
