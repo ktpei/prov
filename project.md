@@ -499,3 +499,10 @@ deployment, a production UI, and a production financial research service.
 [roadmap.md](roadmap.md) maps loose modules and proposed acceptance checks.
 Company-context tooling and evaluation continue alongside the integrated browser
 and workbook MVP. Live Excel integration remains a later backlog.
+
+## Excel Office.js integration (2026-11-20)
+
+A sideloadable task pane now attaches selected Excel cells to research questions
+and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
+Live cell proposal application and continuous synchronization are not implemented;
+real Excel host verification remains pending.

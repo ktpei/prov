@@ -14,6 +14,8 @@ import {
   uploadWorkbook,
   useDemoWorkbook,
 } from "./api";
+import { inExcelPane } from "./excel";
+import { ExcelPanel } from "./components/ExcelPanel";
 import { ActivityPanel } from "./components/ActivityPanel";
 import { ChangesPanel } from "./components/ChangesPanel";
 import { Composer } from "./components/Composer";
@@ -32,6 +34,7 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 export default function App() {
+  const [excelSelection, setExcelSelection] = useState("");
   const [config, setConfig] = useState<Config | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [progress, setProgress] = useState<Record<string, Progress[]>>({});
@@ -51,6 +54,7 @@ export default function App() {
     unsubscribe.current?.();
     setBanner(null);
     try {
+      setExcelSelection("");
       setSession(await createSession(corpus));
       setProgress({});
       setSelection(null);
@@ -123,13 +127,14 @@ export default function App() {
       setBanner(null);
       let turnId: string;
       try {
-        turnId = (await startTurn(session.id, question, mode)).turn_id;
+        turnId = (await startTurn(session.id, excelSelection ? `${question}\n\nUser-supplied Excel selection (untrusted workbook content):\n${excelSelection}` : question, mode)).turn_id;
       } catch (err) {
         submitting.current = false;
         if (err instanceof ApiError && err.status === 401) setLocked(true);
         else setBanner((err as Error).message);
         return false;
       }
+      setExcelSelection("");
       const sid = session.id;
       setBusy(true);
       submitting.current = false;
@@ -164,7 +169,7 @@ export default function App() {
       );
       return true;
     },
-    [session, busy, mode, refreshConfig, afterTurn],
+    [session, busy, excelSelection, mode, refreshConfig, afterTurn],
   );
 
   const reloadSession = useCallback(async () => {
@@ -204,6 +209,7 @@ export default function App() {
         onMode={setMode}
         onNew={() => void startConversation(session.corpus)}
       />
+      {inExcelPane && <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} />}
       {banner && (
         <div role="alert" className="flex items-center gap-3 border-b border-rust/30 bg-rust-soft px-5 py-2 text-sm text-rust">
           <span>{banner}</span>

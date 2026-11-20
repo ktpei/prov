@@ -615,3 +615,10 @@ was resolved by local import and authenticated push. Evaluation work uses
 company-research implementation plus evaluation baseline; it is not merged.
 Local GitHub authentication works for publishing.
 The API key was used for approved requests, never written into repository files.
+
+## Excel Office.js integration (2026-11-20)
+
+A sideloadable task pane now attaches selected Excel cells to research questions
+and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
+Live cell proposal application and continuous synchronization are not implemented;
+real Excel host verification remains pending.

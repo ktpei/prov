@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": []
+    "types": ["office-js"]
   },
   "include": ["src"]
 }

@@ -539,3 +539,10 @@ details or duplicating an existing scenario.
 
 [project.md](project.md) records scope and acceptance criteria;
 [context.md](context.md) records current verification and remaining work.
+
+## Excel Office.js integration (2026-11-20)
+
+A sideloadable task pane now attaches selected Excel cells to research questions
+and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
+Live cell proposal application and continuous synchronization are not implemented;
+real Excel host verification remains pending.
