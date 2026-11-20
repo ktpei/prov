@@ -6,6 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Provenance Research"/>
   <Description DefaultValue="Research selected Excel cells and insert cited results."/>
+  <IconUrl DefaultValue="https://localhost:3000/office-icon.png"/>
+  <SupportUrl DefaultValue="https://github.com/ktpei/prov/issues"/>
   <Hosts><Host Name="Workbook"/></Hosts>
   <Requirements><Sets DefaultMinVersion="1.1"><Set Name="ExcelApi"/></Sets></Requirements>
   <DefaultSettings><SourceLocation DefaultValue="https://localhost:3000/?excel=1"/></DefaultSettings>
