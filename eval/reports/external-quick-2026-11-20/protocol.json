@@ -1,0 +1,94 @@
+{
+  "version": "external-quick-2026-11-20-v1",
+  "purpose": "Small development benchmark, not Daloopa retrieval or full-suite accuracy",
+  "selection": "First 5 CFA-Easy, 5 CFA-Challenge, 6 reviewed FinQA, 4 reviewed TAT-QA in existing frozen seeded order. No outcome-based replacements.",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "max_output_tokens": 2000,
+  "timeout_seconds": 60,
+  "pricing": {
+    "input": 0.6,
+    "output": 2.4
+  },
+  "total_budget_usd": 0.4,
+  "retry_policy": "One request per eligible question; no retries; stop all batches on uncertain billing.",
+  "daloopa_status": "not_run_missing_EXA_API_KEY",
+  "batches": [
+    {
+      "name": "fineval-easy",
+      "prepared": "runs/external-quick-2026-11-20/prepared/fineval-easy",
+      "output": "runs/external-quick-2026-11-20/results/fineval-easy",
+      "count": 5,
+      "selected_ids": [
+        "sha256:7c4a2acccc7df098109f14cc44e0c1831b8d3fc36c1713bb26814c5e68c14644",
+        "sha256:fb2bb58a3e49a3d34b27dfb656d20a41a534fe06fc03659712a2ff6a164cf421",
+        "sha256:94da841c52dffa9319681bfb786f4a435b4ddee6f46a63912326b46d704f86c4",
+        "sha256:a73963ba4be70ea25e5859ad143ed23671f1e9ab3cb3efc2d0de7601a18aa955",
+        "sha256:8729d4bccd13a771bd35adb821c50029caef1d6d2e6bbf039ad258e14cab4488"
+      ],
+      "condition": "model_only",
+      "prepared_sha256": "b6eb4718c6d62e04aa0a451d2e9df88892407752891478c8a303a72ee1827570",
+      "budget_usd": 0.1,
+      "per_task_usd": 0.025,
+      "unresolved_references": 0
+    },
+    {
+      "name": "fineval-challenge",
+      "prepared": "runs/external-quick-2026-11-20/prepared/fineval-challenge",
+      "output": "runs/external-quick-2026-11-20/results/fineval-challenge",
+      "count": 5,
+      "selected_ids": [
+        "sha256:34b7ffcd870bf49a7f1872cf91873b87e5fdcd21072588c8e3d64d2ddb065e7c",
+        "sha256:fe4e69a76fbd683af2785aefc3825fab555ae3d3e8bd99c3861a75eeb9298858",
+        "sha256:0b083f24449fd820e2014d5d25eaac4404cf0746be754c878971df95de253056",
+        "sha256:3b8c660aec5d302a1670740bcc16406c8ac69a351f77e9b31fc52d233cffb620",
+        "sha256:461189c0503b0bb7c9b4486dbc3d6c73c7595a9d47604a24b5a3b08e8b6a50a8"
+      ],
+      "condition": "model_only",
+      "prepared_sha256": "d87ed3985caf0462e84b1eb9dc265a359f6c565ef9db6d36c485028d19fd6526",
+      "budget_usd": 0.1,
+      "per_task_usd": 0.025,
+      "unresolved_references": 0
+    },
+    {
+      "name": "finqa-reviewed-v3",
+      "prepared": "runs/external-quick-2026-11-20/prepared/finqa-reviewed-v3",
+      "output": "runs/external-quick-2026-11-20/results/finqa-reviewed-v3",
+      "count": 6,
+      "selected_ids": [
+        "MRO/2007/page_149.pdf-1",
+        "RSG/2015/page_142.pdf-1",
+        "AES/2002/page_46.pdf-1",
+        "ABMD/2006/page_75.pdf-1",
+        "IPG/2008/page_21.pdf-2",
+        "TROW/2010/page_22.pdf-4"
+      ],
+      "condition": "supplied_context",
+      "prepared_sha256": "6cda017af80a2e7d7ad368c1f289481ca7c05d66d7485b990beefa5b1810d6a3",
+      "budget_usd": 0.1,
+      "per_task_usd": 0.025,
+      "unresolved_references": 1
+    },
+    {
+      "name": "tatqa-reviewed-v2",
+      "prepared": "runs/external-quick-2026-11-20/prepared/tatqa-reviewed-v2",
+      "output": "runs/external-quick-2026-11-20/results/tatqa-reviewed-v2",
+      "count": 4,
+      "selected_ids": [
+        "197c37a3-cd56-4eef-bccc-756f88753971",
+        "0339e2bb-4a63-4f23-aaea-b9fa3cb29737",
+        "94ef7822-a201-493e-b557-a640f4ea4d83",
+        "d3dc2462-fd1b-4871-a0f6-6b4837100c05"
+      ],
+      "condition": "supplied_context",
+      "prepared_sha256": "f28f0f377af0a2a0d8374158931bf841b38b8fb79245bff354590fb2adfc2fec",
+      "budget_usd": 0.1,
+      "per_task_usd": 0.025,
+      "unresolved_references": 0
+    }
+  ],
+  "runtime_hashes": {
+    "provenance/benchmark_run.py": "d383fc67f381a7e3ed872972a5310e4231f9b3e214c88aec7f27a848b18958a1",
+    "provenance/benchmarks.py": "306e03483eda6a3bc24af33596d96479d2afd770fb7215010eab314472168220",
+    "provenance/langchain_model.py": "41db9fce205e2f8eef42235da2b366bdd066b061ca97e572e507acbbaa952ccc"
+  }
+}

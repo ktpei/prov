@@ -155,3 +155,11 @@ and packet-06 returned answers but missed citation anchors. Offline retrieval
 remains 8/8 extraction and 6/8 retrieval coverage. Lint and all 582 tests passed
 (including pre-existing untracked XBRL tests). No held-out evaluation or independent
 semantic accuracy score is claimed. Existing unrelated work remains untouched.
+
+## Quick external suite — 2026-11-20
+
+[Fresh development results](reports/external-quick-2026-11-20/report.md): CFA-Easy
+5/5, CFA-Challenge 4/5, FinQA 2/5 scorable (one additional unresolved reference),
+and TAT-QA 4/4 exact match. Nineteen model attempts cost an estimated $0.0240540.
+All four scores reproduced offline. These are small supplied-context/model-only
+samples; no Daloopa retrieval accuracy is inferred from them.

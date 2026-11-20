@@ -1,0 +1,62 @@
+[
+  {
+    "name": "fineval-easy",
+    "status": "finished",
+    "selected": 5,
+    "completed": 5,
+    "passes": 5,
+    "pending": 0,
+    "accuracy": 1.0,
+    "official_metrics": null,
+    "cost_usd": 0.0013193999999999984,
+    "cost_uncertain": false,
+    "submission_sha256": "7ca3f39bfc82586d0ae9f740dcd0ae2853fba1de3d8f7f45d6ac46f7cc3347cf",
+    "score_sha256": "6177383f54e28df4974480ad02cd9211c781e71dd1e0a6f69e7aace079d6d1c8"
+  },
+  {
+    "name": "fineval-challenge",
+    "status": "finished",
+    "selected": 5,
+    "completed": 5,
+    "passes": 4,
+    "pending": 0,
+    "accuracy": 0.8,
+    "official_metrics": null,
+    "cost_usd": 0.0064464000000000014,
+    "cost_uncertain": false,
+    "submission_sha256": "fb2a36ef2a170efa5ccd23ebf28be8d26f78e0dfd5887ae37b2c5a3b8af0e80a",
+    "score_sha256": "26d026b9ca9d6de9631474843043deecc312a2b3131d54e823fe4321a9e1b9e0"
+  },
+  {
+    "name": "finqa-reviewed-v3",
+    "status": "finished",
+    "selected": 6,
+    "completed": 4,
+    "passes": 2,
+    "pending": 1,
+    "accuracy": null,
+    "official_metrics": null,
+    "cost_usd": 0.012784200000000003,
+    "cost_uncertain": false,
+    "submission_sha256": "7a142b7d155da9fd9331a43ac25687babb361295c67bf267c26598401d4f61b7",
+    "score_sha256": "5f82e42b21030b53ed164a106b58c79eb808034a9505091027504c55342a2e99"
+  },
+  {
+    "name": "tatqa-reviewed-v2",
+    "status": "finished",
+    "selected": 4,
+    "completed": 4,
+    "passes": 4,
+    "pending": 0,
+    "accuracy": 1.0,
+    "official_metrics": {
+      "exact_match": 1.0,
+      "f1": 1.0,
+      "scale_accuracy": 1.0
+    },
+    "cost_usd": 0.003504,
+    "cost_uncertain": false,
+    "submission_sha256": "f01385266bd8bdd63645f0fbf03eea2f5abd9ebe8f87b47802ae7474db9a9b5d",
+    "score_sha256": "50de749cf6daf096973aa38358c7edb8d5818cf0f760a20ae820d34b02d7041b"
+  }
+]
