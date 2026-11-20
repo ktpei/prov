@@ -20,6 +20,9 @@ Verified on the combined working tree: `yarn lint`, all 596 Python tests, the
 frontend production build and six Playwright tests pass. The test count includes
 pre-existing untracked XBRL tests. The rendered workbook inspector was visually
 checked; no paid model batch or desktop Excel recalculation was run for this task.
+The isolated review checkout independently passed lint, all 583 committed tests,
+a fresh frontend install/build and all six browser tests. Unrelated concurrent
+commits remain in the original checkout and are excluded from the review branch.
 
 
 ## Excel planning research — 2026-11-18

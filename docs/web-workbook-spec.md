@@ -126,3 +126,7 @@ include pre-existing untracked XBRL tests, which are not part of this change.
 The rendered workbook inspector was visually inspected. No paid live-model batch
 or desktop Excel recalculation was performed; those outcomes are not implied by
 these checks.
+
+The isolated review checkout also passed lint, all 583 committed Python tests,
+a fresh frontend install/build, and all six browser tests. It excludes unrelated
+concurrent commits and the original checkout's untracked tests.
