@@ -80,8 +80,11 @@ export function parseCellLocator(locator: string, fallbackSheet = ""): CellRange
   const sheet = bang >= 0 ? locator.slice(0, bang).replace(/^'(.*)'$/, "$1") : fallbackSheet;
   const parts = (bang >= 0 ? locator.slice(bang + 1) : locator).split(":");
   const points = parts.map((part) => /^\$?([A-Za-z]{1,3})\$?(\d+)$/.exec(part.trim()));
-  if (!points.length || points.some((point) => !point)) return null;
+  if (points.length < 1 || points.length > 2 || points.some((point) => !point)) return null;
   const [first, last] = [points[0]!, points[points.length - 1]!];
+  if (Number(first[2]) < 1 || Number(last[2]) > 1048576 ||
+      columnNumber(last[1]) > 16384 || Number(last[2]) < Number(first[2]) ||
+      columnNumber(last[1]) < columnNumber(first[1])) return null;
   return {
     sheet,
     r1: Number(first[2]),

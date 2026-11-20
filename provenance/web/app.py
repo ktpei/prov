@@ -24,6 +24,7 @@ from provenance.web.workbook import (
     MAX_BYTES,
     WorkbookError,
     export_copy,
+    format_address,
     load_snapshot,
     parse_range,
 )
@@ -322,12 +323,34 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         return attach(session, load_snapshot(DEMO_WORKBOOK.read_bytes(), DEMO_WORKBOOK.name))
 
     @app.get("/api/sessions/{sid}/workbook/{sheet}")
-    def workbook_grid(sid: str, sheet: str):
+    def workbook_grid(sid: str, sheet: str, start_row: int = 1, start_col: int = 1):
         session = session_or_404(sid)
         if not session.snapshot:
             raise HTTPException(404, "No workbook uploaded")
         try:
-            return session.snapshot.grid(sheet)
+            snapshot = session.snapshot
+            if not 1 <= start_row <= 1048576 or not 1 <= start_col <= 16384:
+                raise WorkbookError("Preview origin is outside Excel worksheet bounds")
+            metadata = next((item for item in snapshot.sheets if item["name"] == sheet), None)
+            if metadata is None:
+                raise WorkbookError(f"Unknown sheet: {sheet!r}")
+            end_row = min(1048576, max(start_row, min(metadata["max_row"], start_row + 59)))
+            end_col = min(16384, max(start_col, min(metadata["max_col"], start_col + 25)))
+            rows = [
+                snapshot.cells(
+                    sheet, f"{format_address(row, start_col)}:{format_address(row, end_col)}", 26
+                )
+                for row in range(start_row, end_row + 1)
+            ]
+            return {
+                "sheet": sheet,
+                "snapshot_id": snapshot.snapshot_id,
+                "start_row": start_row,
+                "start_col": start_col,
+                "max_row": metadata["max_row"],
+                "max_col": metadata["max_col"],
+                "rows": rows,
+            }
         except WorkbookError as exc:
             raise HTTPException(404, str(exc)) from exc
 
@@ -395,6 +418,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                         "sheet": proposal["sheet"],
                         "cell": proposal["cell"],
                         "old_display": proposal["old_display"],
+                        **({"old_value": proposal["old_value"]} if "old_value" in proposal else {}),
                         "old_formula": proposal["old_formula"],
                         "new_content": proposal["new_content"],
                         "rationale": proposal["rationale"],
@@ -625,6 +649,17 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             if existing:
                 return existing
             included = sorted((session.proposals[pid] for pid in merged.values()), key=cell_order)
+            try:
+                for proposal in included:
+                    snapshot.validate_edit_target(proposal["sheet"], proposal["cell"])
+                    if isinstance(proposal["new_content"], str) and proposal[
+                        "new_content"
+                    ].startswith("="):
+                        raise WorkbookError(
+                            "Formula edits are not supported in this browser milestone"
+                        )
+            except WorkbookError as exc:
+                raise HTTPException(409, str(exc)) from exc
             titles = {
                 doc["id"]: doc.get("title") for doc in corpora[session.corpus].documents.values()
             }
@@ -653,6 +688,8 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                 ],
                 "created_at": _now(),
                 "download_url": f"/api/exports/{export_id}/download",
+                "verification": "input_changes_and_preserved_formulas",
+                "calculation_status": "pending_excel_recalculation",
             }
             session.exports.append(record)
             exports[export_id] = path
