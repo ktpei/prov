@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "lint": "uv run ruff check . && uv run ruff format --check . && uv run python -m provenance validate",
-    "test": "uv run --extra benchmark-metrics python -m unittest discover -s tests -v",
+    "test": "uv run --extra benchmark-metrics python -m unittest discover -s tests",
     "demo": "uv run python -m provenance demo",
     "web": "npm --prefix web install --no-audit --no-fund && npm --prefix web run build && uv run python -m provenance.web",
     "web:dev": "uv run python -m provenance.web",

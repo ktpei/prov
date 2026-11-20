@@ -501,9 +501,18 @@ yarn lint
 yarn test
 ```
 
-Python-only test equivalent: `uv run python -m unittest discover -s tests -v`.
+`yarn test` runs the full suite with compact progress and detailed failures.
+During editing, use a focused subset such as `yarn test -k workbook` or
+`yarn test -p 'test_calculation*.py'`; run the full suite before a PR.
+Add `-v` when individual passing test names are useful.
+
+Python-only test equivalent:
+`uv run --extra benchmark-metrics python -m unittest discover -s tests`.
 Tests cover control flow, limits, citation checks, malformed calls, provider
 failures, cost accounting, frozen-source integrity, and a network-disabled demo.
+The suite also covers evaluation tooling and the web app. Keep tests for distinct
+behavior or regressions; avoid adding tests solely for trivial implementation
+details or duplicating an existing scenario.
 
 ## Design references
 
