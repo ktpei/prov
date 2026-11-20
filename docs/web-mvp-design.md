@@ -2,6 +2,11 @@
 
 2026-11-17 · branch `feat/web-chatbot-mvp` (from `codex/finance-benchmark-loop`) · demo at 20:00 local
 
+The November 20 [browser workbook specification](web-workbook-spec.md) supersedes
+this historical demo design's formula-write and warn-only export behavior. The
+current milestone allows guarded input-value edits, blocks fidelity-risk exports,
+and adds range navigation and calculation-state inspection.
+
 ## Intent
 
 Ship the browser MVP of the finance research agent for tonight's demo. An analyst

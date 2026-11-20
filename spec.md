@@ -268,18 +268,25 @@ hold document-level metadata without duplicating it on every claim.
 
 ## Workbook exchange in the web MVP
 
+The [browser workbook milestone specification](docs/web-workbook-spec.md)
+(November 20, 2026) governs the implemented scope: paged/range navigation, cell
+inspection and approved input-value edits. New/existing formula edits and
+structural changes are deferred. Unsupported targets are read-only; workbook
+features at risk of export loss block edited-copy export.
+
 Uploaded workbooks are snapshots. Retain immutable originals with IDs and hashes.
 Bind questions, cell citations, and proposed changes to a snapshot, sheet, and
 cell address. Changes in desktop Excel require re-upload. Switching snapshots
 invalidates prior edit proposals for the active context.
 
 Read bounded values, formulas, and row/column labels. Distinguish formula text
-from cached values. Select the workbook library, supported `.xlsx` features,
-and file/range limits during implementation. Initial fixtures should use ordinary
+from cached values. The implementation uses openpyxl with 5 MB compressed/25 MB
+expanded upload limits, 30 worksheets, 60 by 26 preview windows, 400 context cells
+and 200 cells per agent read. Fixtures use ordinary
 public tables and formulas. Macro-enabled files and embedded features require
 separate support work. Explain unsupported inputs clearly.
 
-Preview exact target cells, old/new values or formulas, and sources. Bind approval
+Preview exact target cells, old/new input values, and sources. Bind approval
 to the snapshot and change set before generating a separate edited copy. Preserve
 the original and provide a change/provenance record. Retrying should return the
 same approved artifact. Partial/failed exports must never appear successful.
@@ -337,4 +344,4 @@ retrieval, and Excel integration are unverified.
 | D5 | Who owns each workstream? | Chatbot owner and tooling/evaluation owner, names pending |
 | D6 | How much time and spending are available? | Agree weekly capacity, delivery date, model, and run budget |
 | D7 | What counts as a successful final result? | Agree numeric thresholds and review protocol before final evaluation |
-| D8 | Which workbook features and recalculation strategy? | Select fixtures, library, supported edits, and calculation verification |
+| D8 | Which workbook features and recalculation strategy? | Browser milestone: guarded input edits, preserved formulas and pending Excel recalculation; formula editing requires a later milestone |
