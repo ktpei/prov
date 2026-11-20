@@ -1,5 +1,50 @@
 # Working context — 2026-11-16
 
+Selection-to-chat correction (2026-11-20): selecting cells now automatically
+updates the composer context, including keyboard and direct-range selection.
+Sending waits for context persistence; failures retain the question. Removal,
+replacement uploads and new conversations clear the draft selection. Production
+build, lint, all 583 Python tests and eight browser tests pass, including
+delayed-save and failure regressions.
+
+## Browser workbook milestone — 2026-11-20
+
+Implemented the [browser workbook specification](docs/web-workbook-spec.md):
+paged/direct range navigation, keyboard selection, cell inspection with precise
+saved values and formula-cache status, stale-citation protection, and guarded
+input-only proposals/exports. Export reload checks preserve non-target content,
+formulas and comments; audit strings remain text. Complex fidelity-risk workbooks
+are read-only and compressed/expanded uploads are bounded.
+
+The browser still works on immutable uploads. Exported copies request Excel
+recalculation and report calculation pending; formula editing, structural edits,
+server-persistent sessions and Office.js live execution remain later milestones.
+The original model/provider and evaluation policies are unchanged. Verification
+uses offline/synthetic cases and labeled replay, not a new paid model-quality
+assessment or desktop Excel recalculation test.
+
+Verified on the combined working tree: `yarn lint`, all 596 Python tests, the
+frontend production build and six Playwright tests pass. The test count includes
+pre-existing untracked XBRL tests. The rendered workbook inspector was visually
+checked; no paid model batch or desktop Excel recalculation was run for this task.
+The isolated review checkout independently passed lint, all 583 committed tests,
+a fresh frontend install/build and all six browser tests. Unrelated concurrent
+commits remain in the original checkout and are excluded from the review branch.
+
+
+## Excel planning research — 2026-11-18
+
+Completed an initial primary-source landscape and Office.js constraints review:
+[research memo](docs/excel-agent-research-2026-11-18.md). Competitors already offer
+cell citations, source links and model updates; differentiation needs a measured,
+specific workflow. Proposed first slice: review and update selected model inputs
+against source evidence, with approval, stale-target checks and Excel read-back.
+No add-in implementation or hands-on competitor comparison was performed.
+User/workflow, host and sponsor integration choices await brainstorming. Existing
+evaluation reservations and runtime defaults are unchanged.
+Documentation verification: `yarn lint` and all 582 tests via `yarn test` pass
+in the current working tree, including pre-existing untracked XBRL tests.
+
 ## UI branch integration — 2026-11-16
 
 Merged `origin/feat/web-chatbot-mvp` (`02d4038`) into the current

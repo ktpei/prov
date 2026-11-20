@@ -1,5 +1,31 @@
 # Project scope
 
+Selection-to-chat correction (2026-11-20): selecting cells now automatically
+updates the composer context, including keyboard and direct-range selection.
+Sending waits for context persistence; failures retain the question. Removal,
+replacement uploads and new conversations clear the draft selection. Production
+build, lint, all 583 Python tests and eight browser tests pass, including
+delayed-save and failure regressions.
+
+## Browser workbook delivery — 2026-11-20
+
+The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
+navigation, formula/cache inspection, approved ordinary input updates and verified
+separate-copy exports. It stops at the downloaded artifact with calculation
+explicitly pending. Formula generation/recalculation, persistent hosted sessions
+and live Excel execution are subsequent scope decisions. The research harness is
+reused; the evaluation reservations and runtime defaults remain unchanged.
+
+
+## Excel implementation research — 2026-11-18
+
+The [research memo](docs/excel-agent-research-2026-11-18.md) covers Excel agents,
+financial data/modeling platforms, Microsoft integration constraints and proposed
+acceptance gates. The recommended starting point is evidence-backed review and
+approved updates to a selected region of an existing model. This is a proposal
+for brainstorming, not a scope decision or implementation result. Target user,
+primary Excel host, and sponsor-add-in versus standalone delivery remain open.
+
 ## Browser UI integration — 2026-11-16
 
 The `feat/web-chatbot-mvp` workstream is integrated into

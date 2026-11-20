@@ -60,8 +60,8 @@ export const uploadWorkbook = (sid: string, file: File) => {
   form.append("file", file);
   return request<WorkbookInfo>(`/api/sessions/${sid}/workbook`, { method: "POST", body: form });
 };
-export const getGrid = (sid: string, sheet: string) =>
-  request<Grid>(`/api/sessions/${sid}/workbook/${encodeURIComponent(sheet)}`);
+export const getGrid = (sid: string, sheet: string, row = 1, col = 1) =>
+  request<Grid>(`/api/sessions/${sid}/workbook/${encodeURIComponent(sheet)}?start_row=${row}&start_col=${col}`);
 export const setContext = (sid: string, sheet: string, range: string) =>
   request<{ sheet: string; range: string; cells: number }>(
     `/api/sessions/${sid}/context`,

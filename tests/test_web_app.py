@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest import mock
 
 from fastapi.testclient import TestClient
-from openpyxl import load_workbook
+from openpyxl import Workbook, load_workbook
 
 from provenance.web.app import create_app
 
@@ -507,3 +507,59 @@ class MultiTurnWorkbookTests(AppTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WorkbookWorkspaceTests(AppTestCase):
+    def test_bounded_window_beyond_initial_preview_and_context(self):
+        book = Workbook()
+        book.active.title = "Inputs"
+        book.active["AA70"] = 125
+        book.active["AB70"] = "=AA70*2"
+        book.active["AC75"] = "End"
+        data = io.BytesIO()
+        book.save(data)
+        client = self.client()
+        sid = self.session(client)
+        uploaded = self.upload(client, sid, data.getvalue(), "synthetic.xlsx").json()
+        base = f"/api/sessions/{sid}/workbook/Inputs"
+        grid = client.get(base, params={"start_row": 70, "start_col": 27}).json()
+        self.assertEqual(grid["snapshot_id"], uploaded["snapshot_id"])
+        self.assertEqual((grid["start_row"], grid["start_col"]), (70, 27))
+        self.assertEqual(grid["rows"][0][0]["address"], "AA70")
+        self.assertEqual(grid["rows"][0][0]["display"], "125")
+        self.assertEqual(grid["rows"][0][1]["value_status"], "missing_formula_cache")
+        self.assertFalse(grid["rows"][0][1]["editable"])
+        self.assertLessEqual(len(grid["rows"]), 60)
+        self.assertLessEqual(len(grid["rows"][0]), 26)
+        response = client.put(
+            f"/api/sessions/{sid}/context", json={"sheet": "Inputs", "range": "AA70:AC75"}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["cells"], 18)
+        for params in ({"start_row": 0}, {"start_col": 16385}, {"start_row": 1048577}):
+            self.assertEqual(client.get(base, params=params).status_code, 404)
+
+    def test_export_endpoint_refuses_formula_target_and_new_formula(self):
+        for cell, value in (("B9", 0.2), ("B7", "=1+2")):
+            with self.subTest(cell=cell):
+                runner = FakeRunner()
+                client = self.client(runner=runner)
+                sid = self.session(client)
+                info = self.upload(client, sid).json()
+                response = client.post(
+                    f"/api/sessions/{sid}/turns", json={"question": Q2, "mode": "replay"}
+                )
+                self.assertEqual(response.status_code, 200)
+                runner.finish([proposal(cell, value)])
+                state = client.get(f"/api/sessions/{sid}").json()
+                result = client.post(
+                    f"/api/sessions/{sid}/exports",
+                    json={
+                        "snapshot_id": info["snapshot_id"],
+                        "proposal_ids": [state["proposals"][0]["id"]],
+                    },
+                )
+                self.assertEqual(result.status_code, 409, result.text)
+                state = client.get(f"/api/sessions/{sid}").json()
+                self.assertEqual(state["exports"], [])
+                self.assertEqual(state["proposals"][0]["status"], "pending")

@@ -54,7 +54,9 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
       setWorking(false);
     }
   };
-  const latest = session.exports.at(-1);
+  const latest = session.exports.filter((record) => record.snapshot_id === session.workbook?.snapshot_id).at(-1);
+  const earlier = session.exports.filter((record) => record.id !== latest?.id);
+  const blocked = !!session.workbook?.export_blockers?.length;
 
   return (
     <div className="h-full overflow-y-auto px-5 py-4">
@@ -62,6 +64,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
       <p className="text-sm text-ink-soft">
         Approving creates a separate edited copy. Your uploaded file stays unchanged.
       </p>
+      {blocked && <p role="status" className="mt-2 text-sm text-rust">Export is unavailable for this workbook: {session.workbook!.export_blockers.join(" ")}</p>}
       <ul className="mt-3 space-y-2">
         {proposals.map((proposal) => {
           const pending = proposal.status === "pending";
@@ -73,7 +76,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
                   type="checkbox"
                   aria-label={`Approve change to ${proposal.sheet}!${proposal.cell}`}
                   className="mt-1 h-4 w-4 accent-ledger"
-                  disabled={!pending || busy}
+                  disabled={!pending || busy || blocked}
                   checked={chosen.has(proposal.id)}
                   onChange={(event) => {
                     const next = new Set(chosen);
@@ -124,7 +127,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
       <div className="mt-3 flex flex-wrap items-center gap-3">
         <button
           type="button"
-          disabled={!chosen.size || working || busy}
+          disabled={!chosen.size || working || busy || blocked}
           onClick={() => void approve()}
           className="rounded-md bg-ledger px-3.5 py-1.5 font-medium text-white disabled:opacity-40"
         >
@@ -146,7 +149,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
         <div className="mt-5 rounded-lg border border-ledger/40 bg-ledger-soft px-4 py-3">
           <p className="font-medium text-ledger">Edited copy ready</p>
           <p className="tabular mt-0.5 text-sm">{latest.filename}</p>
-          <p className="mt-1 text-xs text-ink-soft">Includes every change approved so far for this workbook.</p>
+          <p className="mt-1 text-xs text-ink-soft">Includes every change approved so far for this uploaded snapshot.</p>
           <ul className="tabular mt-2 space-y-0.5 text-sm">
             {latest.changes.map((change) => (
               <li key={change.cell}>
@@ -164,25 +167,27 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
           >
             Download edited copy
           </a>
+          <p className="mt-2 text-sm text-ledger">Input changes verified · existing formulas preserved</p>
+          <p className="mt-1 text-sm text-rust">Calculation pending — open in Excel to recalculate and review outputs.</p>
           <p className="mt-2 text-xs text-ink-soft">
             Each changed cell carries a comment with its source, and a Provenance log sheet lists every change and
-            what generated it. Formulas recalculate when Excel opens the file; the app does not compute them.
+            what generated it. This verifies file content, not financial correctness. The browser still shows your original snapshot; upload this copy to review another version.
           </p>
         </div>
       )}
-      {session.exports.length > 1 && (
+      {earlier.length > 0 && (
         <details className="mt-3 text-sm">
-          <summary className="cursor-pointer text-ink-soft">Earlier copies ({session.exports.length - 1})</summary>
+          <summary className="cursor-pointer text-ink-soft">Earlier copies ({earlier.length})</summary>
           <ul className="mt-2 space-y-1">
-            {session.exports
-              .slice(0, -1)
+            {earlier
+              .slice()
               .reverse()
               .map((record) => (
                 <li key={record.id} className="flex flex-wrap items-baseline gap-2">
                   <a href={record.download_url} download={record.filename} className="tabular text-ledger underline">
                     {record.filename}
                   </a>
-                  <span className="text-xs text-ink-faint">{record.changes.map((c) => c.cell).join(", ")}</span>
+                  <span className="text-xs text-ink-faint">Snapshot {record.snapshot_id} · {record.changes.map((c) => c.cell).join(", ")}</span>
                 </li>
               ))}
           </ul>

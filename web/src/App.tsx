@@ -34,6 +34,7 @@ const TABS: { id: Tab; label: string }[] = [
 export default function App() {
   const [config, setConfig] = useState<Config | null>(null);
   const [session, setSession] = useState<Session | null>(null);
+  const [draftContext, setDraftContext] = useState<Session["context"]>(null);
   const [progress, setProgress] = useState<Record<string, Progress[]>>({});
   const [mode, setMode] = useState<"live" | "replay">("live");
   const [tab, setTab] = useState<Tab>("evidence");
@@ -52,6 +53,7 @@ export default function App() {
     setBanner(null);
     try {
       setSession(await createSession(corpus));
+      setDraftContext(null);
       setProgress({});
       setSelection(null);
       setActivityTurn(null);
@@ -120,12 +122,16 @@ export default function App() {
     async (question: string): Promise<boolean> => {
       if (!session || busy || submitting.current) return false;
       submitting.current = true;
+      setBusy(true);
       setBanner(null);
       let turnId: string;
       try {
+        if (draftContext) await setContext(session.id, draftContext.sheet, draftContext.range);
+        else await clearContext(session.id);
         turnId = (await startTurn(session.id, question, mode)).turn_id;
       } catch (err) {
         submitting.current = false;
+        setBusy(false);
         if (err instanceof ApiError && err.status === 401) setLocked(true);
         else setBanner((err as Error).message);
         return false;
@@ -164,7 +170,7 @@ export default function App() {
       );
       return true;
     },
-    [session, busy, mode, refreshConfig, afterTurn],
+    [session, draftContext, busy, mode, refreshConfig, afterTurn],
   );
 
   const reloadSession = useCallback(async () => {
@@ -235,10 +241,10 @@ export default function App() {
           </div>
           <Composer
             busy={busy}
-            context={session.context}
+            context={draftContext}
             hasHistory={session.turns.length > 0}
             onAsk={ask}
-            onClearContext={() => void clearContext(session.id).then(reloadSession)}
+            onClearContext={() => setDraftContext(null)}
           />
         </section>
         <section aria-label="Inspector" className="flex min-h-[480px] flex-col bg-surface">
@@ -285,24 +291,24 @@ export default function App() {
             )}
             {tab === "workbook" && (
               <WorkbookPanel
-                session={session}
+                session={{ ...session, context: draftContext }}
                 busy={busy}
                 highlight={selection?.kind === "cell" ? selection.citation : null}
                 onUpload={async (file) => {
                   await uploadWorkbook(session.id, file);
+                  setDraftContext(null);
                   await reloadSession();
                 }}
                 onUseDemo={async () => {
                   await useDemoWorkbook(session.id);
+                  setDraftContext(null);
                   await reloadSession();
                 }}
                 onSetContext={async (sheet, range) => {
-                  await setContext(session.id, sheet, range);
-                  await reloadSession();
+                  setDraftContext({ sheet, range });
                 }}
                 onClearContext={async () => {
-                  await clearContext(session.id);
-                  await reloadSession();
+                  setDraftContext(null);
                 }}
               />
             )}
