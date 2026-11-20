@@ -213,7 +213,9 @@ class StrictnessTests(unittest.TestCase):
         self.assertIn("error", propose(src, new_content="=SUM(B1:B3"))
         self.assertIn("error", propose(src, new_content='="unclosed'))
         self.assertIn("error", propose(src, new_content="$1,661.5M"))
-        self.assertNotIn("error", propose(src, new_content="=B6+1216.5"))
+        self.assertIn("error", propose(src, new_content="9" * 400))
+        self.assertIn("error", propose(src, new_content="=B6+1216.5"))
+        self.assertIn("error", propose(src, cell="B9", new_content=0.2))
         self.assertNotIn(
             "error", propose(src, cell="D7", new_content="Q3 release guidance midpoint")
         )
