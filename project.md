@@ -506,3 +506,11 @@ A sideloadable task pane now attaches selected Excel cells to research questions
 and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
 Live cell proposal application and continuous synchronization are not implemented;
 real Excel host verification remains pending.
+
+## Daloopa benchmarking — 2026-11-20
+
+Added [quick/full Daloopa evaluation](eval/daloopa-benchmark.md) alongside existing
+benchmarks: fixed quick25, full500 inventory, bounded research execution, exact
+numeric/tolerance scoring, and separately recorded source-support review.
+Preparation and offline tests are verified; live Daloopa accuracy is not yet
+measured. Full retains one reserved issuer and 72 reference-review cases.

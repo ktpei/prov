@@ -546,3 +546,11 @@ A sideloadable task pane now attaches selected Excel cells to research questions
 and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
 Live cell proposal application and continuous synchronization are not implemented;
 real Excel host verification remains pending.
+
+## Daloopa quick/full benchmarking
+
+The [Daloopa benchmark guide](eval/daloopa-benchmark.md) adds a fixed 25-question
+quick mode and preserves the full 500-question inventory alongside the existing
+suite. After preparation, `yarn benchmark` and `yarn benchmark:full` show plans;
+paid execution requires `--live` plus document access. Numerical matching and
+source-supported correctness are reported separately.

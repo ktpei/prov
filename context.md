@@ -1,5 +1,21 @@
 # Working context — 2026-11-16
 
+## Daloopa quick/full and Exa — 2026-11-20
+
+Implemented [Daloopa quick25/full500 evaluation](eval/daloopa-benchmark.md),
+preserving the existing suite. Full retains one reserved issuer and 72 cases
+whose references need review; unreviewed numerical matches are not supported
+financial accuracy. Added objective-aware Exa search/highlights and status-checked
+contents access using the canonical build-with-exa guidance. Search/read smoke
+verification succeeded ($0.008 estimate). Lint and 615 tests passed, including
+19 focused Daloopa/Exa tests and pre-existing untracked XBRL tests.
+
+[Fresh existing-suite quick results](eval/reports/external-quick-2026-11-20/report.md):
+CFA-Easy 5/5, CFA-Challenge 4/5, FinQA 2/5 scorable with one additional unresolved
+reference, TAT-QA 4/4. Nineteen model attempts cost an estimated $0.0240540;
+all scores reproduced offline. Daloopa live execution is next; no Daloopa
+accuracy is claimed by preparation or synthetic tests.
+
 ## Browser workbook milestone — 2026-11-20
 
 Implemented the [browser workbook specification](docs/web-workbook-spec.md):
