@@ -1,5 +1,16 @@
 # Working context — 2026-11-16
 
+## Cloudflare benchmark rerun — 2026-11-20
+
+[Fresh nine-question development run](eval/reports/cloudflare-live-2026-11-20/report.md):
+8/9 returned answers, 6/9 passed unchanged mechanical checks; estimated cost
+$0.1212464, no uncertain billing flags. Same model/runtime and uncapped setting;
+no runtime edits or batch retries. Packet-01 failed quote validation; packet-04
+and packet-06 returned answers but missed citation anchors. Offline retrieval
+remains 8/8 extraction and 6/8 retrieval coverage. Lint and all 582 tests passed
+(including pre-existing untracked XBRL tests). No held-out evaluation or independent
+semantic accuracy score is claimed. Existing unrelated work remains untouched.
+
 ## Excel planning research — 2026-11-18
 
 Completed an initial primary-source landscape and Office.js constraints review:

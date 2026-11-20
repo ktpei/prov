@@ -144,3 +144,14 @@ reviews, and offline reproduction. Fresh estimates total $0.0863112 at conservat
 $0.60/$2.40 input/output per million; combined with prior cloud estimates,
 $0.4362039. Neither token estimates nor six single-company tasks establish invoice
 charges or production accuracy. No runtime fixes were mixed into the scored batch.
+
+## Cloudflare benchmark rerun — 2026-11-20
+
+[Fresh nine-question development run](reports/cloudflare-live-2026-11-20/report.md):
+8/9 returned answers, 6/9 passed unchanged mechanical checks; estimated cost
+$0.1212464, no uncertain billing flags. Same model/runtime and uncapped setting;
+no runtime edits or batch retries. Packet-01 failed quote validation; packet-04
+and packet-06 returned answers but missed citation anchors. Offline retrieval
+remains 8/8 extraction and 6/8 retrieval coverage. Lint and all 582 tests passed
+(including pre-existing untracked XBRL tests). No held-out evaluation or independent
+semantic accuracy score is claimed. Existing unrelated work remains untouched.
