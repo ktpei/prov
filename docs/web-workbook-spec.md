@@ -57,7 +57,7 @@ reading remains available where parsing supports it.
 2. Select a sheet and enter a range, or use row/column paging. Click/Shift-click
    cells or use the keyboard to select. Inspect the selected cell without relying
    on hover or color alone.
-3. Attach the range and ask a question. Distinguish workbook values, assumptions
+3. Select the range and ask a question; selection automatically attaches context. Distinguish workbook values, assumptions
    and reported evidence. Formula caches are saved historical values, not fresh
    calculations.
 4. Review each proposal's old/new value, rationale and evidence. Approval creates
@@ -130,3 +130,17 @@ these checks.
 The isolated review checkout also passed lint, all 583 committed Python tests,
 a fresh frontend install/build, and all six browser tests. It excludes unrelated
 concurrent commits and the original checkout's untracked tests.
+
+
+### Selection-to-chat correction — 2026-11-20
+
+Pointer, Shift selection, keyboard navigation and Go to range automatically update
+the context chip above the composer. Context survives inspector-tab changes;
+Remove clears it, and a successful replacement upload or new conversation resets
+it. Opening a citation alone does not attach it. Before starting a turn, the client
+saves the selected range (or clears removed context) and waits for success. A
+failed context save preserves the question and prevents a contextless turn.
+Selections above the existing 400-cell limit must be reduced before submitting.
+Read-only export restrictions do not prevent reading selected cells as context.
+
+Verified: production build, lint, 583 Python tests and eight browser tests pass.

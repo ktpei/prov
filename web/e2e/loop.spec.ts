@@ -36,7 +36,6 @@ test("full analyst loop in scripted replay", async ({ page }) => {
   await expect(page.locator('td[title^="B9"]')).toHaveText("13.0%");
   await page.locator('td[title="B7"]').click();
   await page.locator('td[title="B8"]').click({ modifiers: ["Shift"] });
-  await page.getByRole("button", { name: "Attach to next question" }).click();
   await expect(page.getByText("Workbook range Model!B7:B8 attached")).toBeVisible();
 
   // Workbook question: proposal waits for approval, then export downloads.
@@ -108,13 +107,13 @@ test("navigate distant ranges and inspect uncached formulas with keyboard", asyn
   await page.getByRole("button", { name: "Go", exact: true }).click();
   await expect(page.locator('[data-cell="AA70"]')).toHaveText("125");
   await expect(page.locator('[data-cell="AB70"]')).toHaveText("Not calculated");
-  await page.getByRole("button", { name: "Attach to next question" }).click();
   await expect(page.getByText("Workbook range Inputs!AA70:AC75 attached")).toBeVisible();
   await page.locator('[data-cell="AA70"]').click();
   await page.keyboard.press("ArrowRight");
   await expect(page.locator('[data-cell="AB70"]')).toBeFocused();
   await expect(page.getByLabel("Cell details")).toContainText("=AA70*2");
   await expect(page.getByLabel("Cell details")).toContainText("Unavailable");
+  await expect(page.getByText("Workbook range Inputs!AB70 attached")).toBeVisible();
   await page.screenshot({ path: "/tmp/provenance-workbook-review.png", fullPage: true });
   await page.getByLabel("Go to range").fill("A0");
   await page.getByRole("button", { name: "Go", exact: true }).click();
@@ -126,7 +125,6 @@ test("old workbook citations do not navigate a replacement upload", async ({ pag
   await page.getByRole("tab", { name: /Workbook/ }).click();
   await page.getByRole("button", { name: "Use the demo Cloudflare model" }).click();
   await page.locator('[data-cell="B7"]').click();
-  await page.getByRole("button", { name: "Attach to next question" }).click();
   await page.getByRole("button", { name: Q2 }).click();
   await expect(page.getByText("Awaiting approval")).toBeVisible();
   await page.getByRole("tab", { name: /Workbook/ }).click();
@@ -135,4 +133,65 @@ test("old workbook citations do not navigate a replacement upload", async ({ pag
   await page.getByRole("button", { name: /Open source Model!B7/ }).first().click();
   await expect(page.getByText("This citation belongs to a previous upload. It cannot be located in the current workbook.")).toBeVisible();
   await expect(page.getByRole("table", { name: "Sheet Inputs" })).toBeVisible();
+});
+
+test("selected cell reaches chat before the turn starts and can be removed", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: /Workbook/ }).click();
+  await page.getByRole("button", { name: "Use the demo Cloudflare model" }).click();
+  await page.locator('[data-cell="B7"]').click();
+  await expect(page.getByText("Workbook range Model!B7 attached")).toBeVisible();
+  await page.getByRole("tab", { name: "Evidence", exact: true }).click();
+  await expect(page.getByText("Workbook range Model!B7 attached")).toBeVisible();
+
+  let release!: () => void;
+  const gate = new Promise<void>((resolve) => { release = resolve; });
+  let contextSaved = false;
+  let turnStarted = false;
+  await page.route("**/context", async (route) => {
+    if (route.request().method() === "PUT") {
+      expect(route.request().postDataJSON()).toEqual({ sheet: "Model", range: "B7" });
+      await gate;
+      const response = await route.fetch();
+      contextSaved = true;
+      await route.fulfill({ response });
+    } else await route.continue();
+  });
+  page.on("request", (request) => {
+    if (request.method() === "POST" && request.url().endsWith("/turns")) {
+      expect(contextSaved).toBe(true);
+      turnStarted = true;
+    }
+  });
+  await page.getByLabel("Question").fill(Q2);
+  const saving = page.waitForRequest((request) => request.method() === "PUT" && request.url().endsWith("/context"));
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await saving;
+  expect(turnStarted).toBe(false);
+  release();
+  await expect(page.getByText("Awaiting approval")).toBeVisible();
+  expect(turnStarted).toBe(true);
+  await page.getByRole("button", { name: /Remove/ }).click();
+  await expect(page.getByText("Workbook range Model!B7 attached")).toHaveCount(0);
+  await page.getByRole("tab", { name: /Workbook/ }).click();
+  await expect(page.getByText("Attached Model!B7", { exact: true })).toHaveCount(0);
+});
+
+test("context save failure preserves the question and prevents a contextless turn", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: /Workbook/ }).click();
+  await page.getByRole("button", { name: "Use the demo Cloudflare model" }).click();
+  await page.locator('[data-cell="B7"]').click();
+  let turns = 0;
+  page.on("request", (request) => {
+    if (request.method() === "POST" && request.url().endsWith("/turns")) turns++;
+  });
+  await page.route("**/context", (route) => route.fulfill({
+    status: 400, contentType: "application/json", body: JSON.stringify({ detail: "Context unavailable" }),
+  }));
+  await page.getByLabel("Question").fill(Q2);
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await expect(page.getByRole("alert")).toContainText("Context unavailable");
+  await expect(page.getByLabel("Question")).toHaveValue(Q2);
+  expect(turns).toBe(0);
 });

@@ -81,8 +81,8 @@ What you can do:
    highlighted, the original page or section, the archived original, and the public URL.
 4. Ask follow-ups. The last three turns (questions, answers, cited locators) are
    carried as explicit context; the agent must re-read evidence before citing it.
-5. Upload an `.xlsx` (or use the demo Cloudflare model), select a range, and attach
-   it to the next question. Use Go to range or paging to navigate beyond the first
+5. Upload an `.xlsx` (or use the demo Cloudflare model), select a cell or range, and ask. The selection
+   automatically appears as context above the composer; Remove clears it. Use Go to range or paging to navigate beyond the first
    preview; inspect saved values, formulas and calculation status. Answers can cite
    workbook cells.
 6. When asked, the agent proposes ordinary input-value edits with citations. Nothing is written

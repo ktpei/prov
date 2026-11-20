@@ -1,5 +1,12 @@
 # Project scope
 
+Selection-to-chat correction (2026-11-20): selecting cells now automatically
+updates the composer context, including keyboard and direct-range selection.
+Sending waits for context persistence; failures retain the question. Removal,
+replacement uploads and new conversations clear the draft selection. Production
+build, lint, all 583 Python tests and eight browser tests pass, including
+delayed-save and failure regressions.
+
 ## Browser workbook delivery — 2026-11-20
 
 The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
