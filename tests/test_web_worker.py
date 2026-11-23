@@ -189,6 +189,20 @@ class WorkerTests(unittest.TestCase):
         self.assertTrue(any(event["kind"] == "read" for event in turn.events))
         self.assertEqual(finished, [turn])
 
+    def test_runner_without_execution_caps(self):
+        from provenance.web.worker import TurnRunner
+
+        limits = {
+            **LIMITS,
+            "max_model_calls": None,
+            "max_tool_calls": None,
+            "timeout_seconds": None,
+        }
+        turn = TurnRunner(target=offline_worker).start(job(Q1, limits=limits))
+        self.assertTrue(turn.done.wait(60))
+        self.assertIsNone(turn.error)
+        self.assertEqual(turn.result["report"]["status"], "completed")
+
     def test_runner_prewarm_closes_standby(self):
         from provenance.web.worker import TurnRunner
 

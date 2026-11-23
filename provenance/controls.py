@@ -52,6 +52,9 @@ class Budget:
 @contextmanager
 def deadline(seconds):
     """Hard wall-clock deadline for this single-threaded macOS/Linux CLI."""
+    if seconds is None:
+        yield lambda: float("inf")
+        return
     positive(seconds, "timeout")
     if not hasattr(signal, "setitimer"):
         raise ValueError("Hard deadlines currently require macOS or Linux")

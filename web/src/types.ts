@@ -79,7 +79,7 @@ export type Config = {
   replay: boolean;
   model: string | null;
   spend: { total_usd: number; cap_usd: number; remaining_usd: number };
-  limits: Record<string, number>;
+  limits: Record<string, number | null>;
   corpora: Corpus[];
 };
 

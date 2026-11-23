@@ -90,3 +90,13 @@ submitted question. A rejected update preserves the previous attachment.
 Verified in native Excel on 2026-11-23: the card displays `DCF!E6` and one attached
 cell. Eight browser checks cover the UI, snapshot replacement, oversized-selection
 failure, removal before submission, and narrow-pane layout. Build and lint passed.
+
+### Temporary research execution settings (2026-11-23)
+
+Excel/web research has no tool-call count, model-step count, or overall run-time
+cutoff (`TURN_LIMITS` uses `None` for those three fields). Individual requests still
+have a 30-second timeout. The configured per-question and total spending caps
+remain active; removing execution caps does not remove spending controls. CLI and
+benchmark defaults remain bounded. Regression checks cover a completed 13-step,
+12-tool-call graph run and a spawned worker with the execution caps disabled.
+Restart the backend after changing these settings; existing sessions are in memory.

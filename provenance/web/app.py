@@ -32,9 +32,9 @@ from provenance.web.worker import TurnRunner
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "web/dist"
 TURN_LIMITS = {
-    "max_model_calls": 8,
-    "max_tool_calls": 10,
-    "timeout_seconds": 120,
+    "max_model_calls": None,
+    "max_tool_calls": None,
+    "timeout_seconds": None,
     "request_timeout_seconds": 30,
 }
 CORPORA = {

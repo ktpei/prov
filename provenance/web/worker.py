@@ -302,7 +302,10 @@ class TurnRunner:
             turn.done.set()
 
     def _drain(self, turn, process, queue, job):
-        deadline = time.monotonic() + float(job["limits"]["timeout_seconds"]) + self.grace_seconds
+        timeout = job["limits"]["timeout_seconds"]
+        deadline = (
+            None if timeout is None else time.monotonic() + float(timeout) + self.grace_seconds
+        )
         exited_at = None
         while True:
             try:
@@ -313,7 +316,7 @@ class TurnRunner:
                     if time.monotonic() - exited_at > 1.0:  # allow the feeder to flush
                         turn.error = "worker_crashed"
                         return
-                elif time.monotonic() > deadline:
+                elif deadline is not None and time.monotonic() > deadline:
                     process.terminate()
                     turn.error = "worker_timeout"
                     return
