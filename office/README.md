@@ -73,3 +73,11 @@ check narrow layouts, then repeat browser checks. Screenshots reviewed at 270 an
 Build, six browser tests, lint, and 626 Python tests passed. Browser tests use
 mocked Office/provider responses; this revision was not reverified in native Excel
 or against a live model. Existing SQLite ResourceWarnings appeared in Python tests.
+
+Credential loading correction (2026-11-23): local `.env` values override stale
+inherited variables. Direct authentication with the file key returned HTTP 200;
+the earlier 401 reports came from a different inherited key, not the file key.
+
+After restarting with corrected credential precedence, the live Exa documentation
+question completed successfully with five tool calls and a validated cited answer.
+The earlier authentication blocker is resolved.

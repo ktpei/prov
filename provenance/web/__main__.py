@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def load_env(path):
-    """Load KEY=VALUE lines without overriding variables already set."""
+    """Load local KEY=VALUE settings, overriding stale inherited values."""
     if not path.exists():
         return
     for line in path.read_text().splitlines():
@@ -18,7 +18,7 @@ def load_env(path):
         key, value = line.split("=", 1)
         value = value.strip().strip('"').strip("'")
         if value:
-            os.environ.setdefault(key.strip(), value)
+            os.environ[key.strip()] = value
 
 
 def main():

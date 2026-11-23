@@ -537,3 +537,7 @@ Token rates estimate costs; they do not set spending limits. Edit
 automatic provider-price discovery is not implemented. The Excel/web launcher
 bridges this config into the existing worker environment internally, overriding
 stale non-secret environment values. Benchmark CLI configuration is unchanged.
+
+Credential loading correction (2026-11-23): local `.env` values override stale
+inherited variables. Direct authentication with the file key returned HTTP 200;
+the earlier 401 reports came from a different inherited key, not the file key.
