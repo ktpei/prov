@@ -10,7 +10,7 @@ from pathlib import Path
 
 from provenance.benchmarks import canonical_hash
 from provenance.daloopa import load
-from provenance.daloopa_score import score
+from provenance.daloopa_score import check_quotes, score
 
 
 def compare(bundle, baseline, candidate):
@@ -48,6 +48,16 @@ def compare(bundle, baseline, candidate):
             answerable = sum(
                 bool((r.get("report", {}).get("answer") or {}).get("answerable")) for r in rows
             )
+            quote_checks = []
+            for row in rows:
+                if row["status"] != "completed" or not (
+                    row.get("report", {}).get("answer") or {}
+                ).get("answerable"):
+                    continue
+                try:
+                    quote_checks.append(check_quotes(row))
+                except (ValueError, KeyError, TypeError):
+                    quote_checks.append(False)
             tool_counts = Counter(
                 event["call"]["name"]
                 for r in rows
@@ -62,7 +72,8 @@ def compare(bundle, baseline, candidate):
                     "exact": sum(r["numeric_exact"] is True for r in grades),
                     "within_1pct": sum(r["tolerance_1pct"] is True for r in grades),
                     "numeric_answers": answerable,
-                    "quote_valid": sum(r["quote_valid"] is True for r in grades),
+                    "quote_valid": sum(quote_checks),
+                    "quote_invalid": len(quote_checks) - sum(quote_checks),
                     "statuses": dict(Counter(r["status"] for r in rows)),
                     "stops": dict(
                         Counter(
