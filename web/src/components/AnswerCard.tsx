@@ -24,7 +24,7 @@ function Metrics({ turn }: { turn: TurnView }) {
     [m.cost_uncertain ? `≤ ${money(m.accounted_cost_usd)}` : money(m.accounted_cost_usd), "cost"],
   ];
   return (
-    <details className="mt-3 text-xs text-ink-soft"><summary className="cursor-pointer">Research details</summary><dl className="mt-3 flex flex-wrap gap-x-5 gap-y-1 border-t border-rule pt-2 text-xs text-ink-faint">
+    <dl className="mt-3 flex flex-wrap gap-x-5 gap-y-1 border-t border-rule pt-2 text-xs text-ink-faint">
       {stats.map(([value, label]) => (
         <div key={label} className="flex gap-1">
           <dt className="sr-only">{label}</dt>
@@ -32,7 +32,7 @@ function Metrics({ turn }: { turn: TurnView }) {
           <span aria-hidden>{label}</span>
         </div>
       ))}
-    </dl></details>
+    </dl>
   );
 }
 
@@ -72,6 +72,7 @@ export function AnswerCard({ turn, proposals, titles, selection, onCite, onShowA
         ) : (
           <span className="rounded bg-chrome px-1.5 py-0.5 text-ink-soft">Not answerable from this evidence</span>
         )}
+        {turn.model && <span className="text-ink-faint">{turn.model}</span>}
       </div>
       <p className="max-w-[72ch] whitespace-pre-wrap">{answer.answer}</p>
 

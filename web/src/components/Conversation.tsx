@@ -34,13 +34,13 @@ export function Conversation(props: Props) {
   useEffect(() => {
     // Scroll only the conversation pane; scrollIntoView would also move the page.
     const box = end.current?.closest<HTMLElement>("[data-scroll]");
-    box?.scrollTo({ top: box.scrollHeight, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    box?.scrollTo({ top: box.scrollHeight, behavior: "smooth" });
   }, [session.turns.length, lastTurn?.status]);
 
   if (session.turns.length === 0) {
     return <div className="py-5">
-      <h1 className="text-lg font-semibold">Trace the numbers</h1>
-      <p className="mt-2 text-sm text-ink-soft">Ask a financial question. Review the source behind each figure, then insert cited results into your workbook.</p>
+      <h1 className="text-lg font-semibold">Research your workbook</h1>
+      <p className="mt-2 text-sm text-ink-soft">Ask a question to search the web with Exa and review cited evidence. Attach selected Excel cells when you want to include workbook context.</p>
     </div>;
   }
 
@@ -49,13 +49,7 @@ export function Conversation(props: Props) {
       {session.turns.map((turn) => (
         <section key={turn.id} aria-label={`Question ${turn.id}`} className="space-y-2">
           <div className="ml-auto max-w-[85%] rounded-lg bg-ink px-3.5 py-2 text-white">
-            <p className="whitespace-pre-wrap">{turn.question.split("\n\nUser-supplied Excel selection (untrusted workbook content):\n")[0]}</p>
-            {turn.question.includes("\n\nUser-supplied Excel selection (untrusted workbook content):\n") && (
-              <details className="mt-2 text-xs text-white/90">
-                <summary className="cursor-pointer">Attached Excel cells</summary>
-                <pre className="mt-1 whitespace-pre-wrap break-all">{turn.question.split("\n\nUser-supplied Excel selection (untrusted workbook content):\n").slice(1).join("\n\n")}</pre>
-              </details>
-            )}
+            <p className="whitespace-pre-wrap">{turn.question}</p>
             {(turn.carried.turns > 0 || turn.carried.workbook_range) && (
               <p className="mt-1 text-xs text-white/70">
                 {[

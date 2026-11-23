@@ -210,6 +210,7 @@ export default function App() {
       {inExcelPane && <nav aria-label="Pane navigation" className="flex border-b border-rule bg-surface p-1">
         {(["chat", "details"] as const).map(view => <button key={view} aria-pressed={paneView === view} onClick={() => setPaneView(view)} className={`flex-1 rounded px-3 py-2 text-sm ${paneView === view ? "bg-ledger-soft text-ledger" : "text-ink-soft"}`}>{view === "chat" ? "Research" : "Details"}</button>)}
       </nav>}
+      {inExcelPane && <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} />}
       {banner && (
         <div role="alert" className="flex items-center gap-3 border-b border-rust/30 bg-rust-soft px-5 py-2 text-sm text-rust">
           <span>{banner}</span>
@@ -234,7 +235,6 @@ export default function App() {
               }}
               onShowChanges={() => { setTab("changes"); setPaneView("details"); }}
             />
-          {inExcelPane && <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} />}
           </div>
           <Composer
             busy={busy}
@@ -247,7 +247,7 @@ export default function App() {
         </section>
         <section aria-label="Inspector" className="flex min-h-[480px] flex-col bg-surface">
           <div role="tablist" aria-label="Inspector" className="flex gap-1 border-b border-rule px-4 pt-2">
-            {TABS.filter(({ id }) => !inExcelPane || session.workbook || (id !== "workbook" && id !== "changes")).map(({ id, label }) => {
+            {TABS.map(({ id, label }) => {
               const count = id === "changes" ? pending : 0;
               return (
                 <button
