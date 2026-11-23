@@ -19,6 +19,15 @@ INSTRUCTIONS = (
     "output_contract exactly. No tools are available. Do not invent citations or facts."
 )
 PROMPT_VERSION = "finance-tool-free-v1"
+PRECISION_INSTRUCTIONS = INSTRUCTIONS + (
+    " Before computing, identify whether the question requests an absolute amount, a ratio, "
+    "a percentage, or a percentage-point change. Select operands and the comparison base "
+    "from the requested periods; preserve units and distinguish fraction from percent. "
+    "Use the shortest sufficient calculation. Do not round intermediate values. Unless the "
+    "question explicitly requests rounding, retain at least eight significant decimal "
+    "digits when needed in numerical answers. Return only the compact output-contract JSON; "
+    "do not append derivations or unrelated figures."
+)
 
 
 def parse_output(response, *, structured):
@@ -67,9 +76,9 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
         raise ValueError("Conversation execution requires the conversation runner")
     if manifest["condition"] == "full_agent":
         raise ValueError("Full-agent execution requires a separately verified document corpus")
-    if (
-        getattr(model, "tool_schemas", None) != []
-        or getattr(model, "instructions", None) != INSTRUCTIONS
+    if getattr(model, "tool_schemas", None) != [] or getattr(model, "instructions", None) not in (
+        INSTRUCTIONS,
+        PRECISION_INSTRUCTIONS,
     ):
         raise ValueError("Runner requires benchmark instructions and no model tools")
     output = Path(output)
@@ -78,14 +87,16 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
         "prepared_sha256": identity,
         "mode": model.mode,
         "model": model.name,
-        "prompt_version": PROMPT_VERSION,
+        "prompt_version": PROMPT_VERSION
+        if model.instructions == INSTRUCTIONS
+        else "finance-precision-v1",
         "generation": {
             "max_output_tokens": getattr(model, "max_output", None),
             "temperature": 0,
             "max_retries": 0,
             "provider_routing": "OpenRouter default routing; no provider override",
         },
-        "instructions": INSTRUCTIONS,
+        "instructions": model.instructions,
         "inputs_sha256": manifest["inputs_sha256"],
         "source": manifest["source"],
         "condition": manifest["condition"],
@@ -182,6 +193,7 @@ def main():
     parser.add_argument("--per-task-usd", type=float, default=0.03)
     parser.add_argument("--per-turn-usd", type=float, default=0.02)
     parser.add_argument("--timeout", type=float, default=60)
+    parser.add_argument("--reasoning", choices=("baseline", "precision-v1"), default="baseline")
     args = parser.parse_args()
     bundle = load_bundle(args.prepared)
     # Validate the bundle and condition before constructing a live provider.
@@ -194,7 +206,7 @@ def main():
         os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
         os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
         max_output=2000,
-        instructions=INSTRUCTIONS,
+        instructions=INSTRUCTIONS if args.reasoning == "baseline" else PRECISION_INSTRUCTIONS,
         tool_schemas=[],
     )
     runner = run_prepared

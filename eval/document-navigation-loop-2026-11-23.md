@@ -154,3 +154,30 @@ limits. Compare against both completed arms. Primary selection criterion is
 within-1% success, followed by exact success and coverage with no citation-integrity
 regression. Preserve all arms, including regressions; do not cherry-pick per-task
 answers. Freeze the selected complete treatment for the full comparison.
+
+## Calculation and ingestion diagnostics
+
+Independent coding-agent review found no clear metric/period/unit failure among
+v1's nine exact matches. Two tolerance-only answers were supported rounded source
+values. One mismatch (Mitsui) remained unresolved against the captured source;
+its reference and score were not changed. This review is not human validation.
+
+The previous FinQA misses were inspected before choosing a calculation treatment.
+TROW used the right operands but rounded too early. ABMD correctly subtracted the
+numbers while the executable reference expected a relative change; the question
+does not clearly specify that interpretation, and its human-written answer
+conflicts with the executable reference. A calculator cannot resolve that ambiguity.
+The new optional `--reasoning precision-v1` keeps the same one-request, tool-free
+condition and clarifies answer type, requested periods, units and intermediate/final
+precision. It does not encode benchmark-specific formulas or force ambiguous
+questions into relative changes. Compare all 201 eligible controls against the
+completed baseline once, using unchanged inputs, scorer, budget and token limits.
+No reference is changed after observing these predictions.
+
+A separate $0.001 Exa extraction probe on an already-exposed Smurfit Westrock
+source used documented `includeHtmlTags` to test whether original table markup
+could be recovered cheaply. It returned no table/cell tags. This does not establish
+general provider behavior, but provides no basis to claim that toggling that option
+restores table structure. It is not included in benchmark scores or adopted by the
+candidate. A native structured parser would need a separately tested acquisition
+path and geometry validation; it is not added speculatively.
