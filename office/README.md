@@ -11,7 +11,9 @@ The combined question and selection must fit the backend's 4,000-character limit
 
 1. Install dependencies: `npm --prefix web install`.
 2. Start the backend: `uv run python -m provenance.web` (port 8765).
-   Use `--replay` for scripted demonstration without model calls.
+   Configure `OPENROUTER_API_KEY`, `EXA_API_KEY`, and a positive
+   `EXA_MAX_REQUEST_USD` in `.env`. Research uses live Exa search and fetched text;
+   missing configuration disables research, with no demo fallback.
 3. In another terminal run `npm --prefix web run excel`. The Microsoft development
    certificate helper may prompt you to trust its localhost certificate.
 4. Sideload `office/manifest.xml` into Excel. On Mac, copy it into
@@ -30,8 +32,20 @@ separate; this release does not apply proposals to live cells or continuously sy
 the workbook. Repeated insertion creates another worksheet.
 
 Verification: TypeScript/build and browser tests with a mocked Office host cover
-connection, selection attachment, and result insertion. Real Excel sideloading,
-certificate trust, and host behavior still require manual verification.
+connection, selection attachment, and result insertion. Real Excel connection was confirmed on 2026-11-22. The revised live routing
+and compact layout are separately tested with deterministic provider/host mocks.
 
 References: [Office.js Excel tutorial](https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/excel-tutorial),
 [Mac sideloading](https://learn.microsoft.com/en-us/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac).
+
+The pane uses Research/Details navigation and a single view at a time. Layout
+checks cover 270, 320, and 350 pixel widths at 378 pixels tall. The upper-right
+40 pixels are reserved for Office controls. Replay controls, fixed evidence
+packets, sample questions, and demo workbook loading are removed from the app.
+Offline benchmark fixtures remain separate from the product.
+
+Verification on 2026-11-22: live Exa search returned five results and an explicit
+source read returned numbered evidence. The full live answer smoke failed before
+any tool call because OpenRouter returned an authentication error; replace the
+configured OpenRouter credential and restart the backend to verify full answers.
+The app never falls back to recorded answers.

@@ -100,11 +100,8 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
                     <span className={`ml-auto rounded px-1.5 py-0.5 text-xs ${status.className}`}>{status.label}</span>
                   </div>
                   <p className="mt-1 text-sm text-ink-soft">{proposal.rationale}</p>
-                  {(proposal.mode === "offline_replay" || (proposal.turn_status && proposal.turn_status !== "completed")) && (
+                  {(proposal.turn_status && proposal.turn_status !== "completed") && (
                     <p className="mt-1 flex flex-wrap gap-1.5 text-xs">
-                      {proposal.mode === "offline_replay" && (
-                        <span className="rounded bg-replay-soft px-1.5 py-0.5 text-replay">From scripted replay, no model call</span>
-                      )}
                       {proposal.turn_status && proposal.turn_status !== "completed" && (
                         <span className="rounded bg-rust-soft px-1.5 py-0.5 text-rust">
                           From a question that ended without a validated answer
@@ -154,9 +151,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
             {latest.changes.map((change) => (
               <li key={change.cell}>
                 {change.cell}: {change.old || "empty"} to <span className="font-medium">{content(change.new)}</span>
-                {change.generated_by?.startsWith("Scripted replay") && (
-                  <span className="ml-2 text-xs text-replay">scripted replay</span>
-                )}
+
               </li>
             ))}
           </ul>

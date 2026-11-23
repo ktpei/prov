@@ -7,8 +7,8 @@ approval; nothing here writes a file.
 import math
 import re
 
-from provenance.model import INSTRUCTIONS
-from provenance.sources import TOOL_SCHEMAS, Sources, function
+from provenance.exa_sources import EXA_INSTRUCTIONS, EXA_TOOL_SCHEMAS, ExaSources
+from provenance.sources import TOOL_SCHEMAS, function
 from provenance.web.workbook import format_address, parse_range
 
 READ_LIMIT = 200
@@ -30,7 +30,7 @@ Conversation and workbook rules for this chat:
 - Use propose_cell_edits only when the user asks for changes or clearly asks whether an input should be updated. Put every edit in ONE call (up to 10 edits); each edit needs a short rationale and citations to evidence you already read. Proposals are not applied: never say the workbook was changed; say the analyst can review and approve them.
 """
 
-CHAT_INSTRUCTIONS = INSTRUCTIONS + CHAT_ADDENDUM
+CHAT_INSTRUCTIONS = EXA_INSTRUCTIONS + CHAT_ADDENDUM
 
 _CITATION = {
     "type": "object",
@@ -120,9 +120,20 @@ def _content(value):
     return text
 
 
-class ChatSources(Sources):
-    def __init__(self, directory, *, snapshot=None, preread_range=None, **kwargs):
+class ChatSources(ExaSources):
+    def __init__(
+        self,
+        directory,
+        *,
+        snapshot=None,
+        preread_range=None,
+        source_prefix="",
+        carried_documents=None,
+        **kwargs,
+    ):
         super().__init__(directory, **kwargs)
+        self.source_prefix = source_prefix
+        self.carried_documents = carried_documents or {}
         self.snapshot = snapshot
         self.proposals = []
         self.preread = set()
@@ -131,7 +142,27 @@ class ChatSources(Sources):
             self.preread = {
                 f"{sheet}!{cell['address']}" for cell in snapshot.cells(sheet, rng, CONTEXT_LIMIT)
             }
-        self.tool_schemas = TOOL_SCHEMAS + WORKBOOK_TOOL_SCHEMAS if snapshot else TOOL_SCHEMAS
+        research_tools = EXA_TOOL_SCHEMAS if self.exa_key else TOOL_SCHEMAS
+        self.tool_schemas = research_tools + WORKBOOK_TOOL_SCHEMAS if snapshot else research_tools
+
+    def search(self, query, timeout, objective=None):
+        result = super().search(query, timeout, objective)
+        if self.source_prefix:
+            for hit in result["results"]:
+                source_id = hit["id"]
+                scoped_id = self.source_prefix + source_id
+                source = self.documents.pop(source_id, None)
+                if source is not None:
+                    self.documents.setdefault(scoped_id, {**source, "id": scoped_id})
+                hit["id"] = scoped_id
+        return result
+
+    def read(self, source_id, start, end, timeout):
+        # The graph clears fetched documents at turn start. Restore prior snapshots
+        # only on explicit reads; previous answers never count as read evidence.
+        if source_id not in self.documents and source_id in self.carried_documents:
+            self.documents[source_id] = dict(self.carried_documents[source_id])
+        return super().read(source_id, start, end, timeout)
 
     @property
     def workbook_id(self):

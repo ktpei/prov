@@ -53,7 +53,7 @@ export const getSourceWindow = (corpus: string, id: string, start: number, end: 
   );
 export const originalUrl = (corpus: string, id: string) =>
   `/api/sources/${corpus}/${encodeURIComponent(id)}/original`;
-export const startTurn = (sid: string, question: string, mode: "live" | "replay") =>
+export const startTurn = (sid: string, question: string, mode: "live") =>
   request<{ turn_id: string }>(`/api/sessions/${sid}/turns`, json("POST", { question, mode }));
 export const uploadWorkbook = (sid: string, file: File) => {
   const form = new FormData();
@@ -121,7 +121,5 @@ export function streamTurn(
   };
 }
 
-export const useDemoWorkbook = (sid: string) =>
-  request<WorkbookInfo>(`/api/sessions/${sid}/workbook/demo`, { method: "POST" });
 export const login = (code: string) => request<{ ok: boolean }>("/api/login", json("POST", { code }));
 export const getAuth = () => request<{ required: boolean; authenticated: boolean }>("/api/auth");

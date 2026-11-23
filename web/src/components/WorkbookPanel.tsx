@@ -8,14 +8,13 @@ type Props = {
   highlight: Citation | null;
   busy: boolean;
   onUpload: (file: File) => Promise<void>;
-  onUseDemo: () => Promise<void>;
   onSetContext: (sheet: string, range: string) => Promise<void>;
   onClearContext: () => Promise<void>;
 };
 
 type Point = { r: number; c: number };
 
-export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, onSetContext, onClearContext }: Props) {
+export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext, onClearContext }: Props) {
   const workbook = session.workbook;
   const [sheet, setSheet] = useState<string>("");
   const [grid, setGrid] = useState<Grid | null>(null);
@@ -123,19 +122,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
             >
               {uploading ? "Reading workbook" : "Choose file"}
             </button>
-            <button
-              type="button"
-              disabled={uploading || busy}
-              onClick={() => {
-                setUploading(true);
-                onUseDemo()
-                  .catch((err: Error) => setError(err.message))
-                  .finally(() => setUploading(false));
-              }}
-              className="rounded-md border border-rule px-3 py-1.5 text-sm hover:border-ink-faint disabled:opacity-40"
-            >
-              Use the demo Cloudflare model
-            </button>
+
           </div>
           {fileInput}
           {error && <p role="alert" className="mt-3 text-sm text-rust">{error}</p>}

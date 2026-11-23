@@ -25,7 +25,7 @@ The `feat/web-chatbot-mvp` workstream is integrated into
 `codex/finance-benchmark-loop`, preserving the current evaluation and harness work.
 The browser supports cited chat, follow-ups, workbook range context, and explicit
 approval of edits to a downloadable copy. See [Web app](README.md#web-app) for
-startup and replay instructions. The Office.js add-in remains future work.
+startup instructions. The Office.js add-in is implemented; see `office/README.md`.
 
 H3 begins with a controller-owned
 [typed read session](eval/assessments/typed-read-authorization-v1/report.md): source
@@ -517,3 +517,17 @@ numeric/tolerance scoring, and separately recorded source-support review.
 abstentions and five stops/failures expose source-navigation limits. No human
 validated accuracy is claimed. Full retains one reserved issuer and 73
 reference-review cases.
+
+## Live Excel research — 2026-11-22
+
+The app now routes research through Exa rather than fixed evidence packets.
+Product replay mode, sample questions, and demo workbook loading are removed.
+Excel uses one view at a time with Research/Details navigation, responsive at
+270–350 pixels wide. Historical benchmark replay remains offline and separate.
+See `office/README.md` for provider configuration and installation.
+
+Verification on 2026-11-22: live Exa search returned five results and an explicit
+source read returned numbered evidence. The full live answer smoke failed before
+any tool call because OpenRouter returned an authentication error; replace the
+configured OpenRouter credential and restart the backend to verify full answers.
+The app never falls back to recorded answers.

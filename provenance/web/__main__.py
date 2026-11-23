@@ -1,4 +1,4 @@
-"""Run the browser MVP: uv run python -m provenance.web [--replay] [--port 8765]."""
+"""Run the browser MVP: uv run python -m provenance.web [--port 8765]."""
 
 import argparse
 import os
@@ -25,9 +25,6 @@ def main():
     parser = argparse.ArgumentParser(description="Provenance research chat (local web app)")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
-    parser.add_argument(
-        "--replay", action="store_true", help="Default to labeled scripted replay (no spend)"
-    )
     args = parser.parse_args()
     load_env(ROOT / ".env")
     import uvicorn
@@ -35,7 +32,7 @@ def main():
     from provenance.web.app import create_app
 
     print(f"Provenance research chat → http://{args.host}:{args.port}")
-    uvicorn.run(create_app(replay=args.replay), host=args.host, port=args.port, log_level="warning")
+    uvicorn.run(create_app(), host=args.host, port=args.port, log_level="warning")
 
 
 if __name__ == "__main__":

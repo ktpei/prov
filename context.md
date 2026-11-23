@@ -642,3 +642,17 @@ A sideloadable task pane now attaches selected Excel cells to research questions
 and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
 Live cell proposal application and continuous synchronization are not implemented;
 real Excel host verification remains pending.
+
+## Live Excel research — 2026-11-22
+
+The app now routes research through Exa rather than fixed evidence packets.
+Product replay mode, sample questions, and demo workbook loading are removed.
+Excel uses one view at a time with Research/Details navigation, responsive at
+270–350 pixels wide. Historical benchmark replay remains offline and separate.
+See `office/README.md` for provider configuration and installation.
+
+Verification on 2026-11-22: live Exa search returned five results and an explicit
+source read returned numbered evidence. The full live answer smoke failed before
+any tool call because OpenRouter returned an authentication error; replace the
+configured OpenRouter credential and restart the backend to verify full answers.
+The app never falls back to recorded answers.

@@ -11,6 +11,8 @@ from fastapi.testclient import TestClient
 from openpyxl import Workbook, load_workbook
 
 from provenance.web.app import create_app
+from provenance.web.worker import TurnRunner
+from tests.web_helpers import offline_worker
 
 ROOT = Path(__file__).resolve().parent.parent
 FIXTURE = ROOT / "data/demo/cloudflare-fy2024-model.xlsx"
@@ -23,6 +25,8 @@ Q2 = (
     "If not, propose an update."
 )
 LIVE_ENV = {
+    "EXA_API_KEY": "exa-test-SECRET123",
+    "EXA_MAX_REQUEST_USD": "0.03",
     "OPENROUTER_API_KEY": "sk-or-test-SECRET123",
     "OPENROUTER_MODEL": "test/model",
     "OPENROUTER_INPUT_USD_PER_MILLION": "0.30",
@@ -54,11 +58,12 @@ class AppTestCase(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
-        self.env = mock.patch.dict(os.environ, NO_LIVE_ENV)
+        self.env = mock.patch.dict(os.environ, {**LIVE_ENV, "WEB_ACCESS_CODE": ""})
         self.env.start()
         self.addCleanup(self.env.stop)
 
     def client(self, **kwargs):
+        kwargs.setdefault("runner", TurnRunner(target=offline_worker))
         app = create_app(
             ledger_path=Path(self.directory.name) / "ledger.jsonl",
             export_dir=Path(self.directory.name) / "exports",
@@ -66,12 +71,12 @@ class AppTestCase(unittest.TestCase):
         )
         return TestClient(app)
 
-    def session(self, client, corpus="cloudflare-2024-q3"):
+    def session(self, client, corpus="live-web"):
         response = client.post("/api/sessions", json={"corpus": corpus})
         self.assertEqual(response.status_code, 200, response.text)
         return response.json()["id"]
 
-    def run_turn(self, client, sid, question, mode="replay"):
+    def run_turn(self, client, sid, question, mode="live"):
         response = client.post(
             f"/api/sessions/{sid}/turns", json={"question": question, "mode": mode}
         )
@@ -98,35 +103,56 @@ class ConfigAndSourcesTests(AppTestCase):
         self.assertEqual(config["model"], "test/model")
         self.assertEqual(config["spend"]["cap_usd"], 1.0)
         ids = [corpus["id"] for corpus in config["corpora"]]
-        self.assertEqual(ids, ["cloudflare-2024-q3", "earnings-excerpts"])
+        self.assertEqual(ids, ["live-web"])
         cloudflare = config["corpora"][0]
-        self.assertEqual(cloudflare["cutoff"], "2024-11-07")
-        self.assertTrue(cloudflare["starters"])
-        self.assertTrue(all(doc["has_original"] for doc in cloudflare["documents"]))
-        starters = " ".join(s for c in config["corpora"] for s in c["starters"]).lower()
-        self.assertNotIn("amazon", starters)
-        self.assertNotIn("microsoft", starters)
+        self.assertFalse(config["replay"])
+        self.assertEqual(cloudflare["starters"], [])
+        self.assertEqual(cloudflare["documents"], [])
 
     def test_live_unavailable_without_key(self):
-        self.assertFalse(self.client().get("/api/config").json()["live_available"])
+        with mock.patch.dict(os.environ, NO_LIVE_ENV):
+            self.assertFalse(self.client().get("/api/config").json()["live_available"])
 
     def test_source_window(self):
-        client = self.client()
-        url = "/api/sources/cloudflare-2024-q3/cloudflare-q3-2024-release"
-        window = client.get(url, params={"start": 59, "end": 64}).json()
-        self.assertTrue(window["has_original"])
-        self.assertEqual(window["lines"][4]["line"], 63)
-        self.assertIn("$1,661.0 to $1,662.0 million", window["lines"][4]["text"])
+        runner = FakeRunner()
+        client = self.client(runner=runner)
+        sid = self.session(client)
+        client.post(f"/api/sessions/{sid}/turns", json={"question": "Find revenue"})
+        document = {
+            "id": "web-test",
+            "title": "Live result",
+            "url": "https://example.com/report",
+            "text": "Revenue was 100.\nGuidance was 110.",
+        }
+        runner.finish([], documents={"web-test": document})
+        url = "/api/sources/live-web/web-test"
+        window = client.get(url, params={"start": 1, "end": 2}).json()
+        self.assertFalse(window["has_original"])
+        self.assertEqual(window["lines"][1]["text"], "Guidance was 110.")
+        self.assertEqual(window["url"], document["url"])
+        self.assertEqual(
+            client.get(f"/api/sessions/{sid}").json()["documents"][0]["title"], "Live result"
+        )
         self.assertEqual(client.get(url, params={"start": 1, "end": 300}).status_code, 400)
-        self.assertEqual(client.get("/api/sources/cloudflare-2024-q3/nope").status_code, 404)
+        self.assertEqual(client.get("/api/sources/live-web/nope").status_code, 404)
         self.assertEqual(client.get("/api/sources/nope/x").status_code, 404)
-        original = client.get(url + "/original")
-        self.assertEqual(original.status_code, 200)
-        self.assertIn("sandbox", original.headers.get("content-security-policy", ""))
-        pdf = client.get("/api/sources/cloudflare-2024-q3/cloudflare-q3-2024-transcript/original")
-        self.assertEqual(pdf.headers["content-type"], "application/pdf")
-        excerpt = client.get("/api/sources/earnings-excerpts/aapl-fy2024/original")
-        self.assertEqual(excerpt.status_code, 404)
+        self.assertEqual(client.get(url + "/original").status_code, 404)
+        client.post(f"/api/sessions/{sid}/turns", json={"question": "Explain guidance"})
+        self.assertEqual(runner.pending[0][1]["documents"], {"web-test": document})
+
+    def test_live_requires_exa_key_and_positive_cap(self):
+        for missing in (
+            {"EXA_API_KEY": ""},
+            {"EXA_MAX_REQUEST_USD": "0"},
+            {"EXA_MAX_REQUEST_USD": "invalid"},
+        ):
+            with self.subTest(missing=missing), mock.patch.dict(os.environ, missing):
+                client = self.client()
+                self.assertFalse(client.get("/api/config").json()["live_available"])
+                sid = self.session(client)
+                response = client.post(f"/api/sessions/{sid}/turns", json={"question": "Revenue?"})
+                self.assertEqual(response.status_code, 409)
+                self.assertIn("EXA_API_KEY", response.json()["detail"])
 
 
 class AccessGateTests(AppTestCase):
@@ -153,20 +179,20 @@ class AccessGateTests(AppTestCase):
 
 
 class TurnTests(AppTestCase):
-    def test_replay_turn_streams_and_completes(self):
-        client = self.client(replay=True)
+    def test_live_turn_streams_and_completes(self):
+        client = self.client()
         sid = self.session(client)
         tid, events, view = self.run_turn(client, sid, Q1)
         kinds = [json.loads(e["data"])["kind"] for e in events if e.get("event") == "progress"]
         self.assertIn("search", kinds)
         self.assertIn("read", kinds)
         self.assertEqual(view["status"], "completed")
-        self.assertEqual(view["mode"], "offline_replay")
+        self.assertEqual(view["mode"], "live_openrouter_langchain")
         self.assertEqual(view["answer"]["claims"][0]["value"], 430.1)
         session = client.get(f"/api/sessions/{sid}").json()
         self.assertEqual(session["turns"][0]["id"], tid)
         ledger = (Path(self.directory.name) / "ledger.jsonl").read_text()
-        self.assertIn('"mode": "replay"', ledger)
+        self.assertIn('"mode": "live"', ledger)
 
     def test_sse_resume_no_duplicates(self):
         client = self.client()
@@ -182,7 +208,7 @@ class TurnTests(AppTestCase):
         client = self.client()
         sid = self.session(client)
         tid = client.post(
-            f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"}
+            f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "live"}
         ).json()["turn_id"]
         url = f"/api/sessions/{sid}/turns/{tid}/progress"
         for _ in range(200):
@@ -199,23 +225,25 @@ class TurnTests(AppTestCase):
         self.assertEqual(client.get(f"/api/sessions/{sid}/turns/nope/progress").status_code, 404)
 
     def test_follow_up_carries_context(self):
-        client = self.client()
+        runner = FakeRunner()
+        client = self.client(runner=runner)
         sid = self.session(client)
-        self.run_turn(client, sid, Q1)
-        response = client.post(
-            f"/api/sessions/{sid}/turns", json={"question": "And Q4?", "mode": "replay"}
-        )
-        self.assertEqual(response.status_code, 404)
-        self.assertIn("No scripted replay", response.json()["detail"])
+        client.post(f"/api/sessions/{sid}/turns", json={"question": Q1})
+        runner.finish([])
+        response = client.post(f"/api/sessions/{sid}/turns", json={"question": "And Q4?"})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(Q1, runner.pending[0][1]["question_text"])
 
     def test_rejections(self):
         client = self.client()
         sid = self.session(client)
         post = lambda body: client.post(f"/api/sessions/{sid}/turns", json=body)  # noqa: E731
-        self.assertEqual(post({"question": "  ", "mode": "replay"}).status_code, 400)
-        self.assertEqual(post({"question": "x" * 4001, "mode": "replay"}).status_code, 400)
+        self.assertEqual(post({"question": "  ", "mode": "live"}).status_code, 400)
+        self.assertEqual(post({"question": "x" * 4001, "mode": "live"}).status_code, 400)
         self.assertEqual(post({"question": Q1, "mode": "other"}).status_code, 400)
-        live = post({"question": Q1, "mode": "live"})
+        self.assertEqual(post({"question": Q1, "mode": "replay"}).status_code, 400)
+        with mock.patch.dict(os.environ, NO_LIVE_ENV):
+            live = post({"question": Q1, "mode": "live"})
         self.assertEqual(live.status_code, 409)
         self.assertIn("not configured", live.json()["detail"])
         self.assertEqual(self.upload(client, sid, name="model.xlsm").status_code, 400)
@@ -226,8 +254,8 @@ class TurnTests(AppTestCase):
     def test_concurrent_turn_rejected(self):
         client = self.client()
         sid = self.session(client)
-        first = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"})
-        second = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"})
+        first = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "live"})
+        second = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "live"})
         self.assertEqual(second.status_code, 409)
         read_events(client, sid, first.json()["turn_id"])
 
@@ -295,15 +323,10 @@ class WorkbookFlowTests(AppTestCase):
         )
         self.assertEqual(response.status_code, 409)
 
-    def test_demo_workbook_loads_fixture(self):
+    def test_demo_workbook_route_removed(self):
         client = self.client()
         sid = self.session(client)
-        info = client.post(f"/api/sessions/{sid}/workbook/demo").json()
-        self.assertEqual(info["snapshot_id"], "a34195a4a257")
-        self.assertEqual(info["filename"], FIXTURE.name)
-        self.assertEqual(
-            client.get(f"/api/sessions/{sid}").json()["workbook"]["snapshot_id"], "a34195a4a257"
-        )
+        self.assertEqual(client.post(f"/api/sessions/{sid}/workbook/demo").status_code, 405)
 
     def test_export_rejects_unknown_ids(self):
         client = self.client()
@@ -331,7 +354,15 @@ class FakeRunner:
         self.pending.append((turn, job, on_finish))
         return turn
 
-    def finish(self, proposals, *, status="completed", cost=0.0, mode="offline_replay"):
+    def finish(
+        self,
+        proposals,
+        *,
+        status="completed",
+        cost=0.0,
+        mode="live_openrouter_langchain",
+        documents=None,
+    ):
         turn, job, on_finish = self.pending.pop(0)
         turn.result = {
             "report": {
@@ -341,9 +372,10 @@ class FakeRunner:
                 "stop_reason": None if status == "completed" else "model_call_limit",
                 "answer": {"answerable": True, "answer": "ok", "claims": []},
                 "metrics": {"accounted_cost_usd": cost, "cost_uncertain": False},
-                "model": "scripted-test-double" if mode == "offline_replay" else "test/model",
+                "model": "test/model",
             },
             "proposals": proposals,
+            "documents": documents or {},
         }
         on_finish(turn)
         turn.done.set()
@@ -380,7 +412,7 @@ def other_workbook():
 class MultiTurnWorkbookTests(AppTestCase):
     def start(self, client, sid, question=Q2):
         response = client.post(
-            f"/api/sessions/{sid}/turns", json={"question": question, "mode": "replay"}
+            f"/api/sessions/{sid}/turns", json={"question": question, "mode": "live"}
         )
         self.assertEqual(response.status_code, 200, response.text)
         return response.json()["turn_id"]
@@ -448,7 +480,7 @@ class MultiTurnWorkbookTests(AppTestCase):
         self.assertEqual((book["Model"]["B7"].value, book["Model"]["B8"].value), (1661.5, 220.5))
         self.assertEqual(len(client.get(f"/api/sessions/{sid}").json()["exports"]), 2)
 
-    def test_replay_proposals_are_labeled_in_the_export(self):
+    def test_live_proposals_are_labeled_in_the_export(self):
         runner = FakeRunner()
         client = self.client(runner=runner)
         sid = self.session(client)
@@ -456,7 +488,7 @@ class MultiTurnWorkbookTests(AppTestCase):
         self.start(client, sid)
         runner.finish([proposal("B7", 1661.5)])
         state = client.get(f"/api/sessions/{sid}").json()
-        self.assertEqual(state["proposals"][0]["mode"], "offline_replay")
+        self.assertEqual(state["proposals"][0]["mode"], "live_openrouter_langchain")
         export = client.post(
             f"/api/sessions/{sid}/exports",
             json={"snapshot_id": "a34195a4a257", "proposal_ids": [state["proposals"][0]["id"]]},
@@ -465,8 +497,8 @@ class MultiTurnWorkbookTests(AppTestCase):
         log = book["Provenance log"]
         headers = [cell.value for cell in log[1]]
         self.assertIn("Generated by", headers)
-        self.assertIn("Scripted replay", log.cell(2, headers.index("Generated by") + 1).value)
-        self.assertIn("Scripted replay", book["Model"]["B7"].comment.text)
+        self.assertIn("Live model test/model", log.cell(2, headers.index("Generated by") + 1).value)
+        self.assertIn("Live model test/model", book["Model"]["B7"].comment.text)
 
     def test_live_turns_reserve_budget_while_running(self):
         runner = FakeRunner()
@@ -488,21 +520,17 @@ class MultiTurnWorkbookTests(AppTestCase):
     def test_worker_start_failure_releases_the_session(self):
         client = self.client(runner=FakeRunner(fail=True))
         sid = self.session(client)
-        response = client.post(
-            f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"}
-        )
+        response = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "live"})
         self.assertEqual(response.status_code, 500)
         state = client.get(f"/api/sessions/{sid}").json()
         self.assertEqual(state["turns"][0]["status"], "failed")
-        retry = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "replay"})
+        retry = client.post(f"/api/sessions/{sid}/turns", json={"question": Q1, "mode": "live"})
         self.assertNotEqual(retry.status_code, 409)
 
-    def test_config_marks_scripted_starters(self):
+    def test_config_has_no_scripted_starters(self):
         config = self.client().get("/api/config").json()
-        cloudflare = config["corpora"][0]
-        self.assertIn(Q1, cloudflare["scripted"])
-        self.assertIn(Q2, cloudflare["scripted"])
-        self.assertEqual(config["corpora"][1]["scripted"], [])
+        self.assertEqual(config["corpora"][0]["scripted"], [])
+        self.assertEqual(len(config["corpora"]), 1)
 
 
 if __name__ == "__main__":
@@ -547,7 +575,7 @@ class WorkbookWorkspaceTests(AppTestCase):
                 sid = self.session(client)
                 info = self.upload(client, sid).json()
                 response = client.post(
-                    f"/api/sessions/{sid}/turns", json={"question": Q2, "mode": "replay"}
+                    f"/api/sessions/{sid}/turns", json={"question": Q2, "mode": "live"}
                 )
                 self.assertEqual(response.status_code, 200)
                 runner.finish([proposal(cell, value)])

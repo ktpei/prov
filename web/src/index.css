@@ -69,3 +69,21 @@ mark.quote {
     }
   }
 }
+
+/* Excel hosts resize the pane: support 270–350px without a desktop split view. */
+.excel-pane { min-width: 0; overflow: hidden; font-size: 14px; }
+.excel-pane .pane-header { padding-right: 40px; }
+.excel-pane main { display: flex; overflow: hidden; min-height: 0; }
+.excel-pane main > section { min-width: 0; min-height: 0; width: 100%; border-right: 0; }
+.excel-pane main[data-view="chat"] > [aria-label="Inspector"],
+.excel-pane main[data-view="details"] > [aria-label="Conversation"] { display: none; }
+.excel-pane [data-scroll] { padding-inline: 12px; overflow-wrap: anywhere; }
+.excel-pane [role="tabpanel"] { overflow: auto; overflow-wrap: anywhere; }
+.excel-pane [role="tablist"] { padding-inline: 4px; gap: 0; flex-wrap: wrap; }
+.excel-pane [role="tablist"] button { flex: 1; padding-inline: 6px; font-size: 12px; }
+.excel-pane form { padding: 8px 12px; }
+.excel-pane textarea { min-width: 0; width: 100%; }
+.excel-pane [aria-label="Excel connection"] { padding: 8px 12px; font-size: 12px; }
+.excel-pane [aria-label="Excel connection"] button { padding: 6px 8px; }
+.excel-pane [aria-label="Excel connection"] > div { gap: 4px; margin-top: 4px; }
+.excel-pane button { overflow-wrap: anywhere; }

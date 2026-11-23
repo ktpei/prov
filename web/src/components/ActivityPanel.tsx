@@ -29,7 +29,7 @@ function Row({ event, titles, onOpenPassage }: { event: Progress; titles: Record
         ? "text-ink"
         : "text-ink-soft";
   const detail = event.detail as Record<string, unknown>;
-  const hits = (detail.hits as { source_id: string; title: string; locator: string }[] | undefined) ?? [];
+  const hits = (detail.hits as { source_id: string; title: string; locator: string | null }[] | undefined) ?? [];
   const verb: Record<string, string> = {
     search: "Searched",
     read: "Read",
@@ -67,7 +67,9 @@ function Row({ event, titles, onOpenPassage }: { event: Progress; titles: Record
               <li key={`${hit.source_id}-${hit.locator}`}>
                 <button
                   type="button"
-                  onClick={() => onOpenPassage({ source_id: hit.source_id, locator: hit.locator, quote: "" })}
+                  disabled={!hit.locator}
+                  title={!hit.locator ? "Discovery result — evidence becomes available after the source is read" : undefined}
+                  onClick={() => hit.locator && onOpenPassage({ source_id: hit.source_id, locator: hit.locator, quote: "" })}
                   className="rounded border border-rule px-1.5 py-0.5 text-xs text-ink-soft hover:border-ledger"
                 >
                   {shortSource(hit.source_id, titles[hit.source_id] ?? hit.title)} {hit.locator}
@@ -109,11 +111,7 @@ export function ActivityPanel({ turn, events, titles, onOpenPassage }: Props) {
     <div className="h-full overflow-y-auto px-5 py-4">
       <p className="text-sm text-ink-faint">Activity for</p>
       <p className="font-medium">{turn.question}</p>
-      {turn.mode === "offline_replay" && (
-        <p className="mt-1 inline-block rounded bg-replay-soft px-1.5 py-0.5 text-xs text-replay">
-          Scripted replay: recorded tool calls run against the real evidence; no model is called.
-        </p>
-      )}
+
       <ol className="mt-3 divide-y divide-rule/70" aria-live="polite">
         {rows.map((event, index) => (
           <Row key={index} event={event} titles={titles} onOpenPassage={onOpenPassage} />

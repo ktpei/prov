@@ -10,36 +10,9 @@ import multiprocessing
 import os
 import threading
 import time
-from pathlib import Path
 from queue import Empty
 
 from provenance.agent import Limits, Trace
-
-SCRIPTS = Path(__file__).resolve().parent / "replay_scripts.json"
-
-
-def _normalize(text):
-    return " ".join(str(text).lower().split())
-
-
-def scripted_questions(corpus):
-    """Questions with a scripted replay for this evidence set."""
-    return [
-        entry["question"]
-        for entry in json.loads(SCRIPTS.read_text())["scripts"]
-        if entry["corpus"] == corpus
-    ]
-
-
-def load_replay_script(question, corpus, *, snapshot_id=None):
-    """Return scripted responses for an exact (normalized) question match, else None."""
-    for entry in json.loads(SCRIPTS.read_text())["scripts"]:
-        if entry["corpus"] != corpus or _normalize(entry["question"]) != _normalize(question):
-            continue
-        if entry.get("snapshot_id") and entry["snapshot_id"] != snapshot_id:
-            continue
-        return entry["responses"]
-    return None
 
 
 def _arguments(call):
@@ -86,7 +59,11 @@ def summarize_event(event, started, calls):
                 {
                     "source_id": hit.get("id"),
                     "title": hit.get("title"),
-                    "locator": f"L{hit.get('start_line')}-L{hit.get('end_line')}",
+                    "locator": (
+                        f"L{hit['start_line']}-L{hit['end_line']}"
+                        if hit.get("start_line") and hit.get("end_line")
+                        else None
+                    ),
                 }
                 for hit in result.get("results", [])[:5]
             ]
@@ -185,7 +162,6 @@ def run_turn_process(job, queue):
     """Child-process entry: run one research turn and put exactly one terminal message."""
     try:
         from provenance.graph import run_graph
-        from provenance.model import ReplayModel
         from provenance.web.chat_sources import CHAT_INSTRUCTIONS, ChatSources
         from provenance.web.workbook import load_snapshot
 
@@ -195,21 +171,29 @@ def run_turn_process(job, queue):
             else None
         )
         preread = tuple(job["preread"]) if job.get("preread") else None
-        sources = ChatSources(job["corpus_dir"], snapshot=snapshot, preread_range=preread)
-        if job["mode"] == "replay":
-            model = ReplayModel(job["replay_responses"] or [])
-        else:
-            from provenance.langchain_model import OpenRouterModel
+        from provenance.langchain_model import OpenRouterModel
 
-            model = OpenRouterModel(
-                os.environ.get("OPENROUTER_API_KEY"),
-                os.environ.get("OPENROUTER_MODEL"),
-                os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
-                os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
-                max_output=4000,
-                instructions=CHAT_INSTRUCTIONS,
-                tool_schemas=sources.tool_schemas,
-            )
+        exa_key = os.environ.get("EXA_API_KEY", "").strip()
+        if not exa_key:
+            raise ValueError("Live research requires EXA_API_KEY")
+        sources = ChatSources(
+            job["corpus_dir"],
+            snapshot=snapshot,
+            preread_range=preread,
+            exa_key=exa_key,
+            exa_cap=os.environ.get("EXA_MAX_REQUEST_USD"),
+            source_prefix=job["source_prefix"],
+            carried_documents=job.get("documents"),
+        )
+        model = OpenRouterModel(
+            os.environ.get("OPENROUTER_API_KEY"),
+            os.environ.get("OPENROUTER_MODEL"),
+            os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
+            os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
+            max_output=4000,
+            instructions=CHAT_INSTRUCTIONS,
+            tool_schemas=sources.tool_schemas,
+        )
         trace = StreamingTrace(
             queue, job.get("log_dir"), instructions=CHAT_INSTRUCTIONS, tools=sources.tool_schemas
         )
@@ -221,6 +205,11 @@ def run_turn_process(job, queue):
                 {
                     "report": {**{key: report[key] for key in keep}, "model": model.name},
                     "proposals": sources.proposals,
+                    "documents": {
+                        key: doc
+                        for key, doc in sources.documents.items()
+                        if doc.get("text") is not None
+                    },
                 },
             )
         )

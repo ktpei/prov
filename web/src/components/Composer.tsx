@@ -2,17 +2,18 @@ import { useState } from "react";
 
 type Props = {
   busy: boolean;
+  unavailable?: boolean;
   context: { sheet: string; range: string } | null;
   hasHistory: boolean;
   onAsk: (question: string) => Promise<boolean>;
   onClearContext: () => void;
 };
 
-export function Composer({ busy, context, hasHistory, onAsk, onClearContext }: Props) {
+export function Composer({ busy, unavailable, context, hasHistory, onAsk, onClearContext }: Props) {
   const [text, setText] = useState("");
   const submit = async () => {
     const question = text.trim();
-    if (!question || busy) return;
+    if (!question || busy || unavailable) return;
     if (await onAsk(question)) setText("");
   };
   return (
@@ -54,7 +55,7 @@ export function Composer({ busy, context, hasHistory, onAsk, onClearContext }: P
         />
         <button
           type="submit"
-          disabled={busy || !text.trim()}
+          disabled={busy || unavailable || !text.trim()}
           className="h-[44px] rounded-md bg-ledger px-4 font-medium text-white disabled:opacity-40"
         >
           {busy ? "Researching" : "Ask"}

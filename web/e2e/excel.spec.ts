@@ -1,32 +1,35 @@
-import { expect, test } from '@playwright/test';
-
-test('Excel selection and cited worksheet insertion', async ({ page }) => {
-  await page.route('https://appsforoffice.microsoft.com/**', route => route.fulfill({
-    contentType: 'text/javascript', body: `
-      window.Office = { onReady: async () => ({host:'Excel'}), HostType:{Excel:'Excel'}, context:{requirements:{isSetSupported:()=>true}} };
-      window.Excel = { run: async fn => fn({sync:async()=>{}, workbook:{
-        getSelectedRange:()=>({load:()=>{},address:'Model!A1',rowCount:1,columnCount:1,values:[[123]],formulas:[[123]]}),
-        worksheets:{add:()=>({getRangeByIndexes:()=>({set values(v){window.inserted=v},format:{}}),getRange:()=>({format:{font:{}}}),activate:()=>{}})}
-      }})};`
-  }));
-  await page.goto('/?excel=1');
-  await expect(page.getByText('Excel connected')).toBeVisible();
-  await page.getByRole('button', {name:'Attach selected cells'}).click();
-  await expect(page.getByText(/Selection attached/)).toBeVisible();
-  await page.getByRole('button', {name:'Remove selection'}).click();
-  await page.getByRole('button', {name: 'What revenue did Cloudflare report for Q3 2024, and what full-year 2024 revenue guidance did management give?'}).click();
-  await expect(page.getByRole('button', {name:'Insert cited results'})).toBeEnabled();
-  await page.getByRole('button', {name:'Insert cited results'}).click();
-  await expect(page.getByText('Cited results inserted into a new worksheet.')).toBeVisible();
-  const rows = await page.evaluate(() => (window as unknown as {inserted: unknown[][]}).inserted);
-  expect(rows[0]).toEqual(['Claim', 'Value', 'Unit', 'Period', 'Evidence']);
-  expect(rows.length).toBeGreaterThan(1);
-  expect(String(rows[1][4])).toContain('release');
-});
-
-test('outside Excel gives actionable status', async ({page}) => {
-  await page.route('https://appsforoffice.microsoft.com/**', route => route.fulfill({contentType:'text/javascript', body:''}));
+import {expect,test} from '@playwright/test';
+import {liveApi,officeHost} from './fixtures';
+for (const width of [270,320,350]) {
+  test(`Excel research fits ${width}px pane`,async({page})=>{
+    await page.setViewportSize({width,height:378});
+    await liveApi(page); await officeHost(page);
+    await page.goto('/?excel=1');
+    await expect(page.getByText('Excel connected')).toBeVisible();
+    if (width === 350) await page.screenshot({path:'/tmp/provenance-pane-350.png'});
+    await expect(page.getByText(/replay|demo|Cloudflare/i)).toHaveCount(0);
+    await page.getByRole('button',{name:'Attach selected cells'}).click();
+    await expect(page.getByRole('button',{name:'Remove selection'})).toBeVisible();
+    await page.getByRole('textbox',{name:'Question',exact:true}).fill('Research revenue');
+    const request=page.waitForRequest(r=>r.url().endsWith('/turns'));
+    await page.getByRole('button',{name:'Ask',exact:true}).click();
+    expect((await request).postDataJSON()).toMatchObject({mode:'live'});
+    await expect(page.getByText('Cited answer', {exact:true})).toBeVisible();
+    await page.getByRole('button',{name:'Insert cited results'}).click();
+    await expect(page.getByText('Cited results inserted into a new worksheet.')).toBeVisible();
+    expect(await page.evaluate(()=> (window as unknown as {inserted:unknown[][]}).inserted[1][1])).toBe(123);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+    await page.getByRole('button',{name:'Details',exact:true}).click();
+    await expect(page.getByRole('tab',{name:'Evidence',exact:true})).toBeVisible();
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+    await page.getByRole('button',{name:'Research',exact:true}).click();
+    await expect(page.getByRole('textbox',{name:'Question',exact:true})).toBeVisible();
+  });
+}
+test('Office missing shows connection error',async({page})=>{
+  await liveApi(page);
+  await page.route('https://appsforoffice.microsoft.com/**',r=>r.fulfill({body:'',contentType:'text/javascript'}));
   await page.goto('/?excel=1');
   await expect(page.getByText('Office.js did not load. Reopen the add-in in Excel.')).toBeVisible();
-  await expect(page.getByRole('button', {name:'Attach selected cells'})).toBeDisabled();
+  await expect(page.getByRole('button',{name:'Attach selected cells'})).toBeDisabled();
 });

@@ -139,6 +139,7 @@ export type Session = {
   context: { sheet: string; range: string } | null;
   proposals: Proposal[];
   exports: ExportRecord[];
+  documents?: DocumentInfo[];
 };
 
 export type SourceLine = {

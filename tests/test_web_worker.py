@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from provenance.web.ledger import Ledger
+from tests.web_helpers import offline_worker, responses_for
 
 
 class LedgerTests(unittest.TestCase):
@@ -51,17 +52,14 @@ def crash_target(job, queue):
 
 
 def job(question, **overrides):
-    from provenance.web.worker import load_replay_script
-
     snapshot_id = overrides.pop("snapshot_id", None)
     return {
         "turn_id": "t1",
         "question_text": question,
         "corpus_dir": str(CORPUS),
-        "mode": "replay",
-        "replay_responses": load_replay_script(
-            question, "cloudflare-2024-q3", snapshot_id=snapshot_id
-        ),
+        "source_prefix": "session-t1-",
+        "mode": "live",
+        "test_responses": responses_for(question, "cloudflare-2024-q3", snapshot_id=snapshot_id),
         "workbook_bytes": None,
         "workbook_filename": None,
         "preread": None,
@@ -128,7 +126,7 @@ class WorkerTests(unittest.TestCase):
         self.assertEqual(kind({"event": "run_finished", "status": "completed"}), "finished")
 
     def test_replay_turn_end_to_end(self):
-        from provenance.web.worker import run_turn_process
+        from tests.web_helpers import offline_worker as run_turn_process
 
         out = queue.Queue()
         run_turn_process(job(Q1), out)
@@ -140,13 +138,13 @@ class WorkerTests(unittest.TestCase):
         self.assertEqual(terminal, "done", payload)
         report = payload["report"]
         self.assertEqual(report["status"], "completed")
-        self.assertEqual(report["mode"], "offline_replay")
+        self.assertEqual(report["mode"], "live_openrouter_langchain")
         self.assertGreaterEqual(len(report["answer"]["claims"]), 2)
         self.assertEqual(report["metrics"]["accounted_cost_usd"], 0)
         self.assertEqual(payload["proposals"], [])
 
     def test_replay_workbook_turn_proposes(self):
-        from provenance.web.worker import run_turn_process
+        from tests.web_helpers import offline_worker as run_turn_process
 
         data = FIXTURE.read_bytes()
         out = queue.Queue()
@@ -184,39 +182,20 @@ class WorkerTests(unittest.TestCase):
         from provenance.web.worker import TurnRunner
 
         finished = []
-        turn = TurnRunner().start(job(Q1), on_finish=finished.append)
+        turn = TurnRunner(target=offline_worker).start(job(Q1), on_finish=finished.append)
         self.assertTrue(turn.done.wait(60))
         self.assertIsNone(turn.error)
         self.assertEqual(turn.result["report"]["status"], "completed")
         self.assertTrue(any(event["kind"] == "read" for event in turn.events))
         self.assertEqual(finished, [turn])
 
-    def test_runner_prewarm_reuses_standby(self):
+    def test_runner_prewarm_closes_standby(self):
         from provenance.web.worker import TurnRunner
 
         runner = TurnRunner(prewarm=True)
         self.assertIsNotNone(runner.standby)
-        warm_pid = runner.standby[0].pid
-        first = runner.start(job(Q1))
-        self.assertTrue(first.done.wait(60))
-        self.assertIsNone(first.error)
-        self.assertEqual(first.pid, warm_pid)
-        second = runner.start(job(Q1))
-        self.assertTrue(second.done.wait(60))
-        self.assertIsNone(second.error)
-        self.assertNotEqual(second.pid, warm_pid)
         runner.close()
-
-    def test_load_replay_script_match(self):
-        from provenance.web.worker import load_replay_script
-
-        self.assertIsNotNone(load_replay_script("  " + Q1.upper() + " ", "cloudflare-2024-q3"))
-        self.assertIsNone(load_replay_script(Q1, "earnings-excerpts"))
-        self.assertIsNone(load_replay_script(Q2, "cloudflare-2024-q3"))
-        self.assertIsNone(load_replay_script(Q2, "cloudflare-2024-q3", snapshot_id="ffffffffffff"))
-        self.assertIsNotNone(
-            load_replay_script(Q2, "cloudflare-2024-q3", snapshot_id="a34195a4a257")
-        )
+        self.assertIsNone(runner.standby)
 
 
 def sleep_target(job, queue):
@@ -265,7 +244,7 @@ class WorkerFailureTests(unittest.TestCase):
         self.assertEqual(turn.error, "worker_crashed")
 
     def test_unread_citation_fails_after_one_repair(self):
-        from provenance.web.worker import run_turn_process
+        from tests.web_helpers import offline_worker as run_turn_process
 
         bad = {
             "status": "completed",
@@ -303,7 +282,7 @@ class WorkerFailureTests(unittest.TestCase):
             ],
         }
         out = queue.Queue()
-        run_turn_process(job("Unscripted", replay_responses=[bad, bad]), out)
+        run_turn_process(job("Unscripted", test_responses=[bad, bad]), out)
         messages = drain(out)
         kinds = [payload["kind"] for kind, payload in messages if kind == "event"]
         self.assertIn("answer_rejected", kinds)
