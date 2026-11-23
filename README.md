@@ -524,6 +524,12 @@ real Excel host verification remains pending.
 
 ## Daloopa quick/full benchmarking
 
+The [navigation improvement loop](eval/document-navigation-loop-2026-11-23.md)
+adds versioned document ingestion and finding. Use `--navigation document-v2` for
+the selected pilot treatment; `baseline` remains available for comparisons.
+[Measured quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md)
+improve numerical coverage, with full-suite verification still in progress.
+
 The [Daloopa benchmark guide](eval/daloopa-benchmark.md) adds a fixed 25-question
 quick mode and preserves the full 500-question inventory alongside the existing
 suite. After preparation, `yarn benchmark` and `yarn benchmark:full` show plans;

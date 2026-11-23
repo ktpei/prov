@@ -1,0 +1,148 @@
+{
+  "version": "paired-navigation-v1",
+  "profile": "quick",
+  "groups": {
+    "all_selected": {
+      "arms": [
+        {
+          "navigation": "baseline",
+          "selected": 25,
+          "scorable": 25,
+          "exact": 4,
+          "within_1pct": 6,
+          "numeric_answers": 7,
+          "quote_valid": 7,
+          "quote_invalid": 0,
+          "statuses": {
+            "completed": 16,
+            "stopped": 4,
+            "failed": 5
+          },
+          "stops": {
+            "tool_context_size_limit": 3,
+            "Model response did not complete: length": 5,
+            "model_call_limit": 1
+          },
+          "tool_requests": {
+            "search": 69,
+            "read_source": 71
+          },
+          "cost_usd": 1.0828304,
+          "task_seconds": 409.9242802923545
+        },
+        {
+          "navigation": "document-v2",
+          "selected": 25,
+          "scorable": 25,
+          "exact": 9,
+          "within_1pct": 12,
+          "numeric_answers": 16,
+          "quote_valid": 16,
+          "quote_invalid": 0,
+          "statuses": {
+            "completed": 25
+          },
+          "stops": {},
+          "tool_requests": {
+            "search": 45,
+            "find_in_source": 63,
+            "read_source": 35
+          },
+          "cost_usd": 0.801376,
+          "task_seconds": 341.2705008331686
+        }
+      ],
+      "paired": {
+        "numeric_exact": {
+          "transitions": {
+            "fail_to_pass": 6,
+            "fail_to_fail": 15,
+            "pass_to_pass": 3,
+            "pass_to_fail": 1
+          },
+          "changed": [
+            {
+              "id": "daloopa-c5da7c809a65b7f6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e9cd112f8be5bb78",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cbb53ab188ac4b72",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6315f2e0d051d1fa",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b06e9de747f68100",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fdd56449e44571b9",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cec5af38a6cf1fd9",
+              "transition": "pass_to_fail"
+            }
+          ]
+        },
+        "tolerance_1pct": {
+          "transitions": {
+            "fail_to_pass": 7,
+            "fail_to_fail": 12,
+            "pass_to_pass": 5,
+            "pass_to_fail": 1
+          },
+          "changed": [
+            {
+              "id": "daloopa-c5da7c809a65b7f6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e9cd112f8be5bb78",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-505a19552b3edba7",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3a115d208aadd8d5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6315f2e0d051d1fa",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b06e9de747f68100",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fdd56449e44571b9",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cec5af38a6cf1fd9",
+              "transition": "pass_to_fail"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "submission_hashes": [
+    "1fb6429dd2904e08dbfdf9813aa803d60e80d815668105115600d3907275766e",
+    "88e36b4ed0a8d0a8e6c9354a527713fd5b19cfda6bc10c2465451cdf44b5e55b"
+  ],
+  "limitations": [
+    "Combined ingestion/navigation treatment; live retrieval and provider nondeterminism remain confounders.",
+    "Public development questions; outside-quick results are not guaranteed issuer-unseen.",
+    "Quote validity is not semantic financial support; no human-supported accuracy inferred."
+  ]
+}

@@ -3,11 +3,14 @@
 ## Document navigation improvement loop — 2026-11-23
 
 [Research and comparison plan](eval/document-navigation-loop-2026-11-23.md):
-versioned ingestion/navigation treatment adds larger immutable extracted documents,
-source-local finding, shorter reads and context prioritization. Baseline remains
-available. Synthetic tests cover evidence beyond the former prefix, unread-citation
-rejection, immutable hashes, reservations and budgets. Live results are pending;
-no improvement is yet claimed.
+versioned ingestion/navigation treatments add larger immutable extracted documents,
+source-local finding, bounded reads and context prioritization. Baseline remains
+available. [Paired quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md):
+within-1% success 6/25 baseline, 11/25 v1, 12/25 v2; exact 4/25, 9/25, 9/25.
+V2 completes all25 and costs $0.801 versus $1.083 baseline. Agent review still finds
+period/semantic failures; quote validity is not supported accuracy. Frozen full
+baseline/v2 comparisons and a separate tool-free precision experiment are running.
+Lint and 642 tests passed before those launches. Full-suite improvement is pending.
 
 ## Daloopa quick/full and Exa — 2026-11-20
 

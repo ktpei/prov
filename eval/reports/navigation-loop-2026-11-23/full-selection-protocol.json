@@ -1,0 +1,8 @@
+{
+  "commit": "b2cfca51be4c1de731c1c61994a4dabbf4661299",
+  "selected_policy": "document-v2",
+  "selection_basis": "quick25 within1pct12 vs v1 11 vs baseline6; exact9 vs9 vs4; no quote failures; all25 completed. Public development selection, no outside-quick outcomes inspected.",
+  "comparison": "full baseline and document-v2; same frozen references, model, limits, per-task0.12 and aggregate60USD",
+  "attempts": "one per task per frozen policy; no best-of selection",
+  "protected": "one reserved case retained; no protected source content copied"
+}

@@ -29,7 +29,7 @@ Ambiguous sequences, units, periods and conflicting references remain unscored.
 ## Quick and full
 
 The [navigation improvement loop](document-navigation-loop-2026-11-23.md) adds an
-opt-in `--navigation document-v1` treatment. Default `baseline` preserves the prior
+opt-in `--navigation document-v1` and `--navigation document-v2` treatments. Default `baseline` preserves the prior
 workflow. Both options retain the same question sets and execution limits; the
 candidate changes extraction, navigation, read size and associated instructions.
 

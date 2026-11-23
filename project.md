@@ -509,6 +509,11 @@ real Excel host verification remains pending.
 
 ## Daloopa benchmarking — 2026-11-20
 
+November 23 update: [controlled navigation loop](eval/document-navigation-loop-2026-11-23.md)
+implements and tests two ingestion/navigation treatments. Quick25 within-1% results
+rise from 6 baseline to 11 then12, with remaining semantic period failures. Full
+baseline and selected v2 runs remain in progress; no full-suite gain is yet claimed.
+
 Added [quick/full Daloopa evaluation](eval/daloopa-benchmark.md) alongside existing
 benchmarks: fixed quick25, full500 inventory, bounded research execution, exact
 numeric/tolerance scoring, and separately recorded source-support review.
