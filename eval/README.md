@@ -166,6 +166,10 @@ samples; no Daloopa retrieval accuracy is inferred from them.
 
 ## Daloopa quick retrieval — 2026-11-20
 
+[Interpretation of the November results](reports/benchmark-interpretation-2026-11-22.md)
+explains coverage, numerical accuracy, scoring corrections, limitations, and the
+next controlled experiment across Daloopa and the existing suite.
+
 [Live 25-question results](reports/daloopa-quick-2026-11-20/report.md): 8 numerical
 answers, 12 abstentions, 5 stops/failures. Frozen exact matching is 3/25; a separate
 coding-agent diagnostic corrects one reference-sign parser defect to 4/25. Within
