@@ -21,6 +21,7 @@ export async function liveApi(page: Page, available = true) {
 export async function officeHost(page: Page) {
   await page.route('https://appsforoffice.microsoft.com/**', route => route.fulfill({contentType:'text/javascript',body:`
     window.Office={onReady:async()=>({host:'Excel'}),HostType:{Excel:'Excel'},context:{requirements:{isSetSupported:()=>true}}};
-    window.Excel={run:async fn=>fn({sync:async()=>{},workbook:{getSelectedRange:()=>({load:()=>{},address:'Sheet1!A1',rowCount:1,columnCount:1,values:[[123]],formulas:[[123]]}),worksheets:{add:()=>({getRangeByIndexes:()=>({set values(v){window.inserted=v},format:{}}),getRange:()=>({format:{font:{}}}),activate:()=>{}})}}})};
+    window.selection={address:'Sheet1!A1',rowCount:1,columnCount:1,values:[[123]],formulas:[[123]]};
+    window.Excel={run:async fn=>fn({sync:async()=>{},workbook:{getSelectedRange:()=>({load:()=>{},...window.selection}),worksheets:{add:()=>({getRangeByIndexes:()=>({set values(v){window.inserted=v},format:{}}),getRange:()=>({format:{font:{}}}),activate:()=>{}})}}})};
   `}));
 }

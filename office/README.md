@@ -77,3 +77,16 @@ latest completed answer when eligible and creates a new worksheet.
 Visual review covers the welcome, answer and evidence views at narrow pane sizes,
 plus a 350 × 760 full-height pane. Seven browser tests use deterministic Office
 and provider mocks. Native Excel has not been visually rechecked for this revision.
+
+### Selection attachment
+
+Select cells in Excel, then choose **Attach selected cells**. The composer shows
+the captured sheet/range and cell count, with an expandable value preview.
+**Update from selection** replaces the snapshot with the currently selected range;
+the remove control clears it. Editing cells or moving the Excel selection does not
+change an existing attachment. Values and formulas are sent only with the next
+submitted question. A rejected update preserves the previous attachment.
+
+Verified in native Excel on 2026-11-23: the card displays `DCF!E6` and one attached
+cell. Eight browser checks cover the UI, snapshot replacement, oversized-selection
+failure, removal before submission, and narrow-pane layout. Build and lint passed.

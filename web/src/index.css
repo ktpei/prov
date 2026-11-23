@@ -110,3 +110,17 @@ mark.quote {
   .excel-pane .research-welcome p { margin-top: 6px; font-size: 13px; line-height: 1.5; }
   .excel-pane form > p { display: none; }
 }
+
+/* Attachment identifies the captured range, rather than implying live selection sync. */
+.selection-hint { margin-bottom: 7px; color: var(--color-ink-soft); font-size: 11px; }
+.selection-attachment { margin-bottom: 8px; padding: 8px 10px; border: 1px solid #b5d5c9; border-radius: 7px; background: #f2f8f5; }
+.selection-heading { display: flex; align-items: center; gap: 8px; }
+.selection-address { flex: 1; min-width: 0; overflow-wrap: anywhere; font-weight: 600; color: var(--color-ledger); }
+.selection-heading button { width: 28px; height: 28px; flex-shrink: 0; font-size: 20px; line-height: 1; color: var(--color-ink-soft); }
+.selection-attachment > p { color: var(--color-ink-soft); font-size: 11px; }
+.selection-options { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; align-items: baseline; }
+.selection-options summary, .selection-options > button { cursor: pointer; font-size: 11px; color: var(--color-ledger); text-decoration: underline; text-underline-offset: 2px; }
+.selection-options details { min-width: 0; max-width: 100%; }
+.selection-preview { max-height: 120px; max-width: 100%; overflow: auto; margin-top: 6px; background: white; }
+.selection-preview td { border: 1px solid var(--color-rule); padding: 3px 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.selection-note { margin-top: 6px; line-height: 1.4; }
