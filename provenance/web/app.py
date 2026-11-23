@@ -134,6 +134,7 @@ class Session:
 
 def create_app(*, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
     app = FastAPI(title="Provenance research chat")
+    max_turn_usd = positive(os.environ.get("WEB_MAX_TURN_USD") or 0.10, "turn spend limit")
     ledger = Ledger(
         ledger_path or os.environ.get("WEB_LEDGER") or ROOT / "runs/web/cost-log.jsonl",
         cap_usd if cap_usd is not None else float(os.environ.get("WEB_SPEND_CAP_USD") or 1.0),
@@ -219,7 +220,7 @@ def create_app(*, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
                 "cap_usd": ledger.cap,
                 "remaining_usd": round(ledger.remaining(), 6),
             },
-            "limits": {**TURN_LIMITS, "max_turn_usd": 0.10},
+            "limits": {**TURN_LIMITS, "max_turn_usd": max_turn_usd},
             "corpora": [corpus_view(key) for key in CORPORA],
         }
 
@@ -442,7 +443,7 @@ def create_app(*, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
                     "OPENROUTER_INPUT_USD_PER_MILLION, OPENROUTER_OUTPUT_USD_PER_MILLION, "
                     "EXA_API_KEY and EXA_MAX_REQUEST_USD in .env",
                 )
-            budget = ledger.reserve()
+            budget = ledger.reserve(max_turn_usd)
             if budget is None:
                 raise HTTPException(
                     409,

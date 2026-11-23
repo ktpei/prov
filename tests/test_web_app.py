@@ -93,6 +93,27 @@ class AppTestCase(unittest.TestCase):
 
 
 class ConfigAndSourcesTests(AppTestCase):
+    def test_explicit_turn_limit_is_reported_and_reserved(self):
+        with mock.patch.dict(os.environ, {"WEB_MAX_TURN_USD": "0.07"}):
+            with self.client() as client:
+                self.assertEqual(client.get("/api/config").json()["limits"]["max_turn_usd"], 0.07)
+                sid = self.session(client)
+                with mock.patch("provenance.web.app.Ledger.reserve", return_value=None) as reserve:
+                    response = client.post(
+                        f"/api/sessions/{sid}/turns", json={"question": "Research", "mode": "live"}
+                    )
+                    self.assertEqual(response.status_code, 409)
+                    reserve.assert_called_once_with(0.07)
+
+    def test_invalid_turn_limit_rejected(self):
+        for value in ("0", "-1", "nan", "inf"):
+            with (
+                self.subTest(value=value),
+                mock.patch.dict(os.environ, {"WEB_MAX_TURN_USD": value}),
+            ):
+                with self.assertRaises(ValueError):
+                    self.client()
+
     def test_config_lists_corpora_without_secrets(self):
         with mock.patch.dict(os.environ, LIVE_ENV):
             response = self.client().get("/api/config")

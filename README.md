@@ -59,8 +59,8 @@ OPENROUTER_API_KEY=sk-or-...
 EXA_API_KEY=...
 EXA_MAX_REQUEST_USD=0.03
 OPENROUTER_MODEL=deepseek/deepseek-v4.1-flash-1017
-OPENROUTER_INPUT_USD_PER_MILLION=0.30
-OPENROUTER_OUTPUT_USD_PER_MILLION=1.20
+OPENROUTER_INPUT_USD_PER_MILLION=0.40
+OPENROUTER_OUTPUT_USD_PER_MILLION=1.60
 ```
 
 Live research requires both provider keys and a positive Exa request-cost bound.
@@ -92,7 +92,7 @@ block edited-copy export. Original files remain unchanged. Sessions are in memor
 and do not survive server restart. See the [spec](docs/web-workbook-spec.md) for
 acceptance checks and later milestones.
 
-Limits per question: 8 model steps, 10 tool calls, 120 s, and $0.10. Live spend is
+Limits per question: 8 model steps, 10 tool calls, 120 s, and `WEB_MAX_TURN_USD` (default $0.10). Live spend is
 recorded in `runs/web/cost-log.jsonl` and capped at `WEB_SPEND_CAP_USD` (default
 $1.00); set `WEB_LEDGER` to use a separate ledger. Each turn
 runs in its own worker process (the runtime's deadlines need a main thread), and
@@ -531,3 +531,9 @@ quick mode and preserves the full 500-question inventory alongside the existing
 suite. After preparation, `yarn benchmark` and `yarn benchmark:full` show plans;
 paid execution requires `--live` plus document access. Numerical matching and
 source-supported correctness are reported separately.
+
+Token rates estimate costs; they do not set spending limits. For the Excel/web
+app, set `WEB_MAX_TURN_USD` per question and `WEB_SPEND_CAP_USD` for total spend
+across the current ledger. `EXA_MAX_REQUEST_USD` reserves a bound per search/read
+request inside those limits. Rates 0.40/1.60 are user-supplied accounting inputs,
+not independently verified current provider prices.

@@ -49,3 +49,8 @@ source read returned numbered evidence. The full live answer smoke failed before
 any tool call because OpenRouter returned an authentication error; replace the
 configured OpenRouter credential and restart the backend to verify full answers.
 The app never falls back to recorded answers.
+
+2026-11-23: `WEB_MAX_TURN_USD` explicitly configures the per-question spend
+limit (default $0.10); `WEB_SPEND_CAP_USD` limits total ledger spend (default $1).
+Token rates are accounting inputs, not limits. Supplied credentials stay in
+the ignored local `.env`; user-supplied accounting rates are 0.40/1.60.
