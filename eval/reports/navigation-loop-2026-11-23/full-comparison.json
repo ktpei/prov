@@ -1,0 +1,1923 @@
+{
+  "version": "paired-navigation-v1",
+  "profile": "full",
+  "groups": {
+    "all_selected": {
+      "arms": [
+        {
+          "navigation": "baseline",
+          "selected": 500,
+          "scorable": 426,
+          "exact": 144,
+          "within_1pct": 164,
+          "numeric_answers": 233,
+          "quote_valid": 233,
+          "quote_invalid": 0,
+          "statuses": {
+            "completed": 432,
+            "stopped": 34,
+            "failed": 33,
+            "reserved_issuer": 1
+          },
+          "stops": {
+            "model_call_limit": 17,
+            "tool_context_size_limit": 17,
+            "Model response did not complete: length": 30,
+            "Citation quote is absent from cited lines": 1,
+            "OpenRouter request failed (OpenAIPermissionDeniedError)": 1,
+            "OpenRouter request failed (OpenAIConnectionError)": 1
+          },
+          "tool_requests": {
+            "search": 1375,
+            "read_source": 1312
+          },
+          "cost_usd": 20.8240066,
+          "retained_uncertain_cost_records": 2,
+          "task_seconds": 8115.101401597727
+        },
+        {
+          "navigation": "document-v2",
+          "selected": 500,
+          "scorable": 426,
+          "exact": 178,
+          "within_1pct": 199,
+          "numeric_answers": 290,
+          "quote_valid": 290,
+          "quote_invalid": 0,
+          "statuses": {
+            "failed": 50,
+            "completed": 435,
+            "stopped": 14,
+            "reserved_issuer": 1
+          },
+          "stops": {
+            "Model response did not complete: length": 45,
+            "model_call_limit": 14,
+            "Citation quote is absent from cited lines": 4,
+            "OpenRouter request failed (OpenAIPermissionDeniedError)": 1
+          },
+          "tool_requests": {
+            "search": 901,
+            "read_source": 666,
+            "find_in_source": 996
+          },
+          "cost_usd": 14.652967799999999,
+          "retained_uncertain_cost_records": 1,
+          "task_seconds": 6882.7580724060535
+        }
+      ],
+      "paired": {
+        "numeric_exact": {
+          "transitions": {
+            "fail_to_fail": 213,
+            "fail_to_pass": 69,
+            "pass_to_pass": 109,
+            "pass_to_fail": 35
+          },
+          "changed": [
+            {
+              "id": "daloopa-aaf4cb649b25dc9c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-79ec59a0da61241a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2df75ba0dc6be180",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-883efd75dc427d4d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fece43ebf5c71e5d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-b06e9de747f68100",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6e9c4e2af403a10c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-efa338324bcd1fc5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-467d57b1b49a076b",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-e0ec82fea0d83108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f8109b91cb430979",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-fed130329153af60",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-4c408e20afaa1391",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-993c672504a256ec",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-10d99786e4847586",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e9cd112f8be5bb78",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-18ed4630a7639c83",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-de8f967464b4f388",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5d1232669ae09e50",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f876d8def7220108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2045f141aa172de6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-1bee2c0668629c44",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7b546f3ad6a2f596",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d29ff592e8dc07d4",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-c5da7c809a65b7f6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-9e0d5d5acc31833b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-16aec4cc0cd3dca7",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-9853c3c7d0d1cae3",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3c127a7cc4bf3728",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-12589da768dd420c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8ec94dc8e26e2f50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-61b4bbd8fcb3a326",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5be281e77ed40cda",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-22ddcf8f20b2e97a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5023d76122397e3e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-cec5af38a6cf1fd9",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8bebe60984c300aa",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-652da9e0d7e9377d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d68956cd067ac773",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7fdb963ded9a34ac",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fc3c8e63b513125a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-263bbd8194b91c51",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6bccf518029225e5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cd3534d58015f9dd",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-63d4f20a2e1db48d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-eca3bee4278d70db",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-828169ad27930a32",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-9f3aa66d38f86207",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-deb0c2afebc69b16",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-78088af3164cdc6a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a6c7ef9c5deb908c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-347419cb38b0bac4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-aa09481cf2ae5fe2",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6dbcfab576a1bc3a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-92c4f5272bf6efae",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-fafd789f4bfb160a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-d476d606dca55caf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8d14065c65111a4f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-884d5bff79c10dff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0758b024e9dc8885",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e15013579a237f5f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5f598d120935d163",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6315f2e0d051d1fa",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-eea5550c2de09af9",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-762b2bb8bd560d1b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bc9c3ad10bef7c7d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-c6c486f434297b95",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-2ea89b62f9ff20d7",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8e680b52d2b046a2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bb376259f7178439",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7c4f01b9770663e3",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-bb6dabb3b9779f83",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ca706b732f825aff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5a1f52a8c4a73266",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f27ac9bd261e3c7f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-16baaedb59a4ac4c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-1562d80a1d914039",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8b978edde6f08ef9",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7dbb20f35c8a6db5",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f376c9d89669cadf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-60559c5a1259b3ba",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b0b5f4c8cd158c27",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3a386d2bb69adffc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-70f9441275222fbe",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-baa0f05defd8234c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-424dc344805aa073",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0f151e48a02ac9e2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-914208e7f6ecf357",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f147f077a3dd56af",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-98e1769de24cd397",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7a13907f2857d72c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ffa76b6ff7ec7a2e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-5adfabaf00349442",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3805ef03224968cc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bfad2f276fa7cc0d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b9ccf68141e354c2",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6a6ca12d004c041c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5822de525f2ab1f4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-09e3da6ffc702e50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-38c0bdd3e93bc1cf",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6138f40c9673bed1",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2e07ac4102469aed",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a9cfb63e62ba10a5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7dd589016eebc634",
+              "transition": "fail_to_pass"
+            }
+          ]
+        },
+        "tolerance_1pct": {
+          "transitions": {
+            "pass_to_fail": 34,
+            "fail_to_pass": 69,
+            "pass_to_pass": 130,
+            "fail_to_fail": 193
+          },
+          "changed": [
+            {
+              "id": "daloopa-5859f9adfcd9abdd",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-aaf4cb649b25dc9c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-79ec59a0da61241a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2df75ba0dc6be180",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-883efd75dc427d4d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fece43ebf5c71e5d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-b06e9de747f68100",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6e9c4e2af403a10c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-efa338324bcd1fc5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-467d57b1b49a076b",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-e0ec82fea0d83108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f8109b91cb430979",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-fed130329153af60",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-4c408e20afaa1391",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-993c672504a256ec",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-10d99786e4847586",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e9cd112f8be5bb78",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-18ed4630a7639c83",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-de8f967464b4f388",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5d1232669ae09e50",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f876d8def7220108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5f577a21f06ddac4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2045f141aa172de6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-1bee2c0668629c44",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7b546f3ad6a2f596",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d29ff592e8dc07d4",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-c5da7c809a65b7f6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-9e0d5d5acc31833b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-9853c3c7d0d1cae3",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3c127a7cc4bf3728",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-12589da768dd420c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8ec94dc8e26e2f50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-61b4bbd8fcb3a326",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-22ddcf8f20b2e97a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5023d76122397e3e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-cec5af38a6cf1fd9",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8bebe60984c300aa",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-652da9e0d7e9377d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e0b6fec3b4a3ec23",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d68956cd067ac773",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7fdb963ded9a34ac",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fc3c8e63b513125a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-263bbd8194b91c51",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-63d4f20a2e1db48d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-eca3bee4278d70db",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-828169ad27930a32",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-deb0c2afebc69b16",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-78088af3164cdc6a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a6c7ef9c5deb908c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-347419cb38b0bac4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-aa09481cf2ae5fe2",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6dbcfab576a1bc3a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fafd789f4bfb160a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-d476d606dca55caf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8d14065c65111a4f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-884d5bff79c10dff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0758b024e9dc8885",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e15013579a237f5f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5f598d120935d163",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-eea5550c2de09af9",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-762b2bb8bd560d1b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bc9c3ad10bef7c7d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-2ea89b62f9ff20d7",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8e680b52d2b046a2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bb376259f7178439",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7c4f01b9770663e3",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-21e58ed865f9a764",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-bb6dabb3b9779f83",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ca706b732f825aff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5a1f52a8c4a73266",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f27ac9bd261e3c7f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-16baaedb59a4ac4c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2d9c014a222db12a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-1562d80a1d914039",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7dbb20f35c8a6db5",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f376c9d89669cadf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-60559c5a1259b3ba",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-505a19552b3edba7",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-30b040c4d0d57cf5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b0b5f4c8cd158c27",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3a386d2bb69adffc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-70f9441275222fbe",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-baa0f05defd8234c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-424dc344805aa073",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0f151e48a02ac9e2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-914208e7f6ecf357",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f147f077a3dd56af",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-98e1769de24cd397",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7a13907f2857d72c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ffa76b6ff7ec7a2e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-5adfabaf00349442",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3805ef03224968cc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bfad2f276fa7cc0d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d036493c21c0b848",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6a6ca12d004c041c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5822de525f2ab1f4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-ca62d5e073f52f3c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-09e3da6ffc702e50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-38c0bdd3e93bc1cf",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2e07ac4102469aed",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-59d43b77aa3c674c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-a9cfb63e62ba10a5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7dd589016eebc634",
+              "transition": "fail_to_pass"
+            }
+          ]
+        }
+      }
+    },
+    "quick25": {
+      "arms": [
+        {
+          "navigation": "baseline",
+          "selected": 25,
+          "scorable": 25,
+          "exact": 4,
+          "within_1pct": 8,
+          "numeric_answers": 10,
+          "quote_valid": 10,
+          "quote_invalid": 0,
+          "statuses": {
+            "completed": 22,
+            "stopped": 2,
+            "failed": 1
+          },
+          "stops": {
+            "tool_context_size_limit": 2,
+            "Model response did not complete: length": 1
+          },
+          "tool_requests": {
+            "search": 79,
+            "read_source": 63
+          },
+          "cost_usd": 1.1588048,
+          "retained_uncertain_cost_records": 0,
+          "task_seconds": 482.494682920631
+        },
+        {
+          "navigation": "document-v2",
+          "selected": 25,
+          "scorable": 25,
+          "exact": 7,
+          "within_1pct": 10,
+          "numeric_answers": 10,
+          "quote_valid": 10,
+          "quote_invalid": 0,
+          "statuses": {
+            "completed": 20,
+            "failed": 5
+          },
+          "stops": {
+            "OpenRouter request failed (OpenAIPermissionDeniedError)": 1,
+            "Model response did not complete: length": 4
+          },
+          "tool_requests": {
+            "search": 48,
+            "find_in_source": 68,
+            "read_source": 28
+          },
+          "cost_usd": 0.793957,
+          "retained_uncertain_cost_records": 1,
+          "task_seconds": 459.3121682894416
+        }
+      ],
+      "paired": {
+        "numeric_exact": {
+          "transitions": {
+            "fail_to_pass": 4,
+            "fail_to_fail": 17,
+            "pass_to_fail": 1,
+            "pass_to_pass": 3
+          },
+          "changed": [
+            {
+              "id": "daloopa-b06e9de747f68100",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e9cd112f8be5bb78",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-c5da7c809a65b7f6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cec5af38a6cf1fd9",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6315f2e0d051d1fa",
+              "transition": "fail_to_pass"
+            }
+          ]
+        },
+        "tolerance_1pct": {
+          "transitions": {
+            "fail_to_pass": 4,
+            "fail_to_fail": 13,
+            "pass_to_pass": 6,
+            "pass_to_fail": 2
+          },
+          "changed": [
+            {
+              "id": "daloopa-b06e9de747f68100",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e9cd112f8be5bb78",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-c5da7c809a65b7f6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cec5af38a6cf1fd9",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-505a19552b3edba7",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-59d43b77aa3c674c",
+              "transition": "fail_to_pass"
+            }
+          ]
+        }
+      }
+    },
+    "outside_quick": {
+      "arms": [
+        {
+          "navigation": "baseline",
+          "selected": 475,
+          "scorable": 401,
+          "exact": 140,
+          "within_1pct": 156,
+          "numeric_answers": 223,
+          "quote_valid": 223,
+          "quote_invalid": 0,
+          "statuses": {
+            "completed": 410,
+            "stopped": 32,
+            "failed": 32,
+            "reserved_issuer": 1
+          },
+          "stops": {
+            "model_call_limit": 17,
+            "tool_context_size_limit": 15,
+            "Model response did not complete: length": 29,
+            "Citation quote is absent from cited lines": 1,
+            "OpenRouter request failed (OpenAIPermissionDeniedError)": 1,
+            "OpenRouter request failed (OpenAIConnectionError)": 1
+          },
+          "tool_requests": {
+            "search": 1296,
+            "read_source": 1249
+          },
+          "cost_usd": 19.6652018,
+          "retained_uncertain_cost_records": 2,
+          "task_seconds": 7632.606718677096
+        },
+        {
+          "navigation": "document-v2",
+          "selected": 475,
+          "scorable": 401,
+          "exact": 171,
+          "within_1pct": 189,
+          "numeric_answers": 280,
+          "quote_valid": 280,
+          "quote_invalid": 0,
+          "statuses": {
+            "failed": 45,
+            "completed": 415,
+            "stopped": 14,
+            "reserved_issuer": 1
+          },
+          "stops": {
+            "Model response did not complete: length": 41,
+            "model_call_limit": 14,
+            "Citation quote is absent from cited lines": 4
+          },
+          "tool_requests": {
+            "search": 853,
+            "read_source": 638,
+            "find_in_source": 928
+          },
+          "cost_usd": 13.8590108,
+          "retained_uncertain_cost_records": 0,
+          "task_seconds": 6423.445904116612
+        }
+      ],
+      "paired": {
+        "numeric_exact": {
+          "transitions": {
+            "fail_to_fail": 196,
+            "fail_to_pass": 65,
+            "pass_to_pass": 106,
+            "pass_to_fail": 34
+          },
+          "changed": [
+            {
+              "id": "daloopa-aaf4cb649b25dc9c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-79ec59a0da61241a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2df75ba0dc6be180",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-883efd75dc427d4d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fece43ebf5c71e5d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6e9c4e2af403a10c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-efa338324bcd1fc5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-467d57b1b49a076b",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-e0ec82fea0d83108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f8109b91cb430979",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-fed130329153af60",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-4c408e20afaa1391",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-993c672504a256ec",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-10d99786e4847586",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-18ed4630a7639c83",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-de8f967464b4f388",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5d1232669ae09e50",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f876d8def7220108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2045f141aa172de6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-1bee2c0668629c44",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7b546f3ad6a2f596",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d29ff592e8dc07d4",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-9e0d5d5acc31833b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-16aec4cc0cd3dca7",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-9853c3c7d0d1cae3",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3c127a7cc4bf3728",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-12589da768dd420c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8ec94dc8e26e2f50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-61b4bbd8fcb3a326",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5be281e77ed40cda",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-22ddcf8f20b2e97a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5023d76122397e3e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8bebe60984c300aa",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-652da9e0d7e9377d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d68956cd067ac773",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7fdb963ded9a34ac",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fc3c8e63b513125a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-263bbd8194b91c51",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6bccf518029225e5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-cd3534d58015f9dd",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-63d4f20a2e1db48d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-eca3bee4278d70db",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-828169ad27930a32",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-9f3aa66d38f86207",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-deb0c2afebc69b16",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-78088af3164cdc6a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a6c7ef9c5deb908c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-347419cb38b0bac4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-aa09481cf2ae5fe2",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6dbcfab576a1bc3a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-92c4f5272bf6efae",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-fafd789f4bfb160a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-d476d606dca55caf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8d14065c65111a4f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-884d5bff79c10dff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0758b024e9dc8885",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e15013579a237f5f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5f598d120935d163",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-eea5550c2de09af9",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-762b2bb8bd560d1b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bc9c3ad10bef7c7d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-c6c486f434297b95",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-2ea89b62f9ff20d7",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8e680b52d2b046a2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bb376259f7178439",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7c4f01b9770663e3",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-bb6dabb3b9779f83",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ca706b732f825aff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5a1f52a8c4a73266",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f27ac9bd261e3c7f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-16baaedb59a4ac4c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-1562d80a1d914039",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8b978edde6f08ef9",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7dbb20f35c8a6db5",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f376c9d89669cadf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-60559c5a1259b3ba",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b0b5f4c8cd158c27",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3a386d2bb69adffc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-70f9441275222fbe",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-baa0f05defd8234c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-424dc344805aa073",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0f151e48a02ac9e2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-914208e7f6ecf357",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f147f077a3dd56af",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-98e1769de24cd397",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7a13907f2857d72c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ffa76b6ff7ec7a2e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-5adfabaf00349442",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3805ef03224968cc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bfad2f276fa7cc0d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b9ccf68141e354c2",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6a6ca12d004c041c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5822de525f2ab1f4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-09e3da6ffc702e50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-38c0bdd3e93bc1cf",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-6138f40c9673bed1",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2e07ac4102469aed",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a9cfb63e62ba10a5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7dd589016eebc634",
+              "transition": "fail_to_pass"
+            }
+          ]
+        },
+        "tolerance_1pct": {
+          "transitions": {
+            "pass_to_fail": 32,
+            "fail_to_pass": 65,
+            "pass_to_pass": 124,
+            "fail_to_fail": 180
+          },
+          "changed": [
+            {
+              "id": "daloopa-5859f9adfcd9abdd",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-aaf4cb649b25dc9c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-79ec59a0da61241a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2df75ba0dc6be180",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-883efd75dc427d4d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fece43ebf5c71e5d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6e9c4e2af403a10c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-efa338324bcd1fc5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-467d57b1b49a076b",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-e0ec82fea0d83108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f8109b91cb430979",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-fed130329153af60",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-4c408e20afaa1391",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-993c672504a256ec",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-10d99786e4847586",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-18ed4630a7639c83",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-de8f967464b4f388",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5d1232669ae09e50",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f876d8def7220108",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5f577a21f06ddac4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2045f141aa172de6",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-1bee2c0668629c44",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7b546f3ad6a2f596",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d29ff592e8dc07d4",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-9e0d5d5acc31833b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-9853c3c7d0d1cae3",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3c127a7cc4bf3728",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-12589da768dd420c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8ec94dc8e26e2f50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-61b4bbd8fcb3a326",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-22ddcf8f20b2e97a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5023d76122397e3e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8bebe60984c300aa",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-652da9e0d7e9377d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e0b6fec3b4a3ec23",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d68956cd067ac773",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7fdb963ded9a34ac",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fc3c8e63b513125a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-263bbd8194b91c51",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-63d4f20a2e1db48d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-eca3bee4278d70db",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-828169ad27930a32",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-deb0c2afebc69b16",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-78088af3164cdc6a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a6c7ef9c5deb908c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-347419cb38b0bac4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-aa09481cf2ae5fe2",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6dbcfab576a1bc3a",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-fafd789f4bfb160a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-d476d606dca55caf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-8d14065c65111a4f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-884d5bff79c10dff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0758b024e9dc8885",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-e15013579a237f5f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5f598d120935d163",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-eea5550c2de09af9",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-762b2bb8bd560d1b",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bc9c3ad10bef7c7d",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-2ea89b62f9ff20d7",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-8e680b52d2b046a2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bb376259f7178439",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-7c4f01b9770663e3",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-21e58ed865f9a764",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-bb6dabb3b9779f83",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ca706b732f825aff",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5a1f52a8c4a73266",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f27ac9bd261e3c7f",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-16baaedb59a4ac4c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2d9c014a222db12a",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-1562d80a1d914039",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7dbb20f35c8a6db5",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-f376c9d89669cadf",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-60559c5a1259b3ba",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-30b040c4d0d57cf5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-b0b5f4c8cd158c27",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3a386d2bb69adffc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-70f9441275222fbe",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-baa0f05defd8234c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-424dc344805aa073",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-0f151e48a02ac9e2",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-914208e7f6ecf357",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-f147f077a3dd56af",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-98e1769de24cd397",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7a13907f2857d72c",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-ffa76b6ff7ec7a2e",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-5adfabaf00349442",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-3805ef03224968cc",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-bfad2f276fa7cc0d",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-d036493c21c0b848",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-6a6ca12d004c041c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-5822de525f2ab1f4",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-ca62d5e073f52f3c",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-09e3da6ffc702e50",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-38c0bdd3e93bc1cf",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-2e07ac4102469aed",
+              "transition": "pass_to_fail"
+            },
+            {
+              "id": "daloopa-a9cfb63e62ba10a5",
+              "transition": "fail_to_pass"
+            },
+            {
+              "id": "daloopa-7dd589016eebc634",
+              "transition": "fail_to_pass"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "submission_hashes": [
+    "5853bfd3301e5ac5984e1a7f5d96d65afe71ccf17dbfaaec2cf181035c2eddff",
+    "6f439543f48d0488a599ef5777dd426d1d41aaaee5740acda02ee29648e7afcb"
+  ],
+  "limitations": [
+    "Combined ingestion/navigation treatment; live retrieval and provider nondeterminism remain confounders.",
+    "Public development questions; outside-quick results are not guaranteed issuer-unseen.",
+    "Quote validity is not semantic financial support; no human-supported accuracy inferred.",
+    "Costs are application estimates, including explicitly retained uncertain reservations where present."
+  ]
+}

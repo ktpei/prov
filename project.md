@@ -512,9 +512,11 @@ real Excel host verification remains pending.
 November 23 update: [controlled navigation loop](eval/document-navigation-loop-2026-11-23.md)
 implements and tests two ingestion/navigation treatments. Quick25 within-1% results
 rise from 6 baseline to 11 then12, with remaining semantic period failures. Full
-baseline and selected v2 runs resumed after a provider daily-allowance interruption;
-no full-suite gain is yet claimed. Explicit continuation preserves all attempted
-outcomes and retained cost reservations, executing only untouched questions.
+baseline and selected v2 runs are complete: within-1% matching improves from
+164/426 to 199/426 at 30% lower estimated cost. All 499 eligible attempts per arm
+are retained, including provider failures; both scores reproduce exactly.
+[Final report](eval/reports/navigation-loop-2026-11-23/full-results.md) records
+regressions and unresolved semantic/output-length failures.
 
 Added [quick/full Daloopa evaluation](eval/daloopa-benchmark.md) alongside existing
 benchmarks: fixed quick25, full500 inventory, bounded research execution, exact
