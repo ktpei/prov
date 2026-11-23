@@ -54,3 +54,22 @@ The app never falls back to recorded answers.
 accounting rates, Exa request allowance, per-question cap, and total ledger cap.
 The launcher loads both files; restart the backend after edits. Current prices
 are supplied estimates, not automatically fetched provider metadata.
+
+## Task-pane simplification — 2026-11-23
+
+The pane prioritizes asking, inspecting claim-level evidence, and inserting cited
+results. Successful connection/provider banners are removed; errors remain visible.
+Excel controls scroll with the conversation so they cannot squeeze the answer out
+of a short pane. Insertion appears only for an eligible answer. Attached-cell
+payloads and research metrics use expandable disclosures. File-workbook tabs are
+hidden in Excel until a file workbook exists. Citation chips wrap, expose selected
+state, and evidence passages use narrower gutters. Small text has higher contrast.
+
+Design references: [Microsoft Office design principles](https://learn.microsoft.com/en-us/office/dev/add-ins/design/add-in-design)
+and [task-pane guidance](https://learn.microsoft.com/en-us/office/dev/add-ins/design/task-pane-add-ins).
+Review loop: inspect empty/result/evidence screens, remove competing controls,
+check narrow layouts, then repeat browser checks. Screenshots reviewed at 270 and
+350 pixels; browser flow checks cover 270, 320 and 350 pixels at 378 pixels tall.
+Build, six browser tests, lint, and 626 Python tests passed. Browser tests use
+mocked Office/provider responses; this revision was not reverified in native Excel
+or against a live model. Existing SQLite ResourceWarnings appeared in Python tests.

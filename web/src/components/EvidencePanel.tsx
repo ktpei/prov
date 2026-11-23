@@ -43,6 +43,7 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
     const start = Math.max(1, range[0] - 10);
     const end = Math.min(start + 199, range[1] + 14);
     setError(null);
+    setWindow(null);
     getSourceWindow(corpus.id, citation.source_id, start, end)
       .then((data) => !cancelled && setWindow(data))
       .catch((err: Error) => !cancelled && setError(err.message));
@@ -65,7 +66,7 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
         <p className="mt-1 max-w-[56ch] text-sm text-ink-soft">
           Select a source tag in an answer to open the exact passage it cites, with the quoted text highlighted.
         </p>
-        <h3 className="mt-5 text-sm font-medium text-ink-soft">Documents in this evidence set</h3>
+        {corpus.documents.length > 0 && <h3 className="mt-5 text-sm font-medium text-ink-soft">Sources</h3>}
         <ul className="mt-2 space-y-1.5 text-sm">
           {corpus.documents.map((doc) => (
             <li key={doc.id}>
@@ -83,8 +84,8 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
       </div>
     );
   }
-  if (error) return <p className="p-6 text-sm text-rust">{error}</p>;
-  if (!window || window.id !== citation.source_id) return <p className="p-6 text-sm text-ink-faint">Loading passage</p>;
+  if (error) return <p role="alert" className="p-6 text-sm text-rust">{error}</p>;
+  if (!window || window.id !== citation.source_id) return <p role="status" className="p-6 text-sm text-ink-faint">Loading passage</p>;
 
   const cited = window.lines.filter((line) => line.line >= range[0] && line.line <= range[1]);
   const location = cited
@@ -122,7 +123,7 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
           </p>
         )}
       </div>
-      <div ref={box} className="relative min-h-0 flex-1 overflow-y-auto bg-chrome p-4">
+      <div ref={box} className="evidence-passage relative min-h-0 flex-1 overflow-y-auto bg-chrome p-4">
         <ol className="mx-auto max-w-[760px] rounded-sm border border-paper-rule bg-paper py-3 font-serif text-[14.5px] leading-[1.6] shadow-[0_1px_0_#d3d9e0]">
           {window.lines.map((line) => {
             const isCited = line.line >= range[0] && line.line <= range[1];

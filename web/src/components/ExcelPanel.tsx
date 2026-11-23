@@ -10,7 +10,7 @@ export function ExcelPanel({ answer, busy, selection, onSelection }: {
   const [working, setWorking] = useState(false);
   const [message, setMessage] = useState('Connecting to Excel…');
   useEffect(() => { void connectExcel().then(() => {
-    setReady(true); setMessage('Excel connected');
+    setReady(true); setMessage('');
   }).catch(error => setMessage(error.message)); }, []);
   async function run(action: () => Promise<void>) {
     setWorking(true);
@@ -19,13 +19,14 @@ export function ExcelPanel({ answer, busy, selection, onSelection }: {
   }
   const disabled = !ready || busy || working;
   return <section aria-label="Excel connection" className="border-b border-rule bg-surface p-3 text-sm">
-    <p role="status">{message}</p>
+    {message && <p role="status">{message}</p>}
+    {selection && <p>Selected values and formulas will be sent with your question.</p>}
     <div className="mt-2 flex flex-wrap gap-2">
       <button className="rounded border border-rule px-3 py-2 disabled:opacity-40" disabled={disabled}
-        onClick={() => void run(async () => { onSelection(await readSelection()); setMessage('Selection attached. Its values and formulas will be sent with your next question.'); })}>Attach selected cells</button>
-      {selection && <button onClick={() => onSelection('')} disabled={busy}>Remove selection</button>}
-      <button className="rounded bg-ledger px-3 py-2 text-white disabled:opacity-40" disabled={disabled || !answer?.answerable || !answer.claims.length}
-        onClick={() => void run(async () => { await insertAnswer(answer!); setMessage('Cited results inserted into a new worksheet.'); })}>Insert cited results</button>
+        onClick={() => void run(async () => { onSelection(await readSelection()); setMessage(''); })}>Attach selected cells</button>
+      {selection && <button onClick={() => { onSelection(''); setMessage(''); }} disabled={busy}>Remove selection</button>}
+      {answer?.answerable && answer.claims.length > 0 && <button className="rounded bg-ledger px-3 py-2 text-white disabled:opacity-40" disabled={disabled || !answer?.answerable || !answer.claims.length}
+        onClick={() => void run(async () => { await insertAnswer(answer!); setMessage('Cited results inserted into a new worksheet.'); })}>Insert cited results</button>}
     </div>
   </section>;
 }

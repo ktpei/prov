@@ -87,3 +87,14 @@ mark.quote {
 .excel-pane [aria-label="Excel connection"] button { padding: 6px 8px; }
 .excel-pane [aria-label="Excel connection"] > div { gap: 4px; margin-top: 4px; }
 .excel-pane button { overflow-wrap: anywhere; }
+
+/* Keep compact pane controls readable and usable with keyboard and touch. */
+.excel-pane { --color-ink-faint: #596777; }
+.excel-pane button { min-height: 36px; }
+.excel-pane textarea:focus-visible { outline: 2px solid var(--color-ledger); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .excel-pane * { scroll-behavior: auto !important; }
+}
+
+.excel-pane .evidence-passage { padding: 8px; }
+.excel-pane .evidence-passage li { grid-template-columns: 30px minmax(0, 1fr); gap: 8px; padding-inline: 8px; }

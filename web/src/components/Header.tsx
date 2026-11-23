@@ -7,9 +7,9 @@ export function Header({ config, busy, onNew }: { config: Config; busy: boolean;
         <span className="font-semibold">Provenance</span>
         <button onClick={onNew} disabled={busy} className="rounded border border-rule px-3 py-2 text-sm disabled:opacity-40">New chat</button>
       </div>
-      <p role="status" className="mt-1 text-xs text-ink-soft">
-        {config.live_available ? "Live research · Exa" : "Live research unavailable — check server configuration"}
-      </p>
+      {!config.live_available && <p role="status" className="mt-1 text-xs text-ink-soft">
+        Live research unavailable — check server configuration
+      </p>}
     </header>
   );
 }

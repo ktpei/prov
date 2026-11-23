@@ -17,10 +17,11 @@ export function CitationChip({ citation, titles, active, onOpen }: Props) {
   return (
     <button
       type="button"
+      aria-pressed={!!active}
       onClick={() => onOpen(citation)}
       title={`“${citation.quote}”`}
       aria-label={`Open source ${label}: ${citation.quote}`}
-      className={`inline-flex items-center gap-1 rounded-[4px] border px-1.5 py-0.5 text-[12.5px] leading-tight whitespace-nowrap transition-colors ${
+      className={`inline-flex items-center gap-1 rounded-[4px] border px-1.5 py-0.5 text-[12.5px] leading-tight max-w-full whitespace-normal text-left transition-colors ${
         active
           ? "border-ledger bg-ledger text-white"
           : "border-ledger/30 bg-ledger-soft text-ledger hover:border-ledger"

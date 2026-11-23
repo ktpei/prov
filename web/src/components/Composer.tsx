@@ -50,7 +50,7 @@ export function Composer({ busy, unavailable, context, hasHistory, onAsk, onClea
               void submit();
             }
           }}
-          placeholder={hasHistory ? "Ask a follow-up" : "Ask about the evidence, e.g. reported revenue or guidance"}
+          placeholder={hasHistory ? "Ask a follow-up" : "Ask about a company, metric and period"}
           className="min-h-[44px] flex-1 resize-y rounded-md border border-rule bg-surface px-3 py-2 placeholder:text-ink-faint focus:border-ledger focus:outline-none"
         />
         <button
@@ -61,7 +61,7 @@ export function Composer({ busy, unavailable, context, hasHistory, onAsk, onClea
           {busy ? "Researching" : "Ask"}
         </button>
       </div>
-      <p className="mt-1 text-xs text-ink-faint">Enter to send, Shift+Enter for a new line. Answers cite only what the agent read.</p>
+      <p className="mt-1 text-xs text-ink-faint">Enter to send · Shift+Enter for a new line</p>
     </form>
   );
 }
