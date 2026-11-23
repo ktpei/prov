@@ -657,7 +657,12 @@ any tool call because OpenRouter returned an authentication error; replace the
 configured OpenRouter credential and restart the backend to verify full answers.
 The app never falls back to recorded answers.
 
-2026-11-23: `WEB_MAX_TURN_USD` explicitly configures the per-question spend
-limit (default $0.10); `WEB_SPEND_CAP_USD` limits total ledger spend (default $1).
-Token rates are accounting inputs, not limits. Supplied credentials stay in
-the ignored local `.env`; user-supplied accounting rates are 0.40/1.60.
+
+## Research configuration — 2026-11-23
+
+Credentials remain in ignored `.env`. `research.config.json` is the authoritative
+Excel/web configuration for model, accounting rates, Exa request allowance,
+per-question cap, and total ledger cap. The launcher validates and passes these
+settings to existing workers internally; benchmark CLI behavior is unchanged.
+Automatic price discovery remains unimplemented; supplied accounting rates are
+preserved. Restart the backend after config changes.

@@ -439,9 +439,8 @@ def create_app(*, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
             if not _live_settings():
                 raise HTTPException(
                     409,
-                    "Live research is not configured. Set OPENROUTER_API_KEY, OPENROUTER_MODEL, "
-                    "OPENROUTER_INPUT_USD_PER_MILLION, OPENROUTER_OUTPUT_USD_PER_MILLION, "
-                    "EXA_API_KEY and EXA_MAX_REQUEST_USD in .env",
+                    "Live research is not configured. Set OPENROUTER_API_KEY and EXA_API_KEY "
+                    "in .env and check research.config.json",
                 )
             budget = ledger.reserve(max_turn_usd)
             if budget is None:

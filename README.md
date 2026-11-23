@@ -55,15 +55,13 @@ Live answers need an OpenRouter key in a local, gitignored `.env` (the server
 loads it at startup; never commit it):
 
 ```sh
-OPENROUTER_API_KEY=sk-or-...
+OPENROUTER_API_KEY=...
 EXA_API_KEY=...
-EXA_MAX_REQUEST_USD=0.03
-OPENROUTER_MODEL=deepseek/deepseek-v4.1-flash-1017
-OPENROUTER_INPUT_USD_PER_MILLION=0.40
-OPENROUTER_OUTPUT_USD_PER_MILLION=1.60
 ```
 
-Live research requires both provider keys and a positive Exa request-cost bound.
+Model choice, accounting rates, and spend limits live in `research.config.json`.
+The web launcher loads this config at startup; restart after changing it.
+Live research requires both provider keys and valid config.
 Missing configuration disables research. There is no replay or sample-data fallback.
 
 What you can do:
@@ -92,8 +90,8 @@ block edited-copy export. Original files remain unchanged. Sessions are in memor
 and do not survive server restart. See the [spec](docs/web-workbook-spec.md) for
 acceptance checks and later milestones.
 
-Limits per question: 8 model steps, 10 tool calls, 120 s, and `WEB_MAX_TURN_USD` (default $0.10). Live spend is
-recorded in `runs/web/cost-log.jsonl` and capped at `WEB_SPEND_CAP_USD` (default
+Limits per question: 8 model steps, 10 tool calls, 120 s, and `max_turn_usd` in `research.config.json` (default $0.10). Live spend is
+recorded in `runs/web/cost-log.jsonl` and capped at `total_spend_usd` (default
 $1.00); set `WEB_LEDGER` to use a separate ledger. Each turn
 runs in its own worker process (the runtime's deadlines need a main thread), and
 traces are written to `runs/web/traces/`.
@@ -532,8 +530,10 @@ suite. After preparation, `yarn benchmark` and `yarn benchmark:full` show plans;
 paid execution requires `--live` plus document access. Numerical matching and
 source-supported correctness are reported separately.
 
-Token rates estimate costs; they do not set spending limits. For the Excel/web
-app, set `WEB_MAX_TURN_USD` per question and `WEB_SPEND_CAP_USD` for total spend
-across the current ledger. `EXA_MAX_REQUEST_USD` reserves a bound per search/read
-request inside those limits. Rates 0.40/1.60 are user-supplied accounting inputs,
-not independently verified current provider prices.
+Token rates estimate costs; they do not set spending limits. Edit
+`research.config.json`: `model`, `input_usd_per_million`,
+`output_usd_per_million`, `exa_max_request_usd`, `max_turn_usd`, and
+`total_spend_usd`. Rates remain the user-supplied 0.40/1.60 accounting estimates;
+automatic provider-price discovery is not implemented. The Excel/web launcher
+bridges this config into the existing worker environment internally, overriding
+stale non-secret environment values. Benchmark CLI configuration is unchanged.

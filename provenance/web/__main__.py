@@ -27,6 +27,9 @@ def main():
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args()
     load_env(ROOT / ".env")
+    from provenance.web.settings import load_settings
+
+    load_settings()
     import uvicorn
 
     from provenance.web.app import create_app

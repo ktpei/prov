@@ -11,8 +11,8 @@ The combined question and selection must fit the backend's 4,000-character limit
 
 1. Install dependencies: `npm --prefix web install`.
 2. Start the backend: `uv run python -m provenance.web` (port 8765).
-   Configure `OPENROUTER_API_KEY`, `EXA_API_KEY`, and a positive
-   `EXA_MAX_REQUEST_USD` in `.env`. Research uses live Exa search and fetched text;
+   Keep `OPENROUTER_API_KEY` and `EXA_API_KEY` in `.env`.
+   Set the model, accounting rates, and spending limits in `research.config.json`. Research uses live Exa search and fetched text;
    missing configuration disables research, with no demo fallback.
 3. In another terminal run `npm --prefix web run excel`. The Microsoft development
    certificate helper may prompt you to trust its localhost certificate.
@@ -50,7 +50,7 @@ any tool call because OpenRouter returned an authentication error; replace the
 configured OpenRouter credential and restart the backend to verify full answers.
 The app never falls back to recorded answers.
 
-2026-11-23: `WEB_MAX_TURN_USD` explicitly configures the per-question spend
-limit (default $0.10); `WEB_SPEND_CAP_USD` limits total ledger spend (default $1).
-Token rates are accounting inputs, not limits. Supplied credentials stay in
-the ignored local `.env`; user-supplied accounting rates are 0.40/1.60.
+2026-11-23: `.env` contains credentials only. `research.config.json` holds model,
+accounting rates, Exa request allowance, per-question cap, and total ledger cap.
+The launcher loads both files; restart the backend after edits. Current prices
+are supplied estimates, not automatically fetched provider metadata.

@@ -531,3 +531,12 @@ source read returned numbered evidence. The full live answer smoke failed before
 any tool call because OpenRouter returned an authentication error; replace the
 configured OpenRouter credential and restart the backend to verify full answers.
 The app never falls back to recorded answers.
+
+## Research configuration — 2026-11-23
+
+Credentials remain in ignored `.env`. `research.config.json` is the authoritative
+Excel/web configuration for model, accounting rates, Exa request allowance,
+per-question cap, and total ledger cap. The launcher validates and passes these
+settings to existing workers internally; benchmark CLI behavior is unchanged.
+Automatic price discovery remains unimplemented; supplied accounting rates are
+preserved. Restart the backend after config changes.
