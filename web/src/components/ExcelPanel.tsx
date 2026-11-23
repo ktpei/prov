@@ -44,8 +44,8 @@ export function ExcelPanel({ answer, busy, selection, onSelection }: {
           onSelection(await readSelection()); setMessage('');
         })}>{working ? 'Reading…' : 'Update from selection'}</button>
       </div>
-      <p className="selection-note">Values and formulas go with your next question. Update after editing cells.</p>
-    </div> : <p className="selection-hint">Select a range in Excel, then attach it to your question.</p>}
+      <p className="selection-note">Your next question captures the workbook; this selection identifies the range to focus on.</p>
+    </div> : <p className="selection-hint">Each question reads a snapshot of this workbook. Attach a selection to focus the agent on specific cells.</p>}
     <div className="excel-actions">
       {!attached && <button type="button" className="rounded border border-rule px-3 py-2 disabled:opacity-40" disabled={disabled}
         onClick={() => void run(async () => { onSelection(await readSelection()); setMessage(''); })}>{working ? 'Reading…' : 'Attach selected cells'}</button>}

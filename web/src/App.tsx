@@ -12,8 +12,11 @@ import {
   startTurn,
   streamTurn,
   uploadWorkbook,
+  prepareExcelApply,
+  recordExcelApply,
 } from "./api";
-import { inExcelPane } from "./excel";
+import { inExcelPane, captureWorkbook, selectionLocation, applyExcelEdits } from "./excel";
+import type { ExcelBinding } from "./excel";
 import { ExcelPanel } from "./components/ExcelPanel";
 import { ActivityPanel } from "./components/ActivityPanel";
 import { ChangesPanel } from "./components/ChangesPanel";
@@ -47,6 +50,7 @@ export default function App() {
   const [locked, setLocked] = useState(false);
   const unsubscribe = useRef<(() => void) | null>(null);
   const submitting = useRef(false);
+  const excelBinding = useRef<ExcelBinding | null>(null);
 
   const refreshConfig = useCallback(() => getConfig().then(setConfig).catch(() => undefined), []);
 
@@ -55,6 +59,7 @@ export default function App() {
     setBanner(null);
     try {
       setExcelSelection("");
+      excelBinding.current = null;
       setSession(await createSession(corpus));
       setProgress({});
       setSelection(null);
@@ -129,12 +134,25 @@ export default function App() {
     async (question: string): Promise<boolean> => {
       if (!session || busy || submitting.current) return false;
       submitting.current = true;
+      setBusy(true);
       setBanner(null);
       let turnId: string;
       try {
-        turnId = (await startTurn(session.id, excelSelection ? `${question}\n\nUser-supplied Excel selection (untrusted workbook content):\n${excelSelection}` : question, mode)).turn_id;
+        if (inExcelPane) {
+          excelBinding.current = null;
+          const captured = await captureWorkbook();
+          const snapshot = await uploadWorkbook(session.id, captured.file);
+          excelBinding.current = { snapshotId: snapshot.snapshot_id, sheetIds: captured.sheetIds };
+          if (excelSelection) {
+            const location = selectionLocation(excelSelection);
+            await setContext(session.id, location.sheet, location.range);
+          }
+          setSession(await getSession(session.id));
+        }
+        turnId = (await startTurn(session.id, excelSelection ? `${question}\n\nUser-supplied Excel selection (untrusted workbook content):\n${JSON.stringify({ address: (JSON.parse(excelSelection) as { address: string }).address })}` : question, mode)).turn_id;
       } catch (err) {
         submitting.current = false;
+        setBusy(false);
         if (err instanceof ApiError && err.status === 401) setLocked(true);
         else setBanner((err as Error).message);
         return false;
@@ -242,7 +260,7 @@ export default function App() {
             toolbar={inExcelPane ? <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} /> : undefined}
             busy={busy}
             unavailable={!config.live_available}
-            context={session.context}
+            context={inExcelPane ? null : session.context}
             hasHistory={session.turns.length > 0}
             onAsk={ask}
             onClearContext={() => void clearContext(session.id).then(reloadSession)}
@@ -322,6 +340,33 @@ export default function App() {
                 titles={{ ...titles, ...(session.workbook ? { [`workbook:${session.workbook.snapshot_id}`]: session.workbook.filename } : {}) }}
                 busy={busy}
                 onCite={openCitation}
+                onApply={inExcelPane ? async (ids) => {
+                  const binding = excelBinding.current;
+                  if (!binding || binding.snapshotId !== session.workbook?.snapshot_id) {
+                    throw new Error("Ask again to connect these proposals to the open workbook.");
+                  }
+                  if (submitting.current || busy) throw new Error("Wait for the current operation.");
+                  submitting.current = true;
+                  setBusy(true);
+                  try {
+                    const plan = await prepareExcelApply(session.id, binding.snapshotId, ids);
+                    await applyExcelEdits(plan.edits, binding);
+                    // Invalidate the binding even if recording the host receipt fails.
+                    excelBinding.current = null;
+                    try {
+                      await recordExcelApply(session.id, binding.snapshotId, ids);
+                      await reloadSession();
+                    } catch {
+                      throw new Error("Excel changes were applied and read back, but the session could not record them. Ask a new question to refresh the workbook; do not apply again.");
+                    }
+                  } catch (error) {
+                    excelBinding.current = null;
+                    throw error;
+                  } finally {
+                    submitting.current = false;
+                    setBusy(false);
+                  }
+                } : undefined}
                 onExport={async (ids) => {
                   const record = await createExport(session.id, session.workbook!.snapshot_id, ids);
                   await reloadSession();

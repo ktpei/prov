@@ -123,3 +123,13 @@ export function streamTurn(
 
 export const login = (code: string) => request<{ ok: boolean }>("/api/login", json("POST", { code }));
 export const getAuth = () => request<{ required: boolean; authenticated: boolean }>("/api/auth");
+
+
+export const prepareExcelApply = (sid: string, snapshotId: string, ids: string[]) =>
+  request<{ snapshot_id: string; edits: import("./excel").ExcelEdit[] }>(
+    `/api/sessions/${sid}/excel/apply-plan`,
+    json("POST", { snapshot_id: snapshotId, proposal_ids: ids }),
+  );
+export const recordExcelApply = (sid: string, snapshotId: string, ids: string[]) =>
+  request(`/api/sessions/${sid}/excel/applied`,
+    json("POST", { snapshot_id: snapshotId, proposal_ids: ids }));

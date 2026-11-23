@@ -1,12 +1,25 @@
 # Project scope
 
+## Desktop Excel workbook tools — 2026-11-23
+
+Each question captures a compressed workbook snapshot on Mac/Windows, reusing
+the existing range-reading, citation, and proposal tools. Selected cells identify
+focus context; formulas are inspected to find ordinary input drivers, never
+overwritten. Approval applies selected pending proposals in the open workbook
+after typed-value, worksheet identity, formula, protection, merged/table/spill
+checks. Excel recalculates and inputs are read back before a client receipt marks
+proposals applied. Server receipts do not independently verify the host.
+Continuous synchronization and formula editing remain out of scope.
+The existing 5 MB, 30-sheet, .xlsx and conservative export blockers remain.
+
 ## Browser workbook delivery — 2026-11-20
 
 The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
 navigation, formula/cache inspection, approved ordinary input updates and verified
 separate-copy exports. It stops at the downloaded artifact with calculation
 explicitly pending. Formula generation/recalculation, persistent hosted sessions
-and live Excel execution are subsequent scope decisions. The research harness is
+remain subsequent scope decisions. Desktop Excel input application is implemented
+separately below. The research harness is
 reused; the evaluation reservations and runtime defaults remain unchanged.
 
 

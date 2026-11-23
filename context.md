@@ -1,5 +1,17 @@
 # Working context — 2026-11-16
 
+## Desktop Excel workbook tools — 2026-11-23
+
+Implemented fresh workbook attachment per Excel question, focus-range context,
+and explicit live input approvals with typed stale checks and input readback.
+Build, lint, all 653 backend tests and all 19 browser checks (17 Excel) passed,
+including snapshot
+failure, no writes before approval, text/number stale mismatch, formulas,
+merged/spilled/table targets, and failed receipt without duplicate writes.
+Native Excel capture/application and a live model driver-edit task remain unverified.
+Office batches are not transactions; failures after writes report uncertain
+partial application, invalidate the local binding, and require a fresh question.
+
 ## Document navigation improvement loop — 2026-11-23
 
 [Research and comparison plan](eval/document-navigation-loop-2026-11-23.md):

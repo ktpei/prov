@@ -7,10 +7,12 @@ type Props = {
   titles: Record<string, string>;
   busy: boolean;
   onCite: (citation: Citation) => void;
+  onApply?: (ids: string[]) => Promise<void>;
   onExport: (ids: string[]) => Promise<ExportRecord>;
 };
 
 const STATUS: Record<Proposal["status"], { label: string; className: string }> = {
+  applied: { label: "Applied in Excel", className: "bg-ledger-soft text-ledger" },
   pending: { label: "Awaiting approval", className: "bg-highlight-soft text-ink" },
   exported: { label: "In edited copy", className: "bg-ledger-soft text-ledger" },
   stale: { label: "Stale: workbook replaced", className: "bg-rust-soft text-rust" },
@@ -21,7 +23,7 @@ function content(value: number | string) {
   return typeof value === "number" ? value.toLocaleString("en-US", { maximumFractionDigits: 6 }) : value;
 }
 
-export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props) {
+export function ChangesPanel({ session, titles, busy, onCite, onExport, onApply }: Props) {
   const proposals = session.proposals;
   const [chosen, setChosen] = useState<Set<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
@@ -47,7 +49,8 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
     setWorking(true);
     setError(null);
     try {
-      await onExport([...chosen]);
+      if (onApply) await onApply([...chosen]);
+      else await onExport([...chosen]);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -62,7 +65,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
     <div className="h-full overflow-y-auto px-5 py-4">
       <p className="font-medium">Proposed changes</p>
       <p className="text-sm text-ink-soft">
-        Approving creates a separate edited copy. Your uploaded file stays unchanged.
+        {onApply ? "Approve to update these inputs in the open workbook. Current values are checked before writing, then Excel recalculates and the inputs are read back." : "Approving creates a separate edited copy. Your uploaded file stays unchanged."}
       </p>
       {blocked && <p role="status" className="mt-2 text-sm text-rust">Export is unavailable for this workbook: {session.workbook!.export_blockers.join(" ")}</p>}
       <ul className="mt-3 space-y-2">
@@ -76,7 +79,7 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
                   type="checkbox"
                   aria-label={`Approve change to ${proposal.sheet}!${proposal.cell}`}
                   className="mt-1 h-4 w-4 accent-ledger"
-                  disabled={!pending || busy || blocked}
+                  disabled={!pending || busy || working || blocked}
                   checked={chosen.has(proposal.id)}
                   onChange={(event) => {
                     const next = new Set(chosen);
@@ -129,14 +132,16 @@ export function ChangesPanel({ session, titles, busy, onCite, onExport }: Props)
           className="rounded-md bg-ledger px-3.5 py-1.5 font-medium text-white disabled:opacity-40"
         >
           {working
-            ? "Creating copy"
-            : `Approve ${chosen.size} ${chosen.size === 1 ? "change" : "changes"} and create copy`}
+            ? (onApply ? "Applying in Excel" : "Creating copy")
+            : `Approve ${chosen.size} ${chosen.size === 1 ? "change" : "changes"} ${onApply ? "in Excel" : "and create copy"}`}
         </button>
         {error && <p role="alert" className="text-sm text-rust">{error}</p>}
       </div>
       ) : (
         <p className="mt-3 text-sm text-ink-soft">
-          {proposals.some((p) => p.status === "exported")
+          {proposals.some((p) => p.status === "applied")
+            ? "Approved inputs were applied and read back in Excel. Ask again to capture recalculated results."
+            : proposals.some((p) => p.status === "exported")
             ? "Approved changes are in the edited copy below."
             : "These proposals refer to a workbook you replaced. Ask again to get proposals for the current file."}
         </p>

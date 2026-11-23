@@ -519,8 +519,11 @@ details or duplicating an existing scenario.
 
 A sideloadable task pane now attaches selected Excel cells to research questions
 and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
-Live cell proposal application and continuous synchronization are not implemented;
-real Excel host verification remains pending.
+Desktop Excel captures a workbook snapshot before each question, enabling cell
+reads and cited proposals. Approvals can update ordinary inputs in the open
+workbook with stale-value checks, recalculation, and readback. Continuous
+synchronization is not implemented; the new apply flow has automated host-mock
+coverage and still needs native Excel verification.
 
 ## Daloopa quick/full benchmarking
 
