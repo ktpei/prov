@@ -1,5 +1,14 @@
 # Working context — 2026-11-16
 
+## Document navigation improvement loop — 2026-11-23
+
+[Research and comparison plan](eval/document-navigation-loop-2026-11-23.md):
+versioned ingestion/navigation treatment adds larger immutable extracted documents,
+source-local finding, shorter reads and context prioritization. Baseline remains
+available. Synthetic tests cover evidence beyond the former prefix, unread-citation
+rejection, immutable hashes, reservations and budgets. Live results are pending;
+no improvement is yet claimed.
+
 ## Daloopa quick/full and Exa — 2026-11-20
 
 Implemented [Daloopa quick25/full500 evaluation](eval/daloopa-benchmark.md),

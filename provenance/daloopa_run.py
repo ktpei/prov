@@ -16,6 +16,11 @@ from provenance.benchmarks import canonical_hash
 from provenance.controls import positive
 from provenance.daloopa import PROTECTED, ROOT, load, validate
 from provenance.daloopa_score import REVIEW_FIELDS, review_identity, score
+from provenance.document_navigation import (
+    NAVIGATION_INSTRUCTIONS,
+    NAVIGATION_TOOLS,
+    NavigableExaSources,
+)
 from provenance.exa_sources import EXA_INSTRUCTIONS, EXA_TOOL_SCHEMAS, ExaSources
 from provenance.experiment import write_json
 from provenance.graph import run_graph
@@ -85,6 +90,13 @@ class BenchmarkSources(ExaSources):
         return super().read(source_id, start, end, timeout)
 
 
+class NavigableBenchmarkSources(BenchmarkSources, NavigableExaSources):
+    def _document(self, source_id, timeout):
+        if source_id in self.documents and forbidden(self.documents[source_id]):
+            raise ValueError("Reserved issuer or benchmark-answer source")
+        return super()._document(source_id, timeout)
+
+
 def plan(bundle, profile):
     validate(bundle)
     ids = bundle["manifest"][f"{profile}_ids"]
@@ -113,7 +125,12 @@ def run_benchmark(
     budget_usd=0.5,
     per_task_usd=0.05,
     execute=run_graph,
+    navigation="baseline",
 ):
+    if navigation not in {"baseline", "document-v1"}:
+        raise ValueError("Unknown navigation policy")
+    if navigation != "baseline" and not web_key:
+        raise ValueError("Document navigation comparison requires web retrieval")
     selection = plan(bundle, profile)
     if budget_usd is not None:
         positive(budget_usd, "aggregate budget")
@@ -126,6 +143,8 @@ def run_benchmark(
         raise ValueError("Supply an issuer corpus or enable Exa web retrieval")
     expected_instructions = EXA_INSTRUCTIONS if web_key else INSTRUCTIONS
     expected_tools = EXA_TOOL_SCHEMAS if web_key else TOOL_SCHEMAS
+    if navigation == "document-v1":
+        expected_instructions, expected_tools = NAVIGATION_INSTRUCTIONS, NAVIGATION_TOOLS
     if model.instructions != expected_instructions or model.tool_schemas != expected_tools:
         raise ValueError("Benchmark requires unchanged research instructions and search/read tools")
     if model.max_output != MAX_OUTPUT:
@@ -143,6 +162,7 @@ def run_benchmark(
     tasks = {task["id"]: task for task in bundle["tasks"]}
     inputs = {row["id"]: row for row in bundle["inputs"]}
     policy = {
+        "navigation": navigation,
         "model": model.name,
         "limits": asdict(replace(LIMITS, budget_usd=per_task_usd)),
         "max_output_tokens": MAX_OUTPUT,
@@ -160,6 +180,8 @@ def run_benchmark(
                 "daloopa_score.py",
                 "daloopa_run.py",
                 "exa_sources.py",
+                "document_navigation.py",
+                "context.py",
                 "graph.py",
                 "model.py",
                 "sources.py",
@@ -202,7 +224,10 @@ def run_benchmark(
             ledger["status"] = "aggregate_budget_exhausted"
             break
         cap = min(per_task_usd, remaining) if remaining is not None else None
-        sources = BenchmarkSources(corpus, exa_key=web_key, exa_cap=web_cap)
+        source_class = (
+            NavigableBenchmarkSources if navigation == "document-v1" else BenchmarkSources
+        )
+        sources = source_class(corpus, exa_key=web_key, exa_cap=web_cap)
         row.update(
             status="pending", reserved_usd=cap, accounted_cost_usd=cap or 0, cost_uncertain=True
         )
@@ -267,6 +292,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--prepared", type=Path, default=Path("runs/benchmark-prepared/daloopa"))
     parser.add_argument("--profile", choices=("quick", "full"), default="quick")
+    parser.add_argument("--navigation", choices=("baseline", "document-v1"), default="baseline")
     parser.add_argument("--live", action="store_true", help="Explicitly enable paid model calls")
     parser.add_argument("--corpus", type=Path)
     parser.add_argument("--web", action="store_true", help="Enable paid Exa search/contents")
@@ -303,8 +329,12 @@ def main():
         os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
         os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
         max_output=MAX_OUTPUT,
-        instructions=EXA_INSTRUCTIONS if args.web else INSTRUCTIONS,
-        tool_schemas=EXA_TOOL_SCHEMAS if args.web else TOOL_SCHEMAS,
+        instructions=NAVIGATION_INSTRUCTIONS
+        if args.navigation == "document-v1"
+        else (EXA_INSTRUCTIONS if args.web else INSTRUCTIONS),
+        tool_schemas=NAVIGATION_TOOLS
+        if args.navigation == "document-v1"
+        else (EXA_TOOL_SCHEMAS if args.web else TOOL_SCHEMAS),
     )
     ledger = run_benchmark(
         bundle,
@@ -314,6 +344,7 @@ def main():
         corpus=args.corpus,
         web_key=web_key,
         web_cap=web_cap,
+        navigation=args.navigation,
         budget_usd=None
         if args.no_spend_limit
         else (args.budget_usd if args.budget_usd is not None else 0.5),

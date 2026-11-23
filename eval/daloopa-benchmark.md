@@ -28,6 +28,11 @@ Ambiguous sequences, units, periods and conflicting references remain unscored.
 
 ## Quick and full
 
+The [navigation improvement loop](document-navigation-loop-2026-11-23.md) adds an
+opt-in `--navigation document-v1` treatment. Default `baseline` preserves the prior
+workflow. Both options retain the same question sets and execution limits; the
+candidate changes extraction, navigation, read size and associated instructions.
+
 ```sh
 yarn benchmark                       # plan only: fixed 25-question quick selection
 yarn benchmark:full                  # plan only: full 500-case inventory
