@@ -1,6 +1,6 @@
 # Document ingestion and navigation improvement loop
 
-Status: implementation and synthetic verification; live comparisons pending.
+Status: first quick comparison complete; second treatment and full comparison in progress.
 
 The November 20 pilot exposed inaccessible document tails and repeated discovery
 without targeted reading. The baseline requests only 16,000 characters, and web
@@ -112,3 +112,45 @@ The full baseline uses a copied runtime under
 `runs/navigation-loop-2026-11-23/runtime-baseline`; only protection metadata, not
 protected issuer source documents, accompanied that copy. The original baseline
 implementation is preserved while later candidate work proceeds.
+
+## First measured iteration
+
+The paired quick25 completed with the same references, model and execution limits:
+
+| Measure | Baseline | document-v1 |
+|---|---:|---:|
+| Exact numerical matches | 4/25 | 9/25 |
+| Within 1% | 6/25 | 11/25 |
+| Numerical answers | 7 | 12 |
+| Quote-valid numerical answers | 7 | 12 |
+| Completed responses including abstentions | 16 | 21 |
+| Stops/failures | 9 | 4 |
+| Estimated cost | $1.0828304 | $0.8561940 |
+| Sum of task latency | 409.9 seconds | 409.3 seconds |
+
+Both arms use the corrected current references. The older November 20 baseline is
+retained as historical evidence, not substituted for this fresh baseline. All
+runtime hashes match the preserved initial runtime snapshot. Exact quote checking
+does not establish source/period/metric correctness. The full baseline is running;
+no full-suite improvement has yet been established.
+
+## Second treatment and decision rule
+
+Trace review of quick25 found concrete v1 failures: a wider requested read was
+clamped before an already-found target row; repeated finds consumed turns without
+reading; a rounded narrative answer was retained after a precise table was found
+too late to read. These observations motivate `document-v2`, not issuer-specific
+special cases.
+
+V2 preserves up to 80 requested lines within a 9,000-character serialized-line
+budget, returns continuation explicitly, and shortens discovery highlights to one
+700-character excerpt per result. It exposes missing query terms and per-passage
+matched terms as lexical diagnostics, not semantic judgments. Guidance prioritizes
+reading a promising match immediately and changing source after repeated weak
+matches. Larger extraction and exact citation authorization remain unchanged.
+
+Run the same quick25 once under v2 with unchanged model, references, task/time/cost
+limits. Compare against both completed arms. Primary selection criterion is
+within-1% success, followed by exact success and coverage with no citation-integrity
+regression. Preserve all arms, including regressions; do not cherry-pick per-task
+answers. Freeze the selected complete treatment for the full comparison.

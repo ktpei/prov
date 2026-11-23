@@ -21,6 +21,11 @@ from provenance.document_navigation import (
     NAVIGATION_TOOLS,
     NavigableExaSources,
 )
+from provenance.document_navigation_v2 import (
+    NAVIGATION_V2_INSTRUCTIONS,
+    NAVIGATION_V2_TOOLS,
+    NavigableExaSourcesV2,
+)
 from provenance.exa_sources import EXA_INSTRUCTIONS, EXA_TOOL_SCHEMAS, ExaSources
 from provenance.experiment import write_json
 from provenance.graph import run_graph
@@ -97,6 +102,13 @@ class NavigableBenchmarkSources(BenchmarkSources, NavigableExaSources):
         return super()._document(source_id, timeout)
 
 
+class NavigableBenchmarkSourcesV2(BenchmarkSources, NavigableExaSourcesV2):
+    def _document(self, source_id, timeout):
+        if source_id in self.documents and forbidden(self.documents[source_id]):
+            raise ValueError("Reserved issuer or benchmark-answer source")
+        return super()._document(source_id, timeout)
+
+
 def plan(bundle, profile):
     validate(bundle)
     ids = bundle["manifest"][f"{profile}_ids"]
@@ -127,7 +139,7 @@ def run_benchmark(
     execute=run_graph,
     navigation="baseline",
 ):
-    if navigation not in {"baseline", "document-v1"}:
+    if navigation not in {"baseline", "document-v1", "document-v2"}:
         raise ValueError("Unknown navigation policy")
     if navigation != "baseline" and not web_key:
         raise ValueError("Document navigation comparison requires web retrieval")
@@ -145,6 +157,8 @@ def run_benchmark(
     expected_tools = EXA_TOOL_SCHEMAS if web_key else TOOL_SCHEMAS
     if navigation == "document-v1":
         expected_instructions, expected_tools = NAVIGATION_INSTRUCTIONS, NAVIGATION_TOOLS
+    elif navigation == "document-v2":
+        expected_instructions, expected_tools = NAVIGATION_V2_INSTRUCTIONS, NAVIGATION_V2_TOOLS
     if model.instructions != expected_instructions or model.tool_schemas != expected_tools:
         raise ValueError("Benchmark requires unchanged research instructions and search/read tools")
     if model.max_output != MAX_OUTPUT:
@@ -181,6 +195,7 @@ def run_benchmark(
                 "daloopa_run.py",
                 "exa_sources.py",
                 "document_navigation.py",
+                "document_navigation_v2.py",
                 "context.py",
                 "graph.py",
                 "model.py",
@@ -224,9 +239,11 @@ def run_benchmark(
             ledger["status"] = "aggregate_budget_exhausted"
             break
         cap = min(per_task_usd, remaining) if remaining is not None else None
-        source_class = (
-            NavigableBenchmarkSources if navigation == "document-v1" else BenchmarkSources
-        )
+        source_class = {
+            "baseline": BenchmarkSources,
+            "document-v1": NavigableBenchmarkSources,
+            "document-v2": NavigableBenchmarkSourcesV2,
+        }[navigation]
         sources = source_class(corpus, exa_key=web_key, exa_cap=web_cap)
         row.update(
             status="pending", reserved_usd=cap, accounted_cost_usd=cap or 0, cost_uncertain=True
@@ -292,7 +309,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--prepared", type=Path, default=Path("runs/benchmark-prepared/daloopa"))
     parser.add_argument("--profile", choices=("quick", "full"), default="quick")
-    parser.add_argument("--navigation", choices=("baseline", "document-v1"), default="baseline")
+    parser.add_argument(
+        "--navigation", choices=("baseline", "document-v1", "document-v2"), default="baseline"
+    )
     parser.add_argument("--live", action="store_true", help="Explicitly enable paid model calls")
     parser.add_argument("--corpus", type=Path)
     parser.add_argument("--web", action="store_true", help="Enable paid Exa search/contents")
@@ -329,12 +348,16 @@ def main():
         os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
         os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
         max_output=MAX_OUTPUT,
-        instructions=NAVIGATION_INSTRUCTIONS
-        if args.navigation == "document-v1"
-        else (EXA_INSTRUCTIONS if args.web else INSTRUCTIONS),
-        tool_schemas=NAVIGATION_TOOLS
-        if args.navigation == "document-v1"
-        else (EXA_TOOL_SCHEMAS if args.web else TOOL_SCHEMAS),
+        instructions={
+            "baseline": EXA_INSTRUCTIONS if args.web else INSTRUCTIONS,
+            "document-v1": NAVIGATION_INSTRUCTIONS,
+            "document-v2": NAVIGATION_V2_INSTRUCTIONS,
+        }[args.navigation],
+        tool_schemas={
+            "baseline": EXA_TOOL_SCHEMAS if args.web else TOOL_SCHEMAS,
+            "document-v1": NAVIGATION_TOOLS,
+            "document-v2": NAVIGATION_V2_TOOLS,
+        }[args.navigation],
     )
     ledger = run_benchmark(
         bundle,

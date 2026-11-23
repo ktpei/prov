@@ -10,6 +10,7 @@ from provenance.context import project_messages, tool_result_chars
 from provenance.controls import Budget, LimitReached
 from provenance.daloopa_run import NavigableBenchmarkSources
 from provenance.document_navigation import DOCUMENT_CHAR_LIMIT, NavigableExaSources
+from provenance.document_navigation_v2 import NavigableExaSourcesV2
 
 
 class DocumentNavigationTests(unittest.TestCase):
@@ -153,3 +154,20 @@ class DocumentNavigationTests(unittest.TestCase):
         self.assertEqual(projected[5], messages[5])
         self.assertLess(tool_result_chars(projected), 32000)
         self.assertNotIn("omitted_from_model_context", messages[1]["output"])
+
+    def test_v2_keeps_target_after_thirty_lines_and_reports_query_coverage(self):
+        self.sources.__class__ = NavigableExaSourcesV2
+        found = self.sources.find("example", "orbital conversion", 5)
+        self.assertEqual(found["missing_query_terms"], ["conversion"])
+        read = self.sources.read("example", 950, 1002, 5)
+        self.assertEqual(read["lines"][-1]["line"], 1002)
+        self.assertIn("123", read["lines"][-1]["text"])
+        self.sources.check_citation({"source_id": "example", "locator": "L1002", "quote": "123"})
+
+    def test_v2_unicode_reads_are_bounded_without_authorizing_omitted_lines(self):
+        self.sources.__class__ = NavigableExaSourcesV2
+        self.request.return_value["results"][0]["text"] = ("🙂" * 200 + "\n") * 80
+        read = self.sources.read("example", 1, 80, 5)
+        self.assertLess(len(json.dumps(read)), 12000)
+        self.assertLess(read["next_start_line"], 80)
+        self.assertNotIn(read["next_start_line"], self.sources.seen["example"])
