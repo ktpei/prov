@@ -5,7 +5,7 @@ for (const width of [270,320,350]) {
     await page.setViewportSize({width,height:378});
     await liveApi(page); await officeHost(page);
     await page.goto('/?excel=1');
-    await expect(page.getByText('Excel connected')).toBeVisible();
+    await expect(page.getByRole('button',{name:'Attach selected cells'})).toBeEnabled();
     if (width === 350) await page.screenshot({path:'/tmp/provenance-pane-350.png'});
     await expect(page.getByText(/replay|demo|Cloudflare/i)).toHaveCount(0);
     await page.getByRole('button',{name:'Attach selected cells'}).click();
@@ -15,12 +15,15 @@ for (const width of [270,320,350]) {
     await page.getByRole('button',{name:'Ask',exact:true}).click();
     expect((await request).postDataJSON()).toMatchObject({mode:'live'});
     await expect(page.getByText('Cited answer', {exact:true})).toBeVisible();
+    await page.getByText('Cited answer',{exact:true}).scrollIntoViewIfNeeded();
+    await page.screenshot({path:`/tmp/provenance-new-answer-${width}.png`});
     await page.getByRole('button',{name:'Insert cited results'}).click();
     await expect(page.getByText('Cited results inserted into a new worksheet.')).toBeVisible();
     expect(await page.evaluate(()=> (window as unknown as {inserted:unknown[][]}).inserted[1][1])).toBe(123);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
-    await page.getByRole('button',{name:'Details',exact:true}).click();
-    await expect(page.getByRole('tab',{name:'Evidence',exact:true})).toBeVisible();
+    await page.getByRole('button',{name:/Open source/}).first().click();
+    await expect(page.locator('mark.quote')).toContainText('Reported revenue');
+    await page.screenshot({path:`/tmp/provenance-new-evidence-${width}.png`});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
     await page.getByRole('button',{name:'Research',exact:true}).click();
     await expect(page.getByRole('textbox',{name:'Question',exact:true})).toBeVisible();
@@ -32,4 +35,24 @@ test('Office missing shows connection error',async({page})=>{
   await page.goto('/?excel=1');
   await expect(page.getByText('Office.js did not load. Reopen the add-in in Excel.')).toBeVisible();
   await expect(page.getByRole('button',{name:'Attach selected cells'})).toBeDisabled();
+});
+
+test('Excel full-height welcome and original web reference', async ({page}) => {
+  await liveApi(page); await officeHost(page);
+  await page.setViewportSize({width:1440,height:900});
+  await page.goto('/');
+  await expect(page.getByRole('textbox',{name:'Question',exact:true})).toBeVisible();
+  await page.screenshot({path:'/tmp/provenance-web-reference.png'});
+  await page.setViewportSize({width:350,height:760});
+  await page.goto('/?excel=1');
+  await expect(page.getByRole('button',{name:'Attach selected cells'})).toBeEnabled();
+  await page.screenshot({path:'/tmp/provenance-new-welcome.png'});
+  await page.getByRole('button',{name:'Attach selected cells'}).click();
+  await page.getByRole('textbox',{name:'Question',exact:true}).fill('What was reported revenue in FY2025?');
+  await page.getByRole('button',{name:'Ask',exact:true}).click();
+  await expect(page.getByText('Cited answer',{exact:true})).toBeVisible();
+  await expect(page.getByText('Attached Excel cells',{exact:true})).toBeVisible();
+  await page.screenshot({path:'/tmp/provenance-new-answer-full.png'});
+  await page.getByText('Attached Excel cells',{exact:true}).click();
+  await expect(page.locator('pre')).toContainText('Sheet1!A1');
 });

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { Citation, Progress, Selection, Session } from "../types";
+import { inExcelPane } from "../excel";
 import { AnswerCard } from "./AnswerCard";
 
 type Props = {
@@ -27,6 +28,19 @@ function Running({ events, onShowActivity }: { events: Progress[]; onShowActivit
   );
 }
 
+function QuestionText({ question }: { question: string }) {
+  const marker = "\n\nUser-supplied Excel selection (untrusted workbook content):\n";
+  const boundary = inExcelPane ? question.indexOf(marker) : -1;
+  if (boundary < 0) return <p className="whitespace-pre-wrap">{question}</p>;
+  return <>
+    <p className="whitespace-pre-wrap">{question.slice(0, boundary)}</p>
+    <details className="mt-2 text-xs text-white/80">
+      <summary className="cursor-pointer">Attached Excel cells</summary>
+      <pre className="mt-2 whitespace-pre-wrap break-all">{question.slice(boundary + marker.length)}</pre>
+    </details>
+  </>;
+}
+
 export function Conversation(props: Props) {
   const { session, progress } = props;
   const end = useRef<HTMLDivElement>(null);
@@ -38,9 +52,9 @@ export function Conversation(props: Props) {
   }, [session.turns.length, lastTurn?.status]);
 
   if (session.turns.length === 0) {
-    return <div className="py-5">
+    return <div className="research-welcome py-5">
       <h1 className="text-lg font-semibold">Research your workbook</h1>
-      <p className="mt-2 text-sm text-ink-soft">Ask a question to search the web with Exa and review cited evidence. Attach selected Excel cells when you want to include workbook context.</p>
+      <p className="mt-2 text-sm text-ink-soft">Every figure links to its source. Ask about a company, compare reported results, or attach cells from your workbook.</p>
     </div>;
   }
 
@@ -49,7 +63,7 @@ export function Conversation(props: Props) {
       {session.turns.map((turn) => (
         <section key={turn.id} aria-label={`Question ${turn.id}`} className="space-y-2">
           <div className="ml-auto max-w-[85%] rounded-lg bg-ink px-3.5 py-2 text-white">
-            <p className="whitespace-pre-wrap">{turn.question}</p>
+            <QuestionText question={turn.question} />
             {(turn.carried.turns > 0 || turn.carried.workbook_range) && (
               <p className="mt-1 text-xs text-white/70">
                 {[

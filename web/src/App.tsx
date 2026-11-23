@@ -207,10 +207,12 @@ export default function App() {
   return (
     <div className={inExcelPane ? "excel-pane flex h-full flex-col" : "flex h-full flex-col"}>
       <Header config={config} busy={busy} onNew={() => void startConversation(session.corpus)} />
-      {inExcelPane && <nav aria-label="Pane navigation" className="flex border-b border-rule bg-surface p-1">
-        {(["chat", "details"] as const).map(view => <button key={view} aria-pressed={paneView === view} onClick={() => setPaneView(view)} className={`flex-1 rounded px-3 py-2 text-sm ${paneView === view ? "bg-ledger-soft text-ledger" : "text-ink-soft"}`}>{view === "chat" ? "Research" : "Details"}</button>)}
+      {inExcelPane && <nav aria-label="Pane navigation" className="pane-nav">
+        <button aria-pressed={paneView === "chat"} onClick={() => setPaneView("chat")}>Research</button>
+        {TABS.filter(({ id }) => id === "evidence" || id === "activity" || !!session.workbook).map(({ id, label }) => (
+          <button key={id} aria-pressed={paneView === "details" && tab === id} onClick={() => { setTab(id); setPaneView("details"); }}>{label}{id === "changes" && pending > 0 ? ` (${pending})` : ""}</button>
+        ))}
       </nav>}
-      {inExcelPane && <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} />}
       {banner && (
         <div role="alert" className="flex items-center gap-3 border-b border-rust/30 bg-rust-soft px-5 py-2 text-sm text-rust">
           <span>{banner}</span>
@@ -237,6 +239,7 @@ export default function App() {
             />
           </div>
           <Composer
+            toolbar={inExcelPane ? <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} /> : undefined}
             busy={busy}
             unavailable={!config.live_available}
             context={session.context}
@@ -246,7 +249,7 @@ export default function App() {
           />
         </section>
         <section aria-label="Inspector" className="flex min-h-[480px] flex-col bg-surface">
-          <div role="tablist" aria-label="Inspector" className="flex gap-1 border-b border-rule px-4 pt-2">
+          <div hidden={inExcelPane} role="tablist" aria-label="Inspector" className="flex gap-1 border-b border-rule px-4 pt-2">
             {TABS.map(({ id, label }) => {
               const count = id === "changes" ? pending : 0;
               return (

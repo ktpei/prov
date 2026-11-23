@@ -38,7 +38,7 @@ and compact layout are separately tested with deterministic provider/host mocks.
 References: [Office.js Excel tutorial](https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/excel-tutorial),
 [Mac sideloading](https://learn.microsoft.com/en-us/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac).
 
-The pane uses Research/Details navigation and a single view at a time. Layout
+The pane uses one Research/Evidence/Activity navigation row and a single view at a time. Layout
 checks cover 270, 320, and 350 pixel widths at 378 pixels tall. The upper-right
 40 pixels are reserved for Office controls. Replay controls, fixed evidence
 packets, sample questions, and demo workbook loading are removed from the app.
@@ -62,3 +62,18 @@ the earlier 401 reports came from a different inherited key, not the file key.
 After restarting with corrected credential precedence, the live Exa documentation
 question completed successfully with five tool calls and a validated cited answer.
 The earlier authentication blocker is resolved.
+
+## Web-derived pane layout (2026-11-23)
+
+The rejected simplification was reverted in `09f2063`. The replacement restores
+the original web interface's dark provenance mark, answer cards, ledger-green
+citations, and paper-style evidence viewer. A single navigation row replaces the
+nested Research/Details tabs. Excel attachment and insertion controls sit in the
+question composer; insertion appears when an eligible answer exists. Attached
+cell payloads are expandable in question history. Workbook/Changes navigation is
+available when a file workbook exists. Live Excel insertion still targets the
+latest completed answer when eligible and creates a new worksheet.
+
+Visual review covers the welcome, answer and evidence views at narrow pane sizes,
+plus a 350 × 760 full-height pane. Seven browser tests use deterministic Office
+and provider mocks. Native Excel has not been visually rechecked for this revision.

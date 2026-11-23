@@ -70,20 +70,43 @@ mark.quote {
   }
 }
 
-/* Excel hosts resize the pane: support 270–350px without a desktop split view. */
-.excel-pane { min-width: 0; overflow: hidden; font-size: 14px; }
-.excel-pane .pane-header { padding-right: 40px; }
+/* Excel uses the web app's ink, ledger and paper palette in one narrow column. */
+.excel-pane { min-width: 0; overflow: hidden; font-size: 14px; --color-ink-faint: #647080; }
+.excel-pane .pane-header { padding: 14px 40px 10px 16px; }
+.excel-pane .pane-header > div { flex-wrap: nowrap; gap: 8px; }
+.excel-pane .pane-header button { padding: 4px 8px; font-size: 12px; white-space: nowrap; }
+.excel-pane .pane-header p { margin: 6px 0 0 32px; font-size: 11px; }
+.pane-nav { display: flex; flex-shrink: 0; gap: 20px; padding: 0 16px; border-bottom: 1px solid var(--color-rule); background: white; overflow-x: auto; }
+.pane-nav button { padding: 10px 0; border-bottom: 2px solid transparent; color: var(--color-ink-soft); font-size: 13px; white-space: nowrap; }
+.pane-nav button[aria-pressed="true"] { border-color: var(--color-ledger); color: var(--color-ledger); font-weight: 600; }
 .excel-pane main { display: flex; overflow: hidden; min-height: 0; }
 .excel-pane main > section { min-width: 0; min-height: 0; width: 100%; border-right: 0; }
 .excel-pane main[data-view="chat"] > [aria-label="Inspector"],
-.excel-pane main[data-view="details"] > [aria-label="Conversation"] { display: none; }
-.excel-pane [data-scroll] { padding-inline: 12px; overflow-wrap: anywhere; }
+.excel-pane main[data-view="details"] > [aria-label="Conversation"],
+.excel-pane [role="tablist"][hidden] { display: none; }
+.excel-pane [data-scroll] { padding-inline: 14px; overflow-wrap: anywhere; background: #f4f5f7; }
 .excel-pane [role="tabpanel"] { overflow: auto; overflow-wrap: anywhere; }
-.excel-pane [role="tablist"] { padding-inline: 4px; gap: 0; flex-wrap: wrap; }
-.excel-pane [role="tablist"] button { flex: 1; padding-inline: 6px; font-size: 12px; }
-.excel-pane form { padding: 8px 12px; }
-.excel-pane textarea { min-width: 0; width: 100%; }
-.excel-pane [aria-label="Excel connection"] { padding: 8px 12px; font-size: 12px; }
-.excel-pane [aria-label="Excel connection"] button { padding: 6px 8px; }
-.excel-pane [aria-label="Excel connection"] > div { gap: 4px; margin-top: 4px; }
-.excel-pane button { overflow-wrap: anywhere; }
+.excel-pane .research-welcome { padding: 28px 2px; }
+.excel-pane .research-welcome h1 { font-size: 22px; letter-spacing: -.5px; line-height: 1.25; max-width: 220px; }
+.excel-pane .research-welcome p { margin-top: 12px; font-size: 14px; line-height: 1.65; }
+.excel-pane form { padding: 10px 14px 12px; flex-shrink: 0; }
+.excel-pane .question-input { position: relative; border: 1px solid #a8b3be; border-radius: 8px; padding: 8px; background: white; align-items: flex-end; }
+.excel-pane .question-input:focus-within { border-color: var(--color-ledger); box-shadow: 0 0 0 1px var(--color-ledger); }
+.excel-pane textarea { min-width: 0; width: 100%; border: 0; padding: 0; font-size: 13px; resize: none; box-shadow: none; background: transparent; }
+.excel-pane .question-input button { height: 32px; padding: 0 12px; font-size: 12px; border-radius: 5px; }
+.excel-pane form > p { font-size: 10px; line-height: 1.4; margin-top: 7px; }
+.excel-tools { padding: 0 0 9px; font-size: 12px; }
+.excel-feedback { margin-bottom: 7px; color: var(--color-ink-soft); }
+.excel-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.excel-actions button { font-size: 11px; padding: 5px 8px; border-radius: 5px; }
+.excel-actions button:first-child { border: 0; background: var(--color-ledger-soft); color: var(--color-ledger); }
+.excel-pane button { cursor: pointer; }
+.excel-pane button:disabled { cursor: default; }
+.excel-pane [role="tabpanel"] > div > .p-4 { padding: 10px; }
+.excel-pane [role="tabpanel"] ol li { grid-template-columns: 30px minmax(0,1fr); gap: 8px; padding-inline: 8px; }
+@media (max-height: 450px) {
+  .excel-pane .research-welcome { padding-block: 16px; }
+  .excel-pane .research-welcome h1 { font-size: 19px; max-width: none; }
+  .excel-pane .research-welcome p { margin-top: 6px; font-size: 13px; line-height: 1.5; }
+  .excel-pane form > p { display: none; }
+}
