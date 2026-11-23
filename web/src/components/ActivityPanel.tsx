@@ -43,7 +43,7 @@ function Row({ event, titles, onOpenPassage }: { event: Progress; titles: Record
     finished: "",
   };
   return (
-    <li className="grid grid-cols-[20px_1fr_auto] gap-2 py-1.5">
+    <li className="activity-row grid grid-cols-[20px_minmax(0,1fr)_auto] gap-2 py-1.5">
       <svg aria-hidden viewBox="0 0 16 16" className={`mt-0.5 h-4 w-4 ${tone}`}>
         <path d={ICONS[event.kind]} fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
@@ -64,13 +64,13 @@ function Row({ event, titles, onOpenPassage }: { event: Progress; titles: Record
         {event.kind === "search" && hits.length > 0 && (
           <ul className="mt-1 flex flex-wrap gap-1">
             {hits.map((hit) => (
-              <li key={`${hit.source_id}-${hit.locator}`}>
+              <li className="min-w-0 max-w-full" key={`${hit.source_id}-${hit.locator}`}>
                 <button
                   type="button"
                   disabled={!hit.locator}
                   title={!hit.locator ? "Discovery result — evidence becomes available after the source is read" : undefined}
                   onClick={() => hit.locator && onOpenPassage({ source_id: hit.source_id, locator: hit.locator, quote: "" })}
-                  className="rounded border border-rule px-1.5 py-0.5 text-xs text-ink-soft hover:border-ledger"
+                  className="max-w-full whitespace-normal text-left rounded border border-rule px-1.5 py-0.5 text-xs text-ink-soft hover:border-ledger"
                 >
                   {shortSource(hit.source_id, titles[hit.source_id] ?? hit.title)} {hit.locator}
                 </button>
@@ -108,7 +108,7 @@ export function ActivityPanel({ turn, events, titles, onOpenPassage }: Props) {
   }
   const rows = events.filter(Boolean);
   return (
-    <div className="h-full overflow-y-auto px-5 py-4">
+    <div className="activity-panel h-full overflow-y-auto px-5 py-4">
       <p className="text-sm text-ink-faint">Activity for</p>
       <p className="font-medium">{turn.question}</p>
 

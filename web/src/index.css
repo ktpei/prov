@@ -75,7 +75,6 @@ mark.quote {
 .excel-pane .pane-header { padding: 14px 40px 10px 16px; }
 .excel-pane .pane-header > div { flex-wrap: nowrap; gap: 8px; }
 .excel-pane .pane-header button { padding: 4px 8px; font-size: 12px; white-space: nowrap; }
-.excel-pane .pane-header p { margin: 6px 0 0 32px; font-size: 11px; }
 .pane-nav { display: flex; flex-shrink: 0; gap: 20px; padding: 0 16px; border-bottom: 1px solid var(--color-rule); background: white; overflow-x: auto; }
 .pane-nav button { padding: 10px 0; border-bottom: 2px solid transparent; color: var(--color-ink-soft); font-size: 13px; white-space: nowrap; }
 .pane-nav button[aria-pressed="true"] { border-color: var(--color-ledger); color: var(--color-ledger); font-weight: 600; }
@@ -103,7 +102,7 @@ mark.quote {
 .excel-pane button { cursor: pointer; }
 .excel-pane button:disabled { cursor: default; }
 .excel-pane [role="tabpanel"] > div > .p-4 { padding: 10px; }
-.excel-pane [role="tabpanel"] ol li { grid-template-columns: 30px minmax(0,1fr); gap: 8px; padding-inline: 8px; }
+.excel-pane .evidence-lines > li { grid-template-columns: 30px minmax(0,1fr); gap: 8px; padding-inline: 8px; }
 @media (max-height: 450px) {
   .excel-pane .research-welcome { padding-block: 16px; }
   .excel-pane .research-welcome h1 { font-size: 19px; max-width: none; }
@@ -124,3 +123,8 @@ mark.quote {
 .selection-preview { max-height: 120px; max-width: 100%; overflow: auto; margin-top: 6px; background: white; }
 .selection-preview td { border: 1px solid var(--color-rule); padding: 3px 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .selection-note { margin-top: 6px; line-height: 1.4; }
+
+/* Activity keeps its own icon, content and timing columns in narrow panes. */
+.excel-pane .activity-panel { padding: 12px; }
+.excel-pane .activity-row { grid-template-columns: 16px minmax(0, 1fr) auto; gap: 8px; padding-block: 10px; }
+.excel-pane .activity-row > span { white-space: nowrap; }

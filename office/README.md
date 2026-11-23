@@ -100,3 +100,8 @@ remain active; removing execution caps does not remove spending controls. CLI an
 benchmark defaults remain bounded. Regression checks cover a completed 13-step,
 12-tool-call graph run and a spawned worker with the execution caps disabled.
 Restart the backend after changing these settings; existing sessions are in memory.
+
+The evidence and activity views include a **Back to research** button. Activity
+uses separate icon, wrapping content, and time/cost columns to fit narrow task
+panes. The header omits the provider label and the welcome view omits introductory
+body copy. Live research remains available through the question composer.

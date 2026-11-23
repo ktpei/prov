@@ -54,7 +54,6 @@ export function Conversation(props: Props) {
   if (session.turns.length === 0) {
     return <div className="research-welcome py-5">
       <h1 className="text-lg font-semibold">Research your workbook</h1>
-      <p className="mt-2 text-sm text-ink-soft">Every figure links to its source. Ask about a company, compare reported results, or attach cells from your workbook.</p>
     </div>;
   }
 

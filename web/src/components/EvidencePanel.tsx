@@ -123,7 +123,7 @@ export function EvidencePanel({ corpus, citation, onOpenDocument }: Props) {
         )}
       </div>
       <div ref={box} className="relative min-h-0 flex-1 overflow-y-auto bg-chrome p-4">
-        <ol className="mx-auto max-w-[760px] rounded-sm border border-paper-rule bg-paper py-3 font-serif text-[14.5px] leading-[1.6] shadow-[0_1px_0_#d3d9e0]">
+        <ol className="evidence-lines mx-auto max-w-[760px] rounded-sm border border-paper-rule bg-paper py-3 font-serif text-[14.5px] leading-[1.6] shadow-[0_1px_0_#d3d9e0]">
           {window.lines.map((line) => {
             const isCited = line.line >= range[0] && line.line <= range[1];
             return (

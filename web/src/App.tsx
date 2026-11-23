@@ -206,7 +206,7 @@ export default function App() {
 
   return (
     <div className={inExcelPane ? "excel-pane flex h-full flex-col" : "flex h-full flex-col"}>
-      <Header config={config} busy={busy} onNew={() => void startConversation(session.corpus)} />
+      <Header busy={busy} onNew={() => void startConversation(session.corpus)} />
       {inExcelPane && <nav aria-label="Pane navigation" className="pane-nav">
         <button aria-pressed={paneView === "chat"} onClick={() => setPaneView("chat")}>Research</button>
         {TABS.filter(({ id }) => id === "evidence" || id === "activity" || !!session.workbook).map(({ id, label }) => (
@@ -274,6 +274,13 @@ export default function App() {
               );
             })}
           </div>
+          {inExcelPane && (
+            <div className="shrink-0 border-b border-rule px-3 py-2">
+              <button type="button" className="rounded px-2 py-1.5 text-sm text-ledger hover:bg-ledger-soft" onClick={() => setPaneView("chat")}>
+                <span aria-hidden="true">← </span>Back to research
+              </button>
+            </div>
+          )}
           <div className="min-h-0 flex-1" role="tabpanel">
             {tab === "evidence" && (
               <EvidencePanel

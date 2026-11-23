@@ -25,7 +25,7 @@ for (const width of [270,320,350]) {
     await expect(page.locator('mark.quote')).toContainText('Reported revenue');
     await page.screenshot({path:`/tmp/provenance-new-evidence-${width}.png`});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
-    await page.getByRole('button',{name:'Research',exact:true}).click();
+    await page.getByRole('button',{name:'Back to research',exact:true}).click();
     await expect(page.getByRole('textbox',{name:'Question',exact:true})).toBeVisible();
   });
 }
