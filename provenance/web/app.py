@@ -17,7 +17,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from provenance.controls import positive
-from provenance.web.chat_sources import CONTEXT_LIMIT, compose_question
+from provenance.web.chat_sources import CONTEXT_LIMIT, _content, compose_question
 from provenance.web.ledger import Ledger
 from provenance.web.workbook import (
     MAX_BYTES,
@@ -565,6 +565,65 @@ def create_app(*, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
     def cell_order(proposal):
         row, col, _, _ = parse_range(proposal["cell"])
         return (proposal["sheet"], row, col)
+
+    def excel_plan(session, body):
+        snapshot = session.snapshot
+        ids = body.proposal_ids
+        if session.running:
+            raise HTTPException(409, "Wait for the current question to finish")
+        if not snapshot or body.snapshot_id != snapshot.snapshot_id:
+            raise HTTPException(409, "Workbook snapshot changed; ask again")
+        if not 1 <= len(ids) <= 10 or len(set(ids)) != len(ids):
+            raise HTTPException(409, "Choose 1–10 distinct proposals")
+        edits = []
+        for pid in ids:
+            proposal = session.proposals.get(pid)
+            if (
+                not proposal
+                or proposal["status"] != "pending"
+                or (proposal["snapshot_id"] != snapshot.snapshot_id)
+            ):
+                raise HTTPException(409, "Unknown, stale or already applied proposal")
+            try:
+                snapshot.validate_edit_target(proposal["sheet"], proposal["cell"])
+                row, col, _, _ = parse_range(proposal["cell"])
+                source_cell = snapshot._values[proposal["sheet"]].cell(row, col)
+                if source_cell.data_type == "e":
+                    raise WorkbookError("Excel error cells cannot be edited")
+                old = source_cell.value
+                if old is not None and not isinstance(old, (str, int, float, bool)):
+                    raise WorkbookError("This input type is not supported for live Excel edits")
+                new = _content(proposal["new_content"])
+            except ValueError as exc:
+                raise HTTPException(409, str(exc)) from exc
+            edits.append(
+                {
+                    "id": pid,
+                    "sheet": proposal["sheet"],
+                    "cell": proposal["cell"],
+                    "old_content": old,
+                    "new_content": new,
+                }
+            )
+        if len({(e["sheet"], e["cell"]) for e in edits}) != len(edits):
+            raise HTTPException(409, "Choose one proposal per cell")
+        return edits
+
+    @app.post("/api/sessions/{sid}/excel/apply-plan")
+    def prepare_excel_apply(sid: str, body: ExportBody):
+        session = session_or_404(sid)
+        with session.lock:
+            return {"snapshot_id": body.snapshot_id, "edits": excel_plan(session, body)}
+
+    @app.post("/api/sessions/{sid}/excel/applied")
+    def record_excel_apply(sid: str, body: ExportBody):
+        # Host receipt: the server cannot independently inspect the open workbook.
+        session = session_or_404(sid)
+        with session.lock:
+            excel_plan(session, body)
+            for pid in body.proposal_ids:
+                session.proposals[pid].update(status="applied", applied_at=_now())
+        return {"ok": True, "verification": "excel_client_readback"}
 
     @app.post("/api/sessions/{sid}/exports")
     def create_export(sid: str, body: ExportBody):
