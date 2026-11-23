@@ -63,3 +63,15 @@ class NavigationComparisonTests(unittest.TestCase):
         result = compare(self.bundle, self.before, self.after)["groups"]["all_selected"]
         self.assertEqual(result["arms"][1]["scorable"], 0)
         self.assertEqual(result["arms"][1]["quote_valid"], 1)
+
+    def test_retained_reservation_requires_unchanged_reviewed_record(self):
+        row = self.after["records"][0]
+        row["cost_uncertain"] = True
+        self.after["continuations"] = [
+            {"retained_uncertain_records": {row["id"]: canonical_hash(row)}}
+        ]
+        result = compare(self.bundle, self.before, self.after)["groups"]["all_selected"]
+        self.assertEqual(result["arms"][1]["retained_uncertain_cost_records"], 1)
+        row["accounted_cost_usd"] = 0.5
+        with self.assertRaisesRegex(ValueError, "finished, settled"):
+            compare(self.bundle, self.before, self.after)

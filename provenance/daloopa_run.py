@@ -12,6 +12,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from provenance.agent import Limits, Trace
+from provenance.benchmark_resume import continue_ledger
 from provenance.benchmarks import canonical_hash
 from provenance.controls import positive
 from provenance.daloopa import PROTECTED, ROOT, load, validate
@@ -138,6 +139,8 @@ def run_benchmark(
     per_task_usd=0.05,
     execute=run_graph,
     navigation="baseline",
+    continue_from=None,
+    retain_uncertain=False,
 ):
     if navigation not in {"baseline", "document-v1", "document-v2"}:
         raise ValueError("Unknown navigation policy")
@@ -229,6 +232,25 @@ def run_benchmark(
         ],
     }
     ledger_path = output / "submission.json"
+    if continue_from:
+        ledger = continue_ledger(
+            ledger,
+            continue_from,
+            rows_key="records",
+            retain_uncertain=retain_uncertain,
+            policy_keys=(
+                "model",
+                "limits",
+                "max_output_tokens",
+                "instructions_sha256",
+                "tool_schema_sha256",
+                "source_access",
+                "corpus_manifest_sha256",
+                "exa_request_cap",
+                "navigation",
+            ),
+        )
+        score(bundle, ledger)  # Verify preserved records before any new request.
     write_json(ledger_path, ledger)
     review_rows = []
     for row in ledger["records"]:
@@ -316,6 +338,8 @@ def main():
     parser.add_argument("--corpus", type=Path)
     parser.add_argument("--web", action="store_true", help="Enable paid Exa search/contents")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--continue-from", type=Path)
+    parser.add_argument("--retain-uncertain-reservations", action="store_true")
     spending = parser.add_mutually_exclusive_group()
     spending.add_argument("--budget-usd", type=float)
     spending.add_argument("--no-spend-limit", action="store_true")
@@ -368,6 +392,8 @@ def main():
         web_key=web_key,
         web_cap=web_cap,
         navigation=args.navigation,
+        continue_from=args.continue_from,
+        retain_uncertain=args.retain_uncertain_reservations,
         budget_usd=None
         if args.no_spend_limit
         else (args.budget_usd if args.budget_usd is not None else 0.5),

@@ -7,6 +7,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from provenance.benchmark_resume import continue_ledger
 from provenance.benchmarks import canonical_hash, load_bundle, score_run
 from provenance.controls import Budget, LimitReached, deadline, positive
 from provenance.experiment import write_json
@@ -60,7 +61,17 @@ def parse_output(response, *, structured):
     return parsed, "parsed"
 
 
-def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60):
+def run_prepared(
+    bundle,
+    model,
+    output,
+    *,
+    budget_usd,
+    per_task_usd,
+    timeout=60,
+    continue_from=None,
+    retain_uncertain=False,
+):
     """One request per selected task. A crashed directory is never automatically resumed."""
     positive(budget_usd, "aggregate budget")
     positive(per_task_usd, "task budget")
@@ -121,9 +132,16 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
         ],
     }
     path = output / "submission.json"
+    if continue_from:
+        ledger = continue_ledger(
+            ledger, continue_from, rows_key="predictions", retain_uncertain=retain_uncertain
+        )
+        score_run(bundle, ledger)
     write_json(path, ledger)
     references = {task["id"]: task["reference"] for task in bundle["tasks"]}
     for payload, row in zip(bundle["inputs"], ledger["predictions"], strict=True):
+        if row["status"] != "not_started":
+            continue
         if references[payload["id"]].get("requires_review"):
             row.update(
                 status="reference_review_required",
@@ -195,6 +213,8 @@ def main():
     parser.add_argument("--timeout", type=float, default=60)
     parser.add_argument("--reasoning", choices=("baseline", "precision-v1"), default="baseline")
     parser.add_argument("--max-output-tokens", type=int, default=2000)
+    parser.add_argument("--continue-from", type=Path)
+    parser.add_argument("--retain-uncertain-reservations", action="store_true")
     args = parser.parse_args()
     bundle = load_bundle(args.prepared)
     # Validate the bundle and condition before constructing a live provider.
@@ -213,10 +233,17 @@ def main():
     runner = run_prepared
     extra = {}
     if bundle["manifest"]["source"]["dataset"] == "convfinqa":
+        if args.continue_from or args.retain_uncertain_reservations:
+            parser.error("Explicit continuation is not supported for conversations")
         from provenance.conversation_run import run_conversations
 
         runner = run_conversations
         extra["per_turn_usd"] = args.per_turn_usd
+    else:
+        extra.update(
+            continue_from=args.continue_from,
+            retain_uncertain=args.retain_uncertain_reservations,
+        )
     ledger = runner(
         bundle,
         model,

@@ -199,3 +199,40 @@ This tests additional reasoning allowance as a distinct compute treatment; it is
 not attributed solely to prompt quality. Other suites and the already-running
 full Daloopa policies remain unchanged. CLI exposes `--max-output-tokens` with its
 original2,000 default for explicit, recorded budget experiments.
+
+## Provider interruption and explicit continuation
+
+The four active batches stopped when OpenRouter reported its project key's
+$1 daily allowance exhausted. Read-only account metadata reported remaining0 and
+reset2026-11-24T00:00:00Z. This is an infrastructure interruption, not evidence
+about answer quality. No more inference requests are authorized by a restored
+allowance until that allowance is actually available; no credential rotation or
+limit bypass is performed.
+
+At interruption, Daloopa baseline had130 attempted and369 untouched questions;
+v2 had83 attempted and416 untouched. Both preserve the reserved placeholder.
+FinQA4,000-token arms had3 baseline and29 precision questions untouched; each
+also retains the unresolved reference without inference. These unequal prefixes
+must not be reported as a paired full comparison.
+
+Continuation uses a new output directory with `--continue-from` pointing to the
+prior `submission.json`. `--retain-uncertain-reservations` explicitly retains
+conservative unsettled costs after review; it does not mark billing as certain.
+Completed and failed attempts are immutable and never retried. Only skipped,
+undispatched questions execute. Prepared selection, model, prompts, inference
+limits, prices and total budget must match; prior costs consume that same total
+budget. Daloopa inference module hashes must also match, excluding the driver
+which gains this operational continuation support. Pending/crashed requests
+cannot be resumed through this path. Prior submission hashes and retained-record
+hashes are recorded, and comparison rejects changed or unreviewed uncertain rows.
+
+Keep original runs and frozen policy snapshots. Report infrastructure failures
+in full denominators and application cost estimates with retained reservations.
+Do not compare partial arms as if they were complete or tune on partial full-run
+outcomes. Fiscal-period alignment and table semantics remain unresolved research
+targets for a subsequent separately frozen experiment.
+
+Continuation verification: `yarn lint` and `yarn test` passed (647 tests), including
+offline tests for immutable failures, reserved-issuer preservation, exact carryover
+of cost reservations, changed-policy rejection, pending-request rejection and
+hash-bound review of uncertain billing. No paid calls are made by those tests.

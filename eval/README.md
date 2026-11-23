@@ -168,7 +168,8 @@ samples; no Daloopa retrieval accuracy is inferred from them.
 
 [November 23 improvement loop](document-navigation-loop-2026-11-23.md) and
 [paired quick results](reports/navigation-loop-2026-11-23/quick-results.md) document
-two navigation treatments, unchanged grading, and full comparisons in progress.
+two navigation treatments and unchanged grading. Full comparisons are interrupted
+by the provider's daily key allowance; completed quick results are not full results.
 
 [Interpretation of the November results](reports/benchmark-interpretation-2026-11-22.md)
 explains coverage, numerical accuracy, scoring corrections, limitations, and the

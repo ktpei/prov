@@ -8,6 +8,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from provenance.benchmark_resume import reviewed_uncertainty
 from provenance.benchmarks import canonical_hash
 from provenance.daloopa import load
 from provenance.daloopa_score import check_quotes, score
@@ -15,9 +16,7 @@ from provenance.daloopa_score import check_quotes, score
 
 def compare(bundle, baseline, candidate):
     for ledger in (baseline, candidate):
-        if ledger["status"] != "finished" or any(
-            row.get("cost_uncertain") for row in ledger["records"]
-        ):
+        if ledger["status"] != "finished" or not reviewed_uncertainty(ledger):
             raise ValueError("Compare finished, settled runs only")
     for key in ("prepared_sha256", "profile", "pricing", "budget_usd"):
         if baseline[key] != candidate[key]:
@@ -84,6 +83,9 @@ def compare(bundle, baseline, candidate):
                     ),
                     "tool_requests": dict(tool_counts),
                     "cost_usd": sum(r.get("accounted_cost_usd", 0) for r in rows),
+                    "retained_uncertain_cost_records": sum(
+                        bool(r.get("cost_uncertain")) for r in rows
+                    ),
                     "task_seconds": sum(
                         r.get("report", {}).get("metrics", {}).get("latency_seconds", 0)
                         for r in rows
@@ -113,6 +115,7 @@ def compare(bundle, baseline, candidate):
         "Combined ingestion/navigation treatment; live retrieval and provider nondeterminism remain confounders.",
         "Public development questions; outside-quick results are not guaranteed issuer-unseen.",
         "Quote validity is not semantic financial support; no human-supported accuracy inferred.",
+        "Costs are application estimates, including explicitly retained uncertain reservations where present.",
     ]
     return report
 

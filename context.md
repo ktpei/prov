@@ -8,9 +8,13 @@ source-local finding, bounded reads and context prioritization. Baseline remains
 available. [Paired quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md):
 within-1% success 6/25 baseline, 11/25 v1, 12/25 v2; exact 4/25, 9/25, 9/25.
 V2 completes all25 and costs $0.801 versus $1.083 baseline. Agent review still finds
-period/semantic failures; quote validity is not supported accuracy. Frozen full
-baseline/v2 comparisons and a separate tool-free precision experiment are running.
-Lint and 642 tests passed before those launches. Full-suite improvement is pending.
+period/semantic failures; quote validity is not supported accuracy. All 201 selected
+tool-free controls finished: precision guidance improves FinQA from50/96 to59/96,
+with more output-length failures (16 to25). Frozen full baseline/v2 runs and the
+separate4,000-token FinQA ablation stopped at OpenRouter's $1/day key allowance.
+Explicit continuation preserves attempted outcomes and uncertain reservations;
+only untouched questions may execute in a new directory. Full-suite improvement
+is pending restored provider allowance and completion.
 
 ## Daloopa quick/full and Exa — 2026-11-20
 
