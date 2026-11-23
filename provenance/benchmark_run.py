@@ -194,6 +194,7 @@ def main():
     parser.add_argument("--per-turn-usd", type=float, default=0.02)
     parser.add_argument("--timeout", type=float, default=60)
     parser.add_argument("--reasoning", choices=("baseline", "precision-v1"), default="baseline")
+    parser.add_argument("--max-output-tokens", type=int, default=2000)
     args = parser.parse_args()
     bundle = load_bundle(args.prepared)
     # Validate the bundle and condition before constructing a live provider.
@@ -205,7 +206,7 @@ def main():
         os.environ.get("OPENROUTER_MODEL"),
         os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
         os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
-        max_output=2000,
+        max_output=args.max_output_tokens,
         instructions=INSTRUCTIONS if args.reasoning == "baseline" else PRECISION_INSTRUCTIONS,
         tool_schemas=[],
     )

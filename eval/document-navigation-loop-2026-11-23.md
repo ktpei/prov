@@ -181,3 +181,21 @@ general provider behavior, but provides no basis to claim that toggling that opt
 restores table structure. It is not included in benchmark scores or adopted by the
 candidate. A native structured parser would need a separately tested acquisition
 path and geometry validation; it is not added speculatively.
+
+## Precision results and output-budget ablation
+
+All 201 selected controls completed as batches with frozen grading. CFA-Easy moves
+65/70 to66/70; CFA-Challenge stays25/30; TAT-QA stays4/4. FinQA improves50/96 to59/96
+scorable cases, with one additional unresolved reference retained. Paired FinQA
+transitions are14 fail-to-pass and5 pass-to-fail. However, output-length failures
+increase from16 to25. Prompt improvement and task completion must be reported
+separately rather than describing every failure as incorrect financial reasoning.
+
+Next frozen ablation: run the same97 selected FinQA cases (96 scorable) once under
+each prompt with4,000 maximum output tokens instead of2,000. Keep model, inputs,
+reference, $0.03 task ceiling and60-second timeout unchanged. Compare the complete
+2×2 prompt/output-budget grid, including regressions, actual costs and failures.
+This tests additional reasoning allowance as a distinct compute treatment; it is
+not attributed solely to prompt quality. Other suites and the already-running
+full Daloopa policies remain unchanged. CLI exposes `--max-output-tokens` with its
+original2,000 default for explicit, recorded budget experiments.
