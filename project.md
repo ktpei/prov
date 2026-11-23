@@ -512,7 +512,7 @@ real Excel host verification remains pending.
 November 23 update: [controlled navigation loop](eval/document-navigation-loop-2026-11-23.md)
 implements and tests two ingestion/navigation treatments. Quick25 within-1% results
 rise from 6 baseline to 11 then12, with remaining semantic period failures. Full
-baseline and selected v2 runs stopped at the provider's daily key allowance;
+baseline and selected v2 runs resumed after a provider daily-allowance interruption;
 no full-suite gain is yet claimed. Explicit continuation preserves all attempted
 outcomes and retained cost reservations, executing only untouched questions.
 

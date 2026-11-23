@@ -528,8 +528,8 @@ The [navigation improvement loop](eval/document-navigation-loop-2026-11-23.md)
 adds versioned document ingestion and finding. Use `--navigation document-v2` for
 the selected pilot treatment; `baseline` remains available for comparisons.
 [Measured quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md)
-improve numerical coverage. Full-suite verification is interrupted by the provider's
-daily key allowance; no full-suite improvement is yet established.
+improve numerical coverage. Full-suite verification resumed after a provider
+allowance interruption; no full-suite improvement is yet established.
 
 The [Daloopa benchmark guide](eval/daloopa-benchmark.md) adds a fixed 25-question
 quick mode and preserves the full 500-question inventory alongside the existing

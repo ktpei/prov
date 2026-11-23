@@ -236,3 +236,40 @@ Continuation verification: `yarn lint` and `yarn test` passed (647 tests), inclu
 offline tests for immutable failures, reserved-issuer preservation, exact carryover
 of cost reservations, changed-policy rejection, pending-request rejection and
 hash-bound review of uncertain billing. No paid calls are made by those tests.
+
+## Restored allowance and completed FinQA grid
+
+At21:07 UTC on November23, read-only provider metadata showed a $5 daily key limit
+with $3.971789 remaining. Both full navigation runs resumed from untouched questions
+using verified frozen inference modules and new continuation directories. The
+original stopped runs remain unchanged. These full comparisons are running;
+their numerical improvement is not yet established.
+
+The FinQA output-budget ablation is complete. All four saved scores reproduce
+offline exactly, and every previously dispatched continuation record is unchanged.
+
+| Prompt | Output-token cap | Correct /96 | Completed answers | Length failures | Estimated cost |
+|---|---:|---:|---:|---:|---:|
+| Original |2,000|50|80|16|$0.263|
+| Precision guidance |2,000|59|71|25|$0.289|
+| Original |4,000|47|91|4|$0.308|
+| Precision guidance |4,000|64|83|12|$0.400|
+
+Both4,000-token arms additionally retain one provider-allowance failure without
+retry. Each arm selected97 tasks; the unresolved MRO reference remains outside
+the96 scorable denominator. Costs include conservative uncertain reservations,
+not verified invoice totals. The metric is the existing adapted answer-only metric.
+
+At4,000 tokens, guidance produces20 fail-to-pass transitions and3 regressions
+versus the original prompt. Raising the guided arm's cap produces9 gains and4
+regressions. Raising the original prompt's cap produces6 gains and9 regressions:
+completion improves but accuracy declines. Therefore, more output allowance alone
+is not a justified general remedy. The guided4,000-token setting is the strongest
+measured FinQA candidate, at about39% greater estimated cost than guided2,000.
+This is development selection from single attempts, not unseen-suite validation
+or proof that the same setting improves retrieval. Keep the frozen full navigation
+policies unchanged. Preserve lower-cost options and record this compute tradeoff.
+
+[Reproduced grid and paired outcomes](reports/navigation-loop-2026-11-23/finqa-output-comparison.json)
+bind these findings to all four submission hashes. Fiscal-period and table
+interpretation errors remain separate from output truncation and numerical precision.

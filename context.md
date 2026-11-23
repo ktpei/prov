@@ -14,7 +14,11 @@ with more output-length failures (16 to25). Frozen full baseline/v2 runs and the
 separate4,000-token FinQA ablation stopped at OpenRouter's $1/day key allowance.
 Explicit continuation preserves attempted outcomes and uncertain reservations;
 only untouched questions may execute in a new directory. Full-suite improvement
-is pending restored provider allowance and completion.
+is pending completion. At21:07 UTC the provider allowance was restored; frozen
+full navigation continuations are running. The FinQA output-budget grid completed:
+original2,000=50/96, guided2,000=59/96, original4,000=47/96, guided4,000=64/96.
+Larger output alone does not improve accuracy. Each4,000-token arm retains one
+provider interruption; all scores reproduce and earlier attempts remain unchanged.
 
 ## Daloopa quick/full and Exa — 2026-11-20
 
