@@ -19,6 +19,10 @@ Primary sources checked November 23, 2026:
 | [BrowseComp-Plus](https://arxiv.org/abs/2508.06600), August 8, 2025 | Fixed corpora address opaque/dynamic web-search confounds. Add deterministic synthetic document regressions alongside live evaluation. |
 | [Anthropic tool engineering](https://www.anthropic.com/research/writing-tools-for-agents), September 11, 2025 | Supports concise tool responses, filtering/range selection, explicit boundaries and trajectory-driven iteration. Use a small finder and bounded reads rather than introducing more agents or generated summaries. |
 | [Exa contents documentation](https://exa.ai/docs/contents/quickstart) and canonical build-with-exa skill | Use capped text extraction for document navigation, inspect per-URL statuses, retain durable cost accounting. Extraction completeness is not guaranteed by a successful response. |
+| [Anthropic agent evaluations](https://www.anthropic.com/research/demystifying-evals-for-ai-agents), January 9, 2026 | Distinguish capability gains from regression controls and combine deterministic checks with calibrated semantic review. Keep per-task transitions and execution failures visible. |
+| [ParseBench-2](https://arxiv.org/abs/2611.17400), November 12, 2026 | Parsing evaluation should penalize changed facts and broken structural relations even when most text is recovered. Character coverage alone cannot establish ingestion quality. |
+| [Docling serialization](https://docling-project.github.io/docling/concepts/serialization/), current documentation | JSON/HTML preserve table spans that Markdown cannot fully express. Existing native HTML/table infrastructure should be assessed before adding an expensive new parser; structured extraction is a potential next treatment, not an established improvement here. |
+| [FinMRAGBench](https://aclanthology.org/2026.findings-acl.187/), July 2026 | Financial evidence can span pages/documents; incomplete retrieval and complex reasoning remain distinct failures. Larger text retention does not restore lost chart/table geometry. |
 
 Finance-paper abstracts were inspected without opening their issuer-specific task
 examples. The six FinanceBench reservations and their exposure dispositions remain
@@ -60,6 +64,8 @@ quality and calculation validity remain potential failures to inspect next.
    Daloopa inventory (499 nonreserved), with identical references and $60 per arm
    ceilings. Report full results and the remaining474 outside the quick25
    separately. These are public development comparisons, not unseen validation.
+   The unchanged baseline may begin earlier from an immutable runtime snapshot;
+   it does not depend on quick-run candidate selection.
 4. Rerun the complete eligible prepared existing suites as regression controls.
    Record exact counts, reservation exclusions, unresolved references and any
    issuer-identity limitations before dispatch. Navigation is not used by those
@@ -79,3 +85,30 @@ confounders; synthetic tests isolate access and citation behavior.
 The loop ends this round with a measured decision and a saved report. It does not
 silently consume reserved evaluation content or keep rerunning until scores look
 better. A new hypothesis follows a documented failure analysis and a new policy.
+
+## Execution notes
+
+Lint and 636 tests passed for the initial navigation implementation, including
+synthetic access, citation, cache, budget and context-projection checks. A separate
+read-only review identified and verified fixes for latest-finder context omission
+and character-versus-byte transport sizing before measured runs.
+
+The first quick-arm launches stopped on OpenRouter authentication before inference:
+an invalid inherited key overrode the valid ignored project key. A read-only key
+check returned HTTP 401 for the inherited credential and authenticated the project
+credential. Those setup attempts and provisional reservations remain separately
+recorded. Measured runs explicitly remove inherited keys so the project settings
+apply; this is a setup correction, not best-of answer selection.
+
+Existing-suite metadata audit authorizes 70 prepared CFA-Easy, 30 CFA-Challenge,
+97 FinQA (three LMT cases excluded), and the same four already-exposed TAT-QA
+controls. The remaining 96 TAT-QA cases have unresolved issuer identities and are
+not expanded into. The four repeat controls also do not establish issuer clearance.
+These 201 cases cover eligible prepared subsets, not entire publisher releases.
+Their frozen metadata protocol records exclusions before dispatch. Tool-free
+settings remain unchanged: 2,000 output tokens, 60 seconds, $0.03 task ceiling.
+
+The full baseline uses a copied runtime under
+`runs/navigation-loop-2026-11-23/runtime-baseline`; only protection metadata, not
+protected issuer source documents, accompanied that copy. The original baseline
+implementation is preserved while later candidate work proceeds.
