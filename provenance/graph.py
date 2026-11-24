@@ -6,6 +6,7 @@ process death during a provider request requires billing review before restartin
 
 import json
 import sqlite3
+import sys
 import time
 from contextlib import ExitStack
 from dataclasses import asdict
@@ -166,17 +167,23 @@ def run_graph(
         return node
 
     def model_node(state):
-        if state["model_calls"] >= limits.max_model_calls:
+        if limits.max_model_calls is not None and state["model_calls"] >= limits.max_model_calls:
             raise LimitReached("model_call_limit")
         final_step = getattr(model, "final_step", None)
         final_only = callable(final_step) and (
-            state["model_calls"] == limits.max_model_calls - 1
-            or state["tool_calls"] >= limits.max_tool_calls
+            (
+                limits.max_model_calls is not None
+                and state["model_calls"] == limits.max_model_calls - 1
+            )
+            or (limits.max_tool_calls is not None and state["tool_calls"] >= limits.max_tool_calls)
         )
         if final_only:
             boundary = (
                 "tool_call_limit"
-                if state["tool_calls"] >= limits.max_tool_calls
+                if (
+                    limits.max_tool_calls is not None
+                    and state["tool_calls"] >= limits.max_tool_calls
+                )
                 else ("last_model_turn")
             )
             trace.emit("final_synthesis_required", reason=boundary)
@@ -265,7 +272,7 @@ def run_graph(
         for call in state["response"]["output"]:
             if call.get("type") != "function_call":
                 continue
-            if state["tool_calls"] >= limits.max_tool_calls:
+            if limits.max_tool_calls is not None and state["tool_calls"] >= limits.max_tool_calls:
                 if not callable(getattr(model, "final_step", None)):
                     raise LimitReached("tool_call_limit")
                 if not isinstance(call.get("call_id"), str):
@@ -371,7 +378,9 @@ def run_graph(
     )
     config = {
         "configurable": {"thread_id": thread_id or trace.id},
-        "recursion_limit": limits.max_model_calls * 3 + 5,
+        "recursion_limit": limits.max_model_calls * 3 + 5
+        if limits.max_model_calls is not None
+        else sys.maxsize,
     }
     with ExitStack() as stack:
         if checkpoint_path:
@@ -499,8 +508,10 @@ def run_graph(
                 elapsed=0,
             )
             current.update(initial)
-        available = limits.timeout_seconds - prior_elapsed
-        if available <= 0:
+        available = (
+            None if limits.timeout_seconds is None else limits.timeout_seconds - prior_elapsed
+        )
+        if available is not None and available <= 0:
             current.update(status="stopped", reason="wall_clock_limit")
         elif not (resume and initial["status"] == "completed"):
             try:

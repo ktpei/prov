@@ -79,7 +79,7 @@ export type Config = {
   replay: boolean;
   model: string | null;
   spend: { total_usd: number; cap_usd: number; remaining_usd: number };
-  limits: Record<string, number>;
+  limits: Record<string, number | null>;
   corpora: Corpus[];
 };
 
@@ -89,11 +89,17 @@ export type WorkbookInfo = {
   sha256: string;
   sheets: { name: string; max_row: number; max_col: number }[];
   warnings: string[];
+  export_blockers: string[];
 };
 
-export type Cell = { address: string; display: string; value: string; formula: string | null };
+export type Cell = {
+  address: string; display: string; value: string; formula: string | null;
+  kind: "blank" | "value" | "formula";
+  value_status: "saved_value" | "cached_formula" | "missing_formula_cache";
+  editable: boolean; edit_block_reason: string | null;
+};
 
-export type Grid = { sheet: string; max_row: number; max_col: number; rows: (Cell | null)[][] };
+export type Grid = { snapshot_id: string; start_row: number; start_col: number; sheet: string; max_row: number; max_col: number; rows: (Cell | null)[][] };
 
 export type Proposal = {
   id: string;
@@ -121,6 +127,8 @@ export type ExportRecord = {
   changes: { cell: string; old: string; new: number | string; generated_by: string | null }[];
   created_at: string;
   download_url: string;
+  verification: string;
+  calculation_status: "pending_excel_recalculation";
 };
 
 export type Session = {
@@ -131,6 +139,7 @@ export type Session = {
   context: { sheet: string; range: string } | null;
   proposals: Proposal[];
   exports: ExportRecord[];
+  documents?: DocumentInfo[];
 };
 
 export type SourceLine = {

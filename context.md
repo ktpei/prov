@@ -1,5 +1,78 @@
 # Working context — 2026-11-16
 
+## Document navigation improvement loop — 2026-11-23
+
+[Research and comparison plan](eval/document-navigation-loop-2026-11-23.md):
+versioned ingestion/navigation treatments add larger immutable extracted documents,
+source-local finding, bounded reads and context prioritization. Baseline remains
+available. [Paired quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md):
+within-1% success 6/25 baseline, 11/25 v1, 12/25 v2; exact 4/25, 9/25, 9/25.
+V2 completes all25 and costs $0.801 versus $1.083 baseline. Agent review still finds
+period/semantic failures; quote validity is not supported accuracy. All 201 selected
+tool-free controls finished: precision guidance improves FinQA from50/96 to59/96,
+with more output-length failures (16 to25). Frozen full baseline/v2 runs and the
+separate4,000-token FinQA ablation stopped at OpenRouter's $1/day key allowance.
+Explicit continuation preserves attempted outcomes and uncertain reservations;
+only untouched questions may execute in a new directory. Full-suite improvement
+is pending completion. At21:07 UTC the provider allowance was restored; frozen
+full navigation continuations are running. The FinQA output-budget grid completed:
+original2,000=50/96, guided2,000=59/96, original4,000=47/96, guided4,000=64/96.
+Larger output alone does not improve accuracy. Each4,000-token arm retains one
+provider interruption; all scores reproduce and earlier attempts remain unchanged.
+
+## Daloopa quick/full and Exa — 2026-11-20
+
+Implemented [Daloopa quick25/full500 evaluation](eval/daloopa-benchmark.md),
+preserving the existing suite. Full retains one reserved issuer and 73 cases
+whose references need review; unreviewed numerical matches are not supported
+financial accuracy. Added objective-aware Exa search/highlights and status-checked
+contents access using the canonical build-with-exa guidance. Search/read smoke
+verification succeeded ($0.008 estimate). Lint and 616 tests passed, including
+20 focused Daloopa/Exa tests and pre-existing untracked XBRL tests.
+
+[Fresh existing-suite quick results](eval/reports/external-quick-2026-11-20/report.md):
+CFA-Easy 5/5, CFA-Challenge 4/5, FinQA 2/5 scorable with one additional unresolved
+reference, TAT-QA 4/4. Nineteen model attempts cost an estimated $0.0240540;
+all scores reproduced offline. [Daloopa quick live run](eval/reports/daloopa-quick-2026-11-20/report.md) completed:
+25 attempted, 8 numerical answers, 12 abstentions, 5 stops/failures. Frozen exact
+3/25 and within-1% 6/25; a confirmed minus-sign parser defect gives separate
+post-hoc diagnostic counts 4/25 and 7/25. Estimated cost $1.2211698, no uncertain
+billing. Source navigation is the main bottleneck. Original outputs and scores
+remain unchanged; the parser fix and regression test landed only after the run.
+
+## Browser workbook milestone — 2026-11-20
+
+Implemented the [browser workbook specification](docs/web-workbook-spec.md):
+paged/direct range navigation, keyboard selection, cell inspection with precise
+saved values and formula-cache status, stale-citation protection, and guarded
+input-only proposals/exports. Export reload checks preserve non-target content,
+formulas and comments; audit strings remain text. Complex fidelity-risk workbooks
+are read-only and compressed/expanded uploads are bounded.
+
+The browser still works on immutable uploads. Exported copies request Excel
+recalculation and report calculation pending; formula editing, structural edits,
+server-persistent sessions and Office.js live execution remain later milestones.
+The original model/provider and evaluation policies are unchanged. Verification
+uses offline/synthetic cases and labeled replay, not a new paid model-quality
+assessment or desktop Excel recalculation test.
+
+Verified on the combined working tree: `yarn lint`, all 596 Python tests, the
+frontend production build and six Playwright tests pass. The test count includes
+pre-existing untracked XBRL tests. The rendered workbook inspector was visually
+checked; no paid model batch or desktop Excel recalculation was run for this task.
+
+
+## Cloudflare benchmark rerun — 2026-11-20
+
+[Fresh nine-question development run](eval/reports/cloudflare-live-2026-11-20/report.md):
+8/9 returned answers, 6/9 passed unchanged mechanical checks; estimated cost
+$0.1212464, no uncertain billing flags. Same model/runtime and uncapped setting;
+no runtime edits or batch retries. Packet-01 failed quote validation; packet-04
+and packet-06 returned answers but missed citation anchors. Offline retrieval
+remains 8/8 extraction and 6/8 retrieval coverage. Lint and all 582 tests passed
+(including pre-existing untracked XBRL tests). No held-out evaluation or independent
+semantic accuracy score is claimed. Existing unrelated work remains untouched.
+
 ## Excel planning research — 2026-11-18
 
 Completed an initial primary-source landscape and Office.js constraints review:
@@ -582,3 +655,42 @@ was resolved by local import and authenticated push. Evaluation work uses
 company-research implementation plus evaluation baseline; it is not merged.
 Local GitHub authentication works for publishing.
 The API key was used for approved requests, never written into repository files.
+
+## Excel Office.js integration (2026-11-20)
+
+A sideloadable task pane now attaches selected Excel cells to research questions
+and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
+Live cell proposal application and continuous synchronization are not implemented;
+real Excel host verification remains pending.
+
+## Live Excel research — 2026-11-22
+
+The app now routes research through Exa rather than fixed evidence packets.
+Product replay mode, sample questions, and demo workbook loading are removed.
+Excel uses one view at a time with Research/Details navigation, responsive at
+270–350 pixels wide. Historical benchmark replay remains offline and separate.
+See `office/README.md` for provider configuration and installation.
+
+Verification on 2026-11-22: live Exa search returned five results and an explicit
+source read returned numbered evidence. The full live answer smoke failed before
+any tool call because OpenRouter returned an authentication error; replace the
+configured OpenRouter credential and restart the backend to verify full answers.
+The app never falls back to recorded answers.
+
+
+## Research configuration — 2026-11-23
+
+Credentials remain in ignored `.env`. `research.config.json` is the authoritative
+Excel/web configuration for model, accounting rates, Exa request allowance,
+per-question cap, and total ledger cap. The launcher validates and passes these
+settings to existing workers internally; benchmark CLI behavior is unchanged.
+Automatic price discovery remains unimplemented; supplied accounting rates are
+preserved. Restart the backend after config changes.
+
+Credential loading correction (2026-11-23): local `.env` values override stale
+inherited variables. Direct authentication with the file key returned HTTP 200;
+the earlier 401 reports came from a different inherited key, not the file key.
+
+After restarting with corrected credential precedence, the live Exa documentation
+question completed successfully with five tool calls and a validated cited answer.
+The earlier authentication blocker is resolved.

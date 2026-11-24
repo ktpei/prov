@@ -9,12 +9,12 @@ export default defineConfig({
     acceptDownloads: true,
   },
   webServer: {
-    command: "uv run python -m provenance.web --replay --port 8799",
+    command: "uv run python -m provenance.web --port 8799",
     cwd: "..",
     url: "http://127.0.0.1:8799/api/config",
     reuseExistingServer: false,
     timeout: 60_000,
-    // Replay only: blank key keeps live calls off even when .env has one.
+    // Browser tests intercept API requests; never call live providers.
     env: { WEB_LEDGER: "runs/web/e2e-ledger.jsonl", OPENROUTER_API_KEY: "", WEB_ACCESS_CODE: "" },
   },
 });

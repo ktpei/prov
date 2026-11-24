@@ -38,7 +38,7 @@ def _omission(message):
 
 
 def project_messages(messages, *, max_tool_result_chars=32_000):
-    """Return a model projection retaining the newest search and read in full.
+    """Retain the newest navigation result (search/find) and read in full.
 
     Older searches are navigation history and are always omitted. Additional old
     reads/results are retained newest-first when they fit. If even the omission
@@ -60,8 +60,8 @@ def project_messages(messages, *, max_tool_result_chars=32_000):
     latest = {}
     for index in outputs:
         name = calls.get(messages[index].get("call_id"))
-        if name in {"search", "read_source"}:
-            latest[name] = index
+        if name in {"search", "find_in_source", "read_source"}:
+            latest["navigation" if name in {"search", "find_in_source"} else name] = index
     required = set(latest.values())
     projected = [dict(message) for message in messages]
     for index in outputs:
@@ -70,7 +70,10 @@ def project_messages(messages, *, max_tool_result_chars=32_000):
     if tool_result_chars(projected) > max_tool_result_chars:
         raise LimitReached("tool_context_size_limit")
     for index in reversed(outputs):
-        if index in required or calls.get(messages[index].get("call_id")) == "search":
+        if index in required or calls.get(messages[index].get("call_id")) in {
+            "search",
+            "find_in_source",
+        }:
             continue
         previous = projected[index]
         projected[index] = dict(messages[index])

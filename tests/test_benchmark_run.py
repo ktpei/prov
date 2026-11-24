@@ -9,7 +9,12 @@ from unittest.mock import Mock
 
 from langchain_core.messages import AIMessage
 
-from provenance.benchmark_run import INSTRUCTIONS, parse_output, run_prepared
+from provenance.benchmark_run import (
+    INSTRUCTIONS,
+    PRECISION_INSTRUCTIONS,
+    parse_output,
+    run_prepared,
+)
 from provenance.benchmarks import canonical_hash, prepare
 from provenance.controls import Budget
 from provenance.langchain_model import OpenRouterModel
@@ -67,6 +72,18 @@ def fake(step):
 
 
 class BenchmarkRunTests(unittest.TestCase):
+    def test_precision_profile_records_actual_prompt_and_preserves_safe_inputs(self):
+        model = fake(Mock(return_value=response()))
+        model.instructions = PRECISION_INSTRUCTIONS
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = run_prepared(
+                prepared(), model, Path(tmp) / "run", budget_usd=0.06, per_task_usd=0.02
+            )
+        self.assertEqual(ledger["prompt_version"], "finance-precision-v1")
+        self.assertEqual(ledger["instructions"], PRECISION_INSTRUCTIONS)
+        self.assertEqual(model.step.call_count, 3)
+        self.assertNotIn("GOLD_SENTINEL", str(model.step.call_args_list))
+
     def test_model_sees_no_reference_and_all_outputs_scored(self):
         with tempfile.TemporaryDirectory() as tmp:
             seen = []

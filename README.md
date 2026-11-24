@@ -15,6 +15,9 @@ rules, and semester deliverables.
 
 ## Planning documents
 
+- [Browser workbook milestone](docs/web-workbook-spec.md) defines the implemented
+  input-review workflow and its boundary before formula editing or live Excel.
+
 - [Excel financial agent research](docs/excel-agent-research-2026-11-18.md) compares
   current products, platform constraints, and proposed live-Excel workflows.
   Research is complete for an initial planning discussion; implementation choices
@@ -35,13 +38,10 @@ The active milestone is company-context tooling and evaluation. Finance accuracy
 benchmarking is active: [external benchmark preparation and scoring](eval/external-benchmarks.md)
 now support FinEval, FinQA, FinanceBench, TAT-QA, and ConvFinQA. Two small
 preregistered public development pilots are complete; annotation concerns remain
-separate from automatic scores. The eventual product interface is an Excel add-in.
+separate from automatic scores. The product includes a sideloadable Office.js Excel add-in.
 
-The **browser MVP** (chatbot workstream) now runs locally: cited chat over the
-frozen evidence sets, live tool activity, follow-up questions, `.xlsx` upload with
-range context, and agent-proposed cell edits that are written only to a separate
-copy after explicit approval. See [Web app](#web-app) and the
-[design](docs/web-mvp-design.md).
+The research app and Excel task pane use live Exa search with cited source reads,
+follow-up questions, and workbook context. See [Excel setup](office/README.md).
 
 ## Web app
 
@@ -55,61 +55,50 @@ Live answers need an OpenRouter key in a local, gitignored `.env` (the server
 loads it at startup; never commit it):
 
 ```sh
-OPENROUTER_API_KEY=sk-or-...
-OPENROUTER_MODEL=deepseek/deepseek-v4.1-flash-1017
-OPENROUTER_INPUT_USD_PER_MILLION=0.30
-OPENROUTER_OUTPUT_USD_PER_MILLION=1.20
+OPENROUTER_API_KEY=...
+EXA_API_KEY=...
 ```
 
-Without a key, or with `uv run python -m provenance.web --replay`, the app runs
-**scripted replay**: recorded tool calls for two Cloudflare questions (the revenue
-and guidance starter, and the workbook guidance check) run against the real evidence
-and validators, with no model call and no cost. In replay mode the UI shows only those
-scripted questions. Replay is labeled everywhere it appears, including in exported
-workbooks, and cannot answer unscripted questions.
+Model choice, accounting rates, and spend limits live in `research.config.json`.
+The web launcher loads this config at startup; restart after changing it.
+Live research requires both provider keys and valid config.
+Missing configuration disables research. There is no replay or sample-data fallback.
 
 What you can do:
 
-1. Pick an evidence set: the Cloudflare Q3 2024 packet (release, 10-Q, call
-   transcript, investor day deck) or the five-company earnings excerpts.
+1. Open the app or Excel task pane to research live web sources with Exa.
 2. Ask a question and watch searches, reads, model steps, and running cost stream
    into the Activity tab.
 3. Click any source tag in the answer to open the exact cited lines, with the quote
    highlighted, the original page or section, the archived original, and the public URL.
 4. Ask follow-ups. The last three turns (questions, answers, cited locators) are
    carried as explicit context; the agent must re-read evidence before citing it.
-5. Upload an `.xlsx` (or use the demo Cloudflare model), select a range, and attach
-   it to the next question. Answers can cite workbook cells.
-6. When asked, the agent proposes cell edits with citations. Nothing is written
+5. Upload an `.xlsx`, select a range, and attach
+   it to the next question. Use Go to range or paging to navigate beyond the first
+   preview; inspect saved values, formulas and calculation status. Answers can cite
+   workbook cells.
+6. When asked, the agent proposes ordinary input-value edits with citations. Nothing is written
    until you approve; approval creates a separate copy with a source comment on
-   each changed cell and a `Provenance log` sheet. Excel recalculates formulas on open.
+   each changed cell and a `Provenance log` sheet. The saved copy is reopened to
+   verify changes and preserved formulas; Excel recalculation is requested on open.
+   Calculation remains pending in the browser. Re-upload the copy to review a new version.
 
-Limits per question: 8 model steps, 10 tool calls, 120 s, and $0.10. Live spend is
-recorded in `runs/web/cost-log.jsonl` and capped at `WEB_SPEND_CAP_USD` (default
-$1.00); set `WEB_LEDGER` to use a separate ledger, for example for a demo. Each turn
+The workbook milestone supports `.xlsx` up to 5 MB compressed, 25 MB expanded,
+and 30 worksheets. Formula, merged, table, protected and hidden-sheet targets are
+read-only; fidelity-risk features such as charts, images, pivots and external links
+block edited-copy export. Original files remain unchanged. Sessions are in memory
+and do not survive server restart. See the [spec](docs/web-workbook-spec.md) for
+acceptance checks and later milestones.
+
+Limits per question: 8 model steps, 10 tool calls, 120 s, and `max_turn_usd` in `research.config.json` (default $0.10). Live spend is
+recorded in `runs/web/cost-log.jsonl` and capped at `total_spend_usd` (default
+$1.00); set `WEB_LEDGER` to use a separate ledger. Each turn
 runs in its own worker process (the runtime's deadlines need a main thread), and
 traces are written to `runs/web/traces/`.
 
-### Share a demo link
-
-To let others use the app running on this machine, set an access code in `.env`
-(`WEB_ACCESS_CODE=...`), then run the demo server and a Cloudflare quick tunnel:
-
-```sh
-scripts/demo-server.sh                                   # port 8780, $0.25 demo ledger
-cloudflared tunnel --no-autoupdate --url http://127.0.0.1:8780
-```
-
-The tunnel prints an `https://….trycloudflare.com` link. Visitors enter the access
-code once (HttpOnly cookie, 12 hours). The demo server keeps a separate ledger
-(`runs/web/demo-ledger.jsonl`) with its own cap (`WEB_SPEND_CAP_USD`, default $0.25 in
-the script). The link lasts while this machine, the server, and the tunnel keep
-running; restarting only the server keeps the same link. The browser follows turn
-progress by polling, because the tunnel buffers event streams.
-
 Tests: `corepack yarn test` covers the web backend (workbook snapshots and export,
 workbook tools and citations, ledger, worker, API). `corepack yarn web:e2e` runs the
-full browser loop in replay mode with Playwright.
+live API interface with deterministic provider and Office host fixtures in Playwright.
 On a fresh checkout, install the test browser first with
 `npx --prefix web playwright install chromium` after installing web dependencies.
 
@@ -501,9 +490,18 @@ yarn lint
 yarn test
 ```
 
-Python-only test equivalent: `uv run python -m unittest discover -s tests -v`.
+`yarn test` runs the full suite with compact progress and detailed failures.
+During editing, use a focused subset such as `yarn test -k workbook` or
+`yarn test -p 'test_calculation*.py'`; run the full suite before a PR.
+Add `-v` when individual passing test names are useful.
+
+Python-only test equivalent:
+`uv run --extra benchmark-metrics python -m unittest discover -s tests`.
 Tests cover control flow, limits, citation checks, malformed calls, provider
 failures, cost accounting, frozen-source integrity, and a network-disabled demo.
+The suite also covers evaluation tooling and the web app. Keep tests for distinct
+behavior or regressions; avoid adding tests solely for trivial implementation
+details or duplicating an existing scenario.
 
 ## Design references
 
@@ -516,3 +514,37 @@ failures, cost accounting, frozen-source integrity, and a network-disabled demo.
 
 [project.md](project.md) records scope and acceptance criteria;
 [context.md](context.md) records current verification and remaining work.
+
+## Excel Office.js integration (2026-11-20)
+
+A sideloadable task pane now attaches selected Excel cells to research questions
+and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
+Live cell proposal application and continuous synchronization are not implemented;
+real Excel host verification remains pending.
+
+## Daloopa quick/full benchmarking
+
+The [navigation improvement loop](eval/document-navigation-loop-2026-11-23.md)
+adds versioned document ingestion and finding. Use `--navigation document-v2` for
+the selected pilot treatment; `baseline` remains available for comparisons.
+[Measured quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md)
+improve numerical coverage. Full-suite verification resumed after a provider
+allowance interruption; no full-suite improvement is yet established.
+
+The [Daloopa benchmark guide](eval/daloopa-benchmark.md) adds a fixed 25-question
+quick mode and preserves the full 500-question inventory alongside the existing
+suite. After preparation, `yarn benchmark` and `yarn benchmark:full` show plans;
+paid execution requires `--live` plus document access. Numerical matching and
+source-supported correctness are reported separately.
+
+Token rates estimate costs; they do not set spending limits. Edit
+`research.config.json`: `model`, `input_usd_per_million`,
+`output_usd_per_million`, `exa_max_request_usd`, `max_turn_usd`, and
+`total_spend_usd`. Rates remain the user-supplied 0.40/1.60 accounting estimates;
+automatic provider-price discovery is not implemented. The Excel/web launcher
+bridges this config into the existing worker environment internally, overriding
+stale non-secret environment values. Benchmark CLI configuration is unchanged.
+
+Credential loading correction (2026-11-23): local `.env` values override stale
+inherited variables. Direct authentication with the file key returned HTTP 200;
+the earlier 401 reports came from a different inherited key, not the file key.

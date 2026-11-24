@@ -171,3 +171,12 @@ human reviewer, and execution budget still need implementation-time decisions.
 - ConvFinQA: https://github.com/czyssrs/ConvFinQA
 - Finance Agent v1.1 methodology: https://www.vals.ai/benchmarks/finance_agent
 - Finance Agent v2.1 methodology: https://www.vals.ai/benchmarks/fabv2-1
+
+## Daloopa addition — 2026-11-20
+
+User-selected addition: retain all 500 Daloopa questions and provide a fixed
+25-question quick mode. [Implementation and scoring](daloopa-benchmark.md) are
+available alongside the existing suite. Full mode retains reserved and unresolved
+cases explicitly; it does not replace the reserved validation protocol. Original
+source verification and evidence-bound semantic review remain separate from
+automated numerical matching.

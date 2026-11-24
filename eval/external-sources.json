@@ -73,6 +73,17 @@
       "sha256": "1c69127783879de8cdadb159d2181f39bc3123b8e0ebf74031c3969d69189575",
       "license": "FinanceBench research metadata; source filings retain their rights",
       "filename": "financebench-documents.jsonl"
+    },
+    "daloopa-public": {
+      "dataset": "daloopa",
+      "subset": "financial-retrieval",
+      "source_split": "train",
+      "revision": "af16f65b841cf6a2921de57394127426c6161a13",
+      "url": "https://huggingface.co/datasets/daloopa/financial-retrieval/resolve/af16f65b841cf6a2921de57394127426c6161a13/train.csv",
+      "sha256": "9e2aa220bc51e71e1e19bb63399814dceb06e3e99f11892e4d968837359547cf",
+      "license": "MIT dataset card; underlying company documents retain their rights",
+      "filename": "train.csv",
+      "question_count": 500
     }
   }
 }

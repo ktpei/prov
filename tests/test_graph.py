@@ -84,6 +84,17 @@ class GraphTests(unittest.TestCase):
             )
         )
 
+    def test_unbounded_research_exceeds_previous_call_limits(self):
+        result = run_graph(
+            "Revenue?",
+            ReplayModel([read()] * 12 + [answer()]),
+            self.sources(),
+            Limits(max_model_calls=None, max_tool_calls=None, timeout_seconds=None),
+        )
+        self.assertEqual(result["status"], "completed")
+        self.assertEqual(result["metrics"]["tool_calls"], 12)
+        self.assertEqual(result["metrics"]["model_calls"], 13)
+
     def sources(self):
         return Sources(self.root)
 

@@ -1,0 +1,8 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "input_usd_per_million": 0.4,
+  "output_usd_per_million": 1.6,
+  "exa_max_request_usd": 0.03,
+  "max_turn_usd": 0.1,
+  "total_spend_usd": 1.0
+}

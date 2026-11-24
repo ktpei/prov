@@ -15,15 +15,6 @@ type Props = {
 function Metrics({ turn }: { turn: TurnView }) {
   const m = turn.metrics;
   if (!m) return null;
-  if (turn.mode === "offline_replay") {
-    return (
-      <p className="mt-3 border-t border-rule pt-2 text-xs text-ink-faint">
-        <span className="tabular text-ink-soft">{m.model_calls}</span> recorded model steps and{" "}
-        <span className="tabular text-ink-soft">{m.tool_calls}</span> tool calls replayed against the real
-        evidence; no model call, no cost.
-      </p>
-    );
-  }
   const stats = [
     [`${m.latency_seconds.toFixed(1)} s`, "time"],
     [`${m.model_calls}`, m.model_calls === 1 ? "model step" : "model steps"],
@@ -49,7 +40,6 @@ export function AnswerCard({ turn, proposals, titles, selection, onCite, onShowA
   const mine = proposals.filter((p) => turn.proposal_ids.includes(p.id));
   const pending = mine.filter((p) => p.status === "pending").length;
   const exported = mine.filter((p) => p.status === "exported").length;
-  const replay = turn.mode === "offline_replay";
   const answer = turn.answer;
   const active = (c: Citation) =>
     !!selection && selection.citation.source_id === c.source_id && selection.citation.locator === c.locator;
@@ -82,10 +72,7 @@ export function AnswerCard({ turn, proposals, titles, selection, onCite, onShowA
         ) : (
           <span className="rounded bg-chrome px-1.5 py-0.5 text-ink-soft">Not answerable from this evidence</span>
         )}
-        {replay && (
-          <span className="rounded bg-replay-soft px-1.5 py-0.5 text-replay">Scripted replay, no model call</span>
-        )}
-        {!replay && turn.model && <span className="text-ink-faint">{turn.model}</span>}
+        {turn.model && <span className="text-ink-faint">{turn.model}</span>}
       </div>
       <p className="max-w-[72ch] whitespace-pre-wrap">{answer.answer}</p>
 

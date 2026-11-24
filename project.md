@@ -1,5 +1,15 @@
 # Project scope
 
+## Browser workbook delivery — 2026-11-20
+
+The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
+navigation, formula/cache inspection, approved ordinary input updates and verified
+separate-copy exports. It stops at the downloaded artifact with calculation
+explicitly pending. Formula generation/recalculation, persistent hosted sessions
+and live Excel execution are subsequent scope decisions. The research harness is
+reused; the evaluation reservations and runtime defaults remain unchanged.
+
+
 ## Excel implementation research — 2026-11-18
 
 The [research memo](docs/excel-agent-research-2026-11-18.md) covers Excel agents,
@@ -15,7 +25,7 @@ The `feat/web-chatbot-mvp` workstream is integrated into
 `codex/finance-benchmark-loop`, preserving the current evaluation and harness work.
 The browser supports cited chat, follow-ups, workbook range context, and explicit
 approval of edits to a downloadable copy. See [Web app](README.md#web-app) for
-startup and replay instructions. The Office.js add-in remains future work.
+startup instructions. The Office.js add-in is implemented; see `office/README.md`.
 
 H3 begins with a controller-owned
 [typed read session](eval/assessments/typed-read-authorization-v1/report.md): source
@@ -489,3 +499,51 @@ deployment, a production UI, and a production financial research service.
 [roadmap.md](roadmap.md) maps loose modules and proposed acceptance checks.
 Company-context tooling and evaluation continue alongside the integrated browser
 and workbook MVP. Live Excel integration remains a later backlog.
+
+## Excel Office.js integration (2026-11-20)
+
+A sideloadable task pane now attaches selected Excel cells to research questions
+and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
+Live cell proposal application and continuous synchronization are not implemented;
+real Excel host verification remains pending.
+
+## Daloopa benchmarking — 2026-11-20
+
+November 23 update: [controlled navigation loop](eval/document-navigation-loop-2026-11-23.md)
+implements and tests two ingestion/navigation treatments. Quick25 within-1% results
+rise from 6 baseline to 11 then12, with remaining semantic period failures. Full
+baseline and selected v2 runs resumed after a provider daily-allowance interruption;
+no full-suite gain is yet claimed. Explicit continuation preserves all attempted
+outcomes and retained cost reservations, executing only untouched questions.
+
+Added [quick/full Daloopa evaluation](eval/daloopa-benchmark.md) alongside existing
+benchmarks: fixed quick25, full500 inventory, bounded research execution, exact
+numeric/tolerance scoring, and separately recorded source-support review.
+[Live quick results](eval/reports/daloopa-quick-2026-11-20/report.md): frozen exact
+3/25; diagnostic exact 4/25 after one confirmed reference-sign correction. Twelve
+abstentions and five stops/failures expose source-navigation limits. No human
+validated accuracy is claimed. Full retains one reserved issuer and 73
+reference-review cases.
+
+## Live Excel research — 2026-11-22
+
+The app now routes research through Exa rather than fixed evidence packets.
+Product replay mode, sample questions, and demo workbook loading are removed.
+Excel uses one view at a time with Research/Details navigation, responsive at
+270–350 pixels wide. Historical benchmark replay remains offline and separate.
+See `office/README.md` for provider configuration and installation.
+
+Verification on 2026-11-22: live Exa search returned five results and an explicit
+source read returned numbered evidence. The full live answer smoke failed before
+any tool call because OpenRouter returned an authentication error; replace the
+configured OpenRouter credential and restart the backend to verify full answers.
+The app never falls back to recorded answers.
+
+## Research configuration — 2026-11-23
+
+Credentials remain in ignored `.env`. `research.config.json` is the authoritative
+Excel/web configuration for model, accounting rates, Exa request allowance,
+per-question cap, and total ledger cap. The launcher validates and passes these
+settings to existing workers internally; benchmark CLI behavior is unchanged.
+Automatic price discovery remains unimplemented; supplied accounting rates are
+preserved. Restart the backend after config changes.

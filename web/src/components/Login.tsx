@@ -30,7 +30,7 @@ export function Login({ onSubmit }: Props) {
           </svg>
           <h1 className="text-[17px] font-semibold">Provenance Research</h1>
         </div>
-        <p className="mt-3 text-sm text-ink-soft">This demo uses a live model. Enter the access code you were given.</p>
+        <p className="mt-3 text-sm text-ink-soft">Research uses a live model. Enter the access code you were given.</p>
         <label htmlFor="code" className="mt-4 block text-sm font-medium">
           Access code
         </label>
@@ -53,7 +53,7 @@ export function Login({ onSubmit }: Props) {
           disabled={!code.trim() || working}
           className="mt-4 w-full rounded-md bg-ledger py-2 font-medium text-white disabled:opacity-40"
         >
-          {working ? "Checking" : "Open the demo"}
+          {working ? "Checking" : "Open research"}
         </button>
       </form>
     </div>

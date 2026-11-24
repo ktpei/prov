@@ -15,18 +15,21 @@ from provenance.transport import ProviderError
 
 @dataclass
 class Limits:
-    max_model_calls: int = 8
-    max_tool_calls: int = 10
-    timeout_seconds: float = 90
+    max_model_calls: int | None = 8
+    max_tool_calls: int | None = 10
+    timeout_seconds: float | None = 90
     request_timeout_seconds: float = 30
     budget_usd: float | None = 0.5
 
     def __post_init__(self):
         for name in ("max_model_calls", "max_tool_calls"):
-            if type(getattr(self, name)) is not int or getattr(self, name) < 1:
+            if getattr(self, name) is not None and (
+                type(getattr(self, name)) is not int or getattr(self, name) < 1
+            ):
                 raise ValueError(f"{name} must be a positive integer")
         for name in ("timeout_seconds", "request_timeout_seconds"):
-            positive(getattr(self, name), name)
+            if name == "request_timeout_seconds" or getattr(self, name) is not None:
+                positive(getattr(self, name), name)
         if self.budget_usd is not None:
             positive(self.budget_usd, "budget_usd")
 
@@ -86,7 +89,7 @@ def run(question, model, sources, limits=None, trace=None):
     )
     try:
         with deadline(limits.timeout_seconds) as remaining:
-            while model_calls < limits.max_model_calls:
+            while limits.max_model_calls is None or model_calls < limits.max_model_calls:
                 model_calls += 1
                 trace.emit("model_request", number=model_calls, input=messages.copy())
                 response = model.step(
@@ -107,7 +110,10 @@ def run(question, model, sources, limits=None, trace=None):
                 messages.extend(output)
                 if calls:
                     for call in calls:
-                        if tool_calls >= limits.max_tool_calls:
+                        if (
+                            limits.max_tool_calls is not None
+                            and tool_calls >= limits.max_tool_calls
+                        ):
                             raise LimitReached("tool_call_limit")
                         if not isinstance(call.get("call_id"), str):
                             raise ProviderError("Tool call missing call_id")

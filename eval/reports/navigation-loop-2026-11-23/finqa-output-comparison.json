@@ -1,0 +1,109 @@
+{
+  "version": "finqa-prompt-output-grid-v1",
+  "selected": 97,
+  "scorable": 96,
+  "arms": [
+    {
+      "path": "runs/navigation-loop-2026-11-23/controls/results/finqa-reviewed-v3",
+      "prompt": "finance-tool-free-v1",
+      "max_output_tokens": 2000,
+      "passed": 50,
+      "statuses": {
+        "reference_review_required": 1,
+        "completed": 80,
+        "failed": 16
+      },
+      "failures": {
+        "Model response did not complete: length": 16
+      },
+      "estimated_cost_usd": 0.26341800000000015,
+      "retained_uncertain_records": 0,
+      "submission_sha256": "5bedac7912b34bd318a8512f0f846393960ac4c8abb95adc64d3c49070385749"
+    },
+    {
+      "path": "runs/navigation-loop-2026-11-23/controls/precision-results/finqa-reviewed-v3",
+      "prompt": "finance-precision-v1",
+      "max_output_tokens": 2000,
+      "passed": 59,
+      "statuses": {
+        "reference_review_required": 1,
+        "completed": 71,
+        "failed": 25
+      },
+      "failures": {
+        "Model response did not complete: length": 25
+      },
+      "estimated_cost_usd": 0.2885082000000003,
+      "retained_uncertain_records": 0,
+      "submission_sha256": "a9e4bcc6330da590d9198a903bc7edfe7088e431aada5ecb9e159ac4b7facd6d"
+    },
+    {
+      "path": "runs/navigation-loop-2026-11-23/controls/finqa-4000-baseline-continuation",
+      "prompt": "finance-tool-free-v1",
+      "max_output_tokens": 4000,
+      "passed": 47,
+      "statuses": {
+        "reference_review_required": 1,
+        "completed": 91,
+        "failed": 5
+      },
+      "failures": {
+        "Model response did not complete: length": 4,
+        "OpenRouter request failed (OpenAIPermissionDeniedError)": 1
+      },
+      "estimated_cost_usd": 0.3082895999999999,
+      "retained_uncertain_records": 1,
+      "submission_sha256": "40ab66a83b63d9cbef3685f3443e0b90747c200bbc48009f343e8b7a57d9dc67"
+    },
+    {
+      "path": "runs/navigation-loop-2026-11-23/controls/finqa-4000-precision-v1-continuation",
+      "prompt": "finance-precision-v1",
+      "max_output_tokens": 4000,
+      "passed": 64,
+      "statuses": {
+        "reference_review_required": 1,
+        "completed": 83,
+        "failed": 13
+      },
+      "failures": {
+        "Model response did not complete: length": 12,
+        "OpenRouter request failed (OpenAIPermissionDeniedError)": 1
+      },
+      "estimated_cost_usd": 0.40004280000000014,
+      "retained_uncertain_records": 1,
+      "submission_sha256": "0c4d1a6b7ca263f97a0d0c459e4dead575e764bd9cc8b4398727ddd600e5c6a0"
+    }
+  ],
+  "paired": {
+    "0_to_1": {
+      "pass_to_pass": 45,
+      "fail_to_fail": 32,
+      "fail_to_pass": 14,
+      "pass_to_fail": 5
+    },
+    "2_to_3": {
+      "pass_to_pass": 44,
+      "fail_to_fail": 29,
+      "fail_to_pass": 20,
+      "pass_to_fail": 3
+    },
+    "0_to_2": {
+      "pass_to_pass": 41,
+      "fail_to_fail": 40,
+      "fail_to_pass": 6,
+      "pass_to_fail": 9
+    },
+    "1_to_3": {
+      "pass_to_pass": 55,
+      "fail_to_fail": 28,
+      "fail_to_pass": 9,
+      "pass_to_fail": 4
+    }
+  },
+  "limitations": [
+    "One retained provider allowance failure per4000-token arm, never retried.",
+    "Public development subset; answer-only adapted metric; unresolved MRO excluded from96 scorable denominator.",
+    "Single attempt per arm; provider nondeterminism and run timing remain confounders.",
+    "Costs are application estimates with uncertain reservations retained, not invoices."
+  ]
+}

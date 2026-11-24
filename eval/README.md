@@ -144,3 +144,39 @@ reviews, and offline reproduction. Fresh estimates total $0.0863112 at conservat
 $0.60/$2.40 input/output per million; combined with prior cloud estimates,
 $0.4362039. Neither token estimates nor six single-company tasks establish invoice
 charges or production accuracy. No runtime fixes were mixed into the scored batch.
+
+## Cloudflare benchmark rerun — 2026-11-20
+
+[Fresh nine-question development run](reports/cloudflare-live-2026-11-20/report.md):
+8/9 returned answers, 6/9 passed unchanged mechanical checks; estimated cost
+$0.1212464, no uncertain billing flags. Same model/runtime and uncapped setting;
+no runtime edits or batch retries. Packet-01 failed quote validation; packet-04
+and packet-06 returned answers but missed citation anchors. Offline retrieval
+remains 8/8 extraction and 6/8 retrieval coverage. Lint and all 582 tests passed
+(including pre-existing untracked XBRL tests). No held-out evaluation or independent
+semantic accuracy score is claimed. Existing unrelated work remains untouched.
+
+## Quick external suite — 2026-11-20
+
+[Fresh development results](reports/external-quick-2026-11-20/report.md): CFA-Easy
+5/5, CFA-Challenge 4/5, FinQA 2/5 scorable (one additional unresolved reference),
+and TAT-QA 4/4 exact match. Nineteen model attempts cost an estimated $0.0240540.
+All four scores reproduced offline. These are small supplied-context/model-only
+samples; no Daloopa retrieval accuracy is inferred from them.
+
+## Daloopa quick retrieval — 2026-11-20
+
+[November 23 improvement loop](document-navigation-loop-2026-11-23.md) and
+[paired quick results](reports/navigation-loop-2026-11-23/quick-results.md) document
+two navigation treatments and unchanged grading. Full comparisons resumed after
+a provider-allowance interruption; completed quick results are not full results.
+
+[Interpretation of the November results](reports/benchmark-interpretation-2026-11-22.md)
+explains coverage, numerical accuracy, scoring corrections, limitations, and the
+next controlled experiment across Daloopa and the existing suite.
+
+[Live 25-question results](reports/daloopa-quick-2026-11-20/report.md): 8 numerical
+answers, 12 abstentions, 5 stops/failures. Frozen exact matching is 3/25; a separate
+coding-agent diagnostic corrects one reference-sign parser defect to 4/25. Within
+1% is 6/25 frozen, 7/25 diagnostic. Estimated cost $1.2211698. These are small
+public development results, not human-validated or full-suite accuracy.

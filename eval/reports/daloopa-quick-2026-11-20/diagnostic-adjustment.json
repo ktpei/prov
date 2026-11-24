@@ -1,0 +1,25 @@
+{
+  "version": "posthoc-diagnostic-v1",
+  "source_score_sha256": "971d013729677df9ac93259b16c6da70bf729591fd35d5f1962230e00e2f37ab",
+  "corrections": [
+    {
+      "id": "daloopa-463b7ceb7c57e34b",
+      "ticker": "DFS",
+      "old_reference_value": "365000000",
+      "correct_reference_value": "-365000000",
+      "dimension": "USD",
+      "reason": "Minus outside Markdown currency link was dropped during preparation. Model -365 USD million agrees with publisher wording and captured SEC table.",
+      "reviewer_kind": "agent",
+      "original_source_verification": "Captured SEC Q1 2021 statement, units/period at L120-L123, provision at L135."
+    }
+  ],
+  "selected_count": 25,
+  "raw_exact_matches": 3,
+  "review_adjusted_exact_matches": 4,
+  "review_adjusted_exact_accuracy": 0.16,
+  "raw_within_1pct": 6,
+  "review_adjusted_within_1pct": 7,
+  "review_adjusted_tolerance_accuracy": 0.28,
+  "model_reruns": 0,
+  "limitation": "Coding-agent diagnostic correction of one confirmed parser defect; not independent human validation or a replacement for the frozen score."
+}

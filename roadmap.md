@@ -150,8 +150,14 @@ labeled as plumbing checks. They cannot establish model quality.
 snapshots, sheet grid, range context, workbook cell citations, cited edit proposals,
 approval-bound separate copies with cell comments and a `Provenance log` sheet,
 idempotent exports, stale-proposal invalidation. Formulas are preserved and Excel
-recalculates on open; the app does not compute them. Opening exports in desktop Excel
-still needs a manual check.
+is asked to recalculate on open; the app does not compute them. Opening exports in
+desktop Excel still needs a manual check.
+
+The November 20 [browser workbook milestone](docs/web-workbook-spec.md) adds
+paged/direct range navigation, keyboard cell inspection, explicit cache status,
+input-only target guards, fidelity-based export blocking, preserved comments and
+non-target content checks. This milestone stops at a verified downloadable copy;
+formula recalculation and live Excel remain separate acceptance gates.
 
 ### M5a — Upload and context
 
@@ -165,10 +171,11 @@ Fixture values/formulas match originals. Sessions cannot mix workbook context.
 
 ### M5b — Approval and export
 
-Preview exact changes with old/new values or formulas and sources. Bind approval
+Preview exact changes with old/new input values and sources. Bind approval
 to the snapshot and proposal before generating a separate edited copy. Preserve
 originals and include provenance/change information. Define retry behavior and
-stale-proposal invalidation. Select and verify formula recalculation and support.
+stale-proposal invalidation. Formula edits are deferred; exported results explicitly
+await Excel recalculation.
 
 **Exit check** — Approved exports open correctly in Excel with intended changes,
 source links, and supported formulas/formatting. Cached and verified results are

@@ -7,6 +7,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from provenance.benchmark_resume import continue_ledger
 from provenance.benchmarks import canonical_hash, load_bundle, score_run
 from provenance.controls import Budget, LimitReached, deadline, positive
 from provenance.experiment import write_json
@@ -19,6 +20,15 @@ INSTRUCTIONS = (
     "output_contract exactly. No tools are available. Do not invent citations or facts."
 )
 PROMPT_VERSION = "finance-tool-free-v1"
+PRECISION_INSTRUCTIONS = INSTRUCTIONS + (
+    " Before computing, identify whether the question requests an absolute amount, a ratio, "
+    "a percentage, or a percentage-point change. Select operands and the comparison base "
+    "from the requested periods; preserve units and distinguish fraction from percent. "
+    "Use the shortest sufficient calculation. Do not round intermediate values. Unless the "
+    "question explicitly requests rounding, retain at least eight significant decimal "
+    "digits when needed in numerical answers. Return only the compact output-contract JSON; "
+    "do not append derivations or unrelated figures."
+)
 
 
 def parse_output(response, *, structured):
@@ -51,7 +61,17 @@ def parse_output(response, *, structured):
     return parsed, "parsed"
 
 
-def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60):
+def run_prepared(
+    bundle,
+    model,
+    output,
+    *,
+    budget_usd,
+    per_task_usd,
+    timeout=60,
+    continue_from=None,
+    retain_uncertain=False,
+):
     """One request per selected task. A crashed directory is never automatically resumed."""
     positive(budget_usd, "aggregate budget")
     positive(per_task_usd, "task budget")
@@ -67,9 +87,9 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
         raise ValueError("Conversation execution requires the conversation runner")
     if manifest["condition"] == "full_agent":
         raise ValueError("Full-agent execution requires a separately verified document corpus")
-    if (
-        getattr(model, "tool_schemas", None) != []
-        or getattr(model, "instructions", None) != INSTRUCTIONS
+    if getattr(model, "tool_schemas", None) != [] or getattr(model, "instructions", None) not in (
+        INSTRUCTIONS,
+        PRECISION_INSTRUCTIONS,
     ):
         raise ValueError("Runner requires benchmark instructions and no model tools")
     output = Path(output)
@@ -78,14 +98,16 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
         "prepared_sha256": identity,
         "mode": model.mode,
         "model": model.name,
-        "prompt_version": PROMPT_VERSION,
+        "prompt_version": PROMPT_VERSION
+        if model.instructions == INSTRUCTIONS
+        else "finance-precision-v1",
         "generation": {
             "max_output_tokens": getattr(model, "max_output", None),
             "temperature": 0,
             "max_retries": 0,
             "provider_routing": "OpenRouter default routing; no provider override",
         },
-        "instructions": INSTRUCTIONS,
+        "instructions": model.instructions,
         "inputs_sha256": manifest["inputs_sha256"],
         "source": manifest["source"],
         "condition": manifest["condition"],
@@ -110,9 +132,16 @@ def run_prepared(bundle, model, output, *, budget_usd, per_task_usd, timeout=60)
         ],
     }
     path = output / "submission.json"
+    if continue_from:
+        ledger = continue_ledger(
+            ledger, continue_from, rows_key="predictions", retain_uncertain=retain_uncertain
+        )
+        score_run(bundle, ledger)
     write_json(path, ledger)
     references = {task["id"]: task["reference"] for task in bundle["tasks"]}
     for payload, row in zip(bundle["inputs"], ledger["predictions"], strict=True):
+        if row["status"] != "not_started":
+            continue
         if references[payload["id"]].get("requires_review"):
             row.update(
                 status="reference_review_required",
@@ -182,6 +211,10 @@ def main():
     parser.add_argument("--per-task-usd", type=float, default=0.03)
     parser.add_argument("--per-turn-usd", type=float, default=0.02)
     parser.add_argument("--timeout", type=float, default=60)
+    parser.add_argument("--reasoning", choices=("baseline", "precision-v1"), default="baseline")
+    parser.add_argument("--max-output-tokens", type=int, default=2000)
+    parser.add_argument("--continue-from", type=Path)
+    parser.add_argument("--retain-uncertain-reservations", action="store_true")
     args = parser.parse_args()
     bundle = load_bundle(args.prepared)
     # Validate the bundle and condition before constructing a live provider.
@@ -193,17 +226,24 @@ def main():
         os.environ.get("OPENROUTER_MODEL"),
         os.environ.get("OPENROUTER_INPUT_USD_PER_MILLION"),
         os.environ.get("OPENROUTER_OUTPUT_USD_PER_MILLION"),
-        max_output=2000,
-        instructions=INSTRUCTIONS,
+        max_output=args.max_output_tokens,
+        instructions=INSTRUCTIONS if args.reasoning == "baseline" else PRECISION_INSTRUCTIONS,
         tool_schemas=[],
     )
     runner = run_prepared
     extra = {}
     if bundle["manifest"]["source"]["dataset"] == "convfinqa":
+        if args.continue_from or args.retain_uncertain_reservations:
+            parser.error("Explicit continuation is not supported for conversations")
         from provenance.conversation_run import run_conversations
 
         runner = run_conversations
         extra["per_turn_usd"] = args.per_turn_usd
+    else:
+        extra.update(
+            continue_from=args.continue_from,
+            retain_uncertain=args.retain_uncertain_reservations,
+        )
     ledger = runner(
         bundle,
         model,

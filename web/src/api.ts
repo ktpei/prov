@@ -53,15 +53,15 @@ export const getSourceWindow = (corpus: string, id: string, start: number, end: 
   );
 export const originalUrl = (corpus: string, id: string) =>
   `/api/sources/${corpus}/${encodeURIComponent(id)}/original`;
-export const startTurn = (sid: string, question: string, mode: "live" | "replay") =>
+export const startTurn = (sid: string, question: string, mode: "live") =>
   request<{ turn_id: string }>(`/api/sessions/${sid}/turns`, json("POST", { question, mode }));
 export const uploadWorkbook = (sid: string, file: File) => {
   const form = new FormData();
   form.append("file", file);
   return request<WorkbookInfo>(`/api/sessions/${sid}/workbook`, { method: "POST", body: form });
 };
-export const getGrid = (sid: string, sheet: string) =>
-  request<Grid>(`/api/sessions/${sid}/workbook/${encodeURIComponent(sheet)}`);
+export const getGrid = (sid: string, sheet: string, row = 1, col = 1) =>
+  request<Grid>(`/api/sessions/${sid}/workbook/${encodeURIComponent(sheet)}?start_row=${row}&start_col=${col}`);
 export const setContext = (sid: string, sheet: string, range: string) =>
   request<{ sheet: string; range: string; cells: number }>(
     `/api/sessions/${sid}/context`,
@@ -121,7 +121,5 @@ export function streamTurn(
   };
 }
 
-export const useDemoWorkbook = (sid: string) =>
-  request<WorkbookInfo>(`/api/sessions/${sid}/workbook/demo`, { method: "POST" });
 export const login = (code: string) => request<{ ok: boolean }>("/api/login", json("POST", { code }));
 export const getAuth = () => request<{ required: boolean; authenticated: boolean }>("/api/auth");

@@ -17,60 +17,37 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from provenance.controls import positive
-from provenance.sources import Sources
 from provenance.web.chat_sources import CONTEXT_LIMIT, compose_question
 from provenance.web.ledger import Ledger
 from provenance.web.workbook import (
     MAX_BYTES,
     WorkbookError,
     export_copy,
+    format_address,
     load_snapshot,
     parse_range,
 )
-from provenance.web.worker import TurnRunner, load_replay_script, scripted_questions
+from provenance.web.worker import TurnRunner
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "web/dist"
-DEMO_WORKBOOK = ROOT / "data/demo/cloudflare-fy2024-model.xlsx"
 TURN_LIMITS = {
-    "max_model_calls": 8,
-    "max_tool_calls": 10,
-    "timeout_seconds": 120,
+    "max_model_calls": None,
+    "max_tool_calls": None,
+    "timeout_seconds": None,
     "request_timeout_seconds": 30,
 }
 CORPORA = {
-    "cloudflare-2024-q3": {
-        "dir": ROOT / "data/cloudflare-2024-q3",
-        "label": "Cloudflare Q3 2024 packet",
-        "description": "Q3 2024 release, 10-Q, earnings call transcript, and May 2024 investor day deck",
-        "starters": [
-            "What revenue did Cloudflare report for Q3 2024, and what full-year 2024 revenue "
-            "guidance did management give?",
-            "What revenue and non-GAAP operating income guidance did Cloudflare give for Q4 2024?",
-            "What did management say on the Q3 2024 call about the go-to-market transformation?",
-        ],
-        "workbook_starters": [
-            "Does the FY2024 revenue assumption in my model match management's latest guidance? "
-            "If not, propose an update.",
-        ],
-    },
-    "earnings-excerpts": {
-        "dir": ROOT / "data/corpus",
-        "label": "Big Tech earnings excerpts",
-        "description": "Curated official excerpts for Apple, Microsoft, NVIDIA, Amazon, and Meta",
-        "starters": [
-            "What was Apple's GAAP total net sales in FY2024?",
-            "What were NVIDIA's GAAP and non-GAAP diluted EPS for Q3 fiscal 2025?",
-            "Compare Meta's Q3 2024 revenue with NVIDIA's Q3 fiscal 2025 revenue.",
-            "What revenue guidance did Apple give for Q1 fiscal 2025 in the supplied excerpt?",
-        ],
-        "workbook_starters": [],
+    "live-web": {
+        "dir": Path(__file__).resolve().parent / "live_sources",
+        "label": "Live web research",
+        "description": "Search current web sources with Exa and inspect cited evidence",
     },
 }
 
 
 class SessionBody(BaseModel):
-    corpus: str
+    corpus: str = "live-web"
 
 
 class TurnBody(BaseModel):
@@ -102,6 +79,8 @@ def _live_settings():
         "OPENROUTER_MODEL",
         "OPENROUTER_INPUT_USD_PER_MILLION",
         "OPENROUTER_OUTPUT_USD_PER_MILLION",
+        "EXA_API_KEY",
+        "EXA_MAX_REQUEST_USD",
     )
     values = [os.environ.get(name, "").strip() for name in names]
     if not all(values):
@@ -109,6 +88,7 @@ def _live_settings():
     try:
         positive(values[2], "input rate")
         positive(values[3], "output rate")
+        positive(values[5], "Exa request cap")
     except (TypeError, ValueError):
         return None
     return {"model": values[1]}
@@ -118,6 +98,7 @@ class Session:
     def __init__(self, corpus):
         self.id = uuid.uuid4().hex[:12]
         self.corpus = corpus
+        self.documents = {}
         self.turns = []
         self.live = {}
         self.snapshot = None
@@ -133,6 +114,16 @@ class Session:
             return {
                 "id": self.id,
                 "corpus": self.corpus,
+                "documents": [
+                    {
+                        "id": doc["id"],
+                        "title": doc.get("title"),
+                        "published": doc.get("published"),
+                        "url": doc.get("url"),
+                        "has_original": False,
+                    }
+                    for doc in self.documents.values()
+                ],
                 "turns": [dict(turn) for turn in self.turns],
                 "workbook": self.snapshot.info() if self.snapshot else None,
                 "context": self.context,
@@ -141,8 +132,9 @@ class Session:
             }
 
 
-def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
+def create_app(*, ledger_path=None, cap_usd=None, runner=None, export_dir=None):
     app = FastAPI(title="Provenance research chat")
+    max_turn_usd = positive(os.environ.get("WEB_MAX_TURN_USD") or 0.10, "turn spend limit")
     ledger = Ledger(
         ledger_path or os.environ.get("WEB_LEDGER") or ROOT / "runs/web/cost-log.jsonl",
         cap_usd if cap_usd is not None else float(os.environ.get("WEB_SPEND_CAP_USD") or 1.0),
@@ -151,7 +143,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
     export_root = Path(export_dir or ROOT / "runs/web/exports")
     log_root = ROOT / "runs/web/traces"
     sessions, exports = {}, {}
-    corpora = {key: Sources(spec["dir"]) for key, spec in CORPORA.items()}
+    documents = {}
     access_code = (os.environ.get("WEB_ACCESS_CODE") or "").strip()
     access_token = (
         hmac.new(access_code.encode(), b"provenance-web-v1", hashlib.sha256).hexdigest()
@@ -172,7 +164,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         if path.startswith("/api/") and path not in ("/api/auth", "/api/login"):
             if not authenticated(request):
                 return JSONResponse(
-                    {"detail": "Enter the access code to use this demo"}, status_code=401
+                    {"detail": "Enter the access code to use Provenance"}, status_code=401
                 )
         return await call_next(request)
 
@@ -194,25 +186,16 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         return response
 
     def corpus_view(key):
-        spec, documents = CORPORA[key], corpora[key].documents.values()
+        spec = CORPORA[key]
         return {
             "id": key,
             "label": spec["label"],
             "description": spec["description"],
-            "cutoff": max(doc.get("published") or "" for doc in documents),
-            "documents": [
-                {
-                    "id": doc["id"],
-                    "title": doc.get("title"),
-                    "published": doc.get("published"),
-                    "url": doc.get("url"),
-                    "has_original": bool(doc.get("original_file")),
-                }
-                for doc in documents
-            ],
-            "starters": spec["starters"],
-            "workbook_starters": spec["workbook_starters"],
-            "scripted": scripted_questions(key),
+            "cutoff": datetime.now(timezone.utc).date().isoformat(),
+            "documents": [],
+            "starters": [],
+            "workbook_starters": [],
+            "scripted": [],
         }
 
     def session_or_404(sid):
@@ -221,23 +204,23 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         return sessions[sid]
 
     def document_or_404(corpus, source_id):
-        if corpus not in corpora or source_id not in corpora[corpus].documents:
+        if corpus not in CORPORA or source_id not in documents:
             raise HTTPException(404, "Unknown source")
-        return corpora[corpus].documents[source_id]
+        return documents[source_id]
 
     @app.get("/api/config")
     def config():
         live = _live_settings()
         return {
             "live_available": bool(live),
-            "replay": replay,
+            "replay": False,
             "model": live["model"] if live else None,
             "spend": {
                 "total_usd": round(ledger.total(), 6),
                 "cap_usd": ledger.cap,
                 "remaining_usd": round(ledger.remaining(), 6),
             },
-            "limits": {**TURN_LIMITS, "max_turn_usd": 0.10},
+            "limits": {**TURN_LIMITS, "max_turn_usd": max_turn_usd},
             "corpora": [corpus_view(key) for key in CORPORA],
         }
 
@@ -316,18 +299,35 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                     proposal["status"] = "stale"
         return snapshot.info()
 
-    @app.post("/api/sessions/{sid}/workbook/demo")
-    def demo_workbook(sid: str):
-        session = session_or_404(sid)
-        return attach(session, load_snapshot(DEMO_WORKBOOK.read_bytes(), DEMO_WORKBOOK.name))
-
     @app.get("/api/sessions/{sid}/workbook/{sheet}")
-    def workbook_grid(sid: str, sheet: str):
+    def workbook_grid(sid: str, sheet: str, start_row: int = 1, start_col: int = 1):
         session = session_or_404(sid)
         if not session.snapshot:
             raise HTTPException(404, "No workbook uploaded")
         try:
-            return session.snapshot.grid(sheet)
+            snapshot = session.snapshot
+            if not 1 <= start_row <= 1048576 or not 1 <= start_col <= 16384:
+                raise WorkbookError("Preview origin is outside Excel worksheet bounds")
+            metadata = next((item for item in snapshot.sheets if item["name"] == sheet), None)
+            if metadata is None:
+                raise WorkbookError(f"Unknown sheet: {sheet!r}")
+            end_row = min(1048576, max(start_row, min(metadata["max_row"], start_row + 59)))
+            end_col = min(16384, max(start_col, min(metadata["max_col"], start_col + 25)))
+            rows = [
+                snapshot.cells(
+                    sheet, f"{format_address(row, start_col)}:{format_address(row, end_col)}", 26
+                )
+                for row in range(start_row, end_row + 1)
+            ]
+            return {
+                "sheet": sheet,
+                "snapshot_id": snapshot.snapshot_id,
+                "start_row": start_row,
+                "start_col": start_col,
+                "max_row": metadata["max_row"],
+                "max_col": metadata["max_col"],
+                "rows": rows,
+            }
         except WorkbookError as exc:
             raise HTTPException(404, str(exc)) from exc
 
@@ -368,12 +368,11 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                 )
                 turn_snapshot = record["carried"]["snapshot_id"]
                 current = session.snapshot.snapshot_id if session.snapshot else None
-                replay = report.get("mode") == "offline_replay"
-                generated_by = (
-                    "Scripted replay (no model call)"
-                    if replay
-                    else f"Live model {report.get('model')}"
-                )
+                for key, document in result.get("documents", {}).items():
+                    if document.get("text") is not None:
+                        documents[key] = document
+                        session.documents[key] = document
+                generated_by = f"Live model {report.get('model')}"
                 for proposal in result.get("proposals", []):
                     pid = f"{record['id']}-{proposal['proposal_id']}"
                     target = (turn_snapshot, proposal["sheet"], proposal["cell"])
@@ -395,6 +394,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                         "sheet": proposal["sheet"],
                         "cell": proposal["cell"],
                         "old_display": proposal["old_display"],
+                        **({"old_value": proposal["old_value"]} if "old_value" in proposal else {}),
                         "old_formula": proposal["old_formula"],
                         "new_content": proposal["new_content"],
                         "rationale": proposal["rationale"],
@@ -412,26 +412,16 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             with session.lock:
                 if session.running == record["id"]:
                     session.running = None
-            if job["mode"] == "live":
-                cost = metrics.get("accounted_cost_usd")
-                ledger.record(
-                    record["id"],
-                    job["limits"]["budget_usd"] if cost is None else cost,
-                    uncertain=bool(metrics.get("cost_uncertain")) or cost is None,
-                    model=record.get("model"),
-                    mode="live",
-                    status=record["status"],
-                    reserved=job["limits"]["budget_usd"],
-                )
-            else:
-                ledger.record(
-                    record["id"],
-                    0.0,
-                    uncertain=False,
-                    model="replay",
-                    mode="replay",
-                    status=record["status"],
-                )
+            cost = metrics.get("accounted_cost_usd")
+            ledger.record(
+                record["id"],
+                job["limits"]["budget_usd"] if cost is None else cost,
+                uncertain=bool(metrics.get("cost_uncertain")) or cost is None,
+                model=record.get("model"),
+                mode="live",
+                status=record["status"],
+                reserved=job["limits"]["budget_usd"],
+            )
 
     @app.post("/api/sessions/{sid}/turns")
     def start_turn(sid: str, body: TurnBody):
@@ -439,38 +429,26 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
         question = body.question.strip()
         if not question or len(question) > 4000:
             raise HTTPException(400, "Questions must contain 1–4000 characters")
-        if body.mode not in ("live", "replay"):
-            raise HTTPException(400, "mode must be live or replay")
+        if body.mode != "live":
+            raise HTTPException(400, "Only live research is supported")
         with session.lock:
             if session.running:
                 raise HTTPException(409, "A question is already running in this conversation")
             snapshot = session.snapshot
             context = session.context if snapshot else None
-            responses, budget = None, 0.10
-            if body.mode == "replay":
-                responses = load_replay_script(
-                    question,
-                    session.corpus,
-                    snapshot_id=snapshot.snapshot_id if snapshot else None,
+            if not _live_settings():
+                raise HTTPException(
+                    409,
+                    "Live research is not configured. Set OPENROUTER_API_KEY and EXA_API_KEY "
+                    "in .env and check research.config.json",
                 )
-                if responses is None:
-                    raise HTTPException(
-                        404,
-                        "No scripted replay for this question. Use a starter question marked "
-                        "as scripted, or switch to live mode.",
-                    )
-            else:
-                if not _live_settings():
-                    raise HTTPException(
-                        409, "Live model is not configured (set OPENROUTER_API_KEY in .env)"
-                    )
-                budget = ledger.reserve()
-                if budget is None:
-                    raise HTTPException(
-                        409,
-                        f"Live spend cap reached (${ledger.total():.4f} of ${ledger.cap:.2f} "
-                        "used, including questions still running)",
-                    )
+            budget = ledger.reserve(max_turn_usd)
+            if budget is None:
+                raise HTTPException(
+                    409,
+                    f"Live spend cap reached (${ledger.total():.4f} of ${ledger.cap:.2f} "
+                    "used, including questions still running)",
+                )
             history = [t for t in session.turns if t["status"] != "running"]
             turn_id = f"t{len(session.turns) + 1}"
             record = {
@@ -478,7 +456,7 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                 "question": question,
                 "status": "running",
                 "stop_reason": None,
-                "mode": "offline_replay" if body.mode == "replay" else "live_openrouter_langchain",
+                "mode": "live_openrouter_langchain",
                 "model": None,
                 "answer": None,
                 "metrics": None,
@@ -503,7 +481,8 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                 ),
                 "corpus_dir": str(spec["dir"]),
                 "mode": body.mode,
-                "replay_responses": responses,
+                "source_prefix": f"{session.id}-{turn_id}-",
+                "documents": dict(session.documents),
                 "workbook_bytes": snapshot.data if snapshot else None,
                 "workbook_filename": snapshot.filename if snapshot else None,
                 "preread": (context["sheet"], context["range"]) if context else None,
@@ -625,9 +604,18 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
             if existing:
                 return existing
             included = sorted((session.proposals[pid] for pid in merged.values()), key=cell_order)
-            titles = {
-                doc["id"]: doc.get("title") for doc in corpora[session.corpus].documents.values()
-            }
+            try:
+                for proposal in included:
+                    snapshot.validate_edit_target(proposal["sheet"], proposal["cell"])
+                    if isinstance(proposal["new_content"], str) and proposal[
+                        "new_content"
+                    ].startswith("="):
+                        raise WorkbookError(
+                            "Formula edits are not supported in this browser milestone"
+                        )
+            except WorkbookError as exc:
+                raise HTTPException(409, str(exc)) from exc
+            titles = {doc["id"]: doc.get("title") for doc in session.documents.values()}
             titles[f"workbook:{snapshot.snapshot_id}"] = f"Uploaded workbook {snapshot.filename}"
             changes = [{**p, "source_titles": titles} for p in included]
             export_id = uuid.uuid4().hex[:10]
@@ -653,6 +641,8 @@ def create_app(*, replay=False, ledger_path=None, cap_usd=None, runner=None, exp
                 ],
                 "created_at": _now(),
                 "download_url": f"/api/exports/{export_id}/download",
+                "verification": "input_changes_and_preserved_formulas",
+                "calculation_status": "pending_excel_recalculation",
             }
             session.exports.append(record)
             exports[export_id] = path

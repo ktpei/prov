@@ -8,14 +8,13 @@ type Props = {
   highlight: Citation | null;
   busy: boolean;
   onUpload: (file: File) => Promise<void>;
-  onUseDemo: () => Promise<void>;
   onSetContext: (sheet: string, range: string) => Promise<void>;
   onClearContext: () => Promise<void>;
 };
 
 type Point = { r: number; c: number };
 
-export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, onSetContext, onClearContext }: Props) {
+export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext, onClearContext }: Props) {
   const workbook = session.workbook;
   const [sheet, setSheet] = useState<string>("");
   const [grid, setGrid] = useState<Grid | null>(null);
@@ -24,31 +23,57 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
   const [focus, setFocus] = useState<Point | null>(null);
   const [dragging, setDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [origin, setOrigin] = useState<Point>({ r: 1, c: 1 });
+  const [rangeInput, setRangeInput] = useState("");
+  const staleCitation = !!highlight && highlight.source_id !== `workbook:${workbook?.snapshot_id}`;
   const input = useRef<HTMLInputElement>(null);
 
   const cited: CellRange | null = useMemo(
-    () => (highlight ? parseCellLocator(highlight.locator) : null),
-    [highlight],
+    () => (highlight && !staleCitation ? parseCellLocator(highlight.locator) : null),
+    [highlight, staleCitation],
   );
 
   useEffect(() => {
-    if (!workbook) return;
-    const preferred = cited?.sheet || session.context?.sheet || workbook.sheets[0]?.name || "";
-    setSheet((current) => (cited?.sheet ? cited.sheet : workbook.sheets.some((s) => s.name === current) ? current : preferred));
-  }, [workbook?.snapshot_id, cited?.sheet]); // eslint-disable-line react-hooks/exhaustive-deps
+    const attached = session.context ? parseCellLocator(session.context.range, session.context.sheet) : null;
+    setSheet(attached?.sheet || workbook?.sheets[0]?.name || "");
+    setOrigin({ r: attached?.r1 || 1, c: attached?.c1 || 1 });
+    setAnchor(attached ? { r: attached.r1, c: attached.c1 } : null);
+    setFocus(attached ? { r: attached.r2, c: attached.c2 } : null);
+    setRangeInput(attached ? rangeLabel(attached) : "");
+  }, [session.id, workbook?.snapshot_id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!cited) return;
+    setSheet(cited.sheet);
+    setOrigin({ r: cited.r1, c: cited.c1 });
+    setAnchor({ r: cited.r1, c: cited.c1 });
+    setFocus({ r: cited.r2, c: cited.c2 });
+    setRangeInput(rangeLabel(cited));
+  }, [cited]);
 
   useEffect(() => {
     if (!workbook || !sheet) return;
+    let active = true;
     setError(null);
-    getGrid(session.id, sheet)
-      .then(setGrid)
-      .catch((err: Error) => setError(err.message));
-    setAnchor(null);
-    setFocus(null);
-  }, [session.id, workbook?.snapshot_id, sheet]); // eslint-disable-line react-hooks/exhaustive-deps
+    setGrid(null);
+    setLoading(true);
+    getGrid(session.id, sheet, origin.r, origin.c)
+      .then((result) => {
+        if (!active) return;
+        if (result.snapshot_id !== workbook.snapshot_id) {
+          setError("The workbook changed while loading. Reopen the Workbook tab to load the current snapshot.");
+          return;
+        }
+        setGrid(result);
+      })
+      .catch((err: Error) => { if (active) setError(err.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [session.id, workbook?.snapshot_id, sheet, origin.r, origin.c]);
 
   const upload = async (file: File | undefined) => {
-    if (!file) return;
+    if (!file || busy || uploading) return;
     setUploading(true);
     setError(null);
     try {
@@ -97,19 +122,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
             >
               {uploading ? "Reading workbook" : "Choose file"}
             </button>
-            <button
-              type="button"
-              disabled={uploading || busy}
-              onClick={() => {
-                setUploading(true);
-                onUseDemo()
-                  .catch((err: Error) => setError(err.message))
-                  .finally(() => setUploading(false));
-              }}
-              className="rounded-md border border-rule px-3 py-1.5 text-sm hover:border-ink-faint disabled:opacity-40"
-            >
-              Use the demo Cloudflare model
-            </button>
+
           </div>
           {fileInput}
           {error && <p role="alert" className="mt-3 text-sm text-rust">{error}</p>}
@@ -138,6 +151,27 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
     }
   };
 
+  const navigate = (r: number, c: number) => {
+    setOrigin({ r, c });
+    setAnchor(null);
+    setFocus(null);
+    setRangeInput("");
+  };
+  const jump = () => {
+    const range = parseCellLocator(rangeInput, sheet);
+    if (!range || range.sheet !== sheet || range.r2 - range.r1 >= 60 || range.c2 - range.c1 >= 26) {
+      setError("Enter a valid range on this sheet, at most 60 rows by 26 columns (for example AA70:AC75).");
+      return;
+    }
+    setError(null);
+    setOrigin({ r: range.r1, c: range.c1 });
+    setAnchor({ r: range.r1, c: range.c1 });
+    setFocus({ r: range.r2, c: range.c2 });
+  };
+  const inspected = focus && grid
+    ? grid.rows[focus.r - grid.start_row]?.[focus.c - grid.start_col]
+    : null;
+
   return (
     <div className="flex h-full flex-col" onMouseUp={() => setDragging(false)}>
       <div className="border-b border-rule bg-surface px-5 py-3">
@@ -157,6 +191,13 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
           </button>
           {fileInput}
         </div>
+        <p className="mt-1 text-xs text-ink-soft">Uploaded snapshot · input edits only · no browser recalculation</p>
+        {workbook.export_blockers?.length > 0 && (
+          <div role="status" className="mt-2 rounded border border-rust/30 bg-rust-soft p-2 text-sm text-rust">
+            <p className="font-medium">Read-only workbook — edited copies unavailable</p>
+            {workbook.export_blockers.map((reason) => <p key={reason}>{reason}</p>)}
+          </div>
+        )}
         {workbook.warnings.map((warning) => (
           <p key={warning} className="mt-1 text-xs text-rust">
             {warning}
@@ -169,7 +210,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
               role="tab"
               aria-selected={s.name === sheet}
               type="button"
-              onClick={() => setSheet(s.name)}
+              onClick={() => { setSheet(s.name); navigate(1, 1); }}
               className={`rounded px-2 py-0.5 text-sm ${s.name === sheet ? "bg-ink text-white" : "text-ink-soft hover:bg-chrome"}`}
             >
               {s.name}
@@ -178,6 +219,12 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
         </div>
       </div>
 
+      {staleCitation && <p role="status" className="px-5 py-2 text-sm text-rust">This citation belongs to a previous upload. It cannot be located in the current workbook.</p>}
+      <form onSubmit={(event) => { event.preventDefault(); jump(); }} className="flex flex-wrap items-center gap-2 border-b border-rule px-5 py-2 text-sm">
+        <label htmlFor="workbook-range">Go to range</label>
+        <input id="workbook-range" value={rangeInput} onChange={(event) => setRangeInput(event.target.value)} placeholder="A1 or AA70:AC75" className="w-40 rounded border border-rule px-2 py-1" />
+        <button type="submit" className="rounded border border-rule px-3 py-1">Go</button>
+      </form>
       <div className="flex flex-wrap items-center gap-2 border-b border-rule bg-surface px-5 py-2 text-sm">
         {selectionLabel ? (
           <>
@@ -203,7 +250,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
             <span className="rounded border border-highlight bg-highlight-soft px-1.5 py-0.5 text-xs">
               Attached {session.context.sheet}!{session.context.range}
             </span>
-            <button type="button" className="text-xs text-ink-faint underline" onClick={() => void onClearContext()}>
+            <button type="button" className="text-xs text-ink-faint underline" disabled={busy} onClick={() => onClearContext().catch((err: Error) => setError(err.message))}>
               Remove
             </button>
           </span>
@@ -211,7 +258,23 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
       </div>
       {error && <p role="alert" className="px-5 py-2 text-sm text-rust">{error}</p>}
 
-      <div className="min-h-0 flex-1 overflow-auto bg-surface">
+      {inspected && (
+        <div aria-label="Cell details" className="border-b border-rule bg-chrome px-5 py-2 text-sm break-words">
+          <p className="font-medium">{sheet}!{inspected.address} · {inspected.kind === "formula" ? "Formula" : inspected.kind === "blank" ? "Blank cell" : "Input value"}</p>
+          {inspected.formula && <p className="font-mono text-xs">{inspected.formula}</p>}
+          <p>Saved value: {inspected.value_status === "missing_formula_cache" ? "Unavailable — open and save in Excel to calculate" : inspected.value || "Empty"}</p>
+          {inspected.value_status === "cached_formula" && <p className="text-xs text-ink-soft">Cached formula result; not recalculated in the browser.</p>}
+          <p className="text-xs text-ink-soft">{inspected.editable ? "Eligible for an approved input update." : inspected.edit_block_reason}</p>
+        </div>
+      )}
+      <div className="flex flex-wrap gap-2 border-b border-rule px-5 py-1.5 text-xs" aria-label="Workbook navigation">
+        <button type="button" disabled={origin.r === 1 || loading} onClick={() => navigate(Math.max(1, origin.r - 60), origin.c)} className="rounded border border-rule px-2 py-1 disabled:opacity-40">Previous rows</button>
+        <button type="button" disabled={!grid || origin.r + 60 > grid.max_row || loading} onClick={() => navigate(origin.r + 60, origin.c)} className="rounded border border-rule px-2 py-1 disabled:opacity-40">Next rows</button>
+        <button type="button" disabled={origin.c === 1 || loading} onClick={() => navigate(origin.r, Math.max(1, origin.c - 26))} className="rounded border border-rule px-2 py-1 disabled:opacity-40">Previous columns</button>
+        <button type="button" disabled={!grid || origin.c + 26 > grid.max_col || loading} onClick={() => navigate(origin.r, origin.c + 26)} className="rounded border border-rule px-2 py-1 disabled:opacity-40">Next columns</button>
+      </div>
+      <div className="min-h-0 flex-1 overflow-auto bg-surface" aria-busy={loading}>
+        {loading && <p role="status" className="px-5 py-3 text-sm text-ink-soft">Loading workbook range…</p>}
         {grid && (
           <table className="tabular border-collapse text-[13px] select-none" aria-label={`Sheet ${sheet}`}>
             <thead>
@@ -219,19 +282,19 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
                 <th className="sticky top-0 left-0 z-20 h-6 w-10 border border-rule bg-chrome" />
                 {Array.from({ length: columns }, (_, index) => (
                   <th key={index} className="sticky top-0 z-10 min-w-[72px] border border-rule bg-chrome px-1 font-normal text-ink-faint">
-                    {columnLetter(index + 1)}
+                    {columnLetter(grid.start_col + index)}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {grid.rows.map((row, rowIndex) => {
-                const r = rowIndex + 1;
+                const r = grid.start_row + rowIndex;
                 return (
                   <tr key={r}>
                     <th className="sticky left-0 z-10 border border-rule bg-chrome px-1 text-right font-normal text-ink-faint">{r}</th>
                     {Array.from({ length: columns }, (_, colIndex) => {
-                      const c = colIndex + 1;
+                      const c = grid.start_col + colIndex;
                       const cell = row[colIndex] ?? null;
                       const isCited = !!cited && cited.sheet === sheet && inRange(cited, r, c);
                       const isSelected = inRange(selection, r, c);
@@ -241,7 +304,26 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
                         <td
                           key={c}
                           title={cell?.formula ? `${cell.address}: ${cell.formula}` : cell ? cell.address : `${columnLetter(c)}${r}`}
+                          tabIndex={(focus ? focus.r === r && focus.c === c : rowIndex === 0 && colIndex === 0) ? 0 : -1}
+                          aria-label={`${columnLetter(c)}${r}${cell?.formula ? ", formula" : ""}: ${cell?.display || "empty"}`}
+                          onKeyDown={(event) => {
+                            if (["Enter", " "].includes(event.key)) {
+                              event.preventDefault(); choose({ r, c }, event.shiftKey); return;
+                            }
+                            const offsets: Record<string, Point> = { ArrowUp: { r: -1, c: 0 }, ArrowDown: { r: 1, c: 0 }, ArrowLeft: { r: 0, c: -1 }, ArrowRight: { r: 0, c: 1 } };
+                            const offset = offsets[event.key];
+                            if (!offset) return;
+                            event.preventDefault();
+                            const next = { r: r + offset.r, c: c + offset.c };
+                            if (next.r < grid.start_row || next.r >= grid.start_row + grid.rows.length || next.c < grid.start_col || next.c >= grid.start_col + columns) return;
+                            if (event.shiftKey && !anchor) setAnchor({ r, c });
+                            else if (!event.shiftKey) setAnchor(next);
+                            setFocus(next);
+                            event.currentTarget.closest("table")?.querySelector<HTMLElement>(`[data-cell="${columnLetter(next.c)}${next.r}"]`)?.focus();
+                          }}
+                          data-cell={`${columnLetter(c)}${r}`}
                           onMouseDown={(event) => {
+                            event.currentTarget.focus();
                             setDragging(true);
                             choose({ r, c }, event.shiftKey);
                           }}
@@ -252,7 +334,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
                             cell?.formula ? "text-ledger" : ""
                           }`}
                         >
-                          {cell?.display ?? ""}
+                          {cell?.value_status === "missing_formula_cache" ? "Not calculated" : cell?.display ?? ""}
                         </td>
                       );
                     })}
@@ -262,14 +344,10 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onUseDemo, o
             </tbody>
           </table>
         )}
-        {grid && (grid.max_row > grid.rows.length || grid.max_col > columns) && (
-          <p className="px-5 py-2 text-xs text-ink-faint">
-            Showing the first {grid.rows.length} rows and {columns} columns of {grid.max_row} × {grid.max_col}. The agent can read any range.
-          </p>
-        )}
+        {grid && <p className="px-5 py-2 text-xs text-ink-faint">Showing {columnLetter(grid.start_col)}{grid.start_row}:{columnLetter(grid.start_col + columns - 1)}{grid.start_row + grid.rows.length - 1}. Worksheet extent: {grid.max_row} rows × {grid.max_col} columns.</p>}
       </div>
       <p className="border-t border-rule bg-surface px-5 py-1.5 text-xs text-ink-faint">
-        Green text marks formula cells; values shown are those saved in the file.
+        Values are from the uploaded file. Downloaded changes appear here only after you upload the edited copy. Use arrow keys to navigate cells; Shift extends selection.
       </p>
     </div>
   );

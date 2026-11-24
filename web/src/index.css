@@ -69,3 +69,62 @@ mark.quote {
     }
   }
 }
+
+/* Excel uses the web app's ink, ledger and paper palette in one narrow column. */
+.excel-pane { min-width: 0; overflow: hidden; font-size: 14px; --color-ink-faint: #647080; }
+.excel-pane .pane-header { padding: 14px 40px 10px 16px; }
+.excel-pane .pane-header > div { flex-wrap: nowrap; gap: 8px; }
+.excel-pane .pane-header button { padding: 4px 8px; font-size: 12px; white-space: nowrap; }
+.pane-nav { display: flex; flex-shrink: 0; gap: 20px; padding: 0 16px; border-bottom: 1px solid var(--color-rule); background: white; overflow-x: auto; }
+.pane-nav button { padding: 10px 0; border-bottom: 2px solid transparent; color: var(--color-ink-soft); font-size: 13px; white-space: nowrap; }
+.pane-nav button[aria-pressed="true"] { border-color: var(--color-ledger); color: var(--color-ledger); font-weight: 600; }
+.excel-pane main { display: flex; overflow: hidden; min-height: 0; }
+.excel-pane main > section { min-width: 0; min-height: 0; width: 100%; border-right: 0; }
+.excel-pane main[data-view="chat"] > [aria-label="Inspector"],
+.excel-pane main[data-view="details"] > [aria-label="Conversation"],
+.excel-pane [role="tablist"][hidden] { display: none; }
+.excel-pane [data-scroll] { padding-inline: 14px; overflow-wrap: anywhere; background: #f4f5f7; }
+.excel-pane [role="tabpanel"] { overflow: auto; overflow-wrap: anywhere; }
+.excel-pane .research-welcome { padding: 28px 2px; }
+.excel-pane .research-welcome h1 { font-size: 22px; letter-spacing: -.5px; line-height: 1.25; max-width: 220px; }
+.excel-pane .research-welcome p { margin-top: 12px; font-size: 14px; line-height: 1.65; }
+.excel-pane form { padding: 10px 14px 12px; flex-shrink: 0; }
+.excel-pane .question-input { position: relative; border: 1px solid #a8b3be; border-radius: 8px; padding: 8px; background: white; align-items: flex-end; }
+.excel-pane .question-input:focus-within { border-color: var(--color-ledger); box-shadow: 0 0 0 1px var(--color-ledger); }
+.excel-pane textarea { min-width: 0; width: 100%; border: 0; padding: 0; font-size: 13px; resize: none; box-shadow: none; background: transparent; }
+.excel-pane .question-input button { height: 32px; padding: 0 12px; font-size: 12px; border-radius: 5px; }
+.excel-pane form > p { font-size: 10px; line-height: 1.4; margin-top: 7px; }
+.excel-tools { padding: 0 0 9px; font-size: 12px; }
+.excel-feedback { margin-bottom: 7px; color: var(--color-ink-soft); }
+.excel-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.excel-actions button { font-size: 11px; padding: 5px 8px; border-radius: 5px; }
+.excel-actions button:first-child { border: 0; background: var(--color-ledger-soft); color: var(--color-ledger); }
+.excel-pane button { cursor: pointer; }
+.excel-pane button:disabled { cursor: default; }
+.excel-pane [role="tabpanel"] > div > .p-4 { padding: 10px; }
+.excel-pane .evidence-lines > li { grid-template-columns: 30px minmax(0,1fr); gap: 8px; padding-inline: 8px; }
+@media (max-height: 450px) {
+  .excel-pane .research-welcome { padding-block: 16px; }
+  .excel-pane .research-welcome h1 { font-size: 19px; max-width: none; }
+  .excel-pane .research-welcome p { margin-top: 6px; font-size: 13px; line-height: 1.5; }
+  .excel-pane form > p { display: none; }
+}
+
+/* Attachment identifies the captured range, rather than implying live selection sync. */
+.selection-hint { margin-bottom: 7px; color: var(--color-ink-soft); font-size: 11px; }
+.selection-attachment { margin-bottom: 8px; padding: 8px 10px; border: 1px solid #b5d5c9; border-radius: 7px; background: #f2f8f5; }
+.selection-heading { display: flex; align-items: center; gap: 8px; }
+.selection-address { flex: 1; min-width: 0; overflow-wrap: anywhere; font-weight: 600; color: var(--color-ledger); }
+.selection-heading button { width: 28px; height: 28px; flex-shrink: 0; font-size: 20px; line-height: 1; color: var(--color-ink-soft); }
+.selection-attachment > p { color: var(--color-ink-soft); font-size: 11px; }
+.selection-options { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; align-items: baseline; }
+.selection-options summary, .selection-options > button { cursor: pointer; font-size: 11px; color: var(--color-ledger); text-decoration: underline; text-underline-offset: 2px; }
+.selection-options details { min-width: 0; max-width: 100%; }
+.selection-preview { max-height: 120px; max-width: 100%; overflow: auto; margin-top: 6px; background: white; }
+.selection-preview td { border: 1px solid var(--color-rule); padding: 3px 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.selection-note { margin-top: 6px; line-height: 1.4; }
+
+/* Activity keeps its own icon, content and timing columns in narrow panes. */
+.excel-pane .activity-panel { padding: 12px; }
+.excel-pane .activity-row { grid-template-columns: 16px minmax(0, 1fr) auto; gap: 8px; padding-block: 10px; }
+.excel-pane .activity-row > span { white-space: nowrap; }

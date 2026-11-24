@@ -3,11 +3,14 @@
   "private": true,
   "scripts": {
     "lint": "uv run ruff check . && uv run ruff format --check . && uv run python -m provenance validate",
-    "test": "uv run --extra benchmark-metrics python -m unittest discover -s tests -v",
+    "test": "uv run --extra benchmark-metrics python -m unittest discover -s tests",
     "demo": "uv run python -m provenance demo",
     "web": "npm --prefix web install --no-audit --no-fund && npm --prefix web run build && uv run python -m provenance.web",
     "web:dev": "uv run python -m provenance.web",
     "web:build": "npm --prefix web run build",
-    "web:e2e": "npm --prefix web run build && npm --prefix web run e2e"
+    "web:e2e": "npm --prefix web run build && npm --prefix web run e2e",
+    "benchmark": "uv run python -m provenance.daloopa_run",
+    "benchmark:full": "uv run python -m provenance.daloopa_run --profile full",
+    "benchmark:score": "uv run python -m provenance.daloopa_score"
   }
 }

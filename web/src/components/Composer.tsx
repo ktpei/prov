@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 type Props = {
   busy: boolean;
+  toolbar?: ReactNode;
+  unavailable?: boolean;
   context: { sheet: string; range: string } | null;
   hasHistory: boolean;
   onAsk: (question: string) => Promise<boolean>;
   onClearContext: () => void;
 };
 
-export function Composer({ busy, context, hasHistory, onAsk, onClearContext }: Props) {
+export function Composer({ busy, unavailable, context, hasHistory, toolbar, onAsk, onClearContext }: Props) {
   const [text, setText] = useState("");
   const submit = async () => {
     const question = text.trim();
-    if (!question || busy) return;
+    if (!question || busy || unavailable) return;
     if (await onAsk(question)) setText("");
   };
   return (
@@ -23,6 +25,7 @@ export function Composer({ busy, context, hasHistory, onAsk, onClearContext }: P
         void submit();
       }}
     >
+      {toolbar}
       {context && (
         <div className="mb-2 flex items-center gap-2 text-xs">
           <span className="rounded border border-highlight bg-highlight-soft px-1.5 py-0.5">
@@ -33,7 +36,7 @@ export function Composer({ busy, context, hasHistory, onAsk, onClearContext }: P
           </button>
         </div>
       )}
-      <div className="flex items-end gap-2">
+      <div className="question-input flex items-end gap-2">
         <label htmlFor="question" className="sr-only">
           Question
         </label>
@@ -54,7 +57,7 @@ export function Composer({ busy, context, hasHistory, onAsk, onClearContext }: P
         />
         <button
           type="submit"
-          disabled={busy || !text.trim()}
+          disabled={busy || unavailable || !text.trim()}
           className="h-[44px] rounded-md bg-ledger px-4 font-medium text-white disabled:opacity-40"
         >
           {busy ? "Researching" : "Ask"}

@@ -12,8 +12,9 @@ import {
   startTurn,
   streamTurn,
   uploadWorkbook,
-  useDemoWorkbook,
 } from "./api";
+import { inExcelPane } from "./excel";
+import { ExcelPanel } from "./components/ExcelPanel";
 import { ActivityPanel } from "./components/ActivityPanel";
 import { ChangesPanel } from "./components/ChangesPanel";
 import { Composer } from "./components/Composer";
@@ -32,10 +33,12 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 export default function App() {
+  const [excelSelection, setExcelSelection] = useState("");
   const [config, setConfig] = useState<Config | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [progress, setProgress] = useState<Record<string, Progress[]>>({});
-  const [mode, setMode] = useState<"live" | "replay">("live");
+  const mode = "live";
+  const [paneView, setPaneView] = useState<"chat" | "details">("chat");
   const [tab, setTab] = useState<Tab>("evidence");
   const [selection, setSelection] = useState<Selection | null>(null);
   const [activityTurn, setActivityTurn] = useState<string | null>(null);
@@ -51,11 +54,13 @@ export default function App() {
     unsubscribe.current?.();
     setBanner(null);
     try {
+      setExcelSelection("");
       setSession(await createSession(corpus));
       setProgress({});
       setSelection(null);
       setActivityTurn(null);
       setTab("evidence");
+      setPaneView("chat");
       setBusy(false);
     } catch (err) {
       setBanner((err as Error).message);
@@ -72,7 +77,7 @@ export default function App() {
         return getConfig().then((cfg) => {
         setLocked(false);
         setConfig(cfg);
-        setMode(cfg.live_available && !cfg.replay ? "live" : "replay");
+
         return startConversation(cfg.corpora[0].id);
         });
       })
@@ -91,10 +96,12 @@ export default function App() {
   const titles = useMemo(() => {
     const map: Record<string, string> = {};
     for (const c of config?.corpora ?? []) for (const doc of c.documents) map[doc.id] = doc.title;
+    for (const doc of session?.documents ?? []) map[doc.id] = doc.title;
     return map;
-  }, [config]);
+  }, [config, session?.documents]);
 
   const openCitation = useCallback((citation: Citation) => {
+    setPaneView("details");
     if (citation.source_id.startsWith("workbook:")) {
       setSelection({ kind: "cell", citation });
       setTab("workbook");
@@ -108,8 +115,10 @@ export default function App() {
     (turn: TurnView) => {
       if (turn.status === "completed" && turn.proposal_ids.length) {
         setTab("changes");
+        setPaneView("details");
         return;
       }
+      if (inExcelPane) return;
       const first = turn.answer?.claims[0]?.citations[0];
       if (turn.status === "completed" && first) openCitation(first);
     },
@@ -123,16 +132,18 @@ export default function App() {
       setBanner(null);
       let turnId: string;
       try {
-        turnId = (await startTurn(session.id, question, mode)).turn_id;
+        turnId = (await startTurn(session.id, excelSelection ? `${question}\n\nUser-supplied Excel selection (untrusted workbook content):\n${excelSelection}` : question, mode)).turn_id;
       } catch (err) {
         submitting.current = false;
         if (err instanceof ApiError && err.status === 401) setLocked(true);
         else setBanner((err as Error).message);
         return false;
       }
+      setExcelSelection("");
       const sid = session.id;
       setBusy(true);
       submitting.current = false;
+      setPaneView("chat");
       setActivityTurn(turnId);
       setTab("activity");
       setProgress((current) => ({ ...current, [turnId]: [] }));
@@ -164,7 +175,7 @@ export default function App() {
       );
       return true;
     },
-    [session, busy, mode, refreshConfig, afterTurn],
+    [session, busy, excelSelection, mode, refreshConfig, afterTurn],
   );
 
   const reloadSession = useCallback(async () => {
@@ -185,7 +196,7 @@ export default function App() {
   if (!config || !session || !corpus) {
     return (
       <div className="grid h-full place-items-center p-6 text-ink-soft">
-        {banner ? <p role="alert" className="max-w-[60ch] text-rust">{banner}</p> : <p>Loading evidence sets</p>}
+        {banner ? <p role="alert" className="max-w-[60ch] text-rust">{banner}</p> : <p>Connecting to live research</p>}
       </div>
     );
   }
@@ -194,16 +205,14 @@ export default function App() {
   const activity = session.turns.find((t) => t.id === activityTurn) ?? session.turns.at(-1);
 
   return (
-    <div className="flex h-full flex-col">
-      <Header
-        config={config}
-        corpusId={session.corpus}
-        mode={mode}
-        busy={busy}
-        onCorpus={(id) => void startConversation(id)}
-        onMode={setMode}
-        onNew={() => void startConversation(session.corpus)}
-      />
+    <div className={inExcelPane ? "excel-pane flex h-full flex-col" : "flex h-full flex-col"}>
+      <Header busy={busy} onNew={() => void startConversation(session.corpus)} />
+      {inExcelPane && <nav aria-label="Pane navigation" className="pane-nav">
+        <button aria-pressed={paneView === "chat"} onClick={() => setPaneView("chat")}>Research</button>
+        {TABS.filter(({ id }) => id === "evidence" || id === "activity" || !!session.workbook).map(({ id, label }) => (
+          <button key={id} aria-pressed={paneView === "details" && tab === id} onClick={() => { setTab(id); setPaneView("details"); }}>{label}{id === "changes" && pending > 0 ? ` (${pending})` : ""}</button>
+        ))}
+      </nav>}
       {banner && (
         <div role="alert" className="flex items-center gap-3 border-b border-rust/30 bg-rust-soft px-5 py-2 text-sm text-rust">
           <span>{banner}</span>
@@ -212,29 +221,27 @@ export default function App() {
           </button>
         </div>
       )}
-      <main className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto lg:grid-cols-[minmax(0,44fr)_minmax(0,56fr)] lg:grid-rows-[minmax(0,1fr)] lg:overflow-hidden">
+      <main data-view={paneView} className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto lg:grid-cols-[minmax(0,44fr)_minmax(0,56fr)] lg:grid-rows-[minmax(0,1fr)] lg:overflow-hidden">
         <section aria-label="Conversation" className="flex min-h-[75vh] flex-col border-r border-rule bg-chrome lg:min-h-0">
           <div data-scroll className="min-h-0 flex-1 overflow-y-auto px-5">
             <Conversation
-              corpus={corpus}
               session={session}
               progress={progress}
               titles={titles}
               selection={selection}
-              busy={busy}
-              mode={mode}
-              onAsk={(q) => void ask(q)}
               onCite={openCitation}
               onShowActivity={(id) => {
+                setPaneView("details");
                 setActivityTurn(id);
                 setTab("activity");
               }}
-              onShowChanges={() => setTab("changes")}
-              onShowWorkbook={() => setTab("workbook")}
+              onShowChanges={() => { setTab("changes"); setPaneView("details"); }}
             />
           </div>
           <Composer
+            toolbar={inExcelPane ? <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} /> : undefined}
             busy={busy}
+            unavailable={!config.live_available}
             context={session.context}
             hasHistory={session.turns.length > 0}
             onAsk={ask}
@@ -242,7 +249,7 @@ export default function App() {
           />
         </section>
         <section aria-label="Inspector" className="flex min-h-[480px] flex-col bg-surface">
-          <div role="tablist" aria-label="Inspector" className="flex gap-1 border-b border-rule px-4 pt-2">
+          <div hidden={inExcelPane} role="tablist" aria-label="Inspector" className="flex gap-1 border-b border-rule px-4 pt-2">
             {TABS.map(({ id, label }) => {
               const count = id === "changes" ? pending : 0;
               return (
@@ -267,11 +274,18 @@ export default function App() {
               );
             })}
           </div>
+          {inExcelPane && (
+            <div className="shrink-0 border-b border-rule px-3 py-2">
+              <button type="button" className="rounded px-2 py-1.5 text-sm text-ledger hover:bg-ledger-soft" onClick={() => setPaneView("chat")}>
+                <span aria-hidden="true">← </span>Back to research
+              </button>
+            </div>
+          )}
           <div className="min-h-0 flex-1" role="tabpanel">
             {tab === "evidence" && (
               <EvidencePanel
-                corpus={corpus}
-                citation={selection?.kind === "source" ? selection.citation : null}
+                corpus={{...corpus, documents: session.documents ?? []}}
+                  citation={selection?.kind === "source" ? selection.citation : null}
                 onOpenDocument={openCitation}
               />
             )}
@@ -290,10 +304,6 @@ export default function App() {
                 highlight={selection?.kind === "cell" ? selection.citation : null}
                 onUpload={async (file) => {
                   await uploadWorkbook(session.id, file);
-                  await reloadSession();
-                }}
-                onUseDemo={async () => {
-                  await useDemoWorkbook(session.id);
                   await reloadSession();
                 }}
                 onSetContext={async (sheet, range) => {
