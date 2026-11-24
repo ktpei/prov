@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getGrid } from "../api";
 import { columnLetter, parseCellLocator, rangeLabel, type CellRange } from "../format";
+import { inExcelPane } from "../excel";
 import type { Citation, Grid, Session } from "../types";
 
 type Props = {
@@ -143,12 +144,18 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext
     session.context && session.context.sheet === sheet ? parseCellLocator(session.context.range, sheet) : null;
   const columns = grid ? Math.max(...grid.rows.map((row) => row.length), 1) : 0;
 
+  const selectRange = (start: Point, end: Point) => {
+    if (busy) return;
+    setAnchor(start);
+    setFocus(end);
+    const range = rangeLabel({
+      r1: Math.min(start.r, end.r), c1: Math.min(start.c, end.c),
+      r2: Math.max(start.r, end.r), c2: Math.max(start.c, end.c),
+    });
+    void onSetContext(sheet, range).catch((err: Error) => setError(err.message));
+  };
   const choose = (point: Point, extend: boolean) => {
-    if (extend && anchor) setFocus(point);
-    else {
-      setAnchor(point);
-      setFocus(point);
-    }
+    selectRange(extend && anchor ? anchor : point, point);
   };
 
   const navigate = (r: number, c: number) => {
@@ -165,8 +172,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext
     }
     setError(null);
     setOrigin({ r: range.r1, c: range.c1 });
-    setAnchor({ r: range.r1, c: range.c1 });
-    setFocus({ r: range.r2, c: range.c2 });
+    selectRange({ r: range.r1, c: range.c1 }, { r: range.r2, c: range.c2 });
   };
   const inspected = focus && grid
     ? grid.rows[focus.r - grid.start_row]?.[focus.c - grid.start_col]
@@ -232,18 +238,10 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext
               Selected <span className="tabular font-medium">{sheet}!{selectionLabel}</span>
               <span className="text-ink-faint"> ({cellCount} {cellCount === 1 ? "cell" : "cells"})</span>
             </span>
-            <button
-              type="button"
-              disabled={busy || cellCount > 400}
-              onClick={() => onSetContext(sheet, selectionLabel).catch((err: Error) => setError(err.message))}
-              className="rounded-md bg-ink px-2.5 py-1 text-white disabled:opacity-40"
-            >
-              Attach to next question
-            </button>
-            {cellCount > 400 && <span className="text-rust">Select 400 cells or fewer</span>}
+            {cellCount > 400 && <span className="text-rust">Select 400 cells or fewer before asking</span>}
           </>
         ) : (
-          <span className="text-ink-faint">Click a cell, or drag or Shift+click to select a range to attach to your question.</span>
+          <span className="text-ink-faint">Click a cell, or drag or Shift+click to select a range. {inExcelPane ? "Select cells in Excel to focus your next question." : "Your selection is included automatically with your next question."}</span>
         )}
         {session.context && (
           <span className="ml-auto flex items-center gap-2">
@@ -316,9 +314,7 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext
                             event.preventDefault();
                             const next = { r: r + offset.r, c: c + offset.c };
                             if (next.r < grid.start_row || next.r >= grid.start_row + grid.rows.length || next.c < grid.start_col || next.c >= grid.start_col + columns) return;
-                            if (event.shiftKey && !anchor) setAnchor({ r, c });
-                            else if (!event.shiftKey) setAnchor(next);
-                            setFocus(next);
+                            selectRange(event.shiftKey ? anchor ?? { r, c } : next, next);
                             event.currentTarget.closest("table")?.querySelector<HTMLElement>(`[data-cell="${columnLetter(next.c)}${next.r}"]`)?.focus();
                           }}
                           data-cell={`${columnLetter(c)}${r}`}
@@ -327,7 +323,10 @@ export function WorkbookPanel({ session, highlight, busy, onUpload, onSetContext
                             setDragging(true);
                             choose({ r, c }, event.shiftKey);
                           }}
-                          onMouseEnter={() => dragging && setFocus({ r, c })}
+                          onMouseEnter={(event) => {
+                            if (!event.buttons) setDragging(false);
+                            else if (dragging) choose({ r, c }, true);
+                          }}
                           className={`max-w-[360px] cursor-cell truncate border border-rule px-1.5 py-0.5 ${
                             numeric ? "text-right" : ""
                           } ${isCited ? "bg-highlight outline-2 -outline-offset-2 outline-ledger" : isSelected ? "bg-ledger-soft" : isContext ? "bg-highlight-soft" : ""} ${

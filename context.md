@@ -54,6 +54,20 @@ post-hoc diagnostic counts 4/25 and 7/25. Estimated cost $1.2211698, no uncertai
 billing. Source navigation is the main bottleneck. Original outputs and scores
 remain unchanged; the parser fix and regression test landed only after the run.
 
+## Selection-to-chat correction — 2026-11-20
+
+Selecting cells now automatically
+updates the composer context, including keyboard and direct-range selection.
+Sending waits for context persistence; failures retain the question. Removal,
+replacement uploads and new conversations clear the draft selection. Production
+build, lint, all 583 Python tests and eight browser tests pass, including
+delayed-save and failure regressions.
+
+Integration with the desktop Excel tools (2026-11-23): automatic attachment applies
+to the browser workspace only. The Excel pane keeps its explicit selection and
+fresh per-question snapshot. The replay-based browser checks were replaced by
+mocked-API equivalents because scripted replay was removed.
+
 ## Browser workbook milestone — 2026-11-20
 
 Implemented the [browser workbook specification](docs/web-workbook-spec.md):
@@ -74,6 +88,9 @@ Verified on the combined working tree: `yarn lint`, all 596 Python tests, the
 frontend production build and six Playwright tests pass. The test count includes
 pre-existing untracked XBRL tests. The rendered workbook inspector was visually
 checked; no paid model batch or desktop Excel recalculation was run for this task.
+The isolated review checkout independently passed lint, all 583 committed tests,
+a fresh frontend install/build and all six browser tests. Unrelated concurrent
+commits remain in the original checkout and are excluded from the review branch.
 
 
 ## Cloudflare benchmark rerun — 2026-11-20
@@ -86,6 +103,7 @@ and packet-06 returned answers but missed citation anchors. Offline retrieval
 remains 8/8 extraction and 6/8 retrieval coverage. Lint and all 582 tests passed
 (including pre-existing untracked XBRL tests). No held-out evaluation or independent
 semantic accuracy score is claimed. Existing unrelated work remains untouched.
+
 
 ## Excel planning research — 2026-11-18
 
@@ -340,7 +358,6 @@ accounts for all 504 facts: 420 exact table-cell joins, 77 outside-table and sev
 hidden dispositions. It preserves nested facts and six continuations and matches
 every occurrence to the frozen runtime observation. Typed-value integration and
 browser visibility remain separate; twelve new core regression tests pass.
-
 
 
 ## Context-priority challenger — 2026-11-16
