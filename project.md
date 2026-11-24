@@ -1,5 +1,14 @@
 # Project scope
 
+## Excel implementation research — 2026-11-18
+
+The [research memo](docs/excel-agent-research-2026-11-18.md) covers Excel agents,
+financial data/modeling platforms, Microsoft integration constraints and proposed
+acceptance gates. The recommended starting point is evidence-backed review and
+approved updates to a selected region of an existing model. This is a proposal
+for brainstorming, not a scope decision or implementation result. Target user,
+primary Excel host, and sponsor-add-in versus standalone delivery remain open.
+
 ## Browser UI integration — 2026-11-16
 
 The `feat/web-chatbot-mvp` workstream is integrated into
