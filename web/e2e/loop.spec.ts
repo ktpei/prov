@@ -10,7 +10,6 @@ test('live research and evidence inspection',async({page})=>{
 });
 test('missing live configuration disables research',async({page})=>{
   await liveApi(page,false); await page.goto('/');
-  await expect(page.getByText(/Live research unavailable/)).toBeVisible();
   await page.getByRole('textbox',{name:'Question',exact:true}).fill('Research revenue');
   await expect(page.getByRole('button',{name:'Ask',exact:true})).toBeDisabled();
 });

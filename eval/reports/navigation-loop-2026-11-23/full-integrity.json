@@ -1,0 +1,63 @@
+{
+  "version": "navigation-final-integrity-v1",
+  "arms": [
+    {
+      "run": "full-baseline-continuation-2",
+      "submission_sha256": "5853bfd3301e5ac5984e1a7f5d96d65afe71ccf17dbfaaec2cf181035c2eddff",
+      "score_reproduced": true,
+      "eligible_terminal": 499,
+      "reserved_placeholders": 1,
+      "frozen_modules_verified": 11,
+      "continuations": [
+        {
+          "prior_submission_sha256": "af94a973c1b15941a94bb07dadb0dd660f6a21785131af70d61eba9ad4c242d1",
+          "unchanged_records": 131
+        },
+        {
+          "prior_submission_sha256": "d461466533af04aad269d4d582bb9e969d56bb38f232348ab2b6b2e03e8895c4",
+          "unchanged_records": 277
+        }
+      ],
+      "retained_uncertain_ids": [
+        "daloopa-23521c8448c6d27a",
+        "daloopa-0758b024e9dc8885"
+      ]
+    },
+    {
+      "run": "full-document-v2-continuation",
+      "submission_sha256": "6f439543f48d0488a599ef5777dd426d1d41aaaee5740acda02ee29648e7afcb",
+      "score_reproduced": true,
+      "eligible_terminal": 499,
+      "reserved_placeholders": 1,
+      "frozen_modules_verified": 11,
+      "continuations": [
+        {
+          "prior_submission_sha256": "c85bd1851d8db8bda643f52a57da6ee2399d8baa23e94091a8b72bba2eed1604",
+          "unchanged_records": 84
+        }
+      ],
+      "retained_uncertain_ids": [
+        "daloopa-f37c12862a295869"
+      ]
+    }
+  ],
+  "sensitivity_excluding_union_of_provider_interruption_ids": {
+    "excluded_ids": [
+      "daloopa-0758b024e9dc8885",
+      "daloopa-23521c8448c6d27a",
+      "daloopa-f37c12862a295869"
+    ],
+    "arms": [
+      {
+        "scorable": 423,
+        "exact": 144,
+        "within_1pct": 164
+      },
+      {
+        "scorable": 423,
+        "exact": 177,
+        "within_1pct": 198
+      }
+    ]
+  }
+}

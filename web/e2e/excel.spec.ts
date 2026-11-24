@@ -92,3 +92,65 @@ test('attached cells are explicit snapshots that can be updated and removed', as
   await page.getByRole('button',{name:'Ask',exact:true}).click();
   expect((await request).postDataJSON().question).toBe('Research revenue');
 });
+
+test('Excel captures workbook before asking and applies only after approval', async ({page}) => {
+  await liveApi(page, true, true); await officeHost(page);
+  await page.setViewportSize({width:350,height:760});
+  await page.goto('/?excel=1');
+  const requests: string[] = [];
+  page.on('request', request => { if (request.method()==='POST') requests.push(new URL(request.url()).pathname); });
+  await page.getByRole('textbox',{name:'Question',exact:true}).fill('Set the input to 456');
+  await page.getByRole('button',{name:'Ask',exact:true}).click();
+  const approve = page.getByRole('button',{name:'Approve 1 change in Excel'});
+  await expect(approve).toBeVisible();
+  expect(requests.indexOf('/api/sessions/test/workbook')).toBeLessThan(requests.indexOf('/api/sessions/test/turns'));
+  expect(await page.evaluate(()=>Reflect.get(window,'fileClosed'))).toBe(1);
+  expect(await page.evaluate(()=>Reflect.get(window,'writeCount'))).toBe(0);
+  await approve.click();
+  await expect(page.getByText('Applied in Excel',{exact:true})).toBeVisible();
+  expect(await page.evaluate(()=>Reflect.get(window,'liveValue'))).toBe(456);
+  expect(await page.evaluate(()=>Reflect.get(window,'calculated'))).toBe(true);
+  await page.screenshot({path:'/tmp/provenance-excel-applied.png'});
+});
+
+for (const [key, value] of [['liveValue', '123'], ['liveFormula', '=A2'], ['isMerged', true], ['isSpill', true], ['inTable', true], ['cellError', true], ['rowHidden', true], ['columnHidden', true]] as const) {
+  test('Excel rejects changed or unsafe target: '+key, async ({page}) => {
+    await liveApi(page, true, true); await officeHost(page);
+    await page.goto('/?excel=1');
+    await page.getByRole('textbox',{name:'Question',exact:true}).fill('Set input to 456');
+    await page.getByRole('button',{name:'Ask',exact:true}).click();
+    const approve = page.getByRole('button',{name:'Approve 1 change in Excel'});
+    await expect(approve).toBeVisible();
+    await page.evaluate(({key,value})=>Reflect.set(window,key,value),{key,value});
+    await approve.click();
+    await expect(page.getByRole('alert')).toContainText(/changed since|Cannot edit/);
+    expect(await page.evaluate(()=>Reflect.get(window,'writeCount'))).toBe(0);
+  });
+}
+
+test('failed workbook capture stops submission and preserves question', async ({page}) => {
+  await liveApi(page); await officeHost(page);
+  await page.goto('/?excel=1');
+  await page.evaluate(()=>Reflect.set(window,'captureFails',true));
+  let submitted = false;
+  page.on('request',request=>{if(request.url().endsWith('/turns'))submitted=true;});
+  await page.getByRole('textbox',{name:'Question',exact:true}).fill('Change my model');
+  await page.getByRole('button',{name:'Ask',exact:true}).click();
+  await expect(page.getByRole('alert')).toContainText('Snapshot failed');
+  await expect(page.getByRole('textbox',{name:'Question',exact:true})).toHaveValue('Change my model');
+  expect(submitted).toBe(false);
+});
+
+test('applied changes with failed receipt are not retried', async ({page}) => {
+  await liveApi(page, true, true); await officeHost(page);
+  await page.route('**/excel/applied',route=>route.fulfill({status:500,json:{detail:'Unavailable'}}));
+  await page.goto('/?excel=1');
+  await page.getByRole('textbox',{name:'Question',exact:true}).fill('Set input to 456');
+  await page.getByRole('button',{name:'Ask',exact:true}).click();
+  const approve = page.getByRole('button',{name:'Approve 1 change in Excel'});
+  await approve.click();
+  await expect(page.getByRole('alert')).toContainText('changes were applied and read back');
+  await approve.click();
+  await expect(page.getByRole('alert')).toContainText('Ask again');
+  expect(await page.evaluate(()=>Reflect.get(window,'writeCount'))).toBe(1);
+});

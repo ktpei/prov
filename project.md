@@ -1,12 +1,25 @@
 # Project scope
 
+## Desktop Excel workbook tools — 2026-11-23
+
+Each question captures a compressed workbook snapshot on Mac/Windows, reusing
+the existing range-reading, citation, and proposal tools. Selected cells identify
+focus context; formulas are inspected to find ordinary input drivers, never
+overwritten. Approval applies selected pending proposals in the open workbook
+after typed-value, worksheet identity, formula, protection, merged/table/spill
+checks. Excel recalculates and inputs are read back before a client receipt marks
+proposals applied. Server receipts do not independently verify the host.
+Continuous synchronization and formula editing remain out of scope.
+The existing 5 MB, 30-sheet, .xlsx and conservative export blockers remain.
+
 ## Browser workbook delivery — 2026-11-20
 
 The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
 navigation, formula/cache inspection, approved ordinary input updates and verified
 separate-copy exports. It stops at the downloaded artifact with calculation
 explicitly pending. Formula generation/recalculation, persistent hosted sessions
-and live Excel execution are subsequent scope decisions. The research harness is
+remain subsequent scope decisions. Desktop Excel input application is implemented
+separately below. The research harness is
 reused; the evaluation reservations and runtime defaults remain unchanged.
 
 
@@ -512,9 +525,11 @@ real Excel host verification remains pending.
 November 23 update: [controlled navigation loop](eval/document-navigation-loop-2026-11-23.md)
 implements and tests two ingestion/navigation treatments. Quick25 within-1% results
 rise from 6 baseline to 11 then12, with remaining semantic period failures. Full
-baseline and selected v2 runs resumed after a provider daily-allowance interruption;
-no full-suite gain is yet claimed. Explicit continuation preserves all attempted
-outcomes and retained cost reservations, executing only untouched questions.
+baseline and selected v2 runs are complete: within-1% matching improves from
+164/426 to 199/426 at 30% lower estimated cost. All 499 eligible attempts per arm
+are retained, including provider failures; both scores reproduce exactly.
+[Final report](eval/reports/navigation-loop-2026-11-23/full-results.md) records
+regressions and unresolved semantic/output-length failures.
 
 Added [quick/full Daloopa evaluation](eval/daloopa-benchmark.md) alongside existing
 benchmarks: fixed quick25, full500 inventory, bounded research execution, exact

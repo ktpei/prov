@@ -75,7 +75,7 @@ mark.quote {
 .excel-pane .pane-header { padding: 14px 40px 10px 16px; }
 .excel-pane .pane-header > div { flex-wrap: nowrap; gap: 8px; }
 .excel-pane .pane-header button { padding: 4px 8px; font-size: 12px; white-space: nowrap; }
-.pane-nav { display: flex; flex-shrink: 0; gap: 20px; padding: 0 16px; border-bottom: 1px solid var(--color-rule); background: white; overflow-x: auto; }
+.pane-nav { display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 0 12px; padding: 0 16px; border-bottom: 1px solid var(--color-rule); background: white; }
 .pane-nav button { padding: 10px 0; border-bottom: 2px solid transparent; color: var(--color-ink-soft); font-size: 13px; white-space: nowrap; }
 .pane-nav button[aria-pressed="true"] { border-color: var(--color-ledger); color: var(--color-ledger); font-weight: 600; }
 .excel-pane main { display: flex; overflow: hidden; min-height: 0; }
@@ -88,13 +88,13 @@ mark.quote {
 .excel-pane .research-welcome { padding: 28px 2px; }
 .excel-pane .research-welcome h1 { font-size: 22px; letter-spacing: -.5px; line-height: 1.25; max-width: 220px; }
 .excel-pane .research-welcome p { margin-top: 12px; font-size: 14px; line-height: 1.65; }
-.excel-pane form { padding: 10px 14px 12px; flex-shrink: 0; }
-.excel-pane .question-input { position: relative; border: 1px solid #a8b3be; border-radius: 8px; padding: 8px; background: white; align-items: flex-end; }
+.excel-pane form { padding: 10px 14px 12px; flex-shrink: 0; max-height: 65%; display: flex; flex-direction: column; }
+.excel-pane .question-input { flex-shrink: 0; position: relative; border: 1px solid #a8b3be; border-radius: 8px; padding: 8px; background: white; align-items: flex-end; }
 .excel-pane .question-input:focus-within { border-color: var(--color-ledger); box-shadow: 0 0 0 1px var(--color-ledger); }
 .excel-pane textarea { min-width: 0; width: 100%; border: 0; padding: 0; font-size: 13px; resize: none; box-shadow: none; background: transparent; }
 .excel-pane .question-input button { height: 32px; padding: 0 12px; font-size: 12px; border-radius: 5px; }
 .excel-pane form > p { font-size: 10px; line-height: 1.4; margin-top: 7px; }
-.excel-tools { padding: 0 0 9px; font-size: 12px; }
+.excel-tools { padding: 0 0 9px; font-size: 12px; min-height: 0; overflow-y: auto; }
 .excel-feedback { margin-bottom: 7px; color: var(--color-ink-soft); }
 .excel-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .excel-actions button { font-size: 11px; padding: 5px 8px; border-radius: 5px; }

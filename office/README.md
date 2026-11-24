@@ -1,11 +1,14 @@
 # Excel add-in
 
-This Office.js task pane uses the existing research app. Attach up to 200 selected
-cells (values and formulas) to the next question, review cited answers, and click
-**Insert cited results** to create a new worksheet with claims and evidence.
-Selection attachment sends its content to the research backend and, in live mode,
-the configured model provider. Selection is a snapshot; reattach after editing.
-The combined question and selection must fit the backend's 4,000-character limit.
+This Office.js task pane captures the open desktop Excel workbook before each
+question so the agent can read cells, cite them and propose ordinary input edits.
+Attach up to 200 selected cells to identify a focus range. Review proposals in
+**Changes** before applying them to Excel. **Insert cited results** creates a new
+worksheet containing answer claims and evidence.
+
+Workbook snapshots are sent to the research backend; requested ranges are shared
+with the configured model provider. Each new question captures current contents;
+there is no continuous synchronization.
 
 ## Local setup
 
@@ -26,10 +29,10 @@ port 8765, keeping requests on the same origin. Both servers must remain running
 For deployment, host the app and API behind HTTPS and update SourceLocation.
 This is a sideloadable development add-in, not a Marketplace installation.
 
-Results always go to a new worksheet. Existing cells are not overwritten. Text
-starting with formula markers is escaped. File-based proposals and exports remain
-separate; this release does not apply proposals to live cells or continuously sync
-the workbook. Repeated insertion creates another worksheet.
+Answer insertion always creates a new worksheet. Approved input proposals can
+update existing ordinary cells through the separate Changes flow described below.
+Text starting with formula markers is escaped. File-based exports remain separate;
+there is no continuous sync. Repeated answer insertion creates another worksheet.
 
 Verification: TypeScript/build and browser tests with a mocked Office host cover
 connection, selection attachment, and result insertion. Real Excel connection was confirmed on 2026-11-22. The revised live routing
@@ -71,7 +74,7 @@ citations, and paper-style evidence viewer. A single navigation row replaces the
 nested Research/Details tabs. Excel attachment and insertion controls sit in the
 question composer; insertion appears when an eligible answer exists. Attached
 cell payloads are expandable in question history. Workbook/Changes navigation is
-available when a file workbook exists. Live Excel insertion still targets the
+available after the first workbook snapshot is captured. Live Excel insertion still targets the
 latest completed answer when eligible and creates a new worksheet.
 
 Visual review covers the welcome, answer and evidence views at narrow pane sizes,
@@ -84,8 +87,8 @@ Select cells in Excel, then choose **Attach selected cells**. The composer shows
 the captured sheet/range and cell count, with an expandable value preview.
 **Update from selection** replaces the snapshot with the currently selected range;
 the remove control clears it. Editing cells or moving the Excel selection does not
-change an existing attachment. Values and formulas are sent only with the next
-submitted question. A rejected update preserves the previous attachment.
+change an existing attachment. The range address is sent with the next question, and current cell values/formulas
+are read from a fresh workbook snapshot. A rejected update preserves the previous attachment.
 
 Verified in native Excel on 2026-11-23: the card displays `DCF!E6` and one attached
 cell. Eight browser checks cover the UI, snapshot replacement, oversized-selection
@@ -105,3 +108,34 @@ The evidence and activity views include a **Back to research** button. Activity
 uses separate icon, wrapping content, and time/cost columns to fit narrow task
 panes. The header omits the provider label and the welcome view omits introductory
 body copy. Live research remains available through the question composer.
+
+
+## Workbook tools and approved input changes (2026-11-23)
+
+Desktop Excel on Mac/Windows captures the open workbook before each question
+and uploads it to the research server. This enables `read_workbook_range`,
+cell citations and `propose_cell_edits`; an attached selection focuses the
+current snapshot on that range. The composer states that questions share the
+workbook. Failed capture stops submission and preserves the question.
+Compressed snapshots are unavailable in Excel on the web/iPad; these hosts
+show an explicit error rather than silently asking without workbook tools.
+See [Microsoft's host support matrix](https://learn.microsoft.com/en-us/javascript/api/office/office.document).
+
+Review proposals in **Changes**, then choose **Approve … in Excel**. This requires
+ExcelApi 1.13. Before writing, the add-in checks worksheet identity, typed old
+values and that every target remains a visible, unprotected ordinary input,
+outside merged areas, tables and spill ranges. Formula cells cannot be replaced.
+Excel recalculates; input readback must match before the session records an
+applied receipt. Ask a new question to capture results for subsequent citations.
+
+Workbook captures retain the existing .xlsx, 5 MB and 30-sheet limits. Macros
+are rejected. Existing export blockers (including charts/pivots and unsupported
+metadata) conservatively prevent edit proposals; this change does not widen
+workbook eligibility. Saved formula caches may be stale before application.
+Office write batches are not transactional: uncertain failures ask you to inspect
+the affected cells and refresh. No automatic retries or rollback are attempted.
+Successful writes with a failed server receipt are reported distinctly.
+
+Verification: four backend route tests and 17 Excel browser checks with mocked Office
+and providers passed. Native Excel capture and edit application, and a live
+model DCF driver-update task, have not yet been verified.

@@ -168,8 +168,9 @@ samples; no Daloopa retrieval accuracy is inferred from them.
 
 [November 23 improvement loop](document-navigation-loop-2026-11-23.md) and
 [paired quick results](reports/navigation-loop-2026-11-23/quick-results.md) document
-two navigation treatments and unchanged grading. Full comparisons resumed after
-a provider-allowance interruption; completed quick results are not full results.
+two navigation treatments and unchanged grading. The [completed full comparison](reports/navigation-loop-2026-11-23/full-results.md)
+shows 164/426 versus 199/426 within 1%, including a gain outside quick25.
+Both scores reproduce; interruptions and semantic limitations remain explicit.
 
 [Interpretation of the November results](reports/benchmark-interpretation-2026-11-22.md)
 explains coverage, numerical accuracy, scoring corrections, limitations, and the

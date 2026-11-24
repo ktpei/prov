@@ -1,6 +1,6 @@
 # Document ingestion and navigation improvement loop
 
-Status: first quick comparison complete; second treatment and full comparison in progress.
+Status: two navigation iterations, full paired retrieval comparison, and existing-suite reasoning/output-budget experiments complete. See the [final report](reports/navigation-loop-2026-11-23/full-results.md).
 
 The November 20 pilot exposed inaccessible document tails and repeated discovery
 without targeted reading. The baseline requests only 16,000 characters, and web
@@ -273,3 +273,25 @@ policies unchanged. Preserve lower-cost options and record this compute tradeoff
 [Reproduced grid and paired outcomes](reports/navigation-loop-2026-11-23/finqa-output-comparison.json)
 bind these findings to all four submission hashes. Fiscal-period and table
 interpretation errors remain separate from output truncation and numerical precision.
+
+## Final full comparison
+
+Both frozen full arms finished all 499 eligible attempts. Exact matches improve
+from 144/426 to 178/426; within-1% matches improve from 164/426 to 199/426. Outside
+quick25, tolerance matches improve from 156/401 to 189/401. Estimated cost falls
+from $20.824 to $14.653. There are 69 tolerance gains and 34 regressions; output-length
+failures increase from 30 to 45, despite context-size stops falling from 17 to zero.
+All completed numeric answers pass exact quote replay, but rejected quote failures
+increase from one to four and semantic support remains unestablished.
+
+Both scores reproduce exactly. Frozen runtime hashes and every previously
+dispatched continuation record are unchanged. Baseline's additional connection
+failure remains in the denominator, alongside both original allowance failures.
+Excluding the union of these three IDs from both arms preserves the gain
+(164/423 versus 198/423 within 1%). No interrupted case was retried.
+
+The [final report](reports/navigation-loop-2026-11-23/full-results.md) contains
+paired results, controls, limitations and the measured decision. Retain v2 as the
+preferred measured retrieval experiment, leave defaults and baseline available,
+and treat fiscal-period/table alignment as a separately frozen next hypothesis.
+This completes the planned round, not production financial validation.

@@ -116,7 +116,7 @@ export type Proposal = {
   model: string | null;
   generated_by: string | null;
   turn_status: string | null;
-  status: "pending" | "stale" | "exported" | "superseded";
+  status: "pending" | "stale" | "exported" | "superseded" | "applied";
 };
 
 export type ExportRecord = {

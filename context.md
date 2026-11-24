@@ -1,5 +1,17 @@
 # Working context — 2026-11-16
 
+## Desktop Excel workbook tools — 2026-11-23
+
+Implemented fresh workbook attachment per Excel question, focus-range context,
+and explicit live input approvals with typed stale checks and input readback.
+Build, lint, all 653 backend tests and all 19 browser checks (17 Excel) passed,
+including snapshot
+failure, no writes before approval, text/number stale mismatch, formulas,
+merged/spilled/table targets, and failed receipt without duplicate writes.
+Native Excel capture/application and a live model driver-edit task remain unverified.
+Office batches are not transactions; failures after writes report uncertain
+partial application, invalidate the local binding, and require a fresh question.
+
 ## Document navigation improvement loop — 2026-11-23
 
 [Research and comparison plan](eval/document-navigation-loop-2026-11-23.md):
@@ -14,8 +26,10 @@ with more output-length failures (16 to25). Frozen full baseline/v2 runs and the
 separate4,000-token FinQA ablation stopped at OpenRouter's $1/day key allowance.
 Explicit continuation preserves attempted outcomes and uncertain reservations;
 only untouched questions may execute in a new directory. Full-suite improvement
-is pending completion. At21:07 UTC the provider allowance was restored; frozen
-full navigation continuations are running. The FinQA output-budget grid completed:
+is now established for numerical matching: the [completed full report](eval/reports/navigation-loop-2026-11-23/full-results.md)
+records 164/426 versus 199/426 within 1%, with 30% lower estimated cost and remaining
+semantic/output-length failures. All 499 eligible attempts per arm finished, both
+scores reproduce, and prior attempts/runtime hashes are unchanged. The FinQA output-budget grid completed:
 original2,000=50/96, guided2,000=59/96, original4,000=47/96, guided4,000=64/96.
 Larger output alone does not improve accuracy. Each4,000-token arm retains one
 provider interruption; all scores reproduce and earlier attempts remain unchanged.

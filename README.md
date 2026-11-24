@@ -519,8 +519,11 @@ details or duplicating an existing scenario.
 
 A sideloadable task pane now attaches selected Excel cells to research questions
 and inserts cited claims into new worksheets. See [setup and limitations](office/README.md).
-Live cell proposal application and continuous synchronization are not implemented;
-real Excel host verification remains pending.
+Desktop Excel captures a workbook snapshot before each question, enabling cell
+reads and cited proposals. Approvals can update ordinary inputs in the open
+workbook with stale-value checks, recalculation, and readback. Continuous
+synchronization is not implemented; the new apply flow has automated host-mock
+coverage and still needs native Excel verification.
 
 ## Daloopa quick/full benchmarking
 
@@ -528,8 +531,9 @@ The [navigation improvement loop](eval/document-navigation-loop-2026-11-23.md)
 adds versioned document ingestion and finding. Use `--navigation document-v2` for
 the selected pilot treatment; `baseline` remains available for comparisons.
 [Measured quick results](eval/reports/navigation-loop-2026-11-23/quick-results.md)
-improve numerical coverage. Full-suite verification resumed after a provider
-allowance interruption; no full-suite improvement is yet established.
+improve numerical coverage. The [completed full comparison](eval/reports/navigation-loop-2026-11-23/full-results.md)
+improves within-1% matching from 164/426 to 199/426 at 30% lower estimated cost.
+Period/table interpretation and output-length failures remain limitations.
 
 The [Daloopa benchmark guide](eval/daloopa-benchmark.md) adds a fixed 25-question
 quick mode and preserves the full 500-question inventory alongside the existing
