@@ -12,6 +12,9 @@ export async function liveApi(page: Page, available = true, propose = false) {
     else if(path.endsWith('/workbook') && route.request().method() === 'POST') {
       session.workbook={snapshot_id:'snap-1',sha256:'test',filename:'Excel-workbook.xlsx',sheets:[{name:'Sheet1',max_row:10,max_col:10}],warnings:[],export_blockers:[]};
       body=session.workbook;
+    } else if(path.includes('/workbook/')) {
+      const cell=(address:string)=>({address,display:'123',value:'123',formula:null,kind:'value',value_status:'saved_value',editable:true,edit_block_reason:null});
+      body={snapshot_id:'snap-1',start_row:1,start_col:1,sheet:'Sheet1',max_row:10,max_col:10,rows:[1,2].map(r=>['A','B'].map(c=>cell(`${c}${r}`)))};
     } else if(path.endsWith('/context')) {
       session.context=route.request().method()==='DELETE'?null:route.request().postDataJSON();
       body=session.context;

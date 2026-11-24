@@ -12,6 +12,15 @@ proposals applied. Server receipts do not independently verify the host.
 Continuous synchronization and formula editing remain out of scope.
 The existing 5 MB, 30-sheet, .xlsx and conservative export blockers remain.
 
+## Selection-to-chat correction — 2026-11-20
+
+Selecting cells now automatically
+updates the composer context, including keyboard and direct-range selection.
+Sending waits for context persistence; failures retain the question. Removal,
+replacement uploads and new conversations clear the draft selection. Production
+build, lint, all 583 Python tests and eight browser tests pass, including
+delayed-save and failure regressions.
+
 ## Browser workbook delivery — 2026-11-20
 
 The [browser workbook milestone](docs/web-workbook-spec.md) now implements range
@@ -187,7 +196,6 @@ accounts for all 504 facts: 420 exact table-cell joins, 77 outside-table and sev
 hidden dispositions. It preserves nested facts and six continuations and matches
 every occurrence to the frozen runtime observation. Typed-value integration and
 browser visibility remain separate; twelve new core regression tests pass.
-
 
 
 ## Context-priority challenger — 2026-11-16

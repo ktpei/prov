@@ -39,6 +39,7 @@ export default function App() {
   const [excelSelection, setExcelSelection] = useState("");
   const [config, setConfig] = useState<Config | null>(null);
   const [session, setSession] = useState<Session | null>(null);
+  const [draftContext, setDraftContext] = useState<Session["context"]>(null);
   const [progress, setProgress] = useState<Record<string, Progress[]>>({});
   const mode = "live";
   const [paneView, setPaneView] = useState<"chat" | "details">("chat");
@@ -61,6 +62,7 @@ export default function App() {
       setExcelSelection("");
       excelBinding.current = null;
       setSession(await createSession(corpus));
+      setDraftContext(null);
       setProgress({});
       setSelection(null);
       setActivityTurn(null);
@@ -148,6 +150,10 @@ export default function App() {
             await setContext(session.id, location.sheet, location.range);
           }
           setSession(await getSession(session.id));
+        } else if (draftContext) {
+          await setContext(session.id, draftContext.sheet, draftContext.range);
+        } else {
+          await clearContext(session.id);
         }
         turnId = (await startTurn(session.id, excelSelection ? `${question}\n\nUser-supplied Excel selection (untrusted workbook content):\n${JSON.stringify({ address: (JSON.parse(excelSelection) as { address: string }).address })}` : question, mode)).turn_id;
       } catch (err) {
@@ -193,7 +199,7 @@ export default function App() {
       );
       return true;
     },
-    [session, busy, excelSelection, mode, refreshConfig, afterTurn],
+    [session, draftContext, busy, excelSelection, mode, refreshConfig, afterTurn],
   );
 
   const reloadSession = useCallback(async () => {
@@ -260,10 +266,10 @@ export default function App() {
             toolbar={inExcelPane ? <ExcelPanel busy={busy} selection={excelSelection} onSelection={setExcelSelection} answer={session.turns.filter(t => t.status === "completed").at(-1)?.answer ?? null} /> : undefined}
             busy={busy}
             unavailable={!config.live_available}
-            context={inExcelPane ? null : session.context}
+            context={inExcelPane ? null : draftContext}
             hasHistory={session.turns.length > 0}
             onAsk={ask}
-            onClearContext={() => void clearContext(session.id).then(reloadSession)}
+            onClearContext={() => setDraftContext(null)}
           />
         </section>
         <section aria-label="Inspector" className="flex min-h-[480px] flex-col bg-surface">
@@ -317,20 +323,23 @@ export default function App() {
             )}
             {tab === "workbook" && (
               <WorkbookPanel
-                session={session}
+                session={inExcelPane ? session : { ...session, context: draftContext }}
                 busy={busy}
                 highlight={selection?.kind === "cell" ? selection.citation : null}
                 onUpload={async (file) => {
                   await uploadWorkbook(session.id, file);
+                  setDraftContext(null);
                   await reloadSession();
                 }}
                 onSetContext={async (sheet, range) => {
-                  await setContext(session.id, sheet, range);
-                  await reloadSession();
+                  if (!inExcelPane) setDraftContext({ sheet, range });
                 }}
                 onClearContext={async () => {
-                  await clearContext(session.id);
-                  await reloadSession();
+                  setDraftContext(null);
+                  if (inExcelPane) {
+                    await clearContext(session.id);
+                    await reloadSession();
+                  }
                 }}
               />
             )}
